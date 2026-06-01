@@ -2898,285 +2898,66 @@ revEls.forEach(el => obs.observe(el));
 </script>
 
 <!-- ═══════════════════════════════════════════════════════
-     ADMIN STYLES
+     ADMIN – iframe aislado
 ════════════════════════════════════════════════════════ -->
 <style>
-/* ── Admin trigger button ── */
-/* ── Login overlay ── */
+/* Login overlay */
 .adm-login-wrap {
-  display: none; position: fixed; inset: 0; z-index: 1100;
-  background: rgba(26,20,16,0.88); backdrop-filter: blur(18px);
-  align-items: center; justify-content: center;
+  display:none; position:fixed; inset:0; z-index:1100;
+  background:rgba(26,20,16,0.92); backdrop-filter:blur(18px);
+  align-items:center; justify-content:center;
 }
-.adm-login-wrap.open { display: flex; }
+.adm-login-wrap.open { display:flex; }
 .adm-login-box {
-  background: var(--dark); border: 1px solid rgba(232,84,26,0.3);
-  border-radius: 4px; padding: 2.8rem 2.6rem;
-  width: 100%; max-width: 380px; position: relative;
-  box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+  background:#231c14; border:1px solid rgba(232,84,26,0.35);
+  border-radius:4px; padding:2.8rem 2.6rem;
+  width:100%; max-width:380px; position:relative;
+  box-shadow:0 24px 80px rgba(0,0,0,0.65);
+  font-family:'Barlow',sans-serif; color:#f5f0e8;
 }
-.adm-login-logo {
-  display: flex; align-items: center; gap: 10px;
-  justify-content: center; margin-bottom: 2rem;
-}
-.adm-login-logo svg { width: 44px; height: 44px; }
-.adm-login-logo-text { font-family:'Barlow Condensed',sans-serif; font-size:1.2rem; font-weight:700; letter-spacing:.1em; }
-.adm-login-logo-text span { color: var(--ember); }
-.adm-login-title {
-  font-family:'Barlow Condensed',sans-serif; font-size:.62rem; font-weight:600;
-  letter-spacing:.28em; text-transform:uppercase; color:var(--ember);
-  text-align:center; margin-bottom:1.8rem;
-}
-.adm-field { margin-bottom: 1.1rem; }
-.adm-field label {
-  display:block; font-size:.65rem; font-weight:600; letter-spacing:.18em;
-  text-transform:uppercase; color:var(--sand); margin-bottom:.45rem;
-}
-.adm-field input {
-  width:100%; background:rgba(255,255,255,.06); border:1px solid rgba(201,169,110,.2);
-  border-radius:2px; padding:.65rem .9rem; color:var(--cream);
-  font-family:'Barlow',sans-serif; font-size:.88rem; outline:none;
-  transition:border-color .2s;
-}
-.adm-field input:focus { border-color: var(--ember); }
-.adm-login-btn {
-  width:100%; padding:.75rem; background:var(--ember); color:var(--cream);
-  border:none; border-radius:2px; font-family:'Barlow Condensed',sans-serif;
-  font-size:.78rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase;
-  cursor:pointer; margin-top:.6rem; transition:background .2s;
-}
-.adm-login-btn:hover { background:var(--ember-dim); }
-.adm-login-err {
-  color:#e05050; font-size:.75rem; text-align:center;
-  margin-top:.8rem; display:none;
-}
-.adm-login-close {
-  position:absolute; top:.9rem; right:.9rem;
-  background:none; border:none; color:var(--stone); font-size:1.1rem;
-  cursor:pointer; line-height:1; padding:.25rem;
-}
-.adm-login-close:hover { color:var(--cream); }
+.adm-login-logo { display:flex; align-items:center; gap:10px; justify-content:center; margin-bottom:2rem; }
+.adm-login-logo svg { width:46px; height:46px; }
+.adm-login-logo-text { font-family:'Barlow Condensed',sans-serif; font-size:1.25rem; font-weight:700; letter-spacing:.1em; color:#f5f0e8; }
+.adm-login-logo-text span { color:#e8541a; }
+.adm-login-eyebrow { font-family:'Barlow Condensed',sans-serif; font-size:.62rem; font-weight:600; letter-spacing:.28em; text-transform:uppercase; color:#e8541a; text-align:center; margin-bottom:1.8rem; }
+.adm-field { margin-bottom:1.1rem; }
+.adm-field label { display:block; font-size:.65rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:#c9a96e; margin-bottom:.45rem; }
+.adm-field input { width:100%; background:rgba(255,255,255,.07); border:1px solid rgba(201,169,110,.22); border-radius:2px; padding:.65rem .9rem; color:#f5f0e8; font-family:'Barlow',sans-serif; font-size:.9rem; outline:none; transition:border-color .2s; }
+.adm-field input:focus { border-color:#e8541a; }
+.adm-login-btn { width:100%; padding:.78rem; background:#e8541a; color:#f5f0e8; border:none; border-radius:2px; font-family:'Barlow Condensed',sans-serif; font-size:.8rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; cursor:pointer; margin-top:.6rem; transition:background .2s; }
+.adm-login-btn:hover { background:#c44410; }
+.adm-login-err { color:#e05050; font-size:.75rem; text-align:center; margin-top:.8rem; display:none; }
+.adm-login-close { position:absolute; top:.9rem; right:.9rem; background:none; border:none; color:#7a6a5a; font-size:1.1rem; cursor:pointer; line-height:1; padding:.25rem; }
+.adm-login-close:hover { color:#f5f0e8; }
 
-/* ── Admin panel ── */
-.adm-panel {
+/* iframe panel */
+.adm-iframe-wrap {
   display:none; position:fixed; inset:0; z-index:1050;
-  background:var(--ink); flex-direction:column;
-  font-family:'Barlow',sans-serif;
 }
-.adm-panel.open { display:flex; }
-
-/* Topbar */
-.adm-topbar {
-  height:60px; background:var(--dark); border-bottom:2px solid var(--ember);
-  display:flex; align-items:center; justify-content:space-between;
-  padding:0 1.5rem; flex-shrink:0;
-}
-.adm-topbar-logo { display:flex; align-items:center; gap:9px; }
-.adm-topbar-logo svg { width:32px; height:32px; }
-.adm-topbar-brand {
-  font-family:'Barlow Condensed',sans-serif; font-size:1rem;
-  font-weight:700; letter-spacing:.1em; color:var(--cream);
-}
-.adm-topbar-brand span { color:var(--ember); }
-.adm-topbar-badge {
-  font-size:.58rem; letter-spacing:.2em; text-transform:uppercase;
-  color:var(--stone); margin-left:.5rem; font-weight:500;
-}
-.adm-topbar-right { display:flex; align-items:center; gap:1rem; }
-.adm-user-info { font-size:.72rem; color:var(--sand); letter-spacing:.05em; }
-.adm-logout-btn {
-  background:rgba(232,84,26,.12); border:1px solid rgba(232,84,26,.35);
-  color:var(--ember); padding:.38rem .9rem; border-radius:2px; cursor:pointer;
-  font-size:.65rem; font-weight:600; letter-spacing:.15em; text-transform:uppercase;
-  font-family:'Barlow Condensed',sans-serif; transition:background .2s;
-}
-.adm-logout-btn:hover { background:rgba(232,84,26,.25); }
-.adm-close-btn {
-  background:none; border:1px solid rgba(201,169,110,.2); color:var(--stone);
-  padding:.38rem .7rem; border-radius:2px; cursor:pointer; font-size:.75rem;
-  transition:border-color .2s,color .2s;
-}
-.adm-close-btn:hover { border-color:var(--sand); color:var(--cream); }
-
-/* Layout */
-.adm-body { display:flex; flex:1; overflow:hidden; }
-
-/* Sidebar */
-.adm-sidebar {
-  width:220px; flex-shrink:0; background:var(--dark);
-  border-right:1px solid rgba(201,169,110,.1);
-  display:flex; flex-direction:column; overflow-y:auto;
-  padding:1.2rem 0;
-}
-.adm-sidebar-section {
-  font-size:.55rem; font-weight:700; letter-spacing:.3em; text-transform:uppercase;
-  color:var(--stone); padding:.5rem 1.3rem .35rem; margin-top:.5rem;
-}
-.adm-nav-item {
-  display:flex; align-items:center; gap:.7rem; padding:.65rem 1.3rem;
-  color:rgba(232,220,200,.55); cursor:pointer; font-size:.8rem;
-  border-left:2px solid transparent; transition:all .15s;
-  text-decoration:none; font-weight:400;
-}
-.adm-nav-item:hover { color:var(--cream); background:rgba(255,255,255,.04); }
-.adm-nav-item.active {
-  color:var(--cream); background:rgba(232,84,26,.1);
-  border-left-color:var(--ember);
-}
-.adm-nav-item .ico { font-size:1rem; width:18px; text-align:center; flex-shrink:0; }
-
-/* Main content */
-.adm-main { flex:1; overflow-y:auto; padding:2rem 2.2rem; }
-
-/* Sections */
-.adm-section { display:none; }
-.adm-section.active { display:block; }
-.adm-section-title {
-  font-family:'Barlow Condensed',sans-serif; font-size:1.6rem; font-weight:700;
-  letter-spacing:.06em; color:var(--cream); margin-bottom:.3rem;
-}
-.adm-section-sub { font-size:.78rem; color:var(--stone); margin-bottom:2rem; }
-
-/* Stats row */
-.adm-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-bottom:2rem; }
-@media(max-width:900px){ .adm-stats { grid-template-columns:repeat(2,1fr); } }
-.adm-stat {
-  background:var(--dark); border:1px solid rgba(201,169,110,.12);
-  border-radius:3px; padding:1.2rem 1.4rem;
-}
-.adm-stat-val {
-  font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:700;
-  color:var(--cream); line-height:1;
-}
-.adm-stat-lbl { font-size:.65rem; color:var(--stone); letter-spacing:.12em; text-transform:uppercase; margin-top:.35rem; }
-.adm-stat-ico { font-size:1.5rem; margin-bottom:.5rem; }
-
-/* Cards */
-.adm-card {
-  background:var(--dark); border:1px solid rgba(201,169,110,.12);
-  border-radius:3px; padding:1.5rem; margin-bottom:1.2rem;
-}
-.adm-card-title {
-  font-family:'Barlow Condensed',sans-serif; font-size:.72rem; font-weight:700;
-  letter-spacing:.22em; text-transform:uppercase; color:var(--ember);
-  margin-bottom:1.2rem;
+.adm-iframe-wrap.open { display:block; }
+.adm-iframe-wrap iframe {
+  width:100%; height:100%; border:none; display:block;
 }
 
-/* Form elements */
-.adm-form-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
-@media(max-width:700px){ .adm-form-grid { grid-template-columns:1fr; } }
-.adm-form-field { margin-bottom:.9rem; }
-.adm-form-field label {
-  display:block; font-size:.62rem; font-weight:600; letter-spacing:.18em;
-  text-transform:uppercase; color:var(--sand); margin-bottom:.4rem;
-}
-.adm-form-field input,
-.adm-form-field textarea,
-.adm-form-field select {
-  width:100%; background:rgba(255,255,255,.05); border:1px solid rgba(201,169,110,.18);
-  border-radius:2px; padding:.6rem .85rem; color:var(--cream);
-  font-family:'Barlow',sans-serif; font-size:.83rem; outline:none;
-  transition:border-color .2s; resize:vertical;
-}
-.adm-form-field input:focus,
-.adm-form-field textarea:focus,
-.adm-form-field select:focus { border-color:var(--ember); }
-.adm-form-field textarea { min-height:80px; }
-.adm-form-field select option { background:var(--dark); color:var(--cream); }
-.adm-btn {
-  padding:.6rem 1.5rem; border-radius:2px; font-family:'Barlow Condensed',sans-serif;
-  font-size:.72rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
-  cursor:pointer; border:none; transition:background .2s;
-}
-.adm-btn-primary { background:var(--ember); color:var(--cream); }
-.adm-btn-primary:hover { background:var(--ember-dim); }
-.adm-btn-ghost {
-  background:transparent; color:var(--sand);
-  border:1px solid rgba(201,169,110,.25);
-}
-.adm-btn-ghost:hover { border-color:var(--sand); color:var(--cream); }
-.adm-btn-danger { background:rgba(200,50,50,.2); color:#e05050; border:1px solid rgba(200,50,50,.3); }
-.adm-btn-danger:hover { background:rgba(200,50,50,.35); }
-
-/* Table */
-.adm-table-wrap { overflow-x:auto; }
-.adm-table {
-  width:100%; border-collapse:collapse; font-size:.78rem;
-}
-.adm-table th {
-  font-size:.6rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase;
-  color:var(--stone); text-align:left; padding:.65rem .8rem;
-  border-bottom:1px solid rgba(201,169,110,.15);
-}
-.adm-table td {
-  padding:.7rem .8rem; color:rgba(232,220,200,.8);
-  border-bottom:1px solid rgba(255,255,255,.04);
-}
-.adm-table tr:hover td { background:rgba(255,255,255,.03); }
-.adm-badge {
-  display:inline-block; padding:.18rem .55rem; border-radius:2px;
-  font-size:.6rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
-}
-.adm-badge-green { background:rgba(80,180,80,.15); color:#6dcc6d; border:1px solid rgba(80,180,80,.25); }
-.adm-badge-yellow { background:rgba(200,160,50,.15); color:#d4aa40; border:1px solid rgba(200,160,50,.25); }
-.adm-badge-red { background:rgba(200,70,70,.15); color:#e07070; border:1px solid rgba(200,70,70,.25); }
-.adm-badge-blue { background:rgba(70,130,200,.15); color:#70a8e0; border:1px solid rgba(70,130,200,.25); }
-
-/* Save toast */
+/* Toast */
 .adm-toast {
   position:fixed; bottom:2rem; left:50%; transform:translateX(-50%) translateY(80px);
-  background:var(--bark); border:1px solid rgba(232,84,26,.4);
-  color:var(--cream); padding:.7rem 1.6rem; border-radius:2px;
-  font-size:.75rem; font-weight:500; z-index:2000;
+  background:#3a2d1f; border:1px solid rgba(232,84,26,.45);
+  color:#f5f0e8; padding:.7rem 1.6rem; border-radius:2px;
+  font-size:.8rem; font-weight:500; z-index:2000;
   transition:transform .3s; pointer-events:none;
+  font-family:'Barlow',sans-serif;
 }
 .adm-toast.show { transform:translateX(-50%) translateY(0); }
-
-/* Slider upload grid */
-.adm-slider-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
-@media(max-width:600px){ .adm-slider-grid { grid-template-columns:1fr; } }
-.adm-slide-thumb {
-  background:rgba(255,255,255,.04); border:1px solid rgba(201,169,110,.15);
-  border-radius:3px; overflow:hidden;
-}
-.adm-slide-img {
-  width:100%; height:120px; object-fit:cover; display:block;
-  background:rgba(255,255,255,.06);
-}
-.adm-slide-img-placeholder {
-  width:100%; height:120px; display:flex; align-items:center; justify-content:center;
-  font-size:2rem; background:rgba(255,255,255,.04); color:var(--stone);
-}
-.adm-slide-body { padding:.9rem 1rem; }
-.adm-slide-name {
-  font-family:'Barlow Condensed',sans-serif; font-size:.7rem; font-weight:700;
-  letter-spacing:.15em; text-transform:uppercase; color:var(--sand); margin-bottom:.6rem;
-}
-.adm-slide-actions { display:flex; gap:.5rem; flex-wrap:wrap; }
-.adm-upload-input { display:none; }
 </style>
 
-<!-- ── Admin trigger button ── -->
-
-<!-- ── Login overlay ── -->
+<!-- Login overlay (en el sitio) -->
 <div class="adm-login-wrap" id="admLoginWrap">
   <div class="adm-login-box">
     <button class="adm-login-close" id="admLoginClose">✕</button>
     <div class="adm-login-logo">
       <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <radialGradient id="ll-hub" cx="35%" cy="30%" r="65%">
-            <stop offset="0%" stop-color="rgba(255,255,255,0.95)"/>
-            <stop offset="100%" stop-color="rgba(170,195,215,0.6)"/>
-          </radialGradient>
-          <radialGradient id="ll-jewel" cx="35%" cy="28%" r="60%">
-            <stop offset="0%" stop-color="#ff7b44"/>
-            <stop offset="45%" stop-color="#e8541a"/>
-            <stop offset="100%" stop-color="#a33a0e"/>
-          </radialGradient>
-        </defs>
         <circle cx="50" cy="50" r="46" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.2"/>
-        <circle cx="50" cy="50" r="38" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="0.6"/>
         <polygon points="50,12 53,47 50,50 47,47" fill="white" opacity="0.92"/>
         <polygon points="50,88 53,53 50,50 47,53" fill="rgba(200,220,240,0.7)"/>
         <polygon points="12,50 47,47 50,50 47,53" fill="rgba(235,247,255,0.85)"/>
@@ -3185,12 +2966,12 @@ revEls.forEach(el => obs.observe(el));
         <polygon points="22,22 47,47 50,50 53,47" fill="rgba(230,245,255,0.78)"/>
         <polygon points="78,78 53,53 50,50 47,53" fill="rgba(165,192,215,0.5)"/>
         <polygon points="22,78 47,53 50,50 53,53" fill="rgba(185,210,228,0.58)"/>
-        <circle cx="50" cy="50" r="6" fill="url(#ll-hub)"/>
-        <circle cx="50" cy="50" r="3.5" fill="url(#ll-jewel)"/>
+        <circle cx="50" cy="50" r="6" fill="white" opacity="0.85"/>
+        <circle cx="50" cy="50" r="3.5" fill="#e8541a"/>
       </svg>
       <div class="adm-login-logo-text">ZOYEN <span>TURISMO</span></div>
     </div>
-    <div class="adm-login-title">Panel de Administración</div>
+    <div class="adm-login-eyebrow">Panel de Administración</div>
     <div class="adm-field">
       <label>Usuario</label>
       <input type="text" id="admUser" placeholder="admin" autocomplete="username"/>
@@ -3204,240 +2985,368 @@ revEls.forEach(el => obs.observe(el));
   </div>
 </div>
 
-<!-- ── Admin panel ── -->
-<div class="adm-panel" id="admPanel">
+<!-- iframe que contiene el panel admin limpio -->
+<div class="adm-iframe-wrap" id="admIframeWrap">
+  <iframe id="admIframe" title="Panel Admin"></iframe>
+</div>
 
+<div class="adm-toast" id="admToast">✓ Cambios guardados</div>
+
+<script>
+(function(){
+const CREDS = { user:'zoyen', pass:'patagonia2025' };
+let loggedIn = false;
+
+// Excursion data
+const excData = [
+  { key:'cueva',      name:'Cueva de las Manos',              precio:18000, estado:'activa', duracion:'Día completo', capacidad:14 },
+  { key:'capillas',   name:'Capillas y Catedrales de Mármol', precio:24000, estado:'activa', duracion:'Día completo', capacidad:14 },
+  { key:'posadas',    name:'Lagos Posadas · Ruta 41',         precio:15000, estado:'activa', duracion:'Día completo', capacidad:14 },
+  { key:'zeballos',   name:'Ruta 41 · Monte Zeballos',        precio:16000, estado:'activa', duracion:'Día completo', capacidad:14 },
+  { key:'pnp',        name:'Parque Nacional Patagonia',       precio:14000, estado:'activa', duracion:'Día completo', capacidad:14 },
+  { key:'charcamata', name:'Alero Charcamata',                precio:12000, estado:'activa', duracion:'Medio día',    capacidad:14 },
+];
+let reservas = JSON.parse(sessionStorage.getItem('zyt_reservas')||'[]');
+function saveReservas(){ sessionStorage.setItem('zyt_reservas', JSON.stringify(reservas)); }
+
+// Capture reservas from booking form
+const btnPagar = document.getElementById('btnPagar');
+if(btnPagar){ btnPagar.addEventListener('click', ()=>{
+  setTimeout(()=>{
+    const excEl = document.getElementById('sel-excursion');
+    const excOpt = excEl&&excEl.selectedOptions[0];
+    const nombre = (document.getElementById('inp-nombre')||{}).value||'';
+    const tel    = (document.getElementById('inp-tel')||{}).value||'';
+    const email  = (document.getElementById('inp-email')||{}).value||'';
+    const fecha  = (document.getElementById('sel-fecha')||{}).value||'';
+    const pers   = (document.getElementById('sel-personas')||{}).value||'1';
+    const precio = excOpt&&excOpt.dataset.precio ? parseInt(excOpt.dataset.precio) : 0;
+    const senia  = Math.round(precio*parseInt(pers)*0.20);
+    if(nombre&&excOpt){
+      reservas.push({ id:Date.now(), nombre, tel, email,
+        excursion: excOpt.text.split('—')[0].trim(),
+        fecha, personas:pers,
+        asientos:(window.selectedSeats||[]).slice().sort((a,b)=>a-b).join(', '),
+        senia, estado:'pendiente', creado:new Date().toLocaleDateString('es-AR') });
+      saveReservas();
+    }
+  },200);
+});}
+
+// Triple-click on nav logo
+let clicks=0, timer=null;
+const logo = document.querySelector('.nav-logo');
+if(logo){ logo.addEventListener('click', e=>{
+  clicks++;
+  if(timer) clearTimeout(timer);
+  timer = setTimeout(()=>{ clicks=0; }, 600);
+  if(clicks>=3){
+    clicks=0; clearTimeout(timer); e.preventDefault();
+    if(loggedIn){ openPanel(); }
+    else{ document.getElementById('admLoginWrap').classList.add('open'); document.getElementById('admUser').focus(); }
+  }
+});}
+
+// Login
+document.getElementById('admLoginClose').onclick = ()=> document.getElementById('admLoginWrap').classList.remove('open');
+document.getElementById('admLoginWrap').addEventListener('click', e=>{ if(e.target===document.getElementById('admLoginWrap')) document.getElementById('admLoginWrap').classList.remove('open'); });
+
+function doLogin(){
+  const u=document.getElementById('admUser').value.trim();
+  const p=document.getElementById('admPass').value;
+  if(u===CREDS.user&&p===CREDS.pass){
+    loggedIn=true;
+    document.getElementById('admLoginErr').style.display='none';
+    document.getElementById('admLoginWrap').classList.remove('open');
+    openPanel();
+  } else {
+    document.getElementById('admLoginErr').style.display='block';
+    document.getElementById('admPass').value='';
+  }
+}
+document.getElementById('admLoginBtn').onclick = doLogin;
+document.getElementById('admPass').addEventListener('keydown', e=>{ if(e.key==='Enter') doLogin(); });
+document.getElementById('admUser').addEventListener('keydown', e=>{ if(e.key==='Enter') document.getElementById('admPass').focus(); });
+
+// Toast
+function showToast(msg){
+  const t=document.getElementById('admToast');
+  t.textContent='✓ '+(msg||'Cambios guardados');
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2800);
+}
+window._admShowToast = showToast;
+
+// Build and open panel inside clean iframe
+function openPanel(){
+  const wrap = document.getElementById('admIframeWrap');
+  const iframe = document.getElementById('admIframe');
+  wrap.classList.add('open');
+
+  const doc = iframe.contentDocument || iframe.contentWindow.document;
+  doc.open();
+  doc.write(buildPanelHTML());
+  doc.close();
+
+  // Wire iframe→parent communication
+  iframe.contentWindow._parent = {
+    excData, reservas, saveReservas, showToast,
+    closePanel: ()=>{ wrap.classList.remove('open'); },
+    logout: ()=>{ loggedIn=false; wrap.classList.remove('open'); showToast('Sesión cerrada.'); },
+    applySlide: (i,ey,ti,de)=>{
+      const s=document.getElementById('s'+i); if(!s) return;
+      const eyEl=s.querySelector('.slide-eyebrow'); if(eyEl) eyEl.textContent=ey;
+      const tiEl=s.querySelector('.slide-title'); if(tiEl) tiEl.innerHTML=ti;
+      const deEl=s.querySelector('.slide-desc'); if(deEl) deEl.textContent=de;
+    },
+    applyManifesto: (q,b)=>{
+      const qEl=document.querySelector('.manifesto-quote'); if(qEl) qEl.innerHTML=q;
+      const bEl=document.querySelector('.manifesto .section-sub'); if(bEl) bEl.textContent=b;
+    },
+    applyExcPrice: (key,precio)=>{
+      const opts=document.querySelectorAll('#sel-excursion option');
+      opts.forEach(o=>{ if(o.value===key){ o.dataset.precio=precio; const d=excData.find(e=>e.key===key); if(d) o.textContent=`${d.name} — $${parseInt(precio).toLocaleString('es-AR')} p/p`; } });
+    },
+    applySliderImage: (i,url)=>{
+      const bg=document.querySelector(`#s${i} .slide-bg`); if(bg) bg.style.backgroundImage=`url('${url}')`;
+      const th=document.querySelector(`.bb-thumb[data-i="${i}"]`); if(th) th.innerHTML=`<img src="${url}" style="width:100%;height:100%;object-fit:cover"/>`;
+    },
+    getSlideImg: (i)=>{
+      const bg=document.querySelector(`#s${i} .slide-bg`); 
+      return bg ? bg.style.backgroundImage.replace(/url\(['"]?(.*?)['"]?\)/,'$1') : '';
+    }
+  };
+}
+
+function buildPanelHTML(){
+  return `<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#1a1410;--dark:#231c14;--bark:#3a2d1f;
+  --ember:#e8541a;--ember-dim:#c44410;
+  --sand:#c9a96e;--cream:#f5f0e8;--stone:#7a6a5a;
+}
+html,body{height:100%;overflow:hidden;font-family:'Barlow',sans-serif;font-size:15px;color:var(--cream);background:var(--ink)}
+
+/* Layout */
+.panel{display:flex;flex-direction:column;height:100vh}
+
+/* Topbar */
+.topbar{height:58px;background:var(--dark);border-bottom:2.5px solid var(--ember);display:flex;align-items:center;justify-content:space-between;padding:0 24px;flex-shrink:0}
+.topbar-left{display:flex;align-items:center;gap:12px}
+.topbar-logo{display:flex;align-items:center;gap:10px}
+.topbar-logo svg{width:34px;height:34px}
+.topbar-brand{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;letter-spacing:.1em;color:var(--cream)}
+.topbar-brand span{color:var(--ember)}
+.topbar-badge{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--stone);font-weight:600;background:rgba(255,255,255,.06);padding:3px 8px;border-radius:2px;border:1px solid rgba(201,169,110,.15)}
+.topbar-right{display:flex;align-items:center;gap:12px}
+.user-label{font-size:13px;color:var(--sand)}
+.btn-logout{background:rgba(232,84,26,.15);border:1px solid rgba(232,84,26,.4);color:var(--ember);padding:6px 14px;border-radius:2px;cursor:pointer;font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;transition:background .2s}
+.btn-logout:hover{background:rgba(232,84,26,.3)}
+.btn-back{background:none;border:1px solid rgba(201,169,110,.25);color:var(--stone);padding:6px 14px;border-radius:2px;cursor:pointer;font-size:13px;transition:all .2s}
+.btn-back:hover{border-color:var(--sand);color:var(--cream)}
+
+/* Body */
+.body{display:flex;flex:1;overflow:hidden}
+
+/* Sidebar */
+.sidebar{width:230px;min-width:230px;background:var(--dark);border-right:1px solid rgba(201,169,110,.12);display:flex;flex-direction:column;overflow-y:auto;padding:16px 0;flex-shrink:0}
+.sidebar-section{font-size:10px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--stone);padding:14px 20px 6px}
+.nav-item{display:flex;align-items:center;gap:12px;padding:11px 20px;color:rgba(232,220,200,.55);cursor:pointer;font-size:14px;border-left:3px solid transparent;transition:all .15s;white-space:nowrap;user-select:none}
+.nav-item:hover{color:var(--cream);background:rgba(255,255,255,.05)}
+.nav-item.active{color:var(--cream);background:rgba(232,84,26,.12);border-left-color:var(--ember)}
+.nav-item .ico{font-size:16px;width:22px;text-align:center;flex-shrink:0}
+.nav-divider{height:1px;background:rgba(201,169,110,.08);margin:8px 0}
+
+/* Main */
+.main{flex:1;overflow-y:auto;padding:28px 32px;background:var(--ink)}
+
+/* Sections */
+.sec{display:none}.sec.active{display:block}
+.sec-title{font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:700;letter-spacing:.05em;color:var(--cream);margin-bottom:4px}
+.sec-sub{font-size:13px;color:var(--stone);margin-bottom:24px}
+
+/* Stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+.stat{background:var(--dark);border:1px solid rgba(201,169,110,.12);border-radius:3px;padding:18px 20px}
+.stat-ico{font-size:22px;margin-bottom:8px}
+.stat-val{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:700;color:var(--cream);line-height:1}
+.stat-lbl{font-size:11px;color:var(--stone);letter-spacing:.12em;text-transform:uppercase;margin-top:5px}
+
+/* Cards */
+.card{background:var(--dark);border:1px solid rgba(201,169,110,.12);border-radius:3px;padding:20px 22px;margin-bottom:16px}
+.card-title{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--ember);margin-bottom:16px;display:flex;align-items:center;justify-content:space-between}
+
+/* Table */
+.tbl-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--stone);text-align:left;padding:9px 10px;border-bottom:1px solid rgba(201,169,110,.15)}
+td{padding:10px 10px;color:rgba(232,220,200,.8);border-bottom:1px solid rgba(255,255,255,.04)}
+tr:hover td{background:rgba(255,255,255,.03)}
+.empty{color:var(--stone);text-align:center;padding:28px!important}
+
+/* Badges */
+.badge{display:inline-block;padding:2px 8px;border-radius:2px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.bg{background:rgba(80,180,80,.15);color:#6dcc6d;border:1px solid rgba(80,180,80,.25)}
+.by{background:rgba(200,160,50,.15);color:#d4aa40;border:1px solid rgba(200,160,50,.25)}
+.br{background:rgba(200,70,70,.15);color:#e07070;border:1px solid rgba(200,70,70,.25)}
+
+/* Forms */
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{margin-bottom:12px}
+.field label{display:block;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--sand);margin-bottom:6px}
+.field input,.field textarea,.field select{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(201,169,110,.2);border-radius:2px;padding:9px 12px;color:var(--cream);font-family:'Barlow',sans-serif;font-size:14px;outline:none;transition:border-color .2s;resize:vertical}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--ember)}
+.field textarea{min-height:72px}
+.field select option{background:var(--dark)}
+
+/* Buttons */
+.btn{padding:8px 18px;border-radius:2px;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;border:none;transition:background .2s}
+.btn-p{background:var(--ember);color:var(--cream)}.btn-p:hover{background:var(--ember-dim)}
+.btn-g{background:transparent;color:var(--sand);border:1px solid rgba(201,169,110,.28)}.btn-g:hover{border-color:var(--sand);color:var(--cream)}
+.btn-d{background:rgba(200,50,50,.18);color:#e07070;border:1px solid rgba(200,50,50,.3)}.btn-d:hover{background:rgba(200,50,50,.32)}
+.btn-sm{padding:5px 10px;font-size:10px}
+
+/* Slider grid */
+.slider-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.slide-thumb{background:rgba(255,255,255,.04);border:1px solid rgba(201,169,110,.15);border-radius:3px;overflow:hidden}
+.slide-img{width:100%;height:110px;object-fit:cover;display:block;background:rgba(255,255,255,.06)}
+.slide-body{padding:12px 14px}
+.slide-name{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--sand);margin-bottom:10px}
+.slide-actions{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.url-input{flex:1;min-width:0;background:rgba(255,255,255,.06);border:1px solid rgba(201,169,110,.18);border-radius:2px;padding:6px 9px;color:var(--cream);font-size:12px;outline:none}
+.url-input:focus{border-color:var(--ember)}
+file-lbl{cursor:pointer}
+
+/* Toast inside iframe */
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(60px);background:var(--bark);border:1px solid rgba(232,84,26,.4);color:var(--cream);padding:9px 22px;border-radius:2px;font-size:13px;font-weight:500;z-index:999;transition:transform .3s;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* Filter select */
+.filter-sel{background:rgba(255,255,255,.06);border:1px solid rgba(201,169,110,.2);color:var(--cream);padding:5px 10px;border-radius:2px;font-size:12px;outline:none}
+.filter-sel option{background:var(--dark)}
+</style>
+</head>
+<body>
+<div class="panel">
   <!-- Topbar -->
-  <div class="adm-topbar">
-    <div class="adm-topbar-logo">
-      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="50" cy="50" r="46" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1"/>
-        <polygon points="50,12 53,47 50,50 47,47" fill="white" opacity="0.9"/>
-        <polygon points="50,88 53,53 50,50 47,53" fill="rgba(200,220,240,0.65)"/>
-        <polygon points="12,50 47,47 50,50 47,53" fill="rgba(235,247,255,0.8)"/>
-        <polygon points="88,50 53,47 50,50 53,53" fill="rgba(155,185,210,0.55)"/>
-        <circle cx="50" cy="50" r="5" fill="white" opacity="0.85"/>
-        <circle cx="50" cy="50" r="2.8" fill="#e8541a"/>
-      </svg>
-      <div>
-        <div class="adm-topbar-brand">ZOYEN <span>TURISMO</span></div>
+  <div class="topbar">
+    <div class="topbar-left">
+      <div class="topbar-logo">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="46" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1"/>
+          <polygon points="50,12 53,47 50,50 47,47" fill="white" opacity="0.9"/>
+          <polygon points="50,88 53,53 50,50 47,53" fill="rgba(200,220,240,0.65)"/>
+          <polygon points="12,50 47,47 50,50 47,53" fill="rgba(235,247,255,0.8)"/>
+          <polygon points="88,50 53,47 50,50 53,53" fill="rgba(155,185,210,0.55)"/>
+          <circle cx="50" cy="50" r="5" fill="white" opacity="0.85"/>
+          <circle cx="50" cy="50" r="2.8" fill="#e8541a"/>
+        </svg>
+        <div class="topbar-brand">ZOYEN <span>TURISMO</span></div>
       </div>
-      <span class="adm-topbar-badge">Admin</span>
+      <span class="topbar-badge">Admin</span>
     </div>
-    <div class="adm-topbar-right">
-      <span class="adm-user-info" id="admUserLabel">👤 admin</span>
-      <button class="adm-logout-btn" id="admLogoutBtn">Cerrar sesión</button>
-      <button class="adm-close-btn" id="admPanelClose" title="Volver al sitio">← Volver al sitio</button>
+    <div class="topbar-right">
+      <span class="user-label">👤 zoyen</span>
+      <button class="btn-logout" onclick="P.logout();P.showToast('Sesión cerrada.')">Cerrar sesión</button>
+      <button class="btn-back" onclick="P.closePanel()">← Volver al sitio</button>
     </div>
   </div>
 
-  <div class="adm-body">
-
+  <div class="body">
     <!-- Sidebar -->
-    <nav class="adm-sidebar">
-      <div class="adm-sidebar-section">General</div>
-      <div class="adm-nav-item active" data-section="dashboard"><span class="ico">📊</span> Dashboard</div>
-      <div class="adm-sidebar-section">Contenido</div>
-      <div class="adm-nav-item" data-section="textos"><span class="ico">✏️</span> Textos y descripciones</div>
-      <div class="adm-nav-item" data-section="excursiones"><span class="ico">🏔</span> Excursiones</div>
-      <div class="adm-nav-item" data-section="slider"><span class="ico">🖼</span> Slider / Banners</div>
-      <div class="adm-sidebar-section">Operaciones</div>
-      <div class="adm-nav-item" data-section="reservas"><span class="ico">📋</span> Reservas</div>
+    <nav class="sidebar">
+      <div class="sidebar-section">General</div>
+      <div class="nav-item active" data-sec="dashboard"><span class="ico">📊</span> Dashboard</div>
+      <div class="nav-divider"></div>
+      <div class="sidebar-section">Contenido</div>
+      <div class="nav-item" data-sec="textos"><span class="ico">✏️</span> Textos y descripciones</div>
+      <div class="nav-item" data-sec="excursiones"><span class="ico">🏔</span> Excursiones</div>
+      <div class="nav-item" data-sec="slider"><span class="ico">🖼</span> Slider / Banners</div>
+      <div class="nav-divider"></div>
+      <div class="sidebar-section">Operaciones</div>
+      <div class="nav-item" data-sec="reservas"><span class="ico">📋</span> Reservas</div>
     </nav>
 
     <!-- Main -->
-    <main class="adm-main">
+    <main class="main">
 
       <!-- DASHBOARD -->
-      <div class="adm-section active" id="sec-dashboard">
-        <div class="adm-section-title">Dashboard</div>
-        <div class="adm-section-sub">Resumen general del sitio · Zoyen Turismo</div>
-        <div class="adm-stats">
-          <div class="adm-stat">
-            <div class="adm-stat-ico">📋</div>
-            <div class="adm-stat-val" id="dash-reservas">0</div>
-            <div class="adm-stat-lbl">Reservas totales</div>
-          </div>
-          <div class="adm-stat">
-            <div class="adm-stat-ico">⏳</div>
-            <div class="adm-stat-val" id="dash-pendientes">0</div>
-            <div class="adm-stat-lbl">Pendientes de pago</div>
-          </div>
-          <div class="adm-stat">
-            <div class="adm-stat-ico">✅</div>
-            <div class="adm-stat-val" id="dash-confirmadas">0</div>
-            <div class="adm-stat-lbl">Confirmadas</div>
-          </div>
-          <div class="adm-stat">
-            <div class="adm-stat-ico">🏔</div>
-            <div class="adm-stat-val">6</div>
-            <div class="adm-stat-lbl">Excursiones activas</div>
-          </div>
+      <div class="sec active" id="sec-dashboard">
+        <div class="sec-title">Dashboard</div>
+        <div class="sec-sub">Resumen general · Zoyen Turismo</div>
+        <div class="stats">
+          <div class="stat"><div class="stat-ico">📋</div><div class="stat-val" id="d-total">0</div><div class="stat-lbl">Reservas totales</div></div>
+          <div class="stat"><div class="stat-ico">⏳</div><div class="stat-val" id="d-pend">0</div><div class="stat-lbl">Pendientes de pago</div></div>
+          <div class="stat"><div class="stat-ico">✅</div><div class="stat-val" id="d-conf">0</div><div class="stat-lbl">Confirmadas</div></div>
+          <div class="stat"><div class="stat-ico">🏔</div><div class="stat-val">6</div><div class="stat-lbl">Excursiones activas</div></div>
         </div>
-
-        <div class="adm-card">
-          <div class="adm-card-title">Últimas reservas</div>
-          <div class="adm-table-wrap">
-            <table class="adm-table">
-              <thead>
-                <tr>
-                  <th>#</th><th>Pasajero</th><th>Excursión</th><th>Fecha</th><th>Personas</th><th>Seña</th><th>Estado</th>
-                </tr>
-              </thead>
-              <tbody id="dash-reservas-tbody">
-                <tr><td colspan="7" style="color:var(--stone);text-align:center;padding:2rem">Sin reservas registradas aún.</td></tr>
-              </tbody>
-            </table>
+        <div class="card">
+          <div class="card-title">Últimas reservas</div>
+          <div class="tbl-wrap">
+            <table><thead><tr><th>#</th><th>Pasajero</th><th>Excursión</th><th>Fecha</th><th>Personas</th><th>Seña</th><th>Estado</th></tr></thead>
+            <tbody id="d-tbody"></tbody></table>
           </div>
         </div>
       </div>
 
       <!-- TEXTOS -->
-      <div class="adm-section" id="sec-textos">
-        <div class="adm-section-title">Textos y descripciones</div>
-        <div class="adm-section-sub">Editá los textos principales del sitio. Los cambios se aplican en tiempo real.</div>
-
-        <div class="adm-card">
-          <div class="adm-card-title">Hero · Slide 1</div>
-          <div class="adm-form-grid">
-            <div class="adm-form-field">
-              <label>Eyebrow (etiqueta)</label>
-              <input type="text" id="txt-s0-eyebrow" value="Patagonia Argentina"/>
-            </div>
-            <div class="adm-form-field">
-              <label>Título principal</label>
-              <input type="text" id="txt-s0-title" value="Explorá la Patagonia Inédita"/>
-            </div>
-          </div>
-          <div class="adm-form-field">
-            <label>Descripción</label>
-            <textarea id="txt-s0-desc">De la mano de quienes la vivimos. Excursiones únicas en la Patagonia profunda.</textarea>
-          </div>
-          <button class="adm-btn adm-btn-primary" onclick="applySlideText(0)">Aplicar cambios</button>
-        </div>
-
-        <div class="adm-card">
-          <div class="adm-card-title">Hero · Slide 2</div>
-          <div class="adm-form-grid">
-            <div class="adm-form-field">
-              <label>Eyebrow</label>
-              <input type="text" id="txt-s1-eyebrow" value="Patrimonio UNESCO"/>
-            </div>
-            <div class="adm-form-field">
-              <label>Título</label>
-              <input type="text" id="txt-s1-title" value="Cueva de las Manos"/>
-            </div>
-          </div>
-          <div class="adm-form-field">
-            <label>Descripción</label>
-            <textarea id="txt-s1-desc">Uno de los sitios arqueológicos más importantes del mundo. Arte rupestre de más de 9.000 años.</textarea>
-          </div>
-          <button class="adm-btn adm-btn-primary" onclick="applySlideText(1)">Aplicar cambios</button>
-        </div>
-
-        <div class="adm-card">
-          <div class="adm-card-title">Hero · Slide 3</div>
-          <div class="adm-form-grid">
-            <div class="adm-form-field">
-              <label>Eyebrow</label>
-              <input type="text" id="txt-s2-eyebrow" value="Chile · Carretera Austral"/>
-            </div>
-            <div class="adm-form-field">
-              <label>Título</label>
-              <input type="text" id="txt-s2-title" value="Capillas de Mármol"/>
-            </div>
-          </div>
-          <div class="adm-form-field">
-            <label>Descripción</label>
-            <textarea id="txt-s2-desc">Navegación sobre el Lago General Carrera. Una de las maravillas naturales del extremo sur.</textarea>
-          </div>
-          <button class="adm-btn adm-btn-primary" onclick="applySlideText(2)">Aplicar cambios</button>
-        </div>
-
-        <div class="adm-card">
-          <div class="adm-card-title">Hero · Slide 4</div>
-          <div class="adm-form-grid">
-            <div class="adm-form-field">
-              <label>Eyebrow</label>
-              <input type="text" id="txt-s3-eyebrow" value="Ruta Escénica 41"/>
-            </div>
-            <div class="adm-form-field">
-              <label>Título</label>
-              <input type="text" id="txt-s3-title" value="Monte Zeballos"/>
-            </div>
-          </div>
-          <div class="adm-form-field">
-            <label>Descripción</label>
-            <textarea id="txt-s3-desc">Desde los 400 hasta los 1.500 metros. La ruta escénica más impactante de Santa Cruz.</textarea>
-          </div>
-          <button class="adm-btn adm-btn-primary" onclick="applySlideText(3)">Aplicar cambios</button>
-        </div>
-
-        <div class="adm-card">
-          <div class="adm-card-title">Manifesto / Quiénes somos</div>
-          <div class="adm-form-field">
-            <label>Cita destacada</label>
-            <textarea id="txt-manifesto-quote">"La Patagonia no se visita: se vive, se siente, se lleva adentro para siempre."</textarea>
-          </div>
-          <div class="adm-form-field">
-            <label>Descripción</label>
-            <textarea id="txt-manifesto-body">Somos una agencia local que nació del amor por esta tierra. Cada excursión la diseñamos pensando en la experiencia que queremos que te lleves.</textarea>
-          </div>
-          <button class="adm-btn adm-btn-primary" onclick="applyManifesto()">Aplicar cambios</button>
+      <div class="sec" id="sec-textos">
+        <div class="sec-title">Textos y descripciones</div>
+        <div class="sec-sub">Los cambios se aplican en tiempo real en el sitio.</div>
+        <div id="slides-cards"></div>
+        <div class="card">
+          <div class="card-title">Manifesto / Quiénes somos</div>
+          <div class="field"><label>Cita destacada</label><textarea id="t-mq">"La Patagonia no se visita: se vive, se siente, se lleva adentro para siempre."</textarea></div>
+          <div class="field"><label>Descripción</label><textarea id="t-mb">Somos una agencia local que nació del amor por esta tierra. Cada excursión la diseñamos pensando en la experiencia que queremos que te lleves.</textarea></div>
+          <button class="btn btn-p" onclick="applyManifesto()">Aplicar cambios</button>
         </div>
       </div>
 
       <!-- EXCURSIONES -->
-      <div class="adm-section" id="sec-excursiones">
-        <div class="adm-section-title">Gestión de Excursiones</div>
-        <div class="adm-section-sub">Editá precios, disponibilidad y descripción de cada excursión.</div>
-
+      <div class="sec" id="sec-excursiones">
+        <div class="sec-title">Gestión de Excursiones</div>
+        <div class="sec-sub">Editá precios, disponibilidad y descripción de cada excursión.</div>
         <div id="exc-list"></div>
-
-        <div class="adm-card" style="margin-top:1.5rem">
-          <div class="adm-card-title">Vista previa de precios en formulario</div>
-          <div class="adm-table-wrap">
-            <table class="adm-table">
-              <thead><tr><th>Excursión</th><th>Precio actual</th><th>Estado</th></tr></thead>
-              <tbody id="exc-preview-tbody"></tbody>
-            </table>
+        <div class="card">
+          <div class="card-title">Vista previa de precios</div>
+          <div class="tbl-wrap">
+            <table><thead><tr><th>Excursión</th><th>Precio</th><th>Estado</th><th>Duración</th><th>Capacidad</th></tr></thead>
+            <tbody id="exc-preview"></tbody></table>
           </div>
         </div>
       </div>
 
       <!-- SLIDER -->
-      <div class="adm-section" id="sec-slider">
-        <div class="adm-section-title">Slider / Banners</div>
-        <div class="adm-section-sub">Cargá o reemplazá las imágenes del slider principal.</div>
-        <div class="adm-slider-grid" id="slider-thumbs-grid"></div>
+      <div class="sec" id="sec-slider">
+        <div class="sec-title">Slider / Banners</div>
+        <div class="sec-sub">Subí o reemplazá las imágenes del slider principal.</div>
+        <div class="slider-grid" id="slider-grid"></div>
       </div>
 
       <!-- RESERVAS -->
-      <div class="adm-section" id="sec-reservas">
-        <div class="adm-section-title">Reservas</div>
-        <div class="adm-section-sub">Listado de todas las reservas registradas en esta sesión.</div>
-
-        <div class="adm-card">
-          <div class="adm-card-title" style="display:flex;justify-content:space-between;align-items:center">
-            <span>Todas las reservas</span>
-            <div style="display:flex;gap:.5rem;align-items:center">
-              <select id="res-filter" style="background:rgba(255,255,255,.06);border:1px solid rgba(201,169,110,.2);color:var(--cream);padding:.35rem .6rem;border-radius:2px;font-size:.72rem;outline:none">
-                <option value="all">Todos los estados</option>
-                <option value="pendiente">Pendientes</option>
-                <option value="confirmada">Confirmadas</option>
-                <option value="cancelada">Canceladas</option>
-              </select>
-            </div>
+      <div class="sec" id="sec-reservas">
+        <div class="sec-title">Reservas</div>
+        <div class="sec-sub">Todas las reservas registradas en esta sesión.</div>
+        <div class="card">
+          <div class="card-title">
+            Listado completo
+            <select class="filter-sel" id="res-filter" onchange="buildReservas()">
+              <option value="all">Todos los estados</option>
+              <option value="pendiente">Pendientes</option>
+              <option value="confirmada">Confirmadas</option>
+              <option value="cancelada">Canceladas</option>
+            </select>
           </div>
-          <div class="adm-table-wrap">
-            <table class="adm-table">
-              <thead>
-                <tr><th>#</th><th>Pasajero</th><th>Tel / Email</th><th>Excursión</th><th>Fecha viaje</th><th>Personas</th><th>Asientos</th><th>Seña</th><th>Estado</th><th>Acción</th></tr>
-              </thead>
-              <tbody id="res-tbody">
-                <tr><td colspan="10" style="color:var(--stone);text-align:center;padding:2rem">Sin reservas registradas aún.</td></tr>
-              </tbody>
-            </table>
+          <div class="tbl-wrap">
+            <table><thead><tr><th>#</th><th>Pasajero</th><th>Tel / Email</th><th>Excursión</th><th>Fecha viaje</th><th>Pers.</th><th>Asientos</th><th>Seña</th><th>Estado</th><th>Acción</th></tr></thead>
+            <tbody id="r-tbody"></tbody></table>
           </div>
         </div>
       </div>
@@ -3445,369 +3354,183 @@ revEls.forEach(el => obs.observe(el));
     </main>
   </div>
 </div>
+<div class="toast" id="toast"></div>
 
-<!-- Toast -->
-<div class="adm-toast" id="admToast">✓ Cambios guardados correctamente</div>
-
-<!-- ═══════════════════════════════════════════════════════
-     ADMIN JS
-════════════════════════════════════════════════════════ -->
 <script>
-(function() {
+const P = window._parent;
+const excData = P.excData;
+let reservas = P.reservas;
 
-// ── Credentials ──────────────────────────────────────────
-const ADMIN_CREDS = { user: 'zoyen', pass: 'patagonia2025' };
-let admLoggedIn = false;
+function showToast(msg){ const t=document.getElementById('toast'); t.textContent='✓ '+(msg||'Guardado'); t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2600); }
 
-// ── Excursion data (mirrors the booking form) ─────────────
-const excData = [
-  { key:'cueva',      name:'Cueva de las Manos',          precio:18000, estado:'activa',   duracion:'Día completo',  capacidad:14 },
-  { key:'capillas',   name:'Capillas y Catedrales de Mármol', precio:24000, estado:'activa', duracion:'Día completo', capacidad:14 },
-  { key:'posadas',    name:'Lagos Posadas · Ruta 41',     precio:15000, estado:'activa',   duracion:'Día completo',  capacidad:14 },
-  { key:'zeballos',   name:'Ruta 41 · Monte Zeballos',    precio:16000, estado:'activa',   duracion:'Día completo',  capacidad:14 },
-  { key:'pnp',        name:'Parque Nacional Patagonia',   precio:14000, estado:'activa',   duracion:'Día completo',  capacidad:14 },
-  { key:'charcamata', name:'Alero Charcamata',            precio:12000, estado:'activa',   duracion:'Medio día',     capacidad:14 },
-];
-
-// ── Reservas (collected from booking modal) ───────────────
-let reservas = JSON.parse(sessionStorage.getItem('zyt_reservas') || '[]');
-
-function saveReservas() { sessionStorage.setItem('zyt_reservas', JSON.stringify(reservas)); }
-
-// Hook into the existing payment flow to capture reservas
-const origBtnPagar = document.getElementById('btnPagar');
-if (origBtnPagar) {
-  origBtnPagar.addEventListener('click', function() {
-    setTimeout(() => {
-      const excEl = document.getElementById('sel-excursion');
-      const excOpt = excEl && excEl.selectedOptions[0];
-      const fecha = document.getElementById('sel-fecha') ? document.getElementById('sel-fecha').value : '';
-      const personas = document.getElementById('sel-personas') ? document.getElementById('sel-personas').value : '1';
-      const nombre = document.getElementById('inp-nombre') ? document.getElementById('inp-nombre').value.trim() : '';
-      const tel = document.getElementById('inp-tel') ? document.getElementById('inp-tel').value.trim() : '';
-      const email = document.getElementById('inp-email') ? document.getElementById('inp-email').value.trim() : '';
-      const precio = excOpt && excOpt.dataset.precio ? parseInt(excOpt.dataset.precio) : 0;
-      const senia = Math.round(precio * parseInt(personas) * 0.20);
-      if (nombre && excOpt) {
-        reservas.push({
-          id: Date.now(),
-          nombre, tel, email,
-          excursion: excOpt.text.split('—')[0].trim(),
-          fecha, personas,
-          asientos: (window.selectedSeats || []).slice().sort((a,b)=>a-b).join(', '),
-          senia, estado: 'pendiente',
-          creado: new Date().toLocaleDateString('es-AR')
-        });
-        saveReservas();
-      }
-    }, 200);
-  });
-}
-
-// ── DOM refs ──────────────────────────────────────────────
-// Triple-click on nav logo
-const triggerBtn    = document.querySelector('.nav-logo');
-const loginWrap     = document.getElementById('admLoginWrap');
-const loginClose    = document.getElementById('admLoginClose');
-const loginBtn      = document.getElementById('admLoginBtn');
-const loginErr      = document.getElementById('admLoginErr');
-const panel         = document.getElementById('admPanel');
-const logoutBtn     = document.getElementById('admLogoutBtn');
-const panelClose    = document.getElementById('admPanelClose');
-const toast         = document.getElementById('admToast');
-const navItems      = document.querySelectorAll('.adm-nav-item');
-
-// ── Login flow ────────────────────────────────────────────
-let admClickCount = 0, admClickTimer = null;
-triggerBtn.addEventListener('click', (e) => {
-  admClickCount++;
-  if (admClickTimer) clearTimeout(admClickTimer);
-  admClickTimer = setTimeout(() => { admClickCount = 0; }, 600);
-  if (admClickCount >= 3) {
-    admClickCount = 0;
-    clearTimeout(admClickTimer);
-    e.preventDefault();
-    if (admLoggedIn) { openPanel(); }
-    else { loginWrap.classList.add('open'); document.getElementById('admUser').focus(); }
-  }
-});
-loginClose.addEventListener('click', () => loginWrap.classList.remove('open'));
-loginWrap.addEventListener('click', e => { if (e.target === loginWrap) loginWrap.classList.remove('open'); });
-
-function doLogin() {
-  const u = document.getElementById('admUser').value.trim();
-  const p = document.getElementById('admPass').value;
-  if (u === ADMIN_CREDS.user && p === ADMIN_CREDS.pass) {
-    admLoggedIn = true;
-    loginErr.style.display = 'none';
-    loginWrap.classList.remove('open');
-    document.getElementById('admUserLabel').textContent = '👤 ' + u;
-    openPanel();
-  } else {
-    loginErr.style.display = 'block';
-    document.getElementById('admPass').value = '';
-  }
-}
-loginBtn.addEventListener('click', doLogin);
-document.getElementById('admPass').addEventListener('keydown', e => { if (e.key==='Enter') doLogin(); });
-document.getElementById('admUser').addEventListener('keydown', e => { if (e.key==='Enter') document.getElementById('admPass').focus(); });
-
-logoutBtn.addEventListener('click', () => { admLoggedIn = false; panel.classList.remove('open'); showToast('Sesión cerrada.'); });
-panelClose.addEventListener('click', () => panel.classList.remove('open'));
-
-function openPanel() {
-  panel.classList.add('open');
-  refreshDashboard();
-  buildExcursiones();
-  buildSliderGrid();
-  buildReservas();
-}
-
-// ── Navigation ────────────────────────────────────────────
-navItems.forEach(item => {
-  item.addEventListener('click', () => {
-    navItems.forEach(i => i.classList.remove('active'));
+// Nav
+document.querySelectorAll('.nav-item').forEach(item=>{
+  item.addEventListener('click',()=>{
+    document.querySelectorAll('.nav-item').forEach(i=>i.classList.remove('active'));
     item.classList.add('active');
-    document.querySelectorAll('.adm-section').forEach(s => s.classList.remove('active'));
-    const sec = document.getElementById('sec-' + item.dataset.section);
-    if (sec) sec.classList.add('active');
-    if (item.dataset.section === 'reservas') buildReservas();
-    if (item.dataset.section === 'excursiones') buildExcursiones();
-    if (item.dataset.section === 'slider') buildSliderGrid();
+    document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
+    document.getElementById('sec-'+item.dataset.sec).classList.add('active');
   });
 });
 
-// ── Toast ─────────────────────────────────────────────────
-function showToast(msg) {
-  toast.textContent = '✓ ' + (msg || 'Cambios guardados correctamente');
-  toast.classList.add('show');
-  setTimeout(() => toast.classList.remove('show'), 2800);
+// Dashboard
+function buildDash(){
+  const total=reservas.length;
+  const pend=reservas.filter(r=>r.estado==='pendiente').length;
+  const conf=reservas.filter(r=>r.estado==='confirmada').length;
+  document.getElementById('d-total').textContent=total;
+  document.getElementById('d-pend').textContent=pend;
+  document.getElementById('d-conf').textContent=conf;
+  const tb=document.getElementById('d-tbody');
+  if(!total){ tb.innerHTML='<tr><td colspan="7" class="empty">Sin reservas registradas aún.</td></tr>'; return; }
+  tb.innerHTML=reservas.slice(-8).reverse().map((r,i)=>\`<tr>
+    <td style="color:var(--stone)">#\${reservas.length-i}</td>
+    <td>\${r.nombre}</td><td>\${r.excursion}</td>
+    <td>\${r.fecha?new Date(r.fecha+'T12:00:00').toLocaleDateString('es-AR',{day:'numeric',month:'short'}):'—'}</td>
+    <td style="text-align:center">\${r.personas}</td>
+    <td style="color:var(--ember);font-weight:600">$\${(r.senia||0).toLocaleString('es-AR')}</td>
+    <td>\${badge(r.estado)}</td>
+  </tr>\`).join('');
 }
 
-// ── Dashboard ─────────────────────────────────────────────
-function refreshDashboard() {
-  const total = reservas.length;
-  const pend  = reservas.filter(r=>r.estado==='pendiente').length;
-  const conf  = reservas.filter(r=>r.estado==='confirmada').length;
-  document.getElementById('dash-reservas').textContent    = total;
-  document.getElementById('dash-pendientes').textContent  = pend;
-  document.getElementById('dash-confirmadas').textContent = conf;
-  const tbody = document.getElementById('dash-reservas-tbody');
-  if (!reservas.length) {
-    tbody.innerHTML = '<tr><td colspan="7" style="color:var(--stone);text-align:center;padding:2rem">Sin reservas registradas aún.</td></tr>';
-    return;
-  }
-  tbody.innerHTML = reservas.slice(-10).reverse().map((r,i) => `
-    <tr>
-      <td style="color:var(--stone)">#${reservas.length - i}</td>
-      <td>${r.nombre}</td>
-      <td>${r.excursion}</td>
-      <td>${r.fecha ? new Date(r.fecha+'T12:00:00').toLocaleDateString('es-AR',{day:'numeric',month:'short'}) : '—'}</td>
-      <td>${r.personas}</td>
-      <td style="color:var(--ember)">$${r.senia.toLocaleString('es-AR')}</td>
-      <td>${badgeHtml(r.estado)}</td>
-    </tr>`).join('');
-}
+function badge(e){ const m={pendiente:'by',confirmada:'bg',cancelada:'br'}; return \`<span class="badge \${m[e]||'by'}">\${e}</span>\`; }
 
-function badgeHtml(estado) {
-  const map = { pendiente:'yellow', confirmada:'green', cancelada:'red' };
-  return `<span class="adm-badge adm-badge-${map[estado]||'blue'}">${estado}</span>`;
-}
-
-// ── Excursiones ───────────────────────────────────────────
-function buildExcursiones() {
-  const list = document.getElementById('exc-list');
-  list.innerHTML = excData.map((e, i) => `
-    <div class="adm-card">
-      <div class="adm-card-title">${e.name}</div>
-      <div class="adm-form-grid">
-        <div class="adm-form-field">
-          <label>Precio por persona ($)</label>
-          <input type="number" id="exc-precio-${i}" value="${e.precio}" min="0" step="500"/>
-        </div>
-        <div class="adm-form-field">
-          <label>Estado</label>
-          <select id="exc-estado-${i}">
-            <option value="activa" ${e.estado==='activa'?'selected':''}>✅ Activa</option>
-            <option value="pausada" ${e.estado==='pausada'?'selected':''}>⏸ Pausada</option>
-            <option value="completa" ${e.estado==='completa'?'selected':''}>🔴 Sin lugares</option>
-          </select>
-        </div>
-        <div class="adm-form-field">
-          <label>Duración</label>
-          <input type="text" id="exc-dur-${i}" value="${e.duracion}"/>
-        </div>
-        <div class="adm-form-field">
-          <label>Capacidad (pasajeros)</label>
-          <input type="number" id="exc-cap-${i}" value="${e.capacidad}" min="1" max="20"/>
-        </div>
-      </div>
-      <button class="adm-btn adm-btn-primary" onclick="saveExcursion(${i})">Guardar cambios</button>
-    </div>`).join('');
-
-  buildExcPreview();
-}
-
-function saveExcursion(i) {
-  excData[i].precio    = parseInt(document.getElementById(`exc-precio-${i}`).value) || excData[i].precio;
-  excData[i].estado    = document.getElementById(`exc-estado-${i}`).value;
-  excData[i].duracion  = document.getElementById(`exc-dur-${i}`).value;
-  excData[i].capacidad = parseInt(document.getElementById(`exc-cap-${i}`).value) || 14;
-  // Apply price to the booking form live
-  const opts = document.querySelectorAll('#sel-excursion option');
-  opts.forEach(opt => {
-    const found = excData.find(e => e.key === opt.value);
-    if (found) {
-      opt.dataset.precio = found.precio;
-      opt.textContent = `${found.name} — $${found.precio.toLocaleString('es-AR')} p/p`;
-    }
-  });
-  buildExcPreview();
-  showToast(`Excursión "${excData[i].name}" actualizada.`);
-}
-
-function buildExcPreview() {
-  const tbody = document.getElementById('exc-preview-tbody');
-  tbody.innerHTML = excData.map(e => `
-    <tr>
-      <td>${e.name}</td>
-      <td style="color:var(--ember);font-weight:600">$${e.precio.toLocaleString('es-AR')}</td>
-      <td>${badgeHtml(e.estado==='activa'?'confirmada':e.estado==='pausada'?'pendiente':'cancelada').replace(e.estado==='activa'?'confirmada':e.estado==='pausada'?'pendiente':'cancelada', e.estado)}</td>
-    </tr>`).join('');
-}
-
-// ── Slider ────────────────────────────────────────────────
-const slideLabels = ['Banner 1 – Patagonia', 'Banner 2 – Cueva de las Manos', 'Banner 3 – Capillas de Mármol', 'Banner 4 – Monte Zeballos'];
-const slideDefaultImgs = [
-  'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=70',
-  'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=600&q=70',
-  'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600&q=70',
-  'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=70',
+// Textos
+const slideDefaults=[
+  {ey:'Patagonia Argentina',ti:'Explorá la Patagonia Inédita',de:'De la mano de quienes la vivimos. Excursiones únicas en la Patagonia profunda.'},
+  {ey:'Patrimonio UNESCO',ti:'Cueva de las Manos',de:'Uno de los sitios arqueológicos más importantes del mundo. Arte rupestre de más de 9.000 años.'},
+  {ey:'Chile · Carretera Austral',ti:'Capillas de Mármol',de:'Navegación sobre el Lago General Carrera. Una de las maravillas naturales del extremo sur.'},
+  {ey:'Ruta Escénica 41',ti:'Monte Zeballos',de:'Desde los 400 hasta los 1.500 metros. La ruta escénica más impactante de Santa Cruz.'},
 ];
+function buildTextos(){
+  document.getElementById('slides-cards').innerHTML=slideDefaults.map((s,i)=>\`
+    <div class="card">
+      <div class="card-title">Hero · Slide \${i+1}</div>
+      <div class="fgrid">
+        <div class="field"><label>Eyebrow</label><input type="text" id="t-s\${i}-ey" value="\${s.ey}"/></div>
+        <div class="field"><label>Título</label><input type="text" id="t-s\${i}-ti" value="\${s.ti}"/></div>
+      </div>
+      <div class="field"><label>Descripción</label><textarea id="t-s\${i}-de">\${s.de}</textarea></div>
+      <button class="btn btn-p" onclick="applySlide(\${i})">Aplicar cambios</button>
+    </div>\`).join('');
+}
+function applySlide(i){
+  P.applySlide(i,
+    document.getElementById('t-s'+i+'-ey').value,
+    document.getElementById('t-s'+i+'-ti').value,
+    document.getElementById('t-s'+i+'-de').value);
+  showToast('Slide '+(i+1)+' actualizado.');
+}
+function applyManifesto(){
+  P.applyManifesto(document.getElementById('t-mq').value, document.getElementById('t-mb').value);
+  showToast('Manifesto actualizado.');
+}
 
-function buildSliderGrid() {
-  const grid = document.getElementById('slider-thumbs-grid');
-  grid.innerHTML = slideLabels.map((lbl, i) => {
-    const slideBg = document.querySelector(`#s${i} .slide-bg`);
-    const currentBg = slideBg ? slideBg.style.backgroundImage.replace(/url\(['"]?(.*?)['"]?\)/,'$1') : slideDefaultImgs[i];
-    return `
-    <div class="adm-slide-thumb">
-      <img class="adm-slide-img" id="slider-preview-${i}" src="${currentBg}" alt="Banner ${i+1}"/>
-      <div class="adm-slide-body">
-        <div class="adm-slide-name">${lbl}</div>
-        <div class="adm-slide-actions">
-          <label class="adm-btn adm-btn-ghost" style="cursor:pointer;font-size:.65rem;padding:.45rem 1rem">
-            📁 Subir imagen
-            <input type="file" class="adm-upload-input" accept="image/*" onchange="handleSliderUpload(event,${i})"/>
+// Excursiones
+function buildExc(){
+  document.getElementById('exc-list').innerHTML=excData.map((e,i)=>\`
+    <div class="card">
+      <div class="card-title">\${e.name}</div>
+      <div class="fgrid">
+        <div class="field"><label>Precio por persona ($)</label><input type="number" id="ep-\${i}" value="\${e.precio}" min="0" step="500"/></div>
+        <div class="field"><label>Estado</label><select id="ee-\${i}">
+          <option value="activa" \${e.estado==='activa'?'selected':''}>✅ Activa</option>
+          <option value="pausada" \${e.estado==='pausada'?'selected':''}>⏸ Pausada</option>
+          <option value="completa" \${e.estado==='completa'?'selected':''}>🔴 Sin lugares</option>
+        </select></div>
+        <div class="field"><label>Duración</label><input type="text" id="ed-\${i}" value="\${e.duracion}"/></div>
+        <div class="field"><label>Capacidad</label><input type="number" id="ec-\${i}" value="\${e.capacidad}" min="1" max="20"/></div>
+      </div>
+      <button class="btn btn-p" onclick="saveExc(\${i})">Guardar cambios</button>
+    </div>\`).join('');
+  buildExcPreview();
+}
+function saveExc(i){
+  excData[i].precio=parseInt(document.getElementById('ep-'+i).value)||excData[i].precio;
+  excData[i].estado=document.getElementById('ee-'+i).value;
+  excData[i].duracion=document.getElementById('ed-'+i).value;
+  excData[i].capacidad=parseInt(document.getElementById('ec-'+i).value)||14;
+  P.applyExcPrice(excData[i].key, excData[i].precio);
+  buildExcPreview();
+  showToast('"'+excData[i].name+'" actualizada.');
+}
+function buildExcPreview(){
+  const m={activa:'bg',pausada:'by',completa:'br'};
+  document.getElementById('exc-preview').innerHTML=excData.map(e=>\`<tr>
+    <td>\${e.name}</td>
+    <td style="color:var(--ember);font-weight:600">$\${e.precio.toLocaleString('es-AR')}</td>
+    <td><span class="badge \${m[e.estado]||'by'}">\${e.estado}</span></td>
+    <td style="color:var(--stone)">\${e.duracion}</td>
+    <td style="text-align:center">\${e.capacidad}</td>
+  </tr>\`).join('');
+}
+
+// Slider
+const slideLabels=['Banner 1 – Patagonia','Banner 2 – Cueva de las Manos','Banner 3 – Capillas de Mármol','Banner 4 – Monte Zeballos'];
+function buildSlider(){
+  document.getElementById('slider-grid').innerHTML=slideLabels.map((lbl,i)=>{
+    const url=P.getSlideImg(i)||'';
+    return \`<div class="slide-thumb">
+      <img class="slide-img" id="sp-\${i}" src="\${url}" onerror="this.style.background='rgba(255,255,255,.06)'"/>
+      <div class="slide-body">
+        <div class="slide-name">\${lbl}</div>
+        <div class="slide-actions">
+          <label class="btn btn-g btn-sm" style="cursor:pointer">📁 Subir
+            <input type="file" accept="image/*" style="display:none" onchange="uploadImg(event,\${i})"/>
           </label>
-          <input type="text" placeholder="URL de imagen…" id="slider-url-${i}"
-            style="flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(201,169,110,.15);color:var(--cream);padding:.4rem .6rem;border-radius:2px;font-size:.7rem;outline:none;min-width:0"/>
-          <button class="adm-btn adm-btn-primary" style="padding:.45rem .8rem;font-size:.65rem" onclick="applySliderUrl(${i})">→</button>
+          <input class="url-input" type="text" placeholder="URL…" id="surl-\${i}"/>
+          <button class="btn btn-p btn-sm" onclick="applyUrl(\${i})">→</button>
         </div>
       </div>
-    </div>`;
+    </div>\`;
   }).join('');
 }
+function uploadImg(e,i){ const f=e.target.files[0]; if(!f) return; const r=new FileReader(); r.onload=ev=>applyImg(i,ev.target.result); r.readAsDataURL(f); }
+function applyUrl(i){ const u=document.getElementById('surl-'+i).value.trim(); if(u) applyImg(i,u); }
+function applyImg(i,url){ P.applySliderImage(i,url); document.getElementById('sp-'+i).src=url; showToast('Banner '+(i+1)+' actualizado.'); }
 
-function handleSliderUpload(e, i) {
-  const file = e.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = function(ev) {
-    const url = ev.target.result;
-    applySliderImage(i, url);
-  };
-  reader.readAsDataURL(file);
-}
-
-function applySliderUrl(i) {
-  const url = document.getElementById(`slider-url-${i}`).value.trim();
-  if (url) applySliderImage(i, url);
-}
-
-function applySliderImage(i, url) {
-  const slideBg = document.querySelector(`#s${i} .slide-bg`);
-  if (slideBg) slideBg.style.backgroundImage = `url('${url}')`;
-  const preview = document.getElementById(`slider-preview-${i}`);
-  if (preview) preview.src = url;
-  // Update banner bar thumb
-  const bbThumb = document.querySelector(`.bb-thumb[data-i="${i}"]`);
-  if (bbThumb) {
-    bbThumb.innerHTML = `<img src="${url}" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'"/>`;
-  }
-  showToast(`Banner ${i+1} actualizado.`);
-}
-
-// ── Textos ────────────────────────────────────────────────
-window.applySlideText = function(i) {
-  const slide = document.getElementById('s'+i);
-  if (!slide) return;
-  const ey = document.getElementById(`txt-s${i}-eyebrow`);
-  const ti = document.getElementById(`txt-s${i}-title`);
-  const de = document.getElementById(`txt-s${i}-desc`);
-  if (ey) { const el = slide.querySelector('.slide-eyebrow'); if(el) el.textContent = ey.value; }
-  if (ti) { const el = slide.querySelector('.slide-title'); if(el) el.innerHTML = ti.value; }
-  if (de) { const el = slide.querySelector('.slide-desc'); if(el) el.textContent = de.value; }
-  showToast(`Slide ${i+1} actualizado.`);
-};
-
-window.applyManifesto = function() {
-  const q = document.getElementById('txt-manifesto-quote');
-  const b = document.getElementById('txt-manifesto-body');
-  const qEl = document.querySelector('.manifesto-quote');
-  const bEl = document.querySelector('.manifesto .section-sub');
-  if (q && qEl) qEl.innerHTML = q.value;
-  if (b && bEl) bEl.textContent = b.value;
-  showToast('Manifesto actualizado.');
-};
-
-// ── Reservas ──────────────────────────────────────────────
-function buildReservas() {
-  refreshDashboard();
-  const filter = document.getElementById('res-filter').value;
-  const tbody = document.getElementById('res-tbody');
-  const filtered = filter === 'all' ? reservas : reservas.filter(r=>r.estado===filter);
-  if (!filtered.length) {
-    tbody.innerHTML = `<tr><td colspan="10" style="color:var(--stone);text-align:center;padding:2rem">${reservas.length ? 'Sin resultados para el filtro seleccionado.' : 'Sin reservas registradas aún.'}</td></tr>`;
-    return;
-  }
-  tbody.innerHTML = filtered.slice().reverse().map((r, idx) => {
-    const realIdx = reservas.indexOf(r);
-    return `
-    <tr>
-      <td style="color:var(--stone)">#${realIdx+1}</td>
-      <td style="font-weight:500">${r.nombre}</td>
-      <td style="font-size:.72rem;color:var(--stone)">${r.tel||'—'}<br>${r.email||'—'}</td>
-      <td>${r.excursion}</td>
-      <td>${r.fecha ? new Date(r.fecha+'T12:00:00').toLocaleDateString('es-AR',{day:'2-digit',month:'2-digit',year:'numeric'}) : '—'}</td>
-      <td style="text-align:center">${r.personas}</td>
-      <td style="text-align:center">${r.asientos||'—'}</td>
-      <td style="color:var(--ember);font-weight:600">$${(r.senia||0).toLocaleString('es-AR')}</td>
-      <td>${badgeHtml(r.estado)}</td>
-      <td>
-        <div style="display:flex;gap:.4rem;flex-wrap:wrap">
-          ${r.estado!=='confirmada' ? `<button class="adm-btn adm-btn-primary" style="padding:.3rem .6rem;font-size:.6rem" onclick="cambiarEstado(${realIdx},'confirmada')">✓ Confirmar</button>` : ''}
-          ${r.estado!=='cancelada' ? `<button class="adm-btn adm-btn-danger" style="padding:.3rem .6rem;font-size:.6rem" onclick="cambiarEstado(${realIdx},'cancelada')">✕ Cancelar</button>` : ''}
-        </div>
-      </td>
-    </tr>`;
+// Reservas
+function buildReservas(){
+  const filter=document.getElementById('res-filter').value;
+  const list=filter==='all'?reservas:reservas.filter(r=>r.estado===filter);
+  const tb=document.getElementById('r-tbody');
+  if(!list.length){ tb.innerHTML=\`<tr><td colspan="10" class="empty">\${reservas.length?'Sin resultados para ese filtro.':'Sin reservas aún.'}</td></tr>\`; return; }
+  tb.innerHTML=list.slice().reverse().map(r=>{
+    const idx=reservas.indexOf(r);
+    return \`<tr>
+      <td style="color:var(--stone)">#\${idx+1}</td>
+      <td style="font-weight:500">\${r.nombre}</td>
+      <td style="font-size:12px;color:var(--stone)">\${r.tel||'—'}<br>\${r.email||'—'}</td>
+      <td>\${r.excursion}</td>
+      <td>\${r.fecha?new Date(r.fecha+'T12:00:00').toLocaleDateString('es-AR',{day:'2-digit',month:'2-digit',year:'numeric'}):'—'}</td>
+      <td style="text-align:center">\${r.personas}</td>
+      <td style="text-align:center">\${r.asientos||'—'}</td>
+      <td style="color:var(--ember);font-weight:600">$\${(r.senia||0).toLocaleString('es-AR')}</td>
+      <td>\${badge(r.estado)}</td>
+      <td><div style="display:flex;gap:5px;flex-wrap:wrap">
+        \${r.estado!=='confirmada'?\`<button class="btn btn-p btn-sm" onclick="cambiarEstado(\${idx},'confirmada')">✓</button>\`:''}
+        \${r.estado!=='cancelada'?\`<button class="btn btn-d btn-sm" onclick="cambiarEstado(\${idx},'cancelada')">✕</button>\`:''}
+      </div></td>
+    </tr>\`;
   }).join('');
 }
-
-window.cambiarEstado = function(idx, estado) {
-  reservas[idx].estado = estado;
-  saveReservas();
+function cambiarEstado(idx,estado){
+  reservas[idx].estado=estado;
+  P.saveReservas();
   buildReservas();
-  refreshDashboard();
-  showToast(`Reserva #${idx+1} marcada como "${estado}".`);
-};
+  buildDash();
+  showToast('Reserva #'+(idx+1)+' marcada como "'+estado+'".');
+}
 
-document.getElementById('res-filter').addEventListener('change', buildReservas);
-
-// ── Expose for inline handlers ────────────────────────────
-window.saveExcursion   = saveExcursion;
-window.applySliderUrl  = applySliderUrl;
-window.handleSliderUpload = handleSliderUpload;
+// Init
+buildDash();
+buildTextos();
+buildExc();
+buildSlider();
+buildReservas();
+<\/script>
+</body></html>`;
+}
 
 })();
 </script>
