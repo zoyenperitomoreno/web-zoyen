@@ -1026,13 +1026,6 @@ footer {
    ADMIN PANEL
 ══════════════════════════════════════ */
 /* Trigger oculto */
-.admin-trigger {
-  position: fixed; bottom: 1.8rem; left: 1.8rem; z-index: 900;
-  width: 28px; height: 28px; border-radius: 50%;
-  background: transparent; border: none; cursor: pointer;
-  opacity: 0;
-}
-
 /* Login overlay */
 .admin-login-wrap {
   display: none; position: fixed; inset: 0; z-index: 3000;
@@ -1233,17 +1226,57 @@ footer {
       <defs>
         <path id="nc-top" d="M50,50 m-36,0 a36,36 0 1,1 72,0"/>
         <path id="nc-bot" d="M50,50 m-36,0 a36,36 0 1,0 72,0"/>
+        <linearGradient id="nav-ring-g" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="rgba(255,255,255,1)"/>
+          <stop offset="100%" stop-color="rgba(180,210,230,0.7)"/>
+        </linearGradient>
+        <radialGradient id="nav-n-g" cx="40%" cy="30%" r="65%">
+          <stop offset="0%" stop-color="rgba(255,255,255,1)"/>
+          <stop offset="100%" stop-color="rgba(200,220,240,0.7)"/>
+        </radialGradient>
+        <radialGradient id="nav-jewel" cx="35%" cy="28%" r="60%">
+          <stop offset="0%" stop-color="#ff7b44"/>
+          <stop offset="45%" stop-color="#e8541a"/>
+          <stop offset="100%" stop-color="#a33a0e"/>
+        </radialGradient>
+        <radialGradient id="nav-hub" cx="35%" cy="30%" r="65%">
+          <stop offset="0%" stop-color="rgba(255,255,255,0.95)"/>
+          <stop offset="100%" stop-color="rgba(170,195,215,0.6)"/>
+        </radialGradient>
+        <filter id="nav-shd">
+          <feDropShadow dx="0" dy="0.8" stdDeviation="1.2" flood-color="rgba(0,30,60,0.5)"/>
+        </filter>
       </defs>
-      <circle cx="50" cy="50" r="36" fill="none" stroke="white" stroke-width="0.9" opacity="0.8"/>
-      <circle cx="50" cy="50" r="29" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="0.6"/>
+      <!-- Rings -->
+      <circle cx="50" cy="50" r="36" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="3"/>
+      <circle cx="50" cy="50" r="36" fill="none" stroke="url(#nav-ring-g)" stroke-width="1"/>
+      <circle cx="50" cy="50" r="29" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="0.6"/>
+      <!-- Text paths -->
       <text font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="700" font-size="9" letter-spacing="2.2" text-anchor="middle">
         <textPath href="#nc-top" startOffset="25%"><tspan fill="white">ZOYEN </tspan><tspan fill="#e8541a">TURISMO</tspan></textPath>
       </text>
-      <text font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="600" font-size="7.5" letter-spacing="1.8" text-anchor="middle" fill="rgba(255,255,255,0.65)">
+      <text font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="600" font-size="7.5" letter-spacing="1.8" text-anchor="middle" fill="rgba(255,255,255,0.55)">
         <textPath href="#nc-bot" startOffset="75%">· PATAGONIA ARG ·</textPath>
       </text>
-      <path d="M50,34 L51.5,48.5 L66,50 L51.5,51.5 L50,66 L48.5,51.5 L34,50 L48.5,48.5 Z" fill="white" opacity="0.92"/>
-      <circle cx="50" cy="50" r="1.8" fill="#e8541a"/>
+      <!-- 3D Rose – N -->
+      <polygon points="50,18 52,47 50,50 48,47" fill="url(#nav-n-g)" filter="url(#nav-shd)"/>
+      <!-- S -->
+      <polygon points="50,82 52,53 50,50 48,53" fill="rgba(210,228,244,0.75)" filter="url(#nav-shd)"/>
+      <!-- W -->
+      <polygon points="18,50 47,48 50,50 47,52" fill="rgba(240,250,255,0.9)" filter="url(#nav-shd)"/>
+      <!-- E -->
+      <polygon points="82,50 53,48 50,50 53,52" fill="rgba(160,190,215,0.65)" filter="url(#nav-shd)"/>
+      <!-- Diagonals -->
+      <polygon points="73,27 53,47 50,50 47,47" fill="rgba(220,238,252,0.65)" filter="url(#nav-shd)"/>
+      <polygon points="27,27 47,47 50,50 53,47" fill="rgba(235,247,255,0.8)" filter="url(#nav-shd)"/>
+      <polygon points="73,73 53,53 50,50 47,53" fill="rgba(170,195,218,0.55)" filter="url(#nav-shd)"/>
+      <polygon points="27,73 47,53 50,50 53,53" fill="rgba(190,212,230,0.6)" filter="url(#nav-shd)"/>
+      <!-- Hub -->
+      <circle cx="50" cy="50" r="5" fill="url(#nav-hub)" filter="url(#nav-shd)"/>
+      <circle cx="50" cy="50" r="5" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="0.5"/>
+      <!-- Jewel -->
+      <circle cx="50" cy="50" r="3" fill="url(#nav-jewel)" filter="url(#nav-shd)"/>
+      <ellipse cx="49.2" cy="49" rx="0.9" ry="0.6" fill="rgba(255,210,180,0.8)" transform="rotate(-20,49.2,49)"/>
     </svg>
     <div class="nav-logo-text">
       <span class="z">ZOYEN&nbsp;</span>
@@ -1272,13 +1305,37 @@ footer {
       <div class="emblem-3d">
         <!-- Anillo exterior estático -->
         <svg class="emblem-svg" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="90" cy="90" r="85" fill="none" stroke="white" stroke-width="1.8" opacity="0.9"/>
-          <circle cx="90" cy="90" r="70" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="0.8"/>
-          <g stroke="white" stroke-width="1.2" opacity="0.6">
-            <line x1="90" y1="5" x2="90" y2="14"/>
-            <line x1="90" y1="166" x2="90" y2="175"/>
-            <line x1="5" y1="90" x2="14" y2="90"/>
-            <line x1="166" y1="90" x2="175" y2="90"/>
+          <defs>
+            <linearGradient id="ring-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="rgba(255,255,255,1)"/>
+              <stop offset="40%" stop-color="rgba(220,235,248,0.9)"/>
+              <stop offset="100%" stop-color="rgba(180,205,225,0.7)"/>
+            </linearGradient>
+            <filter id="ring-glow">
+              <feGaussianBlur stdDeviation="1.2" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <!-- Outer glow ring -->
+          <circle cx="90" cy="90" r="85" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="5"/>
+          <!-- Main outer ring -->
+          <circle cx="90" cy="90" r="85" fill="none" stroke="url(#ring-grad)" stroke-width="1.8" filter="url(#ring-glow)"/>
+          <!-- Inner decorative ring -->
+          <circle cx="90" cy="90" r="72" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.2"/>
+          <circle cx="90" cy="90" r="70" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.5"/>
+          <!-- Cardinal tick marks -->
+          <g stroke="url(#ring-grad)" stroke-width="2" stroke-linecap="round">
+            <line x1="90" y1="3" x2="90" y2="16"/>
+            <line x1="90" y1="164" x2="90" y2="177"/>
+            <line x1="3" y1="90" x2="16" y2="90"/>
+            <line x1="164" y1="90" x2="177" y2="90"/>
+          </g>
+          <!-- Intercardinal tick marks (shorter) -->
+          <g stroke="rgba(255,255,255,0.45)" stroke-width="1.2" stroke-linecap="round">
+            <line x1="149.5" y1="30.5" x2="142.5" y2="37.5"/>
+            <line x1="30.5" y1="30.5" x2="37.5" y2="37.5"/>
+            <line x1="149.5" y1="149.5" x2="142.5" y2="142.5"/>
+            <line x1="30.5" y1="149.5" x2="37.5" y2="142.5"/>
           </g>
         </svg>
         <!-- Texto giratorio -->
@@ -1290,16 +1347,111 @@ footer {
         </svg>
         <!-- Rosa de los vientos — gira en 3D -->
         <svg class="emblem-rose" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-          <polygon points="60,4 64,55 60,60 56,55" fill="white" opacity="0.95"/>
-          <polygon points="60,116 64,65 60,60 56,65" fill="rgba(255,255,255,0.5)"/>
-          <polygon points="116,60 65,55 60,60 65,65" fill="rgba(255,255,255,0.5)"/>
-          <polygon points="4,60 55,55 60,60 55,65" fill="white" opacity="0.95"/>
-          <polygon points="98,22 65,55 60,60 55,55" fill="white" opacity="0.7"/>
-          <polygon points="22,22 55,55 60,60 65,55" fill="white" opacity="0.7"/>
-          <polygon points="98,98 65,65 60,60 55,65" fill="white" opacity="0.7"/>
-          <polygon points="22,98 55,65 60,60 65,65" fill="white" opacity="0.7"/>
-          <circle cx="60" cy="60" r="5" fill="white" opacity="0.95"/>
-          <circle cx="60" cy="60" r="2.5" fill="#e8541a"/>
+          <defs>
+            <!-- Ambient glow -->
+            <radialGradient id="rg-glow" cx="50%" cy="40%" r="55%">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.18)"/>
+              <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+            </radialGradient>
+            <!-- North spike – lit face -->
+            <linearGradient id="rg-n-lit" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.55)"/>
+              <stop offset="45%" stop-color="rgba(255,255,255,1)"/>
+              <stop offset="100%" stop-color="rgba(255,255,255,0.75)"/>
+            </linearGradient>
+            <!-- North spike – shadow face -->
+            <linearGradient id="rg-n-shd" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="rgba(180,200,220,0.9)"/>
+              <stop offset="100%" stop-color="rgba(140,165,190,0.6)"/>
+            </linearGradient>
+            <!-- South spike -->
+            <linearGradient id="rg-s-lit" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="rgba(200,215,230,0.7)"/>
+              <stop offset="50%" stop-color="rgba(220,230,240,0.85)"/>
+              <stop offset="100%" stop-color="rgba(170,190,210,0.55)"/>
+            </linearGradient>
+            <!-- West spike lit -->
+            <linearGradient id="rg-w-lit" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.9)"/>
+              <stop offset="100%" stop-color="rgba(210,225,240,0.7)"/>
+            </linearGradient>
+            <!-- East spike -->
+            <linearGradient id="rg-e-shd" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="rgba(155,180,205,0.75)"/>
+              <stop offset="100%" stop-color="rgba(120,150,175,0.5)"/>
+            </linearGradient>
+            <!-- Diagonal NW -->
+            <linearGradient id="rg-nw" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="rgba(240,248,255,0.85)"/>
+              <stop offset="100%" stop-color="rgba(190,210,228,0.55)"/>
+            </linearGradient>
+            <!-- Diagonal NE -->
+            <linearGradient id="rg-ne" x1="100%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="rgba(215,232,248,0.7)"/>
+              <stop offset="100%" stop-color="rgba(165,190,215,0.45)"/>
+            </linearGradient>
+            <!-- Diagonal SW -->
+            <linearGradient id="rg-sw" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="rgba(195,215,232,0.65)"/>
+              <stop offset="100%" stop-color="rgba(155,180,205,0.4)"/>
+            </linearGradient>
+            <!-- Diagonal SE -->
+            <linearGradient id="rg-se" x1="100%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" stop-color="rgba(175,198,220,0.6)"/>
+              <stop offset="100%" stop-color="rgba(135,162,188,0.38)"/>
+            </linearGradient>
+            <!-- Center jewel -->
+            <radialGradient id="rg-jewel" cx="38%" cy="32%" r="60%">
+              <stop offset="0%" stop-color="#ff7b44"/>
+              <stop offset="40%" stop-color="#e8541a"/>
+              <stop offset="100%" stop-color="#a33a0e"/>
+            </radialGradient>
+            <radialGradient id="rg-hub" cx="35%" cy="30%" r="65%">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.95)"/>
+              <stop offset="45%" stop-color="rgba(230,240,250,0.8)"/>
+              <stop offset="100%" stop-color="rgba(170,195,215,0.6)"/>
+            </radialGradient>
+            <!-- Drop shadow filter -->
+            <filter id="f-shadow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="rgba(0,30,60,0.55)"/>
+            </filter>
+            <filter id="f-glow" x="-30%" y="-30%" width="160%" height="160%">
+              <feGaussianBlur stdDeviation="3" result="blur"/>
+              <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+            </filter>
+          </defs>
+
+          <!-- Soft background glow disc -->
+          <circle cx="60" cy="60" r="52" fill="url(#rg-glow)"/>
+
+          <!-- ── CARDINAL SPIKES ── -->
+          <!-- NORTH – bright lit left face + shadow right face -->
+          <polygon points="60,3 63.5,54 60,60 56.5,54" fill="url(#rg-n-lit)" filter="url(#f-shadow)"/>
+          <polygon points="60,3 63.5,54 60,60 56.5,54" fill="url(#rg-n-shd)" opacity="0"/>
+
+          <!-- SOUTH – slightly dimmer -->
+          <polygon points="60,117 63.5,66 60,60 56.5,66" fill="url(#rg-s-lit)" filter="url(#f-shadow)"/>
+
+          <!-- WEST – bright -->
+          <polygon points="3,60 54,56.5 60,60 54,63.5" fill="url(#rg-w-lit)" filter="url(#f-shadow)"/>
+
+          <!-- EAST – shadow side -->
+          <polygon points="117,60 66,56.5 60,60 66,63.5" fill="url(#rg-e-shd)" filter="url(#f-shadow)"/>
+
+          <!-- ── INTERCARDINAL SPIKES ── -->
+          <polygon points="103,17 66,54 60,60 54,54" fill="url(#rg-ne)" filter="url(#f-shadow)"/>
+          <polygon points="17,17 54,54 60,60 66,54" fill="url(#rg-nw)" filter="url(#f-shadow)"/>
+          <polygon points="103,103 66,66 60,60 54,66" fill="url(#rg-se)" filter="url(#f-shadow)"/>
+          <polygon points="17,103 54,66 60,60 66,66" fill="url(#rg-sw)" filter="url(#f-shadow)"/>
+
+          <!-- ── HUB RING ── -->
+          <circle cx="60" cy="60" r="9" fill="url(#rg-hub)" filter="url(#f-shadow)"/>
+          <circle cx="60" cy="60" r="9" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="0.8"/>
+
+          <!-- ── CENTER JEWEL ── -->
+          <circle cx="60" cy="60" r="5.5" fill="url(#rg-jewel)" filter="url(#f-shadow)"/>
+          <!-- jewel specular highlight -->
+          <ellipse cx="58.5" cy="58" rx="1.8" ry="1.1" fill="rgba(255,200,170,0.75)" transform="rotate(-20,58.5,58)"/>
         </svg>
       </div>
     </div>
@@ -1317,9 +1469,38 @@ footer {
     <div class="slide-emblem">
       <div class="emblem-3d">
         <svg class="emblem-svg" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="90" cy="90" r="85" fill="none" stroke="white" stroke-width="1.8" opacity="0.9"/>
-          <circle cx="90" cy="90" r="70" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="0.8"/>
-          <g stroke="white" stroke-width="1.2" opacity="0.6"><line x1="90" y1="5" x2="90" y2="14"/><line x1="90" y1="166" x2="90" y2="175"/><line x1="5" y1="90" x2="14" y2="90"/><line x1="166" y1="90" x2="175" y2="90"/></g>
+          <defs>
+            <linearGradient id="ring-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="rgba(255,255,255,1)"/>
+              <stop offset="40%" stop-color="rgba(220,235,248,0.9)"/>
+              <stop offset="100%" stop-color="rgba(180,205,225,0.7)"/>
+            </linearGradient>
+            <filter id="ring-glow">
+              <feGaussianBlur stdDeviation="1.2" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <!-- Outer glow ring -->
+          <circle cx="90" cy="90" r="85" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="5"/>
+          <!-- Main outer ring -->
+          <circle cx="90" cy="90" r="85" fill="none" stroke="url(#ring-grad)" stroke-width="1.8" filter="url(#ring-glow)"/>
+          <!-- Inner decorative ring -->
+          <circle cx="90" cy="90" r="72" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.2"/>
+          <circle cx="90" cy="90" r="70" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.5"/>
+          <!-- Cardinal tick marks -->
+          <g stroke="url(#ring-grad)" stroke-width="2" stroke-linecap="round">
+            <line x1="90" y1="3" x2="90" y2="16"/>
+            <line x1="90" y1="164" x2="90" y2="177"/>
+            <line x1="3" y1="90" x2="16" y2="90"/>
+            <line x1="164" y1="90" x2="177" y2="90"/>
+          </g>
+          <!-- Intercardinal tick marks (shorter) -->
+          <g stroke="rgba(255,255,255,0.45)" stroke-width="1.2" stroke-linecap="round">
+            <line x1="149.5" y1="30.5" x2="142.5" y2="37.5"/>
+            <line x1="30.5" y1="30.5" x2="37.5" y2="37.5"/>
+            <line x1="149.5" y1="149.5" x2="142.5" y2="142.5"/>
+            <line x1="30.5" y1="149.5" x2="37.5" y2="142.5"/>
+          </g>
         </svg>
         <svg class="emblem-text-path" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
           <defs><path id="circ1t" d="M90,90 m-76,0 a76,76 0 1,1 152,0 a76,76 0 1,1 -152,0"/></defs>
@@ -1328,16 +1509,111 @@ footer {
           </text>
         </svg>
         <svg class="emblem-rose" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-          <polygon points="60,4 64,55 60,60 56,55" fill="white" opacity="0.95"/>
-          <polygon points="60,116 64,65 60,60 56,65" fill="rgba(255,255,255,0.5)"/>
-          <polygon points="116,60 65,55 60,60 65,65" fill="rgba(255,255,255,0.5)"/>
-          <polygon points="4,60 55,55 60,60 55,65" fill="white" opacity="0.95"/>
-          <polygon points="98,22 65,55 60,60 55,55" fill="white" opacity="0.7"/>
-          <polygon points="22,22 55,55 60,60 65,55" fill="white" opacity="0.7"/>
-          <polygon points="98,98 65,65 60,60 55,65" fill="white" opacity="0.7"/>
-          <polygon points="22,98 55,65 60,60 65,65" fill="white" opacity="0.7"/>
-          <circle cx="60" cy="60" r="5" fill="white" opacity="0.95"/>
-          <circle cx="60" cy="60" r="2.5" fill="#e8541a"/>
+          <defs>
+            <!-- Ambient glow -->
+            <radialGradient id="rg-glow" cx="50%" cy="40%" r="55%">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.18)"/>
+              <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+            </radialGradient>
+            <!-- North spike – lit face -->
+            <linearGradient id="rg-n-lit" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.55)"/>
+              <stop offset="45%" stop-color="rgba(255,255,255,1)"/>
+              <stop offset="100%" stop-color="rgba(255,255,255,0.75)"/>
+            </linearGradient>
+            <!-- North spike – shadow face -->
+            <linearGradient id="rg-n-shd" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="rgba(180,200,220,0.9)"/>
+              <stop offset="100%" stop-color="rgba(140,165,190,0.6)"/>
+            </linearGradient>
+            <!-- South spike -->
+            <linearGradient id="rg-s-lit" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="rgba(200,215,230,0.7)"/>
+              <stop offset="50%" stop-color="rgba(220,230,240,0.85)"/>
+              <stop offset="100%" stop-color="rgba(170,190,210,0.55)"/>
+            </linearGradient>
+            <!-- West spike lit -->
+            <linearGradient id="rg-w-lit" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.9)"/>
+              <stop offset="100%" stop-color="rgba(210,225,240,0.7)"/>
+            </linearGradient>
+            <!-- East spike -->
+            <linearGradient id="rg-e-shd" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="rgba(155,180,205,0.75)"/>
+              <stop offset="100%" stop-color="rgba(120,150,175,0.5)"/>
+            </linearGradient>
+            <!-- Diagonal NW -->
+            <linearGradient id="rg-nw" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="rgba(240,248,255,0.85)"/>
+              <stop offset="100%" stop-color="rgba(190,210,228,0.55)"/>
+            </linearGradient>
+            <!-- Diagonal NE -->
+            <linearGradient id="rg-ne" x1="100%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="rgba(215,232,248,0.7)"/>
+              <stop offset="100%" stop-color="rgba(165,190,215,0.45)"/>
+            </linearGradient>
+            <!-- Diagonal SW -->
+            <linearGradient id="rg-sw" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="rgba(195,215,232,0.65)"/>
+              <stop offset="100%" stop-color="rgba(155,180,205,0.4)"/>
+            </linearGradient>
+            <!-- Diagonal SE -->
+            <linearGradient id="rg-se" x1="100%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" stop-color="rgba(175,198,220,0.6)"/>
+              <stop offset="100%" stop-color="rgba(135,162,188,0.38)"/>
+            </linearGradient>
+            <!-- Center jewel -->
+            <radialGradient id="rg-jewel" cx="38%" cy="32%" r="60%">
+              <stop offset="0%" stop-color="#ff7b44"/>
+              <stop offset="40%" stop-color="#e8541a"/>
+              <stop offset="100%" stop-color="#a33a0e"/>
+            </radialGradient>
+            <radialGradient id="rg-hub" cx="35%" cy="30%" r="65%">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.95)"/>
+              <stop offset="45%" stop-color="rgba(230,240,250,0.8)"/>
+              <stop offset="100%" stop-color="rgba(170,195,215,0.6)"/>
+            </radialGradient>
+            <!-- Drop shadow filter -->
+            <filter id="f-shadow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="rgba(0,30,60,0.55)"/>
+            </filter>
+            <filter id="f-glow" x="-30%" y="-30%" width="160%" height="160%">
+              <feGaussianBlur stdDeviation="3" result="blur"/>
+              <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+            </filter>
+          </defs>
+
+          <!-- Soft background glow disc -->
+          <circle cx="60" cy="60" r="52" fill="url(#rg-glow)"/>
+
+          <!-- ── CARDINAL SPIKES ── -->
+          <!-- NORTH – bright lit left face + shadow right face -->
+          <polygon points="60,3 63.5,54 60,60 56.5,54" fill="url(#rg-n-lit)" filter="url(#f-shadow)"/>
+          <polygon points="60,3 63.5,54 60,60 56.5,54" fill="url(#rg-n-shd)" opacity="0"/>
+
+          <!-- SOUTH – slightly dimmer -->
+          <polygon points="60,117 63.5,66 60,60 56.5,66" fill="url(#rg-s-lit)" filter="url(#f-shadow)"/>
+
+          <!-- WEST – bright -->
+          <polygon points="3,60 54,56.5 60,60 54,63.5" fill="url(#rg-w-lit)" filter="url(#f-shadow)"/>
+
+          <!-- EAST – shadow side -->
+          <polygon points="117,60 66,56.5 60,60 66,63.5" fill="url(#rg-e-shd)" filter="url(#f-shadow)"/>
+
+          <!-- ── INTERCARDINAL SPIKES ── -->
+          <polygon points="103,17 66,54 60,60 54,54" fill="url(#rg-ne)" filter="url(#f-shadow)"/>
+          <polygon points="17,17 54,54 60,60 66,54" fill="url(#rg-nw)" filter="url(#f-shadow)"/>
+          <polygon points="103,103 66,66 60,60 54,66" fill="url(#rg-se)" filter="url(#f-shadow)"/>
+          <polygon points="17,103 54,66 60,60 66,66" fill="url(#rg-sw)" filter="url(#f-shadow)"/>
+
+          <!-- ── HUB RING ── -->
+          <circle cx="60" cy="60" r="9" fill="url(#rg-hub)" filter="url(#f-shadow)"/>
+          <circle cx="60" cy="60" r="9" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="0.8"/>
+
+          <!-- ── CENTER JEWEL ── -->
+          <circle cx="60" cy="60" r="5.5" fill="url(#rg-jewel)" filter="url(#f-shadow)"/>
+          <!-- jewel specular highlight -->
+          <ellipse cx="58.5" cy="58" rx="1.8" ry="1.1" fill="rgba(255,200,170,0.75)" transform="rotate(-20,58.5,58)"/>
         </svg>
       </div>
     </div>
@@ -1355,9 +1631,38 @@ footer {
     <div class="slide-emblem">
       <div class="emblem-3d">
         <svg class="emblem-svg" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="90" cy="90" r="85" fill="none" stroke="white" stroke-width="1.8" opacity="0.9"/>
-          <circle cx="90" cy="90" r="70" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="0.8"/>
-          <g stroke="white" stroke-width="1.2" opacity="0.6"><line x1="90" y1="5" x2="90" y2="14"/><line x1="90" y1="166" x2="90" y2="175"/><line x1="5" y1="90" x2="14" y2="90"/><line x1="166" y1="90" x2="175" y2="90"/></g>
+          <defs>
+            <linearGradient id="ring-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="rgba(255,255,255,1)"/>
+              <stop offset="40%" stop-color="rgba(220,235,248,0.9)"/>
+              <stop offset="100%" stop-color="rgba(180,205,225,0.7)"/>
+            </linearGradient>
+            <filter id="ring-glow">
+              <feGaussianBlur stdDeviation="1.2" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <!-- Outer glow ring -->
+          <circle cx="90" cy="90" r="85" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="5"/>
+          <!-- Main outer ring -->
+          <circle cx="90" cy="90" r="85" fill="none" stroke="url(#ring-grad)" stroke-width="1.8" filter="url(#ring-glow)"/>
+          <!-- Inner decorative ring -->
+          <circle cx="90" cy="90" r="72" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.2"/>
+          <circle cx="90" cy="90" r="70" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.5"/>
+          <!-- Cardinal tick marks -->
+          <g stroke="url(#ring-grad)" stroke-width="2" stroke-linecap="round">
+            <line x1="90" y1="3" x2="90" y2="16"/>
+            <line x1="90" y1="164" x2="90" y2="177"/>
+            <line x1="3" y1="90" x2="16" y2="90"/>
+            <line x1="164" y1="90" x2="177" y2="90"/>
+          </g>
+          <!-- Intercardinal tick marks (shorter) -->
+          <g stroke="rgba(255,255,255,0.45)" stroke-width="1.2" stroke-linecap="round">
+            <line x1="149.5" y1="30.5" x2="142.5" y2="37.5"/>
+            <line x1="30.5" y1="30.5" x2="37.5" y2="37.5"/>
+            <line x1="149.5" y1="149.5" x2="142.5" y2="142.5"/>
+            <line x1="30.5" y1="149.5" x2="37.5" y2="142.5"/>
+          </g>
         </svg>
         <svg class="emblem-text-path" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
           <defs><path id="circ2t" d="M90,90 m-76,0 a76,76 0 1,1 152,0 a76,76 0 1,1 -152,0"/></defs>
@@ -1366,16 +1671,111 @@ footer {
           </text>
         </svg>
         <svg class="emblem-rose" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-          <polygon points="60,4 64,55 60,60 56,55" fill="white" opacity="0.95"/>
-          <polygon points="60,116 64,65 60,60 56,65" fill="rgba(255,255,255,0.5)"/>
-          <polygon points="116,60 65,55 60,60 65,65" fill="rgba(255,255,255,0.5)"/>
-          <polygon points="4,60 55,55 60,60 55,65" fill="white" opacity="0.95"/>
-          <polygon points="98,22 65,55 60,60 55,55" fill="white" opacity="0.7"/>
-          <polygon points="22,22 55,55 60,60 65,55" fill="white" opacity="0.7"/>
-          <polygon points="98,98 65,65 60,60 55,65" fill="white" opacity="0.7"/>
-          <polygon points="22,98 55,65 60,60 65,65" fill="white" opacity="0.7"/>
-          <circle cx="60" cy="60" r="5" fill="white" opacity="0.95"/>
-          <circle cx="60" cy="60" r="2.5" fill="#e8541a"/>
+          <defs>
+            <!-- Ambient glow -->
+            <radialGradient id="rg-glow" cx="50%" cy="40%" r="55%">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.18)"/>
+              <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+            </radialGradient>
+            <!-- North spike – lit face -->
+            <linearGradient id="rg-n-lit" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.55)"/>
+              <stop offset="45%" stop-color="rgba(255,255,255,1)"/>
+              <stop offset="100%" stop-color="rgba(255,255,255,0.75)"/>
+            </linearGradient>
+            <!-- North spike – shadow face -->
+            <linearGradient id="rg-n-shd" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="rgba(180,200,220,0.9)"/>
+              <stop offset="100%" stop-color="rgba(140,165,190,0.6)"/>
+            </linearGradient>
+            <!-- South spike -->
+            <linearGradient id="rg-s-lit" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="rgba(200,215,230,0.7)"/>
+              <stop offset="50%" stop-color="rgba(220,230,240,0.85)"/>
+              <stop offset="100%" stop-color="rgba(170,190,210,0.55)"/>
+            </linearGradient>
+            <!-- West spike lit -->
+            <linearGradient id="rg-w-lit" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.9)"/>
+              <stop offset="100%" stop-color="rgba(210,225,240,0.7)"/>
+            </linearGradient>
+            <!-- East spike -->
+            <linearGradient id="rg-e-shd" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="rgba(155,180,205,0.75)"/>
+              <stop offset="100%" stop-color="rgba(120,150,175,0.5)"/>
+            </linearGradient>
+            <!-- Diagonal NW -->
+            <linearGradient id="rg-nw" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="rgba(240,248,255,0.85)"/>
+              <stop offset="100%" stop-color="rgba(190,210,228,0.55)"/>
+            </linearGradient>
+            <!-- Diagonal NE -->
+            <linearGradient id="rg-ne" x1="100%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="rgba(215,232,248,0.7)"/>
+              <stop offset="100%" stop-color="rgba(165,190,215,0.45)"/>
+            </linearGradient>
+            <!-- Diagonal SW -->
+            <linearGradient id="rg-sw" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="rgba(195,215,232,0.65)"/>
+              <stop offset="100%" stop-color="rgba(155,180,205,0.4)"/>
+            </linearGradient>
+            <!-- Diagonal SE -->
+            <linearGradient id="rg-se" x1="100%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" stop-color="rgba(175,198,220,0.6)"/>
+              <stop offset="100%" stop-color="rgba(135,162,188,0.38)"/>
+            </linearGradient>
+            <!-- Center jewel -->
+            <radialGradient id="rg-jewel" cx="38%" cy="32%" r="60%">
+              <stop offset="0%" stop-color="#ff7b44"/>
+              <stop offset="40%" stop-color="#e8541a"/>
+              <stop offset="100%" stop-color="#a33a0e"/>
+            </radialGradient>
+            <radialGradient id="rg-hub" cx="35%" cy="30%" r="65%">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.95)"/>
+              <stop offset="45%" stop-color="rgba(230,240,250,0.8)"/>
+              <stop offset="100%" stop-color="rgba(170,195,215,0.6)"/>
+            </radialGradient>
+            <!-- Drop shadow filter -->
+            <filter id="f-shadow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="rgba(0,30,60,0.55)"/>
+            </filter>
+            <filter id="f-glow" x="-30%" y="-30%" width="160%" height="160%">
+              <feGaussianBlur stdDeviation="3" result="blur"/>
+              <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+            </filter>
+          </defs>
+
+          <!-- Soft background glow disc -->
+          <circle cx="60" cy="60" r="52" fill="url(#rg-glow)"/>
+
+          <!-- ── CARDINAL SPIKES ── -->
+          <!-- NORTH – bright lit left face + shadow right face -->
+          <polygon points="60,3 63.5,54 60,60 56.5,54" fill="url(#rg-n-lit)" filter="url(#f-shadow)"/>
+          <polygon points="60,3 63.5,54 60,60 56.5,54" fill="url(#rg-n-shd)" opacity="0"/>
+
+          <!-- SOUTH – slightly dimmer -->
+          <polygon points="60,117 63.5,66 60,60 56.5,66" fill="url(#rg-s-lit)" filter="url(#f-shadow)"/>
+
+          <!-- WEST – bright -->
+          <polygon points="3,60 54,56.5 60,60 54,63.5" fill="url(#rg-w-lit)" filter="url(#f-shadow)"/>
+
+          <!-- EAST – shadow side -->
+          <polygon points="117,60 66,56.5 60,60 66,63.5" fill="url(#rg-e-shd)" filter="url(#f-shadow)"/>
+
+          <!-- ── INTERCARDINAL SPIKES ── -->
+          <polygon points="103,17 66,54 60,60 54,54" fill="url(#rg-ne)" filter="url(#f-shadow)"/>
+          <polygon points="17,17 54,54 60,60 66,54" fill="url(#rg-nw)" filter="url(#f-shadow)"/>
+          <polygon points="103,103 66,66 60,60 54,66" fill="url(#rg-se)" filter="url(#f-shadow)"/>
+          <polygon points="17,103 54,66 60,60 66,66" fill="url(#rg-sw)" filter="url(#f-shadow)"/>
+
+          <!-- ── HUB RING ── -->
+          <circle cx="60" cy="60" r="9" fill="url(#rg-hub)" filter="url(#f-shadow)"/>
+          <circle cx="60" cy="60" r="9" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="0.8"/>
+
+          <!-- ── CENTER JEWEL ── -->
+          <circle cx="60" cy="60" r="5.5" fill="url(#rg-jewel)" filter="url(#f-shadow)"/>
+          <!-- jewel specular highlight -->
+          <ellipse cx="58.5" cy="58" rx="1.8" ry="1.1" fill="rgba(255,200,170,0.75)" transform="rotate(-20,58.5,58)"/>
         </svg>
       </div>
     </div>
@@ -1393,9 +1793,38 @@ footer {
     <div class="slide-emblem">
       <div class="emblem-3d">
         <svg class="emblem-svg" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="90" cy="90" r="85" fill="none" stroke="white" stroke-width="1.8" opacity="0.9"/>
-          <circle cx="90" cy="90" r="70" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="0.8"/>
-          <g stroke="white" stroke-width="1.2" opacity="0.6"><line x1="90" y1="5" x2="90" y2="14"/><line x1="90" y1="166" x2="90" y2="175"/><line x1="5" y1="90" x2="14" y2="90"/><line x1="166" y1="90" x2="175" y2="90"/></g>
+          <defs>
+            <linearGradient id="ring-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="rgba(255,255,255,1)"/>
+              <stop offset="40%" stop-color="rgba(220,235,248,0.9)"/>
+              <stop offset="100%" stop-color="rgba(180,205,225,0.7)"/>
+            </linearGradient>
+            <filter id="ring-glow">
+              <feGaussianBlur stdDeviation="1.2" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <!-- Outer glow ring -->
+          <circle cx="90" cy="90" r="85" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="5"/>
+          <!-- Main outer ring -->
+          <circle cx="90" cy="90" r="85" fill="none" stroke="url(#ring-grad)" stroke-width="1.8" filter="url(#ring-glow)"/>
+          <!-- Inner decorative ring -->
+          <circle cx="90" cy="90" r="72" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.2"/>
+          <circle cx="90" cy="90" r="70" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.5"/>
+          <!-- Cardinal tick marks -->
+          <g stroke="url(#ring-grad)" stroke-width="2" stroke-linecap="round">
+            <line x1="90" y1="3" x2="90" y2="16"/>
+            <line x1="90" y1="164" x2="90" y2="177"/>
+            <line x1="3" y1="90" x2="16" y2="90"/>
+            <line x1="164" y1="90" x2="177" y2="90"/>
+          </g>
+          <!-- Intercardinal tick marks (shorter) -->
+          <g stroke="rgba(255,255,255,0.45)" stroke-width="1.2" stroke-linecap="round">
+            <line x1="149.5" y1="30.5" x2="142.5" y2="37.5"/>
+            <line x1="30.5" y1="30.5" x2="37.5" y2="37.5"/>
+            <line x1="149.5" y1="149.5" x2="142.5" y2="142.5"/>
+            <line x1="30.5" y1="149.5" x2="37.5" y2="142.5"/>
+          </g>
         </svg>
         <svg class="emblem-text-path" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
           <defs><path id="circ3t" d="M90,90 m-76,0 a76,76 0 1,1 152,0 a76,76 0 1,1 -152,0"/></defs>
@@ -1404,16 +1833,111 @@ footer {
           </text>
         </svg>
         <svg class="emblem-rose" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-          <polygon points="60,4 64,55 60,60 56,55" fill="white" opacity="0.95"/>
-          <polygon points="60,116 64,65 60,60 56,65" fill="rgba(255,255,255,0.5)"/>
-          <polygon points="116,60 65,55 60,60 65,65" fill="rgba(255,255,255,0.5)"/>
-          <polygon points="4,60 55,55 60,60 55,65" fill="white" opacity="0.95"/>
-          <polygon points="98,22 65,55 60,60 55,55" fill="white" opacity="0.7"/>
-          <polygon points="22,22 55,55 60,60 65,55" fill="white" opacity="0.7"/>
-          <polygon points="98,98 65,65 60,60 55,65" fill="white" opacity="0.7"/>
-          <polygon points="22,98 55,65 60,60 65,65" fill="white" opacity="0.7"/>
-          <circle cx="60" cy="60" r="5" fill="white" opacity="0.95"/>
-          <circle cx="60" cy="60" r="2.5" fill="#e8541a"/>
+          <defs>
+            <!-- Ambient glow -->
+            <radialGradient id="rg-glow" cx="50%" cy="40%" r="55%">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.18)"/>
+              <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+            </radialGradient>
+            <!-- North spike – lit face -->
+            <linearGradient id="rg-n-lit" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.55)"/>
+              <stop offset="45%" stop-color="rgba(255,255,255,1)"/>
+              <stop offset="100%" stop-color="rgba(255,255,255,0.75)"/>
+            </linearGradient>
+            <!-- North spike – shadow face -->
+            <linearGradient id="rg-n-shd" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="rgba(180,200,220,0.9)"/>
+              <stop offset="100%" stop-color="rgba(140,165,190,0.6)"/>
+            </linearGradient>
+            <!-- South spike -->
+            <linearGradient id="rg-s-lit" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="rgba(200,215,230,0.7)"/>
+              <stop offset="50%" stop-color="rgba(220,230,240,0.85)"/>
+              <stop offset="100%" stop-color="rgba(170,190,210,0.55)"/>
+            </linearGradient>
+            <!-- West spike lit -->
+            <linearGradient id="rg-w-lit" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.9)"/>
+              <stop offset="100%" stop-color="rgba(210,225,240,0.7)"/>
+            </linearGradient>
+            <!-- East spike -->
+            <linearGradient id="rg-e-shd" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="rgba(155,180,205,0.75)"/>
+              <stop offset="100%" stop-color="rgba(120,150,175,0.5)"/>
+            </linearGradient>
+            <!-- Diagonal NW -->
+            <linearGradient id="rg-nw" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="rgba(240,248,255,0.85)"/>
+              <stop offset="100%" stop-color="rgba(190,210,228,0.55)"/>
+            </linearGradient>
+            <!-- Diagonal NE -->
+            <linearGradient id="rg-ne" x1="100%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="rgba(215,232,248,0.7)"/>
+              <stop offset="100%" stop-color="rgba(165,190,215,0.45)"/>
+            </linearGradient>
+            <!-- Diagonal SW -->
+            <linearGradient id="rg-sw" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="rgba(195,215,232,0.65)"/>
+              <stop offset="100%" stop-color="rgba(155,180,205,0.4)"/>
+            </linearGradient>
+            <!-- Diagonal SE -->
+            <linearGradient id="rg-se" x1="100%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" stop-color="rgba(175,198,220,0.6)"/>
+              <stop offset="100%" stop-color="rgba(135,162,188,0.38)"/>
+            </linearGradient>
+            <!-- Center jewel -->
+            <radialGradient id="rg-jewel" cx="38%" cy="32%" r="60%">
+              <stop offset="0%" stop-color="#ff7b44"/>
+              <stop offset="40%" stop-color="#e8541a"/>
+              <stop offset="100%" stop-color="#a33a0e"/>
+            </radialGradient>
+            <radialGradient id="rg-hub" cx="35%" cy="30%" r="65%">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.95)"/>
+              <stop offset="45%" stop-color="rgba(230,240,250,0.8)"/>
+              <stop offset="100%" stop-color="rgba(170,195,215,0.6)"/>
+            </radialGradient>
+            <!-- Drop shadow filter -->
+            <filter id="f-shadow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="rgba(0,30,60,0.55)"/>
+            </filter>
+            <filter id="f-glow" x="-30%" y="-30%" width="160%" height="160%">
+              <feGaussianBlur stdDeviation="3" result="blur"/>
+              <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+            </filter>
+          </defs>
+
+          <!-- Soft background glow disc -->
+          <circle cx="60" cy="60" r="52" fill="url(#rg-glow)"/>
+
+          <!-- ── CARDINAL SPIKES ── -->
+          <!-- NORTH – bright lit left face + shadow right face -->
+          <polygon points="60,3 63.5,54 60,60 56.5,54" fill="url(#rg-n-lit)" filter="url(#f-shadow)"/>
+          <polygon points="60,3 63.5,54 60,60 56.5,54" fill="url(#rg-n-shd)" opacity="0"/>
+
+          <!-- SOUTH – slightly dimmer -->
+          <polygon points="60,117 63.5,66 60,60 56.5,66" fill="url(#rg-s-lit)" filter="url(#f-shadow)"/>
+
+          <!-- WEST – bright -->
+          <polygon points="3,60 54,56.5 60,60 54,63.5" fill="url(#rg-w-lit)" filter="url(#f-shadow)"/>
+
+          <!-- EAST – shadow side -->
+          <polygon points="117,60 66,56.5 60,60 66,63.5" fill="url(#rg-e-shd)" filter="url(#f-shadow)"/>
+
+          <!-- ── INTERCARDINAL SPIKES ── -->
+          <polygon points="103,17 66,54 60,60 54,54" fill="url(#rg-ne)" filter="url(#f-shadow)"/>
+          <polygon points="17,17 54,54 60,60 66,54" fill="url(#rg-nw)" filter="url(#f-shadow)"/>
+          <polygon points="103,103 66,66 60,60 54,66" fill="url(#rg-se)" filter="url(#f-shadow)"/>
+          <polygon points="17,103 54,66 60,60 66,66" fill="url(#rg-sw)" filter="url(#f-shadow)"/>
+
+          <!-- ── HUB RING ── -->
+          <circle cx="60" cy="60" r="9" fill="url(#rg-hub)" filter="url(#f-shadow)"/>
+          <circle cx="60" cy="60" r="9" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="0.8"/>
+
+          <!-- ── CENTER JEWEL ── -->
+          <circle cx="60" cy="60" r="5.5" fill="url(#rg-jewel)" filter="url(#f-shadow)"/>
+          <!-- jewel specular highlight -->
+          <ellipse cx="58.5" cy="58" rx="1.8" ry="1.1" fill="rgba(255,200,170,0.75)" transform="rotate(-20,58.5,58)"/>
         </svg>
       </div>
     </div>
@@ -1916,17 +2440,48 @@ footer {
           <defs>
             <path id="fc-top" d="M50,50 m-36,0 a36,36 0 1,1 72,0"/>
             <path id="fc-bot" d="M50,50 m-36,0 a36,36 0 1,0 72,0"/>
+            <linearGradient id="ft-ring-g" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="rgba(255,255,255,1)"/>
+              <stop offset="100%" stop-color="rgba(180,210,230,0.7)"/>
+            </linearGradient>
+            <radialGradient id="ft-n-g" cx="40%" cy="30%" r="65%">
+              <stop offset="0%" stop-color="rgba(255,255,255,1)"/>
+              <stop offset="100%" stop-color="rgba(200,220,240,0.7)"/>
+            </radialGradient>
+            <radialGradient id="ft-jewel" cx="35%" cy="28%" r="60%">
+              <stop offset="0%" stop-color="#ff7b44"/>
+              <stop offset="45%" stop-color="#e8541a"/>
+              <stop offset="100%" stop-color="#a33a0e"/>
+            </radialGradient>
+            <radialGradient id="ft-hub" cx="35%" cy="30%" r="65%">
+              <stop offset="0%" stop-color="rgba(255,255,255,0.95)"/>
+              <stop offset="100%" stop-color="rgba(170,195,215,0.6)"/>
+            </radialGradient>
+            <filter id="ft-shd">
+              <feDropShadow dx="0" dy="0.8" stdDeviation="1.2" flood-color="rgba(0,30,60,0.5)"/>
+            </filter>
           </defs>
-          <circle cx="50" cy="50" r="36" fill="none" stroke="white" stroke-width="0.9" opacity="0.8"/>
-          <circle cx="50" cy="50" r="29" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="0.6"/>
+          <circle cx="50" cy="50" r="36" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="3"/>
+          <circle cx="50" cy="50" r="36" fill="none" stroke="url(#ft-ring-g)" stroke-width="1"/>
+          <circle cx="50" cy="50" r="29" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="0.6"/>
           <text font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="700" font-size="9" letter-spacing="2.2" text-anchor="middle">
             <textPath href="#fc-top" startOffset="25%"><tspan fill="white">ZOYEN </tspan><tspan fill="#e8541a">TURISMO</tspan></textPath>
           </text>
-          <text font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="600" font-size="7.5" letter-spacing="1.8" text-anchor="middle" fill="rgba(255,255,255,0.65)">
+          <text font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="600" font-size="7.5" letter-spacing="1.8" text-anchor="middle" fill="rgba(255,255,255,0.55)">
             <textPath href="#fc-bot" startOffset="75%">· PATAGONIA ARG ·</textPath>
           </text>
-          <path d="M50,34 L51.5,48.5 L66,50 L51.5,51.5 L50,66 L48.5,51.5 L34,50 L48.5,48.5 Z" fill="white" opacity="0.92"/>
-          <circle cx="50" cy="50" r="1.8" fill="#e8541a"/>
+          <polygon points="50,18 52,47 50,50 48,47" fill="url(#ft-n-g)" filter="url(#ft-shd)"/>
+          <polygon points="50,82 52,53 50,50 48,53" fill="rgba(210,228,244,0.75)" filter="url(#ft-shd)"/>
+          <polygon points="18,50 47,48 50,50 47,52" fill="rgba(240,250,255,0.9)" filter="url(#ft-shd)"/>
+          <polygon points="82,50 53,48 50,50 53,52" fill="rgba(160,190,215,0.65)" filter="url(#ft-shd)"/>
+          <polygon points="73,27 53,47 50,50 47,47" fill="rgba(220,238,252,0.65)" filter="url(#ft-shd)"/>
+          <polygon points="27,27 47,47 50,50 53,47" fill="rgba(235,247,255,0.8)" filter="url(#ft-shd)"/>
+          <polygon points="73,73 53,53 50,50 47,53" fill="rgba(170,195,218,0.55)" filter="url(#ft-shd)"/>
+          <polygon points="27,73 47,53 50,50 53,53" fill="rgba(190,212,230,0.6)" filter="url(#ft-shd)"/>
+          <circle cx="50" cy="50" r="5" fill="url(#ft-hub)" filter="url(#ft-shd)"/>
+          <circle cx="50" cy="50" r="5" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="0.5"/>
+          <circle cx="50" cy="50" r="3" fill="url(#ft-jewel)" filter="url(#ft-shd)"/>
+          <ellipse cx="49.2" cy="49" rx="0.9" ry="0.6" fill="rgba(255,210,180,0.8)" transform="rotate(-20,49.2,49)"/>
         </svg>
         <div class="footer-brand"><span class="footer-brand-zoyen">ZOYEN</span> <span>TURISMO</span></div>
       </div>
@@ -2340,6 +2895,921 @@ const obs = new IntersectionObserver(es => {
   es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
 }, { threshold: 0.1 });
 revEls.forEach(el => obs.observe(el));
+</script>
+
+<!-- ═══════════════════════════════════════════════════════
+     ADMIN STYLES
+════════════════════════════════════════════════════════ -->
+<style>
+/* ── Admin trigger button ── */
+/* ── Login overlay ── */
+.adm-login-wrap {
+  display: none; position: fixed; inset: 0; z-index: 1100;
+  background: rgba(26,20,16,0.88); backdrop-filter: blur(18px);
+  align-items: center; justify-content: center;
+}
+.adm-login-wrap.open { display: flex; }
+.adm-login-box {
+  background: var(--dark); border: 1px solid rgba(232,84,26,0.3);
+  border-radius: 4px; padding: 2.8rem 2.6rem;
+  width: 100%; max-width: 380px; position: relative;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+}
+.adm-login-logo {
+  display: flex; align-items: center; gap: 10px;
+  justify-content: center; margin-bottom: 2rem;
+}
+.adm-login-logo svg { width: 44px; height: 44px; }
+.adm-login-logo-text { font-family:'Barlow Condensed',sans-serif; font-size:1.2rem; font-weight:700; letter-spacing:.1em; }
+.adm-login-logo-text span { color: var(--ember); }
+.adm-login-title {
+  font-family:'Barlow Condensed',sans-serif; font-size:.62rem; font-weight:600;
+  letter-spacing:.28em; text-transform:uppercase; color:var(--ember);
+  text-align:center; margin-bottom:1.8rem;
+}
+.adm-field { margin-bottom: 1.1rem; }
+.adm-field label {
+  display:block; font-size:.65rem; font-weight:600; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--sand); margin-bottom:.45rem;
+}
+.adm-field input {
+  width:100%; background:rgba(255,255,255,.06); border:1px solid rgba(201,169,110,.2);
+  border-radius:2px; padding:.65rem .9rem; color:var(--cream);
+  font-family:'Barlow',sans-serif; font-size:.88rem; outline:none;
+  transition:border-color .2s;
+}
+.adm-field input:focus { border-color: var(--ember); }
+.adm-login-btn {
+  width:100%; padding:.75rem; background:var(--ember); color:var(--cream);
+  border:none; border-radius:2px; font-family:'Barlow Condensed',sans-serif;
+  font-size:.78rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase;
+  cursor:pointer; margin-top:.6rem; transition:background .2s;
+}
+.adm-login-btn:hover { background:var(--ember-dim); }
+.adm-login-err {
+  color:#e05050; font-size:.75rem; text-align:center;
+  margin-top:.8rem; display:none;
+}
+.adm-login-close {
+  position:absolute; top:.9rem; right:.9rem;
+  background:none; border:none; color:var(--stone); font-size:1.1rem;
+  cursor:pointer; line-height:1; padding:.25rem;
+}
+.adm-login-close:hover { color:var(--cream); }
+
+/* ── Admin panel ── */
+.adm-panel {
+  display:none; position:fixed; inset:0; z-index:1050;
+  background:var(--ink); flex-direction:column;
+  font-family:'Barlow',sans-serif;
+}
+.adm-panel.open { display:flex; }
+
+/* Topbar */
+.adm-topbar {
+  height:60px; background:var(--dark); border-bottom:2px solid var(--ember);
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 1.5rem; flex-shrink:0;
+}
+.adm-topbar-logo { display:flex; align-items:center; gap:9px; }
+.adm-topbar-logo svg { width:32px; height:32px; }
+.adm-topbar-brand {
+  font-family:'Barlow Condensed',sans-serif; font-size:1rem;
+  font-weight:700; letter-spacing:.1em; color:var(--cream);
+}
+.adm-topbar-brand span { color:var(--ember); }
+.adm-topbar-badge {
+  font-size:.58rem; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--stone); margin-left:.5rem; font-weight:500;
+}
+.adm-topbar-right { display:flex; align-items:center; gap:1rem; }
+.adm-user-info { font-size:.72rem; color:var(--sand); letter-spacing:.05em; }
+.adm-logout-btn {
+  background:rgba(232,84,26,.12); border:1px solid rgba(232,84,26,.35);
+  color:var(--ember); padding:.38rem .9rem; border-radius:2px; cursor:pointer;
+  font-size:.65rem; font-weight:600; letter-spacing:.15em; text-transform:uppercase;
+  font-family:'Barlow Condensed',sans-serif; transition:background .2s;
+}
+.adm-logout-btn:hover { background:rgba(232,84,26,.25); }
+.adm-close-btn {
+  background:none; border:1px solid rgba(201,169,110,.2); color:var(--stone);
+  padding:.38rem .7rem; border-radius:2px; cursor:pointer; font-size:.75rem;
+  transition:border-color .2s,color .2s;
+}
+.adm-close-btn:hover { border-color:var(--sand); color:var(--cream); }
+
+/* Layout */
+.adm-body { display:flex; flex:1; overflow:hidden; }
+
+/* Sidebar */
+.adm-sidebar {
+  width:220px; flex-shrink:0; background:var(--dark);
+  border-right:1px solid rgba(201,169,110,.1);
+  display:flex; flex-direction:column; overflow-y:auto;
+  padding:1.2rem 0;
+}
+.adm-sidebar-section {
+  font-size:.55rem; font-weight:700; letter-spacing:.3em; text-transform:uppercase;
+  color:var(--stone); padding:.5rem 1.3rem .35rem; margin-top:.5rem;
+}
+.adm-nav-item {
+  display:flex; align-items:center; gap:.7rem; padding:.65rem 1.3rem;
+  color:rgba(232,220,200,.55); cursor:pointer; font-size:.8rem;
+  border-left:2px solid transparent; transition:all .15s;
+  text-decoration:none; font-weight:400;
+}
+.adm-nav-item:hover { color:var(--cream); background:rgba(255,255,255,.04); }
+.adm-nav-item.active {
+  color:var(--cream); background:rgba(232,84,26,.1);
+  border-left-color:var(--ember);
+}
+.adm-nav-item .ico { font-size:1rem; width:18px; text-align:center; flex-shrink:0; }
+
+/* Main content */
+.adm-main { flex:1; overflow-y:auto; padding:2rem 2.2rem; }
+
+/* Sections */
+.adm-section { display:none; }
+.adm-section.active { display:block; }
+.adm-section-title {
+  font-family:'Barlow Condensed',sans-serif; font-size:1.6rem; font-weight:700;
+  letter-spacing:.06em; color:var(--cream); margin-bottom:.3rem;
+}
+.adm-section-sub { font-size:.78rem; color:var(--stone); margin-bottom:2rem; }
+
+/* Stats row */
+.adm-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-bottom:2rem; }
+@media(max-width:900px){ .adm-stats { grid-template-columns:repeat(2,1fr); } }
+.adm-stat {
+  background:var(--dark); border:1px solid rgba(201,169,110,.12);
+  border-radius:3px; padding:1.2rem 1.4rem;
+}
+.adm-stat-val {
+  font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:700;
+  color:var(--cream); line-height:1;
+}
+.adm-stat-lbl { font-size:.65rem; color:var(--stone); letter-spacing:.12em; text-transform:uppercase; margin-top:.35rem; }
+.adm-stat-ico { font-size:1.5rem; margin-bottom:.5rem; }
+
+/* Cards */
+.adm-card {
+  background:var(--dark); border:1px solid rgba(201,169,110,.12);
+  border-radius:3px; padding:1.5rem; margin-bottom:1.2rem;
+}
+.adm-card-title {
+  font-family:'Barlow Condensed',sans-serif; font-size:.72rem; font-weight:700;
+  letter-spacing:.22em; text-transform:uppercase; color:var(--ember);
+  margin-bottom:1.2rem;
+}
+
+/* Form elements */
+.adm-form-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+@media(max-width:700px){ .adm-form-grid { grid-template-columns:1fr; } }
+.adm-form-field { margin-bottom:.9rem; }
+.adm-form-field label {
+  display:block; font-size:.62rem; font-weight:600; letter-spacing:.18em;
+  text-transform:uppercase; color:var(--sand); margin-bottom:.4rem;
+}
+.adm-form-field input,
+.adm-form-field textarea,
+.adm-form-field select {
+  width:100%; background:rgba(255,255,255,.05); border:1px solid rgba(201,169,110,.18);
+  border-radius:2px; padding:.6rem .85rem; color:var(--cream);
+  font-family:'Barlow',sans-serif; font-size:.83rem; outline:none;
+  transition:border-color .2s; resize:vertical;
+}
+.adm-form-field input:focus,
+.adm-form-field textarea:focus,
+.adm-form-field select:focus { border-color:var(--ember); }
+.adm-form-field textarea { min-height:80px; }
+.adm-form-field select option { background:var(--dark); color:var(--cream); }
+.adm-btn {
+  padding:.6rem 1.5rem; border-radius:2px; font-family:'Barlow Condensed',sans-serif;
+  font-size:.72rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
+  cursor:pointer; border:none; transition:background .2s;
+}
+.adm-btn-primary { background:var(--ember); color:var(--cream); }
+.adm-btn-primary:hover { background:var(--ember-dim); }
+.adm-btn-ghost {
+  background:transparent; color:var(--sand);
+  border:1px solid rgba(201,169,110,.25);
+}
+.adm-btn-ghost:hover { border-color:var(--sand); color:var(--cream); }
+.adm-btn-danger { background:rgba(200,50,50,.2); color:#e05050; border:1px solid rgba(200,50,50,.3); }
+.adm-btn-danger:hover { background:rgba(200,50,50,.35); }
+
+/* Table */
+.adm-table-wrap { overflow-x:auto; }
+.adm-table {
+  width:100%; border-collapse:collapse; font-size:.78rem;
+}
+.adm-table th {
+  font-size:.6rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--stone); text-align:left; padding:.65rem .8rem;
+  border-bottom:1px solid rgba(201,169,110,.15);
+}
+.adm-table td {
+  padding:.7rem .8rem; color:rgba(232,220,200,.8);
+  border-bottom:1px solid rgba(255,255,255,.04);
+}
+.adm-table tr:hover td { background:rgba(255,255,255,.03); }
+.adm-badge {
+  display:inline-block; padding:.18rem .55rem; border-radius:2px;
+  font-size:.6rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+}
+.adm-badge-green { background:rgba(80,180,80,.15); color:#6dcc6d; border:1px solid rgba(80,180,80,.25); }
+.adm-badge-yellow { background:rgba(200,160,50,.15); color:#d4aa40; border:1px solid rgba(200,160,50,.25); }
+.adm-badge-red { background:rgba(200,70,70,.15); color:#e07070; border:1px solid rgba(200,70,70,.25); }
+.adm-badge-blue { background:rgba(70,130,200,.15); color:#70a8e0; border:1px solid rgba(70,130,200,.25); }
+
+/* Save toast */
+.adm-toast {
+  position:fixed; bottom:2rem; left:50%; transform:translateX(-50%) translateY(80px);
+  background:var(--bark); border:1px solid rgba(232,84,26,.4);
+  color:var(--cream); padding:.7rem 1.6rem; border-radius:2px;
+  font-size:.75rem; font-weight:500; z-index:2000;
+  transition:transform .3s; pointer-events:none;
+}
+.adm-toast.show { transform:translateX(-50%) translateY(0); }
+
+/* Slider upload grid */
+.adm-slider-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
+@media(max-width:600px){ .adm-slider-grid { grid-template-columns:1fr; } }
+.adm-slide-thumb {
+  background:rgba(255,255,255,.04); border:1px solid rgba(201,169,110,.15);
+  border-radius:3px; overflow:hidden;
+}
+.adm-slide-img {
+  width:100%; height:120px; object-fit:cover; display:block;
+  background:rgba(255,255,255,.06);
+}
+.adm-slide-img-placeholder {
+  width:100%; height:120px; display:flex; align-items:center; justify-content:center;
+  font-size:2rem; background:rgba(255,255,255,.04); color:var(--stone);
+}
+.adm-slide-body { padding:.9rem 1rem; }
+.adm-slide-name {
+  font-family:'Barlow Condensed',sans-serif; font-size:.7rem; font-weight:700;
+  letter-spacing:.15em; text-transform:uppercase; color:var(--sand); margin-bottom:.6rem;
+}
+.adm-slide-actions { display:flex; gap:.5rem; flex-wrap:wrap; }
+.adm-upload-input { display:none; }
+</style>
+
+<!-- ── Admin trigger button ── -->
+
+<!-- ── Login overlay ── -->
+<div class="adm-login-wrap" id="admLoginWrap">
+  <div class="adm-login-box">
+    <button class="adm-login-close" id="admLoginClose">✕</button>
+    <div class="adm-login-logo">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="ll-hub" cx="35%" cy="30%" r="65%">
+            <stop offset="0%" stop-color="rgba(255,255,255,0.95)"/>
+            <stop offset="100%" stop-color="rgba(170,195,215,0.6)"/>
+          </radialGradient>
+          <radialGradient id="ll-jewel" cx="35%" cy="28%" r="60%">
+            <stop offset="0%" stop-color="#ff7b44"/>
+            <stop offset="45%" stop-color="#e8541a"/>
+            <stop offset="100%" stop-color="#a33a0e"/>
+          </radialGradient>
+        </defs>
+        <circle cx="50" cy="50" r="46" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.2"/>
+        <circle cx="50" cy="50" r="38" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="0.6"/>
+        <polygon points="50,12 53,47 50,50 47,47" fill="white" opacity="0.92"/>
+        <polygon points="50,88 53,53 50,50 47,53" fill="rgba(200,220,240,0.7)"/>
+        <polygon points="12,50 47,47 50,50 47,53" fill="rgba(235,247,255,0.85)"/>
+        <polygon points="88,50 53,47 50,50 53,53" fill="rgba(155,185,210,0.6)"/>
+        <polygon points="78,22 53,47 50,50 47,47" fill="rgba(215,235,250,0.65)"/>
+        <polygon points="22,22 47,47 50,50 53,47" fill="rgba(230,245,255,0.78)"/>
+        <polygon points="78,78 53,53 50,50 47,53" fill="rgba(165,192,215,0.5)"/>
+        <polygon points="22,78 47,53 50,50 53,53" fill="rgba(185,210,228,0.58)"/>
+        <circle cx="50" cy="50" r="6" fill="url(#ll-hub)"/>
+        <circle cx="50" cy="50" r="3.5" fill="url(#ll-jewel)"/>
+      </svg>
+      <div class="adm-login-logo-text">ZOYEN <span>TURISMO</span></div>
+    </div>
+    <div class="adm-login-title">Panel de Administración</div>
+    <div class="adm-field">
+      <label>Usuario</label>
+      <input type="text" id="admUser" placeholder="admin" autocomplete="username"/>
+    </div>
+    <div class="adm-field">
+      <label>Contraseña</label>
+      <input type="password" id="admPass" placeholder="••••••••" autocomplete="current-password"/>
+    </div>
+    <button class="adm-login-btn" id="admLoginBtn">Ingresar</button>
+    <div class="adm-login-err" id="admLoginErr">Usuario o contraseña incorrectos.</div>
+  </div>
+</div>
+
+<!-- ── Admin panel ── -->
+<div class="adm-panel" id="admPanel">
+
+  <!-- Topbar -->
+  <div class="adm-topbar">
+    <div class="adm-topbar-logo">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="46" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1"/>
+        <polygon points="50,12 53,47 50,50 47,47" fill="white" opacity="0.9"/>
+        <polygon points="50,88 53,53 50,50 47,53" fill="rgba(200,220,240,0.65)"/>
+        <polygon points="12,50 47,47 50,50 47,53" fill="rgba(235,247,255,0.8)"/>
+        <polygon points="88,50 53,47 50,50 53,53" fill="rgba(155,185,210,0.55)"/>
+        <circle cx="50" cy="50" r="5" fill="white" opacity="0.85"/>
+        <circle cx="50" cy="50" r="2.8" fill="#e8541a"/>
+      </svg>
+      <div>
+        <div class="adm-topbar-brand">ZOYEN <span>TURISMO</span></div>
+      </div>
+      <span class="adm-topbar-badge">Admin</span>
+    </div>
+    <div class="adm-topbar-right">
+      <span class="adm-user-info" id="admUserLabel">👤 admin</span>
+      <button class="adm-logout-btn" id="admLogoutBtn">Cerrar sesión</button>
+      <button class="adm-close-btn" id="admPanelClose" title="Volver al sitio">← Volver al sitio</button>
+    </div>
+  </div>
+
+  <div class="adm-body">
+
+    <!-- Sidebar -->
+    <nav class="adm-sidebar">
+      <div class="adm-sidebar-section">General</div>
+      <div class="adm-nav-item active" data-section="dashboard"><span class="ico">📊</span> Dashboard</div>
+      <div class="adm-sidebar-section">Contenido</div>
+      <div class="adm-nav-item" data-section="textos"><span class="ico">✏️</span> Textos y descripciones</div>
+      <div class="adm-nav-item" data-section="excursiones"><span class="ico">🏔</span> Excursiones</div>
+      <div class="adm-nav-item" data-section="slider"><span class="ico">🖼</span> Slider / Banners</div>
+      <div class="adm-sidebar-section">Operaciones</div>
+      <div class="adm-nav-item" data-section="reservas"><span class="ico">📋</span> Reservas</div>
+    </nav>
+
+    <!-- Main -->
+    <main class="adm-main">
+
+      <!-- DASHBOARD -->
+      <div class="adm-section active" id="sec-dashboard">
+        <div class="adm-section-title">Dashboard</div>
+        <div class="adm-section-sub">Resumen general del sitio · Zoyen Turismo</div>
+        <div class="adm-stats">
+          <div class="adm-stat">
+            <div class="adm-stat-ico">📋</div>
+            <div class="adm-stat-val" id="dash-reservas">0</div>
+            <div class="adm-stat-lbl">Reservas totales</div>
+          </div>
+          <div class="adm-stat">
+            <div class="adm-stat-ico">⏳</div>
+            <div class="adm-stat-val" id="dash-pendientes">0</div>
+            <div class="adm-stat-lbl">Pendientes de pago</div>
+          </div>
+          <div class="adm-stat">
+            <div class="adm-stat-ico">✅</div>
+            <div class="adm-stat-val" id="dash-confirmadas">0</div>
+            <div class="adm-stat-lbl">Confirmadas</div>
+          </div>
+          <div class="adm-stat">
+            <div class="adm-stat-ico">🏔</div>
+            <div class="adm-stat-val">6</div>
+            <div class="adm-stat-lbl">Excursiones activas</div>
+          </div>
+        </div>
+
+        <div class="adm-card">
+          <div class="adm-card-title">Últimas reservas</div>
+          <div class="adm-table-wrap">
+            <table class="adm-table">
+              <thead>
+                <tr>
+                  <th>#</th><th>Pasajero</th><th>Excursión</th><th>Fecha</th><th>Personas</th><th>Seña</th><th>Estado</th>
+                </tr>
+              </thead>
+              <tbody id="dash-reservas-tbody">
+                <tr><td colspan="7" style="color:var(--stone);text-align:center;padding:2rem">Sin reservas registradas aún.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- TEXTOS -->
+      <div class="adm-section" id="sec-textos">
+        <div class="adm-section-title">Textos y descripciones</div>
+        <div class="adm-section-sub">Editá los textos principales del sitio. Los cambios se aplican en tiempo real.</div>
+
+        <div class="adm-card">
+          <div class="adm-card-title">Hero · Slide 1</div>
+          <div class="adm-form-grid">
+            <div class="adm-form-field">
+              <label>Eyebrow (etiqueta)</label>
+              <input type="text" id="txt-s0-eyebrow" value="Patagonia Argentina"/>
+            </div>
+            <div class="adm-form-field">
+              <label>Título principal</label>
+              <input type="text" id="txt-s0-title" value="Explorá la Patagonia Inédita"/>
+            </div>
+          </div>
+          <div class="adm-form-field">
+            <label>Descripción</label>
+            <textarea id="txt-s0-desc">De la mano de quienes la vivimos. Excursiones únicas en la Patagonia profunda.</textarea>
+          </div>
+          <button class="adm-btn adm-btn-primary" onclick="applySlideText(0)">Aplicar cambios</button>
+        </div>
+
+        <div class="adm-card">
+          <div class="adm-card-title">Hero · Slide 2</div>
+          <div class="adm-form-grid">
+            <div class="adm-form-field">
+              <label>Eyebrow</label>
+              <input type="text" id="txt-s1-eyebrow" value="Patrimonio UNESCO"/>
+            </div>
+            <div class="adm-form-field">
+              <label>Título</label>
+              <input type="text" id="txt-s1-title" value="Cueva de las Manos"/>
+            </div>
+          </div>
+          <div class="adm-form-field">
+            <label>Descripción</label>
+            <textarea id="txt-s1-desc">Uno de los sitios arqueológicos más importantes del mundo. Arte rupestre de más de 9.000 años.</textarea>
+          </div>
+          <button class="adm-btn adm-btn-primary" onclick="applySlideText(1)">Aplicar cambios</button>
+        </div>
+
+        <div class="adm-card">
+          <div class="adm-card-title">Hero · Slide 3</div>
+          <div class="adm-form-grid">
+            <div class="adm-form-field">
+              <label>Eyebrow</label>
+              <input type="text" id="txt-s2-eyebrow" value="Chile · Carretera Austral"/>
+            </div>
+            <div class="adm-form-field">
+              <label>Título</label>
+              <input type="text" id="txt-s2-title" value="Capillas de Mármol"/>
+            </div>
+          </div>
+          <div class="adm-form-field">
+            <label>Descripción</label>
+            <textarea id="txt-s2-desc">Navegación sobre el Lago General Carrera. Una de las maravillas naturales del extremo sur.</textarea>
+          </div>
+          <button class="adm-btn adm-btn-primary" onclick="applySlideText(2)">Aplicar cambios</button>
+        </div>
+
+        <div class="adm-card">
+          <div class="adm-card-title">Hero · Slide 4</div>
+          <div class="adm-form-grid">
+            <div class="adm-form-field">
+              <label>Eyebrow</label>
+              <input type="text" id="txt-s3-eyebrow" value="Ruta Escénica 41"/>
+            </div>
+            <div class="adm-form-field">
+              <label>Título</label>
+              <input type="text" id="txt-s3-title" value="Monte Zeballos"/>
+            </div>
+          </div>
+          <div class="adm-form-field">
+            <label>Descripción</label>
+            <textarea id="txt-s3-desc">Desde los 400 hasta los 1.500 metros. La ruta escénica más impactante de Santa Cruz.</textarea>
+          </div>
+          <button class="adm-btn adm-btn-primary" onclick="applySlideText(3)">Aplicar cambios</button>
+        </div>
+
+        <div class="adm-card">
+          <div class="adm-card-title">Manifesto / Quiénes somos</div>
+          <div class="adm-form-field">
+            <label>Cita destacada</label>
+            <textarea id="txt-manifesto-quote">"La Patagonia no se visita: se vive, se siente, se lleva adentro para siempre."</textarea>
+          </div>
+          <div class="adm-form-field">
+            <label>Descripción</label>
+            <textarea id="txt-manifesto-body">Somos una agencia local que nació del amor por esta tierra. Cada excursión la diseñamos pensando en la experiencia que queremos que te lleves.</textarea>
+          </div>
+          <button class="adm-btn adm-btn-primary" onclick="applyManifesto()">Aplicar cambios</button>
+        </div>
+      </div>
+
+      <!-- EXCURSIONES -->
+      <div class="adm-section" id="sec-excursiones">
+        <div class="adm-section-title">Gestión de Excursiones</div>
+        <div class="adm-section-sub">Editá precios, disponibilidad y descripción de cada excursión.</div>
+
+        <div id="exc-list"></div>
+
+        <div class="adm-card" style="margin-top:1.5rem">
+          <div class="adm-card-title">Vista previa de precios en formulario</div>
+          <div class="adm-table-wrap">
+            <table class="adm-table">
+              <thead><tr><th>Excursión</th><th>Precio actual</th><th>Estado</th></tr></thead>
+              <tbody id="exc-preview-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- SLIDER -->
+      <div class="adm-section" id="sec-slider">
+        <div class="adm-section-title">Slider / Banners</div>
+        <div class="adm-section-sub">Cargá o reemplazá las imágenes del slider principal.</div>
+        <div class="adm-slider-grid" id="slider-thumbs-grid"></div>
+      </div>
+
+      <!-- RESERVAS -->
+      <div class="adm-section" id="sec-reservas">
+        <div class="adm-section-title">Reservas</div>
+        <div class="adm-section-sub">Listado de todas las reservas registradas en esta sesión.</div>
+
+        <div class="adm-card">
+          <div class="adm-card-title" style="display:flex;justify-content:space-between;align-items:center">
+            <span>Todas las reservas</span>
+            <div style="display:flex;gap:.5rem;align-items:center">
+              <select id="res-filter" style="background:rgba(255,255,255,.06);border:1px solid rgba(201,169,110,.2);color:var(--cream);padding:.35rem .6rem;border-radius:2px;font-size:.72rem;outline:none">
+                <option value="all">Todos los estados</option>
+                <option value="pendiente">Pendientes</option>
+                <option value="confirmada">Confirmadas</option>
+                <option value="cancelada">Canceladas</option>
+              </select>
+            </div>
+          </div>
+          <div class="adm-table-wrap">
+            <table class="adm-table">
+              <thead>
+                <tr><th>#</th><th>Pasajero</th><th>Tel / Email</th><th>Excursión</th><th>Fecha viaje</th><th>Personas</th><th>Asientos</th><th>Seña</th><th>Estado</th><th>Acción</th></tr>
+              </thead>
+              <tbody id="res-tbody">
+                <tr><td colspan="10" style="color:var(--stone);text-align:center;padding:2rem">Sin reservas registradas aún.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="adm-toast" id="admToast">✓ Cambios guardados correctamente</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     ADMIN JS
+════════════════════════════════════════════════════════ -->
+<script>
+(function() {
+
+// ── Credentials ──────────────────────────────────────────
+const ADMIN_CREDS = { user: 'zoyen', pass: 'patagonia2025' };
+let admLoggedIn = false;
+
+// ── Excursion data (mirrors the booking form) ─────────────
+const excData = [
+  { key:'cueva',      name:'Cueva de las Manos',          precio:18000, estado:'activa',   duracion:'Día completo',  capacidad:14 },
+  { key:'capillas',   name:'Capillas y Catedrales de Mármol', precio:24000, estado:'activa', duracion:'Día completo', capacidad:14 },
+  { key:'posadas',    name:'Lagos Posadas · Ruta 41',     precio:15000, estado:'activa',   duracion:'Día completo',  capacidad:14 },
+  { key:'zeballos',   name:'Ruta 41 · Monte Zeballos',    precio:16000, estado:'activa',   duracion:'Día completo',  capacidad:14 },
+  { key:'pnp',        name:'Parque Nacional Patagonia',   precio:14000, estado:'activa',   duracion:'Día completo',  capacidad:14 },
+  { key:'charcamata', name:'Alero Charcamata',            precio:12000, estado:'activa',   duracion:'Medio día',     capacidad:14 },
+];
+
+// ── Reservas (collected from booking modal) ───────────────
+let reservas = JSON.parse(sessionStorage.getItem('zyt_reservas') || '[]');
+
+function saveReservas() { sessionStorage.setItem('zyt_reservas', JSON.stringify(reservas)); }
+
+// Hook into the existing payment flow to capture reservas
+const origBtnPagar = document.getElementById('btnPagar');
+if (origBtnPagar) {
+  origBtnPagar.addEventListener('click', function() {
+    setTimeout(() => {
+      const excEl = document.getElementById('sel-excursion');
+      const excOpt = excEl && excEl.selectedOptions[0];
+      const fecha = document.getElementById('sel-fecha') ? document.getElementById('sel-fecha').value : '';
+      const personas = document.getElementById('sel-personas') ? document.getElementById('sel-personas').value : '1';
+      const nombre = document.getElementById('inp-nombre') ? document.getElementById('inp-nombre').value.trim() : '';
+      const tel = document.getElementById('inp-tel') ? document.getElementById('inp-tel').value.trim() : '';
+      const email = document.getElementById('inp-email') ? document.getElementById('inp-email').value.trim() : '';
+      const precio = excOpt && excOpt.dataset.precio ? parseInt(excOpt.dataset.precio) : 0;
+      const senia = Math.round(precio * parseInt(personas) * 0.20);
+      if (nombre && excOpt) {
+        reservas.push({
+          id: Date.now(),
+          nombre, tel, email,
+          excursion: excOpt.text.split('—')[0].trim(),
+          fecha, personas,
+          asientos: (window.selectedSeats || []).slice().sort((a,b)=>a-b).join(', '),
+          senia, estado: 'pendiente',
+          creado: new Date().toLocaleDateString('es-AR')
+        });
+        saveReservas();
+      }
+    }, 200);
+  });
+}
+
+// ── DOM refs ──────────────────────────────────────────────
+// Triple-click on nav logo
+const triggerBtn    = document.querySelector('.nav-logo');
+const loginWrap     = document.getElementById('admLoginWrap');
+const loginClose    = document.getElementById('admLoginClose');
+const loginBtn      = document.getElementById('admLoginBtn');
+const loginErr      = document.getElementById('admLoginErr');
+const panel         = document.getElementById('admPanel');
+const logoutBtn     = document.getElementById('admLogoutBtn');
+const panelClose    = document.getElementById('admPanelClose');
+const toast         = document.getElementById('admToast');
+const navItems      = document.querySelectorAll('.adm-nav-item');
+
+// ── Login flow ────────────────────────────────────────────
+let admClickCount = 0, admClickTimer = null;
+triggerBtn.addEventListener('click', (e) => {
+  admClickCount++;
+  if (admClickTimer) clearTimeout(admClickTimer);
+  admClickTimer = setTimeout(() => { admClickCount = 0; }, 600);
+  if (admClickCount >= 3) {
+    admClickCount = 0;
+    clearTimeout(admClickTimer);
+    e.preventDefault();
+    if (admLoggedIn) { openPanel(); }
+    else { loginWrap.classList.add('open'); document.getElementById('admUser').focus(); }
+  }
+});
+loginClose.addEventListener('click', () => loginWrap.classList.remove('open'));
+loginWrap.addEventListener('click', e => { if (e.target === loginWrap) loginWrap.classList.remove('open'); });
+
+function doLogin() {
+  const u = document.getElementById('admUser').value.trim();
+  const p = document.getElementById('admPass').value;
+  if (u === ADMIN_CREDS.user && p === ADMIN_CREDS.pass) {
+    admLoggedIn = true;
+    loginErr.style.display = 'none';
+    loginWrap.classList.remove('open');
+    document.getElementById('admUserLabel').textContent = '👤 ' + u;
+    openPanel();
+  } else {
+    loginErr.style.display = 'block';
+    document.getElementById('admPass').value = '';
+  }
+}
+loginBtn.addEventListener('click', doLogin);
+document.getElementById('admPass').addEventListener('keydown', e => { if (e.key==='Enter') doLogin(); });
+document.getElementById('admUser').addEventListener('keydown', e => { if (e.key==='Enter') document.getElementById('admPass').focus(); });
+
+logoutBtn.addEventListener('click', () => { admLoggedIn = false; panel.classList.remove('open'); showToast('Sesión cerrada.'); });
+panelClose.addEventListener('click', () => panel.classList.remove('open'));
+
+function openPanel() {
+  panel.classList.add('open');
+  refreshDashboard();
+  buildExcursiones();
+  buildSliderGrid();
+  buildReservas();
+}
+
+// ── Navigation ────────────────────────────────────────────
+navItems.forEach(item => {
+  item.addEventListener('click', () => {
+    navItems.forEach(i => i.classList.remove('active'));
+    item.classList.add('active');
+    document.querySelectorAll('.adm-section').forEach(s => s.classList.remove('active'));
+    const sec = document.getElementById('sec-' + item.dataset.section);
+    if (sec) sec.classList.add('active');
+    if (item.dataset.section === 'reservas') buildReservas();
+    if (item.dataset.section === 'excursiones') buildExcursiones();
+    if (item.dataset.section === 'slider') buildSliderGrid();
+  });
+});
+
+// ── Toast ─────────────────────────────────────────────────
+function showToast(msg) {
+  toast.textContent = '✓ ' + (msg || 'Cambios guardados correctamente');
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2800);
+}
+
+// ── Dashboard ─────────────────────────────────────────────
+function refreshDashboard() {
+  const total = reservas.length;
+  const pend  = reservas.filter(r=>r.estado==='pendiente').length;
+  const conf  = reservas.filter(r=>r.estado==='confirmada').length;
+  document.getElementById('dash-reservas').textContent    = total;
+  document.getElementById('dash-pendientes').textContent  = pend;
+  document.getElementById('dash-confirmadas').textContent = conf;
+  const tbody = document.getElementById('dash-reservas-tbody');
+  if (!reservas.length) {
+    tbody.innerHTML = '<tr><td colspan="7" style="color:var(--stone);text-align:center;padding:2rem">Sin reservas registradas aún.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = reservas.slice(-10).reverse().map((r,i) => `
+    <tr>
+      <td style="color:var(--stone)">#${reservas.length - i}</td>
+      <td>${r.nombre}</td>
+      <td>${r.excursion}</td>
+      <td>${r.fecha ? new Date(r.fecha+'T12:00:00').toLocaleDateString('es-AR',{day:'numeric',month:'short'}) : '—'}</td>
+      <td>${r.personas}</td>
+      <td style="color:var(--ember)">$${r.senia.toLocaleString('es-AR')}</td>
+      <td>${badgeHtml(r.estado)}</td>
+    </tr>`).join('');
+}
+
+function badgeHtml(estado) {
+  const map = { pendiente:'yellow', confirmada:'green', cancelada:'red' };
+  return `<span class="adm-badge adm-badge-${map[estado]||'blue'}">${estado}</span>`;
+}
+
+// ── Excursiones ───────────────────────────────────────────
+function buildExcursiones() {
+  const list = document.getElementById('exc-list');
+  list.innerHTML = excData.map((e, i) => `
+    <div class="adm-card">
+      <div class="adm-card-title">${e.name}</div>
+      <div class="adm-form-grid">
+        <div class="adm-form-field">
+          <label>Precio por persona ($)</label>
+          <input type="number" id="exc-precio-${i}" value="${e.precio}" min="0" step="500"/>
+        </div>
+        <div class="adm-form-field">
+          <label>Estado</label>
+          <select id="exc-estado-${i}">
+            <option value="activa" ${e.estado==='activa'?'selected':''}>✅ Activa</option>
+            <option value="pausada" ${e.estado==='pausada'?'selected':''}>⏸ Pausada</option>
+            <option value="completa" ${e.estado==='completa'?'selected':''}>🔴 Sin lugares</option>
+          </select>
+        </div>
+        <div class="adm-form-field">
+          <label>Duración</label>
+          <input type="text" id="exc-dur-${i}" value="${e.duracion}"/>
+        </div>
+        <div class="adm-form-field">
+          <label>Capacidad (pasajeros)</label>
+          <input type="number" id="exc-cap-${i}" value="${e.capacidad}" min="1" max="20"/>
+        </div>
+      </div>
+      <button class="adm-btn adm-btn-primary" onclick="saveExcursion(${i})">Guardar cambios</button>
+    </div>`).join('');
+
+  buildExcPreview();
+}
+
+function saveExcursion(i) {
+  excData[i].precio    = parseInt(document.getElementById(`exc-precio-${i}`).value) || excData[i].precio;
+  excData[i].estado    = document.getElementById(`exc-estado-${i}`).value;
+  excData[i].duracion  = document.getElementById(`exc-dur-${i}`).value;
+  excData[i].capacidad = parseInt(document.getElementById(`exc-cap-${i}`).value) || 14;
+  // Apply price to the booking form live
+  const opts = document.querySelectorAll('#sel-excursion option');
+  opts.forEach(opt => {
+    const found = excData.find(e => e.key === opt.value);
+    if (found) {
+      opt.dataset.precio = found.precio;
+      opt.textContent = `${found.name} — $${found.precio.toLocaleString('es-AR')} p/p`;
+    }
+  });
+  buildExcPreview();
+  showToast(`Excursión "${excData[i].name}" actualizada.`);
+}
+
+function buildExcPreview() {
+  const tbody = document.getElementById('exc-preview-tbody');
+  tbody.innerHTML = excData.map(e => `
+    <tr>
+      <td>${e.name}</td>
+      <td style="color:var(--ember);font-weight:600">$${e.precio.toLocaleString('es-AR')}</td>
+      <td>${badgeHtml(e.estado==='activa'?'confirmada':e.estado==='pausada'?'pendiente':'cancelada').replace(e.estado==='activa'?'confirmada':e.estado==='pausada'?'pendiente':'cancelada', e.estado)}</td>
+    </tr>`).join('');
+}
+
+// ── Slider ────────────────────────────────────────────────
+const slideLabels = ['Banner 1 – Patagonia', 'Banner 2 – Cueva de las Manos', 'Banner 3 – Capillas de Mármol', 'Banner 4 – Monte Zeballos'];
+const slideDefaultImgs = [
+  'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=70',
+  'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=600&q=70',
+  'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600&q=70',
+  'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=70',
+];
+
+function buildSliderGrid() {
+  const grid = document.getElementById('slider-thumbs-grid');
+  grid.innerHTML = slideLabels.map((lbl, i) => {
+    const slideBg = document.querySelector(`#s${i} .slide-bg`);
+    const currentBg = slideBg ? slideBg.style.backgroundImage.replace(/url\(['"]?(.*?)['"]?\)/,'$1') : slideDefaultImgs[i];
+    return `
+    <div class="adm-slide-thumb">
+      <img class="adm-slide-img" id="slider-preview-${i}" src="${currentBg}" alt="Banner ${i+1}"/>
+      <div class="adm-slide-body">
+        <div class="adm-slide-name">${lbl}</div>
+        <div class="adm-slide-actions">
+          <label class="adm-btn adm-btn-ghost" style="cursor:pointer;font-size:.65rem;padding:.45rem 1rem">
+            📁 Subir imagen
+            <input type="file" class="adm-upload-input" accept="image/*" onchange="handleSliderUpload(event,${i})"/>
+          </label>
+          <input type="text" placeholder="URL de imagen…" id="slider-url-${i}"
+            style="flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(201,169,110,.15);color:var(--cream);padding:.4rem .6rem;border-radius:2px;font-size:.7rem;outline:none;min-width:0"/>
+          <button class="adm-btn adm-btn-primary" style="padding:.45rem .8rem;font-size:.65rem" onclick="applySliderUrl(${i})">→</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function handleSliderUpload(e, i) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(ev) {
+    const url = ev.target.result;
+    applySliderImage(i, url);
+  };
+  reader.readAsDataURL(file);
+}
+
+function applySliderUrl(i) {
+  const url = document.getElementById(`slider-url-${i}`).value.trim();
+  if (url) applySliderImage(i, url);
+}
+
+function applySliderImage(i, url) {
+  const slideBg = document.querySelector(`#s${i} .slide-bg`);
+  if (slideBg) slideBg.style.backgroundImage = `url('${url}')`;
+  const preview = document.getElementById(`slider-preview-${i}`);
+  if (preview) preview.src = url;
+  // Update banner bar thumb
+  const bbThumb = document.querySelector(`.bb-thumb[data-i="${i}"]`);
+  if (bbThumb) {
+    bbThumb.innerHTML = `<img src="${url}" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none'"/>`;
+  }
+  showToast(`Banner ${i+1} actualizado.`);
+}
+
+// ── Textos ────────────────────────────────────────────────
+window.applySlideText = function(i) {
+  const slide = document.getElementById('s'+i);
+  if (!slide) return;
+  const ey = document.getElementById(`txt-s${i}-eyebrow`);
+  const ti = document.getElementById(`txt-s${i}-title`);
+  const de = document.getElementById(`txt-s${i}-desc`);
+  if (ey) { const el = slide.querySelector('.slide-eyebrow'); if(el) el.textContent = ey.value; }
+  if (ti) { const el = slide.querySelector('.slide-title'); if(el) el.innerHTML = ti.value; }
+  if (de) { const el = slide.querySelector('.slide-desc'); if(el) el.textContent = de.value; }
+  showToast(`Slide ${i+1} actualizado.`);
+};
+
+window.applyManifesto = function() {
+  const q = document.getElementById('txt-manifesto-quote');
+  const b = document.getElementById('txt-manifesto-body');
+  const qEl = document.querySelector('.manifesto-quote');
+  const bEl = document.querySelector('.manifesto .section-sub');
+  if (q && qEl) qEl.innerHTML = q.value;
+  if (b && bEl) bEl.textContent = b.value;
+  showToast('Manifesto actualizado.');
+};
+
+// ── Reservas ──────────────────────────────────────────────
+function buildReservas() {
+  refreshDashboard();
+  const filter = document.getElementById('res-filter').value;
+  const tbody = document.getElementById('res-tbody');
+  const filtered = filter === 'all' ? reservas : reservas.filter(r=>r.estado===filter);
+  if (!filtered.length) {
+    tbody.innerHTML = `<tr><td colspan="10" style="color:var(--stone);text-align:center;padding:2rem">${reservas.length ? 'Sin resultados para el filtro seleccionado.' : 'Sin reservas registradas aún.'}</td></tr>`;
+    return;
+  }
+  tbody.innerHTML = filtered.slice().reverse().map((r, idx) => {
+    const realIdx = reservas.indexOf(r);
+    return `
+    <tr>
+      <td style="color:var(--stone)">#${realIdx+1}</td>
+      <td style="font-weight:500">${r.nombre}</td>
+      <td style="font-size:.72rem;color:var(--stone)">${r.tel||'—'}<br>${r.email||'—'}</td>
+      <td>${r.excursion}</td>
+      <td>${r.fecha ? new Date(r.fecha+'T12:00:00').toLocaleDateString('es-AR',{day:'2-digit',month:'2-digit',year:'numeric'}) : '—'}</td>
+      <td style="text-align:center">${r.personas}</td>
+      <td style="text-align:center">${r.asientos||'—'}</td>
+      <td style="color:var(--ember);font-weight:600">$${(r.senia||0).toLocaleString('es-AR')}</td>
+      <td>${badgeHtml(r.estado)}</td>
+      <td>
+        <div style="display:flex;gap:.4rem;flex-wrap:wrap">
+          ${r.estado!=='confirmada' ? `<button class="adm-btn adm-btn-primary" style="padding:.3rem .6rem;font-size:.6rem" onclick="cambiarEstado(${realIdx},'confirmada')">✓ Confirmar</button>` : ''}
+          ${r.estado!=='cancelada' ? `<button class="adm-btn adm-btn-danger" style="padding:.3rem .6rem;font-size:.6rem" onclick="cambiarEstado(${realIdx},'cancelada')">✕ Cancelar</button>` : ''}
+        </div>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+window.cambiarEstado = function(idx, estado) {
+  reservas[idx].estado = estado;
+  saveReservas();
+  buildReservas();
+  refreshDashboard();
+  showToast(`Reserva #${idx+1} marcada como "${estado}".`);
+};
+
+document.getElementById('res-filter').addEventListener('change', buildReservas);
+
+// ── Expose for inline handlers ────────────────────────────
+window.saveExcursion   = saveExcursion;
+window.applySliderUrl  = applySliderUrl;
+window.handleSliderUpload = handleSliderUpload;
+
+})();
 </script>
 </body>
 </html>
