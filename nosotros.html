@@ -420,6 +420,70 @@ footer {
     <div class="breadcrumb"><a href="index.html">Inicio</a> / <span>Quiénes somos</span></div>
   </div>
 </section>
+<!-- ══ INDICADORES ══ -->
+<div id="statsBar" style="background:var(--dark);padding:2.5rem 4vw;border-bottom:1px solid rgba(232,84,26,.2);">
+  <div style="display:flex;gap:0;flex-wrap:wrap;max-width:900px;margin:0 auto;justify-content:space-between;align-items:center;">
+
+    <div class="sbar-item">
+      <div class="sbar-num" data-target="22" data-suffix="+">0+</div>
+      <div class="sbar-lbl">Años de experiencia</div>
+    </div>
+    <div class="sbar-sep"></div>
+    <div class="sbar-item">
+      <div class="sbar-num" data-target="8000" data-suffix="+">0+</div>
+      <div class="sbar-lbl">Viajeros recibidos</div>
+    </div>
+    <div class="sbar-sep"></div>
+    <div class="sbar-item">
+      <div class="sbar-num" data-target="12" data-suffix="">0</div>
+      <div class="sbar-lbl">Destinos únicos</div>
+    </div>
+    <div class="sbar-sep"></div>
+    <div class="sbar-item">
+      <div class="sbar-num" data-target="98" data-suffix="%">0%</div>
+      <div class="sbar-lbl">Nos recomiendan</div>
+    </div>
+
+  </div>
+</div>
+
+<style>
+.sbar-item { text-align:center; padding:.5rem 1rem; }
+.sbar-num  { font-family:'DM Serif Display',serif; font-size:2.8rem; font-weight:600; color:var(--ember); line-height:1; }
+.sbar-lbl  { font-size:.68rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:rgba(201,169,110,.65); margin-top:.4rem; }
+.sbar-sep  { width:1px; height:52px; background:rgba(232,84,26,.2); }
+@media(max-width:600px){ .sbar-sep{display:none;} .sbar-item{flex:1 1 45%;} }
+</style>
+
+<script>
+(function(){
+  function animateCounters(){
+    document.querySelectorAll('.sbar-num[data-target]').forEach(function(el){
+      var target = parseInt(el.dataset.target);
+      var suffix = el.dataset.suffix;
+      var duration = 2200;
+      var start = null;
+      function step(ts){
+        if(!start) start = ts;
+        var p = Math.min((ts-start)/duration,1);
+        var ease = 1-Math.pow(1-p,3);
+        var val = Math.floor(ease*target);
+        el.textContent = (target>=1000 ? val.toLocaleString('es-AR') : val) + suffix;
+        if(p<1) requestAnimationFrame(step);
+        else el.textContent = (target>=1000 ? target.toLocaleString('es-AR') : target) + suffix;
+      }
+      requestAnimationFrame(step);
+    });
+  }
+  var bar = document.getElementById('statsBar');
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ animateCounters(); obs.disconnect(); }});
+  },{threshold:0.3});
+  obs.observe(bar);
+})();
+</script>
+
+
 
 <!-- MANIFESTO STRIP -->
 <div class="manifesto-strip">
@@ -434,13 +498,13 @@ footer {
     <div class="nosotros-text reveal">
       <p class="eyebrow">Quiénes somos</p>
       <h2 class="section-title">Una agencia nacida<br>de <em>esta tierra</em></h2>
-      <p>Somos Zoyen Turismo, una agencia de viajes radicada en <strong>Perito Moreno, Santa Cruz</strong>, en el corazón de la Patagonia argentina. Nuestro nombre, "Zoyen", proviene de la lengua mapuche y significa <strong>viento del sur</strong> — el mismo que sopla en cada rincón de esta tierra que amamos.</p>
-      <p>Nacimos del deseo de mostrar la Patagonia real: la que no está en los catálogos masivos, la que viven quienes la habitamos todos los días. Cada excursión la diseñamos con el propósito de que te lleves algo que no se compra: <strong>una experiencia que transforma</strong>.</p>
-      <p>Contamos con el <strong>Legajo de Agencia N° 15.625</strong>, habilitación oficial para operar como prestadores de servicios turísticos en la República Argentina.</p>
+      <p>Zoyen Turismo nació en la ciudad de Caleta Olivia en el año 2003. Comenzamos con una computadora, un título de Licenciado en Turismo y muchos deseos de aprender y progresar en el mundo del turismo. En sus comienzos nos dedicamos al público local y regional como <strong>Agencia de Turismo Emisiva</strong>.</p>
+      <p>En el año 2006 nos instalamos en la ciudad de Perito Moreno, dedicándonos a lo que más nos gusta: recibir turistas de toda Argentina y del mundo como <strong>Agencia de Turismo Receptiva</strong>. Con el tiempo nos hicimos especialistas en <strong>ecoturismo</strong> en nuestra región, la Comarca Noroeste de Santa Cruz.</p>
+      <p>Hace varios años incluimos en nuestros recorridos la <strong>Patagonia Sur Chilena</strong>, con trayectos que unen Chile Chico con la Carretera Austral. Las <strong>capillas y catedrales de mármol</strong> sobre el Lago General Carrera se han convertido en uno de los atractivos más solicitados. Contamos con el <strong>Legajo de Agencia N° 15.625</strong>.</p>
     </div>
     <div class="nosotros-img-wrap reveal reveal-delay">
-      <img src="http://www.zoyenturismo.com.ar/wp-content/uploads/2022/10/cuevas_zoyen.jpg" alt="Cueva de las Manos - Zoyen Turismo">
-      <div class="nosotros-img-caption">Cueva de las Manos · Patrimonio UNESCO · Río Pinturas, Santa Cruz</div>
+      <img src="https://www.zoyenturismo.com.ar/wp-content/uploads/2025/09/parquepatagonia_zoyenturismo.jpg" alt="Parque Patagonia - Zoyen Turismo">
+      <div class="nosotros-img-caption">Parque Nacional Patagonia · Santa Cruz, Argentina</div>
     </div>
   </div>
 </section>
@@ -491,33 +555,76 @@ footer {
 <section class="equipo-section">
   <div class="equipo-content">
     <div class="equipo-img reveal">
-      <img src="http://www.zoyenturismo.com.ar/wp-content/uploads/2022/10/ruta41_zoyen.jpg" alt="Ruta 41 Patagonia - Zoyen Turismo">
+      <img src="https://www.zoyenturismo.com.ar/wp-content/uploads/2025/09/zoyen_turismo_patagonia_losantiguos.jpg" alt="Zoyen Turismo Los Antiguos Patagonia">
     </div>
     <div class="equipo-text reveal reveal-delay">
       <p class="eyebrow">Nuestra historia</p>
       <h2 class="section-title">Guías con <em>historia</em></h2>
-      <p>Nuestros guías no son solo expertos en logística: son personas que crecieron escuchando las historias de la Patagonia, que aprendieron los nombres de cada cerro y de cada especie de flora en la escuela del campo.</p>
-      <p>Trabajamos en equipo con guías de montaña, naturalistas y conductores certificados. <strong>Todos locales. Todos apasionados.</strong></p>
-      <p>Con años de operación turística en el sur de Santa Cruz, hemos llevado a miles de viajeros a descubrir la maravilla que tenemos a metros de nuestra puerta.</p>
-      <div class="stat-row">
-        <div class="stat-item">
-          <div class="stat-num">+10</div>
-          <div class="stat-lbl">Años operando</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">7+</div>
-          <div class="stat-lbl">Destinos únicos</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-num">14</div>
-          <div class="stat-lbl">Plazas por excursión</div>
-        </div>
-      </div>
+      <p>Nuestro enfoque está puesto en la <strong>parte humana de la empresa</strong> y en el contenido de cada excursión. Nos ocupamos del cuidado del medioambiente, la conservación y la toma de consciencia sobre nuestro paso por la tierra.</p>
+      <p>Procuramos que nuestros choferes y guías sean <strong>nacidos en la zona</strong>, para enriquecer cada excursión con conocimiento local. Nos capacitamos constantemente para que todo el equipo hable el mismo idioma y comparta la misma visión.</p>
+      <p>Nuestro mayor anhelo es estar a la altura de lo excelente que son los atractivos que visitamos día a día, y trabajamos constantemente para lograrlo. <strong>¡Gracias por visitar nuestro hogar!</strong></p>
+      <div class="stat-row" id="statsRow"></div>
+      <style>
+        .stat-row { display:flex; gap:2rem; flex-wrap:wrap; margin-top:2.5rem; padding-top:2rem; border-top:1px solid rgba(58,45,31,.1); }
+        .stat-item { text-align:center; }
+        .stat-num { font-family:"DM Serif Display",serif; font-size:2.4rem; font-weight:600; color:var(--ember); line-height:1; }
+        .stat-lbl { font-size:.72rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--stone); margin-top:.3rem; }
+      </style>
+      <script>
+        (function(){
+          var stats = [
+            { target: 22,   suffix: "+", label: "Años de experiencia" },
+            { target: 8000, suffix: "+", label: "Viajeros recibidos"  },
+            { target: 12,   suffix: "",  label: "Destinos únicos"     },
+            { target: 98,   suffix: "%", label: "Nos recomiendan"     },
+          ];
+          var row = document.getElementById("statsRow");
+          stats.forEach(function(s){
+            var div = document.createElement("div");
+            div.className = "stat-item";
+            div.innerHTML = '<div class="stat-num" data-target="'+s.target+'" data-suffix="'+s.suffix+'">0'+s.suffix+'</div><div class="stat-lbl">'+s.label+'</div>';
+            row.appendChild(div);
+          });
+          function animateCounters(){
+            document.querySelectorAll(".stat-num[data-target]").forEach(function(el){
+              var target = parseInt(el.dataset.target);
+              var suffix = el.dataset.suffix;
+              var duration = 2000;
+              var start = null;
+              function step(ts){
+                if(!start) start = ts;
+                var progress = Math.min((ts - start)/duration, 1);
+                var ease = 1 - Math.pow(1 - progress, 3);
+                el.textContent = Math.floor(ease * target) + suffix;
+                if(progress < 1) requestAnimationFrame(step);
+                else el.textContent = target + suffix;
+              }
+              requestAnimationFrame(step);
+            });
+          }
+          var obs = new IntersectionObserver(function(entries){
+            entries.forEach(function(e){ if(e.isIntersecting){ animateCounters(); obs.disconnect(); }});
+          }, {threshold: 0.4});
+          obs.observe(row);
+        })();
+      </script>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
+<section style="padding:3rem 4vw; background:var(--cream); border-top:1px solid rgba(58,45,31,.08);">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;">
+      <img src="https://www.zoyenturismo.com.ar/wp-content/uploads/2025/09/parquepatagonia_zoyenturismo.jpg" 
+           alt="Parque Patagonia" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:3px;"/>
+      <img src="https://www.zoyenturismo.com.ar/wp-content/uploads/2025/09/zoyen_turismo_patagonia_losantiguos.jpg" 
+           alt="Los Antiguos Patagonia" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:3px;"/>
+      <img src="https://www.zoyenturismo.com.ar/wp-content/uploads/2025/09/zoyen_turismo_patagonia_capillasdemarmol.jpg" 
+           alt="Capillas de Mármol" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:3px;"/>
+    </div>
+  </div>
+</section>
 <section class="nosotros-cta">
   <div class="reveal">
     <p class="eyebrow" style="color:var(--sand); justify-content:center; display:flex; align-items:center; gap:10px; margin-bottom:.5rem;">
