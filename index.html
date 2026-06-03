@@ -1837,6 +1837,72 @@ footer {
   </div>
 </div>
 
+<!-- ══ INDICADORES ══ -->
+<div id="statsBarHome" style="background:var(--dark);padding:2.5rem 4vw;border-bottom:1px solid rgba(232,84,26,.2);">
+  <div style="display:flex;flex-wrap:wrap;max-width:960px;margin:0 auto;justify-content:space-between;align-items:center;">
+    <div class="sbar-item">
+      <div class="sbar-num" data-target="22" data-suffix="+">0+</div>
+      <div class="sbar-lbl">Años de experiencia</div>
+    </div>
+    <div class="sbar-sep"></div>
+    <div class="sbar-item">
+      <div class="sbar-num" data-target="8000" data-suffix="+">0+</div>
+      <div class="sbar-lbl">Viajeros recibidos</div>
+    </div>
+    <div class="sbar-sep"></div>
+    <div class="sbar-item">
+      <div class="sbar-num" data-target="12" data-suffix="">0</div>
+      <div class="sbar-lbl">Destinos únicos</div>
+    </div>
+    <div class="sbar-sep"></div>
+    <div class="sbar-item">
+      <div class="sbar-num" data-target="98" data-suffix="%">0%</div>
+      <div class="sbar-lbl">Nos recomiendan</div>
+    </div>
+    <div class="sbar-sep"></div>
+    <div class="sbar-item">
+      <div class="sbar-num" data-target="2" data-suffix="">0</div>
+      <div class="sbar-lbl">Países recorridos</div>
+    </div>
+  </div>
+</div>
+
+<style>
+.sbar-item { text-align:center; padding:.5rem 1rem; }
+.sbar-num  { font-family:'DM Serif Display',serif; font-size:2.8rem; font-weight:600; color:var(--ember); line-height:1; }
+.sbar-lbl  { font-size:.68rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:rgba(201,169,110,.65); margin-top:.4rem; }
+.sbar-sep  { width:1px; height:52px; background:rgba(232,84,26,.2); }
+@media(max-width:650px){ .sbar-sep{display:none;} .sbar-item{flex:1 1 45%;margin-bottom:1rem;} }
+</style>
+
+<script>
+(function(){
+  function animateCounters(){
+    document.querySelectorAll('#statsBarHome .sbar-num[data-target]').forEach(function(el){
+      var target = parseInt(el.dataset.target);
+      var suffix = el.dataset.suffix;
+      var duration = 2200;
+      var start = null;
+      function step(ts){
+        if(!start) start = ts;
+        var p = Math.min((ts-start)/duration,1);
+        var ease = 1-Math.pow(1-p,3);
+        var val = Math.floor(ease*target);
+        el.textContent = (target>=1000 ? val.toLocaleString('es-AR') : val) + suffix;
+        if(p<1) requestAnimationFrame(step);
+        else el.textContent = (target>=1000 ? target.toLocaleString('es-AR') : target) + suffix;
+      }
+      requestAnimationFrame(step);
+    });
+  }
+  var bar = document.getElementById('statsBarHome');
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ animateCounters(); obs.disconnect(); }});
+  },{threshold:0.3});
+  obs.observe(bar);
+})();
+</script>
+
 
 
 <!-- TOURS DE AUTOR -->
