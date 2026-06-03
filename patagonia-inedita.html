@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patagonia Inédita – Tour 6 días · Zoyen Turismo</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:       #1a1410;
+  --dark:      #231c14;
+  --bark:      #3a2d1f;
+  --ember:     #e8541a;
+  --ember-dim: #c44410;
+  --amber:     #b87332;
+  --sand:      #c9a96e;
+  --dust:      #e8dcc8;
+  --cream:     #f5f0e8;
+  --fog:       #faf7f2;
+  --stone:     #7a6a5a;
+  --olive:     #5a6040;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Sora', sans-serif;
+  font-size: 16px; line-height: 1.7;
+  background: var(--fog); color: var(--ink); overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+  height: 72px;
+  display: grid; grid-template-columns: auto 1fr auto;
+  align-items: center; padding: 0 2vw; gap: 1rem;
+  background: rgba(10,10,10,0.92); backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(232,84,26,0.20);
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; line-height: 1; flex-shrink: 0; }
+.nav-emblem { width: 54px; height: 54px; flex-shrink: 0; }
+.nav-logo-text { display: flex; flex-direction: column; gap: 2px; justify-content: center; }
+.nav-logo-name { display: flex; align-items: baseline; }
+.nav-logo .z { font-family: 'Sora',sans-serif; font-weight: 700; font-size: 1.4rem; letter-spacing: .12em; color: var(--cream); text-transform: uppercase; }
+.nav-logo .t { font-family: 'Sora',sans-serif; font-weight: 700; font-size: 1.4rem; letter-spacing: .12em; color: var(--ember); text-transform: uppercase; }
+.nav-logo sub { font-size: .60rem; font-weight: 400; letter-spacing: .2em; color: var(--sand); opacity: .65; text-transform: uppercase; display: block; }
+.nav-links { display: flex; gap: 1.2rem; list-style: none; align-items: center; justify-content: center; }
+.nav-links a { color: rgba(245,240,232,.75); text-decoration: none; font-size: .78rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; transition: color .2s; position: relative; white-space: nowrap; }
+.nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--ember); transform:scaleX(0); transform-origin:left; transition:transform .3s; }
+.nav-links a:hover { color: var(--cream); }
+.nav-links a:hover::after { transform: scaleX(1); }
+.nav-links a.active { color: var(--ember); }
+.nav-links a.active::after { transform: scaleX(1); }
+.nav-cta-btn { background: var(--ember); color: var(--cream); padding: .5rem 1.3rem; border-radius: 2px; font-family: 'Sora',sans-serif; font-size: .78rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; text-decoration: none; white-space: nowrap; flex-shrink: 0; transition: background .2s; }
+.nav-cta-btn:hover { background: var(--ember-dim); }
+
+/* HERO */
+.page-hero { position: relative; height: 65vh; min-height: 480px; display: flex; align-items: flex-end; padding-bottom: 4rem; overflow: hidden; }
+.page-hero-bg { position: absolute; inset: 0; background-image: url('https://www.zoyenturismo.com.ar/wp-content/uploads/2022/10/full_inedita.jpg'); background-size: cover; background-position: center; transform: scale(1.04); animation: heroZoom 12s ease-out forwards; }
+@keyframes heroZoom { to { transform: scale(1); } }
+.page-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(26,20,16,.2) 0%, rgba(26,20,16,.8) 100%); }
+.page-hero-content { position: relative; z-index: 2; padding: 0 4vw; color: var(--cream); animation: fadeUp .9s .3s both; }
+@keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
+.page-hero-eyebrow { font-size: .88rem; font-weight: 700; letter-spacing: .32em; text-transform: uppercase; color: var(--ember); margin-bottom: .8rem; display: inline-flex; align-items: center; gap: 10px; }
+.page-hero-eyebrow::before, .page-hero-eyebrow::after { content: ''; width: 22px; height: 1px; background: var(--ember); }
+.page-hero-title { font-family: 'DM Serif Display', serif; font-size: clamp(2.4rem, 6vw, 4.5rem); font-weight: 600; line-height: 1.05; text-shadow: 0 2px 20px rgba(26,20,16,.5); }
+.page-hero-title em { font-style: italic; color: var(--sand); }
+.hero-tags { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: 1.2rem; }
+.hero-tag { background: rgba(26,20,16,.6); border: 1px solid rgba(232,84,26,.4); color: var(--dust); padding: .3rem .9rem; border-radius: 1px; font-size: .72rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; backdrop-filter: blur(6px); }
+.hero-tag.main { background: var(--ember); border-color: var(--ember-dim); }
+.breadcrumb { margin-top: .8rem; font-size: .75rem; color: rgba(245,240,232,.5); letter-spacing: .1em; text-transform: uppercase; }
+.breadcrumb a { color: rgba(245,240,232,.5); text-decoration: none; }
+.breadcrumb a:hover { color: var(--sand); }
+.breadcrumb span { color: var(--ember); }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .75s, transform .75s; }
+.reveal.in { opacity: 1; transform: none; }
+.reveal-delay { transition-delay: .15s; }
+.reveal-delay2 { transition-delay: .28s; }
+.eyebrow { font-size: .92rem; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: var(--ember); margin-bottom: .5rem; }
+.section-title { font-family: 'DM Serif Display', serif; font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 600; line-height: 1.1; color: var(--ink); }
+.section-title em { font-style: italic; color: var(--amber); }
+
+/* OVERVIEW STRIP */
+.overview-strip {
+  background: var(--dark);
+  padding: 2.5rem 4vw;
+  border-bottom: 1px solid rgba(232,84,26,.2);
+}
+.overview-inner {
+  display: flex; gap: 3rem; flex-wrap: wrap; align-items: center;
+  max-width: 1100px; margin: 0 auto;
+  justify-content: space-between;
+}
+.ov-item { text-align: center; }
+.ov-num { font-family: 'DM Serif Display', serif; font-size: 2.2rem; font-weight: 600; color: var(--ember); line-height: 1; }
+.ov-lbl { font-size: .65rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: rgba(201,169,110,.6); margin-top: .3rem; }
+.ov-sep { width: 1px; height: 48px; background: rgba(232,84,26,.2); }
+
+/* INTRO SECTION */
+.tour-intro {
+  padding: 5rem 4vw;
+  background: var(--fog);
+}
+.tour-intro-inner {
+  display: grid; grid-template-columns: 1.1fr 1fr; gap: 5rem;
+  align-items: start; max-width: 1200px; margin: 0 auto;
+}
+@media (max-width:800px) { .tour-intro-inner { grid-template-columns:1fr; gap:2.5rem; } }
+.tour-intro-text p { font-size: 1.02rem; color: var(--stone); line-height: 1.85; font-weight: 300; margin-bottom: 1.2rem; }
+.tour-intro-text p strong { color: var(--ink); font-weight: 600; }
+.tour-intro-text h2 { margin-bottom: 1.4rem; }
+.tour-highlights {
+  background: var(--cream);
+  border: 1px solid rgba(58,45,31,.1);
+  border-top: 3px solid var(--ember);
+  border-radius: 3px; padding: 1.8rem;
+}
+.tour-highlights h3 { font-family: 'DM Serif Display', serif; font-size: 1.2rem; font-weight: 600; color: var(--ink); margin-bottom: 1.2rem; padding-bottom: .8rem; border-bottom: 1px solid rgba(58,45,31,.1); }
+.hl-list { list-style: none; display: flex; flex-direction: column; gap: .7rem; }
+.hl-list li { display: flex; align-items: flex-start; gap: .8rem; font-size: .96rem; color: var(--stone); line-height: 1.5; }
+.hl-list li::before { content: '→'; color: var(--ember); font-weight: 700; flex-shrink: 0; margin-top: .1rem; }
+.hl-list li strong { color: var(--ink); font-weight: 600; }
+
+/* INCLUYE / NO INCLUYE */
+.inc-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  margin-top: 1.5rem;
+}
+@media (max-width:600px) { .inc-grid { grid-template-columns:1fr; } }
+.inc-card { background: #fff; border: 1px solid rgba(58,45,31,.1); border-radius: 3px; padding: 1.4rem 1.3rem; }
+.inc-card h4 { font-size: .75rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; margin-bottom: .9rem; padding-bottom: .6rem; border-bottom: 1px solid rgba(58,45,31,.08); }
+.inc-card.yes h4 { color: var(--olive); }
+.inc-card.no h4 { color: var(--stone); }
+.inc-list { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+.inc-list li { font-size: .88rem; color: var(--stone); display: flex; gap: .6rem; align-items: flex-start; }
+.inc-list li span.ico { flex-shrink: 0; }
+
+/* ITINERARIO */
+.itinerario-section {
+  padding: 5rem 4vw;
+  background: var(--cream);
+  border-top: 1px solid rgba(58,45,31,.08);
+}
+.itinerario-inner { max-width: 900px; margin: 0 auto; }
+.dia-block {
+  display: grid; grid-template-columns: 80px 1fr; gap: 0;
+  margin-bottom: 0;
+  position: relative;
+}
+.dia-block:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 39px; top: 48px; bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--ember), rgba(232,84,26,.15));
+}
+.dia-num {
+  display: flex; flex-direction: column; align-items: center; padding-top: .5rem;
+  position: relative; z-index: 1;
+}
+.dia-circle {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: var(--ember); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Serif Display', serif; font-size: 1.1rem; font-weight: 600;
+  box-shadow: 0 4px 16px rgba(232,84,26,.4);
+  flex-shrink: 0;
+}
+.dia-content {
+  padding: .3rem 0 3rem 1.8rem;
+}
+.dia-label { font-size: .65rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--ember); margin-bottom: .4rem; }
+.dia-title { font-family: 'DM Serif Display', serif; font-size: 1.4rem; font-weight: 600; color: var(--ink); margin-bottom: .8rem; line-height: 1.2; }
+.dia-title em { font-style: italic; color: var(--amber); }
+.dia-desc { font-size: .97rem; color: var(--stone); line-height: 1.85; font-weight: 300; }
+.dia-desc strong { color: var(--ink); font-weight: 600; }
+.dia-img { width: 100%; border-radius: 3px; margin-top: 1.2rem; aspect-ratio: 16/7; object-fit: cover; box-shadow: 0 8px 32px rgba(26,20,16,.12); }
+.dia-chips { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: 1rem; }
+.dia-chip { font-size: .65rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; background: rgba(58,45,31,.07); color: var(--stone); padding: .25rem .75rem; border-radius: 999px; border: 1px solid rgba(58,45,31,.12); }
+
+/* GALERIA */
+.galeria-section { padding: 5rem 4vw; background: var(--fog); }
+.galeria-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; margin-top: 3rem; }
+@media (max-width:700px) { .galeria-grid { grid-template-columns: 1fr 1fr; } }
+.galeria-grid img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 2px; transition: transform .4s, box-shadow .4s; cursor: pointer; }
+.galeria-grid img:hover { transform: scale(1.03); box-shadow: 0 16px 40px rgba(26,20,16,.18); }
+.galeria-grid img:first-child { grid-column: span 2; aspect-ratio: 16/7; }
+
+/* CTA */
+.tour-cta { background: var(--dark); padding: 5rem 4vw; text-align: center; border-top: 1px solid rgba(232,84,26,.2); }
+.tour-cta h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 600; color: var(--dust); margin-bottom: 1rem; }
+.tour-cta h2 em { font-style: italic; color: var(--sand); }
+.tour-cta p { font-size: 1.02rem; color: rgba(232,220,200,.55); max-width: 480px; margin: 0 auto 2.5rem; font-weight: 300; line-height: 1.8; }
+.cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.cta-btn-p { background: var(--ember); color: var(--cream); padding: .85rem 2.2rem; border-radius: 2px; text-decoration: none; font-size: .93rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; transition: background .2s; }
+.cta-btn-p:hover { background: var(--ember-dim); }
+.cta-btn-g { border: 1px solid rgba(245,240,232,.3); color: rgba(245,240,232,.7); padding: .85rem 2.2rem; border-radius: 2px; text-decoration: none; font-size: .93rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; transition: border-color .2s, color .2s; background: transparent; }
+.cta-btn-g:hover { border-color: var(--sand); color: var(--sand); }
+
+/* FOOTER */
+footer { background: #0a0a0a; padding: 5rem 3vw 2.5rem; }
+.footer-top { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(232,84,26,.15); margin-bottom: 2rem; }
+@media (max-width:700px){ .footer-top { grid-template-columns: 1fr; gap: 2rem; } }
+.footer-brand-wrap { display: flex; align-items: center; gap: 12px; margin-bottom: .6rem; }
+.footer-emblem { width: 48px; height: 48px; flex-shrink: 0; }
+.footer-brand { font-family: 'Sora',sans-serif; font-size: 1.5rem; font-weight: 700; letter-spacing: .1em; }
+.footer-brand span.footer-brand-zoyen { color: #fff; }
+.footer-brand span { color: var(--ember); }
+.footer-tagline { font-size: 1.05rem; color: rgba(232,220,200,.65); line-height: 1.7; margin-bottom: 1.4rem; font-weight: 300; }
+.socials { display: flex; gap: .6rem; }
+.social-btn { width: 34px; height: 34px; border-radius: 1px; border: 1px solid rgba(201,169,110,.2); color: var(--sand); text-decoration: none; display: flex; align-items: center; justify-content: center; transition: border-color .2s, background .2s; }
+.social-btn svg { display: block; }
+.social-btn:hover { border-color: var(--ember); background: rgba(232,84,26,.12); }
+.footer-col-title { font-size: 1rem; font-weight: 600; letter-spacing: .25em; text-transform: uppercase; color: var(--ember); margin-bottom: 1.1rem; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
+.footer-links a { color: rgba(232,220,200,.70); text-decoration: none; font-size: .8rem; font-weight: 300; transition: color .2s; display: flex; align-items: center; gap: 7px; }
+.footer-links a::before { content: '–'; color: var(--ember); opacity: .5; }
+.footer-links a:hover { color: var(--sand); }
+.footer-contact { font-size: .8rem; color: rgba(232,220,200,.70); line-height: 1.8; font-weight: 300; }
+.footer-contact strong { color: var(--sand); font-weight: 500; }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .5rem; font-size: .93rem; color: rgba(232,220,200,.40); letter-spacing: .08em; }
+.footer-bottom a { color: rgba(201,169,110,.55); text-decoration: none; }
+
+.wa { position: fixed; bottom: 1.8rem; right: 1.8rem; z-index: 800; width: 52px; height: 52px; border-radius: 50%; background: #25d366; color: #fff; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,.35); transition: transform .25s; }
+.wa:hover { transform: scale(1.1); }
+.wa svg { width: 26px; height: 26px; }
+
+@media (max-width:760px) { .nav-links { display: none; } }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg class="nav-emblem" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <path id="nc-top" d="M50,50 m-36,0 a36,36 0 1,1 72,0"/>
+        <path id="nc-bot" d="M50,50 m-36,0 a36,36 0 1,0 72,0"/>
+        <linearGradient id="nav-ring-g" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="rgba(255,255,255,1)"/>
+          <stop offset="100%" stop-color="rgba(180,210,230,0.7)"/>
+        </linearGradient>
+        <radialGradient id="nav-n-g" cx="40%" cy="30%" r="65%">
+          <stop offset="0%" stop-color="rgba(255,255,255,1)"/>
+          <stop offset="100%" stop-color="rgba(200,220,240,0.7)"/>
+        </radialGradient>
+        <radialGradient id="nav-jewel" cx="35%" cy="28%" r="60%">
+          <stop offset="0%" stop-color="#f97316"/>
+          <stop offset="45%" stop-color="#f97316"/>
+          <stop offset="100%" stop-color="#c2500a"/>
+        </radialGradient>
+        <radialGradient id="nav-hub" cx="35%" cy="30%" r="65%">
+          <stop offset="0%" stop-color="rgba(255,255,255,0.95)"/>
+          <stop offset="100%" stop-color="rgba(170,195,215,0.6)"/>
+        </radialGradient>
+        <filter id="nav-shd">
+          <feDropShadow dx="0" dy="0.8" stdDeviation="1.2" flood-color="rgba(0,30,60,0.5)"/>
+        </filter>
+      </defs>
+      <circle cx="50" cy="50" r="36" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="3"/>
+      <circle cx="50" cy="50" r="36" fill="none" stroke="url(#nav-ring-g)" stroke-width="1"/>
+      <circle cx="50" cy="50" r="29" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="0.6"/>
+      <text font-family="Sora, Arial Narrow, sans-serif" font-weight="700" font-size="9" letter-spacing="2.2" text-anchor="middle">
+        <textPath href="#nc-top" startOffset="25%"><tspan fill="white">ZOYEN </tspan><tspan fill="#e8541a">TURISMO</tspan></textPath>
+      </text>
+      <text font-family="Sora, Arial Narrow, sans-serif" font-weight="600" font-size="7.5" letter-spacing="1.8" text-anchor="middle" fill="rgba(255,255,255,0.55)">
+        <textPath href="#nc-bot" startOffset="75%">· PATAGONIA ARG ·</textPath>
+      </text>
+      <polygon points="50,18 52,47 50,50 48,47" fill="url(#nav-n-g)" filter="url(#nav-shd)"/>
+      <polygon points="50,82 52,53 50,50 48,53" fill="rgba(210,228,244,0.75)" filter="url(#nav-shd)"/>
+      <polygon points="18,50 47,48 50,50 47,52" fill="rgba(240,250,255,0.9)" filter="url(#nav-shd)"/>
+      <polygon points="82,50 53,48 50,50 53,52" fill="rgba(160,190,215,0.65)" filter="url(#nav-shd)"/>
+      <polygon points="73,27 53,47 50,50 47,47" fill="rgba(220,238,252,0.65)" filter="url(#nav-shd)"/>
+      <polygon points="27,27 47,47 50,50 53,47" fill="rgba(235,247,255,0.8)" filter="url(#nav-shd)"/>
+      <polygon points="73,73 53,53 50,50 47,53" fill="rgba(170,195,218,0.55)" filter="url(#nav-shd)"/>
+      <polygon points="27,73 47,53 50,50 53,53" fill="rgba(190,212,230,0.6)" filter="url(#nav-shd)"/>
+      <circle cx="50" cy="50" r="5" fill="url(#nav-hub)" filter="url(#nav-shd)"/>
+      <circle cx="50" cy="50" r="5" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="0.5"/>
+      <circle cx="50" cy="50" r="3" fill="url(#nav-jewel)" filter="url(#nav-shd)"/>
+      <ellipse cx="49.2" cy="49" rx="0.9" ry="0.6" fill="rgba(255,200,120,0.65)" transform="rotate(-20,49.2,49)"/>
+    </svg>
+    <div class="nav-logo-text">
+      <div class="nav-logo-name">
+        <span class="z">ZOYEN&nbsp;</span>
+        <span class="t">TURISMO</span>
+      </div>
+      <sub>Patagonia · Legajo 15.625</sub>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#excursiones">Excursiones</a></li>
+    <li><a href="index.html#tours" class="active">Tours de Autor</a></li>
+    <li><a href="index.html#bienestar">Turismo de Bienestar</a></li>
+    <li><a href="index.html#ubicacion">Ubicación y Contacto</a></li>
+    <li><a href="nosotros.html">Quiénes somos</a></li>
+  </ul>
+  <a href="index.html#reservar" class="nav-cta-btn">Reservar</a>
+</nav>
+
+<!-- HERO -->
+<section class="page-hero" style="padding-top:72px;">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-eyebrow">Tour de Autor · 6 días · 5 noches</div>
+    <h1 class="page-hero-title">Patagonia <em>Inédita</em></h1>
+    <div class="hero-tags">
+      <span class="hero-tag main">6 días</span>
+      <span class="hero-tag">Bosque Petrificado</span>
+      <span class="hero-tag">Cueva de las Manos</span>
+      <span class="hero-tag">Lago Posadas</span>
+      <span class="hero-tag">Carretera Austral</span>
+      <span class="hero-tag">Capillas de Mármol</span>
+    </div>
+    <div class="breadcrumb"><a href="index.html">Inicio</a> / <a href="index.html#tours">Tours de Autor</a> / <span>Patagonia Inédita</span></div>
+  </div>
+</section>
+
+<!-- OVERVIEW STRIP -->
+<div class="overview-strip">
+  <div class="overview-inner">
+    <div class="ov-item"><div class="ov-num">6</div><div class="ov-lbl">Días</div></div>
+    <div class="ov-sep"></div>
+    <div class="ov-item"><div class="ov-num">5</div><div class="ov-lbl">Noches</div></div>
+    <div class="ov-sep"></div>
+    <div class="ov-item"><div class="ov-num">5</div><div class="ov-lbl">Destinos</div></div>
+    <div class="ov-sep"></div>
+    <div class="ov-item"><div class="ov-num">2</div><div class="ov-lbl">Países</div></div>
+    <div class="ov-sep"></div>
+    <div class="ov-item"><div class="ov-num">14</div><div class="ov-lbl">Plazas máx.</div></div>
+    <div class="ov-sep"></div>
+    <div class="ov-item" style="text-align:left;">
+      <a href="index.html#reservar" style="background:var(--ember);color:#fff;padding:.7rem 1.8rem;border-radius:2px;text-decoration:none;font-size:.82rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;transition:background .2s;display:inline-block;" onmouseover="this.style.background='#c44410'" onmouseout="this.style.background='#e8541a'">Reservar lugar</a>
+    </div>
+  </div>
+</div>
+
+<!-- INTRO -->
+<section class="tour-intro">
+  <div class="tour-intro-inner">
+    <div class="tour-intro-text reveal">
+      <p class="eyebrow">Descripción del tour</p>
+      <h2 class="section-title">Una semana que <em>transforma</em></h2>
+      <p>Este es el tour que diseñamos cuando quisimos mostrarle a alguien lo mejor de la Patagonia en una sola semana. <strong>Patagonia Inédita</strong> combina los destinos más espectaculares del sur de Santa Cruz con algunos secretos que solo conocen quienes viven acá.</p>
+      <p>Desde el ancestral <strong>Bosque Petrificado</strong> hasta las turquesas aguas de las <strong>Capillas de Mármol</strong> en Chile, pasando por el Patrimonio UNESCO de la <strong>Cueva de las Manos</strong> y los lagos cordilleranos del oeste de Santa Cruz.</p>
+      <p>Viajamos en camioneta 4x4 con guía/conductor local, dormimos en alojamientos cuidadosamente seleccionados y comemos en cada parada lo que la tierra tiene para ofrecer.</p>
+
+      <div class="inc-grid">
+        <div class="inc-card yes">
+          <h4>✓ Incluye</h4>
+          <ul class="inc-list">
+            <li><span class="ico">🚐</span> Traslados en camioneta 4x4 con conductor/guía</li>
+            <li><span class="ico">🏨</span> 5 noches de alojamiento</li>
+            <li><span class="ico">🥘</span> Desayunos incluidos</li>
+            <li><span class="ico">🎟️</span> Entradas a todos los parques y sitios</li>
+            <li><span class="ico">⛵</span> Navegación Capillas de Mármol</li>
+            <li><span class="ico">🧭</span> Guía local bilingüe</li>
+          </ul>
+        </div>
+        <div class="inc-card no">
+          <h4>✗ No incluye</h4>
+          <ul class="inc-list">
+            <li><span class="ico">✈️</span> Vuelo/traslado a Perito Moreno</li>
+            <li><span class="ico">🍽️</span> Almuerzos y cenas (salvo los indicados)</li>
+            <li><span class="ico">🛂</span> Trámites migratorios propios</li>
+            <li><span class="ico">🔖</span> Gastos personales</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="tour-highlights reveal reveal-delay">
+      <h3>🗺️ Highlights del tour</h3>
+      <ul class="hl-list">
+        <li><strong>Bosque Petrificado Sarmiento</strong> — árboles araucarias de 65 millones de años, declarado Monumento Natural Nacional.</li>
+        <li><strong>Cueva de las Manos</strong> — Patrimonio de la Humanidad UNESCO. Arte rupestre de más de 9.000 años en el cañadón del Río Pinturas.</li>
+        <li><strong>Lago Posadas</strong> — laguna de colores turquesa y celeste intenso, rodeada de mesetas y volcanes. Una de las postales más impactantes de Santa Cruz.</li>
+        <li><strong>Ruta Escénica 41</strong> — 160 km de paisaje cambiante: estepa, cordillera y lagunas de altura. Pico Zeballos a 1.500 msnm.</li>
+        <li><strong>Carretera Austral</strong> — cruce a Chile por el paso fronterizo con vistas a los Hielos Continentales.</li>
+        <li><strong>Capillas y Catedrales de Mármol</strong> — navegación 5 estrellas sobre el Lago General Carrera hacia las formaciones marmóreas. Una de las 10 maravillas naturales de Sudamérica.</li>
+        <li><strong>Regreso por Ruta 40</strong> — la mítica ruta patagónica en todo su esplendor.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ITINERARIO -->
+<section class="itinerario-section">
+  <div class="itinerario-inner">
+    <div class="reveal" style="margin-bottom:3.5rem;">
+      <p class="eyebrow">Día a día</p>
+      <h2 class="section-title">El <em>itinerario</em></h2>
+    </div>
+
+    <!-- DÍA 1 -->
+    <div class="dia-block reveal">
+      <div class="dia-num"><div class="dia-circle">1</div></div>
+      <div class="dia-content">
+        <div class="dia-label">Día 1 · Llegada</div>
+        <h3 class="dia-title">Perito Moreno → <em>Bosque Petrificado</em></h3>
+        <p class="dia-desc">Recepción en el aeropuerto de Perito Moreno o en el alojamiento. Por la tarde, primera salida al <strong>Bosque Petrificado de Sarmiento</strong>: árboles araucarias de 65 millones de años convertidos en piedra bajo la estepa patagónica. Un paisaje que parece de otro planeta. Cena y alojamiento en Perito Moreno.</p>
+        <div class="dia-chips">
+          <span class="dia-chip">📍 Perito Moreno</span>
+          <span class="dia-chip">🌲 Bosque Petrificado</span>
+          <span class="dia-chip">🏨 Alojamiento en Perito Moreno</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DÍA 2 -->
+    <div class="dia-block reveal">
+      <div class="dia-num"><div class="dia-circle">2</div></div>
+      <div class="dia-content">
+        <div class="dia-label">Día 2 · Patrimonio UNESCO</div>
+        <h3 class="dia-title"><em>Cueva de las Manos</em> · Río Pinturas</h3>
+        <p class="dia-desc">Jornada completa hacia la <strong>Cueva de las Manos</strong>, en el cañadón del Río Pinturas. Descenso a pie por el cañadón con guía especializado. Contemplamos el arte rupestre más importante del continente americano: más de 2.000 imágenes de manos, guanacos y figuras geométricas realizadas entre 9.000 y 700 años antes de Cristo. Declarado Patrimonio de la Humanidad por la UNESCO en 1999. Almuerzo en el campo. Regreso al atardecer.</p>
+        <img class="dia-img" src="http://www.zoyenturismo.com.ar/wp-content/uploads/2022/10/cuevas_zoyen.jpg" alt="Cueva de las Manos">
+        <div class="dia-chips">
+          <span class="dia-chip">🎨 Arte rupestre 9.000 años</span>
+          <span class="dia-chip">🏛️ Patrimonio UNESCO</span>
+          <span class="dia-chip">🦙 Guanacos en libertad</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DÍA 3 -->
+    <div class="dia-block reveal">
+      <div class="dia-num"><div class="dia-circle">3</div></div>
+      <div class="dia-content">
+        <div class="dia-label">Día 3 · Cordillera</div>
+        <h3 class="dia-title"><em>Lago Posadas</em> · Ruta Escénica 41</h3>
+        <p class="dia-desc">Salida temprana hacia el oeste por la <strong>Ruta Provincial 41</strong>, una de las rutas escénicas más espectaculares de la Argentina. En 160 km de recorrido ascendemos de los 400 metros de la estepa hasta los 1.500 msnm, con vistas de volcanes, cordillera de los Andes, lagunas de altura y el cerro Zeballos. Llegamos al <strong>Lago Posadas</strong>, con sus aguas turquesa y celeste intenso producto de la mezcla de dos lagunas con diferente composición mineral. Almuerzo en Estancia El Suyaí. Regreso por la tarde.</p>
+        <img class="dia-img" src="http://www.zoyenturismo.com.ar/wp-content/uploads/2022/10/posadas_zoyen.jpg" alt="Lago Posadas Ruta 41">
+        <div class="dia-chips">
+          <span class="dia-chip">🏔️ 1.500 msnm</span>
+          <span class="dia-chip">🔵 Lagos bicolores</span>
+          <span class="dia-chip">🌋 Volcanes y Cordillera</span>
+          <span class="dia-chip">🥩 Almuerzo en estancia</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DÍA 4 -->
+    <div class="dia-block reveal">
+      <div class="dia-num"><div class="dia-circle">4</div></div>
+      <div class="dia-content">
+        <div class="dia-label">Día 4 · Cruce internacional</div>
+        <h3 class="dia-title">Carretera Austral · <em>Chile</em></h3>
+        <p class="dia-desc">Cruce a Chile por el paso fronterizo Ingeniero Pallavicini. Descendemos hacia la <strong>Carretera Austral</strong>, la legendaria ruta que recorre el sur de Chile entre fiordos, bosques valdivianios y montañas nevadas. Pasamos por la <strong>confluencia del Río Nef y el Baker</strong>, el río de mayor caudal de Chile. Llegamos al Lago General Carrera, el segundo lago más grande de Sudamérica. Alojamiento en Chile Chico.</p>
+        <div class="dia-chips">
+          <span class="dia-chip">🛂 Cruce a Chile</span>
+          <span class="dia-chip">🌲 Carretera Austral</span>
+          <span class="dia-chip">🏔️ Río Baker</span>
+          <span class="dia-chip">🏨 Chile Chico</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DÍA 5 -->
+    <div class="dia-block reveal">
+      <div class="dia-num"><div class="dia-circle">5</div></div>
+      <div class="dia-content">
+        <div class="dia-label">Día 5 · La joya del tour</div>
+        <h3 class="dia-title"><em>Capillas y Catedrales</em> de Mármol</h3>
+        <p class="dia-desc">El día más esperado del tour. Embarcación privada sobre las aguas cristalinas del <strong>Lago General Carrera</strong> hacia las formaciones de mármol esculpidas durante millones de años por el agua: las <strong>Capillas de Mármol</strong> (Capilla de Mármol) y las <strong>Catedrales de Mármol</strong>. El reflejo del agua turquesa sobre el mármol blanco y gris crea una paleta de colores imposible de olvidar. Considerada una de las 10 maravillas naturales de Sudamérica por National Geographic. Por la tarde, regreso a Argentina cruzando la frontera hacia Los Antiguos.</p>
+        <img class="dia-img" src="http://www.zoyenturismo.com.ar/wp-content/uploads/2023/07/capillas.jpg" alt="Capillas de Mármol Lago General Carrera">
+        <div class="dia-chips">
+          <span class="dia-chip">⛵ Navegación privada</span>
+          <span class="dia-chip">🪨 Mármol natural</span>
+          <span class="dia-chip">🏆 Top 10 Sudamérica</span>
+          <span class="dia-chip">🌈 Aguas multicolor</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DÍA 6 -->
+    <div class="dia-block reveal">
+      <div class="dia-num"><div class="dia-circle">6</div></div>
+      <div class="dia-content">
+        <div class="dia-label">Día 6 · Regreso</div>
+        <h3 class="dia-title">Los Antiguos → <em>Perito Moreno</em></h3>
+        <p class="dia-desc">Mañana libre en <strong>Los Antiguos</strong>, conocida como la "ciudad de las cerezas" por su producción frutal única en la Patagonia. Visita opcional al lago Buenos Aires, el segundo lago más grande de Argentina. Almuerzo en la ciudad. Por la tarde, traslado de regreso a Perito Moreno por la Ruta Nacional 40 con vistas al cerro San Lorenzo. Transfer al aeropuerto para vuelos de regreso.</p>
+        <div class="dia-chips">
+          <span class="dia-chip">🍒 Los Antiguos</span>
+          <span class="dia-chip">💧 Lago Buenos Aires</span>
+          <span class="dia-chip">✈️ Transfer aeropuerto</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section class="galeria-section">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="reveal">
+      <p class="eyebrow">Galería de imágenes</p>
+      <h2 class="section-title">Lo que vas a <em>ver</em></h2>
+    </div>
+    <div class="galeria-grid">
+      <img src="https://www.zoyenturismo.com.ar/wp-content/uploads/2022/10/full_inedita.jpg" alt="Patagonia Inédita panorámica" class="reveal">
+      <img src="http://www.zoyenturismo.com.ar/wp-content/uploads/2022/10/posadas_zoyen.jpg" alt="Lago Posadas" class="reveal reveal-delay">
+      <img src="http://www.zoyenturismo.com.ar/wp-content/uploads/2022/10/cuevas_zoyen.jpg" alt="Cueva de las Manos" class="reveal">
+      <img src="http://www.zoyenturismo.com.ar/wp-content/uploads/2023/07/capillas.jpg" alt="Capillas de Mármol" class="reveal reveal-delay">
+      <img src="http://www.zoyenturismo.com.ar/wp-content/uploads/2022/10/ruta41_zoyen.jpg" alt="Ruta 41 Monte Zeballos" class="reveal reveal-delay2">
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="tour-cta">
+  <div class="reveal">
+    <p class="eyebrow" style="color:var(--sand);display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:.5rem;">
+      <span style="width:22px;height:1px;background:var(--sand);display:inline-block;"></span>
+      ¿Te sumás?
+      <span style="width:22px;height:1px;background:var(--sand);display:inline-block;"></span>
+    </p>
+    <h2>Reservá tu lugar en <em>Patagonia Inédita</em></h2>
+    <p>Los grupos son pequeños y los lugares se agotan rápido. Asegurá el tuyo consultando disponibilidad.</p>
+    <div class="cta-btns">
+      <a href="index.html#reservar" class="cta-btn-p">Reservar ahora</a>
+      <a href="https://wa.me/5492974432855" class="cta-btn-g" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-wrap">
+        <svg class="footer-emblem" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <path id="fc-top" d="M50,50 m-36,0 a36,36 0 1,1 72,0"/>
+            <path id="fc-bot" d="M50,50 m-36,0 a36,36 0 1,0 72,0"/>
+            <linearGradient id="ft-ring-g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(255,255,255,1)"/><stop offset="100%" stop-color="rgba(180,210,230,0.7)"/></linearGradient>
+            <radialGradient id="ft-n-g" cx="40%" cy="30%" r="65%"><stop offset="0%" stop-color="rgba(255,255,255,1)"/><stop offset="100%" stop-color="rgba(200,220,240,0.7)"/></radialGradient>
+            <radialGradient id="ft-jewel" cx="35%" cy="28%" r="60%"><stop offset="0%" stop-color="#f97316"/><stop offset="45%" stop-color="#f97316"/><stop offset="100%" stop-color="#c2500a"/></radialGradient>
+            <radialGradient id="ft-hub" cx="35%" cy="30%" r="65%"><stop offset="0%" stop-color="rgba(255,255,255,0.95)"/><stop offset="100%" stop-color="rgba(170,195,215,0.6)"/></radialGradient>
+            <filter id="ft-shd"><feDropShadow dx="0" dy="0.8" stdDeviation="1.2" flood-color="rgba(0,30,60,0.5)"/></filter>
+          </defs>
+          <circle cx="50" cy="50" r="36" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="3"/>
+          <circle cx="50" cy="50" r="36" fill="none" stroke="url(#ft-ring-g)" stroke-width="1"/>
+          <circle cx="50" cy="50" r="29" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="0.6"/>
+          <text font-family="Sora, Arial Narrow, sans-serif" font-weight="700" font-size="9" letter-spacing="2.2" text-anchor="middle"><textPath href="#fc-top" startOffset="25%"><tspan fill="white">ZOYEN </tspan><tspan fill="#e8541a">TURISMO</tspan></textPath></text>
+          <text font-family="Sora, Arial Narrow, sans-serif" font-weight="600" font-size="7.5" letter-spacing="1.8" text-anchor="middle" fill="rgba(255,255,255,0.55)"><textPath href="#fc-bot" startOffset="75%">· PATAGONIA ARG ·</textPath></text>
+          <polygon points="50,18 52,47 50,50 48,47" fill="url(#ft-n-g)" filter="url(#ft-shd)"/>
+          <polygon points="50,82 52,53 50,50 48,53" fill="rgba(210,228,244,0.75)" filter="url(#ft-shd)"/>
+          <polygon points="18,50 47,48 50,50 47,52" fill="rgba(240,250,255,0.9)" filter="url(#ft-shd)"/>
+          <polygon points="82,50 53,48 50,50 53,52" fill="rgba(160,190,215,0.65)" filter="url(#ft-shd)"/>
+          <polygon points="73,27 53,47 50,50 47,47" fill="rgba(220,238,252,0.65)" filter="url(#ft-shd)"/>
+          <polygon points="27,27 47,47 50,50 53,47" fill="rgba(235,247,255,0.8)" filter="url(#ft-shd)"/>
+          <polygon points="73,73 53,53 50,50 47,53" fill="rgba(170,195,218,0.55)" filter="url(#ft-shd)"/>
+          <polygon points="27,73 47,53 50,50 53,53" fill="rgba(190,212,230,0.6)" filter="url(#ft-shd)"/>
+          <circle cx="50" cy="50" r="5" fill="url(#ft-hub)" filter="url(#ft-shd)"/>
+          <circle cx="50" cy="50" r="5" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="0.5"/>
+          <circle cx="50" cy="50" r="3" fill="url(#ft-jewel)" filter="url(#ft-shd)"/>
+          <ellipse cx="49.2" cy="49" rx="0.9" ry="0.6" fill="rgba(255,200,120,0.65)" transform="rotate(-20,49.2,49)"/>
+        </svg>
+        <div class="footer-brand"><span class="footer-brand-zoyen">ZOYEN</span> <span>TURISMO</span></div>
+      </div>
+      <p class="footer-tagline">Agencia de Turismo en la Patagonia Argentina.<br>Legajo 15.625 · Perito Moreno, Santa Cruz.</p>
+      <div class="socials">
+        <a href="https://www.instagram.com/turismozoyen/" class="social-btn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        <a href="https://wa.me/5492974432855" class="social-btn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Tours de Autor</div>
+      <ul class="footer-links">
+        <li><a href="patagonia-inedita.html">Patagonia Inédita (6 días)</a></li>
+        <li><a href="carretera-austral.html">Carretera Austral (7 días)</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contacto</div>
+      <div class="footer-contact">
+        <strong>Perito Moreno, Santa Cruz</strong><br>
+        Patagonia Argentina<br><br>
+        <strong>WhatsApp</strong><br>
+        <a href="https://wa.me/5492974432855" style="color:var(--amber);">+54 9 297 443-2855</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Zoyen Turismo · Legajo 15.625</span>
+    <a href="index.html">Volver al inicio</a>
+  </div>
+</footer>
+
+<a href="https://wa.me/5492974432855" class="wa" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
