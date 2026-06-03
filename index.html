@@ -363,6 +363,11 @@ nav {
 @keyframes heroRingCW  { to { transform: rotate( 360deg); } }
 @keyframes heroRoseSpin{ to { transform: rotate( 360deg); } }
 
+
+@keyframes heroRingCCW { to { transform: rotate(-360deg); } }
+@keyframes heroRingCW  { to { transform: rotate( 360deg); } }
+@keyframes heroRoseSpin{ to { transform: rotate( 360deg); } }
+
 .reveal {
   opacity: 0; transform: translateY(22px);
   transition: opacity .75s, transform .75s;
@@ -1275,12 +1280,9 @@ footer {
 <nav>
   <a href="#" class="nav-logo">
     <svg class="nav-emblem" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <!-- Anillo exterior emblema -->
   <circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="0.8"/>
-  <defs>
-  <linearGradient id="nv-gl" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(255,255,255,0.95)"/><stop offset="100%" stop-color="rgba(182,196,212,0.82)"/></linearGradient>
-  <linearGradient id="nv-gd" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(102,116,132,0.9)"/><stop offset="100%" stop-color="rgba(62,76,92,0.93)"/></linearGradient>
-</defs>
+  <defs><linearGradient id="nv-gl" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(255,255,255,0.95)"/><stop offset="100%" stop-color="rgba(182,196,212,0.82)"/></linearGradient>
+<linearGradient id="nv-gd" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(102,116,132,0.9)"/><stop offset="100%" stop-color="rgba(62,76,92,0.93)"/></linearGradient></defs>
 <circle cx="50" cy="50" r="25.31" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.43"/>
 <circle cx="50" cy="50" r="22.04" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="0.24"/>
 <polygon points="50.0,22.65 46.33,50.0 50,50" fill="url(#nv-gl)"/>
@@ -1344,28 +1346,24 @@ footer {
     <path id="hpOb" d="M140,140 m-108,0 a108,108 0 1,0 216,0"/>
     <path id="hpI" d="M140,140 m-77,0 a77,77 0 1,1 154,0"/>
   </defs>
-  <!-- Anillos exteriores del emblema hero con texto -->
-  <g style="transform-origin:140px 140px; animation:heroRingCCW 28s linear infinite;">
+  <g style="transform-origin:140px 140px;animation:heroRingCCW 28s linear infinite;">
     <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="14"/>
     <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="0.8"/>
-    <circle cx="140" cy="140" r="96"  fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.4"/>
+    <circle cx="140" cy="140" r="96" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.4"/>
     <text font-family="Sora,Arial Narrow,sans-serif" font-size="10.5" font-weight="700" letter-spacing="12" text-anchor="middle">
       <textPath href="#hpO" startOffset="50%"><tspan fill="rgba(255,255,255,0.92)">ZOYEN</tspan><tspan fill="rgba(255,255,255,0.3)"> · </tspan><tspan fill="#ff7a35">TURISMO</tspan></textPath>
     </text>
   </g>
-  <g style="transform-origin:140px 140px; animation:heroRingCW 22s linear infinite;">
+  <g style="transform-origin:140px 140px;animation:heroRingCW 22s linear infinite;">
     <circle cx="140" cy="140" r="77" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="10"/>
     <circle cx="140" cy="140" r="77" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="0.6"/>
     <text font-family="Sora,Arial Narrow,sans-serif" font-size="9" font-weight="400" letter-spacing="9" text-anchor="middle" fill="rgba(255,255,255,0.7)">
       <textPath href="#hpI" startOffset="50%">· PATAGONIA · ARG ·</textPath>
     </text>
   </g>
-  <!-- Rosa animada -->
-  <g style="transform-origin:140px 140px; animation:heroRoseSpin 14s linear infinite;">
-    <defs>
-  <linearGradient id="hr2-gl" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(255,255,255,0.95)"/><stop offset="100%" stop-color="rgba(182,196,212,0.82)"/></linearGradient>
-  <linearGradient id="hr2-gd" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(102,116,132,0.9)"/><stop offset="100%" stop-color="rgba(62,76,92,0.93)"/></linearGradient>
-</defs>
+  <g style="transform-origin:140px 140px;animation:heroRoseSpin 14s linear infinite;">
+    <defs><linearGradient id="hr2-gl" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(255,255,255,0.95)"/><stop offset="100%" stop-color="rgba(182,196,212,0.82)"/></linearGradient>
+<linearGradient id="hr2-gd" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(102,116,132,0.9)"/><stop offset="100%" stop-color="rgba(62,76,92,0.93)"/></linearGradient></defs>
 <circle cx="140" cy="140" r="63.27" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="3.57"/>
 <circle cx="140" cy="140" r="55.1" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="0.61"/>
 <polygon points="140.0,71.63 130.82,140.0 140,140" fill="url(#hr2-gl)"/>
@@ -1422,28 +1420,24 @@ footer {
     <path id="hpOb" d="M140,140 m-108,0 a108,108 0 1,0 216,0"/>
     <path id="hpI" d="M140,140 m-77,0 a77,77 0 1,1 154,0"/>
   </defs>
-  <!-- Anillos exteriores del emblema hero con texto -->
-  <g style="transform-origin:140px 140px; animation:heroRingCCW 28s linear infinite;">
+  <g style="transform-origin:140px 140px;animation:heroRingCCW 28s linear infinite;">
     <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="14"/>
     <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="0.8"/>
-    <circle cx="140" cy="140" r="96"  fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.4"/>
+    <circle cx="140" cy="140" r="96" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.4"/>
     <text font-family="Sora,Arial Narrow,sans-serif" font-size="10.5" font-weight="700" letter-spacing="12" text-anchor="middle">
       <textPath href="#hpO" startOffset="50%"><tspan fill="rgba(255,255,255,0.92)">ZOYEN</tspan><tspan fill="rgba(255,255,255,0.3)"> · </tspan><tspan fill="#ff7a35">TURISMO</tspan></textPath>
     </text>
   </g>
-  <g style="transform-origin:140px 140px; animation:heroRingCW 22s linear infinite;">
+  <g style="transform-origin:140px 140px;animation:heroRingCW 22s linear infinite;">
     <circle cx="140" cy="140" r="77" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="10"/>
     <circle cx="140" cy="140" r="77" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="0.6"/>
     <text font-family="Sora,Arial Narrow,sans-serif" font-size="9" font-weight="400" letter-spacing="9" text-anchor="middle" fill="rgba(255,255,255,0.7)">
       <textPath href="#hpI" startOffset="50%">· PATAGONIA · ARG ·</textPath>
     </text>
   </g>
-  <!-- Rosa animada -->
-  <g style="transform-origin:140px 140px; animation:heroRoseSpin 14s linear infinite;">
-    <defs>
-  <linearGradient id="hr2-gl" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(255,255,255,0.95)"/><stop offset="100%" stop-color="rgba(182,196,212,0.82)"/></linearGradient>
-  <linearGradient id="hr2-gd" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(102,116,132,0.9)"/><stop offset="100%" stop-color="rgba(62,76,92,0.93)"/></linearGradient>
-</defs>
+  <g style="transform-origin:140px 140px;animation:heroRoseSpin 14s linear infinite;">
+    <defs><linearGradient id="hr2-gl" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(255,255,255,0.95)"/><stop offset="100%" stop-color="rgba(182,196,212,0.82)"/></linearGradient>
+<linearGradient id="hr2-gd" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(102,116,132,0.9)"/><stop offset="100%" stop-color="rgba(62,76,92,0.93)"/></linearGradient></defs>
 <circle cx="140" cy="140" r="63.27" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="3.57"/>
 <circle cx="140" cy="140" r="55.1" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="0.61"/>
 <polygon points="140.0,71.63 130.82,140.0 140,140" fill="url(#hr2-gl)"/>
@@ -1500,28 +1494,24 @@ footer {
     <path id="hpOb" d="M140,140 m-108,0 a108,108 0 1,0 216,0"/>
     <path id="hpI" d="M140,140 m-77,0 a77,77 0 1,1 154,0"/>
   </defs>
-  <!-- Anillos exteriores del emblema hero con texto -->
-  <g style="transform-origin:140px 140px; animation:heroRingCCW 28s linear infinite;">
+  <g style="transform-origin:140px 140px;animation:heroRingCCW 28s linear infinite;">
     <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="14"/>
     <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="0.8"/>
-    <circle cx="140" cy="140" r="96"  fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.4"/>
+    <circle cx="140" cy="140" r="96" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.4"/>
     <text font-family="Sora,Arial Narrow,sans-serif" font-size="10.5" font-weight="700" letter-spacing="12" text-anchor="middle">
       <textPath href="#hpO" startOffset="50%"><tspan fill="rgba(255,255,255,0.92)">ZOYEN</tspan><tspan fill="rgba(255,255,255,0.3)"> · </tspan><tspan fill="#ff7a35">TURISMO</tspan></textPath>
     </text>
   </g>
-  <g style="transform-origin:140px 140px; animation:heroRingCW 22s linear infinite;">
+  <g style="transform-origin:140px 140px;animation:heroRingCW 22s linear infinite;">
     <circle cx="140" cy="140" r="77" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="10"/>
     <circle cx="140" cy="140" r="77" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="0.6"/>
     <text font-family="Sora,Arial Narrow,sans-serif" font-size="9" font-weight="400" letter-spacing="9" text-anchor="middle" fill="rgba(255,255,255,0.7)">
       <textPath href="#hpI" startOffset="50%">· PATAGONIA · ARG ·</textPath>
     </text>
   </g>
-  <!-- Rosa animada -->
-  <g style="transform-origin:140px 140px; animation:heroRoseSpin 14s linear infinite;">
-    <defs>
-  <linearGradient id="hr2-gl" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(255,255,255,0.95)"/><stop offset="100%" stop-color="rgba(182,196,212,0.82)"/></linearGradient>
-  <linearGradient id="hr2-gd" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(102,116,132,0.9)"/><stop offset="100%" stop-color="rgba(62,76,92,0.93)"/></linearGradient>
-</defs>
+  <g style="transform-origin:140px 140px;animation:heroRoseSpin 14s linear infinite;">
+    <defs><linearGradient id="hr2-gl" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(255,255,255,0.95)"/><stop offset="100%" stop-color="rgba(182,196,212,0.82)"/></linearGradient>
+<linearGradient id="hr2-gd" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(102,116,132,0.9)"/><stop offset="100%" stop-color="rgba(62,76,92,0.93)"/></linearGradient></defs>
 <circle cx="140" cy="140" r="63.27" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="3.57"/>
 <circle cx="140" cy="140" r="55.1" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="0.61"/>
 <polygon points="140.0,71.63 130.82,140.0 140,140" fill="url(#hr2-gl)"/>
@@ -1578,28 +1568,24 @@ footer {
     <path id="hpOb" d="M140,140 m-108,0 a108,108 0 1,0 216,0"/>
     <path id="hpI" d="M140,140 m-77,0 a77,77 0 1,1 154,0"/>
   </defs>
-  <!-- Anillos exteriores del emblema hero con texto -->
-  <g style="transform-origin:140px 140px; animation:heroRingCCW 28s linear infinite;">
+  <g style="transform-origin:140px 140px;animation:heroRingCCW 28s linear infinite;">
     <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="14"/>
     <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="0.8"/>
-    <circle cx="140" cy="140" r="96"  fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.4"/>
+    <circle cx="140" cy="140" r="96" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.4"/>
     <text font-family="Sora,Arial Narrow,sans-serif" font-size="10.5" font-weight="700" letter-spacing="12" text-anchor="middle">
       <textPath href="#hpO" startOffset="50%"><tspan fill="rgba(255,255,255,0.92)">ZOYEN</tspan><tspan fill="rgba(255,255,255,0.3)"> · </tspan><tspan fill="#ff7a35">TURISMO</tspan></textPath>
     </text>
   </g>
-  <g style="transform-origin:140px 140px; animation:heroRingCW 22s linear infinite;">
+  <g style="transform-origin:140px 140px;animation:heroRingCW 22s linear infinite;">
     <circle cx="140" cy="140" r="77" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="10"/>
     <circle cx="140" cy="140" r="77" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="0.6"/>
     <text font-family="Sora,Arial Narrow,sans-serif" font-size="9" font-weight="400" letter-spacing="9" text-anchor="middle" fill="rgba(255,255,255,0.7)">
       <textPath href="#hpI" startOffset="50%">· PATAGONIA · ARG ·</textPath>
     </text>
   </g>
-  <!-- Rosa animada -->
-  <g style="transform-origin:140px 140px; animation:heroRoseSpin 14s linear infinite;">
-    <defs>
-  <linearGradient id="hr2-gl" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(255,255,255,0.95)"/><stop offset="100%" stop-color="rgba(182,196,212,0.82)"/></linearGradient>
-  <linearGradient id="hr2-gd" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(102,116,132,0.9)"/><stop offset="100%" stop-color="rgba(62,76,92,0.93)"/></linearGradient>
-</defs>
+  <g style="transform-origin:140px 140px;animation:heroRoseSpin 14s linear infinite;">
+    <defs><linearGradient id="hr2-gl" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(255,255,255,0.95)"/><stop offset="100%" stop-color="rgba(182,196,212,0.82)"/></linearGradient>
+<linearGradient id="hr2-gd" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(102,116,132,0.9)"/><stop offset="100%" stop-color="rgba(62,76,92,0.93)"/></linearGradient></defs>
 <circle cx="140" cy="140" r="63.27" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="3.57"/>
 <circle cx="140" cy="140" r="55.1" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="0.61"/>
 <polygon points="140.0,71.63 130.82,140.0 140,140" fill="url(#hr2-gl)"/>
@@ -2274,10 +2260,8 @@ footer {
       <div class="footer-brand-wrap">
         <svg class="footer-emblem" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
   <circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="0.8"/>
-  <defs>
-  <linearGradient id="ft-gl" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(255,255,255,0.95)"/><stop offset="100%" stop-color="rgba(182,196,212,0.82)"/></linearGradient>
-  <linearGradient id="ft-gd" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(102,116,132,0.9)"/><stop offset="100%" stop-color="rgba(62,76,92,0.93)"/></linearGradient>
-</defs>
+  <defs><linearGradient id="ft-gl" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(255,255,255,0.95)"/><stop offset="100%" stop-color="rgba(182,196,212,0.82)"/></linearGradient>
+<linearGradient id="ft-gd" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(102,116,132,0.9)"/><stop offset="100%" stop-color="rgba(62,76,92,0.93)"/></linearGradient></defs>
 <circle cx="50" cy="50" r="25.31" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.43"/>
 <circle cx="50" cy="50" r="22.04" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="0.24"/>
 <polygon points="50.0,22.65 46.33,50.0 50,50" fill="url(#ft-gl)"/>
