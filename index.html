@@ -179,7 +179,7 @@ nav {
   transform: translate(-50%, -50%);
   transform-style: preserve-3d;
   perspective: 400px;
-  animation: spin3d 10s linear infinite;
+  /* spin3d replaced */
 }
 @keyframes spin3d {
   0%   { transform: translate(-50%, -50%) rotateY(0deg); }
@@ -357,6 +357,11 @@ nav {
   font-size: 1rem; color: var(--stone); line-height: 1.75; font-weight: 300;
   margin-top: .6rem; max-width: 440px;
 }
+
+
+@keyframes heroRingCCW { to { transform: rotate(-360deg); } }
+@keyframes heroRingCW  { to { transform: rotate( 360deg); } }
+@keyframes heroRoseSpin{ to { transform: rotate( 360deg); } }
 
 .reveal {
   opacity: 0; transform: translateY(22px);
@@ -1270,61 +1275,43 @@ footer {
 <nav>
   <a href="#" class="nav-logo">
     <svg class="nav-emblem" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <path id="nc-top" d="M50,50 m-36,0 a36,36 0 1,1 72,0"/>
-        <path id="nc-bot" d="M50,50 m-36,0 a36,36 0 1,0 72,0"/>
-        <linearGradient id="nav-ring-g" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="rgba(255,255,255,1)"/>
-          <stop offset="100%" stop-color="rgba(180,210,230,0.7)"/>
-        </linearGradient>
-        <radialGradient id="nav-n-g" cx="40%" cy="30%" r="65%">
-          <stop offset="0%" stop-color="rgba(255,255,255,1)"/>
-          <stop offset="100%" stop-color="rgba(200,220,240,0.7)"/>
-        </radialGradient>
-        <radialGradient id="nav-jewel" cx="35%" cy="28%" r="60%">
-          <stop offset="0%" stop-color="#f97316"/>
-          <stop offset="45%" stop-color="#f97316"/>
-          <stop offset="100%" stop-color="#c2500a"/>
-        </radialGradient>
-        <radialGradient id="nav-hub" cx="35%" cy="30%" r="65%">
-          <stop offset="0%" stop-color="rgba(255,255,255,0.95)"/>
-          <stop offset="100%" stop-color="rgba(170,195,215,0.6)"/>
-        </radialGradient>
-        <filter id="nav-shd">
-          <feDropShadow dx="0" dy="0.8" stdDeviation="1.2" flood-color="rgba(0,30,60,0.5)"/>
-        </filter>
-      </defs>
-      <!-- Rings -->
-      <circle cx="50" cy="50" r="36" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="3"/>
-      <circle cx="50" cy="50" r="36" fill="none" stroke="url(#nav-ring-g)" stroke-width="1"/>
-      <circle cx="50" cy="50" r="29" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="0.6"/>
-      <!-- Text paths -->
-      <text font-family="Sora, Arial Narrow, sans-serif" font-weight="700" font-size="9" letter-spacing="2.2" text-anchor="middle">
-        <textPath href="#nc-top" startOffset="25%"><tspan fill="white">ZOYEN </tspan><tspan fill="#e8541a">TURISMO</tspan></textPath>
-      </text>
-      <text font-family="Sora, Arial Narrow, sans-serif" font-weight="600" font-size="7.5" letter-spacing="1.8" text-anchor="middle" fill="rgba(255,255,255,0.55)">
-        <textPath href="#nc-bot" startOffset="75%">· PATAGONIA ARG ·</textPath>
-      </text>
-      <!-- 3D Rose – N -->
-      <polygon points="50,18 52,47 50,50 48,47" fill="url(#nav-n-g)" filter="url(#nav-shd)"/>
-      <!-- S -->
-      <polygon points="50,82 52,53 50,50 48,53" fill="rgba(210,228,244,0.75)" filter="url(#nav-shd)"/>
-      <!-- W -->
-      <polygon points="18,50 47,48 50,50 47,52" fill="rgba(240,250,255,0.9)" filter="url(#nav-shd)"/>
-      <!-- E -->
-      <polygon points="82,50 53,48 50,50 53,52" fill="rgba(160,190,215,0.65)" filter="url(#nav-shd)"/>
-      <!-- Diagonals -->
-      <polygon points="73,27 53,47 50,50 47,47" fill="rgba(220,238,252,0.65)" filter="url(#nav-shd)"/>
-      <polygon points="27,27 47,47 50,50 53,47" fill="rgba(235,247,255,0.8)" filter="url(#nav-shd)"/>
-      <polygon points="73,73 53,53 50,50 47,53" fill="rgba(170,195,218,0.55)" filter="url(#nav-shd)"/>
-      <polygon points="27,73 47,53 50,50 53,53" fill="rgba(190,212,230,0.6)" filter="url(#nav-shd)"/>
-      <!-- Hub -->
-      <circle cx="50" cy="50" r="5" fill="url(#nav-hub)" filter="url(#nav-shd)"/>
-      <circle cx="50" cy="50" r="5" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="0.5"/>
-      <!-- Jewel -->
-      <circle cx="50" cy="50" r="3" fill="url(#nav-jewel)" filter="url(#nav-shd)"/>
-      <ellipse cx="49.2" cy="49" rx="0.9" ry="0.6" fill="rgba(255,200,120,0.65)" transform="rotate(-20,49.2,49)"/>
-    </svg>
+  <!-- Anillo exterior emblema -->
+  <circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="0.8"/>
+  <defs>
+  <linearGradient id="nv-gl" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(255,255,255,0.95)"/><stop offset="100%" stop-color="rgba(182,196,212,0.82)"/></linearGradient>
+  <linearGradient id="nv-gd" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(102,116,132,0.9)"/><stop offset="100%" stop-color="rgba(62,76,92,0.93)"/></linearGradient>
+</defs>
+<circle cx="50" cy="50" r="25.31" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.43"/>
+<circle cx="50" cy="50" r="22.04" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="0.24"/>
+<polygon points="50.0,22.65 46.33,50.0 50,50" fill="url(#nv-gl)"/>
+<polygon points="50.0,22.65 53.67,50.0 50,50" fill="url(#nv-gd)"/>
+<polygon points="50.0,19.79 48.57,22.65 51.43,22.65" fill="rgba(255,255,255,0.95)"/>
+<polygon points="62.99,37.01 48.27,48.27 50,50" fill="url(#nv-gl)"/>
+<polygon points="62.99,37.01 51.73,51.73 50,50" fill="url(#nv-gd)"/>
+<polygon points="77.35,50.0 50.0,46.33 50,50" fill="url(#nv-gl)"/>
+<polygon points="77.35,50.0 50.0,53.67 50,50" fill="url(#nv-gd)"/>
+<polygon points="62.99,62.99 51.73,48.27 50,50" fill="url(#nv-gl)"/>
+<polygon points="62.99,62.99 48.27,51.73 50,50" fill="url(#nv-gd)"/>
+<polygon points="50.0,77.35 53.67,50.0 50,50" fill="url(#nv-gl)"/>
+<polygon points="50.0,77.35 46.33,50.0 50,50" fill="url(#nv-gd)"/>
+<polygon points="37.01,62.99 51.73,51.73 50,50" fill="url(#nv-gl)"/>
+<polygon points="37.01,62.99 48.27,48.27 50,50" fill="url(#nv-gd)"/>
+<polygon points="22.65,50.0 50.0,53.67 50,50" fill="url(#nv-gl)"/>
+<polygon points="22.65,50.0 50.0,46.33 50,50" fill="url(#nv-gd)"/>
+<polygon points="37.01,37.01 48.27,51.73 50,50" fill="url(#nv-gl)"/>
+<polygon points="37.01,37.01 51.73,48.27 50,50" fill="url(#nv-gd)"/>
+<line x1="50.0" y1="22.65" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
+<line x1="62.99" y1="37.01" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
+<line x1="77.35" y1="50.0" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
+<line x1="62.99" y1="62.99" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
+<line x1="50.0" y1="77.35" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
+<line x1="37.01" y1="62.99" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
+<line x1="22.65" y1="50.0" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
+<line x1="37.01" y1="37.01" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
+<circle cx="50" cy="50" r="3.06" fill="#ff7a35"/>
+<circle cx="50" cy="50" r="1.84" fill="#1a1410"/>
+<circle cx="50" cy="50" r="0.9" fill="#ff7a35"/>
+</svg>
     <div class="nav-logo-text">
       <div class="nav-logo-name">
         <span class="z">ZOYEN&nbsp;</span>
@@ -1351,149 +1338,66 @@ footer {
     <div class="slide-overlay"></div>
     <div class="slide-emblem">
       <div class="emblem-3d">
-        <!-- Anillo exterior estático -->
-        <svg class="emblem-svg" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="ring-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="rgba(255,255,255,1)"/>
-              <stop offset="40%" stop-color="rgba(220,235,248,0.9)"/>
-              <stop offset="100%" stop-color="rgba(180,205,225,0.7)"/>
-            </linearGradient>
-            <filter id="ring-glow">
-              <feGaussianBlur stdDeviation="1.2" result="blur"/>
-              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-          </defs>
-          <!-- Anillo exterior -->
-          <circle cx="140" cy="140" r="99" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="18"/>
-          <circle cx="140" cy="140" r="99" fill="none" stroke="url(#ring-grad)" stroke-width="0.9" filter="url(#ring-glow)"/>
-          <!-- Anillo interior -->
-          <circle cx="140" cy="140" r="84" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="0.5"/>
-          <circle cx="140" cy="140" r="70" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="8"/>
-          <circle cx="140" cy="140" r="70" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="0.6"/>
-          <!-- Ticks del anillo: cardinales largos, secundarios medios, terciarios cortos -->
-          <g fill="none" stroke-linecap="round">
-            <!-- 0° N -->  <line x1="140" y1="41" x2="140" y2="54" stroke="rgba(255,255,255,0.8)" stroke-width="1.2"/>
-            <!-- 90° E --> <line x1="239" y1="140" x2="226" y2="140" stroke="rgba(255,255,255,0.8)" stroke-width="1.2"/>
-            <!-- 180° S --><line x1="140" y1="239" x2="140" y2="226" stroke="rgba(255,255,255,0.8)" stroke-width="1.2"/>
-            <!-- 270° W --><line x1="41" y1="140" x2="54" y2="140" stroke="rgba(255,255,255,0.8)" stroke-width="1.2"/>
-            <!-- 45° NE --> <line x1="210" y1="70" x2="201" y2="79" stroke="rgba(255,255,255,0.5)" stroke-width="0.9"/>
-            <!-- 135° SE --><line x1="210" y1="210" x2="201" y2="201" stroke="rgba(255,255,255,0.5)" stroke-width="0.9"/>
-            <!-- 225° SW --><line x1="70" y1="210" x2="79" y2="201" stroke="rgba(255,255,255,0.5)" stroke-width="0.9"/>
-            <!-- 315° NW --><line x1="70" y1="70" x2="79" y2="79" stroke="rgba(255,255,255,0.5)" stroke-width="0.9"/>
-            <!-- 30° -->  <line x1="189" y1="51" x2="183" y2="62" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"/>
-            <!-- 60° -->  <line x1="229" y1="91" x2="218" y2="97" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"/>
-            <!-- 120° --> <line x1="229" y1="189" x2="218" y2="183" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"/>
-            <!-- 150° --> <line x1="189" y1="229" x2="183" y2="218" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"/>
-            <!-- 210° --> <line x1="91" y1="229" x2="97" y2="218" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"/>
-            <!-- 240° --> <line x1="51" y1="189" x2="62" y2="183" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"/>
-            <!-- 300° --> <line x1="51" y1="91" x2="62" y2="97" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"/>
-            <!-- 330° --> <line x1="91" y1="51" x2="97" y2="62" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"/>
-          </g>
-        </svg>
-        <!-- ZOYEN TURISMO — anillo exterior, gira antihorario -->
-        <svg class="emblem-text-path" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
-          <defs><path id="pO0" d="M140,140 m-108,0 a108,108 0 1,1 216,0"/></defs>
-          <text font-family="Sora,sans-serif" font-size="10.5" font-weight="700" letter-spacing="14" text-anchor="middle">
-            <textPath href="#pO0" startOffset="50%">
-              <tspan fill="rgba(255,255,255,0.92)">ZOYEN</tspan>
-              <tspan fill="rgba(255,255,255,0.35)"> · </tspan>
-              <tspan fill="#e8541a">TURISMO</tspan>
-            </textPath>
-          </text>
-        </svg>
-        <!-- PATAGONIA ARG — anillo interior, gira horario -->
-        <svg class="emblem-text-inner" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
-          <defs><path id="pI0" d="M140,140 m-77,0 a77,77 0 1,1 154,0"/></defs>
-          <text font-family="Sora,sans-serif" font-size="9" font-weight="400" letter-spacing="11" text-anchor="middle">
-            <textPath href="#pI0" startOffset="50%">
-              <tspan fill="rgba(255,255,255,0.85)">PATAGONIA</tspan>
-              <tspan fill="rgba(255,255,255,0.25)"> · </tspan>
-              <tspan fill="rgba(255,255,255,0.85)">ARG</tspan>
-            </textPath>
-          </text>
-        </svg>
-        <!-- Rosa de los vientos — gira en 3D -->
-        <svg class="emblem-rose" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="rg-n-l" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="rgba(255,255,255,1)"/>
-              <stop offset="100%" stop-color="rgba(200,220,240,0.75)"/>
-            </linearGradient>
-            <linearGradient id="rg-n-r" x1="100%" y1="0%" x2="0%" y2="0%">
-              <stop offset="0%" stop-color="rgba(130,160,190,0.6)"/>
-              <stop offset="100%" stop-color="rgba(100,135,165,0.4)"/>
-            </linearGradient>
-            <linearGradient id="rg-w-l" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="rgba(255,255,255,0.95)"/>
-              <stop offset="100%" stop-color="rgba(190,215,235,0.7)"/>
-            </linearGradient>
-            <linearGradient id="rg-w-r" x1="0%" y1="100%" x2="0%" y2="0%">
-              <stop offset="0%" stop-color="rgba(120,150,180,0.5)"/>
-              <stop offset="100%" stop-color="rgba(90,125,158,0.35)"/>
-            </linearGradient>
-            <linearGradient id="rg-inter-l" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="rgba(215,232,248,0.8)"/>
-              <stop offset="100%" stop-color="rgba(155,182,208,0.5)"/>
-            </linearGradient>
-            <linearGradient id="rg-inter-r" x1="100%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="rgba(140,168,195,0.5)"/>
-              <stop offset="100%" stop-color="rgba(105,138,168,0.3)"/>
-            </linearGradient>
-            <radialGradient id="rg-jewel" cx="35%" cy="30%" r="65%">
-              <stop offset="0%" stop-color="#ffaa55"/>
-              <stop offset="45%" stop-color="#e8541a"/>
-              <stop offset="100%" stop-color="#a83000"/>
-            </radialGradient>
-            <radialGradient id="rg-hub" cx="35%" cy="30%" r="65%">
-              <stop offset="0%" stop-color="rgba(255,255,255,0.98)"/>
-              <stop offset="60%" stop-color="rgba(210,228,245,0.85)"/>
-              <stop offset="100%" stop-color="rgba(155,188,215,0.65)"/>
-            </radialGradient>
-            <filter id="f-shadow" x="-30%" y="-30%" width="160%" height="160%">
-              <feDropShadow dx="0" dy="1" stdDeviation="2.5" flood-color="rgba(0,15,40,0.55)"/>
-            </filter>
-          </defs>
-
-          <!-- ── NORTE: rombo largo, dos caras ── -->
-          <polygon points="60,5  57.5,58 60,63 62.5,58" fill="url(#rg-n-l)" filter="url(#f-shadow)"/>
-          <polygon points="60,5  62.5,58 60,63 57.5,58" fill="url(#rg-n-r)"/>
-
-          <!-- ── SUR ── -->
-          <polygon points="60,115 57.5,62 60,57 62.5,62" fill="url(#rg-w-r)" filter="url(#f-shadow)"/>
-          <polygon points="60,115 62.5,62 60,57 57.5,62" fill="url(#rg-w-l)" opacity="0.6"/>
-
-          <!-- ── OESTE ── -->
-          <polygon points="5,60  58,57.5 63,60 58,62.5" fill="url(#rg-w-l)" filter="url(#f-shadow)"/>
-          <polygon points="5,60  58,62.5 63,60 58,57.5" fill="url(#rg-w-r)"/>
-
-          <!-- ── ESTE ── -->
-          <polygon points="115,60 62,57.5 57,60 62,62.5" fill="url(#rg-n-r)" filter="url(#f-shadow)"/>
-          <polygon points="115,60 62,62.5 57,60 62,57.5" fill="url(#rg-n-l)" opacity="0.5"/>
-
-          <!-- ── INTERCARDINALES (rombos cortos más finos) ── -->
-          <!-- NE cara lit / sombra -->
-          <polygon points="101,19 63,57 60,60 57,57" fill="url(#rg-inter-l)" filter="url(#f-shadow)"/>
-          <polygon points="101,19 57,57 60,60 63,57" fill="url(#rg-inter-r)"/>
-          <!-- NW -->
-          <polygon points="19,19  57,57 60,60 63,57" fill="url(#rg-inter-l)" filter="url(#f-shadow)"/>
-          <polygon points="19,19  63,57 60,60 57,57" fill="url(#rg-inter-r)"/>
-          <!-- SE -->
-          <polygon points="101,101 63,63 60,60 57,63" fill="url(#rg-inter-r)" filter="url(#f-shadow)"/>
-          <polygon points="101,101 57,63 60,60 63,63" fill="url(#rg-inter-l)" opacity="0.6"/>
-          <!-- SW -->
-          <polygon points="19,101  57,63 60,60 63,63" fill="url(#rg-inter-l)" filter="url(#f-shadow)"/>
-          <polygon points="19,101  63,63 60,60 57,63" fill="url(#rg-inter-r)"/>
-
-          <!-- ── ANILLO HUB ── -->
-          <circle cx="60" cy="60" r="8.5" fill="url(#rg-hub)" filter="url(#f-shadow)"/>
-          <circle cx="60" cy="60" r="8.5" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
-          <circle cx="60" cy="60" r="5.5" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="0.5"/>
-
-          <!-- ── JOYA NARANJA ── -->
-          <circle cx="60" cy="60" r="4.5" fill="url(#rg-jewel)" filter="url(#f-shadow)"/>
-          <ellipse cx="58.8" cy="58.6" rx="1.3" ry="0.85" fill="rgba(255,220,155,0.75)" transform="rotate(-25,58.8,58.6)"/>
-        </svg>
+        <svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg" style="width:280px;height:280px;">
+  <defs>
+    <path id="hpO" d="M140,140 m-108,0 a108,108 0 1,1 216,0"/>
+    <path id="hpOb" d="M140,140 m-108,0 a108,108 0 1,0 216,0"/>
+    <path id="hpI" d="M140,140 m-77,0 a77,77 0 1,1 154,0"/>
+  </defs>
+  <!-- Anillos exteriores del emblema hero con texto -->
+  <g style="transform-origin:140px 140px; animation:heroRingCCW 28s linear infinite;">
+    <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="14"/>
+    <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="0.8"/>
+    <circle cx="140" cy="140" r="96"  fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.4"/>
+    <text font-family="Sora,Arial Narrow,sans-serif" font-size="10.5" font-weight="700" letter-spacing="12" text-anchor="middle">
+      <textPath href="#hpO" startOffset="50%"><tspan fill="rgba(255,255,255,0.92)">ZOYEN</tspan><tspan fill="rgba(255,255,255,0.3)"> · </tspan><tspan fill="#ff7a35">TURISMO</tspan></textPath>
+    </text>
+  </g>
+  <g style="transform-origin:140px 140px; animation:heroRingCW 22s linear infinite;">
+    <circle cx="140" cy="140" r="77" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="10"/>
+    <circle cx="140" cy="140" r="77" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="0.6"/>
+    <text font-family="Sora,Arial Narrow,sans-serif" font-size="9" font-weight="400" letter-spacing="9" text-anchor="middle" fill="rgba(255,255,255,0.7)">
+      <textPath href="#hpI" startOffset="50%">· PATAGONIA · ARG ·</textPath>
+    </text>
+  </g>
+  <!-- Rosa animada -->
+  <g style="transform-origin:140px 140px; animation:heroRoseSpin 14s linear infinite;">
+    <defs>
+  <linearGradient id="hr2-gl" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(255,255,255,0.95)"/><stop offset="100%" stop-color="rgba(182,196,212,0.82)"/></linearGradient>
+  <linearGradient id="hr2-gd" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(102,116,132,0.9)"/><stop offset="100%" stop-color="rgba(62,76,92,0.93)"/></linearGradient>
+</defs>
+<circle cx="140" cy="140" r="63.27" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="3.57"/>
+<circle cx="140" cy="140" r="55.1" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="0.61"/>
+<polygon points="140.0,71.63 130.82,140.0 140,140" fill="url(#hr2-gl)"/>
+<polygon points="140.0,71.63 149.18,140.0 140,140" fill="url(#hr2-gd)"/>
+<polygon points="140.0,64.49 136.43,71.63 143.57,71.63" fill="rgba(255,255,255,0.95)"/>
+<polygon points="172.47,107.53 135.67,135.67 140,140" fill="url(#hr2-gl)"/>
+<polygon points="172.47,107.53 144.33,144.33 140,140" fill="url(#hr2-gd)"/>
+<polygon points="208.37,140.0 140.0,130.82 140,140" fill="url(#hr2-gl)"/>
+<polygon points="208.37,140.0 140.0,149.18 140,140" fill="url(#hr2-gd)"/>
+<polygon points="172.47,172.47 144.33,135.67 140,140" fill="url(#hr2-gl)"/>
+<polygon points="172.47,172.47 135.67,144.33 140,140" fill="url(#hr2-gd)"/>
+<polygon points="140.0,208.37 149.18,140.0 140,140" fill="url(#hr2-gl)"/>
+<polygon points="140.0,208.37 130.82,140.0 140,140" fill="url(#hr2-gd)"/>
+<polygon points="107.53,172.47 144.33,144.33 140,140" fill="url(#hr2-gl)"/>
+<polygon points="107.53,172.47 135.67,135.67 140,140" fill="url(#hr2-gd)"/>
+<polygon points="71.63,140.0 140.0,149.18 140,140" fill="url(#hr2-gl)"/>
+<polygon points="71.63,140.0 140.0,130.82 140,140" fill="url(#hr2-gd)"/>
+<polygon points="107.53,107.53 135.67,144.33 140,140" fill="url(#hr2-gl)"/>
+<polygon points="107.53,107.53 144.33,135.67 140,140" fill="url(#hr2-gd)"/>
+<line x1="140.0" y1="71.63" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
+<line x1="172.47" y1="107.53" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
+<line x1="208.37" y1="140.0" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
+<line x1="172.47" y1="172.47" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
+<line x1="140.0" y1="208.37" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
+<line x1="107.53" y1="172.47" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
+<line x1="71.63" y1="140.0" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
+<line x1="107.53" y1="107.53" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
+<circle cx="140" cy="140" r="7.65" fill="#ff7a35"/>
+<circle cx="140" cy="140" r="4.59" fill="#1a1410"/>
+<circle cx="140" cy="140" r="2.24" fill="#ff7a35"/>
+  </g>
+</svg>
       </div>
     </div>
     <div class="slide-content">
@@ -1512,147 +1416,66 @@ footer {
     <div class="slide-overlay"></div>
     <div class="slide-emblem">
       <div class="emblem-3d">
-        <svg class="emblem-svg" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="ring-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="rgba(255,255,255,1)"/>
-              <stop offset="40%" stop-color="rgba(220,235,248,0.9)"/>
-              <stop offset="100%" stop-color="rgba(180,205,225,0.7)"/>
-            </linearGradient>
-            <filter id="ring-glow">
-              <feGaussianBlur stdDeviation="1.2" result="blur"/>
-              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-          </defs>
-          <!-- Anillo exterior -->
-          <circle cx="140" cy="140" r="99" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="18"/>
-          <circle cx="140" cy="140" r="99" fill="none" stroke="url(#ring-grad)" stroke-width="0.9" filter="url(#ring-glow)"/>
-          <!-- Anillo interior -->
-          <circle cx="140" cy="140" r="84" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="0.5"/>
-          <circle cx="140" cy="140" r="70" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="8"/>
-          <circle cx="140" cy="140" r="70" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="0.6"/>
-          <!-- Ticks del anillo: cardinales largos, secundarios medios, terciarios cortos -->
-          <g fill="none" stroke-linecap="round">
-            <!-- 0° N -->  <line x1="140" y1="41" x2="140" y2="54" stroke="rgba(255,255,255,0.8)" stroke-width="1.2"/>
-            <!-- 90° E --> <line x1="239" y1="140" x2="226" y2="140" stroke="rgba(255,255,255,0.8)" stroke-width="1.2"/>
-            <!-- 180° S --><line x1="140" y1="239" x2="140" y2="226" stroke="rgba(255,255,255,0.8)" stroke-width="1.2"/>
-            <!-- 270° W --><line x1="41" y1="140" x2="54" y2="140" stroke="rgba(255,255,255,0.8)" stroke-width="1.2"/>
-            <!-- 45° NE --> <line x1="210" y1="70" x2="201" y2="79" stroke="rgba(255,255,255,0.5)" stroke-width="0.9"/>
-            <!-- 135° SE --><line x1="210" y1="210" x2="201" y2="201" stroke="rgba(255,255,255,0.5)" stroke-width="0.9"/>
-            <!-- 225° SW --><line x1="70" y1="210" x2="79" y2="201" stroke="rgba(255,255,255,0.5)" stroke-width="0.9"/>
-            <!-- 315° NW --><line x1="70" y1="70" x2="79" y2="79" stroke="rgba(255,255,255,0.5)" stroke-width="0.9"/>
-            <!-- 30° -->  <line x1="189" y1="51" x2="183" y2="62" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"/>
-            <!-- 60° -->  <line x1="229" y1="91" x2="218" y2="97" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"/>
-            <!-- 120° --> <line x1="229" y1="189" x2="218" y2="183" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"/>
-            <!-- 150° --> <line x1="189" y1="229" x2="183" y2="218" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"/>
-            <!-- 210° --> <line x1="91" y1="229" x2="97" y2="218" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"/>
-            <!-- 240° --> <line x1="51" y1="189" x2="62" y2="183" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"/>
-            <!-- 300° --> <line x1="51" y1="91" x2="62" y2="97" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"/>
-            <!-- 330° --> <line x1="91" y1="51" x2="97" y2="62" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"/>
-          </g>
-        </svg>
-        <!-- ZOYEN TURISMO — anillo exterior, gira antihorario -->
-        <svg class="emblem-text-path" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
-          <defs><path id="pO1" d="M140,140 m-108,0 a108,108 0 1,1 216,0"/></defs>
-          <text font-family="Sora,sans-serif" font-size="10.5" font-weight="700" letter-spacing="14" text-anchor="middle">
-            <textPath href="#pO1" startOffset="50%">
-              <tspan fill="rgba(255,255,255,0.92)">ZOYEN</tspan>
-              <tspan fill="rgba(255,255,255,0.35)"> · </tspan>
-              <tspan fill="#e8541a">TURISMO</tspan>
-            </textPath>
-          </text>
-        </svg>
-        <!-- PATAGONIA ARG — anillo interior, gira horario -->
-        <svg class="emblem-text-inner" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
-          <defs><path id="pI1" d="M140,140 m-77,0 a77,77 0 1,1 154,0"/></defs>
-          <text font-family="Sora,sans-serif" font-size="9" font-weight="400" letter-spacing="11" text-anchor="middle">
-            <textPath href="#pI1" startOffset="50%">
-              <tspan fill="rgba(255,255,255,0.85)">PATAGONIA</tspan>
-              <tspan fill="rgba(255,255,255,0.25)"> · </tspan>
-              <tspan fill="rgba(255,255,255,0.85)">ARG</tspan>
-            </textPath>
-          </text>
-        </svg>
-        <svg class="emblem-rose" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="rg-n-l" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="rgba(255,255,255,1)"/>
-              <stop offset="100%" stop-color="rgba(200,220,240,0.75)"/>
-            </linearGradient>
-            <linearGradient id="rg-n-r" x1="100%" y1="0%" x2="0%" y2="0%">
-              <stop offset="0%" stop-color="rgba(130,160,190,0.6)"/>
-              <stop offset="100%" stop-color="rgba(100,135,165,0.4)"/>
-            </linearGradient>
-            <linearGradient id="rg-w-l" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="rgba(255,255,255,0.95)"/>
-              <stop offset="100%" stop-color="rgba(190,215,235,0.7)"/>
-            </linearGradient>
-            <linearGradient id="rg-w-r" x1="0%" y1="100%" x2="0%" y2="0%">
-              <stop offset="0%" stop-color="rgba(120,150,180,0.5)"/>
-              <stop offset="100%" stop-color="rgba(90,125,158,0.35)"/>
-            </linearGradient>
-            <linearGradient id="rg-inter-l" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="rgba(215,232,248,0.8)"/>
-              <stop offset="100%" stop-color="rgba(155,182,208,0.5)"/>
-            </linearGradient>
-            <linearGradient id="rg-inter-r" x1="100%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="rgba(140,168,195,0.5)"/>
-              <stop offset="100%" stop-color="rgba(105,138,168,0.3)"/>
-            </linearGradient>
-            <radialGradient id="rg-jewel" cx="35%" cy="30%" r="65%">
-              <stop offset="0%" stop-color="#ffaa55"/>
-              <stop offset="45%" stop-color="#e8541a"/>
-              <stop offset="100%" stop-color="#a83000"/>
-            </radialGradient>
-            <radialGradient id="rg-hub" cx="35%" cy="30%" r="65%">
-              <stop offset="0%" stop-color="rgba(255,255,255,0.98)"/>
-              <stop offset="60%" stop-color="rgba(210,228,245,0.85)"/>
-              <stop offset="100%" stop-color="rgba(155,188,215,0.65)"/>
-            </radialGradient>
-            <filter id="f-shadow" x="-30%" y="-30%" width="160%" height="160%">
-              <feDropShadow dx="0" dy="1" stdDeviation="2.5" flood-color="rgba(0,15,40,0.55)"/>
-            </filter>
-          </defs>
-
-          <!-- ── NORTE: rombo largo, dos caras ── -->
-          <polygon points="60,5  57.5,58 60,63 62.5,58" fill="url(#rg-n-l)" filter="url(#f-shadow)"/>
-          <polygon points="60,5  62.5,58 60,63 57.5,58" fill="url(#rg-n-r)"/>
-
-          <!-- ── SUR ── -->
-          <polygon points="60,115 57.5,62 60,57 62.5,62" fill="url(#rg-w-r)" filter="url(#f-shadow)"/>
-          <polygon points="60,115 62.5,62 60,57 57.5,62" fill="url(#rg-w-l)" opacity="0.6"/>
-
-          <!-- ── OESTE ── -->
-          <polygon points="5,60  58,57.5 63,60 58,62.5" fill="url(#rg-w-l)" filter="url(#f-shadow)"/>
-          <polygon points="5,60  58,62.5 63,60 58,57.5" fill="url(#rg-w-r)"/>
-
-          <!-- ── ESTE ── -->
-          <polygon points="115,60 62,57.5 57,60 62,62.5" fill="url(#rg-n-r)" filter="url(#f-shadow)"/>
-          <polygon points="115,60 62,62.5 57,60 62,57.5" fill="url(#rg-n-l)" opacity="0.5"/>
-
-          <!-- ── INTERCARDINALES (rombos cortos más finos) ── -->
-          <!-- NE cara lit / sombra -->
-          <polygon points="101,19 63,57 60,60 57,57" fill="url(#rg-inter-l)" filter="url(#f-shadow)"/>
-          <polygon points="101,19 57,57 60,60 63,57" fill="url(#rg-inter-r)"/>
-          <!-- NW -->
-          <polygon points="19,19  57,57 60,60 63,57" fill="url(#rg-inter-l)" filter="url(#f-shadow)"/>
-          <polygon points="19,19  63,57 60,60 57,57" fill="url(#rg-inter-r)"/>
-          <!-- SE -->
-          <polygon points="101,101 63,63 60,60 57,63" fill="url(#rg-inter-r)" filter="url(#f-shadow)"/>
-          <polygon points="101,101 57,63 60,60 63,63" fill="url(#rg-inter-l)" opacity="0.6"/>
-          <!-- SW -->
-          <polygon points="19,101  57,63 60,60 63,63" fill="url(#rg-inter-l)" filter="url(#f-shadow)"/>
-          <polygon points="19,101  63,63 60,60 57,63" fill="url(#rg-inter-r)"/>
-
-          <!-- ── ANILLO HUB ── -->
-          <circle cx="60" cy="60" r="8.5" fill="url(#rg-hub)" filter="url(#f-shadow)"/>
-          <circle cx="60" cy="60" r="8.5" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
-          <circle cx="60" cy="60" r="5.5" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="0.5"/>
-
-          <!-- ── JOYA NARANJA ── -->
-          <circle cx="60" cy="60" r="4.5" fill="url(#rg-jewel)" filter="url(#f-shadow)"/>
-          <ellipse cx="58.8" cy="58.6" rx="1.3" ry="0.85" fill="rgba(255,220,155,0.75)" transform="rotate(-25,58.8,58.6)"/>
-        </svg>
+        <svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg" style="width:280px;height:280px;">
+  <defs>
+    <path id="hpO" d="M140,140 m-108,0 a108,108 0 1,1 216,0"/>
+    <path id="hpOb" d="M140,140 m-108,0 a108,108 0 1,0 216,0"/>
+    <path id="hpI" d="M140,140 m-77,0 a77,77 0 1,1 154,0"/>
+  </defs>
+  <!-- Anillos exteriores del emblema hero con texto -->
+  <g style="transform-origin:140px 140px; animation:heroRingCCW 28s linear infinite;">
+    <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="14"/>
+    <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="0.8"/>
+    <circle cx="140" cy="140" r="96"  fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.4"/>
+    <text font-family="Sora,Arial Narrow,sans-serif" font-size="10.5" font-weight="700" letter-spacing="12" text-anchor="middle">
+      <textPath href="#hpO" startOffset="50%"><tspan fill="rgba(255,255,255,0.92)">ZOYEN</tspan><tspan fill="rgba(255,255,255,0.3)"> · </tspan><tspan fill="#ff7a35">TURISMO</tspan></textPath>
+    </text>
+  </g>
+  <g style="transform-origin:140px 140px; animation:heroRingCW 22s linear infinite;">
+    <circle cx="140" cy="140" r="77" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="10"/>
+    <circle cx="140" cy="140" r="77" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="0.6"/>
+    <text font-family="Sora,Arial Narrow,sans-serif" font-size="9" font-weight="400" letter-spacing="9" text-anchor="middle" fill="rgba(255,255,255,0.7)">
+      <textPath href="#hpI" startOffset="50%">· PATAGONIA · ARG ·</textPath>
+    </text>
+  </g>
+  <!-- Rosa animada -->
+  <g style="transform-origin:140px 140px; animation:heroRoseSpin 14s linear infinite;">
+    <defs>
+  <linearGradient id="hr2-gl" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(255,255,255,0.95)"/><stop offset="100%" stop-color="rgba(182,196,212,0.82)"/></linearGradient>
+  <linearGradient id="hr2-gd" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(102,116,132,0.9)"/><stop offset="100%" stop-color="rgba(62,76,92,0.93)"/></linearGradient>
+</defs>
+<circle cx="140" cy="140" r="63.27" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="3.57"/>
+<circle cx="140" cy="140" r="55.1" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="0.61"/>
+<polygon points="140.0,71.63 130.82,140.0 140,140" fill="url(#hr2-gl)"/>
+<polygon points="140.0,71.63 149.18,140.0 140,140" fill="url(#hr2-gd)"/>
+<polygon points="140.0,64.49 136.43,71.63 143.57,71.63" fill="rgba(255,255,255,0.95)"/>
+<polygon points="172.47,107.53 135.67,135.67 140,140" fill="url(#hr2-gl)"/>
+<polygon points="172.47,107.53 144.33,144.33 140,140" fill="url(#hr2-gd)"/>
+<polygon points="208.37,140.0 140.0,130.82 140,140" fill="url(#hr2-gl)"/>
+<polygon points="208.37,140.0 140.0,149.18 140,140" fill="url(#hr2-gd)"/>
+<polygon points="172.47,172.47 144.33,135.67 140,140" fill="url(#hr2-gl)"/>
+<polygon points="172.47,172.47 135.67,144.33 140,140" fill="url(#hr2-gd)"/>
+<polygon points="140.0,208.37 149.18,140.0 140,140" fill="url(#hr2-gl)"/>
+<polygon points="140.0,208.37 130.82,140.0 140,140" fill="url(#hr2-gd)"/>
+<polygon points="107.53,172.47 144.33,144.33 140,140" fill="url(#hr2-gl)"/>
+<polygon points="107.53,172.47 135.67,135.67 140,140" fill="url(#hr2-gd)"/>
+<polygon points="71.63,140.0 140.0,149.18 140,140" fill="url(#hr2-gl)"/>
+<polygon points="71.63,140.0 140.0,130.82 140,140" fill="url(#hr2-gd)"/>
+<polygon points="107.53,107.53 135.67,144.33 140,140" fill="url(#hr2-gl)"/>
+<polygon points="107.53,107.53 144.33,135.67 140,140" fill="url(#hr2-gd)"/>
+<line x1="140.0" y1="71.63" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
+<line x1="172.47" y1="107.53" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
+<line x1="208.37" y1="140.0" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
+<line x1="172.47" y1="172.47" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
+<line x1="140.0" y1="208.37" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
+<line x1="107.53" y1="172.47" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
+<line x1="71.63" y1="140.0" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
+<line x1="107.53" y1="107.53" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
+<circle cx="140" cy="140" r="7.65" fill="#ff7a35"/>
+<circle cx="140" cy="140" r="4.59" fill="#1a1410"/>
+<circle cx="140" cy="140" r="2.24" fill="#ff7a35"/>
+  </g>
+</svg>
       </div>
     </div>
     <div class="slide-content">
@@ -1671,147 +1494,66 @@ footer {
     <div class="slide-overlay"></div>
     <div class="slide-emblem">
       <div class="emblem-3d">
-        <svg class="emblem-svg" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="ring-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="rgba(255,255,255,1)"/>
-              <stop offset="40%" stop-color="rgba(220,235,248,0.9)"/>
-              <stop offset="100%" stop-color="rgba(180,205,225,0.7)"/>
-            </linearGradient>
-            <filter id="ring-glow">
-              <feGaussianBlur stdDeviation="1.2" result="blur"/>
-              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-          </defs>
-          <!-- Anillo exterior -->
-          <circle cx="140" cy="140" r="99" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="18"/>
-          <circle cx="140" cy="140" r="99" fill="none" stroke="url(#ring-grad)" stroke-width="0.9" filter="url(#ring-glow)"/>
-          <!-- Anillo interior -->
-          <circle cx="140" cy="140" r="84" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="0.5"/>
-          <circle cx="140" cy="140" r="70" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="8"/>
-          <circle cx="140" cy="140" r="70" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="0.6"/>
-          <!-- Ticks del anillo: cardinales largos, secundarios medios, terciarios cortos -->
-          <g fill="none" stroke-linecap="round">
-            <!-- 0° N -->  <line x1="140" y1="41" x2="140" y2="54" stroke="rgba(255,255,255,0.8)" stroke-width="1.2"/>
-            <!-- 90° E --> <line x1="239" y1="140" x2="226" y2="140" stroke="rgba(255,255,255,0.8)" stroke-width="1.2"/>
-            <!-- 180° S --><line x1="140" y1="239" x2="140" y2="226" stroke="rgba(255,255,255,0.8)" stroke-width="1.2"/>
-            <!-- 270° W --><line x1="41" y1="140" x2="54" y2="140" stroke="rgba(255,255,255,0.8)" stroke-width="1.2"/>
-            <!-- 45° NE --> <line x1="210" y1="70" x2="201" y2="79" stroke="rgba(255,255,255,0.5)" stroke-width="0.9"/>
-            <!-- 135° SE --><line x1="210" y1="210" x2="201" y2="201" stroke="rgba(255,255,255,0.5)" stroke-width="0.9"/>
-            <!-- 225° SW --><line x1="70" y1="210" x2="79" y2="201" stroke="rgba(255,255,255,0.5)" stroke-width="0.9"/>
-            <!-- 315° NW --><line x1="70" y1="70" x2="79" y2="79" stroke="rgba(255,255,255,0.5)" stroke-width="0.9"/>
-            <!-- 30° -->  <line x1="189" y1="51" x2="183" y2="62" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"/>
-            <!-- 60° -->  <line x1="229" y1="91" x2="218" y2="97" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"/>
-            <!-- 120° --> <line x1="229" y1="189" x2="218" y2="183" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"/>
-            <!-- 150° --> <line x1="189" y1="229" x2="183" y2="218" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"/>
-            <!-- 210° --> <line x1="91" y1="229" x2="97" y2="218" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"/>
-            <!-- 240° --> <line x1="51" y1="189" x2="62" y2="183" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"/>
-            <!-- 300° --> <line x1="51" y1="91" x2="62" y2="97" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"/>
-            <!-- 330° --> <line x1="91" y1="51" x2="97" y2="62" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"/>
-          </g>
-        </svg>
-        <!-- ZOYEN TURISMO — anillo exterior, gira antihorario -->
-        <svg class="emblem-text-path" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
-          <defs><path id="pO2" d="M140,140 m-108,0 a108,108 0 1,1 216,0"/></defs>
-          <text font-family="Sora,sans-serif" font-size="10.5" font-weight="700" letter-spacing="14" text-anchor="middle">
-            <textPath href="#pO2" startOffset="50%">
-              <tspan fill="rgba(255,255,255,0.92)">ZOYEN</tspan>
-              <tspan fill="rgba(255,255,255,0.35)"> · </tspan>
-              <tspan fill="#e8541a">TURISMO</tspan>
-            </textPath>
-          </text>
-        </svg>
-        <!-- PATAGONIA ARG — anillo interior, gira horario -->
-        <svg class="emblem-text-inner" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
-          <defs><path id="pI2" d="M140,140 m-77,0 a77,77 0 1,1 154,0"/></defs>
-          <text font-family="Sora,sans-serif" font-size="9" font-weight="400" letter-spacing="11" text-anchor="middle">
-            <textPath href="#pI2" startOffset="50%">
-              <tspan fill="rgba(255,255,255,0.85)">PATAGONIA</tspan>
-              <tspan fill="rgba(255,255,255,0.25)"> · </tspan>
-              <tspan fill="rgba(255,255,255,0.85)">ARG</tspan>
-            </textPath>
-          </text>
-        </svg>
-        <svg class="emblem-rose" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="rg-n-l" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="rgba(255,255,255,1)"/>
-              <stop offset="100%" stop-color="rgba(200,220,240,0.75)"/>
-            </linearGradient>
-            <linearGradient id="rg-n-r" x1="100%" y1="0%" x2="0%" y2="0%">
-              <stop offset="0%" stop-color="rgba(130,160,190,0.6)"/>
-              <stop offset="100%" stop-color="rgba(100,135,165,0.4)"/>
-            </linearGradient>
-            <linearGradient id="rg-w-l" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="rgba(255,255,255,0.95)"/>
-              <stop offset="100%" stop-color="rgba(190,215,235,0.7)"/>
-            </linearGradient>
-            <linearGradient id="rg-w-r" x1="0%" y1="100%" x2="0%" y2="0%">
-              <stop offset="0%" stop-color="rgba(120,150,180,0.5)"/>
-              <stop offset="100%" stop-color="rgba(90,125,158,0.35)"/>
-            </linearGradient>
-            <linearGradient id="rg-inter-l" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="rgba(215,232,248,0.8)"/>
-              <stop offset="100%" stop-color="rgba(155,182,208,0.5)"/>
-            </linearGradient>
-            <linearGradient id="rg-inter-r" x1="100%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="rgba(140,168,195,0.5)"/>
-              <stop offset="100%" stop-color="rgba(105,138,168,0.3)"/>
-            </linearGradient>
-            <radialGradient id="rg-jewel" cx="35%" cy="30%" r="65%">
-              <stop offset="0%" stop-color="#ffaa55"/>
-              <stop offset="45%" stop-color="#e8541a"/>
-              <stop offset="100%" stop-color="#a83000"/>
-            </radialGradient>
-            <radialGradient id="rg-hub" cx="35%" cy="30%" r="65%">
-              <stop offset="0%" stop-color="rgba(255,255,255,0.98)"/>
-              <stop offset="60%" stop-color="rgba(210,228,245,0.85)"/>
-              <stop offset="100%" stop-color="rgba(155,188,215,0.65)"/>
-            </radialGradient>
-            <filter id="f-shadow" x="-30%" y="-30%" width="160%" height="160%">
-              <feDropShadow dx="0" dy="1" stdDeviation="2.5" flood-color="rgba(0,15,40,0.55)"/>
-            </filter>
-          </defs>
-
-          <!-- ── NORTE: rombo largo, dos caras ── -->
-          <polygon points="60,5  57.5,58 60,63 62.5,58" fill="url(#rg-n-l)" filter="url(#f-shadow)"/>
-          <polygon points="60,5  62.5,58 60,63 57.5,58" fill="url(#rg-n-r)"/>
-
-          <!-- ── SUR ── -->
-          <polygon points="60,115 57.5,62 60,57 62.5,62" fill="url(#rg-w-r)" filter="url(#f-shadow)"/>
-          <polygon points="60,115 62.5,62 60,57 57.5,62" fill="url(#rg-w-l)" opacity="0.6"/>
-
-          <!-- ── OESTE ── -->
-          <polygon points="5,60  58,57.5 63,60 58,62.5" fill="url(#rg-w-l)" filter="url(#f-shadow)"/>
-          <polygon points="5,60  58,62.5 63,60 58,57.5" fill="url(#rg-w-r)"/>
-
-          <!-- ── ESTE ── -->
-          <polygon points="115,60 62,57.5 57,60 62,62.5" fill="url(#rg-n-r)" filter="url(#f-shadow)"/>
-          <polygon points="115,60 62,62.5 57,60 62,57.5" fill="url(#rg-n-l)" opacity="0.5"/>
-
-          <!-- ── INTERCARDINALES (rombos cortos más finos) ── -->
-          <!-- NE cara lit / sombra -->
-          <polygon points="101,19 63,57 60,60 57,57" fill="url(#rg-inter-l)" filter="url(#f-shadow)"/>
-          <polygon points="101,19 57,57 60,60 63,57" fill="url(#rg-inter-r)"/>
-          <!-- NW -->
-          <polygon points="19,19  57,57 60,60 63,57" fill="url(#rg-inter-l)" filter="url(#f-shadow)"/>
-          <polygon points="19,19  63,57 60,60 57,57" fill="url(#rg-inter-r)"/>
-          <!-- SE -->
-          <polygon points="101,101 63,63 60,60 57,63" fill="url(#rg-inter-r)" filter="url(#f-shadow)"/>
-          <polygon points="101,101 57,63 60,60 63,63" fill="url(#rg-inter-l)" opacity="0.6"/>
-          <!-- SW -->
-          <polygon points="19,101  57,63 60,60 63,63" fill="url(#rg-inter-l)" filter="url(#f-shadow)"/>
-          <polygon points="19,101  63,63 60,60 57,63" fill="url(#rg-inter-r)"/>
-
-          <!-- ── ANILLO HUB ── -->
-          <circle cx="60" cy="60" r="8.5" fill="url(#rg-hub)" filter="url(#f-shadow)"/>
-          <circle cx="60" cy="60" r="8.5" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
-          <circle cx="60" cy="60" r="5.5" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="0.5"/>
-
-          <!-- ── JOYA NARANJA ── -->
-          <circle cx="60" cy="60" r="4.5" fill="url(#rg-jewel)" filter="url(#f-shadow)"/>
-          <ellipse cx="58.8" cy="58.6" rx="1.3" ry="0.85" fill="rgba(255,220,155,0.75)" transform="rotate(-25,58.8,58.6)"/>
-        </svg>
+        <svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg" style="width:280px;height:280px;">
+  <defs>
+    <path id="hpO" d="M140,140 m-108,0 a108,108 0 1,1 216,0"/>
+    <path id="hpOb" d="M140,140 m-108,0 a108,108 0 1,0 216,0"/>
+    <path id="hpI" d="M140,140 m-77,0 a77,77 0 1,1 154,0"/>
+  </defs>
+  <!-- Anillos exteriores del emblema hero con texto -->
+  <g style="transform-origin:140px 140px; animation:heroRingCCW 28s linear infinite;">
+    <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="14"/>
+    <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="0.8"/>
+    <circle cx="140" cy="140" r="96"  fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.4"/>
+    <text font-family="Sora,Arial Narrow,sans-serif" font-size="10.5" font-weight="700" letter-spacing="12" text-anchor="middle">
+      <textPath href="#hpO" startOffset="50%"><tspan fill="rgba(255,255,255,0.92)">ZOYEN</tspan><tspan fill="rgba(255,255,255,0.3)"> · </tspan><tspan fill="#ff7a35">TURISMO</tspan></textPath>
+    </text>
+  </g>
+  <g style="transform-origin:140px 140px; animation:heroRingCW 22s linear infinite;">
+    <circle cx="140" cy="140" r="77" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="10"/>
+    <circle cx="140" cy="140" r="77" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="0.6"/>
+    <text font-family="Sora,Arial Narrow,sans-serif" font-size="9" font-weight="400" letter-spacing="9" text-anchor="middle" fill="rgba(255,255,255,0.7)">
+      <textPath href="#hpI" startOffset="50%">· PATAGONIA · ARG ·</textPath>
+    </text>
+  </g>
+  <!-- Rosa animada -->
+  <g style="transform-origin:140px 140px; animation:heroRoseSpin 14s linear infinite;">
+    <defs>
+  <linearGradient id="hr2-gl" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(255,255,255,0.95)"/><stop offset="100%" stop-color="rgba(182,196,212,0.82)"/></linearGradient>
+  <linearGradient id="hr2-gd" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(102,116,132,0.9)"/><stop offset="100%" stop-color="rgba(62,76,92,0.93)"/></linearGradient>
+</defs>
+<circle cx="140" cy="140" r="63.27" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="3.57"/>
+<circle cx="140" cy="140" r="55.1" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="0.61"/>
+<polygon points="140.0,71.63 130.82,140.0 140,140" fill="url(#hr2-gl)"/>
+<polygon points="140.0,71.63 149.18,140.0 140,140" fill="url(#hr2-gd)"/>
+<polygon points="140.0,64.49 136.43,71.63 143.57,71.63" fill="rgba(255,255,255,0.95)"/>
+<polygon points="172.47,107.53 135.67,135.67 140,140" fill="url(#hr2-gl)"/>
+<polygon points="172.47,107.53 144.33,144.33 140,140" fill="url(#hr2-gd)"/>
+<polygon points="208.37,140.0 140.0,130.82 140,140" fill="url(#hr2-gl)"/>
+<polygon points="208.37,140.0 140.0,149.18 140,140" fill="url(#hr2-gd)"/>
+<polygon points="172.47,172.47 144.33,135.67 140,140" fill="url(#hr2-gl)"/>
+<polygon points="172.47,172.47 135.67,144.33 140,140" fill="url(#hr2-gd)"/>
+<polygon points="140.0,208.37 149.18,140.0 140,140" fill="url(#hr2-gl)"/>
+<polygon points="140.0,208.37 130.82,140.0 140,140" fill="url(#hr2-gd)"/>
+<polygon points="107.53,172.47 144.33,144.33 140,140" fill="url(#hr2-gl)"/>
+<polygon points="107.53,172.47 135.67,135.67 140,140" fill="url(#hr2-gd)"/>
+<polygon points="71.63,140.0 140.0,149.18 140,140" fill="url(#hr2-gl)"/>
+<polygon points="71.63,140.0 140.0,130.82 140,140" fill="url(#hr2-gd)"/>
+<polygon points="107.53,107.53 135.67,144.33 140,140" fill="url(#hr2-gl)"/>
+<polygon points="107.53,107.53 144.33,135.67 140,140" fill="url(#hr2-gd)"/>
+<line x1="140.0" y1="71.63" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
+<line x1="172.47" y1="107.53" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
+<line x1="208.37" y1="140.0" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
+<line x1="172.47" y1="172.47" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
+<line x1="140.0" y1="208.37" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
+<line x1="107.53" y1="172.47" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
+<line x1="71.63" y1="140.0" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
+<line x1="107.53" y1="107.53" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
+<circle cx="140" cy="140" r="7.65" fill="#ff7a35"/>
+<circle cx="140" cy="140" r="4.59" fill="#1a1410"/>
+<circle cx="140" cy="140" r="2.24" fill="#ff7a35"/>
+  </g>
+</svg>
       </div>
     </div>
     <div class="slide-content">
@@ -1830,147 +1572,66 @@ footer {
     <div class="slide-overlay"></div>
     <div class="slide-emblem">
       <div class="emblem-3d">
-        <svg class="emblem-svg" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="ring-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="rgba(255,255,255,1)"/>
-              <stop offset="40%" stop-color="rgba(220,235,248,0.9)"/>
-              <stop offset="100%" stop-color="rgba(180,205,225,0.7)"/>
-            </linearGradient>
-            <filter id="ring-glow">
-              <feGaussianBlur stdDeviation="1.2" result="blur"/>
-              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-          </defs>
-          <!-- Anillo exterior -->
-          <circle cx="140" cy="140" r="99" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="18"/>
-          <circle cx="140" cy="140" r="99" fill="none" stroke="url(#ring-grad)" stroke-width="0.9" filter="url(#ring-glow)"/>
-          <!-- Anillo interior -->
-          <circle cx="140" cy="140" r="84" fill="none" stroke="rgba(255,255,255,0.10)" stroke-width="0.5"/>
-          <circle cx="140" cy="140" r="70" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="8"/>
-          <circle cx="140" cy="140" r="70" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="0.6"/>
-          <!-- Ticks del anillo: cardinales largos, secundarios medios, terciarios cortos -->
-          <g fill="none" stroke-linecap="round">
-            <!-- 0° N -->  <line x1="140" y1="41" x2="140" y2="54" stroke="rgba(255,255,255,0.8)" stroke-width="1.2"/>
-            <!-- 90° E --> <line x1="239" y1="140" x2="226" y2="140" stroke="rgba(255,255,255,0.8)" stroke-width="1.2"/>
-            <!-- 180° S --><line x1="140" y1="239" x2="140" y2="226" stroke="rgba(255,255,255,0.8)" stroke-width="1.2"/>
-            <!-- 270° W --><line x1="41" y1="140" x2="54" y2="140" stroke="rgba(255,255,255,0.8)" stroke-width="1.2"/>
-            <!-- 45° NE --> <line x1="210" y1="70" x2="201" y2="79" stroke="rgba(255,255,255,0.5)" stroke-width="0.9"/>
-            <!-- 135° SE --><line x1="210" y1="210" x2="201" y2="201" stroke="rgba(255,255,255,0.5)" stroke-width="0.9"/>
-            <!-- 225° SW --><line x1="70" y1="210" x2="79" y2="201" stroke="rgba(255,255,255,0.5)" stroke-width="0.9"/>
-            <!-- 315° NW --><line x1="70" y1="70" x2="79" y2="79" stroke="rgba(255,255,255,0.5)" stroke-width="0.9"/>
-            <!-- 30° -->  <line x1="189" y1="51" x2="183" y2="62" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"/>
-            <!-- 60° -->  <line x1="229" y1="91" x2="218" y2="97" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"/>
-            <!-- 120° --> <line x1="229" y1="189" x2="218" y2="183" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"/>
-            <!-- 150° --> <line x1="189" y1="229" x2="183" y2="218" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"/>
-            <!-- 210° --> <line x1="91" y1="229" x2="97" y2="218" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"/>
-            <!-- 240° --> <line x1="51" y1="189" x2="62" y2="183" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"/>
-            <!-- 300° --> <line x1="51" y1="91" x2="62" y2="97" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"/>
-            <!-- 330° --> <line x1="91" y1="51" x2="97" y2="62" stroke="rgba(255,255,255,0.3)" stroke-width="0.7"/>
-          </g>
-        </svg>
-        <!-- ZOYEN TURISMO — anillo exterior, gira antihorario -->
-        <svg class="emblem-text-path" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
-          <defs><path id="pO3" d="M140,140 m-108,0 a108,108 0 1,1 216,0"/></defs>
-          <text font-family="Sora,sans-serif" font-size="10.5" font-weight="700" letter-spacing="14" text-anchor="middle">
-            <textPath href="#pO3" startOffset="50%">
-              <tspan fill="rgba(255,255,255,0.92)">ZOYEN</tspan>
-              <tspan fill="rgba(255,255,255,0.35)"> · </tspan>
-              <tspan fill="#e8541a">TURISMO</tspan>
-            </textPath>
-          </text>
-        </svg>
-        <!-- PATAGONIA ARG — anillo interior, gira horario -->
-        <svg class="emblem-text-inner" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
-          <defs><path id="pI3" d="M140,140 m-77,0 a77,77 0 1,1 154,0"/></defs>
-          <text font-family="Sora,sans-serif" font-size="9" font-weight="400" letter-spacing="11" text-anchor="middle">
-            <textPath href="#pI3" startOffset="50%">
-              <tspan fill="rgba(255,255,255,0.85)">PATAGONIA</tspan>
-              <tspan fill="rgba(255,255,255,0.25)"> · </tspan>
-              <tspan fill="rgba(255,255,255,0.85)">ARG</tspan>
-            </textPath>
-          </text>
-        </svg>
-        <svg class="emblem-rose" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="rg-n-l" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="rgba(255,255,255,1)"/>
-              <stop offset="100%" stop-color="rgba(200,220,240,0.75)"/>
-            </linearGradient>
-            <linearGradient id="rg-n-r" x1="100%" y1="0%" x2="0%" y2="0%">
-              <stop offset="0%" stop-color="rgba(130,160,190,0.6)"/>
-              <stop offset="100%" stop-color="rgba(100,135,165,0.4)"/>
-            </linearGradient>
-            <linearGradient id="rg-w-l" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="rgba(255,255,255,0.95)"/>
-              <stop offset="100%" stop-color="rgba(190,215,235,0.7)"/>
-            </linearGradient>
-            <linearGradient id="rg-w-r" x1="0%" y1="100%" x2="0%" y2="0%">
-              <stop offset="0%" stop-color="rgba(120,150,180,0.5)"/>
-              <stop offset="100%" stop-color="rgba(90,125,158,0.35)"/>
-            </linearGradient>
-            <linearGradient id="rg-inter-l" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="rgba(215,232,248,0.8)"/>
-              <stop offset="100%" stop-color="rgba(155,182,208,0.5)"/>
-            </linearGradient>
-            <linearGradient id="rg-inter-r" x1="100%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="rgba(140,168,195,0.5)"/>
-              <stop offset="100%" stop-color="rgba(105,138,168,0.3)"/>
-            </linearGradient>
-            <radialGradient id="rg-jewel" cx="35%" cy="30%" r="65%">
-              <stop offset="0%" stop-color="#ffaa55"/>
-              <stop offset="45%" stop-color="#e8541a"/>
-              <stop offset="100%" stop-color="#a83000"/>
-            </radialGradient>
-            <radialGradient id="rg-hub" cx="35%" cy="30%" r="65%">
-              <stop offset="0%" stop-color="rgba(255,255,255,0.98)"/>
-              <stop offset="60%" stop-color="rgba(210,228,245,0.85)"/>
-              <stop offset="100%" stop-color="rgba(155,188,215,0.65)"/>
-            </radialGradient>
-            <filter id="f-shadow" x="-30%" y="-30%" width="160%" height="160%">
-              <feDropShadow dx="0" dy="1" stdDeviation="2.5" flood-color="rgba(0,15,40,0.55)"/>
-            </filter>
-          </defs>
-
-          <!-- ── NORTE: rombo largo, dos caras ── -->
-          <polygon points="60,5  57.5,58 60,63 62.5,58" fill="url(#rg-n-l)" filter="url(#f-shadow)"/>
-          <polygon points="60,5  62.5,58 60,63 57.5,58" fill="url(#rg-n-r)"/>
-
-          <!-- ── SUR ── -->
-          <polygon points="60,115 57.5,62 60,57 62.5,62" fill="url(#rg-w-r)" filter="url(#f-shadow)"/>
-          <polygon points="60,115 62.5,62 60,57 57.5,62" fill="url(#rg-w-l)" opacity="0.6"/>
-
-          <!-- ── OESTE ── -->
-          <polygon points="5,60  58,57.5 63,60 58,62.5" fill="url(#rg-w-l)" filter="url(#f-shadow)"/>
-          <polygon points="5,60  58,62.5 63,60 58,57.5" fill="url(#rg-w-r)"/>
-
-          <!-- ── ESTE ── -->
-          <polygon points="115,60 62,57.5 57,60 62,62.5" fill="url(#rg-n-r)" filter="url(#f-shadow)"/>
-          <polygon points="115,60 62,62.5 57,60 62,57.5" fill="url(#rg-n-l)" opacity="0.5"/>
-
-          <!-- ── INTERCARDINALES (rombos cortos más finos) ── -->
-          <!-- NE cara lit / sombra -->
-          <polygon points="101,19 63,57 60,60 57,57" fill="url(#rg-inter-l)" filter="url(#f-shadow)"/>
-          <polygon points="101,19 57,57 60,60 63,57" fill="url(#rg-inter-r)"/>
-          <!-- NW -->
-          <polygon points="19,19  57,57 60,60 63,57" fill="url(#rg-inter-l)" filter="url(#f-shadow)"/>
-          <polygon points="19,19  63,57 60,60 57,57" fill="url(#rg-inter-r)"/>
-          <!-- SE -->
-          <polygon points="101,101 63,63 60,60 57,63" fill="url(#rg-inter-r)" filter="url(#f-shadow)"/>
-          <polygon points="101,101 57,63 60,60 63,63" fill="url(#rg-inter-l)" opacity="0.6"/>
-          <!-- SW -->
-          <polygon points="19,101  57,63 60,60 63,63" fill="url(#rg-inter-l)" filter="url(#f-shadow)"/>
-          <polygon points="19,101  63,63 60,60 57,63" fill="url(#rg-inter-r)"/>
-
-          <!-- ── ANILLO HUB ── -->
-          <circle cx="60" cy="60" r="8.5" fill="url(#rg-hub)" filter="url(#f-shadow)"/>
-          <circle cx="60" cy="60" r="8.5" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
-          <circle cx="60" cy="60" r="5.5" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="0.5"/>
-
-          <!-- ── JOYA NARANJA ── -->
-          <circle cx="60" cy="60" r="4.5" fill="url(#rg-jewel)" filter="url(#f-shadow)"/>
-          <ellipse cx="58.8" cy="58.6" rx="1.3" ry="0.85" fill="rgba(255,220,155,0.75)" transform="rotate(-25,58.8,58.6)"/>
-        </svg>
+        <svg viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg" style="width:280px;height:280px;">
+  <defs>
+    <path id="hpO" d="M140,140 m-108,0 a108,108 0 1,1 216,0"/>
+    <path id="hpOb" d="M140,140 m-108,0 a108,108 0 1,0 216,0"/>
+    <path id="hpI" d="M140,140 m-77,0 a77,77 0 1,1 154,0"/>
+  </defs>
+  <!-- Anillos exteriores del emblema hero con texto -->
+  <g style="transform-origin:140px 140px; animation:heroRingCCW 28s linear infinite;">
+    <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="14"/>
+    <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="0.8"/>
+    <circle cx="140" cy="140" r="96"  fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.4"/>
+    <text font-family="Sora,Arial Narrow,sans-serif" font-size="10.5" font-weight="700" letter-spacing="12" text-anchor="middle">
+      <textPath href="#hpO" startOffset="50%"><tspan fill="rgba(255,255,255,0.92)">ZOYEN</tspan><tspan fill="rgba(255,255,255,0.3)"> · </tspan><tspan fill="#ff7a35">TURISMO</tspan></textPath>
+    </text>
+  </g>
+  <g style="transform-origin:140px 140px; animation:heroRingCW 22s linear infinite;">
+    <circle cx="140" cy="140" r="77" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="10"/>
+    <circle cx="140" cy="140" r="77" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="0.6"/>
+    <text font-family="Sora,Arial Narrow,sans-serif" font-size="9" font-weight="400" letter-spacing="9" text-anchor="middle" fill="rgba(255,255,255,0.7)">
+      <textPath href="#hpI" startOffset="50%">· PATAGONIA · ARG ·</textPath>
+    </text>
+  </g>
+  <!-- Rosa animada -->
+  <g style="transform-origin:140px 140px; animation:heroRoseSpin 14s linear infinite;">
+    <defs>
+  <linearGradient id="hr2-gl" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(255,255,255,0.95)"/><stop offset="100%" stop-color="rgba(182,196,212,0.82)"/></linearGradient>
+  <linearGradient id="hr2-gd" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(102,116,132,0.9)"/><stop offset="100%" stop-color="rgba(62,76,92,0.93)"/></linearGradient>
+</defs>
+<circle cx="140" cy="140" r="63.27" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="3.57"/>
+<circle cx="140" cy="140" r="55.1" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="0.61"/>
+<polygon points="140.0,71.63 130.82,140.0 140,140" fill="url(#hr2-gl)"/>
+<polygon points="140.0,71.63 149.18,140.0 140,140" fill="url(#hr2-gd)"/>
+<polygon points="140.0,64.49 136.43,71.63 143.57,71.63" fill="rgba(255,255,255,0.95)"/>
+<polygon points="172.47,107.53 135.67,135.67 140,140" fill="url(#hr2-gl)"/>
+<polygon points="172.47,107.53 144.33,144.33 140,140" fill="url(#hr2-gd)"/>
+<polygon points="208.37,140.0 140.0,130.82 140,140" fill="url(#hr2-gl)"/>
+<polygon points="208.37,140.0 140.0,149.18 140,140" fill="url(#hr2-gd)"/>
+<polygon points="172.47,172.47 144.33,135.67 140,140" fill="url(#hr2-gl)"/>
+<polygon points="172.47,172.47 135.67,144.33 140,140" fill="url(#hr2-gd)"/>
+<polygon points="140.0,208.37 149.18,140.0 140,140" fill="url(#hr2-gl)"/>
+<polygon points="140.0,208.37 130.82,140.0 140,140" fill="url(#hr2-gd)"/>
+<polygon points="107.53,172.47 144.33,144.33 140,140" fill="url(#hr2-gl)"/>
+<polygon points="107.53,172.47 135.67,135.67 140,140" fill="url(#hr2-gd)"/>
+<polygon points="71.63,140.0 140.0,149.18 140,140" fill="url(#hr2-gl)"/>
+<polygon points="71.63,140.0 140.0,130.82 140,140" fill="url(#hr2-gd)"/>
+<polygon points="107.53,107.53 135.67,144.33 140,140" fill="url(#hr2-gl)"/>
+<polygon points="107.53,107.53 144.33,135.67 140,140" fill="url(#hr2-gd)"/>
+<line x1="140.0" y1="71.63" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
+<line x1="172.47" y1="107.53" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
+<line x1="208.37" y1="140.0" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
+<line x1="172.47" y1="172.47" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
+<line x1="140.0" y1="208.37" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
+<line x1="107.53" y1="172.47" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
+<line x1="71.63" y1="140.0" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
+<line x1="107.53" y1="107.53" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
+<circle cx="140" cy="140" r="7.65" fill="#ff7a35"/>
+<circle cx="140" cy="140" r="4.59" fill="#1a1410"/>
+<circle cx="140" cy="140" r="2.24" fill="#ff7a35"/>
+  </g>
+</svg>
       </div>
     </div>
     <div class="slide-content">
@@ -2612,52 +2273,42 @@ footer {
     <div>
       <div class="footer-brand-wrap">
         <svg class="footer-emblem" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <path id="fc-top" d="M50,50 m-36,0 a36,36 0 1,1 72,0"/>
-            <path id="fc-bot" d="M50,50 m-36,0 a36,36 0 1,0 72,0"/>
-            <linearGradient id="ft-ring-g" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="rgba(255,255,255,1)"/>
-              <stop offset="100%" stop-color="rgba(180,210,230,0.7)"/>
-            </linearGradient>
-            <radialGradient id="ft-n-g" cx="40%" cy="30%" r="65%">
-              <stop offset="0%" stop-color="rgba(255,255,255,1)"/>
-              <stop offset="100%" stop-color="rgba(200,220,240,0.7)"/>
-            </radialGradient>
-            <radialGradient id="ft-jewel" cx="35%" cy="28%" r="60%">
-              <stop offset="0%" stop-color="#f97316"/>
-              <stop offset="45%" stop-color="#f97316"/>
-              <stop offset="100%" stop-color="#c2500a"/>
-            </radialGradient>
-            <radialGradient id="ft-hub" cx="35%" cy="30%" r="65%">
-              <stop offset="0%" stop-color="rgba(255,255,255,0.95)"/>
-              <stop offset="100%" stop-color="rgba(170,195,215,0.6)"/>
-            </radialGradient>
-            <filter id="ft-shd">
-              <feDropShadow dx="0" dy="0.8" stdDeviation="1.2" flood-color="rgba(0,30,60,0.5)"/>
-            </filter>
-          </defs>
-          <circle cx="50" cy="50" r="36" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="3"/>
-          <circle cx="50" cy="50" r="36" fill="none" stroke="url(#ft-ring-g)" stroke-width="1"/>
-          <circle cx="50" cy="50" r="29" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="0.6"/>
-          <text font-family="Sora, Arial Narrow, sans-serif" font-weight="700" font-size="9" letter-spacing="2.2" text-anchor="middle">
-            <textPath href="#fc-top" startOffset="25%"><tspan fill="white">ZOYEN </tspan><tspan fill="#e8541a">TURISMO</tspan></textPath>
-          </text>
-          <text font-family="Sora, Arial Narrow, sans-serif" font-weight="600" font-size="7.5" letter-spacing="1.8" text-anchor="middle" fill="rgba(255,255,255,0.55)">
-            <textPath href="#fc-bot" startOffset="75%">· PATAGONIA ARG ·</textPath>
-          </text>
-          <polygon points="50,18 52,47 50,50 48,47" fill="url(#ft-n-g)" filter="url(#ft-shd)"/>
-          <polygon points="50,82 52,53 50,50 48,53" fill="rgba(210,228,244,0.75)" filter="url(#ft-shd)"/>
-          <polygon points="18,50 47,48 50,50 47,52" fill="rgba(240,250,255,0.9)" filter="url(#ft-shd)"/>
-          <polygon points="82,50 53,48 50,50 53,52" fill="rgba(160,190,215,0.65)" filter="url(#ft-shd)"/>
-          <polygon points="73,27 53,47 50,50 47,47" fill="rgba(220,238,252,0.65)" filter="url(#ft-shd)"/>
-          <polygon points="27,27 47,47 50,50 53,47" fill="rgba(235,247,255,0.8)" filter="url(#ft-shd)"/>
-          <polygon points="73,73 53,53 50,50 47,53" fill="rgba(170,195,218,0.55)" filter="url(#ft-shd)"/>
-          <polygon points="27,73 47,53 50,50 53,53" fill="rgba(190,212,230,0.6)" filter="url(#ft-shd)"/>
-          <circle cx="50" cy="50" r="5" fill="url(#ft-hub)" filter="url(#ft-shd)"/>
-          <circle cx="50" cy="50" r="5" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="0.5"/>
-          <circle cx="50" cy="50" r="3" fill="url(#ft-jewel)" filter="url(#ft-shd)"/>
-          <ellipse cx="49.2" cy="49" rx="0.9" ry="0.6" fill="rgba(255,200,120,0.65)" transform="rotate(-20,49.2,49)"/>
-        </svg>
+  <circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="0.8"/>
+  <defs>
+  <linearGradient id="ft-gl" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(255,255,255,0.95)"/><stop offset="100%" stop-color="rgba(182,196,212,0.82)"/></linearGradient>
+  <linearGradient id="ft-gd" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(102,116,132,0.9)"/><stop offset="100%" stop-color="rgba(62,76,92,0.93)"/></linearGradient>
+</defs>
+<circle cx="50" cy="50" r="25.31" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.43"/>
+<circle cx="50" cy="50" r="22.04" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="0.24"/>
+<polygon points="50.0,22.65 46.33,50.0 50,50" fill="url(#ft-gl)"/>
+<polygon points="50.0,22.65 53.67,50.0 50,50" fill="url(#ft-gd)"/>
+<polygon points="50.0,19.79 48.57,22.65 51.43,22.65" fill="rgba(255,255,255,0.95)"/>
+<polygon points="62.99,37.01 48.27,48.27 50,50" fill="url(#ft-gl)"/>
+<polygon points="62.99,37.01 51.73,51.73 50,50" fill="url(#ft-gd)"/>
+<polygon points="77.35,50.0 50.0,46.33 50,50" fill="url(#ft-gl)"/>
+<polygon points="77.35,50.0 50.0,53.67 50,50" fill="url(#ft-gd)"/>
+<polygon points="62.99,62.99 51.73,48.27 50,50" fill="url(#ft-gl)"/>
+<polygon points="62.99,62.99 48.27,51.73 50,50" fill="url(#ft-gd)"/>
+<polygon points="50.0,77.35 53.67,50.0 50,50" fill="url(#ft-gl)"/>
+<polygon points="50.0,77.35 46.33,50.0 50,50" fill="url(#ft-gd)"/>
+<polygon points="37.01,62.99 51.73,51.73 50,50" fill="url(#ft-gl)"/>
+<polygon points="37.01,62.99 48.27,48.27 50,50" fill="url(#ft-gd)"/>
+<polygon points="22.65,50.0 50.0,53.67 50,50" fill="url(#ft-gl)"/>
+<polygon points="22.65,50.0 50.0,46.33 50,50" fill="url(#ft-gd)"/>
+<polygon points="37.01,37.01 48.27,51.73 50,50" fill="url(#ft-gl)"/>
+<polygon points="37.01,37.01 51.73,48.27 50,50" fill="url(#ft-gd)"/>
+<line x1="50.0" y1="22.65" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
+<line x1="62.99" y1="37.01" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
+<line x1="77.35" y1="50.0" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
+<line x1="62.99" y1="62.99" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
+<line x1="50.0" y1="77.35" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
+<line x1="37.01" y1="62.99" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
+<line x1="22.65" y1="50.0" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
+<line x1="37.01" y1="37.01" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
+<circle cx="50" cy="50" r="3.06" fill="#ff7a35"/>
+<circle cx="50" cy="50" r="1.84" fill="#1a1410"/>
+<circle cx="50" cy="50" r="0.9" fill="#ff7a35"/>
+</svg>
         <div class="footer-brand"><span class="footer-brand-zoyen">ZOYEN</span> <span>TURISMO</span></div>
       </div>
       <p class="footer-tagline">Agencia de Turismo en la Patagonia Argentina.<br>Legajo 15.625 · Perito Moreno, Santa Cruz.</p>
