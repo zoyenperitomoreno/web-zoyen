@@ -11,8 +11,8 @@
   --ink:       #1a1410;      /* negro tierra */
   --dark:      #231c14;      /* café muy oscuro */
   --bark:      #3a2d1f;      /* café corteza */
-  --ember:     #e8541a;      /* naranja quemado (TURISMO en el logo) */
-  --ember-dim: #c44410;      /* ember oscurecido */
+  --ember:     #d4772a;      /* naranja cobre (TURISMO en el logo) */
+  --ember-dim: #b8621e;      /* ember oscurecido */
   --amber:     #b87332;      /* ámbar cobre */
   --sand:      #c9a96e;      /* arena cálida */
   --dust:      #e8dcc8;      /* polvo crema */
@@ -313,13 +313,7 @@ nav {
 /* ══════════════════════════════════════
    BANNER MANAGER
 ══════════════════════════════════════ */
-.banner-bar {
-  background: var(--dark);
-  border-bottom: 2px solid var(--ember);
-  padding: 0 3vw;
-  height: 52px;
-  display: flex; align-items: center; gap: 1.2rem;
-}
+.banner-bar { display: none; }
 .bb-label {
   font-family: 'Sora', sans-serif;
   font-size: .92rem; letter-spacing: .22em; text-transform: uppercase;
@@ -1494,7 +1488,7 @@ footer {
     <li><a href="#ubicacion">Ubicación y Contacto</a></li>
     <li><a href="nosotros.html">Quiénes somos</a></li>
   </ul>
-  <a href="#reservar" class="nav-cta-btn">Reservar</a>
+  <button class="nav-cta-btn" id="btnReservarNav" onclick="abrirModalReservar()">Reservar</button>
 </nav>
 
 <!-- HERO SLIDER -->
@@ -1833,7 +1827,7 @@ footer {
       wA.dataset.w='a';
       const wB = document.createElement('div'); wB.className='lent-word';
       wB.textContent='TURISMO';
-      wB.style.cssText=`color:#e8541a;left:0;width:${N*100}%;margin-left:${-i*100}%;opacity:0`;
+      wB.style.cssText=`color:#d4772a;left:0;width:${N*100}%;margin-left:${-i*100}%;opacity:0`;
       wB.dataset.w='b';
       s.appendChild(wA); s.appendChild(wB); stripsEl.appendChild(s);
     }
@@ -1911,20 +1905,6 @@ footer {
 </script>
 
 <!-- BANNER BAR -->
-<div class="banner-bar">
-  <span class="bb-label">Gestionar banners</span>
-  <div class="bb-sep"></div>
-  <div class="bb-thumbs" id="bbThumbs">
-    <div class="bb-thumb active" data-i="0"><span class="n">01</span></div>
-    <div class="bb-thumb" data-i="1"><span class="n">02</span></div>
-    <div class="bb-thumb" data-i="2"><span class="n">03</span></div>
-    <div class="bb-thumb" data-i="3"><span class="n">04</span></div>
-  </div>
-  <label class="bb-add">
-    + Subir imagen
-    <input type="file" id="quickUp" accept="image/*">
-  </label>
-</div>
 
 <!-- EXCURSIONES -->
 <section class="excursiones" id="excursiones">
@@ -2069,32 +2049,64 @@ footer {
 
 
 <!-- TOURS DE AUTOR -->
-<section class="tours" id="tours">
-  <div class="sec-head reveal">
-    <p class="eyebrow">Varios días de duración</p>
-    <h2 class="section-title">Tours de <em>Autor</em></h2>
-    <p class="section-sub">Experiencias pensadas e ideadas especialmente para vos.</p>
-  </div>
-  <div class="tours-grid">
-    <div class="tour-card reveal">
-      <img src="http://www.zoyenturismo.com.ar/wp-content/uploads/2022/10/full_inedita.jpg" alt="Patagonia Inédita">
-      <div class="tour-card-ov">
-        <div class="tour-dur">6 días · 5 noches</div>
-        <h3 class="tour-name">Patagonia Inédita</h3>
-        <p class="tour-hi">Bosque Petrificado · Cueva de las Manos · Lago Posadas · Carretera Austral · Catedrales de Mármol</p>
-        <a href="patagonia-inedita.html" class="tour-link">Ver itinerario</a>
+<section id="tours" style="background:var(--dark);padding:5rem 3vw 5.5rem;border-top:1px solid rgba(232,84,26,.15);">
+
+  <div style="max-width:1100px;margin:0 auto;">
+
+    <!-- Header -->
+    <div class="reveal" style="display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:3rem;flex-wrap:wrap;">
+      <div>
+        <p class="eyebrow" style="color:var(--sand);">Varios días de duración</p>
+        <h2 class="section-title" style="color:var(--dust);">Tours de <em style="color:var(--sand)">Autor</em></h2>
+        <p class="section-sub" style="color:rgba(232,220,200,.55);max-width:420px;">Itinerarios exclusivos diseñados por quienes conocen cada rincón de la Patagonia profunda.</p>
       </div>
+      <a href="https://wa.me/5492974432855" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.6rem;border:1px solid rgba(232,84,26,.5);color:var(--sand);text-decoration:none;font-family:'Sora',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;border-radius:2px;transition:all .2s;white-space:nowrap;flex-shrink:0;" onmouseover="this.style.background='var(--ember)';this.style.borderColor='var(--ember)';this.style.color='#fff'" onmouseout="this.style.background='';this.style.borderColor='rgba(232,84,26,.5)';this.style.color='var(--sand)'">Consultar disponibilidad →</a>
     </div>
-    <div class="tour-card reveal reveal-delay">
-      <img src="https://www.zoyenturismo.com.ar/wp-content/uploads/2022/11/20221115_082320-1024x576-360x230.jpg" alt="Carretera Austral" onerror="this.src='https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=80'">
-      <div class="tour-card-ov">
-        <div class="tour-dur">7 días · 6 noches</div>
-        <h3 class="tour-name">Carretera Austral</h3>
-        <p class="tour-hi">Confluencia Nef y Baker · Lago General Carrera · Capillas de Mármol · Mirador Laguna Verde</p>
-        <a href="carretera-austral.html" class="tour-link">Ver itinerario</a>
+
+    <!-- Cards -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;" class="tours-grid-2">
+
+      <!-- Tour 1 -->
+      <div class="reveal tour2-card" style="position:relative;border-radius:4px;overflow:hidden;cursor:pointer;" onclick="location.href='patagonia-inedita.html'">
+        <img src="http://www.zoyenturismo.com.ar/wp-content/uploads/2022/10/full_inedita.jpg" alt="Patagonia Inédita" style="width:100%;height:420px;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.25,.1,.25,1);">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,6,.95) 0%,rgba(10,8,6,.4) 50%,rgba(10,8,6,.05) 100%);transition:background .3s;" class="tour2-ov"></div>
+        <div style="position:absolute;inset:0;padding:2rem;display:flex;flex-direction:column;justify-content:flex-end;">
+          <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem;">
+            <span style="font-family:'Sora',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ember);background:rgba(232,84,26,.15);border:1px solid rgba(232,84,26,.4);padding:.22rem .7rem;border-radius:1px;">6 días · 5 noches</span>
+          </div>
+          <h3 style="font-family:'DM Serif Display',serif;font-size:1.9rem;font-weight:600;color:#f5f0e8;line-height:1.1;margin-bottom:.7rem;">Patagonia <em style="color:var(--sand)">Inédita</em></h3>
+          <p style="font-size:.82rem;color:rgba(245,240,232,.65);line-height:1.6;margin-bottom:1.1rem;font-weight:300;">Bosque Petrificado · Cueva de las Manos · Lago Posadas · Carretera Austral · Catedrales de Mármol</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-family:'Sora',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--sand);">Ver itinerario →</span>
+          </div>
+        </div>
       </div>
+
+      <!-- Tour 2 -->
+      <div class="reveal reveal-delay tour2-card" style="position:relative;border-radius:4px;overflow:hidden;cursor:pointer;" onclick="location.href='carretera-austral.html'">
+        <img src="https://www.zoyenturismo.com.ar/wp-content/uploads/2022/11/20221115_082320-1024x576-360x230.jpg" alt="Carretera Austral" onerror="this.src='https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=80'" style="width:100%;height:420px;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.25,.1,.25,1);">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,6,.95) 0%,rgba(10,8,6,.4) 50%,rgba(10,8,6,.05) 100%);transition:background .3s;" class="tour2-ov"></div>
+        <div style="position:absolute;inset:0;padding:2rem;display:flex;flex-direction:column;justify-content:flex-end;">
+          <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem;">
+            <span style="font-family:'Sora',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ember);background:rgba(232,84,26,.15);border:1px solid rgba(232,84,26,.4);padding:.22rem .7rem;border-radius:1px;">7 días · 6 noches</span>
+          </div>
+          <h3 style="font-family:'DM Serif Display',serif;font-size:1.9rem;font-weight:600;color:#f5f0e8;line-height:1.1;margin-bottom:.7rem;">Carretera <em style="color:var(--sand)">Austral</em></h3>
+          <p style="font-size:.82rem;color:rgba(245,240,232,.65);line-height:1.6;margin-bottom:1.1rem;font-weight:300;">Confluencia Nef y Baker · Lago General Carrera · Capillas de Mármol · Mirador Laguna Verde</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-family:'Sora',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--sand);">Ver itinerario →</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
+
+  <style>
+    @media(max-width:680px){ .tours-grid-2{ grid-template-columns:1fr !important; } }
+    .tour2-card:hover img { transform: scale(1.05); }
+    .tour2-card:hover .tour2-ov { background: linear-gradient(to top,rgba(232,84,26,.7) 0%,rgba(10,8,6,.35) 55%,rgba(10,8,6,.05) 100%) !important; }
+  </style>
+
 </section>
 
 <!-- BIENESTAR -->
@@ -3076,7 +3088,7 @@ revEls.forEach(el => obs.observe(el));
         border:1px solid rgba(232,84,26,0.5); border-radius:2px;
         padding:.45rem 1.1rem; font-family:'Sora',sans-serif;
         font-size:.62rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase;
-        color:#e8541a; pointer-events:none;
+        color:#d4772a; pointer-events:none;
         transition:opacity .4s;
       `;
       document.body.appendChild(hint);
@@ -3143,6 +3155,204 @@ revEls.forEach(el => obs.observe(el));
 })();
 </script>
 
+<!-- ══ MODAL RESERVAR ══════════════════════════════════════════ -->
+<style>
+.rmod-wrap {
+  display:none; position:fixed; inset:0; z-index:1000;
+  background:rgba(10,8,6,.75); backdrop-filter:blur(10px);
+  align-items:center; justify-content:center;
+}
+.rmod-wrap.open { display:flex; }
+.rmod {
+  background:#231c14; border:1px solid rgba(232,84,26,.3);
+  border-radius:6px; padding:2.4rem 2.2rem;
+  width:100%; max-width:440px; position:relative;
+  box-shadow:0 28px 80px rgba(0,0,0,.7);
+  font-family:'Sora',sans-serif; color:#f5f0e8;
+  animation: rmod-in .25s ease;
+}
+@keyframes rmod-in { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:none} }
+.rmod-x {
+  position:absolute; top:.9rem; right:.9rem;
+  background:none; border:none; color:#7a6a5a;
+  font-size:1.1rem; cursor:pointer; line-height:1; padding:.25rem;
+}
+.rmod-x:hover { color:#f5f0e8; }
+.rmod-eyebrow {
+  font-size:.6rem; font-weight:700; letter-spacing:.28em; text-transform:uppercase;
+  color:#d4772a; text-align:center; margin-bottom:.5rem;
+}
+.rmod-title {
+  font-family:'DM Serif Display',serif; font-size:1.6rem; font-weight:600;
+  text-align:center; color:#f5f0e8; margin-bottom:.4rem; line-height:1.15;
+}
+.rmod-sub {
+  font-size:.78rem; color:rgba(201,169,110,.7); text-align:center;
+  margin-bottom:1.8rem; line-height:1.6;
+}
+/* Step 1: Tour / Excursion cards */
+.rmod-cards {
+  display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:.5rem;
+}
+.rmod-card {
+  background:rgba(255,255,255,.05); border:1.5px solid rgba(201,169,110,.2);
+  border-radius:5px; padding:1.4rem 1rem; text-align:center; cursor:pointer;
+  transition:all .2s;
+}
+.rmod-card:hover, .rmod-card.sel {
+  border-color:#d4772a; background:rgba(232,84,26,.12);
+}
+.rmod-card-ico { font-size:2rem; margin-bottom:.6rem; }
+.rmod-card-name {
+  font-size:.78rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+  color:#f5f0e8; margin-bottom:.3rem;
+}
+.rmod-card-desc { font-size:.68rem; color:rgba(201,169,110,.65); line-height:1.5; }
+/* Step 2: excursion selector */
+.rmod-step { display:none; }
+.rmod-step.active { display:block; }
+.rmod-label {
+  font-size:.62rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
+  color:#c9a96e; display:block; margin-bottom:.55rem;
+}
+.rmod-select {
+  width:100%; background:rgba(255,255,255,.07); border:1.5px solid rgba(201,169,110,.25);
+  border-radius:4px; padding:.65rem .9rem; color:#f5f0e8;
+  font-family:'Sora',sans-serif; font-size:.88rem; outline:none;
+  transition:border-color .2s; margin-bottom:1.2rem; cursor:pointer;
+}
+.rmod-select:focus { border-color:#d4772a; }
+.rmod-select option { background:#231c14; color:#f5f0e8; }
+.rmod-btn {
+  width:100%; padding:.78rem; background:#d4772a; color:#f5f0e8; border:none;
+  border-radius:4px; font-family:'Sora',sans-serif; font-size:.78rem; font-weight:700;
+  letter-spacing:.18em; text-transform:uppercase; cursor:pointer; transition:background .2s;
+  display:flex; align-items:center; justify-content:center; gap:.5rem;
+}
+.rmod-btn:hover { background:#b8621e; }
+.rmod-btn:disabled { background:rgba(232,84,26,.3); cursor:not-allowed; }
+.rmod-back {
+  background:none; border:none; color:rgba(201,169,110,.6); font-size:.72rem;
+  cursor:pointer; font-family:'Sora',sans-serif; letter-spacing:.1em;
+  text-transform:uppercase; margin-top:.8rem; width:100%; text-align:center;
+  padding:.3rem; transition:color .2s;
+}
+.rmod-back:hover { color:#c9a96e; }
+</style>
+
+<div class="rmod-wrap" id="rmodWrap">
+  <div class="rmod" id="rmodBox">
+    <button class="rmod-x" onclick="cerrarModalReservar()">✕</button>
+    <div class="rmod-eyebrow">Zoyen Turismo · Patagonia</div>
+    <h2 class="rmod-title">¿Qué querés hacer?</h2>
+    <p class="rmod-sub">Elegí el tipo de experiencia y te guiamos desde acá.</p>
+
+    <!-- PASO 1: elegir tipo -->
+    <div class="rmod-step active" id="rmod-step1">
+      <div class="rmod-cards">
+        <div class="rmod-card" onclick="elegirTipo('tour')">
+          <div class="rmod-card-ico">🗺️</div>
+          <div class="rmod-card-name">Tour de Autor</div>
+          <div class="rmod-card-desc">Varios días · itinerarios exclusivos por la Patagonia profunda</div>
+        </div>
+        <div class="rmod-card" onclick="elegirTipo('excursion')">
+          <div class="rmod-card-ico">🏔️</div>
+          <div class="rmod-card-name">Excursión</div>
+          <div class="rmod-card-desc">Paseos en el día · reservá tu lugar en el momento</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PASO 2: elegir excursión y consultar por WA -->
+    <div class="rmod-step" id="rmod-step2">
+      <label class="rmod-label" for="rmod-exc-sel">Elegí la excursión</label>
+      <select class="rmod-select" id="rmod-exc-sel" onchange="onRmodExcChange()">
+        <option value="">— Seleccioná una excursión —</option>
+        <option value="cueva">Cueva de las Manos</option>
+        <option value="capillas">Capillas y Catedrales de Mármol</option>
+        <option value="posadas">Lago Posadas · Ruta Escénica 41</option>
+        <option value="zeballos">Ruta 41 · Monte Zeballos</option>
+        <option value="charcamata">Alero Charcamata</option>
+        <option value="parque_caniadon">Portal Cañadón Pinturas (Parque Patagonia)</option>
+        <option value="parque_escension">PNP / Estancia La Escensión</option>
+      </select>
+      <button class="rmod-btn" id="rmod-wa-btn" onclick="consultarExcursionWA()" disabled>
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Consultar por WhatsApp
+      </button>
+      <button class="rmod-back" onclick="volverStep1()">← Volver</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const WA_NUM = '5492974432855';
+
+  const excInfo = {
+    cueva:             { nombre:'Cueva de las Manos',                          dur:'Día completo', precio:'$18.000 p/p' },
+    capillas:          { nombre:'Capillas y Catedrales de Mármol',             dur:'Día completo', precio:'$24.000 p/p' },
+    posadas:           { nombre:'Lago Posadas · Ruta Escénica 41',             dur:'Día completo (12 hs)', precio:'$15.000 p/p' },
+    zeballos:          { nombre:'Ruta 41 · Monte Zeballos',                    dur:'Día completo', precio:'$16.000 p/p' },
+    charcamata:        { nombre:'Alero Charcamata',                            dur:'Medio día', precio:'$12.000 p/p' },
+    parque_caniadon:   { nombre:'Portal Cañadón Pinturas (Parque Patagonia)',  dur:'Medio día (5 hs)', precio:'$8.000 p/p' },
+    parque_escension:  { nombre:'PNP / Estancia La Escensión',                 dur:'Medio día (4 hs)', precio:'$7.000 p/p' },
+  };
+
+  window.abrirModalReservar = function() {
+    document.getElementById('rmodWrap').classList.add('open');
+    // reset
+    document.getElementById('rmod-step1').classList.add('active');
+    document.getElementById('rmod-step2').classList.remove('active');
+    document.getElementById('rmod-exc-sel').value = '';
+    document.getElementById('rmod-wa-btn').disabled = true;
+  };
+
+  window.cerrarModalReservar = function() {
+    document.getElementById('rmodWrap').classList.remove('open');
+  };
+
+  window.elegirTipo = function(tipo) {
+    cerrarModalReservar();
+    if (tipo === 'tour') {
+      document.getElementById('tours').scrollIntoView({ behavior:'smooth', block:'start' });
+    } else {
+      document.getElementById('rmod-step1').classList.remove('active');
+      document.getElementById('rmod-step2').classList.add('active');
+      document.getElementById('rmodWrap').classList.add('open');
+    }
+  };
+
+  window.volverStep1 = function() {
+    document.getElementById('rmod-step2').classList.remove('active');
+    document.getElementById('rmod-step1').classList.add('active');
+  };
+
+  window.onRmodExcChange = function() {
+    const val = document.getElementById('rmod-exc-sel').value;
+    document.getElementById('rmod-wa-btn').disabled = !val;
+  };
+
+  window.consultarExcursionWA = function() {
+    const key = document.getElementById('rmod-exc-sel').value;
+    const exc = excInfo[key];
+    if (!exc) return;
+    const msg = encodeURIComponent(
+      'Hola! Quisiera consultar información sobre la excursión *' + exc.nombre + '*' +
+      ' (' + exc.dur + ' · ' + exc.precio + ').' +
+      ' ¿Tienen disponibilidad? ¿Qué incluye?'
+    );
+    window.open('https://wa.me/' + WA_NUM + '?text=' + msg, '_blank', 'noopener');
+    cerrarModalReservar();
+  };
+
+  // Cerrar al hacer clic fuera
+  document.getElementById('rmodWrap').addEventListener('click', function(e) {
+    if (e.target === this) cerrarModalReservar();
+  });
+})();
+</script>
+
 <!-- ═══════════════════════════════════════════════════════
      ADMIN – iframe aislado
 ════════════════════════════════════════════════════════ -->
@@ -3164,14 +3374,14 @@ revEls.forEach(el => obs.observe(el));
 .adm-login-logo { display:flex; align-items:center; gap:10px; justify-content:center; margin-bottom:2rem; }
 .adm-login-logo svg { width:46px; height:46px; }
 .adm-login-logo-text { font-family:'Sora',sans-serif; font-size:1.25rem; font-weight:700; letter-spacing:.1em; color:#f5f0e8; }
-.adm-login-logo-text span { color:#e8541a; }
-.adm-login-eyebrow { font-family:'Sora',sans-serif; font-size:.62rem; font-weight:600; letter-spacing:.28em; text-transform:uppercase; color:#e8541a; text-align:center; margin-bottom:1.8rem; }
+.adm-login-logo-text span { color:#d4772a; }
+.adm-login-eyebrow { font-family:'Sora',sans-serif; font-size:.62rem; font-weight:600; letter-spacing:.28em; text-transform:uppercase; color:#d4772a; text-align:center; margin-bottom:1.8rem; }
 .adm-field { margin-bottom:1.1rem; }
 .adm-field label { display:block; font-size:.65rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:#c9a96e; margin-bottom:.45rem; }
 .adm-field input { width:100%; background:rgba(255,255,255,.07); border:1px solid rgba(201,169,110,.22); border-radius:2px; padding:.65rem .9rem; color:#f5f0e8; font-family:'Sora',sans-serif; font-size:.9rem; outline:none; transition:border-color .2s; }
-.adm-field input:focus { border-color:#e8541a; }
-.adm-login-btn { width:100%; padding:.78rem; background:#e8541a; color:#f5f0e8; border:none; border-radius:2px; font-family:'Sora',sans-serif; font-size:.8rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; cursor:pointer; margin-top:.6rem; transition:background .2s; }
-.adm-login-btn:hover { background:#c44410; }
+.adm-field input:focus { border-color:#d4772a; }
+.adm-login-btn { width:100%; padding:.78rem; background:#d4772a; color:#f5f0e8; border:none; border-radius:2px; font-family:'Sora',sans-serif; font-size:.8rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; cursor:pointer; margin-top:.6rem; transition:background .2s; }
+.adm-login-btn:hover { background:#b8621e; }
 .adm-login-err { color:#e05050; font-size:.75rem; text-align:center; margin-top:.8rem; display:none; }
 .adm-login-close { position:absolute; top:.9rem; right:.9rem; background:none; border:none; color:#7a6a5a; font-size:1.1rem; cursor:pointer; line-height:1; padding:.25rem; }
 .adm-login-close:hover { color:#f5f0e8; }
@@ -3213,7 +3423,7 @@ revEls.forEach(el => obs.observe(el));
         <polygon points="78,78 53,53 50,50 47,53" fill="rgba(165,192,215,0.5)"/>
         <polygon points="22,78 47,53 50,50 53,53" fill="rgba(185,210,228,0.58)"/>
         <circle cx="50" cy="50" r="6" fill="white" opacity="0.85"/>
-        <circle cx="50" cy="50" r="3.5" fill="#e8541a"/>
+        <circle cx="50" cy="50" r="3.5" fill="#d4772a"/>
       </svg>
       <div class="adm-login-logo-text">ZOYEN <span>TURISMO</span></div>
     </div>
@@ -3376,8 +3586,8 @@ function buildPanelHTML(){
   --border:   #e2e6ed;
   --text:     #1a1f2e;
   --muted:    #6b7280;
-  --ember:    #e8541a;
-  --ember-dim:#c44410;
+  --ember:    #d4772a;
+  --ember-dim:#b8621e;
   --ember-bg: rgba(232,84,26,.09);
   --sand:     #c9a96e;
   --cream:    #f5f0e8;
@@ -3499,7 +3709,7 @@ file-lbl{cursor:pointer}
           <polygon points="12,50 47,47 50,50 47,53" fill="rgba(235,247,255,0.8)"/>
           <polygon points="88,50 53,47 50,50 53,53" fill="rgba(155,185,210,0.55)"/>
           <circle cx="50" cy="50" r="5" fill="white" opacity="0.85"/>
-          <circle cx="50" cy="50" r="2.8" fill="#e8541a"/>
+          <circle cx="50" cy="50" r="2.8" fill="#d4772a"/>
         </svg>
         <div class="topbar-brand">ZOYEN <span>TURISMO</span></div>
       </div>
@@ -3588,7 +3798,7 @@ file-lbl{cursor:pointer}
           <div style="display:flex;align-items:center;gap:12px;">
             <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px;font-weight:600;">
               <input type="checkbox" id="lent-toggle" onchange="toggleLent(this.checked)"
-                style="width:18px;height:18px;accent-color:#e8541a;cursor:pointer;">
+                style="width:18px;height:18px;accent-color:#d4772a;cursor:pointer;">
               Efecto activo
             </label>
             <span id="lent-status" style="font-size:12px;color:#888;"></span>
