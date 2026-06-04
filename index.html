@@ -2320,11 +2320,15 @@ footer {
             <rect width="180" height="40" rx="4" fill="#009ee3"/>
             <text x="12" y="26" font-family="Arial,sans-serif" font-weight="700" font-size="15" fill="white">Mercado Pago</text>
           </svg>
-          <p class="mp-desc">Serás redirigido a Mercado Pago para completar el pago de tu seña de forma segura. Podés pagar con saldo en cuenta, tarjeta de débito o crédito.</p>
-          <a href="#" class="mp-btn" id="mpBtn" onclick="simularPago(event)">
+          <p class="mp-desc">Al hacer clic serás redirigido a Mercado Pago para abonar la seña del 20% de forma segura. Podés pagar con saldo MP, débito o crédito.</p>
+          <a href="#" class="mp-btn" id="mpBtn" onclick="abrirMercadoPago(event)">
             Pagar con Mercado Pago →
           </a>
-          <p class="mp-safe">🔒 Pago 100% seguro con SSL</p>
+          <p class="mp-safe">🔒 Pago 100% seguro · SSL</p>
+          <p style="font-size:11px;color:#888;margin-top:8px;text-align:center;">Después de pagar, volvé aquí y hacé clic en <strong>«Ya pagué»</strong> para confirmar tu reserva.</p>
+          <button class="btn-pagar" id="btnYaPague" style="margin-top:12px;display:none;" onclick="confirmarPagado(event)">
+            ✅ Ya pagué — Confirmar reserva
+          </button>
         </div>
       </div>
 
@@ -2905,10 +2909,93 @@ function switchTab(tab) {
   document.getElementById('panelCard').classList.toggle('active', tab==='card');
 }
 
-function simularPago(e) {
-  e.preventDefault();
+// =====================================================
+// REEMPLAZAR con el link real de cobro de Mercado Pago
+// Crear en: mercadopago.com.ar > Cobrar > Link de pago
+// =====================================================
+const MP_LINK = 'REEMPLAZAR_CON_LINK_MP';
+
+// ID de la reserva activa en esta sesion de pago
+let _reservaActivaId = null;
+
+function getReservaData() {
+  const excEl = document.getElementById('sel-excursion');
+  const excOpt = excEl && excEl.selectedOptions[0];
+  const nombre = (document.getElementById('inp-nombre')||{}).value || '';
+  const tel    = (document.getElementById('inp-tel')||{}).value || '';
+  const email  = (document.getElementById('inp-email')||{}).value || '';
+  const fecha  = (document.getElementById('sel-fecha')||{}).value || '';
+  const pers   = (document.getElementById('sel-personas')||{}).value || '1';
+  const precio = excOpt && excOpt.dataset.precio ? parseInt(excOpt.dataset.precio) : 0;
+  const senia  = Math.round(precio * parseInt(pers) * 0.20);
+  return { excOpt, nombre, tel, email, fecha, pers, precio, senia };
+}
+
+// Crea la reserva o actualiza el estado si ya existe
+function guardarReserva(estado) {
+  const d = getReservaData();
+  if (!d.nombre || !d.excOpt) return;
+  const reservas = JSON.parse(sessionStorage.getItem('zyt_reservas') || '[]');
+  const idx = _reservaActivaId ? reservas.findIndex(r => r.id === _reservaActivaId) : -1;
+  const ahora = new Date().toLocaleString('es-AR');
+  if (idx >= 0) {
+    reservas[idx].estado = estado;
+    reservas[idx].ultimoIntento = ahora;
+  } else {
+    const nueva = {
+      id: Date.now(), nombre: d.nombre, tel: d.tel, email: d.email,
+      excursion: d.excOpt.text.split('\u2014')[0].trim(),
+      fecha: d.fecha, personas: d.pers,
+      asientos: (window.selectedSeats || []).slice().sort((a,b) => a-b).join(', '),
+      senia: d.senia, estado: estado,
+      creado: ahora, ultimoIntento: ahora
+    };
+    _reservaActivaId = nueva.id;
+    reservas.push(nueva);
+  }
+  sessionStorage.setItem('zyt_reservas', JSON.stringify(reservas));
+}
+
+function mostrarExito() {
   document.getElementById('pagoBody').style.display = 'none';
   document.getElementById('pagoSuccess').classList.add('show');
+  document.getElementById('step2-ind').classList.remove('active');
+  document.getElementById('step2-ind').classList.add('done');
+  document.getElementById('step3-ind').classList.add('active');
+  _reservaActivaId = null;
+}
+
+// Al abrir el modal de pago: guardar como "pendiente" para capturar abandonos
+document.getElementById('btnPagar').addEventListener('click', function() {
+  _reservaActivaId = null; // nueva reserva cada vez
+  guardarReserva('pendiente');
+}, true); // capture=true para que corra antes que el listener principal
+
+// MercadoPago: actualiza a "pago_iniciado" (carrito abandonado si no vuelve)
+function abrirMercadoPago(e) {
+  e.preventDefault();
+  if (MP_LINK === 'REEMPLAZAR_CON_LINK_MP') {
+    alert('El link de Mercado Pago aun no esta configurado.\nComunicate con Zoyen Turismo por WhatsApp para coordinar el pago:\n+54 9 297 443-2855');
+    return;
+  }
+  guardarReserva('pago_iniciado');
+  window.open(MP_LINK, '_blank', 'noopener');
+  document.getElementById('btnYaPague').style.display = 'block';
+  document.getElementById('mpBtn').textContent = 'Ir a Mercado Pago nuevamente';
+}
+
+// El usuario vuelve y confirma que pago
+function confirmarPagado(e) {
+  e.preventDefault();
+  guardarReserva('confirmada');
+  mostrarExito();
+}
+
+// Tarjeta: confirma directamente
+function simularPago(e) {
+  e.preventDefault();
+  guardarReserva('confirmada');
+  mostrarExito();
 }
 
 // Format card number with spaces
@@ -3167,31 +3254,12 @@ const excData = [
   { key:'parque_escension',name:'PNP / Estancia La Escensión',                                 precio:7000,  estado:'activa', duracion:'Medio día (4 hs)', capacidad:14 },
 ];
 let reservas = JSON.parse(sessionStorage.getItem('zyt_reservas')||'[]');
-function saveReservas(){ sessionStorage.setItem('zyt_reservas', JSON.stringify(reservas)); }
-
-// Capture reservas from booking form
-const btnPagar = document.getElementById('btnPagar');
-if(btnPagar){ btnPagar.addEventListener('click', ()=>{
-  setTimeout(()=>{
-    const excEl = document.getElementById('sel-excursion');
-    const excOpt = excEl&&excEl.selectedOptions[0];
-    const nombre = (document.getElementById('inp-nombre')||{}).value||'';
-    const tel    = (document.getElementById('inp-tel')||{}).value||'';
-    const email  = (document.getElementById('inp-email')||{}).value||'';
-    const fecha  = (document.getElementById('sel-fecha')||{}).value||'';
-    const pers   = (document.getElementById('sel-personas')||{}).value||'1';
-    const precio = excOpt&&excOpt.dataset.precio ? parseInt(excOpt.dataset.precio) : 0;
-    const senia  = Math.round(precio*parseInt(pers)*0.20);
-    if(nombre&&excOpt){
-      reservas.push({ id:Date.now(), nombre, tel, email,
-        excursion: excOpt.text.split('—')[0].trim(),
-        fecha, personas:pers,
-        asientos:(window.selectedSeats||[]).slice().sort((a,b)=>a-b).join(', '),
-        senia, estado:'pendiente', creado:new Date().toLocaleDateString('es-AR') });
-      saveReservas();
-    }
-  },200);
-});}
+function saveReservas(){
+  sessionStorage.setItem('zyt_reservas', JSON.stringify(reservas));
+}
+function reloadReservas(){
+  reservas = JSON.parse(sessionStorage.getItem('zyt_reservas')||'[]');
+}
 
 // Triple-click on nav logo
 let clicks=0, timer=null;
@@ -3239,6 +3307,9 @@ window._admShowToast = showToast;
 
 // Build and open panel inside clean iframe
 function openPanel(){
+  // Always sync reservas from sessionStorage before opening
+  reloadReservas();
+
   const wrap = document.getElementById('admIframeWrap');
   const iframe = document.getElementById('admIframe');
   wrap.classList.add('open');
@@ -3248,11 +3319,21 @@ function openPanel(){
   doc.write(buildPanelHTML());
   doc.close();
 
-  // Wire iframe→parent communication
+  // Wire iframe->parent communication
   iframe.contentWindow._parent = {
-    excData, reservas, saveReservas, showToast,
+    excData,
+    get reservas(){ return reservas; },
+    saveReservas: function(arr){
+      if(arr) reservas = arr;
+      sessionStorage.setItem('zyt_reservas', JSON.stringify(reservas));
+    },
+    updateEstado: function(idx, estado){
+      reservas[idx].estado = estado;
+      sessionStorage.setItem('zyt_reservas', JSON.stringify(reservas));
+    },
+    showToast,
     closePanel: ()=>{ wrap.classList.remove('open'); },
-    logout: ()=>{ loggedIn=false; wrap.classList.remove('open'); showToast('Sesión cerrada.'); },
+    logout: ()=>{ loggedIn=false; wrap.classList.remove('open'); showToast('Sesion cerrada.'); },
     applySlide: (i,ey,ti,de)=>{
       const s=document.getElementById('s'+i); if(!s) return;
       const eyEl=s.querySelector('.slide-eyebrow'); if(eyEl) eyEl.textContent=ey;
@@ -3365,6 +3446,9 @@ tr:hover td{background:#f5f7fa}
 .bg{background:#dcfce7;color:#16a34a;border:1px solid #bbf7d0}
 .by{background:#fef9c3;color:#a16207;border:1px solid #fde047}
 .br{background:#fee2e2;color:#dc2626;border:1px solid #fca5a5}
+.bo{background:#fff3e0;color:#e65100;border:1px solid #ffcc80}
+.stat-abandon .stat-val{color:#e65100}
+.btn-wa{background:#25d366;color:#fff;border:none}.btn-wa:hover{background:#1da851}
 
 /* Forms */
 .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -3452,9 +3536,9 @@ file-lbl{cursor:pointer}
         <div class="sec-sub">Resumen general · Zoyen Turismo</div>
         <div class="stats">
           <div class="stat"><div class="stat-ico">📋</div><div class="stat-val" id="d-total">0</div><div class="stat-lbl">Reservas totales</div></div>
-          <div class="stat"><div class="stat-ico">⏳</div><div class="stat-val" id="d-pend">0</div><div class="stat-lbl">Pendientes de pago</div></div>
+          <div class="stat"><div class="stat-ico">⏳</div><div class="stat-val" id="d-pend">0</div><div class="stat-lbl">Sin confirmar</div></div>
+          <div class="stat stat-abandon"><div class="stat-ico">🛒</div><div class="stat-val" id="d-abandon">0</div><div class="stat-lbl">Pago iniciado</div></div>
           <div class="stat"><div class="stat-ico">✅</div><div class="stat-val" id="d-conf">0</div><div class="stat-lbl">Confirmadas</div></div>
-          <div class="stat"><div class="stat-ico">🏔</div><div class="stat-val">6</div><div class="stat-lbl">Excursiones activas</div></div>
         </div>
         <div class="card">
           <div class="card-title">Últimas reservas</div>
@@ -3523,13 +3607,14 @@ file-lbl{cursor:pointer}
             Listado completo
             <select class="filter-sel" id="res-filter" onchange="buildReservas()">
               <option value="all">Todos los estados</option>
-              <option value="pendiente">Pendientes</option>
-              <option value="confirmada">Confirmadas</option>
-              <option value="cancelada">Canceladas</option>
+              <option value="pendiente">Pendiente</option>
+              <option value="pago_iniciado">Pago iniciado (carrito abandonado)</option>
+              <option value="confirmada">Confirmada</option>
+              <option value="cancelada">Cancelada</option>
             </select>
           </div>
           <div class="tbl-wrap">
-            <table><thead><tr><th>#</th><th>Pasajero</th><th>Tel / Email</th><th>Excursión</th><th>Fecha viaje</th><th>Pers.</th><th>Asientos</th><th>Seña</th><th>Estado</th><th>Acción</th></tr></thead>
+            <table><thead><tr><th>#</th><th>Pasajero</th><th>Tel / Email</th><th>Excursión</th><th>Fecha viaje</th><th>Pers.</th><th>Asientos</th><th>Seña</th><th>Estado</th><th>Último intento</th><th>Acción</th></tr></thead>
             <tbody id="r-tbody"></tbody></table>
           </div>
         </div>
@@ -3543,7 +3628,8 @@ file-lbl{cursor:pointer}
 <script>
 const P = window._parent;
 const excData = P.excData;
-let reservas = P.reservas;
+// Always read live from parent (which reads sessionStorage)
+function getReservas(){ return P.reservas; }
 
 function showToast(msg){ const t=document.getElementById('toast'); t.textContent='✓ '+(msg||'Guardado'); t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2600); }
 
@@ -3559,12 +3645,15 @@ document.querySelectorAll('.nav-item').forEach(item=>{
 
 // Dashboard
 function buildDash(){
+  const reservas=getReservas();
   const total=reservas.length;
   const pend=reservas.filter(r=>r.estado==='pendiente').length;
+  const iniciados=reservas.filter(r=>r.estado==='pago_iniciado').length;
   const conf=reservas.filter(r=>r.estado==='confirmada').length;
   document.getElementById('d-total').textContent=total;
-  document.getElementById('d-pend').textContent=pend;
+  document.getElementById('d-pend').textContent=pend+iniciados;
   document.getElementById('d-conf').textContent=conf;
+  document.getElementById('d-abandon').textContent=iniciados;
   const tb=document.getElementById('d-tbody');
   if(!total){ tb.innerHTML='<tr><td colspan="7" class="empty">Sin reservas registradas aún.</td></tr>'; return; }
   tb.innerHTML=reservas.slice(-8).reverse().map((r,i)=>\`<tr>
@@ -3577,7 +3666,21 @@ function buildDash(){
   </tr>\`).join('');
 }
 
-function badge(e){ const m={pendiente:'by',confirmada:'bg',cancelada:'br'}; return \`<span class="badge \${m[e]||'by'}">\${e}</span>\`; }
+function badge(e){
+  const m={
+    pendiente:    'by',
+    pago_iniciado:'bo',
+    confirmada:   'bg',
+    cancelada:    'br'
+  };
+  const labels={
+    pendiente:'pendiente',
+    pago_iniciado:'pago iniciado',
+    confirmada:'confirmada',
+    cancelada:'cancelada'
+  };
+  return \`<span class="badge \${m[e]||'by'}">\${labels[e]||e}</span>\`;
+}
 
 // Textos
 const slideDefaults=[
@@ -3688,12 +3791,16 @@ function applyImg(i,url){ P.applySliderImage(i,url); document.getElementById('sp
 
 // Reservas
 function buildReservas(){
+  const reservas=getReservas();
   const filter=document.getElementById('res-filter').value;
   const list=filter==='all'?reservas:reservas.filter(r=>r.estado===filter);
   const tb=document.getElementById('r-tbody');
-  if(!list.length){ tb.innerHTML=\`<tr><td colspan="10" class="empty">\${reservas.length?'Sin resultados para ese filtro.':'Sin reservas aún.'}</td></tr>\`; return; }
+  if(!list.length){ tb.innerHTML=\`<tr><td colspan="11" class="empty">\${reservas.length?'Sin resultados para ese filtro.':'Sin reservas aún.'}</td></tr>\`; return; }
   tb.innerHTML=list.slice().reverse().map(r=>{
     const idx=reservas.indexOf(r);
+    const waMsg=encodeURIComponent('Hola '+r.nombre+', te escribimos desde Zoyen Turismo. Vimos que iniciaste una reserva para '+r.excursion+' y quedó sin confirmar. ¿Querés que te ayudemos a completarla?');
+    const waUrl='https://wa.me/'+r.tel.replace(/\D/g,'')+'\?text='+waMsg;
+    const puedeRetarget=(r.estado==='pendiente'||r.estado==='pago_iniciado')&&r.tel;
     return \`<tr>
       <td style="color:var(--stone)">#\${idx+1}</td>
       <td style="font-weight:500">\${r.nombre}</td>
@@ -3704,7 +3811,9 @@ function buildReservas(){
       <td style="text-align:center">\${r.asientos||'—'}</td>
       <td style="color:var(--ember);font-weight:600">$\${(r.senia||0).toLocaleString('es-AR')}</td>
       <td>\${badge(r.estado)}</td>
-      <td><div style="display:flex;gap:5px;flex-wrap:wrap">
+      <td style="font-size:11px;color:var(--muted)">\${r.ultimoIntento||r.creado||'—'}</td>
+      <td><div style="display:flex;gap:5px;flex-wrap:wrap;align-items:center">
+        \${puedeRetarget?\`<a href="\${waUrl}" target="_blank" class="btn btn-wa btn-sm" title="Retargeting por WhatsApp">📲 WA</a>\`:''}
         \${r.estado!=='confirmada'?\`<button class="btn btn-p btn-sm" onclick="cambiarEstado(\${idx},'confirmada')">✓</button>\`:''}
         \${r.estado!=='cancelada'?\`<button class="btn btn-d btn-sm" onclick="cambiarEstado(\${idx},'cancelada')">✕</button>\`:''}
       </div></td>
@@ -3712,8 +3821,7 @@ function buildReservas(){
   }).join('');
 }
 function cambiarEstado(idx,estado){
-  reservas[idx].estado=estado;
-  P.saveReservas();
+  P.updateEstado(idx,estado);
   buildReservas();
   buildDash();
   showToast('Reserva #'+(idx+1)+' marcada como "'+estado+'".');
