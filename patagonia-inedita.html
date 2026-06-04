@@ -10,8 +10,8 @@
   --ink:       #1a1410;
   --dark:      #231c14;
   --bark:      #3a2d1f;
-  --ember:     #e8541a;
-  --ember-dim: #c44410;
+  --ember:     #d4772a;
+  --ember-dim: #b8621e;
   --amber:     #b87332;
   --sand:      #c9a96e;
   --dust:      #e8dcc8;
@@ -35,7 +35,7 @@ nav {
   display: grid; grid-template-columns: auto 1fr auto;
   align-items: center; padding: 0 2vw; gap: 1rem;
   background: rgba(10,10,10,0.92); backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(232,84,26,0.20);
+  border-bottom: 1px solid rgba(212,119,42,0.20);
 }
 .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; line-height: 1; flex-shrink: 0; }
 .nav-emblem { width: 54px; height: 54px; flex-shrink: 0; }
@@ -66,7 +66,7 @@ nav {
 .page-hero-title { font-family: 'DM Serif Display', serif; font-size: clamp(2.4rem, 6vw, 4.5rem); font-weight: 600; line-height: 1.05; text-shadow: 0 2px 20px rgba(26,20,16,.5); }
 .page-hero-title em { font-style: italic; color: var(--sand); }
 .hero-tags { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: 1.2rem; }
-.hero-tag { background: rgba(26,20,16,.6); border: 1px solid rgba(232,84,26,.4); color: var(--dust); padding: .3rem .9rem; border-radius: 1px; font-size: .72rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; backdrop-filter: blur(6px); }
+.hero-tag { background: rgba(26,20,16,.6); border: 1px solid rgba(212,119,42,.4); color: var(--dust); padding: .3rem .9rem; border-radius: 1px; font-size: .72rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; backdrop-filter: blur(6px); }
 .hero-tag.main { background: var(--ember); border-color: var(--ember-dim); }
 .breadcrumb { margin-top: .8rem; font-size: .75rem; color: rgba(245,240,232,.5); letter-spacing: .1em; text-transform: uppercase; }
 .breadcrumb a { color: rgba(245,240,232,.5); text-decoration: none; }
@@ -86,7 +86,7 @@ nav {
 .overview-strip {
   background: var(--dark);
   padding: 2.5rem 4vw;
-  border-bottom: 1px solid rgba(232,84,26,.2);
+  border-bottom: 1px solid rgba(212,119,42,.2);
 }
 .overview-inner {
   display: flex; gap: 3rem; flex-wrap: wrap; align-items: center;
@@ -96,7 +96,7 @@ nav {
 .ov-item { text-align: center; }
 .ov-num { font-family: 'DM Serif Display', serif; font-size: 2.2rem; font-weight: 600; color: var(--ember); line-height: 1; }
 .ov-lbl { font-size: .65rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: rgba(201,169,110,.6); margin-top: .3rem; }
-.ov-sep { width: 1px; height: 48px; background: rgba(232,84,26,.2); }
+.ov-sep { width: 1px; height: 48px; background: rgba(212,119,42,.2); }
 
 /* INTRO SECTION */
 .tour-intro {
@@ -154,7 +154,7 @@ nav {
   position: absolute;
   left: 39px; top: 48px; bottom: 0;
   width: 2px;
-  background: linear-gradient(to bottom, var(--ember), rgba(232,84,26,.15));
+  background: linear-gradient(to bottom, var(--ember), rgba(212,119,42,.15));
 }
 .dia-num {
   display: flex; flex-direction: column; align-items: center; padding-top: .5rem;
@@ -165,7 +165,7 @@ nav {
   background: var(--ember); color: #fff;
   display: flex; align-items: center; justify-content: center;
   font-family: 'DM Serif Display', serif; font-size: 1.1rem; font-weight: 600;
-  box-shadow: 0 4px 16px rgba(232,84,26,.4);
+  box-shadow: 0 4px 16px rgba(212,119,42,.4);
   flex-shrink: 0;
 }
 .dia-content {
@@ -189,7 +189,7 @@ nav {
 .galeria-grid img:first-child { grid-column: span 2; aspect-ratio: 16/7; }
 
 /* CTA */
-.tour-cta { background: var(--dark); padding: 5rem 4vw; text-align: center; border-top: 1px solid rgba(232,84,26,.2); }
+.tour-cta { background: var(--dark); padding: 5rem 4vw; text-align: center; border-top: 1px solid rgba(212,119,42,.2); }
 .tour-cta h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 600; color: var(--dust); margin-bottom: 1rem; }
 .tour-cta h2 em { font-style: italic; color: var(--sand); }
 .tour-cta p { font-size: 1.02rem; color: rgba(232,220,200,.55); max-width: 480px; margin: 0 auto 2.5rem; font-weight: 300; line-height: 1.8; }
@@ -201,7 +201,7 @@ nav {
 
 /* FOOTER */
 footer { background: #0a0a0a; padding: 5rem 3vw 2.5rem; }
-.footer-top { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(232,84,26,.15); margin-bottom: 2rem; }
+.footer-top { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(212,119,42,.15); margin-bottom: 2rem; }
 @media (max-width:700px){ .footer-top { grid-template-columns: 1fr; gap: 2rem; } }
 .footer-brand-wrap { display: flex; align-items: center; gap: 12px; margin-bottom: .6rem; }
 .footer-emblem { width: 48px; height: 48px; flex-shrink: 0; }
@@ -212,7 +212,7 @@ footer { background: #0a0a0a; padding: 5rem 3vw 2.5rem; }
 .socials { display: flex; gap: .6rem; }
 .social-btn { width: 34px; height: 34px; border-radius: 1px; border: 1px solid rgba(201,169,110,.2); color: var(--sand); text-decoration: none; display: flex; align-items: center; justify-content: center; transition: border-color .2s, background .2s; }
 .social-btn svg { display: block; }
-.social-btn:hover { border-color: var(--ember); background: rgba(232,84,26,.12); }
+.social-btn:hover { border-color: var(--ember); background: rgba(212,119,42,.12); }
 .footer-col-title { font-size: 1rem; font-weight: 600; letter-spacing: .25em; text-transform: uppercase; color: var(--ember); margin-bottom: 1.1rem; }
 .footer-links { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
 .footer-links a { color: rgba(232,220,200,.70); text-decoration: none; font-size: .8rem; font-weight: 300; transition: color .2s; display: flex; align-items: center; gap: 7px; }
@@ -322,7 +322,7 @@ footer { background: #0a0a0a; padding: 5rem 3vw 2.5rem; }
     <div class="ov-item"><div class="ov-num">14</div><div class="ov-lbl">Plazas máx.</div></div>
     <div class="ov-sep"></div>
     <div class="ov-item" style="text-align:left;">
-      <a href="index.html#reservar" style="background:var(--ember);color:#fff;padding:.7rem 1.8rem;border-radius:2px;text-decoration:none;font-size:.82rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;transition:background .2s;display:inline-block;" onmouseover="this.style.background='#c44410'" onmouseout="this.style.background='#e8541a'">Reservar lugar</a>
+      <a href="index.html#reservar" style="background:var(--ember);color:#fff;padding:.7rem 1.8rem;border-radius:2px;text-decoration:none;font-size:.82rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;transition:background .2s;display:inline-block;" onmouseover="this.style.background='#b8621e'" onmouseout="this.style.background='#d4772a'">Reservar lugar</a>
     </div>
   </div>
 </div>
