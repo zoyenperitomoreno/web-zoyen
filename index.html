@@ -654,31 +654,28 @@ nav {
 @media (max-width:860px){ .tours-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width:520px){ .tours-grid { grid-template-columns: 1fr; } }
 
-.tour-card {
-  position: relative; border-radius: 3px; overflow: hidden; cursor: pointer;
-  transition: transform .35s;
-}
-.tour-card:hover { transform: translateY(-5px); }
-.tour-card:first-child { grid-row: span 2; }
-.tour-card img {
-  width: 100%; height: 100%; min-height: 240px; object-fit: cover;
-  display: block; transition: transform .7s cubic-bezier(.25,.1,.25,1);
-}
-.tour-card:first-child img { min-height: 420px; }
-.tour-card:hover img { transform: scale(1.07); }
+.tour-card {\n  position: relative; border-radius: 3px; overflow: hidden; cursor: pointer;\n  transition: transform .35s;\n}\n.tour-card:hover { transform: translateY(-5px); }\n.tour-card:first-child { grid-row: span 2; }\n.tour-card img {\n  width: 100%; height: 100%; min-height: 240px; object-fit: cover;\n  object-position: center center;\n  display: block; transition: transform .7s cubic-bezier(.25,.1,.25,1);\n  image-rendering: -webkit-optimize-contrast;\n  image-rendering: crisp-edges;\n  backface-visibility: hidden;\n  transform: translateZ(0);\n  will-change: transform;\n}\n.tour-card:first-child {\n  grid-row: span 2;\n}\n.tour-card:first-child img {\n  min-height: 420px;\n  max-height: 520px;\n  height: 100%;\n}\n.tour-card:hover img { transform: scale(1.07) translateZ(0); }
 
 .tour-card-ov {
   position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(26,20,16,.92) 0%, rgba(26,20,16,.08) 60%);
+  background: linear-gradient(to top, rgba(26,20,16,.95) 0%, rgba(26,20,16,.45) 40%, rgba(26,20,16,.0) 65%);
   display: flex; flex-direction: column; justify-content: flex-end;
   padding: 1.5rem 1.4rem;
   transition: background .3s;
 }
-.tour-card:hover .tour-card-ov { background: linear-gradient(to top, rgba(232,84,26,.75) 0%, rgba(26,20,16,.1) 60%); }
+.tour-card:hover .tour-card-ov { background: linear-gradient(to top, rgba(232,84,26,.82) 0%, rgba(26,20,16,.25) 45%, rgba(26,20,16,.0) 65%); }
 .tour-dur {
   font-family: 'Sora', sans-serif;
-  font-size: 1rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase;
-  color: var(--sand); margin-bottom: .35rem;
+  font-size: .75rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--sand);
+  margin-bottom: .35rem;
+  display: inline-block;
+  background: rgba(26,20,16,0.55);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(201,169,110,0.35);
+  padding: .22rem .7rem;
+  border-radius: 1px;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.8);
 }
 .tour-name {
   font-family: 'DM Serif Display', serif;
@@ -2120,7 +2117,7 @@ footer {
 <section id="reservar">
   <div class="sec-head reveal">
     <p class="eyebrow">Asegurá tu lugar</p>
-    <h2 class="section-title">Reservá tu <em>Excursión</em></h2>
+    <h2 class="section-title">Reservá tu <em>Tour</em></h2>
     <p class="section-sub">Elegí el destino, la fecha y seleccioná tu asiento en la camioneta — igual que reservar una butaca en el cine, pero para la Renault Master que te lleva a la Patagonia.</p>
   </div>
 
@@ -2147,16 +2144,11 @@ footer {
 
       <div class="frow single">
         <div class="fgroup">
-          <label>Excursión</label>
+          <label>Tour</label>
           <select id="sel-excursion">
-            <option value="">— Seleccioná una excursión —</option>
-            <option value="cueva" data-precio="18000">Cueva de las Manos — $18.000 p/p</option>
-            <option value="capillas" data-precio="24000">Capillas y Catedrales de Mármol — $24.000 p/p</option>
-            <option value="posadas" data-precio="15000">Lago Posadas con Vuelta a la Meseta por Ruta 41 — $15.000 p/p</option>
-            <option value="zeballos" data-precio="16000">Ruta 41 · Monte Zeballos — $16.000 p/p</option>
-            <option value="charcamata" data-precio="12000">Alero Charcamata — $12.000 p/p</option>
-            <option value="parque_caniadon" data-precio="8000">Portal Cañadón Pinturas (Parque Patagonia) — $8.000 p/p</option>
-            <option value="parque_escension" data-precio="7000">PNP / Estancia La Escensión — $7.000 p/p</option>
+            <option value="">— Seleccioná un tour —</option>
+            <option value="patagonia_inedita" data-precio="185000">Patagonia Inédita · 6 días / 5 noches — $185.000 p/p</option>
+            <option value="carretera_austral" data-precio="210000">Carretera Austral · 7 días / 6 noches — $210.000 p/p</option>
           </select>
         </div>
       </div>
@@ -2735,15 +2727,10 @@ function addSlide(url) {
 
 // ── RESERVA ─────────────────────────────────────────────────────
 
-// Simulated occupied seats per excursion (random but realistic)
+// Asientos ocupados por tour de autor
 const ocupadosPorExcursion = {
-  cueva:             [3, 7, 8, 12],
-  capillas:          [1, 4, 5, 14, 15],
-  posadas:           [2, 9, 13],
-  zeballos:          [6, 7, 11],
-  charcamata:        [2, 16],
-  parque_caniadon:   [5, 10],
-  parque_escension:  [3, 8],
+  patagonia_inedita:  [2, 5, 9, 13],
+  carretera_austral:  [1, 4, 7, 11, 14],
 };
 
 let selectedSeats = [];
