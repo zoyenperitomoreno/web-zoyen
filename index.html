@@ -700,7 +700,7 @@ nav {
 }
 .bw-bg {
   position: absolute; inset: 0;
-  background-image: url('https://www.zoyenturismo.com.ar/wp-content/uploads/2025/09/canadonpinturas_cuevadelasmanos.jpg');
+  background-image: url('assets/canadonpinturas_cuevadelasmanos.jpg');
   background-size: cover; background-position: center;
   opacity: .12;
 }
@@ -1424,6 +1424,59 @@ footer {
 .admin-badge.visible { display: flex; }
 .admin-badge:hover { background: rgba(212,119,42,.28); }
 </style>
+<script>
+(function(){
+  document.documentElement.classList.add('js-ready');
+  const fallbackByHint = [
+    ['capillas', 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&q=80'],
+    ['marmol', 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&q=80'],
+    ['cueva', 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&q=80'],
+    ['manos', 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&q=80'],
+    ['ruta', 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1200&q=80'],
+    ['zeballos', 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1200&q=80'],
+    ['posadas', 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&q=80'],
+    ['patagonia', 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1200&q=80'],
+    ['carretera', 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1200&q=80'],
+    ['parque', 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&q=80']
+  ];
+  const genericFallback = 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1200&q=80';
+  function pickFallback(text){
+    const haystack = (text || '').toLowerCase();
+    const found = fallbackByHint.find(([hint]) => haystack.includes(hint));
+    return found ? found[1] : genericFallback;
+  }
+  window.zoyenPickFallback = pickFallback;
+  document.addEventListener('error', function(event){
+    const el = event.target;
+    if (!el || el.tagName !== 'IMG' || el.dataset.fallbackApplied === '1') return;
+    el.dataset.fallbackApplied = '1';
+    el.src = pickFallback((el.getAttribute('alt') || '') + ' ' + (el.getAttribute('src') || ''));
+  }, true);
+  function repairBackgrounds(){
+    const nodes = document.querySelectorAll('.slide-bg, .page-hero-bg, [style*="background-image"]');
+    nodes.forEach(function(el){
+      const bg = getComputedStyle(el).backgroundImage || '';
+      const match = bg.match(/url\(["']?([^"')]+)["']?\)/);
+      if (!match) return;
+      const original = match[1];
+      const probe = new Image();
+      probe.onerror = function(){ el.style.backgroundImage = "url('" + pickFallback(original) + "')"; };
+      probe.src = original;
+    });
+  }
+  function revealSafety(){ document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); }); }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function(){ repairBackgrounds(); setTimeout(revealSafety, 700); });
+  } else {
+    repairBackgrounds(); setTimeout(revealSafety, 700);
+  }
+  setTimeout(revealSafety, 1800);
+})();
+</script>
+<style id="zoyen-recovery-patch">
+html:not(.js-ready) .reveal { opacity: 1 !important; transform: none !important; }
+img { background: #d8d0c3; }
+</style>
 </head>
 <body>
 
@@ -1494,7 +1547,7 @@ footer {
 <!-- HERO SLIDER -->
 <section class="hero">
   <div class="slide active" id="s0">
-    <div class="slide-bg" style="background-image:url('https://www.zoyenturismo.com.ar/wp-content/uploads/2022/10/full_inedita.jpg')"></div>
+    <div class="slide-bg" style="background-image:url('assets/full_inedita.jpg')"></div>
     <div class="slide-overlay"></div>
     <div class="slide-emblem">
       <div class="emblem-3d">
@@ -1569,7 +1622,7 @@ footer {
   </div>
 
   <div class="slide" id="s1">
-    <div class="slide-bg" style="background-image:url('https://www.zoyenturismo.com.ar/wp-content/uploads/2025/09/cuevadelasmanos_zoyen.jpg')"></div>
+    <div class="slide-bg" style="background-image:url('assets/cuevadelasmanos_zoyen.jpg')"></div>
     <div class="slide-overlay"></div>
     <div class="slide-emblem">
       <div class="emblem-3d">
@@ -1644,7 +1697,7 @@ footer {
   </div>
 
   <div class="slide" id="s2">
-    <div class="slide-bg" style="background-image:url('http://www.zoyenturismo.com.ar/wp-content/uploads/2023/07/capillas.jpg')"></div>
+    <div class="slide-bg" style="background-image:url('assets/capillas.jpg')"></div>
     <div class="slide-overlay"></div>
     <div class="slide-emblem">
       <div class="emblem-3d">
@@ -1719,7 +1772,7 @@ footer {
   </div>
 
   <div class="slide" id="s3">
-    <div class="slide-bg" style="background-image:url('http://www.zoyenturismo.com.ar/wp-content/uploads/2022/10/ruta41_zoyen.jpg')"></div>
+    <div class="slide-bg" style="background-image:url('assets/ruta41_zoyen.jpg')"></div>
     <div class="slide-overlay"></div>
     <div class="slide-emblem">
       <div class="emblem-3d">
@@ -1915,7 +1968,7 @@ footer {
   </div>
   <div class="ex-grid">
     <div class="ex-card reveal">
-      <img src="http://www.zoyenturismo.com.ar/wp-content/uploads/2022/10/cuevas_zoyen.jpg" alt="Cueva de las Manos">
+      <img src="assets/cuevas_zoyen.jpg" alt="Cueva de las Manos">
       <span class="ex-tag">Todo el día</span>
       <div class="ex-card-overlay">
         <h3 class="ex-name">Cueva de las Manos</h3>
@@ -1924,7 +1977,7 @@ footer {
       </div>
     </div>
     <div class="ex-card reveal reveal-delay">
-      <img src="http://www.zoyenturismo.com.ar/wp-content/uploads/2023/07/capillas.jpg" alt="Capillas de Mármol">
+      <img src="assets/capillas.jpg" alt="Capillas de Mármol">
       <span class="ex-tag">Día completo</span>
       <div class="ex-card-overlay">
         <h3 class="ex-name">Capillas y Catedrales de Mármol</h3>
@@ -1933,7 +1986,7 @@ footer {
       </div>
     </div>
     <div class="ex-card reveal reveal-delay2">
-      <img src="http://www.zoyenturismo.com.ar/wp-content/uploads/2022/10/posadas_zoyen.jpg" alt="Lago Posadas con Vuelta a la Meseta por Ruta Escénica 41">
+      <img src="assets/posadas_zoyen.jpg" alt="Lago Posadas con Vuelta a la Meseta por Ruta Escénica 41">
       <span class="ex-tag">Ruta escénica</span>
       <div class="ex-card-overlay">
         <h3 class="ex-name">Lago Posadas con Vuelta a la Meseta por Ruta Escénica 41</h3>
@@ -1942,7 +1995,7 @@ footer {
       </div>
     </div>
     <div class="ex-card reveal">
-      <img src="http://www.zoyenturismo.com.ar/wp-content/uploads/2022/10/ruta41_zoyen.jpg" alt="Monte Zeballos">
+      <img src="assets/ruta41_zoyen.jpg" alt="Monte Zeballos">
       <span class="ex-tag">Alta montaña</span>
       <div class="ex-card-overlay">
         <h3 class="ex-name">Ruta 41 · Monte Zeballos</h3>
@@ -1951,7 +2004,7 @@ footer {
       </div>
     </div>
     <div class="ex-card reveal reveal-delay2">
-      <img src="http://www.zoyenturismo.com.ar/wp-content/uploads/2022/10/alerocharca_zoyen.jpg" alt="Alero Charcamata">
+      <img src="assets/alerocharca_zoyen.jpg" alt="Alero Charcamata">
       <span class="ex-tag">Arte rupestre</span>
       <div class="ex-card-overlay">
         <h3 class="ex-name">Alero Charcamata</h3>
@@ -1960,7 +2013,7 @@ footer {
       </div>
     </div>
     <div class="ex-card reveal" style="grid-column: span 2; aspect-ratio: unset; min-height: 280px;">
-      <img src="http://www.zoyenturismo.com.ar/wp-content/uploads/2023/07/pps.jpg" alt="Parque Nacional Patagonia / Portal Cañadón Pinturas" style="height:100%; object-position:center 40%;">
+      <img src="assets/pps.jpg" alt="Parque Nacional Patagonia / Portal Cañadón Pinturas" style="height:100%; object-position:center 40%;">
       <span class="ex-tag">Medio día</span>
       <div class="ex-card-overlay" style="padding-bottom:1.8rem;">
         <h3 class="ex-name">Parque Nacional Patagonia / Portal Cañadón Pinturas</h3>
@@ -2068,7 +2121,7 @@ footer {
 
       <!-- Tour 1 -->
       <div class="reveal tour2-card" style="position:relative;border-radius:4px;overflow:hidden;cursor:pointer;" onclick="location.href='patagonia-inedita.html'">
-        <img src="http://www.zoyenturismo.com.ar/wp-content/uploads/2022/10/full_inedita.jpg" alt="Patagonia Inédita" style="width:100%;height:420px;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.25,.1,.25,1);">
+        <img src="assets/full_inedita.jpg" alt="Patagonia Inédita" style="width:100%;height:420px;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.25,.1,.25,1);">
         <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,6,.95) 0%,rgba(10,8,6,.4) 50%,rgba(10,8,6,.05) 100%);transition:background .3s;" class="tour2-ov"></div>
         <div style="position:absolute;inset:0;padding:2rem;display:flex;flex-direction:column;justify-content:flex-end;">
           <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem;">
@@ -2084,7 +2137,7 @@ footer {
 
       <!-- Tour 2 -->
       <div class="reveal reveal-delay tour2-card" style="position:relative;border-radius:4px;overflow:hidden;cursor:pointer;" onclick="location.href='carretera-austral.html'">
-        <img src="https://www.zoyenturismo.com.ar/wp-content/uploads/2022/11/20221115_082320-1024x576-360x230.jpg" alt="Carretera Austral" onerror="this.src='https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=80'" style="width:100%;height:420px;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.25,.1,.25,1);">
+        <img src="assets/20221115_082320-1024x576-360x230.jpg" alt="Carretera Austral" onerror="this.src='https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=80'" style="width:100%;height:420px;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.25,.1,.25,1);">
         <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,6,.95) 0%,rgba(10,8,6,.4) 50%,rgba(10,8,6,.05) 100%);transition:background .3s;" class="tour2-ov"></div>
         <div style="position:absolute;inset:0;padding:2rem;display:flex;flex-direction:column;justify-content:flex-end;">
           <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem;">
