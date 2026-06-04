@@ -57,6 +57,16 @@ nav {
   flex-shrink: 0;
 }
 .nav-emblem { width: 54px; height: 54px; flex-shrink: 0; }
+@keyframes nav-rose-spin { to { transform: rotate(360deg); } }
+@keyframes nav-ring-ccw  { to { transform: rotate(-360deg); } }
+.nav-emblem .nav-rose-anim {
+  transform-origin: 50px 50px;
+  animation: heroRoseSpin 18s linear infinite; animation-delay: -5s;
+}
+.nav-emblem .nav-ring-anim {
+  transform-origin: 50px 50px;
+  animation: heroRingCCW 45s linear infinite; animation-delay: -5s;
+}
 .nav-logo-text { display: flex; flex-direction: column; gap: 2px; justify-content: center; }
 .nav-logo-name { display: flex; align-items: baseline; gap: 0; }
 .nav-logo .z { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.4rem; letter-spacing: .12em; color: var(--cream); text-transform: uppercase; }
@@ -159,9 +169,9 @@ nav {
 /* Capas SVG: todas 200x200 apiladas */
 .emblem-svg        { width: 280px; height: 280px; position: absolute; top:0; left:0; }
 .emblem-text-path  { width: 280px; height: 280px; position: absolute; top:0; left:0;
-                     animation: spin-ccw 20s linear infinite; }
+                     animation: spin-ccw 45s linear infinite; }
 .emblem-text-inner { width: 280px; height: 280px; position: absolute; top:0; left:0;
-                     animation: spin-cw  28s linear infinite; }
+                     animation: spin-cw  45s linear infinite; }
 .emblem-text-path text, .emblem-text-inner text {
   paint-order: stroke fill;
   stroke: rgba(0,0,0,0.75);
@@ -363,15 +373,11 @@ nav {
 @keyframes heroRingCW  { to { transform: rotate( 360deg); } }
 @keyframes heroRoseSpin{ to { transform: rotate( 360deg); } }
 
+.hero-ring-ccw  { transform-origin: 140px 140px; animation: heroRingCCW 45s linear infinite; animation-delay: -5s; }
+.hero-ring-cw   { transform-origin: 140px 140px; animation: heroRingCW  45s linear infinite; animation-delay: -5s; }
+.hero-rose-spin { transform-origin: 140px 140px; animation: heroRoseSpin 18s linear infinite; animation-delay: -5s; }
 
-@keyframes heroRingCCW { to { transform: rotate(-360deg); } }
-@keyframes heroRingCW  { to { transform: rotate( 360deg); } }
-@keyframes heroRoseSpin{ to { transform: rotate( 360deg); } }
-
-
-@keyframes heroRingCCW { to { transform: rotate(-360deg); } }
-@keyframes heroRingCW  { to { transform: rotate( 360deg); } }
-@keyframes heroRoseSpin{ to { transform: rotate( 360deg); } }
+/* Nav + footer in sync with hero */
 
 .reveal {
   opacity: 0; transform: translateY(22px);
@@ -397,6 +403,144 @@ nav {
 }
 @media (max-width:960px){ .ex-grid { grid-template-columns: repeat(2,1fr); } }
 @media (max-width:560px){ .ex-grid { grid-template-columns: 1fr; } }
+
+/* ══════════════════════════════════════
+   TABLET — 641px a 960px
+══════════════════════════════════════ */
+@media (min-width: 641px) and (max-width: 960px) {
+  .nav-links { gap: 1.2rem; }
+  .nav-links a { font-size: .72rem; }
+  .slide-title { font-size: clamp(2rem, 5.5vw, 3.6rem); }
+  .slide-emblem { width: 220px; }
+  .emblem-3d,
+  .emblem-svg,
+  .emblem-text-path,
+  .emblem-text-inner { width: 220px; height: 220px; }
+  .excursiones,
+  .manifesto-section,
+  .stats-section,
+  .tours-section,
+  .traslados-section,
+  .reserva-section { padding: 4.5rem 3vw 4rem; }
+}
+
+/* ══════════════════════════════════════
+   MOBILE RESPONSIVE — max 640px
+══════════════════════════════════════ */
+@media (max-width: 640px) {
+
+  /* ── NAV ── */
+  .nav-inner {
+    padding: 0 1rem;
+    height: 56px;
+  }
+  .nav-links { display: none; }
+  .nav-cta-btn { display: none; }
+  .nav-emblem { width: 40px; height: 40px; }
+  .nav-brand-text {
+    font-size: .78rem;
+    letter-spacing: .12em;
+  }
+
+  /* ── HERO ── */
+  .hero { min-height: 100svh; }
+  .slide { padding-top: 56px; gap: 0.2rem; justify-content: center; }
+
+  .slide-emblem { width: 180px; }
+  .emblem-3d,
+  .emblem-svg,
+  .emblem-text-path,
+  .emblem-text-inner { width: 180px; height: 180px; }
+
+  .slide-content { padding: 0 1.2rem; gap: 0; }
+  .slide-eyebrow {
+    font-size: .62rem;
+    letter-spacing: .18em;
+    padding: .28rem .8rem;
+    gap: 7px;
+  }
+  .slide-eyebrow::before,
+  .slide-eyebrow::after { width: 14px; }
+
+  .slide-title {
+    font-size: clamp(1.7rem, 8vw, 2.6rem);
+    margin-bottom: .7rem;
+    line-height: 1.08;
+  }
+  .slide-desc {
+    font-size: .88rem;
+    line-height: 1.65;
+    margin-bottom: 1.2rem;
+  }
+  .slide-btn {
+    padding: .65rem 1.6rem;
+    font-size: .78rem;
+  }
+
+  .slider-arrows { bottom: 1.6rem; right: 1.2rem; gap: 6px; }
+  .arrow-btn { width: 38px; height: 38px; font-size: .85rem; }
+  .slider-dots { bottom: 2rem; gap: 6px; }
+  .dot { width: 20px; }
+  .dot.active { width: 32px; }
+  .scroll-hint { display: none; }
+
+  /* ── BANNER BAR ── */
+  .banner-bar {
+    padding: 0 .8rem;
+    height: 46px;
+    gap: .7rem;
+  }
+  .bb-label { font-size: .7rem; letter-spacing: .14em; }
+  .bb-thumb { width: 44px; height: 30px; }
+  .bb-add { padding: 0 .7rem; font-size: .7rem; }
+
+  /* ── SECCIONES GENERALES ── */
+  .excursiones,
+  .manifesto-section,
+  .stats-section,
+  .tours-section,
+  .traslados-section,
+  .reserva-section { padding: 3.5rem 1.2rem 3rem; }
+
+  .sec-head { margin-bottom: 2rem; }
+  .section-title { font-size: clamp(1.5rem, 6vw, 2rem); }
+  .section-sub { font-size: .9rem; }
+  .eyebrow { font-size: .72rem; letter-spacing: .22em; }
+
+  /* ── EXCURSIONES ── */
+  .ex-grid { gap: .8rem; }
+
+  /* ── STATS ── */
+  .stats { grid-template-columns: repeat(2,1fr); gap: 1rem; }
+  .stat-num { font-size: clamp(2rem, 9vw, 2.8rem); }
+
+  /* ── TOURS ── */
+  .tours-grid { grid-template-columns: 1fr; gap: 1rem; }
+
+  /* ── TRASLADOS ── */
+  .traslados { grid-template-columns: 1fr; gap: 1rem; }
+
+  /* ── MANIFESTO ── */
+  .manifesto { grid-template-columns: 1fr; gap: 2rem; }
+
+  /* ── RESERVA ── */
+  .res-grid { grid-template-columns: 1fr; }
+  .frow { grid-template-columns: 1fr; }
+  .sbar-item { flex: 1 1 100%; }
+
+  /* ── FOOTER ── */
+  .footer-top { grid-template-columns: 1fr; gap: 1.5rem; }
+  .footer-emblem { width: 60px; height: 60px; }
+  footer { padding: 3rem 1.2rem 2rem; }
+
+  /* ── MODAL ── */
+  .modal-box,
+  .adm-login-box { padding: 1.8rem 1.2rem; width: 94%; }
+
+  /* ── WA FLOAT ── */
+  .wa { bottom: 1.2rem; right: 1.2rem; width: 50px; height: 50px; }
+  .wa svg { width: 24px; height: 24px; }
+}
 
 .ex-card {
   position: relative; border-radius: 3px; overflow: hidden;
@@ -1266,6 +1410,17 @@ footer {
 }
 .admin-saved-msg.show { opacity: 1; }
 
+@keyframes ft-rose-spin { to { transform: rotate(360deg); } }
+@keyframes ft-ring-ccw  { to { transform: rotate(-360deg); } }
+.footer-emblem .ft-rose-anim {
+  transform-origin: 50px 50px;
+  animation: heroRoseSpin 18s linear infinite; animation-delay: -5s;
+}
+.footer-emblem .ft-ring-anim {
+  transform-origin: 50px 50px;
+  animation: heroRingCCW 45s linear infinite; animation-delay: -5s;
+}
+
 /* Badge admin visible en nav cuando logueado */
 .admin-badge {
   display: none; align-items: center; gap: 6px;
@@ -1285,9 +1440,14 @@ footer {
 <nav>
   <a href="#" class="nav-logo">
     <svg class="nav-emblem" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="0.8"/>
   <defs><linearGradient id="nv-gl" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(255,255,255,0.95)"/><stop offset="100%" stop-color="rgba(182,196,212,0.82)"/></linearGradient>
 <linearGradient id="nv-gd" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(102,116,132,0.9)"/><stop offset="100%" stop-color="rgba(62,76,92,0.93)"/></linearGradient></defs>
+  <!-- Outer ring spins CCW -->
+  <g class="nav-ring-anim">
+    <circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="0.8"/>
+  </g>
+  <!-- Compass rose spins CW -->
+  <g class="nav-rose-anim">
 <circle cx="50" cy="50" r="25.31" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.43"/>
 <circle cx="50" cy="50" r="22.04" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="0.24"/>
 <polygon points="50.0,22.65 46.33,50.0 50,50" fill="url(#nv-gl)"/>
@@ -1315,6 +1475,8 @@ footer {
 <line x1="37.01" y1="62.99" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
 <line x1="22.65" y1="50.0" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
 <line x1="37.01" y1="37.01" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
+  </g>
+  <!-- Centre dot stays fixed -->
 <circle cx="50" cy="50" r="3.06" fill="#ff7a35"/>
 <circle cx="50" cy="50" r="1.84" fill="#1a1410"/>
 <circle cx="50" cy="50" r="0.9" fill="#ff7a35"/>
@@ -1350,7 +1512,7 @@ footer {
     <path id="hpO" d="M140,140 m-108,0 a108,108 0 1,1 216,0"/>
     <path id="hpI" d="M140,140 m-77,0 a77,77 0 1,1 154,0"/>
   </defs>
-  <g style="transform-origin:140px 140px;animation:heroRingCCW 28s linear infinite;">
+  <g class="hero-ring-ccw">
     <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="14"/>
     <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="0.8"/>
     <circle cx="140" cy="140" r="96" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.4"/>
@@ -1358,14 +1520,16 @@ footer {
       <textPath href="#hpO" startOffset="50%"><tspan fill="rgba(255,255,255,0.92)">ZOYEN</tspan><tspan fill="rgba(255,255,255,0.3)"> · </tspan><tspan fill="#ff7a35">TURISMO</tspan></textPath>
     </text>
   </g>
-  <g style="transform-origin:140px 140px;animation:heroRingCW 22s linear infinite;">
+  <g class="hero-ring-cw">
     <circle cx="140" cy="140" r="77" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="10"/>
     <circle cx="140" cy="140" r="77" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="0.6"/>
+  </g>
+  <g class="hero-ring-ccw">
     <text font-family="Sora,Arial Narrow,sans-serif" font-size="9" font-weight="400" letter-spacing="9" text-anchor="middle" fill="rgba(255,255,255,0.7)">
       <textPath href="#hpI" startOffset="50%">· PATAGONIA · ARG ·</textPath>
     </text>
   </g>
-  <g style="transform-origin:140px 140px;animation:heroRoseSpin 14s linear infinite;">
+  <g class="hero-rose-spin">
     <defs><linearGradient id="hr2-gl" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(255,255,255,0.95)"/><stop offset="100%" stop-color="rgba(182,196,212,0.82)"/></linearGradient>
 <linearGradient id="hr2-gd" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(102,116,132,0.9)"/><stop offset="100%" stop-color="rgba(62,76,92,0.93)"/></linearGradient></defs>
 <circle cx="140" cy="140" r="63.27" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="3.57"/>
@@ -1423,7 +1587,7 @@ footer {
     <path id="hpO" d="M140,140 m-108,0 a108,108 0 1,1 216,0"/>
     <path id="hpI" d="M140,140 m-77,0 a77,77 0 1,1 154,0"/>
   </defs>
-  <g style="transform-origin:140px 140px;animation:heroRingCCW 28s linear infinite;">
+  <g class="hero-ring-ccw">
     <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="14"/>
     <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="0.8"/>
     <circle cx="140" cy="140" r="96" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.4"/>
@@ -1431,14 +1595,16 @@ footer {
       <textPath href="#hpO" startOffset="50%"><tspan fill="rgba(255,255,255,0.92)">ZOYEN</tspan><tspan fill="rgba(255,255,255,0.3)"> · </tspan><tspan fill="#ff7a35">TURISMO</tspan></textPath>
     </text>
   </g>
-  <g style="transform-origin:140px 140px;animation:heroRingCW 22s linear infinite;">
+  <g class="hero-ring-cw">
     <circle cx="140" cy="140" r="77" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="10"/>
     <circle cx="140" cy="140" r="77" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="0.6"/>
+  </g>
+  <g class="hero-ring-ccw">
     <text font-family="Sora,Arial Narrow,sans-serif" font-size="9" font-weight="400" letter-spacing="9" text-anchor="middle" fill="rgba(255,255,255,0.7)">
       <textPath href="#hpI" startOffset="50%">· PATAGONIA · ARG ·</textPath>
     </text>
   </g>
-  <g style="transform-origin:140px 140px;animation:heroRoseSpin 14s linear infinite;">
+  <g class="hero-rose-spin">
     <defs><linearGradient id="hr2-gl" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(255,255,255,0.95)"/><stop offset="100%" stop-color="rgba(182,196,212,0.82)"/></linearGradient>
 <linearGradient id="hr2-gd" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(102,116,132,0.9)"/><stop offset="100%" stop-color="rgba(62,76,92,0.93)"/></linearGradient></defs>
 <circle cx="140" cy="140" r="63.27" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="3.57"/>
@@ -1496,7 +1662,7 @@ footer {
     <path id="hpO" d="M140,140 m-108,0 a108,108 0 1,1 216,0"/>
     <path id="hpI" d="M140,140 m-77,0 a77,77 0 1,1 154,0"/>
   </defs>
-  <g style="transform-origin:140px 140px;animation:heroRingCCW 28s linear infinite;">
+  <g class="hero-ring-ccw">
     <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="14"/>
     <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="0.8"/>
     <circle cx="140" cy="140" r="96" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.4"/>
@@ -1504,14 +1670,16 @@ footer {
       <textPath href="#hpO" startOffset="50%"><tspan fill="rgba(255,255,255,0.92)">ZOYEN</tspan><tspan fill="rgba(255,255,255,0.3)"> · </tspan><tspan fill="#ff7a35">TURISMO</tspan></textPath>
     </text>
   </g>
-  <g style="transform-origin:140px 140px;animation:heroRingCW 22s linear infinite;">
+  <g class="hero-ring-cw">
     <circle cx="140" cy="140" r="77" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="10"/>
     <circle cx="140" cy="140" r="77" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="0.6"/>
+  </g>
+  <g class="hero-ring-ccw">
     <text font-family="Sora,Arial Narrow,sans-serif" font-size="9" font-weight="400" letter-spacing="9" text-anchor="middle" fill="rgba(255,255,255,0.7)">
       <textPath href="#hpI" startOffset="50%">· PATAGONIA · ARG ·</textPath>
     </text>
   </g>
-  <g style="transform-origin:140px 140px;animation:heroRoseSpin 14s linear infinite;">
+  <g class="hero-rose-spin">
     <defs><linearGradient id="hr2-gl" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(255,255,255,0.95)"/><stop offset="100%" stop-color="rgba(182,196,212,0.82)"/></linearGradient>
 <linearGradient id="hr2-gd" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(102,116,132,0.9)"/><stop offset="100%" stop-color="rgba(62,76,92,0.93)"/></linearGradient></defs>
 <circle cx="140" cy="140" r="63.27" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="3.57"/>
@@ -1569,7 +1737,7 @@ footer {
     <path id="hpO" d="M140,140 m-108,0 a108,108 0 1,1 216,0"/>
     <path id="hpI" d="M140,140 m-77,0 a77,77 0 1,1 154,0"/>
   </defs>
-  <g style="transform-origin:140px 140px;animation:heroRingCCW 28s linear infinite;">
+  <g class="hero-ring-ccw">
     <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="14"/>
     <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="0.8"/>
     <circle cx="140" cy="140" r="96" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.4"/>
@@ -1577,14 +1745,16 @@ footer {
       <textPath href="#hpO" startOffset="50%"><tspan fill="rgba(255,255,255,0.92)">ZOYEN</tspan><tspan fill="rgba(255,255,255,0.3)"> · </tspan><tspan fill="#ff7a35">TURISMO</tspan></textPath>
     </text>
   </g>
-  <g style="transform-origin:140px 140px;animation:heroRingCW 22s linear infinite;">
+  <g class="hero-ring-cw">
     <circle cx="140" cy="140" r="77" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="10"/>
     <circle cx="140" cy="140" r="77" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="0.6"/>
+  </g>
+  <g class="hero-ring-ccw">
     <text font-family="Sora,Arial Narrow,sans-serif" font-size="9" font-weight="400" letter-spacing="9" text-anchor="middle" fill="rgba(255,255,255,0.7)">
       <textPath href="#hpI" startOffset="50%">· PATAGONIA · ARG ·</textPath>
     </text>
   </g>
-  <g style="transform-origin:140px 140px;animation:heroRoseSpin 14s linear infinite;">
+  <g class="hero-rose-spin">
     <defs><linearGradient id="hr2-gl" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(255,255,255,0.95)"/><stop offset="100%" stop-color="rgba(182,196,212,0.82)"/></linearGradient>
 <linearGradient id="hr2-gd" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(102,116,132,0.9)"/><stop offset="100%" stop-color="rgba(62,76,92,0.93)"/></linearGradient></defs>
 <circle cx="140" cy="140" r="63.27" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="3.57"/>
@@ -2322,9 +2492,14 @@ footer {
     <div>
       <div class="footer-brand-wrap">
         <svg class="footer-emblem" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="0.8"/>
   <defs><linearGradient id="ft-gl" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(255,255,255,0.95)"/><stop offset="100%" stop-color="rgba(182,196,212,0.82)"/></linearGradient>
 <linearGradient id="ft-gd" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(102,116,132,0.9)"/><stop offset="100%" stop-color="rgba(62,76,92,0.93)"/></linearGradient></defs>
+  <!-- Outer ring spins CCW -->
+  <g class="ft-ring-anim">
+    <circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="0.8"/>
+  </g>
+  <!-- Compass rose spins CW -->
+  <g class="ft-rose-anim">
 <circle cx="50" cy="50" r="25.31" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.43"/>
 <circle cx="50" cy="50" r="22.04" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="0.24"/>
 <polygon points="50.0,22.65 46.33,50.0 50,50" fill="url(#ft-gl)"/>
@@ -2352,6 +2527,8 @@ footer {
 <line x1="37.01" y1="62.99" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
 <line x1="22.65" y1="50.0" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
 <line x1="37.01" y1="37.01" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
+  </g>
+  <!-- Centre dot stays fixed -->
 <circle cx="50" cy="50" r="3.06" fill="#ff7a35"/>
 <circle cx="50" cy="50" r="1.84" fill="#1a1410"/>
 <circle cx="50" cy="50" r="0.9" fill="#ff7a35"/>
@@ -2769,6 +2946,127 @@ const obs = new IntersectionObserver(es => {
   es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
 }, { threshold: 0.1 });
 revEls.forEach(el => obs.observe(el));
+
+// ── BRÚJULA REAL (solo mobile con giroscopio) ─────────────────
+(function() {
+  const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+  if (!isMobile) return;
+
+  // Elementos de la rosa en los slides (hero-rose-spin) y nav/footer
+  const roseEls = [
+    ...document.querySelectorAll('.hero-rose-spin'),
+    ...document.querySelectorAll('.nav-rose-anim'),
+    ...document.querySelectorAll('.ft-rose-anim'),
+  ];
+
+  let compassActive = false;
+  let lastAlpha = null;
+
+  function activateCompass() {
+    compassActive = true;
+    // Pausar la animación CSS automática en todos los roses
+    roseEls.forEach(el => {
+      el.style.animationPlayState = 'paused';
+    });
+    showCompassHint(true);
+  }
+
+  function handleOrientation(e) {
+    if (!compassActive) return;
+    // alpha = rotación del dispositivo respecto al Norte (0° = Norte)
+    // Necesitamos rotar la rosa al revés para que apunte al Norte
+    let alpha = e.webkitCompassHeading != null
+      ? e.webkitCompassHeading          // iOS: ya es heading real (0=Norte)
+      : (360 - (e.alpha || 0)) % 360;   // Android: alpha inverso
+
+    // Suavizado para evitar saltos bruscos
+    if (lastAlpha === null) lastAlpha = alpha;
+    let diff = alpha - lastAlpha;
+    if (diff > 180) diff -= 360;
+    if (diff < -180) diff += 360;
+    lastAlpha += diff * 0.15;
+
+    roseEls.forEach(el => {
+      el.style.transform = `rotate(${-lastAlpha}deg)`;
+    });
+  }
+
+  function showCompassHint(active) {
+    let hint = document.getElementById('compass-hint');
+    if (!hint) {
+      hint = document.createElement('div');
+      hint.id = 'compass-hint';
+      hint.style.cssText = `
+        position:fixed; bottom:5.5rem; left:50%; transform:translateX(-50%);
+        z-index:50; background:rgba(26,20,16,0.82); backdrop-filter:blur(8px);
+        border:1px solid rgba(232,84,26,0.5); border-radius:2px;
+        padding:.45rem 1.1rem; font-family:'Sora',sans-serif;
+        font-size:.62rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase;
+        color:#e8541a; pointer-events:none;
+        transition:opacity .4s;
+      `;
+      document.body.appendChild(hint);
+    }
+    hint.textContent = active ? '🧭 Brújula activa' : '';
+    hint.style.opacity = active ? '1' : '0';
+    if (!active) setTimeout(() => hint.remove(), 500);
+  }
+
+  function requestCompass() {
+    // iOS 13+ requiere permiso explícito
+    if (typeof DeviceOrientationEvent !== 'undefined' &&
+        typeof DeviceOrientationEvent.requestPermission === 'function') {
+      DeviceOrientationEvent.requestPermission()
+        .then(state => {
+          if (state === 'granted') {
+            window.addEventListener('deviceorientation', handleOrientation, true);
+            activateCompass();
+          }
+        })
+        .catch(() => {});
+    } else if (typeof DeviceOrientationEvent !== 'undefined') {
+      // Android y otros — sin permiso explícito
+      window.addEventListener('deviceorientation', handleOrientation, true);
+      activateCompass();
+    }
+  }
+
+  // Activar al tocar el emblema del hero (primer slide visible)
+  const heroEmblem = document.querySelector('.slide-emblem');
+  if (heroEmblem) {
+    heroEmblem.style.cursor = 'pointer';
+    heroEmblem.addEventListener('click', function onTap() {
+      if (!compassActive) requestCompass();
+    });
+  }
+
+  // También activar al tocar el logo del nav
+  const navLogo = document.querySelector('.nav-logo');
+  if (navLogo) {
+    navLogo.addEventListener('click', function(e) {
+      if (!compassActive) { e.preventDefault(); requestCompass(); }
+    });
+  }
+
+  // Mostrar hint de "tocá para activar brújula" al cargar
+  setTimeout(() => {
+    const tip = document.createElement('div');
+    tip.id = 'compass-tip';
+    tip.style.cssText = `
+      position:fixed; bottom:5.5rem; left:50%; transform:translateX(-50%);
+      z-index:50; background:rgba(26,20,16,0.78); backdrop-filter:blur(8px);
+      border:1px solid rgba(232,84,26,0.35); border-radius:2px;
+      padding:.45rem 1.1rem; font-family:'Sora',sans-serif;
+      font-size:.62rem; font-weight:600; letter-spacing:.15em; text-transform:uppercase;
+      color:rgba(201,169,110,0.9); pointer-events:none;
+      animation: bob 2.2s ease-in-out infinite;
+    `;
+    tip.textContent = '🧭 Tocá el logo para activar brújula';
+    document.body.appendChild(tip);
+    setTimeout(() => { tip.style.opacity='0'; tip.style.transition='opacity .6s'; setTimeout(()=>tip.remove(),700); }, 4000);
+  }, 2000);
+
+})();
 </script>
 
 <!-- ═══════════════════════════════════════════════════════
