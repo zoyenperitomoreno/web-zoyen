@@ -1780,14 +1780,22 @@ body > nav .nav-actions .nav-contact-btn svg {
   width: 14px;
   height: 14px;
 }
-.nav-logo-name {
-  animation: navBrandReveal .9s cubic-bezier(.2,.8,.2,1) .15s both;
-}
-.nav-logo sub {
-  animation: navSubReveal .9s cubic-bezier(.2,.8,.2,1) .36s both;
+.nav-logo {
+  animation: navHeaderWake 1.15s cubic-bezier(.16,.84,.18,1) .05s both;
 }
 .nav-emblem {
-  animation: navEmblemWake .9s cubic-bezier(.2,.8,.2,1) .06s both;
+  animation: navEmblemPop 1.25s cubic-bezier(.16,.84,.18,1) .08s both !important;
+}
+.nav-logo-name .z,
+.nav-logo-name .t {
+  display: inline-block;
+  animation: navBrandLetterIn 1.05s cubic-bezier(.16,.84,.18,1) .28s both;
+}
+.nav-logo-name .t {
+  animation-delay: .42s;
+}
+.nav-logo sub {
+  animation: navSubSlideIn 1s cubic-bezier(.16,.84,.18,1) .68s both;
 }
 body > nav .nav-actions.cta-nudge .nav-cta-btn {
   animation: ctaReservarNudge 1.15s ease both;
@@ -1795,18 +1803,24 @@ body > nav .nav-actions.cta-nudge .nav-cta-btn {
 body > nav .nav-actions.cta-nudge .nav-contact-btn {
   animation: ctaContactNudge 1.15s ease .12s both;
 }
-@keyframes navBrandReveal {
-  0% { opacity: 0; transform: translateY(8px); filter: blur(5px); letter-spacing: .2em; }
-  65% { opacity: 1; filter: blur(0); }
-  100% { opacity: 1; transform: none; letter-spacing: inherit; }
+@keyframes navHeaderWake {
+  0% { opacity: 0; transform: translateX(-18px); filter: blur(7px); }
+  55% { opacity: 1; filter: blur(0); }
+  100% { opacity: 1; transform: translateX(0); filter: blur(0); }
 }
-@keyframes navSubReveal {
-  0% { opacity: 0; transform: translateY(-4px); filter: blur(3px); }
-  100% { opacity: .65; transform: none; filter: blur(0); }
-}
-@keyframes navEmblemWake {
-  0% { opacity: 0; transform: scale(.86) rotate(-10deg); filter: blur(4px); }
+@keyframes navEmblemPop {
+  0% { opacity: 0; transform: scale(.55) rotate(-28deg); filter: blur(6px); }
+  58% { opacity: 1; transform: scale(1.12) rotate(8deg); filter: blur(0); }
   100% { opacity: 1; transform: scale(1) rotate(0); filter: blur(0); }
+}
+@keyframes navBrandLetterIn {
+  0% { opacity: 0; transform: translateY(14px) scale(.94); filter: blur(5px); letter-spacing: .24em; }
+  68% { opacity: 1; filter: blur(0); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); letter-spacing: .12em; }
+}
+@keyframes navSubSlideIn {
+  0% { opacity: 0; transform: translateY(-8px); filter: blur(4px); letter-spacing: .32em; }
+  100% { opacity: .78; transform: translateY(0); filter: blur(0); letter-spacing: .2em; }
 }
 @keyframes ctaReservarNudge {
   0%, 100% { transform: translateY(0) scale(1); box-shadow: none; }
@@ -1817,15 +1831,6 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
   0%, 100% { transform: translateY(0) scale(1); box-shadow: none; }
   24% { transform: translateY(-2px) scale(1.035); box-shadow: 0 0 0 0 rgba(37,211,102,.34), 0 10px 24px rgba(37,211,102,.14); }
   58% { transform: translateY(0) scale(1); box-shadow: 0 0 0 8px rgba(37,211,102,0); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .nav-logo-name,
-  .nav-logo sub,
-  .nav-emblem,
-  body > nav .nav-actions.cta-nudge .nav-cta-btn,
-  body > nav .nav-actions.cta-nudge .nav-contact-btn {
-    animation: none !important;
-  }
 }
 @media (min-width: 961px) and (max-width: 1360px) {
   body > nav .nav-actions .nav-cta-btn,
@@ -3153,29 +3158,37 @@ startAuto();
 const bbThumbs = document.getElementById('bbThumbs');
 
 function syncThumbs() {
+  if (!bbThumbs) return;
   bbThumbs.querySelectorAll('.bb-thumb').forEach((th, i) => {
     th.classList.toggle('active', i === cur);
   });
 }
-bbThumbs.addEventListener('click', e => {
-  const th = e.target.closest('.bb-thumb');
-  if (th) { go(+th.dataset.i); startAuto(); }
-});
+if (bbThumbs) {
+  bbThumbs.addEventListener('click', e => {
+    const th = e.target.closest('.bb-thumb');
+    if (th) { go(+th.dataset.i); startAuto(); }
+  });
+}
 
 // Quick upload → applies to current slide
-document.getElementById('quickUp').addEventListener('change', function() {
-  const f = this.files[0]; if (!f) return;
-  const r = new FileReader();
-  r.onload = e => applyImg(e.target.result, cur);
-  r.readAsDataURL(f); this.value = '';
-});
+const quickUp = document.getElementById('quickUp');
+if (quickUp) {
+  quickUp.addEventListener('change', function() {
+    const f = this.files[0]; if (!f) return;
+    const r = new FileReader();
+    r.onload = e => applyImg(e.target.result, cur);
+    r.readAsDataURL(f); this.value = '';
+  });
+}
 
 function applyImg(url, idx) {
   const slide = document.getElementById('s' + idx);
   if (!slide) return;
   slide.querySelector('.slide-bg').style.backgroundImage = `url('${url}')`;
-  const th = bbThumbs.querySelectorAll('.bb-thumb')[idx];
-  if (th) th.innerHTML = `<img src="${url}" alt="">`;
+  if (bbThumbs) {
+    const th = bbThumbs.querySelectorAll('.bb-thumb')[idx];
+    if (th) th.innerHTML = `<img src="${url}" alt="">`;
+  }
 }
 
 // -- MODAL --------------------------------
@@ -3706,25 +3719,56 @@ revEls.forEach(el => obs.observe(el));
   font-size:1rem; color:rgba(201,169,110,.7); text-align:center;
   margin-bottom:2.35rem; line-height:1.6;
 }
-/* Step 1: Tour / Excursion cards */
+/* Step 1: Tour / Excursion cards — composición asimétrica */
 .rmod-cards {
-  display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin-bottom:.5rem;
+  display:grid;
+  grid-template-columns:1.15fr 0.85fr;
+  gap:1rem;
+  margin-bottom:.5rem;
+  align-items:start;
 }
 .rmod-card {
   background:rgba(255,255,255,.05); border:1.5px solid rgba(201,169,110,.2);
-  border-radius:5px; min-height:176px; padding:2rem 1.45rem; text-align:center; cursor:pointer;
-  transition:all .2s;
-  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  border-radius:5px; padding:2.4rem 1.6rem 2rem; cursor:pointer;
+  transition:all .22s;
+  display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-end;
+  position:relative; overflow:hidden;
+  text-align:left;
+}
+.rmod-card:last-child {
+  padding:1.6rem 1.3rem 1.5rem;
+  margin-top:2rem;
 }
 .rmod-card:hover, .rmod-card.sel {
-  border-color:#d4772a; background:rgba(212,119,42,.12);
+  border-color:#d4772a; background:rgba(212,119,42,.10);
 }
-.rmod-card-ico { font-size:2.25rem; margin-bottom:.75rem; }
+.rmod-card::before {
+  content:attr(data-num);
+  position:absolute; top:.9rem; right:1rem;
+  font-family:'DM Serif Display',serif; font-size:3.5rem; font-weight:600;
+  color:rgba(201,169,110,.1); line-height:1; pointer-events:none;
+  transition:color .22s;
+}
+.rmod-card:hover::before { color:rgba(212,119,42,.18); }
+.rmod-card-ico { font-size:2rem; margin-bottom:1rem; opacity:.85; }
 .rmod-card-name {
-  font-size:1rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
-  color:#f5f0e8; margin-bottom:.3rem;
+  font-size:.92rem; font-weight:700; letter-spacing:.13em; text-transform:uppercase;
+  color:#f5f0e8; margin-bottom:.45rem; line-height:1.2;
 }
-.rmod-card-desc { font-size:.9rem; color:rgba(201,169,110,.65); line-height:1.5; max-width:240px; }
+.rmod-card:first-child .rmod-card-name {
+  font-family:'DM Serif Display',serif; font-size:1.45rem; font-weight:600;
+  letter-spacing:.04em; text-transform:none;
+}
+.rmod-card-desc {
+  font-size:.85rem; color:rgba(201,169,110,.6); line-height:1.55; max-width:220px;
+}
+.rmod-card::after {
+  content:'→';
+  position:absolute; bottom:1rem; right:1.1rem;
+  font-size:.9rem; color:rgba(212,119,42,.4);
+  transition:all .2s; transform:translateX(-4px); opacity:0;
+}
+.rmod-card:hover::after { opacity:1; transform:translateX(0); }
 /* Step 2: excursion selector */
 .rmod-step { display:none; }
 .rmod-step.active { display:block; }
@@ -3763,7 +3807,9 @@ revEls.forEach(el => obs.observe(el));
     padding:2.2rem 1.2rem 1.8rem;
   }
   .rmod-cards { grid-template-columns:1fr; }
-  .rmod-card { min-height:140px; padding:1.4rem 1rem; }
+  .rmod-card { padding:1.4rem 1.1rem; text-align:left; }
+  .rmod-card:last-child { margin-top:0; }
+  .rmod-card:first-child .rmod-card-name { font-size:1.2rem; }
   .rmod-title { font-size:2rem; }
 }
 </style>
@@ -3778,15 +3824,13 @@ revEls.forEach(el => obs.observe(el));
     <!-- PASO 1: elegir tipo -->
     <div class="rmod-step active" id="rmod-step1">
       <div class="rmod-cards">
-        <div class="rmod-card" onclick="elegirTipo('tour')">
-          
+        <div class="rmod-card" data-num="01" onclick="elegirTipo('tour')">
           <div class="rmod-card-name">Tour de Autor</div>
-          <div class="rmod-card-desc">Varios días &middot; itinerarios exclusivos por la Patagonia profunda</div>
+          <div class="rmod-card-desc">Varios días · itinerarios exclusivos por la Patagonia profunda</div>
         </div>
-        <div class="rmod-card" onclick="elegirTipo('excursion')">
-          
+        <div class="rmod-card" data-num="02" onclick="elegirTipo('excursion')">
           <div class="rmod-card-name">Excursión</div>
-          <div class="rmod-card-desc">Paseos en el día &middot; reservá tu lugar en el momento</div>
+          <div class="rmod-card-desc">Paseos en el día · reservá tu lugar en el momento</div>
         </div>
       </div>
     </div>
@@ -5132,7 +5176,7 @@ applyLang(currentLang);
       <button class="zoyi-chip" type="button">Excursiones</button>
       <button class="zoyi-chip" type="button">Precios</button>
       <button class="zoyi-chip" type="button">Reservas</button>
-      <button class="zoyi-chip" type="button">Ubicacion</button>
+      <button class="zoyi-chip" type="button">Ubicación</button>
       <button class="zoyi-chip" type="button">Hablar con una persona</button>
     </div>    <form class="zoyi-form" id="zoyiForm">
       <input class="zoyi-input" id="zoyiInput" type="text" autocomplete="off" placeholder="Preguntale a Zoyi..." aria-label="Consulta para Zoyi">
@@ -5248,7 +5292,7 @@ applyLang(currentLang);
     if (isAsking(q, ["zoyen","agencia","legajo","quienes","quienes son"])) return "Zoyen Turismo es una agencia local de Perito Moreno, Santa Cruz, legajo 15.625. Disena excursiones y tours de autor en Patagonia.";
     if (product) return productLine(product) + " " + product.summary;
 
-    return "Puedo ayudarte con informacion del sitio: fechas disponibles, precios en AR, cupos, tipos de excursiones, tours de autor, ubicacion, itinerarios PDF y como reservar. Proba preguntarme, por ejemplo: 'precio de Capillas', 'fechas para Patagonia Inedita' o 'que excursion me recomendas'.";
+    return "Puedo ayudarte con informacion del sitio: fechas disponibles, precios en AR, cupos, tipos de excursiones, tours de autor, ubicación, itinerarios PDF y como reservar. Proba preguntarme, por ejemplo: 'precio de Capillas', 'fechas para Patagonia Inedita' o 'que excursion me recomendas'.";
   }
   function submit(text){
     var value = (text || (input ? input.value : "") || "").trim();
@@ -5265,7 +5309,7 @@ applyLang(currentLang);
   if (closeBtn) closeBtn.addEventListener("click", function(){ widget.classList.remove("open"); if (toggle) toggle.setAttribute("aria-expanded","false"); });
   if (form) form.addEventListener("submit", function(e){ e.preventDefault(); submit(); });
   if (chips) chips.addEventListener("click", function(e){ if (e.target.matches("button")) submit(e.target.textContent); });
-  addMessage("Hola, soy Zoyi. Puedo responder sobre excursiones, tours, precios en AR, fechas disponibles, cupos, ubicacion e itinerarios. Solo te paso con una persona si me lo pedis.", "bot");
+  addMessage("Hola, soy Zoyi. Puedo responder sobre excursiones, tours, precios en AR, fechas disponibles, cupos, ubicación e itinerarios. Solo te paso con una persona si me lo pedis.", "bot");
 })();
 </script>
 
