@@ -107,9 +107,10 @@ nav {
   background: var(--ember); color: var(--cream);
   padding: .5rem 1.3rem; border-radius: 2px;
   font-family: 'Sora', sans-serif;
-  font-size: .78rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase;
+  font-size: .68rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase;
   text-decoration: none; white-space: nowrap; flex-shrink: 0;
   transition: background .2s;
+  border: 1px solid transparent;
 }
 .nav-cta-btn:hover { background: var(--ember-dim); }
 
@@ -1566,7 +1567,7 @@ footer {
   font-family: 'Sora', sans-serif;
   font-size: .68rem;
   font-weight: 700;
-  letter-spacing: .11em;
+  letter-spacing: .13em;
   line-height: 1;
   text-transform: uppercase;
   text-decoration: none;
@@ -1798,10 +1799,10 @@ body > nav .nav-actions .nav-contact-btn svg {
   animation: navSubSlideIn 1s cubic-bezier(.16,.84,.18,1) .68s both;
 }
 body > nav .nav-actions.cta-nudge .nav-cta-btn {
-  animation: ctaReservarNudge 1.15s ease both;
+  animation: ctaReservarNudge 1.5s ease both;
 }
 body > nav .nav-actions.cta-nudge .nav-contact-btn {
-  animation: ctaContactNudge 1.15s ease .12s both;
+  animation: ctaContactNudge 1.4s ease .15s both;
 }
 @keyframes navHeaderWake {
   0% { opacity: 0; transform: translateX(-18px); filter: blur(7px); }
@@ -1823,14 +1824,17 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
   100% { opacity: .78; transform: translateY(0); filter: blur(0); letter-spacing: .2em; }
 }
 @keyframes ctaReservarNudge {
-  0%, 100% { transform: translateY(0) scale(1); box-shadow: none; }
-  24% { transform: translateY(-2px) scale(1.035); box-shadow: 0 0 0 0 rgba(212,119,42,.42), 0 10px 24px rgba(212,119,42,.18); }
-  58% { transform: translateY(0) scale(1); box-shadow: 0 0 0 8px rgba(212,119,42,0); }
+  0%   { transform: translateY(0) scale(1);     box-shadow: 0 0 0 0   rgba(212,119,42,.7); }
+  20%  { transform: translateY(-3px) scale(1.06); box-shadow: 0 0 0 0   rgba(212,119,42,.5); }
+  50%  { transform: translateY(0) scale(1);     box-shadow: 0 0 0 10px rgba(212,119,42,0); }
+  70%  { transform: translateY(-2px) scale(1.03); box-shadow: 0 0 0 0   rgba(212,119,42,.35); }
+  100% { transform: translateY(0) scale(1);     box-shadow: 0 0 0 6px  rgba(212,119,42,0); }
 }
 @keyframes ctaContactNudge {
-  0%, 100% { transform: translateY(0) scale(1); box-shadow: none; }
-  24% { transform: translateY(-2px) scale(1.035); box-shadow: 0 0 0 0 rgba(37,211,102,.34), 0 10px 24px rgba(37,211,102,.14); }
-  58% { transform: translateY(0) scale(1); box-shadow: 0 0 0 8px rgba(37,211,102,0); }
+  0%   { transform: translateY(0) scale(1);     box-shadow: none; }
+  30%  { transform: translateY(-2px) scale(1.04); box-shadow: 0 0 0 0 rgba(37,211,102,.4); }
+  65%  { transform: translateY(0) scale(1);     box-shadow: 0 0 0 8px rgba(37,211,102,0); }
+  100% { transform: translateY(0) scale(1);     box-shadow: none; }
 }
 @media (min-width: 961px) and (max-width: 1360px) {
   body > nav .nav-actions .nav-cta-btn,
@@ -1913,7 +1917,7 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
       void navActions.offsetWidth;
       navActions.classList.add('cta-nudge');
       clearTimeout(pulseTimer);
-      pulseTimer = setTimeout(function(){ navActions.classList.remove('cta-nudge'); }, 1300);
+      pulseTimer = setTimeout(function(){ navActions.classList.remove('cta-nudge'); }, 1600);
     }
     window.addEventListener('load', function(){ setTimeout(pulseActions, 1200); }, { once: true });
     const sections = document.querySelectorAll('section[id], footer[id], .hero');
@@ -3564,6 +3568,10 @@ revEls.forEach(el => obs.observe(el));
 
 // -- BRÚJULA REAL (solo mobile con giroscopio) -----------------
 (function() {
+  // Limpiar hint residual de sesiones anteriores
+  const oldHint = document.getElementById('compass-hint');
+  if (oldHint) oldHint.remove();
+
   const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
   if (!isMobile) return;
 
@@ -3622,9 +3630,10 @@ revEls.forEach(el => obs.observe(el));
       `;
       document.body.appendChild(hint);
     }
-    hint.textContent = active ? '­ Brújula activa' : '';
+    hint.textContent = active ? ' Brújula activa' : '';
     hint.style.opacity = active ? '1' : '0';
-    if (!active) setTimeout(() => hint.remove(), 500);
+    hint.style.display = active ? 'block' : 'none';
+    if (!active) setTimeout(() => { try { hint.remove(); } catch(e){} }, 500);
   }
 
   function requestCompass() {
