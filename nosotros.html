@@ -197,37 +197,56 @@ body > nav:not(.breadcrumb) {
 
 /* VALORES */
 .valores-section {
-  background: var(--cream);
+  background: var(--dark);
   padding: 5rem 4vw;
-  border-top: 1px solid rgba(58,45,31,.08);
+  border-top: 1px solid rgba(212,119,42,.12);
 }
+.valores-section .eyebrow { color: var(--sand); }
+.valores-section .section-title { color: var(--dust); }
+.valores-section .section-title em { color: var(--sand); }
 .valores-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  gap: 1px;
   max-width: 1100px;
   margin: 3rem auto 0;
+  border: 1px solid rgba(212,119,42,.15);
+  border-radius: 4px;
+  overflow: hidden;
 }
 @media (max-width:760px) { .valores-grid { grid-template-columns: 1fr; } }
 .valor-card {
-  background: #fff;
-  border: 1px solid rgba(58,45,31,.1);
-  border-radius: 3px;
-  padding: 2rem 1.8rem;
-  border-top: 3px solid var(--ember);
-  transition: transform .3s, box-shadow .3s;
+  background: rgba(255,255,255,.03);
+  padding: 2.2rem 2rem;
+  border: none;
+  border-radius: 0;
+  border-top: none;
+  position: relative;
+  transition: background .3s;
 }
-.valor-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(26,20,16,.12); }
-.valor-icon {
-  font-size: 1.8rem; margin-bottom: 1rem;
+.valor-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 2rem; right: 2rem;
+  height: 1px;
+  background: rgba(212,119,42,.15);
+}
+.valor-card:nth-child(-n+3)::after { display: none; }
+.valor-card:hover { background: rgba(212,119,42,.07); }
+.valor-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.2rem; font-weight: 300; font-style: italic;
+  color: rgba(212,119,42,.25);
+  line-height: 1;
+  margin-bottom: .8rem;
   display: block;
 }
 .valor-title {
   font-family: 'DM Serif Display', serif;
-  font-size: 1.25rem; font-weight: 600; color: var(--ink);
-  margin-bottom: .5rem;
+  font-size: 1.15rem; font-weight: 600; color: var(--dust);
+  margin-bottom: .6rem;
 }
-.valor-desc { font-size: .94rem; color: var(--stone); line-height: 1.75; font-weight: 300; }
+.valor-desc { font-size: .88rem; color: rgba(201,169,110,.65); line-height: 1.75; font-weight: 300; }
 
 /* EQUIPO */
 .equipo-section {
@@ -727,23 +746,47 @@ html:not(.js-ready) .reveal { opacity: 1 !important; transform: none !important;
 img { background: #d8d0c3; }
 </style>
 <style id="zoyen-header-cta-motion">
-.nav-logo-name { animation: navBrandReveal .9s cubic-bezier(.2,.8,.2,1) .15s both; }
-.nav-logo sub { animation: navSubReveal .9s cubic-bezier(.2,.8,.2,1) .36s both; }
-.nav-emblem { animation: navEmblemWake .9s cubic-bezier(.2,.8,.2,1) .06s both; }
-body > nav .nav-actions.cta-nudge .nav-cta-btn { animation: ctaReservarNudge 1.15s ease both; }
-body > nav .nav-actions.cta-nudge .nav-contact-btn { animation: ctaContactNudge 1.15s ease .12s both; }
-@keyframes navBrandReveal {
-  0% { opacity: 0; transform: translateY(8px); filter: blur(5px); letter-spacing: .2em; }
-  65% { opacity: 1; filter: blur(0); }
-  100% { opacity: 1; transform: none; letter-spacing: inherit; }
+.nav-logo {
+  animation: navHeaderWake 1.15s cubic-bezier(.16,.84,.18,1) .05s both;
 }
-@keyframes navSubReveal {
-  0% { opacity: 0; transform: translateY(-4px); filter: blur(3px); }
-  100% { opacity: .65; transform: none; filter: blur(0); }
+.nav-emblem {
+  animation: navEmblemPop 1.25s cubic-bezier(.16,.84,.18,1) .08s both !important;
 }
-@keyframes navEmblemWake {
-  0% { opacity: 0; transform: scale(.86) rotate(-10deg); filter: blur(4px); }
+.nav-logo-name .z,
+.nav-logo-name .t {
+  display: inline-block;
+  animation: navBrandLetterIn 1.05s cubic-bezier(.16,.84,.18,1) .28s both;
+}
+.nav-logo-name .t {
+  animation-delay: .42s;
+}
+.nav-logo sub {
+  animation: navSubSlideIn 1s cubic-bezier(.16,.84,.18,1) .68s both;
+}
+body > nav .nav-actions.cta-nudge .nav-cta-btn {
+  animation: ctaReservarNudge 1.15s ease both;
+}
+body > nav .nav-actions.cta-nudge .nav-contact-btn {
+  animation: ctaContactNudge 1.15s ease .12s both;
+}
+@keyframes navHeaderWake {
+  0% { opacity: 0; transform: translateX(-18px); filter: blur(7px); }
+  55% { opacity: 1; filter: blur(0); }
+  100% { opacity: 1; transform: translateX(0); filter: blur(0); }
+}
+@keyframes navEmblemPop {
+  0% { opacity: 0; transform: scale(.55) rotate(-28deg); filter: blur(6px); }
+  58% { opacity: 1; transform: scale(1.12) rotate(8deg); filter: blur(0); }
   100% { opacity: 1; transform: scale(1) rotate(0); filter: blur(0); }
+}
+@keyframes navBrandLetterIn {
+  0% { opacity: 0; transform: translateY(14px) scale(.94); filter: blur(5px); letter-spacing: .24em; }
+  68% { opacity: 1; filter: blur(0); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); letter-spacing: .12em; }
+}
+@keyframes navSubSlideIn {
+  0% { opacity: 0; transform: translateY(-8px); filter: blur(4px); letter-spacing: .32em; }
+  100% { opacity: .78; transform: translateY(0); filter: blur(0); letter-spacing: .2em; }
 }
 @keyframes ctaReservarNudge {
   0%, 100% { transform: translateY(0) scale(1); box-shadow: none; }
@@ -755,11 +798,7 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn { animation: ctaContactNudge 
   24% { transform: translateY(-2px) scale(1.035); box-shadow: 0 0 0 0 rgba(37,211,102,.34), 0 10px 24px rgba(37,211,102,.14); }
   58% { transform: translateY(0) scale(1); box-shadow: 0 0 0 8px rgba(37,211,102,0); }
 }
-@media (prefers-reduced-motion: reduce) {
-  .nav-logo-name, .nav-logo sub, .nav-emblem,
-  body > nav .nav-actions.cta-nudge .nav-cta-btn,
-  body > nav .nav-actions.cta-nudge .nav-contact-btn { animation: none !important; }
-}
+
 </style>
 </head>
 <body>
@@ -941,27 +980,32 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn { animation: ctaContactNudge 
     </div>
     <div class="valores-grid">
       <div class="valor-card reveal">
-        <span class="valor-icon">­</span>
+        <span class="valor-num">01</span>
         <div class="valor-title">Conocimiento local</div>
         <p class="valor-desc">Somos de acá. Conocemos cada camino, cada estación, cada atardecer. Eso es lo que te ofrecemos: la experiencia de quienes viven la Patagonia.</p>
       </div>
       <div class="valor-card reveal reveal-delay">
+        <span class="valor-num">02</span>
         <div class="valor-title">Turismo responsable</div>
         <p class="valor-desc">Cuidamos el entorno natural y cultural. Trabajamos con comunidades locales y promovemos el respeto por los ecosistemas y el patrimonio arqueológico.</p>
       </div>
       <div class="valor-card reveal reveal-delay2">
+        <span class="valor-num">03</span>
         <div class="valor-title">Experiencias únicas</div>
         <p class="valor-desc">No hacemos turismo masivo. Cada grupo es pequeño, cada excursión es personal, cada guía conoce la historia detrás de cada lugar.</p>
       </div>
       <div class="valor-card reveal">
+        <span class="valor-num">04</span>
         <div class="valor-title">Trato cercano</div>
         <p class="valor-desc">Somos una empresa familiar. Respondemos rápido, nos importa tu experiencia antes, durante y después del viaje.</p>
       </div>
       <div class="valor-card reveal reveal-delay">
+        <span class="valor-num">05</span>
         <div class="valor-title">Destinos inéditos</div>
         <p class="valor-desc">Llevamos a nuestros viajeros a lugares que muchas agencias no conocen. La Patagonia profunda, lejos de los circuitos convencionales.</p>
       </div>
       <div class="valor-card reveal reveal-delay2">
+        <span class="valor-num">06</span>
         <div class="valor-title">Pasión por la Patagonia</div>
         <p class="valor-desc">Cada excursión es un acto de amor por esta tierra. Nos entusiasma tanto el décimo viaje como el primero, porque la Patagonia siempre sorprende.</p>
       </div>
@@ -1218,7 +1262,7 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
       <button class="zoyi-chip" type="button">Excursiones</button>
       <button class="zoyi-chip" type="button">Precios</button>
       <button class="zoyi-chip" type="button">Reservas</button>
-      <button class="zoyi-chip" type="button">Ubicacion</button>
+      <button class="zoyi-chip" type="button">Ubicación</button>
       <button class="zoyi-chip" type="button">Hablar con una persona</button>
     </div>    <form class="zoyi-form" id="zoyiForm">
       <input class="zoyi-input" id="zoyiInput" type="text" autocomplete="off" placeholder="Preguntale a Zoyi..." aria-label="Consulta para Zoyi">
@@ -1334,7 +1378,7 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
     if (isAsking(q, ["zoyen","agencia","legajo","quienes","quienes son"])) return "Zoyen Turismo es una agencia local de Perito Moreno, Santa Cruz, legajo 15.625. Disena excursiones y tours de autor en Patagonia.";
     if (product) return productLine(product) + " " + product.summary;
 
-    return "Puedo ayudarte con informacion del sitio: fechas disponibles, precios en AR, cupos, tipos de excursiones, tours de autor, ubicacion, itinerarios PDF y como reservar. Proba preguntarme, por ejemplo: 'precio de Capillas', 'fechas para Patagonia Inedita' o 'que excursion me recomendas'.";
+    return "Puedo ayudarte con informacion del sitio: fechas disponibles, precios en AR, cupos, tipos de excursiones, tours de autor, ubicación, itinerarios PDF y como reservar. Proba preguntarme, por ejemplo: 'precio de Capillas', 'fechas para Patagonia Inedita' o 'que excursion me recomendas'.";
   }
   function submit(text){
     var value = (text || (input ? input.value : "") || "").trim();
@@ -1351,7 +1395,7 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   if (closeBtn) closeBtn.addEventListener("click", function(){ widget.classList.remove("open"); if (toggle) toggle.setAttribute("aria-expanded","false"); });
   if (form) form.addEventListener("submit", function(e){ e.preventDefault(); submit(); });
   if (chips) chips.addEventListener("click", function(e){ if (e.target.matches("button")) submit(e.target.textContent); });
-  addMessage("Hola, soy Zoyi. Puedo responder sobre excursiones, tours, precios en AR, fechas disponibles, cupos, ubicacion e itinerarios. Solo te paso con una persona si me lo pedis.", "bot");
+  addMessage("Hola, soy Zoyi. Puedo responder sobre excursiones, tours, precios en AR, fechas disponibles, cupos, ubicación e itinerarios. Solo te paso con una persona si me lo pedis.", "bot");
 })();
 </script>
 
