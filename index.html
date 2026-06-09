@@ -340,14 +340,14 @@ nav {
 .slide-btn {
   display: inline-block;
   padding: .8rem 2.4rem;
-  border: 1px solid rgba(245,240,232,.55);
+  border: 1px solid rgba(212,119,42,.65);
   color: var(--cream);
   text-decoration: none;
   font-size: .93rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase;
   border-radius: 1px;
   transition: background .25s, border-color .25s;
   backdrop-filter: blur(4px);
-  background: rgba(212,119,42,.08);
+  background: rgba(212,119,42,.12);
 }
 .slide-btn:hover { background: var(--ember); border-color: var(--ember); }
 
@@ -377,15 +377,8 @@ nav {
 .arrow-btn:hover { background: var(--ember); border-color: var(--ember); }
 
 /* Dots */
-.slider-dots {
-  position: absolute; bottom: 3.4rem; left: 50%; transform: translateX(-50%);
-  z-index: 10; display: flex; gap: 8px;
-}
-.dot {
-  width: 28px; height: 2px; border: none; cursor: pointer; padding: 0;
-  background: rgba(245,240,232,.3); transition: background .3s, width .3s;
-}
-.dot.active { background: var(--ember); width: 42px; }
+.slider-dots { display: none !important; }
+.dot { display: none !important; }
 
 /* Scroll hint */
 .scroll-hint {
@@ -1804,6 +1797,48 @@ body > nav .nav-actions.cta-nudge .nav-cta-btn {
 body > nav .nav-actions.cta-nudge .nav-contact-btn {
   animation: ctaContactNudge 1.4s ease .15s both;
 }
+
+/* ── CTA scroll-aware pulse ───────────────────────────── */
+@keyframes ctaPulseEmber {
+  0%   { box-shadow: 0 0 0 0 rgba(212,119,42,.55); }
+  55%  { box-shadow: 0 0 0 6px rgba(212,119,42,.0); }
+  100% { box-shadow: 0 0 0 0 rgba(212,119,42,.0); }
+}
+@keyframes ctaPulseGreen {
+  0%   { box-shadow: 0 0 0 0 rgba(37,211,102,.45); }
+  55%  { box-shadow: 0 0 0 6px rgba(37,211,102,.0); }
+  100% { box-shadow: 0 0 0 0 rgba(37,211,102,.0); }
+}
+@keyframes ctaShimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+/* Estado "scrolled" — se añade con JS */
+body > nav.nav-scrolled .nav-actions .nav-cta-btn {
+  animation: ctaPulseEmber 2.4s ease-out infinite;
+  animation-delay: 0s;
+}
+body > nav.nav-scrolled .nav-actions .nav-contact-btn {
+  animation: ctaPulseGreen 2.4s ease-out infinite;
+  animation-delay: .7s;
+}
+
+/* Shimmer suave en el botón Reservar al scrollear */
+body > nav.nav-scrolled .nav-actions .nav-cta-btn {
+  background-image: linear-gradient(
+    110deg,
+    var(--ember) 0%,
+    var(--ember) 38%,
+    rgba(255,255,255,.18) 50%,
+    var(--ember) 62%,
+    var(--ember) 100%
+  );
+  background-size: 220% 100%;
+  animation:
+    ctaPulseEmber 2.4s ease-out infinite,
+    ctaShimmer    4.5s linear infinite;
+}
 @keyframes navHeaderWake {
   0% { opacity: 0; transform: translateX(-18px); filter: blur(7px); }
   55% { opacity: 1; filter: blur(0); }
@@ -1938,6 +1973,26 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
   } else {
     initCtaNudge();
   }
+})();
+</script>
+<script>
+/* Nav scroll-aware CTA glow */
+(function(){
+  var nav = document.querySelector('body > nav');
+  if (!nav) return;
+  var ticking = false;
+  var threshold = 120; /* px desde el top para activar */
+  function update(){
+    if (window.scrollY > threshold) {
+      nav.classList.add('nav-scrolled');
+    } else {
+      nav.classList.remove('nav-scrolled');
+    }
+    ticking = false;
+  }
+  window.addEventListener('scroll', function(){
+    if (!ticking){ requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
 })();
 </script>
 <style id="zoyen-recovery-patch">
