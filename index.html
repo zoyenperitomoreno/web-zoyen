@@ -3901,29 +3901,29 @@ revEls.forEach(el => obs.observe(el));
 <div class="rmod-wrap" id="rmodWrap">
   <div class="rmod" id="rmodBox">
     <button class="rmod-x" onclick="cerrarModalReservar()">×</button>
-    <div class="rmod-eyebrow">Zoyen Turismo &middot; Patagonia</div>
-    <h2 class="rmod-title">¿Qué querés hacer?</h2>
-    <p class="rmod-sub">Elegí el tipo de experiencia y te guiamos desde acá.</p>
+    <div class="rmod-eyebrow" data-i18n="rmod_eyebrow">Zoyen Turismo &middot; Patagonia</div>
+    <h2 class="rmod-title" data-i18n="rmod_title">¿Qué querés hacer?</h2>
+    <p class="rmod-sub" data-i18n="rmod_sub">Elegí el tipo de experiencia y te guiamos desde acá.</p>
 
     <!-- PASO 1: elegir tipo -->
     <div class="rmod-step active" id="rmod-step1">
       <div class="rmod-cards">
         <div class="rmod-card" data-num="01" onclick="elegirTipo('tour')">
-          <div class="rmod-card-name">Tour de Autor</div>
-          <div class="rmod-card-desc">Varios días · itinerarios exclusivos por la Patagonia profunda</div>
+          <div class="rmod-card-name" data-i18n="rmod_tour_name">Tour de Autor</div>
+          <div class="rmod-card-desc" data-i18n="rmod_tour_desc">Varios días · itinerarios exclusivos por la Patagonia profunda</div>
         </div>
         <div class="rmod-card" data-num="02" onclick="elegirTipo('excursion')">
-          <div class="rmod-card-name">Excursión</div>
-          <div class="rmod-card-desc">Paseos en el día · reservá tu lugar en el momento</div>
+          <div class="rmod-card-name" data-i18n="rmod_exc_name">Excursión</div>
+          <div class="rmod-card-desc" data-i18n="rmod_exc_desc">Paseos en el día · reservá tu lugar en el momento</div>
         </div>
       </div>
     </div>
 
     <!-- PASO 2: elegir excursión y consultar por WA -->
     <div class="rmod-step" id="rmod-step2">
-      <label class="rmod-label" for="rmod-exc-sel">Elegí la excursión</label>
+      <label class="rmod-label" for="rmod-exc-sel" data-i18n="rmod_sel_label">Elegí la excursión</label>
       <select class="rmod-select" id="rmod-exc-sel" onchange="onRmodExcChange()">
-        <option value="">– Seleccioná una excursión –</option>
+        <option value="" data-i18n="rmod_sel_placeholder">– Seleccioná una excursión –</option>
         <option value="cueva">Cueva de las Manos</option>
         <option value="capillas">Capillas y Catedrales de Mármol</option>
         <option value="posadas">Lago Posadas &middot; Ruta Escénica 41</option>
@@ -3934,9 +3934,9 @@ revEls.forEach(el => obs.observe(el));
       </select>
       <button class="rmod-btn" id="rmod-wa-btn" onclick="consultarExcursionWA()" disabled>
         <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Consultar por WhatsApp
+        <span data-i18n="rmod_wa_btn">Consultar por WhatsApp</span>
       </button>
-      <button class="rmod-back" onclick="volverStep1()">← Volver</button>
+      <button class="rmod-back" onclick="volverStep1()" data-i18n="rmod_back">← Volver</button>
     </div>
   </div>
 </div>
@@ -5040,6 +5040,13 @@ var translations = {
     ft_exc: 'Excursiones', ft_contact: 'Contacto', ft_nav: 'Navegación',
     ft_tagline: 'Agencia de Turismo en la Patagonia Argentina.<br>Legajo 15.625 · Perito Moreno, Santa Cruz.',
     ft_copy: '© Zoyen Turismo 2025 · Todos los derechos reservados',
+    rmod_eyebrow: 'Zoyen Turismo · Patagonia',
+    rmod_title: '¿Qué querés hacer?',
+    rmod_sub: 'Elegí el tipo de experiencia y te guiamos desde acá.',
+    rmod_tour_name: 'Tour de Autor', rmod_tour_desc: 'Varios días · itinerarios exclusivos por la Patagonia profunda',
+    rmod_exc_name: 'Excursión', rmod_exc_desc: 'Paseos en el día · reservá tu lugar en el momento',
+    rmod_sel_label: 'Elegí la excursión', rmod_sel_placeholder: '– Seleccioná una excursión –',
+    rmod_wa_btn: 'Consultar por WhatsApp', rmod_back: '← Volver',
   },
   en: {
     nav_home: 'Home', nav_excursiones: 'Excursions', nav_tours: 'Author Tours',
@@ -5092,6 +5099,13 @@ var translations = {
     ft_exc: 'Excursions', ft_contact: 'Contact', ft_nav: 'Navigation',
     ft_tagline: 'Tourism Agency in Argentine Patagonia.<br>License 15.625 · Perito Moreno, Santa Cruz.',
     ft_copy: '© Zoyen Turismo 2025 · All rights reserved',
+    rmod_eyebrow: 'Zoyen Turismo · Patagonia',
+    rmod_title: 'What would you like to do?',
+    rmod_sub: 'Choose your type of experience and we will guide you from here.',
+    rmod_tour_name: 'Author Tour', rmod_tour_desc: 'Multi-day · exclusive itineraries through deep Patagonia',
+    rmod_exc_name: 'Excursion', rmod_exc_desc: 'Day trips · book your spot on the spot',
+    rmod_sel_label: 'Choose your excursion', rmod_sel_placeholder: '– Select an excursion –',
+    rmod_wa_btn: 'Contact via WhatsApp', rmod_back: '← Back',
   },
   pt: {
     nav_home: 'Início', nav_excursiones: 'Excursões', nav_tours: 'Tours de Autor',
@@ -5144,6 +5158,13 @@ var translations = {
     ft_exc: 'Excursões', ft_contact: 'Contato', ft_nav: 'Navegação',
     ft_tagline: 'Agência de Turismo na Patagônia Argentina.<br>Licença 15.625 · Perito Moreno, Santa Cruz.',
     ft_copy: '© Zoyen Turismo 2025 · Todos os direitos reservados',
+    rmod_eyebrow: 'Zoyen Turismo · Patagônia',
+    rmod_title: 'O que você quer fazer?',
+    rmod_sub: 'Escolha o tipo de experiência e te guiamos daqui.',
+    rmod_tour_name: 'Tour de Autor', rmod_tour_desc: 'Vários dias · roteiros exclusivos pela Patagônia profunda',
+    rmod_exc_name: 'Excursão', rmod_exc_desc: 'Passeios no dia · reserve seu lugar na hora',
+    rmod_sel_label: 'Escolha a excursão', rmod_sel_placeholder: '– Selecione uma excursão –',
+    rmod_wa_btn: 'Contato pelo WhatsApp', rmod_back: '← Voltar',
   },
   ko: {
     nav_home: '홈', nav_excursiones: '투어', nav_tours: '오서 투어',
@@ -5196,6 +5217,13 @@ var translations = {
     ft_exc: '투어', ft_contact: '연락처', ft_nav: '메뉴',
     ft_tagline: '아르헨티나 파타고니아 관광 에이전시.<br>라이센스 15.625 · 페리토 모레노, 산타크루스.',
     ft_copy: '© Zoyen Turismo 2025 · 모든 권리 보유',
+    rmod_eyebrow: 'Zoyen Turismo · 파타고니아',
+    rmod_title: '무엇을 하고 싶으세요?',
+    rmod_sub: '경험 유형을 선택하면 여기서부터 안내해 드립니다.',
+    rmod_tour_name: '오서 투어', rmod_tour_desc: '여러 날 · 깊은 파타고니아의 독점 일정',
+    rmod_exc_name: '투어', rmod_exc_desc: '당일 여행 · 즉시 자리 예약',
+    rmod_sel_label: '투어 선택', rmod_sel_placeholder: '– 투어를 선택하세요 –',
+    rmod_wa_btn: 'WhatsApp으로 문의', rmod_back: '← 뒤로',
   }
 };
 // Apply translations
@@ -5295,124 +5323,169 @@ applyLang(currentLang);
   if (!widget || widget.dataset.ready) return;
   widget.dataset.ready = "true";
 
-  var toggle = document.getElementById("zoyiToggle");
+  var toggle   = document.getElementById("zoyiToggle");
   var closeBtn = document.getElementById("zoyiClose");
-  var form = document.getElementById("zoyiForm");
-  var input = document.getElementById("zoyiInput");
+  var form     = document.getElementById("zoyiForm");
+  var input    = document.getElementById("zoyiInput");
   var messages = document.getElementById("zoyiMessages");
-  var chips = document.getElementById("zoyiChips");
+  var chips    = document.getElementById("zoyiChips");
+  var waLink   = "https://wa.me/5492974432855";
 
-  var contactText = "WhatsApp +54 9 297 443-2855 y email zoyenperitomoreno@gmail.com";
-  var waLink = "https://wa.me/5492974432855";
-  var pageTitle = (document.title || "").replace(/\s+/g," ").trim();
+  function getLang(){ try { return localStorage.getItem('zoyen_lang') || 'es'; } catch(e){ return 'es'; } }
+
+  var UI = {
+    es: {
+      greeting: "Hola, soy Zoyi. Puedo responder sobre excursiones, tours, precios en AR, fechas disponibles, cupos, ubicación e itinerarios. Solo te paso con una persona si me lo pedís.",
+      fallback: "Preguntame por fechas, disponibilidad, precios, excursiones, tours, ubicacion o reservas.",
+      helpFull: "Puedo ayudarte con: fechas disponibles, precios en AR, cupos, excursiones, tours de autor, ubicación, itinerarios PDF y cómo reservar. Probá: 'precio de Capillas', 'fechas para Patagonia Inédita' o 'qué excursión me recomendás'.",
+      humanAns: function(){ return "Si querés hablar con alguien del equipo, podés usar WhatsApp +54 9 297 443-2855 o email zoyenperitomoreno@gmail.com. Link directo: " + waLink; },
+      datesBase: "Las reservas permiten elegir fecha desde hoy en adelante. La disponibilidad real se valida por fecha, excursión y cupos.",
+      datesExtra: function(p){ return " Para " + p.name + " la capacidad es de hasta " + p.capacity + " personas."; },
+      datesCta: " Si querés reservar, tocá Reservar, elegí experiencia, fecha y asientos.",
+      pricesPer: " Precio en pesos argentinos AR por persona.",
+      pricesAll: "Precios AR por persona: ",
+      resAnswer: "Para reservar: 1) tocá Reservar, 2) elegí Tour o Excursión, 3) seleccioná fecha, 4) ingresá tus datos, 5) elegí asiento. La seña es el 20% del total.",
+      locAnswer: "Zoyen Turismo está en Perito Moreno, Santa Cruz, Patagonia Argentina. Salen excursiones a Cueva de las Manos, Parque Patagonia, Ruta 41, Lago Posadas y Carretera Austral.",
+      compareAnswer: "Para poco tiempo: excursiones de día — Cueva de las Manos, Capillas de Mármol, Ruta 41, Lago Posadas o Parque Patagonia. Para viaje completo: Patagonia Inédita (6 días) o Carretera Austral (8 días). Arqueología: Cueva o Charcamata. Navegación: Capillas. Ruta escénica: Ruta 41 o Lago Posadas.",
+      wellnessAnswer: "Turismo de Bienestar es una línea complementaria para sumar pausa, naturaleza y cuidado al viaje. Se puede combinar con excursiones de medio día o estadías en la zona.",
+      agencyAnswer: "Zoyen Turismo es una agencia local de Perito Moreno, Santa Cruz, legajo 15.625. Diseña excursiones y tours de autor en Patagonia.",
+      pdfBase: "Los tours con PDF descargable son Patagonia Inédita y Carretera Austral. En cada página hay un botón de descarga.",
+      pdfProduct: function(p){ return "El itinerario PDF de " + p.name + " se descarga desde su página."; },
+      listExc: "Excursiones de día o medio día disponibles: ",
+      listTours: "Tours de autor disponibles: ", listToursSuffix: " Ambos tienen itinerario PDF descargable.",
+      capacity: " personas",
+      kw: { human:["persona","humano","asesor","hablar con alguien","whatsapp","telefono","email","mail","contactar","contacto directo"], dates:["fecha","fechas","disponible","disponibilidad","cupos","cuando","calendario"], prices:["precio","precios","tarifa","tarifas","valor","valores","cuanto","sale","costo"], book:["reservar","reserva","reservas","sena","asiento","asientos","pago"], location:["ubicacion","ubicación","donde estan","direccion","perito moreno","santa cruz","como llegar"], pdf:["itinerario","pdf","descargar","programa","recorrido"], excursion:["excursion","excursiones","paseos","salidas","dia completo","medio dia"], tour:["tour","tours","autor","varios dias","viaje completo","paquete"], compare:["recomendas","recomendacion","conviene","diferencia","comparar","mejor","cual elijo"], wellness:["bienestar","wellness","yoga","masajes"], agency:["zoyen","agencia","legajo","quienes son"] }
+    },
+    en: {
+      greeting: "Hi, I\'m Zoyi. I can answer questions about excursions, tours, availability, prices in ARS and itineraries. Just ask!",
+      fallback: "Ask me about dates, availability, prices, excursions, tours or bookings.",
+      helpFull: "I can help with: available dates, ARS prices, group sizes, excursions, author tours, location, PDF itineraries and how to book. Try: \'price of Marble Chapels\', \'dates for Patagonia Inédita\' or \'which excursion do you recommend\'.",
+      humanAns: function(){ return "To speak with a team member: WhatsApp +54 9 297 443-2855 or email zoyenperitomoreno@gmail.com. Direct link: " + waLink; },
+      datesBase: "Bookings allow you to choose any date from today onwards. Real availability is confirmed by date, excursion and group size.",
+      datesExtra: function(p){ return " For " + p.name + " capacity is up to " + p.capacity + " people."; },
+      datesCta: " To book, tap Book, choose your experience, date and seats.",
+      pricesPer: " Price in Argentine pesos (ARS) per person.",
+      pricesAll: "Prices ARS per person: ",
+      resAnswer: "To book: 1) tap Book, 2) choose Tour or Excursion, 3) select a date, 4) enter your details, 5) choose your seat. Deposit is 20% of total.",
+      locAnswer: "Zoyen Turismo is based in Perito Moreno, Santa Cruz, Argentine Patagonia. Excursions depart to Cave of Hands, Patagonia Park, Route 41, Lake Posadas and Carretera Austral.",
+      compareAnswer: "Short on time? Day excursions: Cave of Hands, Marble Chapels, Route 41, Lake Posadas or Patagonia Park. Full trip: Unexplored Patagonia (6 days) or Carretera Austral (8 days). Archaeology: Cave of Hands or Charcamata. Navigation: Marble Chapels. Scenic: Route 41 or Lake Posadas.",
+      wellnessAnswer: "Wellness Tourism is a complementary line focused on rest, nature and wellbeing. Can be combined with half-day excursions or longer stays.",
+      agencyAnswer: "Zoyen Turismo is a local agency from Perito Moreno, Santa Cruz, license 15.625. We design excursions and author tours in Patagonia.",
+      pdfBase: "Downloadable PDF itineraries: Unexplored Patagonia and Carretera Austral. Each page has a download button.",
+      pdfProduct: function(p){ return "The PDF itinerary for " + p.name + " can be downloaded from its page."; },
+      listExc: "Available day and half-day excursions: ",
+      listTours: "Available author tours: ", listToursSuffix: " Both have downloadable PDF itineraries.",
+      capacity: " people",
+      kw: { human:["person","human","agent","talk to someone","whatsapp","phone","email","contact"], dates:["date","dates","available","availability","spots","when","calendar"], prices:["price","prices","rate","cost","how much","fee"], book:["book","booking","reserve","reservation","seat","payment","deposit"], location:["location","where","address","perito moreno","santa cruz","how to get"], pdf:["itinerary","pdf","download","program","route"], excursion:["excursion","excursions","day trip","half day"], tour:["tour","tours","author","multi-day","full trip","package"], compare:["recommend","best","difference","compare","which","what should"], wellness:["wellness","yoga","massage"], agency:["zoyen","agency","license","about"] }
+    },
+    pt: {
+      greeting: "Olá, sou Zoyi. Posso responder sobre excursões, tours, disponibilidade, preços em ARS e itinerários. Só me pergunte!",
+      fallback: "Me pergunte sobre datas, disponibilidade, preços, excursões, tours ou reservas.",
+      helpFull: "Posso ajudar com: datas disponíveis, preços em ARS, vagas, excursões, tours de autor, localização, itinerários PDF e como reservar.",
+      humanAns: function(){ return "Para falar com a equipe: WhatsApp +54 9 297 443-2855 ou email zoyenperitomoreno@gmail.com. Link: " + waLink; },
+      datesBase: "As reservas permitem escolher qualquer data a partir de hoje. Disponibilidade confirmada por data, excursão e vagas.",
+      datesExtra: function(p){ return " Para " + p.name + " a capacidade é de até " + p.capacity + " pessoas."; },
+      datesCta: " Para reservar, toque em Reservar, escolha experiência, data e assentos.",
+      pricesPer: " Preço em pesos argentinos (ARS) por pessoa.",
+      pricesAll: "Preços ARS por pessoa: ",
+      resAnswer: "Para reservar: 1) toque em Reservar, 2) escolha Tour ou Excursão, 3) selecione data, 4) insira seus dados, 5) escolha assento. Sinal = 20% do total.",
+      locAnswer: "Zoyen Turismo fica em Perito Moreno, Santa Cruz, Patagônia Argentina. Excursões partem para Cueva de las Manos, Parque Patagônia, Rota 41, Lago Posadas e Carretera Austral.",
+      compareAnswer: "Com pouco tempo? Excursões de dia: Cueva de las Manos, Capelas de Mármore, Rota 41, Lago Posadas ou Parque Patagônia. Viagem completa: Patagônia Inédita (6 dias) ou Carretera Austral (8 dias).",
+      wellnessAnswer: "Turismo de Bem-Estar é uma linha complementar focada em descanso e natureza. Pode ser combinada com excursões de meio dia.",
+      agencyAnswer: "Zoyen Turismo é uma agência local de Perito Moreno, Santa Cruz, licença 15.625. Projetamos excursões e tours de autor na Patagônia.",
+      pdfBase: "Tours com PDF para download: Patagônia Inédita e Carretera Austral. Cada página tem botão de download.",
+      pdfProduct: function(p){ return "O PDF de " + p.name + " pode ser baixado na sua página."; },
+      listExc: "Excursões de dia e meio dia disponíveis: ",
+      listTours: "Tours de autor disponíveis: ", listToursSuffix: " Ambos têm itinerários PDF para download.",
+      capacity: " pessoas",
+      kw: { human:["pessoa","humano","agente","falar com alguem","whatsapp","telefone","email","contato"], dates:["data","datas","disponivel","disponibilidade","vagas","quando","calendario"], prices:["preco","precos","tarifa","valor","quanto","custo"], book:["reservar","reserva","sinal","assento","pagamento"], location:["localizacao","onde","endereco","perito moreno","santa cruz","como chegar"], pdf:["itinerario","pdf","baixar","programa"], excursion:["excursao","excursoes","passeio","dia inteiro","meio dia"], tour:["tour","tours","autor","varios dias","pacote"], compare:["recomenda","melhor","diferenca","comparar","qual"], wellness:["bem-estar","wellness","yoga","massagem"], agency:["zoyen","agencia","licenca","quem sao"] }
+    },
+    ko: {
+      greeting: "안녕하세요, 저는 Zoyi입니다. 투어, 예약 가능 여부, 가격(ARS), 일정에 대해 답변드릴 수 있습니다. 무엇이든 물어보세요!",
+      fallback: "날짜, 가능 여부, 가격, 투어 또는 예약에 대해 질문하세요.",
+      helpFull: "도움드릴 수 있는 내용: 예약 가능 날짜, ARS 가격, 인원, 투어, 위치, PDF 일정 및 예약 방법.",
+      humanAns: function(){ return "팀원과 연락: WhatsApp +54 9 297 443-2855 또는 이메일 zoyenperitomoreno@gmail.com. 링크: " + waLink; },
+      datesBase: "오늘부터 원하는 날짜를 선택할 수 있습니다. 실제 가능 여부는 날짜, 투어, 인원에 따라 확인됩니다.",
+      datesExtra: function(p){ return " " + p.name + " 정원: 최대 " + p.capacity + "명."; },
+      datesCta: " 예약하려면 예약 버튼을 누르고 투어, 날짜, 좌석을 선택하세요.",
+      pricesPer: " 1인당 아르헨티나 페소(ARS) 가격.",
+      pricesAll: "1인당 ARS 가격: ",
+      resAnswer: "예약 방법: 1) 예약 클릭, 2) 투어 선택, 3) 날짜 선택, 4) 정보 입력, 5) 좌석 선택. 예약금은 총액의 20%.",
+      locAnswer: "Zoyen Turismo는 아르헨티나 파타고니아 산타크루스 주 페리토 모레노에 있습니다. 손의 동굴, 파타고니아 공원, 41번 도로, 포사다스 호수, 카레테라 아우스트랄로 출발합니다.",
+      compareAnswer: "시간이 짧다면? 당일 투어: 손의 동굴, 마블 채플, 41번 도로, 포사다스 호수. 장기 여행: 미지의 파타고니아(6일) 또는 카레테라 아우스트랄(8일).",
+      wellnessAnswer: "웰니스 관광은 자연 속 휴식과 건강 증진을 위한 보완 프로그램입니다. 반나절 투어와 결합 가능합니다.",
+      agencyAnswer: "Zoyen Turismo는 산타크루스 주 페리토 모레노의 현지 여행사, 라이센스 15.625입니다.",
+      pdfBase: "PDF 일정 다운로드: 미지의 파타고니아와 카레테라 아우스트랄. 각 페이지에 다운로드 버튼이 있습니다.",
+      pdfProduct: function(p){ return p.name + "의 PDF 일정은 해당 페이지에서 다운로드 가능합니다."; },
+      listExc: "이용 가능한 당일 및 반나절 투어: ",
+      listTours: "이용 가능한 오서 투어: ", listToursSuffix: " 두 투어 모두 PDF 다운로드 가능.",
+      capacity: "명",
+      kw: { human:["사람","직원","상담","연락","whatsapp","전화","이메일","문의"], dates:["날짜","가능","예약가능","인원","언제","캘린더"], prices:["가격","요금","비용","얼마","금액"], book:["예약","결제","좌석","보증금"], location:["위치","어디","주소","페리토 모레노","산타크루스","오는방법"], pdf:["일정","pdf","다운로드","프로그램"], excursion:["투어","당일","반나절"], tour:["오서투어","여러날","패키지"], compare:["추천","비교","차이","어떤","뭐가"], wellness:["웰니스","요가","마사지"], agency:["조옌","에이전시","라이센스"] }
+    }
+  };
 
   var excursiones = [
-    {id:"cueva", name:"Cueva de las Manos", aliases:["cueva","manos","pinturas","arqueologia","rio pinturas"], price:18000, duration:"dia completo", capacity:14, type:"excursion", summary:"sitio arqueologico Patrimonio Mundial, pinturas rupestres de mas de 9.000 anos y paisaje del Canon del Rio Pinturas."},
-    {id:"capillas", name:"Capillas y Catedrales de Marmol", aliases:["capillas","marmol","catedrales","general carrera"], price:24000, duration:"dia completo", capacity:14, type:"excursion", summary:"navegacion por el Lago General Carrera para ver formaciones de marmol, ideal para fotografia y paisaje."},
-    {id:"posadas", name:"Lago Posadas y Ruta Escenica 41", aliases:["posadas","lago posadas","ruta 41","ruta escenica"], price:15000, duration:"dia completo (12 hs)", capacity:14, type:"excursion", summary:"recorrido panoramico por lagos, miradores y la Ruta Escenica 41 cerca de Perito Moreno."},
-    {id:"zeballos", name:"Ruta 41 y Monte Zeballos", aliases:["zeballos","monte zeballos","ruta 41"], price:16000, duration:"dia completo", capacity:14, type:"excursion", summary:"travesia de altura por estepa, bosque, cordillera y uno de los caminos mas escenicos de Santa Cruz."},
-    {id:"charcamata", name:"Alero Charcamata", aliases:["charcamata","alero"], price:12000, duration:"medio dia", capacity:14, type:"excursion", summary:"experiencia vinculada al arte rupestre, patrimonio cultural y paisaje natural de la zona."},
-    {id:"parque", name:"Portal Canon Pinturas - Parque Patagonia", aliases:["parque","parque patagonia","canadon","canon","pinturas","portal"], price:8000, duration:"medio dia (5 hs)", capacity:14, type:"excursion", summary:"senderos, fauna, geologia y vistas amplias del noroeste de Santa Cruz."},
-    {id:"escension", name:"PNP / Estancia La Escension", aliases:["escension","estancia","la escension","pnp"], price:7000, duration:"medio dia (4 hs)", capacity:14, type:"excursion", summary:"salida corta vinculada al Parque Patagonia y la historia de estancia de la region."}
+    {id:"cueva",    name:"Cueva de las Manos",                        aliases:["cueva","manos","pinturas","cave","hands","caverna","손의 동굴"], price:18000, duration:"dia completo",      capacity:14, type:"excursion", summary:"sitio arqueologico Patrimonio Mundial, pinturas rupestres de mas de 9.000 anos."},
+    {id:"capillas", name:"Capillas y Catedrales de Marmol",           aliases:["capillas","marmol","catedrales","general carrera","marble","chapel","마블 채플","capelas"], price:24000, duration:"dia completo", capacity:14, type:"excursion", summary:"navegacion por el Lago General Carrera para ver formaciones de marmol."},
+    {id:"posadas",  name:"Lago Posadas y Ruta Escenica 41",           aliases:["posadas","lago posadas","ruta 41","ruta escenica","lake posadas","포사다스"], price:15000, duration:"dia completo (12 hs)", capacity:14, type:"excursion", summary:"recorrido panoramico por lagos y miradores de la Ruta Escenica 41."},
+    {id:"zeballos", name:"Ruta 41 y Monte Zeballos",                  aliases:["zeballos","monte zeballos","ruta 41","세바요스"], price:16000, duration:"dia completo", capacity:14, type:"excursion", summary:"travesia de altura por estepa, bosque y cordillera."},
+    {id:"charcamata",name:"Alero Charcamata",                         aliases:["charcamata","alero","차르카마타"], price:12000, duration:"medio dia", capacity:14, type:"excursion", summary:"arte rupestre, patrimonio cultural y paisaje natural."},
+    {id:"parque",   name:"Portal Canon Pinturas - Parque Patagonia",  aliases:["parque","parque patagonia","canadon","canon","pinturas","portal","파타고니아 공원"], price:8000, duration:"medio dia (5 hs)", capacity:14, type:"excursion", summary:"senderos, fauna, geologia y vistas del noroeste de Santa Cruz."},
+    {id:"escension",name:"PNP / Estancia La Escension",               aliases:["escension","estancia","pnp"], price:7000, duration:"medio dia (4 hs)", capacity:14, type:"excursion", summary:"salida corta vinculada al Parque Patagonia y la historia de estancia."}
   ];
-
   var tours = [
-    {id:"patagonia", name:"Patagonia Inedita", aliases:["patagonia inedita","inedita"], price:185000, duration:"6 dias / 5 noches", capacity:14, type:"tour", pdf:"assets/pdfs/patagonia-inedita-itinerario.pdf", summary:"sale desde Comodoro Rivadavia y recorre Perito Moreno, Cueva de las Manos, Parque Patagonia, Los Antiguos, Ruta Escenica 41, Carretera Austral, Puerto Rio Tranquilo y Capillas de Marmol."},
-    {id:"carretera", name:"Carretera Austral", aliases:["carretera austral","austral","ohiggins","villa ohiggins","tortel","cochrane"], price:210000, duration:"8 dias / 7 noches", capacity:14, type:"tour", pdf:"assets/pdfs/carretera-austral-itinerario.pdf", summary:"sale desde Perito Moreno e incluye Chile Chico, Cochrane, Caleta Tortel, Villa O'Higgins, Puerto Rio Tranquilo, Capillas de Marmol, Coyhaique y regreso por Paso Huemules."}
+    {id:"patagonia", name:"Patagonia Inedita", aliases:["patagonia inedita","inedita","unexplored patagonia","미지의 파타고니아"], price:185000, duration:"6 dias / 5 noches", capacity:14, type:"tour", pdf:"assets/pdfs/patagonia-inedita-itinerario.pdf", summary:"recorre Perito Moreno, Cueva de las Manos, Parque Patagonia, Los Antiguos, Ruta Escenica 41, Carretera Austral y Capillas de Marmol."},
+    {id:"carretera", name:"Carretera Austral",  aliases:["carretera austral","austral","ohiggins","tortel","cochrane","카레테라 아우스트랄"], price:210000, duration:"8 dias / 7 noches", capacity:14, type:"tour", pdf:"assets/pdfs/carretera-austral-itinerario.pdf", summary:"incluye Chile Chico, Cochrane, Caleta Tortel, Villa O\'Higgins, Puerto Rio Tranquilo, Capillas de Marmol y Coyhaique."}
   ];
-
   var allProducts = excursiones.concat(tours);
 
-  function normalize(text){
-    return (text || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/&middot;|·/g," ").replace(/[^a-z0-9ñ\s/.-]/g," ").replace(/\s+/g," ").trim();
-  }
-  function money(n){ return "$" + Number(n || 0).toLocaleString("es-AR") + " AR p/p"; }
-  function todayText(){ return new Date().toLocaleDateString("es-AR", { day:"numeric", month:"long", year:"numeric" }); }
-  function addMessage(text, who){
-    if (!messages) return;
-    var div = document.createElement("div");
-    div.className = "zoyi-msg " + who;
-    div.textContent = text;
-    messages.appendChild(div);
-    messages.scrollTop = messages.scrollHeight;
-  }
-  function productLine(p){ return p.name + ": " + p.duration + ", " + money(p.price) + ", cupos hasta " + p.capacity + " personas."; }
-  function findProduct(q){
-    var best = null, score = 0;
-    allProducts.forEach(function(p){
-      var local = 0;
-      [p.name].concat(p.aliases || []).forEach(function(alias){
-        alias = normalize(alias);
-        if (alias && q.indexOf(alias) !== -1) local += alias.length > 8 ? 3 : 2;
-      });
-      if (local > score) { best = p; score = local; }
-    });
-    return best;
-  }
-  function isAsking(q, words){ return words.some(function(w){ return q.indexOf(normalize(w)) !== -1; }); }
-  function listExcursions(){ return "Excursiones de dia o medio dia disponibles: " + excursiones.map(productLine).join(" "); }
-  function listTours(){ return "Tours de autor disponibles: " + tours.map(productLine).join(" ") + " Ambos tienen itinerario descargable en PDF desde su pagina."; }
-  function pricesAnswer(product){
-    if (product) return productLine(product) + " El precio esta expresado en pesos argentinos AR por persona.";
-    return "Precios en AR por persona: " + allProducts.map(function(p){ return p.name + " " + money(p.price); }).join("; ") + ".";
-  }
-  function datesAnswer(product){
-    var base = "Las reservas del sitio permiten elegir fecha desde hoy (" + todayText() + ") en adelante. La disponibilidad real se valida por fecha, excursion/tour y cupos.";
-    if (product) base += " Para " + product.name + " la capacidad de referencia es de hasta " + product.capacity + " personas.";
-    return base + " Si queres reservar, toca Reservar, elegi experiencia, fecha, cantidad de personas y asientos disponibles.";
-  }
-  function reservationAnswer(){
-    return "Para reservar desde la web: 1) toca Reservar, 2) elegi Tour de autor o Excursion, 3) selecciona fecha desde hoy en adelante, 4) indica personas y datos, 5) elegi asiento. La sena se calcula como 20% del total.";
-  }
-  function locationAnswer(){
-    return "Zoyen Turismo esta en Perito Moreno, Santa Cruz, Patagonia Argentina. Desde ahi se operan excursiones a Cueva de las Manos, Parque Patagonia, Ruta 41, Lago Posadas y conexiones hacia Carretera Austral.";
-  }
-  function humanAnswer(){
-    return "Si queres hablar con una persona del equipo, podes usar " + contactText + ". Link directo: " + waLink;
-  }
-  function compareAnswer(){
-    return "Si tenes poco tiempo, mira excursiones de dia: Cueva de las Manos, Capillas de Marmol, Ruta 41, Lago Posadas o Parque Patagonia. Si buscas viaje completo, Patagonia Inedita dura 6 dias y Carretera Austral dura 8 dias. Para arqueologia: Cueva o Charcamata. Para navegacion: Capillas. Para ruta escenica: Ruta 41/Zeballos o Lago Posadas.";
-  }
-  function pdfAnswer(product){
-    if (product && product.pdf) return "El itinerario PDF de " + product.name + " se descarga desde su pagina. Ruta del archivo: " + product.pdf;
-    return "Los tours con PDF descargable son Patagonia Inedita y Carretera Austral. En cada pagina hay un boton de descarga del itinerario.";
-  }
+  function normalize(t){ return (t||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/&middot;|·/g," ").replace(/[^a-z0-9\s/.-]/g," ").replace(/\s+/g," ").trim(); }
+  function money(n){ return "$"+Number(n||0).toLocaleString("es-AR")+" AR p/p"; }
+  function addMessage(text,who){ if(!messages)return; var d=document.createElement("div"); d.className="zoyi-msg "+who; d.textContent=text; messages.appendChild(d); messages.scrollTop=messages.scrollHeight; }
+  function productLine(p,ui){ return p.name+": "+p.duration+", "+money(p.price)+", "+p.capacity+(ui?ui.capacity:" personas")+"."; }
+  function findProduct(q){ var b=null,s=0; allProducts.forEach(function(p){ var l=0; [p.name].concat(p.aliases||[]).forEach(function(a){ a=normalize(a); if(a&&q.indexOf(a)!==-1)l+=a.length>8?3:2; }); if(l>s){b=p;s=l;} }); return b; }
+  function isAsking(q,words){ return words.some(function(w){ return q.indexOf(normalize(w))!==-1; }); }
+
   function answer(raw){
-    var q = normalize(raw);
-    if (!q || q.length < 2) return "Preguntame por fechas, disponibilidad, precios, excursiones, tours, ubicacion o reservas.";
-    var product = findProduct(q);
-
-    if (isAsking(q, ["persona","humano","asesor","asesora","hablar con alguien","whatsapp","telefono","email","mail","contactar","contacto directo"])) return humanAnswer();
-    if (isAsking(q, ["fecha","fechas","disponible","disponibilidad","cupos","lugar","lugares","cuando","calendario"])) return datesAnswer(product);
-    if (isAsking(q, ["precio","precios","tarifa","tarifas","valor","valores","cuanto","sale","costo","costos"])) return pricesAnswer(product);
-    if (isAsking(q, ["reservar","reserva","reservas","contratar","sena","seña","asiento","asientos","pago"])) return reservationAnswer();
-    if (isAsking(q, ["ubicacion","ubicación","donde estan","direccion","dirección","perito moreno","santa cruz","como llegar"])) return locationAnswer();
-    if (isAsking(q, ["itinerario","pdf","descargar","programa","recorrido"])) return pdfAnswer(product);
-    if (isAsking(q, ["excursion","excursiones","paseos","salidas","dia completo","medio dia"])) return product ? productLine(product) + " " + product.summary : listExcursions();
-    if (isAsking(q, ["tour","tours","autor","varios dias","viaje completo","paquete"])) return product ? productLine(product) + " " + product.summary : listTours();
-    if (isAsking(q, ["recomendas","recomendacion","conviene","diferencia","comparar","mejor","cual elijo","que hago"])) return compareAnswer();
-    if (isAsking(q, ["bienestar","wellness","yoga","masajes"])) return "Turismo de Bienestar es una linea complementaria para sumar pausa, naturaleza y cuidado al viaje. Si buscas algo tranquilo, se puede combinar con excursiones de medio dia o estadias en la zona.";
-    if (isAsking(q, ["zoyen","agencia","legajo","quienes","quienes son"])) return "Zoyen Turismo es una agencia local de Perito Moreno, Santa Cruz, legajo 15.625. Disena excursiones y tours de autor en Patagonia.";
-    if (product) return productLine(product) + " " + product.summary;
-
-    return "Puedo ayudarte con informacion del sitio: fechas disponibles, precios en AR, cupos, tipos de excursiones, tours de autor, ubicación, itinerarios PDF y como reservar. Proba preguntarme, por ejemplo: 'precio de Capillas', 'fechas para Patagonia Inedita' o 'que excursion me recomendas'.";
+    var lang=getLang(), ui=UI[lang]||UI.es, k=ui.kw;
+    var q=normalize(raw);
+    if(!q||q.length<2) return ui.fallback;
+    var p=findProduct(q);
+    if(isAsking(q,k.human))    return ui.humanAns();
+    if(isAsking(q,k.dates))    return ui.datesBase+(p?ui.datesExtra(p):"")+ui.datesCta;
+    if(isAsking(q,k.prices))   return p ? productLine(p,ui)+ui.pricesPer : ui.pricesAll+allProducts.map(function(x){return x.name+" "+money(x.price);}).join("; ")+".";
+    if(isAsking(q,k.book))     return ui.resAnswer;
+    if(isAsking(q,k.location)) return ui.locAnswer;
+    if(isAsking(q,k.pdf))      return p&&p.pdf ? ui.pdfProduct(p) : ui.pdfBase;
+    if(isAsking(q,k.excursion))return p ? productLine(p,ui)+" "+p.summary : ui.listExc+excursiones.map(function(x){return productLine(x,ui);}).join(" ");
+    if(isAsking(q,k.tour))     return p ? productLine(p,ui)+" "+p.summary : ui.listTours+tours.map(function(x){return productLine(x,ui);}).join(" ")+ui.listToursSuffix;
+    if(isAsking(q,k.compare))  return ui.compareAnswer;
+    if(isAsking(q,k.wellness)) return ui.wellnessAnswer;
+    if(isAsking(q,k.agency))   return ui.agencyAnswer;
+    if(p) return productLine(p,ui)+" "+p.summary;
+    return ui.helpFull;
   }
+
   function submit(text){
-    var value = (text || (input ? input.value : "") || "").trim();
-    if (!value) return;
-    addMessage(value, "user");
-    if (input) input.value = "";
-    window.setTimeout(function(){ addMessage(answer(value), "bot"); }, 160);
+    var val=(text||(input?input.value:"")||"").trim();
+    if(!val)return;
+    addMessage(val,"user");
+    if(input)input.value="";
+    window.setTimeout(function(){ addMessage(answer(val),"bot"); },160);
   }
-  if (toggle) toggle.addEventListener("click", function(){
+
+  if(toggle) toggle.addEventListener("click",function(){
     widget.classList.toggle("open");
-    toggle.setAttribute("aria-expanded", widget.classList.contains("open") ? "true" : "false");
-    if (widget.classList.contains("open") && input) input.focus();
+    toggle.setAttribute("aria-expanded",widget.classList.contains("open")?"true":"false");
+    if(widget.classList.contains("open")&&input)input.focus();
   });
-  if (closeBtn) closeBtn.addEventListener("click", function(){ widget.classList.remove("open"); if (toggle) toggle.setAttribute("aria-expanded","false"); });
-  if (form) form.addEventListener("submit", function(e){ e.preventDefault(); submit(); });
-  if (chips) chips.addEventListener("click", function(e){ if (e.target.matches("button")) submit(e.target.textContent); });
-  addMessage("Hola, soy Zoyi. Puedo responder sobre excursiones, tours, precios en AR, fechas disponibles, cupos, ubicación e itinerarios. Solo te paso con una persona si me lo pedis.", "bot");
+  if(closeBtn) closeBtn.addEventListener("click",function(){ widget.classList.remove("open"); if(toggle)toggle.setAttribute("aria-expanded","false"); });
+  if(form) form.addEventListener("submit",function(e){ e.preventDefault(); submit(); });
+  if(chips) chips.addEventListener("click",function(e){ if(e.target.matches("button"))submit(e.target.textContent); });
+
+  // Saludo inicial en el idioma activo
+  var lang=getLang(), ui=UI[lang]||UI.es;
+  addMessage(ui.greeting,"bot");
 })();
 </script>
 
