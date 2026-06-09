@@ -496,6 +496,52 @@ footer {
   .zoyi-toggle { min-width: 96px; height: 50px; }
   .zoyi-panel { bottom: 62px; }
 }
+
+
+/* ZOYI HUEMUL */
+.zoyi-huemul-mark {
+  width: 30px;
+  height: 30px;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f5f0e8, #c9a96e);
+  color: #2a211b;
+  box-shadow: inset 0 0 0 1px rgba(42,33,27,.18);
+}
+.zoyi-huemul-mark svg {
+  width: 24px !important;
+  height: 24px !important;
+  stroke: currentColor !important;
+  fill: none !important;
+  stroke-width: 1.7 !important;
+}
+.zoyi-head .zoyi-huemul-mark {
+  width: 38px;
+  height: 38px;
+}
+.zoyi-head-main {
+  display: flex;
+  align-items: center;
+  gap: .72rem;
+  min-width: 0;
+}
+.zoyi-toggle {
+  min-width: 124px;
+}
+.zoyi-toggle strong {
+  letter-spacing: .12em;
+}
+.zoyi-title span {
+  max-width: 210px;
+}
+@media (max-width: 640px) {
+  .zoyi-toggle { min-width: 108px; }
+  .zoyi-huemul-mark { width: 28px; height: 28px; }
+}
+
 </style>
 </head>
 <body>
@@ -791,24 +837,28 @@ footer {
 
 <div class="zoyi-widget" id="zoyiWidget">
   <button class="zoyi-toggle" type="button" id="zoyiToggle" aria-label="Abrir asistente virtual Zoyi" aria-expanded="false">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.2 5.2L19 10.4l-4.8 2.1L12 18l-2.2-5.5L5 10.4l4.8-2.2L12 3z"/><path d="M4 18h4M16 18h4"/></svg>
+    <span class="zoyi-huemul-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M10 8 6 3M22 8l4-5M11 9 7 7M21 9l4-2"/><path d="M9.5 13.5c.3-3.5 2.7-6 6.5-6s6.2 2.5 6.5 6"/><path d="M8.8 14.2c-1.4-.7-2.8.2-2.6 1.7.2 1.2 1.4 1.9 2.9 1.5M23.2 14.2c1.4-.7 2.8.2 2.6 1.7-.2 1.2-1.4 1.9-2.9 1.5"/><path d="M10 14.2c0 6 2.5 10.3 6 10.3s6-4.3 6-10.3"/><path d="M13 15.3h.1M19 15.3h.1"/><path d="M14.2 20.2c1.1.8 2.5.8 3.6 0"/><path d="M16 17.2v2"/></svg></span>
     <strong>Zoyi</strong>
   </button>
   <section class="zoyi-panel" aria-label="Asistente virtual Zoyi">
     <div class="zoyi-head">
-      <div class="zoyi-title"><strong>Zoyi</strong><span>Asistente de Zoyen Turismo</span></div>
+      <div class="zoyi-head-main">
+        <span class="zoyi-huemul-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M10 8 6 3M22 8l4-5M11 9 7 7M21 9l4-2"/><path d="M9.5 13.5c.3-3.5 2.7-6 6.5-6s6.2 2.5 6.5 6"/><path d="M8.8 14.2c-1.4-.7-2.8.2-2.6 1.7.2 1.2 1.4 1.9 2.9 1.5M23.2 14.2c1.4-.7 2.8.2 2.6 1.7-.2 1.2-1.4 1.9-2.9 1.5"/><path d="M10 14.2c0 6 2.5 10.3 6 10.3s6-4.3 6-10.3"/><path d="M13 15.3h.1M19 15.3h.1"/><path d="M14.2 20.2c1.1.8 2.5.8 3.6 0"/><path d="M16 17.2v2"/></svg></span>
+        <div class="zoyi-title"><strong>Zoyi</strong><span>Huemul asistente de Zoyen Turismo</span></div>
+      </div>
       <button class="zoyi-close" type="button" id="zoyiClose" aria-label="Cerrar asistente">x</button>
     </div>
     <div class="zoyi-messages" id="zoyiMessages"></div>
     <div class="zoyi-chip-row" id="zoyiChips">
       <button class="zoyi-chip" type="button">Excursiones</button>
       <button class="zoyi-chip" type="button">Tours de autor</button>
+      <button class="zoyi-chip" type="button">Itinerarios</button>
       <button class="zoyi-chip" type="button">Precios</button>
       <button class="zoyi-chip" type="button">Reservas</button>
       <button class="zoyi-chip" type="button">Contacto</button>
     </div>
     <form class="zoyi-form" id="zoyiForm">
-      <input class="zoyi-input" id="zoyiInput" type="text" autocomplete="off" placeholder="Escribi tu consulta..." aria-label="Consulta para Zoyi">
+      <input class="zoyi-input" id="zoyiInput" type="text" autocomplete="off" placeholder="Preguntale a Zoyi..." aria-label="Consulta para Zoyi">
       <button class="zoyi-send" type="submit" aria-label="Enviar consulta">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </button>
@@ -817,36 +867,38 @@ footer {
 </div>
 <script id="zoyi-assistant-script">
 (function(){
-  var widget = document.getElementById('zoyiWidget');
+  var widget = document.getElementById("zoyiWidget");
   if (!widget || widget.dataset.ready) return;
-  widget.dataset.ready = 'true';
-  var toggle = document.getElementById('zoyiToggle');
-  var closeBtn = document.getElementById('zoyiClose');
-  var form = document.getElementById('zoyiForm');
-  var input = document.getElementById('zoyiInput');
-  var messages = document.getElementById('zoyiMessages');
-  var chips = document.getElementById('zoyiChips');
-  var contactText = 'WhatsApp +54 9 297 443-2855 y email zoyenperitomoreno@gmail.com.';
+  widget.dataset.ready = "true";
+  var toggle = document.getElementById("zoyiToggle");
+  var closeBtn = document.getElementById("zoyiClose");
+  var form = document.getElementById("zoyiForm");
+  var input = document.getElementById("zoyiInput");
+  var messages = document.getElementById("zoyiMessages");
+  var chips = document.getElementById("zoyiChips");
+  var contactText = "WhatsApp +54 9 297 443-2855 y email zoyenperitomoreno@gmail.com.";
   var db = [
-    {keys:['cueva','manos','pinturas','arqueologia'], answer:'La excursion Cueva de las Manos recorre uno de los sitios arqueologicos mas importantes de la Patagonia, con pinturas rupestres y paisaje del Canon del Rio Pinturas.'},
-    {keys:['capillas','marmol','catedrales','general carrera'], answer:'Capillas y Catedrales de Marmol navega formaciones naturales sobre el Lago General Carrera. Es una salida ideal para combinar paisaje, fotografia y navegacion.'},
-    {keys:['lago posadas','posadas','ruta 41','escenica'], answer:'Lago Posadas y Ruta Escenica 41 combina caminos panoramicos, lagos patagonicos y miradores. Es una de las experiencias fuertes cerca de Perito Moreno.'},
-    {keys:['monte zeballos','zeballos'], answer:'Ruta 41 Monte Zeballos propone una travesia escenica por altura, estepa, bosques y vistas cordilleranas.'},
-    {keys:['charcamata','alero'], answer:'Alero Charcamata es una experiencia vinculada al arte rupestre y al patrimonio natural de la zona.'},
-    {keys:['parque patagonia','canadon pinturas','portal'], answer:'Parque Nacional Patagonia y Portal Canon Pinturas conectan senderos, fauna, geologia y vistas amplias del noroeste de Santa Cruz.'},
-    {keys:['patagonia inedita','inedita'], answer:'Patagonia Inedita es un tour de autor de 6 dias y 5 noches. Integra Perito Moreno, Cueva de las Manos, Ruta 41, Carretera Austral, Capillas de Marmol y Los Antiguos. El PDF del itinerario esta en assets/pdfs/patagonia-inedita-itinerario.pdf.'},
-    {keys:['carretera austral','austral'], answer:'Carretera Austral es un tour de autor de 8 dias y 7 noches desde y hasta Perito Moreno. Incluye Chile Chico, Cochrane, Caleta Tortel, Villa O'Higgins, Puerto Rio Tranquilo, Capillas de Marmol, Coyhaique y regreso por Paso Huemules. El PDF esta en assets/pdfs/carretera-austral-itinerario.pdf.'},
-    {keys:['precio','precios','tarifa','tarifas','valor','valores','ar'], answer:'Los precios del sitio se mantienen en AR, pesos argentinos. Para confirmar disponibilidad, cupos y valores actualizados, conviene escribir por WhatsApp: ' + contactText},
-    {keys:['reservar','reserva','disponibilidad','cupos','contratar'], answer:'Para reservar podes usar el boton Reservar del menu o escribir directo por WhatsApp. ' + contactText},
-    {keys:['contacto','whatsapp','telefono','mail','email','ubicacion','direccion'], answer:'Podes contactarte con Zoyen Turismo por ' + contactText + ' Estamos en Perito Moreno, Santa Cruz, Patagonia Argentina.'},
-    {keys:['quienes','agencia','legajo','zoyen'], answer:'Zoyen Turismo es una agencia local de Perito Moreno, Santa Cruz, con legajo 15.625. Disena excursiones y tours de autor en Patagonia.'},
-    {keys:['bienestar','wellness','yoga','masajes'], answer:'La seccion de Turismo de Bienestar reune propuestas para complementar el viaje con pausa, naturaleza y experiencias de cuidado.'},
-    {keys:['pdf','descargar','itinerario','itinerarios'], answer:'Los tours de autor tienen boton para descargar el itinerario en PDF: Patagonia Inedita y Carretera Austral.'}
+    {keys:["cueva","manos","pinturas","arqueologia"], answer:"La excursión Cueva de las Manos recorre uno de los sitios arqueológicos más importantes de la Patagonia, con pinturas rupestres y paisaje del Cañadón del Río Pinturas."},
+    {keys:["capillas","marmol","mármol","catedrales","general carrera"], answer:"Capillas y Catedrales de Mármol navega formaciones naturales sobre el Lago General Carrera. Es una salida ideal para combinar paisaje, fotografía y navegación."},
+    {keys:["lago posadas","posadas","ruta 41","escenica","escénica"], answer:"Lago Posadas y Ruta Escénica 41 combina caminos panorámicos, lagos patagónicos y miradores. Es una de las experiencias fuertes cerca de Perito Moreno."},
+    {keys:["monte zeballos","zeballos"], answer:"Ruta 41 Monte Zeballos propone una travesía escénica por altura, estepa, bosques y vistas cordilleranas."},
+    {keys:["charcamata","alero"], answer:"Alero Charcamata es una experiencia vinculada al arte rupestre y al patrimonio natural de la zona."},
+    {keys:["parque patagonia","canadon pinturas","cañadon pinturas","portal"], answer:"Parque Nacional Patagonia y Portal Cañadón Pinturas conectan senderos, fauna, geología y vistas amplias del noroeste de Santa Cruz."},
+    {keys:["patagonia inedita","patagonia inédita","inedita","inédita"], answer:"Patagonia Inédita es un tour de 6 días y 5 noches. Comienza en Comodoro Rivadavia y recorre Perito Moreno, Cueva de las Manos, Parque Patagonia, Los Antiguos, Ruta Escénica 41, Carretera Austral, Puerto Río Tranquilo y Capillas de Mármol. El PDF del itinerario está en assets/pdfs/patagonia-inedita-itinerario.pdf."},
+    {keys:["carretera austral","austral","ohiggins","o higgins","villa ohiggins"], answer:"Carretera Austral es un tour de 8 días y 7 noches desde y hasta Perito Moreno. Incluye Chile Chico, Cochrane, Caleta Tortel, Villa O’Higgins, Puerto Río Tranquilo, Capillas de Mármol, Coyhaique y regreso por Paso Huemules. El PDF está en assets/pdfs/carretera-austral-itinerario.pdf."},
+    {keys:["precio","precios","tarifa","tarifas","valor","valores","ar"], answer:"Los precios del sitio se mantienen en AR, pesos argentinos. Para confirmar disponibilidad, cupos y valores actualizados, conviene escribir por WhatsApp: " + contactText},
+    {keys:["reservar","reserva","disponibilidad","cupos","contratar"], answer:"Para reservar podés usar el botón Reservar del menú o escribir directo por WhatsApp. " + contactText},
+    {keys:["contacto","whatsapp","telefono","teléfono","mail","email","ubicacion","ubicación","direccion","dirección"], answer:"Podés contactarte con Zoyen Turismo por " + contactText + " Estamos en Perito Moreno, Santa Cruz, Patagonia Argentina."},
+    {keys:["quienes","quiénes","agencia","legajo","zoyen"], answer:"Zoyen Turismo es una agencia local de Perito Moreno, Santa Cruz, con legajo 15.625. Diseña excursiones y tours de autor en Patagonia."},
+    {keys:["bienestar","wellness","yoga","masajes"], answer:"La sección de Turismo de Bienestar reúne propuestas para complementar el viaje con pausa, naturaleza y experiencias de cuidado."},
+    {keys:["pdf","descargar","itinerario","itinerarios"], answer:"Los tours de autor tienen botón para descargar el itinerario en PDF: Patagonia Inédita y Carretera Austral."},
+    {keys:["huemul","zoyi"], answer:"Soy Zoyi, el huemul asistente de Zoyen. Te puedo orientar sobre excursiones, tours, itinerarios, reservas, precios y contacto."}
   ];
-  function normalize(text){ return (text || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
+  function normalize(text){ return (text || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,""); }
   function addMessage(text, who){
-    var div = document.createElement('div');
-    div.className = 'zoyi-msg ' + who;
+    if (!messages) return;
+    var div = document.createElement("div");
+    div.className = "zoyi-msg " + who;
     div.textContent = text;
     messages.appendChild(div);
     messages.scrollTop = messages.scrollHeight;
@@ -863,26 +915,27 @@ footer {
       if (score > bestScore) { best = item; bestScore = score; }
     });
     if (best) return best.answer;
-    if (q.length < 3) return 'Decime que queres saber: excursiones, tours, precios, reservas, contacto o itinerarios.';
-    return 'Puedo ayudarte con excursiones, tours de autor, itinerarios PDF, reservas, precios en AR y contacto. Para una respuesta personalizada, escribinos por WhatsApp: ' + contactText;
+    if (q.length < 3) return "Decime qué querés saber: excursiones, tours, precios, reservas, contacto o itinerarios.";
+    return "Puedo ayudarte con excursiones, tours de autor, itinerarios PDF, reservas, precios en AR y contacto. Para una respuesta personalizada, escribinos por WhatsApp: " + contactText;
   }
   function submit(text){
-    var value = (text || input.value || '').trim();
+    var value = (text || (input ? input.value : "") || "").trim();
     if (!value) return;
-    addMessage(value, 'user');
-    input.value = '';
-    window.setTimeout(function(){ addMessage(answer(value), 'bot'); }, 220);
+    addMessage(value, "user");
+    if (input) input.value = "";
+    window.setTimeout(function(){ addMessage(answer(value), "bot"); }, 180);
   }
-  toggle.addEventListener('click', function(){
-    widget.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', widget.classList.contains('open') ? 'true' : 'false');
-    if (widget.classList.contains('open')) input.focus();
+  if (toggle) toggle.addEventListener("click", function(){
+    widget.classList.toggle("open");
+    toggle.setAttribute("aria-expanded", widget.classList.contains("open") ? "true" : "false");
+    if (widget.classList.contains("open") && input) input.focus();
   });
-  closeBtn.addEventListener('click', function(){ widget.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); });
-  form.addEventListener('submit', function(e){ e.preventDefault(); submit(); });
-  chips.addEventListener('click', function(e){ if (e.target.matches('button')) submit(e.target.textContent); });
-  addMessage('Hola, soy Zoyi. Puedo ayudarte con excursiones, tours, itinerarios, precios en AR, reservas y contacto.', 'bot');
+  if (closeBtn) closeBtn.addEventListener("click", function(){ widget.classList.remove("open"); if (toggle) toggle.setAttribute("aria-expanded","false"); });
+  if (form) form.addEventListener("submit", function(e){ e.preventDefault(); submit(); });
+  if (chips) chips.addEventListener("click", function(e){ if (e.target.matches("button")) submit(e.target.textContent); });
+  addMessage("Hola, soy Zoyi, el huemul asistente de Zoyen. Puedo ayudarte con excursiones, tours, itinerarios, precios en AR, reservas y contacto.", "bot");
 })();
 </script>
+
 </body>
 </html>
