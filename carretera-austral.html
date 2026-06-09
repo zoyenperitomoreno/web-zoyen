@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Carretera Austral ”“ Tour 7 días · Zoyen Turismo</title>
+<title>Carretera Austral – Tour 8 días · Zoyen Turismo</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -24,9 +24,9 @@
 html { scroll-behavior: smooth; }
 body { font-family: 'Sora', sans-serif; font-size: 16px; line-height: 1.7; background: var(--fog); color: var(--ink); overflow-x: hidden; }
 
-nav {
+body > nav:not(.breadcrumb) {
   position: fixed; top: 0; left: 0; right: 0; z-index: 900;
-  height: 72px; display: grid; grid-template-columns: auto 1fr auto;
+  height: 72px; display: grid; grid-template-columns: auto auto 1fr auto;
   align-items: center; padding: 0 2vw; gap: 1rem;
   background: rgba(10,10,10,0.92); backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(212,119,42,0.20);
@@ -108,6 +108,20 @@ nav {
 .inc-list li { font-size: .88rem; color: var(--stone); display: flex; gap: .6rem; align-items: flex-start; }
 .inc-list li span.ico { flex-shrink: 0; }
 
+.itinerario-head { display:flex; align-items:flex-end; justify-content:space-between; gap:1.5rem; margin-bottom:3.5rem; flex-wrap:wrap; }
+.itinerario-head .reveal { margin-bottom:0 !important; }
+.download-pdf-btn {
+  display:inline-flex; align-items:center; gap:.55rem;
+  background:var(--ember); color:var(--cream);
+  padding:.78rem 1.25rem; border-radius:2px;
+  text-decoration:none; font-size:.76rem; font-weight:700;
+  letter-spacing:.14em; text-transform:uppercase;
+  box-shadow:0 10px 24px rgba(212,119,42,.22);
+  transition:background .2s, transform .2s, box-shadow .2s;
+}
+.download-pdf-btn:hover { background:var(--ember-dim); transform:translateY(-1px); box-shadow:0 14px 30px rgba(212,119,42,.28); }
+.download-pdf-btn::before { content:'PDF'; font-size:.62rem; letter-spacing:.08em; border:1px solid rgba(245,240,232,.55); padding:.12rem .28rem; }
+@media(max-width:640px){ .itinerario-head { align-items:flex-start; } .download-pdf-btn { width:100%; justify-content:center; } }
 .itinerario-section { padding: 5rem 4vw; background: var(--cream); border-top: 1px solid rgba(58,45,31,.08); }
 .itinerario-inner { max-width: 900px; margin: 0 auto; }
 .dia-block { display: grid; grid-template-columns: 80px 1fr; gap: 0; margin-bottom: 0; position: relative; }
@@ -157,7 +171,7 @@ footer { background: #0a0a0a; padding: 5rem 3vw 2.5rem; }
 .footer-col-title { font-size: 1rem; font-weight: 600; letter-spacing: .25em; text-transform: uppercase; color: var(--ember); margin-bottom: 1.1rem; }
 .footer-links { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
 .footer-links a { color: rgba(232,220,200,.70); text-decoration: none; font-size: .8rem; font-weight: 300; transition: color .2s; display: flex; align-items: center; gap: 7px; }
-.footer-links a::before { content: '”“'; color: var(--ember); opacity: .5; }
+.footer-links a::before { content: '–'; color: var(--ember); opacity: .5; }
 .footer-links a:hover { color: var(--sand); }
 .footer-contact { font-size: .8rem; color: rgba(232,220,200,.70); line-height: 1.8; font-weight: 300; }
 .footer-contact strong { color: var(--sand); font-weight: 500; }
@@ -169,6 +183,230 @@ footer { background: #0a0a0a; padding: 5rem 3vw 2.5rem; }
 .wa svg { width: 26px; height: 26px; }
 
 @media (max-width:760px) { .nav-links { display: none; } }
+
+/* LANGUAGE SWITCHER */
+.lang-switcher { position: relative; justify-self: start; z-index: 920; }
+.lang-current {
+  min-width: 116px; height: 34px;
+  display: inline-flex; align-items: center; justify-content: space-between; gap: .55rem;
+  padding: 0 .7rem;
+  border: 1px solid rgba(212,119,42,.34); border-radius: 2px;
+  background: rgba(245,240,232,.06); color: rgba(245,240,232,.78);
+  font-family: 'Sora', sans-serif; font-size: .68rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase; cursor: pointer;
+  transition: border-color .2s, background .2s, color .2s;
+}
+.lang-current:hover,
+.lang-switcher.open .lang-current { color: var(--cream); border-color: rgba(212,119,42,.65); background: rgba(212,119,42,.12); }
+.lang-current::after {
+  content: ''; width: 6px; height: 6px;
+  border-right: 1px solid currentColor; border-bottom: 1px solid currentColor;
+  transform: translateY(-2px) rotate(45deg); transition: transform .2s;
+}
+.lang-switcher.open .lang-current::after { transform: translateY(1px) rotate(225deg); }
+.lang-menu {
+  position: absolute; top: calc(100% + 8px); left: 0; min-width: 168px;
+  padding: 6px; list-style: none;
+  background: rgba(10,10,10,.96);
+  border: 1px solid rgba(212,119,42,.28); border-radius: 2px;
+  box-shadow: 0 14px 36px rgba(0,0,0,.35);
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+  transition: opacity .18s, transform .18s, visibility .18s;
+}
+.lang-switcher.open .lang-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+.lang-btn {
+  width: 100%; display: flex; align-items: center; justify-content: space-between; gap: .75rem;
+  padding: .55rem .65rem; border: 0; border-radius: 1px;
+  background: transparent; color: rgba(245,240,232,.68);
+  font-family: 'Sora', sans-serif; font-size: .7rem; font-weight: 600;
+  letter-spacing: .04em; cursor: pointer; text-align: left;
+  transition: background .2s, color .2s;
+}
+.lang-btn:hover { color: var(--cream); background: rgba(212,119,42,.16); }
+.lang-btn.active { background: var(--ember); color: var(--cream); }
+.lang-code { color: rgba(245,240,232,.45); font-size: .58rem; font-weight: 800; letter-spacing: .1em; }
+.lang-btn.active .lang-code { color: rgba(255,255,255,.82); }
+@media (min-width: 961px) and (max-width: 1360px) {
+  nav { column-gap: .75rem; }
+  .nav-emblem { width: 46px; height: 46px; }
+  .nav-logo { gap: 8px; }
+  .nav-logo .z, .nav-logo .t { font-size: 1.08rem; letter-spacing: .09em; }
+  .nav-logo sub { display: none; }
+  .nav-links { gap: .72rem; }
+  .nav-links a { font-size: .64rem; letter-spacing: .035em; }
+  .lang-current { min-width: 98px; height: 31px; padding: 0 .55rem; font-size: .58rem; }
+  .lang-menu { min-width: 150px; }
+  .lang-btn { padding: .5rem .58rem; font-size: .64rem; }
+  .nav-cta-btn { padding: .45rem .85rem; font-size: .66rem; letter-spacing: .1em; }
+}
+@media (max-width: 640px) {
+  .nav-cta-btn { display: none; }
+  .lang-switcher { margin-left: auto; justify-self: end; }
+  .lang-current { min-width: 104px; height: 32px; padding: 0 .55rem; font-size: .58rem; }
+  .lang-menu { left: auto; right: 0; min-width: 150px; }
+  .lang-btn { padding: .52rem .58rem; font-size: .64rem; }
+  .nav-emblem { width: 40px; height: 40px; }
+  .nav-logo { gap: 6px; }
+  .nav-logo .z, .nav-logo .t { font-size: .98rem; letter-spacing: .08em; }
+  .nav-logo sub { display: none; }
+}
+
+/* NAV CONTACT + ZOYI ASSISTANT */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  justify-self: end;
+  gap: .55rem;
+  min-width: 0;
+}
+.nav-contact-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .45rem;
+  min-height: 36px;
+  padding: .48rem .95rem;
+  border: 1px solid rgba(37,211,102,.58);
+  border-radius: 2px;
+  background: rgba(37,211,102,.10);
+  color: var(--cream);
+  font-family: 'Sora', sans-serif;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .11em;
+  line-height: 1;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background .2s, border-color .2s, color .2s, transform .2s;
+}
+.nav-contact-btn svg { width: 16px; height: 16px; fill: currentColor; flex: 0 0 auto; }
+.nav-contact-btn:hover { background: #25d366; border-color: #25d366; color: #122118; transform: translateY(-1px); }
+.zoyi-widget {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 1600;
+  font-family: 'Sora', sans-serif;
+}
+.zoyi-toggle {
+  min-width: 112px;
+  height: 54px;
+  border: 1px solid rgba(212,119,42,.58);
+  border-radius: 999px;
+  background: rgba(26,20,16,.92);
+  color: var(--cream);
+  box-shadow: 0 18px 42px rgba(0,0,0,.32);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .55rem;
+  cursor: pointer;
+  transition: transform .2s, background .2s, border-color .2s;
+}
+.zoyi-toggle:hover { transform: translateY(-2px); border-color: var(--ember); background: rgba(48,34,25,.96); }
+.zoyi-toggle svg { width: 19px; height: 19px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+.zoyi-toggle strong { font-size: .82rem; letter-spacing: .14em; text-transform: uppercase; }
+.zoyi-panel {
+  position: absolute;
+  right: 0;
+  bottom: 68px;
+  width: min(360px, calc(100vw - 28px));
+  max-height: min(620px, calc(100vh - 110px));
+  display: none;
+  overflow: hidden;
+  border: 1px solid rgba(212,119,42,.32);
+  border-radius: 8px;
+  background: rgba(245,240,232,.98);
+  color: #251d17;
+  box-shadow: 0 24px 60px rgba(0,0,0,.34);
+}
+.zoyi-widget.open .zoyi-panel { display: flex; flex-direction: column; }
+.zoyi-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  background: #1f1813;
+  color: var(--cream);
+}
+.zoyi-title { display: flex; flex-direction: column; gap: .18rem; }
+.zoyi-title strong { font-size: .88rem; letter-spacing: .14em; text-transform: uppercase; }
+.zoyi-title span { font-family: 'Inter', sans-serif; font-size: .74rem; color: rgba(245,240,232,.68); }
+.zoyi-close {
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(245,240,232,.18);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--cream);
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+.zoyi-messages {
+  padding: .95rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: .7rem;
+}
+.zoyi-msg {
+  max-width: 92%;
+  padding: .72rem .82rem;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: .88rem;
+  line-height: 1.45;
+}
+.zoyi-msg.bot { align-self: flex-start; background: #fff; border: 1px solid rgba(37,29,23,.10); }
+.zoyi-msg.user { align-self: flex-end; background: #d4772a; color: #fffaf1; }
+.zoyi-chip-row { display: flex; flex-wrap: wrap; gap: .42rem; padding: 0 .95rem .82rem; }
+.zoyi-chip {
+  border: 1px solid rgba(212,119,42,.28);
+  border-radius: 999px;
+  background: #fff;
+  color: #3a2a20;
+  padding: .42rem .62rem;
+  font-family: 'Inter', sans-serif;
+  font-size: .76rem;
+  cursor: pointer;
+}
+.zoyi-form { display: flex; gap: .5rem; padding: .82rem; border-top: 1px solid rgba(37,29,23,.12); background: #fbf7f0; }
+.zoyi-input {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid rgba(37,29,23,.18);
+  border-radius: 5px;
+  padding: .72rem .78rem;
+  font-family: 'Inter', sans-serif;
+  font-size: .88rem;
+  color: #251d17;
+  background: #fff;
+}
+.zoyi-send {
+  width: 42px;
+  border: 0;
+  border-radius: 5px;
+  background: var(--ember);
+  color: var(--cream);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.zoyi-send svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; }
+@media (min-width: 961px) and (max-width: 1360px) {
+  .nav-actions { gap: .4rem; }
+  .nav-contact-btn { padding: .45rem .65rem; font-size: .58rem; letter-spacing: .07em; }
+}
+@media (max-width: 640px) {
+  .nav-actions { display: none; }
+  .zoyi-widget { right: 14px; bottom: 14px; }
+  .zoyi-toggle { min-width: 96px; height: 50px; }
+  .zoyi-panel { bottom: 62px; }
+}
 </style>
 <script>
 (function(){
@@ -269,15 +507,26 @@ img { background: #d8d0c3; }
       <sub>Patagonia · Legajo 15.625</sub>
     </div>
   </a>
+  <div class="lang-switcher" id="langSwitcher" aria-label="Selector de idioma">
+    <button class="lang-current" type="button" aria-haspopup="true" aria-expanded="false">
+      <span id="langCurrentLabel">Español</span>
+    </button>
+    <ul class="lang-menu" aria-label="Idiomas">
+      <li><button class="lang-btn active" type="button" data-lang="es" data-label="Español">Español <span class="lang-code">ES</span></button></li>
+      <li><button class="lang-btn" type="button" data-lang="en" data-label="English">English <span class="lang-code">EN</span></button></li>
+      <li><button class="lang-btn" type="button" data-lang="pt" data-label="Português">Português <span class="lang-code">PT</span></button></li>
+      <li><button class="lang-btn" type="button" data-lang="ko" data-label="한국어">한국어 <span class="lang-code">KO</span></button></li>
+    </ul>
+  </div>
   <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="index.html#excursiones">Excursiones</a></li>
-    <li><a href="index.html#tours" class="active">Tours de Autor</a></li>
-    <li><a href="index.html#bienestar">Turismo de Bienestar</a></li>
-    <li><a href="index.html#ubicacion">Ubicación y Contacto</a></li>
-    <li><a href="nosotros.html">Quiénes somos</a></li>
+    <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+    <li><a href="index.html#excursiones" data-i18n="nav_excursiones">Excursiones</a></li>
+    <li><a href="index.html#tours" class="active" data-i18n="nav_tours">Tours de Autor</a></li>
+    <li><a href="index.html#bienestar" data-i18n="nav_bienestar">Turismo de Bienestar</a></li>
+    <li><a href="index.html#ubicacion" data-i18n="nav_ubicacion">Ubicación y Contacto</a></li>
+    <li><a href="nosotros.html" data-i18n="nav_nosotros">Quiénes somos</a></li>
   </ul>
-  <a href="index.html#reservar" class="nav-cta-btn">Reservar</a>
+  <div class="nav-actions"><a href="index.html#reservar" class="nav-cta-btn" data-i18n="nav_reservar">Reservar</a><a href="https://wa.me/5492974432855" class="nav-contact-btn" target="_blank" rel="noopener" aria-label="Contactarse por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span>Contactarse</span></a></div>
 </nav>
 
 <!-- HERO -->
@@ -285,14 +534,14 @@ img { background: #d8d0c3; }
   <div class="page-hero-bg"></div>
   <div class="page-hero-overlay"></div>
   <div class="page-hero-content">
-    <div class="page-hero-eyebrow">Tour de Autor · 7 días · 6 noches</div>
+    <div class="page-hero-eyebrow">Tour de Autor · 8 días · 7 noches</div>
     <h1 class="page-hero-title">Carretera <em>Austral</em></h1>
     <div class="hero-tags">
-      <span class="hero-tag main">7 días</span>
-      <span class="hero-tag">Confluencia Nef y Baker</span>
-      <span class="hero-tag">Lago General Carrera</span>
+      <span class="hero-tag main">8 días</span>
+      <span class="hero-tag">Caleta Tortel</span>
+      <span class="hero-tag">Villa O’Higgins</span>
       <span class="hero-tag">Capillas de Mármol</span>
-      <span class="hero-tag">Mirador Laguna Verde</span>
+      <span class="hero-tag">Coyhaique</span>
     </div>
     <div class="breadcrumb"><a href="index.html">Inicio</a> / <a href="index.html#tours">Tours de Autor</a> / <span>Carretera Austral</span></div>
   </div>
@@ -301,15 +550,15 @@ img { background: #d8d0c3; }
 <!-- OVERVIEW STRIP -->
 <div class="overview-strip">
   <div class="overview-inner">
-    <div class="ov-item"><div class="ov-num">7</div><div class="ov-lbl">Días</div></div>
+    <div class="ov-item"><div class="ov-num">8</div><div class="ov-lbl">Días</div></div>
     <div class="ov-sep"></div>
-    <div class="ov-item"><div class="ov-num">6</div><div class="ov-lbl">Noches</div></div>
+    <div class="ov-item"><div class="ov-num">7</div><div class="ov-lbl">Noches</div></div>
     <div class="ov-sep"></div>
     <div class="ov-item"><div class="ov-num">2</div><div class="ov-lbl">Países</div></div>
     <div class="ov-sep"></div>
-    <div class="ov-item"><div class="ov-num">1.200+</div><div class="ov-lbl">Km recorridos</div></div>
+    <div class="ov-item"><div class="ov-num">1.600+</div><div class="ov-lbl">Km recorridos</div></div>
     <div class="ov-sep"></div>
-    <div class="ov-item"><div class="ov-num">14</div><div class="ov-lbl">Plazas máx.</div></div>
+    <div class="ov-item"><div class="ov-num">6-22</div><div class="ov-lbl">Pasajeros</div></div>
     <div class="ov-sep"></div>
     <div class="ov-item" style="text-align:left;">
       <a href="index.html#reservar" style="background:var(--ember);color:#fff;padding:.7rem 1.8rem;border-radius:2px;text-decoration:none;font-size:.82rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;transition:background .2s;display:inline-block;" onmouseover="this.style.background='#b8621e'" onmouseout="this.style.background='#d4772a'">Reservar lugar</a>
@@ -323,44 +572,44 @@ img { background: #d8d0c3; }
     <div class="tour-intro-text reveal">
       <p class="eyebrow">Descripción del tour</p>
       <h2 class="section-title">La ruta más <em>legendaria</em> del sur</h2>
-      <p>La <strong>Carretera Austral</strong> es una de las rutas más espectaculares del mundo. Construida entre fiordos, bosques valdivianios y montañas nevadas del sur de Chile, este tour la recorre en toda su magnificencia partiendo desde la Patagonia argentina.</p>
-      <p>Cruzamos la frontera, seguimos la <strong>Carretera Austral</strong> hacia el sur, navegamos las aguas turquesas del <strong>Lago General Carrera</strong> y llegamos hasta las incomparables <strong>Capillas y Catedrales de Mármol</strong>. Un tour para quienes quieren vivir Chile profundo, lejos del turismo masivo.</p>
-      <p>Grupos pequeños, camioneta 4x4, guía local bilingüe y alojamientos cuidadosamente seleccionados en cada etapa del recorrido.</p>
+      <p><strong>Carretera Austral</strong> es una experiencia de 8 días / 7 noches de alojamiento que comienza y finaliza en Perito Moreno. El recorrido cruza a Chile por Paso Jeinimeni y conecta algunos de los paisajes más profundos de la Patagonia chilena y argentina.</p>
+      <p>El programa recorre Chile Chico, Ruta 265, Lago General Carrera, Confluencia de los ríos Baker y Neff, Cochrane, Caleta Tortel, Caleta Yungay, Puerto Río Bravo, Villa O’Higgins, Puerto Río Tranquilo, Capillas y Catedrales de Mármol, Coyhaique y el regreso por Paso Internacional Huemules.</p>
+      <p>Los traslados se realizan en minibús o vehículos pequeños según el armado del grupo, con chofer/guía durante todo el recorrido, desayunos, almuerzos incluidos y alojamientos seleccionados en hoteles o cabañas según disponibilidad.</p>
 
       <div class="inc-grid">
         <div class="inc-card yes">
           <h4>✓ Incluye</h4>
           <ul class="inc-list">
-            <li><span class="ico">ðŸš</span> Traslados en camioneta 4x4</li>
-            <li><span class="ico">ðŸ¨</span> 6 noches de alojamiento</li>
-            <li><span class="ico">ðŸ¥˜</span> Desayunos incluidos</li>
-            <li><span class="ico">ðŸŽŸï¸</span> Entradas a parques nacionales</li>
-            <li><span class="ico">â›µ</span> Navegación Capillas de Mármol</li>
-            <li><span class="ico">ðŸ§­</span> Guía local bilingüe</li>
+            <li>Traslados durante todo el recorrido desde y hasta Perito Moreno</li>
+            <li>7 noches de alojamiento con desayuno</li>
+            <li>Almuerzos incluidos, con vianda o restaurante según logística de cada día</li>
+            <li>Chofer/guía durante todo el recorrido descripto</li>
+            <li>Navegación a las Capillas y Catedrales de Mármol</li>
+            <li>Cruces por Paso Jeinimeni y Paso Internacional Huemules</li>
           </ul>
         </div>
         <div class="inc-card no">
-          <h4>✗ No incluye</h4>
+          <h4>× No incluye</h4>
           <ul class="inc-list">
-            <li><span class="ico">âœˆï¸</span> Vuelo/traslado a Perito Moreno</li>
-            <li><span class="ico">ðŸ½ï¸</span> Almuerzos y cenas (salvo indicados)</li>
-            <li><span class="ico">ðŸ›‚</span> Trámites migratorios propios</li>
-            <li><span class="ico">ðŸ’±</span> Cambio de moneda Chile</li>
-            <li><span class="ico">ðŸ”–</span> Gastos personales</li>
+            <li>Traslado hasta Perito Moreno, salvo contratación adicional</li>
+            <li>Cenas y bebidas alcohólicas o extras durante los almuerzos</li>
+            <li>Excursiones opcionales, como navegación al Glaciar O’Higgins o Puerto Aysén</li>
+            <li>Trámites migratorios personales y gastos personales</li>
           </ul>
         </div>
       </div>
     </div>
     <div class="tour-highlights reveal reveal-delay">
-      <h3>ðŸ—ºï¸ Highlights del tour</h3>
+      <h3>Highlights del tour</h3>
       <ul class="hl-list">
-        <li><strong>Ruta 40 patagónica</strong> ”” la mítica ruta argentina en toda su expresión: mesetas, cielos inmensos y soledad absoluta.</li>
-        <li><strong>Paso Ingeniero Pallavicini</strong> ”” cruce fronterizo con vistas a los Hielos Continentales Patagónicos.</li>
-        <li><strong>Confluencia Nef y Baker</strong> ”” donde el río Baker (el de mayor caudal de Chile) se tiñe de azul turquesa al recibir las aguas del Nef.</li>
-        <li><strong>Lago General Carrera</strong> ”” el segundo lago más grande de Sudamérica, de un azul imposible.</li>
-        <li><strong>Capillas y Catedrales de Mármol</strong> ”” maravilla natural de Sudamérica, navegación privada entre formaciones de mármol.</li>
-        <li><strong>Mirador Laguna Verde</strong> ”” laguna de colores esmeraldas rodeada de glaciares y picos nevados. Una de las postales más impactantes de toda la ruta.</li>
-        <li><strong>Villa Cerro Castillo</strong> ”” pequeño pueblo rodeado de torres de basalto y campos nevados.</li>
+        <li><strong>Chile Chico y Ruta 265</strong> – ingreso a la Patagonia chilena bordeando el Lago General Carrera.</li>
+        <li><strong>Confluencia Baker y Neff</strong> – uno de los paisajes más fotográficos de la Carretera Austral.</li>
+        <li><strong>Cochrane</strong> – puerta de entrada al tramo sur de la ruta.</li>
+        <li><strong>Caleta Tortel</strong> – pueblo de pasarelas peatonales sobre fiordos y canales patagónicos.</li>
+        <li><strong>Caleta Yungay y Puerto Río Bravo</strong> – cruce en ferry por uno de los fiordos chilenos de la región.</li>
+        <li><strong>Villa O’Higgins</strong> – extremo austral de la Carretera Austral y acceso al Lago O’Higgins.</li>
+        <li><strong>Capillas y Catedrales de Mármol</strong> – navegación sobre el Lago General Carrera desde Puerto Río Tranquilo.</li>
+        <li><strong>Coyhaique y Paso Huemules</strong> – cierre del recorrido por la capital regional de Aysén y regreso a Argentina.</li>
       </ul>
     </div>
   </div>
@@ -369,19 +618,22 @@ img { background: #d8d0c3; }
 <!-- ITINERARIO -->
 <section class="itinerario-section">
   <div class="itinerario-inner">
-    <div class="reveal" style="margin-bottom:3.5rem;">
+    <div class="itinerario-head">
+    <div class="reveal">
       <p class="eyebrow">Día a día</p>
       <h2 class="section-title">El <em>itinerario</em></h2>
     </div>
+    <a class="download-pdf-btn" href="assets/pdfs/carretera-austral-itinerario.pdf" download>Descargar itinerario</a>
+  </div>
 
     <!-- DÍA 1 -->
     <div class="dia-block reveal">
       <div class="dia-num"><div class="dia-circle">1</div></div>
       <div class="dia-content">
         <div class="dia-label">Día 1 · Llegada</div>
-        <h3 class="dia-title">Perito Moreno &rarr; <em>Los Antiguos</em></h3>
-        <p class="dia-desc">Recepción en el aeropuerto de Perito Moreno. Traslado a <strong>Los Antiguos</strong>, la "ciudad de las cerezas" a orillas del Lago Buenos Aires. Tarde libre para conocer el pueblo, la costanera y la historia de sus colonos. Cena y alojamiento en Los Antiguos.</p>
-        <div class="dia-chips"><span class="dia-chip">ðŸ“ Perito Moreno</span><span class="dia-chip">ðŸ’ Los Antiguos</span><span class="dia-chip">ðŸ’§ Lago Buenos Aires</span></div>
+        <h3 class="dia-title">Llegada a <em>Perito Moreno</em></h3>
+        <p class="dia-desc">Llegada a Perito Moreno, tiempo libre y alojamiento en hotel. El traslado hasta Perito Moreno no está incluido en la tarifa base y puede coordinarse según el grupo: bus propio, traslado privado desde Comodoro Rivadavia, bus regular desde Comodoro o vuelo de LADE.</p>
+        <div class="dia-chips"><span class="dia-chip">Perito Moreno</span><span class="dia-chip">Tiempo libre</span><span class="dia-chip">Alojamiento en hotel</span></div>
       </div>
     </div>
 
@@ -389,10 +641,10 @@ img { background: #d8d0c3; }
     <div class="dia-block reveal">
       <div class="dia-num"><div class="dia-circle">2</div></div>
       <div class="dia-content">
-        <div class="dia-label">Día 2 · Cruce internacional</div>
-        <h3 class="dia-title">Paso Chile Chico &rarr; <em>Carretera Austral</em></h3>
-        <p class="dia-desc">Cruce a Chile por el paso fronterizo de Chile Chico, cruzando el <strong>Lago General Carrera</strong> en ferry (45 minutos de navegación). Primer encuentro con la <strong>Carretera Austral</strong>: comenzamos a remontar hacia el norte por los paisajes de bosque valdiviano, lagunas y montañas nevadas. Almuerzo en ruta. Alojamiento en Río Tranquilo.</p>
-        <div class="dia-chips"><span class="dia-chip">â›´ï¸ Ferry Lago Carrera</span><span class="dia-chip">ðŸ›‚ Cruce a Chile</span><span class="dia-chip">ðŸŒ² Bosque Valdiviano</span></div>
+        <div class="dia-label">Día 2 · Paso Jeinimeni</div>
+        <h3 class="dia-title">Chile Chico · <em>Cochrane</em></h3>
+        <p class="dia-desc">Desayuno y salida hacia la frontera con Chile. Cruce por <strong>Paso Jeinimeni</strong> hasta <strong>Chile Chico</strong>, donde comienza el recorrido por la Patagonia chilena. Tiempo para abastecimiento y cambio de divisas. Salida por Ruta 265, bordeando el Lago General Carrera hacia la Carretera Austral. Almuerzo en camino incluido, visita a la <strong>Confluencia del Río Baker y Neff</strong> y llegada por la tarde a Cochrane. Alojamiento en cabañas. Cena no incluida.</p>
+        <div class="dia-chips"><span class="dia-chip">Paso Jeinimeni</span><span class="dia-chip">Lago General Carrera</span><span class="dia-chip">Cochrane</span></div>
       </div>
     </div>
 
@@ -400,11 +652,10 @@ img { background: #d8d0c3; }
     <div class="dia-block reveal">
       <div class="dia-num"><div class="dia-circle">3</div></div>
       <div class="dia-content">
-        <div class="dia-label">Día 3 · La joya de la ruta</div>
-        <h3 class="dia-title"><em>Capillas y Catedrales</em> de Mármol</h3>
-        <p class="dia-desc">El corazón del tour. Embarcación privada sobre el <strong>Lago General Carrera</strong> hacia las formaciones de mármol esculpidas durante millones de años. La <strong>Capilla de Mármol</strong> y la <strong>Catedral de Mármol</strong> son cavernas y tuneles horadados por el agua turquesa del lago sobre la roca de mármol blanco y gris. Una experiencia que no existe en ningún otro lugar del planeta. Por la tarde, ruta hacia el norte por la Carretera Austral.</p>
-        <img class="dia-img" src="assets/capillas.jpg" alt="Capillas de Mármol">
-        <div class="dia-chips"><span class="dia-chip">â›µ Navegación privada</span><span class="dia-chip">ðŸª¨ Formaciones de mármol</span><span class="dia-chip">ðŸ† Maravilla de Sudamérica</span></div>
+        <div class="dia-label">Día 3 · Fiordos y pasarelas</div>
+        <h3 class="dia-title">Caleta Tortel · <em>Villa O’Higgins</em></h3>
+        <p class="dia-desc">Desayuno y salida por Carretera Austral hacia el sur hasta la pintoresca <strong>Caleta Tortel</strong>. Recorrido por sus calles peatonales sobre pasarelas y almuerzo en el lugar. Luego, continuación hacia el sur para cruzar en ferry desde <strong>Caleta Yungay</strong>, atravesando uno de los fiordos chilenos de la región hasta <strong>Puerto Río Bravo</strong>. Retomando la Carretera Austral, llegada al atardecer a <strong>Villa O’Higgins</strong>. Alojamiento en cabañas.</p>
+        <div class="dia-chips"><span class="dia-chip">Caleta Tortel</span><span class="dia-chip">Ferry Caleta Yungay</span><span class="dia-chip">Villa O’Higgins</span></div>
       </div>
     </div>
 
@@ -412,10 +663,10 @@ img { background: #d8d0c3; }
     <div class="dia-block reveal">
       <div class="dia-num"><div class="dia-circle">4</div></div>
       <div class="dia-content">
-        <div class="dia-label">Día 4 · Confluencia sagrada</div>
-        <h3 class="dia-title">Confluencia <em>Nef y Baker</em></h3>
-        <p class="dia-desc">Uno de los paisajes más fotográficos de toda la Carretera Austral: la <strong>confluencia de los ríos Nef y Baker</strong>. El Baker ””el río de mayor caudal de Chile”” recibe las aguas turquesas del Nef, creando una línea de colores perfectamente distinguible entre los dos tonos de agua. Trekkings cortos por la ribera, contemplación y almuerzo en el campo. Seguimos rumbo norte hacia Coyhaique.</p>
-        <div class="dia-chips"><span class="dia-chip">ðŸžï¸ Confluencia Nef-Baker</span><span class="dia-chip">ðŸ¥¾ Trekking ribereño</span><span class="dia-chip">ðŸŒˆ Aguas bicolores</span></div>
+        <div class="dia-label">Día 4 · Día libre</div>
+        <h3 class="dia-title">Villa O’Higgins · <em>Km 0 Carretera Austral</em></h3>
+        <p class="dia-desc">Desayuno y día libre para ir hasta el <strong>Lago O’Higgins</strong>, donde se encuentra el km 0 o fin de la Carretera Austral, según se interprete. Posibilidad de realizar excursiones opcionales no incluidas, como la navegación al <strong>Glaciar O’Higgins</strong>, senderos de trekking en los alrededores, Glaciar El Tigre y otras opciones. Día para disfrutar del pueblo, la tranquilidad y el paisaje andino patagónico virgen. Alojamiento. Cena no incluida.</p>
+        <div class="dia-chips"><span class="dia-chip">Lago O’Higgins</span><span class="dia-chip">Excursiones opcionales</span><span class="dia-chip">Alojamiento en Villa O’Higgins</span></div>
       </div>
     </div>
 
@@ -423,10 +674,10 @@ img { background: #d8d0c3; }
     <div class="dia-block reveal">
       <div class="dia-num"><div class="dia-circle">5</div></div>
       <div class="dia-content">
-        <div class="dia-label">Día 5 · Mirador de los Hielos</div>
-        <h3 class="dia-title">Mirador <em>Laguna Verde</em></h3>
-        <p class="dia-desc">Excursión hacia el <strong>Mirador Laguna Verde</strong>, una de las postales más impactantes de toda la Carretera Austral. Una laguna de color verde esmeralda rodeada de montañas nevadas, glaciares colgantes y torres de basalto negro. Dependiendo de la temporada, puede avistarse fauna de la zona (flamencos, huemules). Almuerzo en campo. Por la tarde llegamos a <strong>Villa Cerro Castillo</strong>, pequeño pueblo de montaña con arquitectura colorida y vistas al macizo de Cerro Castillo.</p>
-        <div class="dia-chips"><span class="dia-chip">ðŸ”ï¸ Laguna Verde</span><span class="dia-chip">ðŸ¦™ Fauna patagónica</span><span class="dia-chip">ðŸ˜ï¸ Villa Cerro Castillo</span></div>
+        <div class="dia-label">Día 5 · Tramo norte</div>
+        <h3 class="dia-title">Villa O’Higgins · <em>Puerto Río Tranquilo</em></h3>
+        <p class="dia-desc">Desayuno y salida temprano por Carretera Austral hacia el norte, en el día más largo en kilómetros recorridos y tiempos de viaje. Paso por Cochrane y Puerto Bertrand, bordeando el Lago General Carrera y su desagüe hacia el <strong>Lago Bertrand</strong>. Llegada al atardecer a <strong>Puerto Río Tranquilo</strong>. Alojamiento en hotel. Cena no incluida.</p>
+        <div class="dia-chips"><span class="dia-chip">Cochrane</span><span class="dia-chip">Puerto Bertrand</span><span class="dia-chip">Puerto Río Tranquilo</span></div>
       </div>
     </div>
 
@@ -434,10 +685,11 @@ img { background: #d8d0c3; }
     <div class="dia-block reveal">
       <div class="dia-num"><div class="dia-circle">6</div></div>
       <div class="dia-content">
-        <div class="dia-label">Día 6 · Regreso a Argentina</div>
-        <h3 class="dia-title">Paso Río Jeinimeni &rarr; <em>Los Antiguos</em></h3>
-        <p class="dia-desc">Regreso a Argentina por el paso fronterizo Río Jeinimeni, con vistas panorámicas de los campos de hielo y el lago Buenos Aires. Llegamos a <strong>Los Antiguos</strong> al atardecer. Cena de despedida con los productos locales de la región: cerezas, mermeladas artesanales y asado patagónico.</p>
-        <div class="dia-chips"><span class="dia-chip">ðŸ›‚ Paso Jeinimeni</span><span class="dia-chip">ðŸ’ Los Antiguos</span><span class="dia-chip">ðŸ¥© Cena de despedida</span></div>
+        <div class="dia-label">Día 6 · Navegación</div>
+        <h3 class="dia-title"><em>Catedrales y Capillas</em> de Mármol · Coyhaique</h3>
+        <p class="dia-desc">Desayuno y navegación a las <strong>Catedrales y Capillas de Mármol</strong>. Luego del almuerzo, salida hacia la ciudad de <strong>Coyhaique</strong>, en un viaje de aproximadamente 4 horas por la Carretera Austral. Llegada y alojamiento en hotel.</p>
+        <img class="dia-img" src="assets/capillas.jpg" alt="Capillas de Mármol">
+        <div class="dia-chips"><span class="dia-chip">Capillas de Mármol</span><span class="dia-chip">Lago General Carrera</span><span class="dia-chip">Coyhaique</span></div>
       </div>
     </div>
 
@@ -445,10 +697,21 @@ img { background: #d8d0c3; }
     <div class="dia-block reveal">
       <div class="dia-num"><div class="dia-circle">7</div></div>
       <div class="dia-content">
-        <div class="dia-label">Día 7 · Regreso</div>
-        <h3 class="dia-title">Los Antiguos &rarr; <em>Perito Moreno</em></h3>
-        <p class="dia-desc">Mañana libre en Los Antiguos. Visita opcional a las chacras de cerezas y productores locales. Al mediodía, traslado de regreso a Perito Moreno por la Ruta Nacional 40. Transfer al aeropuerto para vuelos de regreso. Fin del tour.</p>
-        <div class="dia-chips"><span class="dia-chip">ðŸ’ Chacras locales</span><span class="dia-chip">ðŸ›£ï¸ Ruta Nacional 40</span><span class="dia-chip">âœˆï¸ Transfer aeropuerto</span></div>
+        <div class="dia-label">Día 7 · Coyhaique</div>
+        <h3 class="dia-title">Día libre · <em>Puerto Aysén opcional</em></h3>
+        <p class="dia-desc">Desayuno, mañana y día libre para compras y descanso en <strong>Coyhaique</strong>. Posibilidad de realizar una excursión opcional no incluida por la tarde hacia <strong>Puerto Aysén</strong>, de aproximadamente 5 horas de duración. Alojamiento en Coyhaique.</p>
+        <div class="dia-chips"><span class="dia-chip">Coyhaique</span><span class="dia-chip">Día libre</span><span class="dia-chip">Puerto Aysén opcional</span></div>
+      </div>
+    </div>
+
+    <!-- DÍA 8 -->
+    <div class="dia-block reveal">
+      <div class="dia-num"><div class="dia-circle">8</div></div>
+      <div class="dia-content">
+        <div class="dia-label">Día 8 · Regreso a Argentina</div>
+        <h3 class="dia-title">Paso Huemules · <em>Perito Moreno</em></h3>
+        <p class="dia-desc">Desayuno y salida hacia la frontera con Argentina por el <strong>Paso Internacional Huemules</strong>, ubicado aproximadamente a 1 hora de Coyhaique. Luego, unas 3 horas más hasta Perito Moreno. Según la modalidad de traslado y horarios hacia Comodoro Rivadavia o lugar de origen, se coordina la logística del día. El traslado incluido en la tarifa es hasta Perito Moreno. Fin de nuestros servicios.</p>
+        <div class="dia-chips"><span class="dia-chip">Paso Huemules</span><span class="dia-chip">Regreso a Perito Moreno</span><span class="dia-chip">Fin de servicios</span></div>
       </div>
     </div>
   </div>
@@ -540,7 +803,7 @@ img { background: #d8d0c3; }
       <div class="footer-col-title">Tours de Autor</div>
       <ul class="footer-links">
         <li><a href="patagonia-inedita.html">Patagonia Inédita (6 días)</a></li>
-        <li><a href="carretera-austral.html">Carretera Austral (7 días)</a></li>
+        <li><a href="carretera-austral.html">Carretera Austral (8 días)</a></li>
       </ul>
     </div>
     <div>
@@ -558,16 +821,158 @@ img { background: #d8d0c3; }
     <a href="index.html">Volver al inicio</a>
   </div>
 </footer>
-
-<a href="https://wa.me/5492974432855" class="wa" target="_blank" rel="noopener">
-  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
-
 <script>
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
+<script id="zoyen-lang-script">
+(function(){
+  var navTranslations = {
+    es: { nav_home:'Home', nav_excursiones:'Excursiones', nav_tours:'Tours de Autor', nav_bienestar:'Turismo de Bienestar', nav_ubicacion:'Ubicación y Contacto', nav_nosotros:'Quiénes somos', nav_reservar:'Reservar' },
+    en: { nav_home:'Home', nav_excursiones:'Excursions', nav_tours:'Author Tours', nav_bienestar:'Wellness Tourism', nav_ubicacion:'Location & Contact', nav_nosotros:'About Us', nav_reservar:'Book Now' },
+    pt: { nav_home:'Início', nav_excursiones:'Excursões', nav_tours:'Tours de Autor', nav_bienestar:'Turismo de Bem-Estar', nav_ubicacion:'Localização e Contato', nav_nosotros:'Quem somos', nav_reservar:'Reservar' },
+    ko: { nav_home:'홈', nav_excursiones:'투어', nav_tours:'오서 투어', nav_bienestar:'웰니스 관광', nav_ubicacion:'위치 및 연락처', nav_nosotros:'우리에 대해', nav_reservar:'예약하기' }
+  };
+  var currentLang = localStorage.getItem('zoyen_lang') || 'es';
+  var langSwitcher = document.getElementById('langSwitcher');
+  var langCurrent = langSwitcher ? langSwitcher.querySelector('.lang-current') : null;
+  function closeLangMenu() {
+    if (!langSwitcher || !langCurrent) return;
+    langSwitcher.classList.remove('open');
+    langCurrent.setAttribute('aria-expanded', 'false');
+  }
+  function applyLang(lang) {
+    var t = navTranslations[lang] || navTranslations.es;
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) el.innerHTML = t[key];
+    });
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang-btn').forEach(function(btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+    var activeLangBtn = document.querySelector('.lang-btn[data-lang="' + lang + '"]');
+    var currentLabel = document.getElementById('langCurrentLabel');
+    if (activeLangBtn && currentLabel) currentLabel.textContent = activeLangBtn.getAttribute('data-label') || activeLangBtn.textContent.trim();
+    localStorage.setItem('zoyen_lang', lang);
+    currentLang = lang;
+  }
+  if (langCurrent) {
+    langCurrent.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var isOpen = langSwitcher.classList.toggle('open');
+      langCurrent.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
+  document.querySelectorAll('.lang-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      applyLang(this.getAttribute('data-lang'));
+      closeLangMenu();
+    });
+  });
+  document.addEventListener('click', function(e) { if (langSwitcher && !langSwitcher.contains(e.target)) closeLangMenu(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLangMenu(); });
+  applyLang(currentLang);
+})();
+</script>
+
+<div class="zoyi-widget" id="zoyiWidget">
+  <button class="zoyi-toggle" type="button" id="zoyiToggle" aria-label="Abrir asistente virtual Zoyi" aria-expanded="false">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.2 5.2L19 10.4l-4.8 2.1L12 18l-2.2-5.5L5 10.4l4.8-2.2L12 3z"/><path d="M4 18h4M16 18h4"/></svg>
+    <strong>Zoyi</strong>
+  </button>
+  <section class="zoyi-panel" aria-label="Asistente virtual Zoyi">
+    <div class="zoyi-head">
+      <div class="zoyi-title"><strong>Zoyi</strong><span>Asistente de Zoyen Turismo</span></div>
+      <button class="zoyi-close" type="button" id="zoyiClose" aria-label="Cerrar asistente">x</button>
+    </div>
+    <div class="zoyi-messages" id="zoyiMessages"></div>
+    <div class="zoyi-chip-row" id="zoyiChips">
+      <button class="zoyi-chip" type="button">Excursiones</button>
+      <button class="zoyi-chip" type="button">Tours de autor</button>
+      <button class="zoyi-chip" type="button">Precios</button>
+      <button class="zoyi-chip" type="button">Reservas</button>
+      <button class="zoyi-chip" type="button">Contacto</button>
+    </div>
+    <form class="zoyi-form" id="zoyiForm">
+      <input class="zoyi-input" id="zoyiInput" type="text" autocomplete="off" placeholder="Escribi tu consulta..." aria-label="Consulta para Zoyi">
+      <button class="zoyi-send" type="submit" aria-label="Enviar consulta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </form>
+  </section>
+</div>
+<script id="zoyi-assistant-script">
+(function(){
+  var widget = document.getElementById('zoyiWidget');
+  if (!widget || widget.dataset.ready) return;
+  widget.dataset.ready = 'true';
+  var toggle = document.getElementById('zoyiToggle');
+  var closeBtn = document.getElementById('zoyiClose');
+  var form = document.getElementById('zoyiForm');
+  var input = document.getElementById('zoyiInput');
+  var messages = document.getElementById('zoyiMessages');
+  var chips = document.getElementById('zoyiChips');
+  var contactText = 'WhatsApp +54 9 297 443-2855 y email zoyenperitomoreno@gmail.com.';
+  var db = [
+    {keys:['cueva','manos','pinturas','arqueologia'], answer:'La excursion Cueva de las Manos recorre uno de los sitios arqueologicos mas importantes de la Patagonia, con pinturas rupestres y paisaje del Canon del Rio Pinturas.'},
+    {keys:['capillas','marmol','catedrales','general carrera'], answer:'Capillas y Catedrales de Marmol navega formaciones naturales sobre el Lago General Carrera. Es una salida ideal para combinar paisaje, fotografia y navegacion.'},
+    {keys:['lago posadas','posadas','ruta 41','escenica'], answer:'Lago Posadas y Ruta Escenica 41 combina caminos panoramicos, lagos patagonicos y miradores. Es una de las experiencias fuertes cerca de Perito Moreno.'},
+    {keys:['monte zeballos','zeballos'], answer:'Ruta 41 Monte Zeballos propone una travesia escenica por altura, estepa, bosques y vistas cordilleranas.'},
+    {keys:['charcamata','alero'], answer:'Alero Charcamata es una experiencia vinculada al arte rupestre y al patrimonio natural de la zona.'},
+    {keys:['parque patagonia','canadon pinturas','portal'], answer:'Parque Nacional Patagonia y Portal Canon Pinturas conectan senderos, fauna, geologia y vistas amplias del noroeste de Santa Cruz.'},
+    {keys:['patagonia inedita','inedita'], answer:'Patagonia Inedita es un tour de autor de 6 dias y 5 noches. Integra Perito Moreno, Cueva de las Manos, Ruta 41, Carretera Austral, Capillas de Marmol y Los Antiguos. El PDF del itinerario esta en assets/pdfs/patagonia-inedita-itinerario.pdf.'},
+    {keys:['carretera austral','austral'], answer:'Carretera Austral es un tour de autor de 8 dias y 7 noches desde y hasta Perito Moreno. Incluye Chile Chico, Cochrane, Caleta Tortel, Villa O'Higgins, Puerto Rio Tranquilo, Capillas de Marmol, Coyhaique y regreso por Paso Huemules. El PDF esta en assets/pdfs/carretera-austral-itinerario.pdf.'},
+    {keys:['precio','precios','tarifa','tarifas','valor','valores','ar'], answer:'Los precios del sitio se mantienen en AR, pesos argentinos. Para confirmar disponibilidad, cupos y valores actualizados, conviene escribir por WhatsApp: ' + contactText},
+    {keys:['reservar','reserva','disponibilidad','cupos','contratar'], answer:'Para reservar podes usar el boton Reservar del menu o escribir directo por WhatsApp. ' + contactText},
+    {keys:['contacto','whatsapp','telefono','mail','email','ubicacion','direccion'], answer:'Podes contactarte con Zoyen Turismo por ' + contactText + ' Estamos en Perito Moreno, Santa Cruz, Patagonia Argentina.'},
+    {keys:['quienes','agencia','legajo','zoyen'], answer:'Zoyen Turismo es una agencia local de Perito Moreno, Santa Cruz, con legajo 15.625. Disena excursiones y tours de autor en Patagonia.'},
+    {keys:['bienestar','wellness','yoga','masajes'], answer:'La seccion de Turismo de Bienestar reune propuestas para complementar el viaje con pausa, naturaleza y experiencias de cuidado.'},
+    {keys:['pdf','descargar','itinerario','itinerarios'], answer:'Los tours de autor tienen boton para descargar el itinerario en PDF: Patagonia Inedita y Carretera Austral.'}
+  ];
+  function normalize(text){ return (text || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
+  function addMessage(text, who){
+    var div = document.createElement('div');
+    div.className = 'zoyi-msg ' + who;
+    div.textContent = text;
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+  }
+  function answer(raw){
+    var q = normalize(raw);
+    if (/\b(precio|precios|tarifa|tarifas|valor|valores|ar)\b/.test(q)) return db[8].answer;
+    if (/\b(reservar|reserva|disponibilidad|cupos|contratar)\b/.test(q)) return db[9].answer;
+    if (/\b(contacto|whatsapp|telefono|mail|email|ubicacion|direccion)\b/.test(q)) return db[10].answer;
+    var best = null;
+    var bestScore = 0;
+    db.forEach(function(item){
+      var score = item.keys.reduce(function(total, key){ return total + (q.indexOf(normalize(key)) !== -1 ? 1 : 0); }, 0);
+      if (score > bestScore) { best = item; bestScore = score; }
+    });
+    if (best) return best.answer;
+    if (q.length < 3) return 'Decime que queres saber: excursiones, tours, precios, reservas, contacto o itinerarios.';
+    return 'Puedo ayudarte con excursiones, tours de autor, itinerarios PDF, reservas, precios en AR y contacto. Para una respuesta personalizada, escribinos por WhatsApp: ' + contactText;
+  }
+  function submit(text){
+    var value = (text || input.value || '').trim();
+    if (!value) return;
+    addMessage(value, 'user');
+    input.value = '';
+    window.setTimeout(function(){ addMessage(answer(value), 'bot'); }, 220);
+  }
+  toggle.addEventListener('click', function(){
+    widget.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', widget.classList.contains('open') ? 'true' : 'false');
+    if (widget.classList.contains('open')) input.focus();
+  });
+  closeBtn.addEventListener('click', function(){ widget.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); });
+  form.addEventListener('submit', function(e){ e.preventDefault(); submit(); });
+  chips.addEventListener('click', function(e){ if (e.target.matches('button')) submit(e.target.textContent); });
+  addMessage('Hola, soy Zoyi. Puedo ayudarte con excursiones, tours, itinerarios, precios en AR, reservas y contacto.', 'bot');
+})();
+</script>
 </body>
 </html>
+

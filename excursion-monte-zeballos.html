@@ -31,10 +31,10 @@ body {
 }
 
 /* NAV */
-nav {
+body > nav:not(.breadcrumb) {
   position: fixed; top: 0; left: 0; right: 0; z-index: 900;
   height: 72px;
-  display: grid; grid-template-columns: auto 1fr auto;
+  display: grid; grid-template-columns: auto auto 1fr auto;
   align-items: center; padding: 0 2vw; gap: 1rem;
   background: rgba(10,10,10,0.92);
   backdrop-filter: blur(16px);
@@ -62,7 +62,7 @@ nav {
 .nav-links a:hover::after { transform:scaleX(1); }
 .nav-cta-btn { background:var(--ember); color:var(--cream); padding:.5rem 1.3rem; border-radius:2px; font-family:'Sora',sans-serif; font-size:.78rem; font-weight:600; letter-spacing:.15em; text-transform:uppercase; text-decoration:none; white-space:nowrap; flex-shrink:0; transition:background .2s; border:none; cursor:pointer; }
 .nav-cta-btn:hover { background:var(--ember-dim); }
-@media(max-width:960px){ .nav-links { display:none; } nav { grid-template-columns: auto 1fr; } }
+@media(max-width:960px){ .nav-links { display:none; } body > nav:not(.breadcrumb) { grid-template-columns: auto auto 1fr; } }
 
 /* HERO EXCURSION */
 .exc-hero {
@@ -272,6 +272,230 @@ footer {
   transition: transform .2s;
 }
 .wa:hover { transform: scale(1.1); }
+
+/* LANGUAGE SWITCHER */
+.lang-switcher { position: relative; justify-self: start; z-index: 920; }
+.lang-current {
+  min-width: 116px; height: 34px;
+  display: inline-flex; align-items: center; justify-content: space-between; gap: .55rem;
+  padding: 0 .7rem;
+  border: 1px solid rgba(212,119,42,.34); border-radius: 2px;
+  background: rgba(245,240,232,.06); color: rgba(245,240,232,.78);
+  font-family: 'Sora', sans-serif; font-size: .68rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase; cursor: pointer;
+  transition: border-color .2s, background .2s, color .2s;
+}
+.lang-current:hover,
+.lang-switcher.open .lang-current { color: var(--cream); border-color: rgba(212,119,42,.65); background: rgba(212,119,42,.12); }
+.lang-current::after {
+  content: ''; width: 6px; height: 6px;
+  border-right: 1px solid currentColor; border-bottom: 1px solid currentColor;
+  transform: translateY(-2px) rotate(45deg); transition: transform .2s;
+}
+.lang-switcher.open .lang-current::after { transform: translateY(1px) rotate(225deg); }
+.lang-menu {
+  position: absolute; top: calc(100% + 8px); left: 0; min-width: 168px;
+  padding: 6px; list-style: none;
+  background: rgba(10,10,10,.96);
+  border: 1px solid rgba(212,119,42,.28); border-radius: 2px;
+  box-shadow: 0 14px 36px rgba(0,0,0,.35);
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+  transition: opacity .18s, transform .18s, visibility .18s;
+}
+.lang-switcher.open .lang-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+.lang-btn {
+  width: 100%; display: flex; align-items: center; justify-content: space-between; gap: .75rem;
+  padding: .55rem .65rem; border: 0; border-radius: 1px;
+  background: transparent; color: rgba(245,240,232,.68);
+  font-family: 'Sora', sans-serif; font-size: .7rem; font-weight: 600;
+  letter-spacing: .04em; cursor: pointer; text-align: left;
+  transition: background .2s, color .2s;
+}
+.lang-btn:hover { color: var(--cream); background: rgba(212,119,42,.16); }
+.lang-btn.active { background: var(--ember); color: var(--cream); }
+.lang-code { color: rgba(245,240,232,.45); font-size: .58rem; font-weight: 800; letter-spacing: .1em; }
+.lang-btn.active .lang-code { color: rgba(255,255,255,.82); }
+@media (min-width: 961px) and (max-width: 1360px) {
+  nav { column-gap: .75rem; }
+  .nav-emblem { width: 46px; height: 46px; }
+  .nav-logo { gap: 8px; }
+  .nav-logo .z, .nav-logo .t { font-size: 1.08rem; letter-spacing: .09em; }
+  .nav-logo sub { display: none; }
+  .nav-links { gap: .72rem; }
+  .nav-links a { font-size: .64rem; letter-spacing: .035em; }
+  .lang-current { min-width: 98px; height: 31px; padding: 0 .55rem; font-size: .58rem; }
+  .lang-menu { min-width: 150px; }
+  .lang-btn { padding: .5rem .58rem; font-size: .64rem; }
+  .nav-cta-btn { padding: .45rem .85rem; font-size: .66rem; letter-spacing: .1em; }
+}
+@media (max-width: 640px) {
+  .nav-cta-btn { display: none; }
+  .lang-switcher { margin-left: auto; justify-self: end; }
+  .lang-current { min-width: 104px; height: 32px; padding: 0 .55rem; font-size: .58rem; }
+  .lang-menu { left: auto; right: 0; min-width: 150px; }
+  .lang-btn { padding: .52rem .58rem; font-size: .64rem; }
+  .nav-emblem { width: 40px; height: 40px; }
+  .nav-logo { gap: 6px; }
+  .nav-logo .z, .nav-logo .t { font-size: .98rem; letter-spacing: .08em; }
+  .nav-logo sub { display: none; }
+}
+
+/* NAV CONTACT + ZOYI ASSISTANT */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  justify-self: end;
+  gap: .55rem;
+  min-width: 0;
+}
+.nav-contact-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .45rem;
+  min-height: 36px;
+  padding: .48rem .95rem;
+  border: 1px solid rgba(37,211,102,.58);
+  border-radius: 2px;
+  background: rgba(37,211,102,.10);
+  color: var(--cream);
+  font-family: 'Sora', sans-serif;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .11em;
+  line-height: 1;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background .2s, border-color .2s, color .2s, transform .2s;
+}
+.nav-contact-btn svg { width: 16px; height: 16px; fill: currentColor; flex: 0 0 auto; }
+.nav-contact-btn:hover { background: #25d366; border-color: #25d366; color: #122118; transform: translateY(-1px); }
+.zoyi-widget {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 1600;
+  font-family: 'Sora', sans-serif;
+}
+.zoyi-toggle {
+  min-width: 112px;
+  height: 54px;
+  border: 1px solid rgba(212,119,42,.58);
+  border-radius: 999px;
+  background: rgba(26,20,16,.92);
+  color: var(--cream);
+  box-shadow: 0 18px 42px rgba(0,0,0,.32);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .55rem;
+  cursor: pointer;
+  transition: transform .2s, background .2s, border-color .2s;
+}
+.zoyi-toggle:hover { transform: translateY(-2px); border-color: var(--ember); background: rgba(48,34,25,.96); }
+.zoyi-toggle svg { width: 19px; height: 19px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+.zoyi-toggle strong { font-size: .82rem; letter-spacing: .14em; text-transform: uppercase; }
+.zoyi-panel {
+  position: absolute;
+  right: 0;
+  bottom: 68px;
+  width: min(360px, calc(100vw - 28px));
+  max-height: min(620px, calc(100vh - 110px));
+  display: none;
+  overflow: hidden;
+  border: 1px solid rgba(212,119,42,.32);
+  border-radius: 8px;
+  background: rgba(245,240,232,.98);
+  color: #251d17;
+  box-shadow: 0 24px 60px rgba(0,0,0,.34);
+}
+.zoyi-widget.open .zoyi-panel { display: flex; flex-direction: column; }
+.zoyi-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  background: #1f1813;
+  color: var(--cream);
+}
+.zoyi-title { display: flex; flex-direction: column; gap: .18rem; }
+.zoyi-title strong { font-size: .88rem; letter-spacing: .14em; text-transform: uppercase; }
+.zoyi-title span { font-family: 'Inter', sans-serif; font-size: .74rem; color: rgba(245,240,232,.68); }
+.zoyi-close {
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(245,240,232,.18);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--cream);
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+.zoyi-messages {
+  padding: .95rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: .7rem;
+}
+.zoyi-msg {
+  max-width: 92%;
+  padding: .72rem .82rem;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: .88rem;
+  line-height: 1.45;
+}
+.zoyi-msg.bot { align-self: flex-start; background: #fff; border: 1px solid rgba(37,29,23,.10); }
+.zoyi-msg.user { align-self: flex-end; background: #d4772a; color: #fffaf1; }
+.zoyi-chip-row { display: flex; flex-wrap: wrap; gap: .42rem; padding: 0 .95rem .82rem; }
+.zoyi-chip {
+  border: 1px solid rgba(212,119,42,.28);
+  border-radius: 999px;
+  background: #fff;
+  color: #3a2a20;
+  padding: .42rem .62rem;
+  font-family: 'Inter', sans-serif;
+  font-size: .76rem;
+  cursor: pointer;
+}
+.zoyi-form { display: flex; gap: .5rem; padding: .82rem; border-top: 1px solid rgba(37,29,23,.12); background: #fbf7f0; }
+.zoyi-input {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid rgba(37,29,23,.18);
+  border-radius: 5px;
+  padding: .72rem .78rem;
+  font-family: 'Inter', sans-serif;
+  font-size: .88rem;
+  color: #251d17;
+  background: #fff;
+}
+.zoyi-send {
+  width: 42px;
+  border: 0;
+  border-radius: 5px;
+  background: var(--ember);
+  color: var(--cream);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.zoyi-send svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; }
+@media (min-width: 961px) and (max-width: 1360px) {
+  .nav-actions { gap: .4rem; }
+  .nav-contact-btn { padding: .45rem .65rem; font-size: .58rem; letter-spacing: .07em; }
+}
+@media (max-width: 640px) {
+  .nav-actions { display: none; }
+  .zoyi-widget { right: 14px; bottom: 14px; }
+  .zoyi-toggle { min-width: 96px; height: 50px; }
+  .zoyi-panel { bottom: 62px; }
+}
 </style>
 </head>
 <body>
@@ -315,15 +539,26 @@ footer {
       <sub>Patagonia · Legajo 15.625</sub>
     </div>
   </a>
+  <div class="lang-switcher" id="langSwitcher" aria-label="Selector de idioma">
+    <button class="lang-current" type="button" aria-haspopup="true" aria-expanded="false">
+      <span id="langCurrentLabel">Español</span>
+    </button>
+    <ul class="lang-menu" aria-label="Idiomas">
+      <li><button class="lang-btn active" type="button" data-lang="es" data-label="Español">Español <span class="lang-code">ES</span></button></li>
+      <li><button class="lang-btn" type="button" data-lang="en" data-label="English">English <span class="lang-code">EN</span></button></li>
+      <li><button class="lang-btn" type="button" data-lang="pt" data-label="Português">Português <span class="lang-code">PT</span></button></li>
+      <li><button class="lang-btn" type="button" data-lang="ko" data-label="한국어">한국어 <span class="lang-code">KO</span></button></li>
+    </ul>
+  </div>
   <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="index.html#excursiones">Excursiones</a></li>
-    <li><a href="index.html#tours">Tours de Autor</a></li>
-    <li><a href="index.html#bienestar">Turismo de Bienestar</a></li>
-    <li><a href="index.html#ubicacion">Ubicación y Contacto</a></li>
-    <li><a href="nosotros.html">Quiénes somos</a></li>
+    <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+    <li><a href="index.html#excursiones" data-i18n="nav_excursiones">Excursiones</a></li>
+    <li><a href="index.html#tours" data-i18n="nav_tours">Tours de Autor</a></li>
+    <li><a href="index.html#bienestar" data-i18n="nav_bienestar">Turismo de Bienestar</a></li>
+    <li><a href="index.html#ubicacion" data-i18n="nav_ubicacion">Ubicación y Contacto</a></li>
+    <li><a href="nosotros.html" data-i18n="nav_nosotros">Quiénes somos</a></li>
   </ul>
-  <a href="https://wa.me/5492974432855" class="nav-cta-btn" target="_blank" rel="noopener">Reservar</a>
+  <div class="nav-actions"><a href="https://wa.me/5492974432855" class="nav-cta-btn" target="_blank" rel="noopener" data-i18n="nav_reservar">Reservar</a><a href="https://wa.me/5492974432855" class="nav-contact-btn" target="_blank" rel="noopener" aria-label="Contactarse por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span>Contactarse</span></a></div>
 </nav>
 
 <div class="exc-hero">
@@ -499,7 +734,7 @@ footer {
       <div class="footer-contact">
         <p>✉ zoyenperitomoreno@gmail.com</p>
         <p>☎ +54 9 297 443-2855</p>
-        <p>📍 Perito Moreno, Santa Cruz</p>
+        <p> Perito Moreno, Santa Cruz</p>
       </div>
     </div>
   </div>
@@ -507,10 +742,151 @@ footer {
     <span>© Zoyen Turismo 2025 · Todos los derechos reservados</span>
   </div>
 </footer>
+<script id="zoyen-lang-script">
+(function(){
+  var navTranslations = {
+    es: { nav_home:'Home', nav_excursiones:'Excursiones', nav_tours:'Tours de Autor', nav_bienestar:'Turismo de Bienestar', nav_ubicacion:'Ubicación y Contacto', nav_nosotros:'Quiénes somos', nav_reservar:'Reservar' },
+    en: { nav_home:'Home', nav_excursiones:'Excursions', nav_tours:'Author Tours', nav_bienestar:'Wellness Tourism', nav_ubicacion:'Location & Contact', nav_nosotros:'About Us', nav_reservar:'Book Now' },
+    pt: { nav_home:'Início', nav_excursiones:'Excursões', nav_tours:'Tours de Autor', nav_bienestar:'Turismo de Bem-Estar', nav_ubicacion:'Localização e Contato', nav_nosotros:'Quem somos', nav_reservar:'Reservar' },
+    ko: { nav_home:'홈', nav_excursiones:'투어', nav_tours:'오서 투어', nav_bienestar:'웰니스 관광', nav_ubicacion:'위치 및 연락처', nav_nosotros:'우리에 대해', nav_reservar:'예약하기' }
+  };
+  var currentLang = localStorage.getItem('zoyen_lang') || 'es';
+  var langSwitcher = document.getElementById('langSwitcher');
+  var langCurrent = langSwitcher ? langSwitcher.querySelector('.lang-current') : null;
+  function closeLangMenu() {
+    if (!langSwitcher || !langCurrent) return;
+    langSwitcher.classList.remove('open');
+    langCurrent.setAttribute('aria-expanded', 'false');
+  }
+  function applyLang(lang) {
+    var t = navTranslations[lang] || navTranslations.es;
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) el.innerHTML = t[key];
+    });
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang-btn').forEach(function(btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+    var activeLangBtn = document.querySelector('.lang-btn[data-lang="' + lang + '"]');
+    var currentLabel = document.getElementById('langCurrentLabel');
+    if (activeLangBtn && currentLabel) currentLabel.textContent = activeLangBtn.getAttribute('data-label') || activeLangBtn.textContent.trim();
+    localStorage.setItem('zoyen_lang', lang);
+    currentLang = lang;
+  }
+  if (langCurrent) {
+    langCurrent.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var isOpen = langSwitcher.classList.toggle('open');
+      langCurrent.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  }
+  document.querySelectorAll('.lang-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      applyLang(this.getAttribute('data-lang'));
+      closeLangMenu();
+    });
+  });
+  document.addEventListener('click', function(e) { if (langSwitcher && !langSwitcher.contains(e.target)) closeLangMenu(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLangMenu(); });
+  applyLang(currentLang);
+})();
+</script>
 
-<a href="https://wa.me/5492974432855" class="wa" title="WhatsApp" target="_blank" rel="noopener">
-  <svg viewBox="0 0 24 24" fill="white" width="28" height="28"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
-
+<div class="zoyi-widget" id="zoyiWidget">
+  <button class="zoyi-toggle" type="button" id="zoyiToggle" aria-label="Abrir asistente virtual Zoyi" aria-expanded="false">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.2 5.2L19 10.4l-4.8 2.1L12 18l-2.2-5.5L5 10.4l4.8-2.2L12 3z"/><path d="M4 18h4M16 18h4"/></svg>
+    <strong>Zoyi</strong>
+  </button>
+  <section class="zoyi-panel" aria-label="Asistente virtual Zoyi">
+    <div class="zoyi-head">
+      <div class="zoyi-title"><strong>Zoyi</strong><span>Asistente de Zoyen Turismo</span></div>
+      <button class="zoyi-close" type="button" id="zoyiClose" aria-label="Cerrar asistente">x</button>
+    </div>
+    <div class="zoyi-messages" id="zoyiMessages"></div>
+    <div class="zoyi-chip-row" id="zoyiChips">
+      <button class="zoyi-chip" type="button">Excursiones</button>
+      <button class="zoyi-chip" type="button">Tours de autor</button>
+      <button class="zoyi-chip" type="button">Precios</button>
+      <button class="zoyi-chip" type="button">Reservas</button>
+      <button class="zoyi-chip" type="button">Contacto</button>
+    </div>
+    <form class="zoyi-form" id="zoyiForm">
+      <input class="zoyi-input" id="zoyiInput" type="text" autocomplete="off" placeholder="Escribi tu consulta..." aria-label="Consulta para Zoyi">
+      <button class="zoyi-send" type="submit" aria-label="Enviar consulta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </form>
+  </section>
+</div>
+<script id="zoyi-assistant-script">
+(function(){
+  var widget = document.getElementById('zoyiWidget');
+  if (!widget || widget.dataset.ready) return;
+  widget.dataset.ready = 'true';
+  var toggle = document.getElementById('zoyiToggle');
+  var closeBtn = document.getElementById('zoyiClose');
+  var form = document.getElementById('zoyiForm');
+  var input = document.getElementById('zoyiInput');
+  var messages = document.getElementById('zoyiMessages');
+  var chips = document.getElementById('zoyiChips');
+  var contactText = 'WhatsApp +54 9 297 443-2855 y email zoyenperitomoreno@gmail.com.';
+  var db = [
+    {keys:['cueva','manos','pinturas','arqueologia'], answer:'La excursion Cueva de las Manos recorre uno de los sitios arqueologicos mas importantes de la Patagonia, con pinturas rupestres y paisaje del Canon del Rio Pinturas.'},
+    {keys:['capillas','marmol','catedrales','general carrera'], answer:'Capillas y Catedrales de Marmol navega formaciones naturales sobre el Lago General Carrera. Es una salida ideal para combinar paisaje, fotografia y navegacion.'},
+    {keys:['lago posadas','posadas','ruta 41','escenica'], answer:'Lago Posadas y Ruta Escenica 41 combina caminos panoramicos, lagos patagonicos y miradores. Es una de las experiencias fuertes cerca de Perito Moreno.'},
+    {keys:['monte zeballos','zeballos'], answer:'Ruta 41 Monte Zeballos propone una travesia escenica por altura, estepa, bosques y vistas cordilleranas.'},
+    {keys:['charcamata','alero'], answer:'Alero Charcamata es una experiencia vinculada al arte rupestre y al patrimonio natural de la zona.'},
+    {keys:['parque patagonia','canadon pinturas','portal'], answer:'Parque Nacional Patagonia y Portal Canon Pinturas conectan senderos, fauna, geologia y vistas amplias del noroeste de Santa Cruz.'},
+    {keys:['patagonia inedita','inedita'], answer:'Patagonia Inedita es un tour de autor de 6 dias y 5 noches. Integra Perito Moreno, Cueva de las Manos, Ruta 41, Carretera Austral, Capillas de Marmol y Los Antiguos. El PDF del itinerario esta en assets/pdfs/patagonia-inedita-itinerario.pdf.'},
+    {keys:['carretera austral','austral'], answer:'Carretera Austral es un tour de autor de 8 dias y 7 noches desde y hasta Perito Moreno. Incluye Chile Chico, Cochrane, Caleta Tortel, Villa O'Higgins, Puerto Rio Tranquilo, Capillas de Marmol, Coyhaique y regreso por Paso Huemules. El PDF esta en assets/pdfs/carretera-austral-itinerario.pdf.'},
+    {keys:['precio','precios','tarifa','tarifas','valor','valores','ar'], answer:'Los precios del sitio se mantienen en AR, pesos argentinos. Para confirmar disponibilidad, cupos y valores actualizados, conviene escribir por WhatsApp: ' + contactText},
+    {keys:['reservar','reserva','disponibilidad','cupos','contratar'], answer:'Para reservar podes usar el boton Reservar del menu o escribir directo por WhatsApp. ' + contactText},
+    {keys:['contacto','whatsapp','telefono','mail','email','ubicacion','direccion'], answer:'Podes contactarte con Zoyen Turismo por ' + contactText + ' Estamos en Perito Moreno, Santa Cruz, Patagonia Argentina.'},
+    {keys:['quienes','agencia','legajo','zoyen'], answer:'Zoyen Turismo es una agencia local de Perito Moreno, Santa Cruz, con legajo 15.625. Disena excursiones y tours de autor en Patagonia.'},
+    {keys:['bienestar','wellness','yoga','masajes'], answer:'La seccion de Turismo de Bienestar reune propuestas para complementar el viaje con pausa, naturaleza y experiencias de cuidado.'},
+    {keys:['pdf','descargar','itinerario','itinerarios'], answer:'Los tours de autor tienen boton para descargar el itinerario en PDF: Patagonia Inedita y Carretera Austral.'}
+  ];
+  function normalize(text){ return (text || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
+  function addMessage(text, who){
+    var div = document.createElement('div');
+    div.className = 'zoyi-msg ' + who;
+    div.textContent = text;
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+  }
+  function answer(raw){
+    var q = normalize(raw);
+    if (/\b(precio|precios|tarifa|tarifas|valor|valores|ar)\b/.test(q)) return db[8].answer;
+    if (/\b(reservar|reserva|disponibilidad|cupos|contratar)\b/.test(q)) return db[9].answer;
+    if (/\b(contacto|whatsapp|telefono|mail|email|ubicacion|direccion)\b/.test(q)) return db[10].answer;
+    var best = null;
+    var bestScore = 0;
+    db.forEach(function(item){
+      var score = item.keys.reduce(function(total, key){ return total + (q.indexOf(normalize(key)) !== -1 ? 1 : 0); }, 0);
+      if (score > bestScore) { best = item; bestScore = score; }
+    });
+    if (best) return best.answer;
+    if (q.length < 3) return 'Decime que queres saber: excursiones, tours, precios, reservas, contacto o itinerarios.';
+    return 'Puedo ayudarte con excursiones, tours de autor, itinerarios PDF, reservas, precios en AR y contacto. Para una respuesta personalizada, escribinos por WhatsApp: ' + contactText;
+  }
+  function submit(text){
+    var value = (text || input.value || '').trim();
+    if (!value) return;
+    addMessage(value, 'user');
+    input.value = '';
+    window.setTimeout(function(){ addMessage(answer(value), 'bot'); }, 220);
+  }
+  toggle.addEventListener('click', function(){
+    widget.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', widget.classList.contains('open') ? 'true' : 'false');
+    if (widget.classList.contains('open')) input.focus();
+  });
+  closeBtn.addEventListener('click', function(){ widget.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); });
+  form.addEventListener('submit', function(e){ e.preventDefault(); submit(); });
+  chips.addEventListener('click', function(e){ if (e.target.matches('button')) submit(e.target.textContent); });
+  addMessage('Hola, soy Zoyi. Puedo ayudarte con excursiones, tours, itinerarios, precios en AR, reservas y contacto.', 'bot');
+})();
+</script>
 </body>
 </html>
