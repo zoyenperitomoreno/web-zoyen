@@ -235,7 +235,7 @@ nav {
   width: 400px; height: auto;
   display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
   flex-shrink: 0;
-  margin-top: 0;
+  margin-top: 60px;
   opacity: 0; transition: opacity .8s .4s;
 }
 .slide.active .slide-emblem { opacity: 1; }
@@ -5376,7 +5376,7 @@ applyLang(currentLang);
     </div>
     <div class="zoyi-bubble-body">
       <p class="zoyi-bubble-name">Zoyi</p>
-      <p class="zoyi-bubble-msg" id="zoyiBubbleMsg">¡Hola! Soy Zoyi, tu asistente de Zoyen Turismo. ¿Te ayudo a encontrar tu excursión ideal?</p>
+      <p class="zoyi-bubble-msg" id="zoyiBubbleMsg">¡Hola! Soy Zoyi, asistente de Zoyen Turismo. ¿Tenés una consulta?</p>
     </div>
   </div>
 
@@ -5585,10 +5585,10 @@ applyLang(currentLang);
   var bubbleTimer = null;
 
   var bubbleTexts = {
-    es: '¡Hola! Soy Zoyi, tu asistente de Zoyen Turismo. ¿Te ayudo a encontrar tu excursión ideal?',
-    en: 'Hi! I\'m Zoyi, your Zoyen Turismo assistant. Can I help you find your perfect excursion?',
-    pt: 'Olá! Sou Zoyi, seu assistente da Zoyen Turismo. Posso te ajudar a encontrar a excursão ideal?',
-    ko: '안녕하세요! 저는 Zoyi입니다. 완벽한 투어를 찾도록 도와드릴까요?'
+    es: '¡Hola! Soy Zoyi, asistente de Zoyen Turismo. ¿Tenés una consulta?',
+    en: 'Hi! I\'m Zoyi, Zoyen Turismo assistant. Got a question?',
+    pt: 'Olá! Sou Zoyi, assistente da Zoyen Turismo. Tem alguma dúvida?',
+    ko: '안녕하세요! 저는 Zoyen Turismo의 Zoyi입니다. 궁금한 점이 있으신가요?'
   };
 
   function showBubble() {
