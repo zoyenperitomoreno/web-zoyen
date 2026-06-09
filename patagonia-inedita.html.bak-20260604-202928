@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Patagonia Inédita ”“ Tour 6 días · Zoyen Turismo</title>
+<title>Patagonia Inédita – Tour 6 días · Zoyen Turismo</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -56,7 +56,7 @@ nav {
 
 /* HERO */
 .page-hero { position: relative; height: 65vh; min-height: 480px; display: flex; align-items: flex-end; padding-bottom: 4rem; overflow: hidden; }
-.page-hero-bg { position: absolute; inset: 0; background-image: url('assets/full_inedita.jpg'); background-size: cover; background-position: center; transform: scale(1.04); animation: heroZoom 12s ease-out forwards; }
+.page-hero-bg { position: absolute; inset: 0; background-image: url('https://www.zoyenturismo.com.ar/wp-content/uploads/2022/10/full_inedita.jpg'); background-size: cover; background-position: center; transform: scale(1.04); animation: heroZoom 12s ease-out forwards; }
 @keyframes heroZoom { to { transform: scale(1); } }
 .page-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(26,20,16,.2) 0%, rgba(26,20,16,.8) 100%); }
 .page-hero-content { position: relative; z-index: 2; padding: 0 4vw; color: var(--cream); animation: fadeUp .9s .3s both; }
@@ -120,7 +120,7 @@ nav {
 .tour-highlights h3 { font-family: 'DM Serif Display', serif; font-size: 1.2rem; font-weight: 600; color: var(--ink); margin-bottom: 1.2rem; padding-bottom: .8rem; border-bottom: 1px solid rgba(58,45,31,.1); }
 .hl-list { list-style: none; display: flex; flex-direction: column; gap: .7rem; }
 .hl-list li { display: flex; align-items: flex-start; gap: .8rem; font-size: .96rem; color: var(--stone); line-height: 1.5; }
-.hl-list li::before { content: 'â†’'; color: var(--ember); font-weight: 700; flex-shrink: 0; margin-top: .1rem; }
+.hl-list li::before { content: '→'; color: var(--ember); font-weight: 700; flex-shrink: 0; margin-top: .1rem; }
 .hl-list li strong { color: var(--ink); font-weight: 600; }
 
 /* INCLUYE / NO INCLUYE */
@@ -216,7 +216,7 @@ footer { background: #0a0a0a; padding: 5rem 3vw 2.5rem; }
 .footer-col-title { font-size: 1rem; font-weight: 600; letter-spacing: .25em; text-transform: uppercase; color: var(--ember); margin-bottom: 1.1rem; }
 .footer-links { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
 .footer-links a { color: rgba(232,220,200,.70); text-decoration: none; font-size: .8rem; font-weight: 300; transition: color .2s; display: flex; align-items: center; gap: 7px; }
-.footer-links a::before { content: '”“'; color: var(--ember); opacity: .5; }
+.footer-links a::before { content: '–'; color: var(--ember); opacity: .5; }
 .footer-links a:hover { color: var(--sand); }
 .footer-contact { font-size: .8rem; color: rgba(232,220,200,.70); line-height: 1.8; font-weight: 300; }
 .footer-contact strong { color: var(--sand); font-weight: 500; }
@@ -228,59 +228,6 @@ footer { background: #0a0a0a; padding: 5rem 3vw 2.5rem; }
 .wa svg { width: 26px; height: 26px; }
 
 @media (max-width:760px) { .nav-links { display: none; } }
-</style>
-<script>
-(function(){
-  document.documentElement.classList.add('js-ready');
-  const fallbackByHint = [
-    ['capillas', 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&q=80'],
-    ['marmol', 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&q=80'],
-    ['cueva', 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&q=80'],
-    ['manos', 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&q=80'],
-    ['ruta', 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1200&q=80'],
-    ['zeballos', 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1200&q=80'],
-    ['posadas', 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&q=80'],
-    ['patagonia', 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1200&q=80'],
-    ['carretera', 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1200&q=80'],
-    ['parque', 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&q=80']
-  ];
-  const genericFallback = 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1200&q=80';
-  function pickFallback(text){
-    const haystack = (text || '').toLowerCase();
-    const found = fallbackByHint.find(([hint]) => haystack.includes(hint));
-    return found ? found[1] : genericFallback;
-  }
-  window.zoyenPickFallback = pickFallback;
-  document.addEventListener('error', function(event){
-    const el = event.target;
-    if (!el || el.tagName !== 'IMG' || el.dataset.fallbackApplied === '1') return;
-    el.dataset.fallbackApplied = '1';
-    el.src = pickFallback((el.getAttribute('alt') || '') + ' ' + (el.getAttribute('src') || ''));
-  }, true);
-  function repairBackgrounds(){
-    const nodes = document.querySelectorAll('.slide-bg, .page-hero-bg, [style*="background-image"]');
-    nodes.forEach(function(el){
-      const bg = getComputedStyle(el).backgroundImage || '';
-      const match = bg.match(/url\(["']?([^"')]+)["']?\)/);
-      if (!match) return;
-      const original = match[1];
-      const probe = new Image();
-      probe.onerror = function(){ el.style.backgroundImage = "url('" + pickFallback(original) + "')"; };
-      probe.src = original;
-    });
-  }
-  function revealSafety(){ document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); }); }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function(){ repairBackgrounds(); setTimeout(revealSafety, 700); });
-  } else {
-    repairBackgrounds(); setTimeout(revealSafety, 700);
-  }
-  setTimeout(revealSafety, 1800);
-})();
-</script>
-<style id="zoyen-recovery-patch">
-html:not(.js-ready) .reveal { opacity: 1 !important; transform: none !important; }
-img { background: #d8d0c3; }
 </style>
 </head>
 <body>
@@ -319,9 +266,9 @@ img { background: #d8d0c3; }
 <line x1="37.01" y1="62.99" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
 <line x1="22.65" y1="50.0" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
 <line x1="37.01" y1="37.01" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
-<circle cx="50" cy="50" r="3.06" fill="#d4772a"/>
+<circle cx="50" cy="50" r="3.06" fill="#ff7a35"/>
 <circle cx="50" cy="50" r="1.84" fill="#1a1410"/>
-<circle cx="50" cy="50" r="0.9" fill="#d4772a"/>
+<circle cx="50" cy="50" r="0.9" fill="#ff7a35"/>
 </svg>
     <div class="nav-logo-text">
       <div class="nav-logo-name">
@@ -392,37 +339,37 @@ img { background: #d8d0c3; }
 
       <div class="inc-grid">
         <div class="inc-card yes">
-          <h4>âœ“ Incluye</h4>
+          <h4>✓ Incluye</h4>
           <ul class="inc-list">
-            <li><span class="ico">ðŸš</span> Traslados en camioneta 4x4 con conductor/guía</li>
-            <li><span class="ico">ðŸ¨</span> 5 noches de alojamiento</li>
-            <li><span class="ico">ðŸ¥˜</span> Desayunos incluidos</li>
-            <li><span class="ico">ðŸŽŸï¸</span> Entradas a todos los parques y sitios</li>
-            <li><span class="ico">â›µ</span> Navegación Capillas de Mármol</li>
-            <li><span class="ico">ðŸ§­</span> Guía local bilingüe</li>
+            <li><span class="ico">🚐</span> Traslados en camioneta 4x4 con conductor/guía</li>
+            <li><span class="ico">🏨</span> 5 noches de alojamiento</li>
+            <li><span class="ico">🥘</span> Desayunos incluidos</li>
+            <li><span class="ico">🎟️</span> Entradas a todos los parques y sitios</li>
+            <li><span class="ico">⛵</span> Navegación Capillas de Mármol</li>
+            <li><span class="ico">🧭</span> Guía local bilingüe</li>
           </ul>
         </div>
         <div class="inc-card no">
           <h4>✗ No incluye</h4>
           <ul class="inc-list">
-            <li><span class="ico">âœˆï¸</span> Vuelo/traslado a Perito Moreno</li>
-            <li><span class="ico">ðŸ½ï¸</span> Almuerzos y cenas (salvo los indicados)</li>
-            <li><span class="ico">ðŸ›‚</span> Trámites migratorios propios</li>
-            <li><span class="ico">ðŸ”–</span> Gastos personales</li>
+            <li><span class="ico">✈️</span> Vuelo/traslado a Perito Moreno</li>
+            <li><span class="ico">🍽️</span> Almuerzos y cenas (salvo los indicados)</li>
+            <li><span class="ico">🛂</span> Trámites migratorios propios</li>
+            <li><span class="ico">🔖</span> Gastos personales</li>
           </ul>
         </div>
       </div>
     </div>
     <div class="tour-highlights reveal reveal-delay">
-      <h3>ðŸ—ºï¸ Highlights del tour</h3>
+      <h3>🗺️ Highlights del tour</h3>
       <ul class="hl-list">
-        <li><strong>Bosque Petrificado Sarmiento</strong> ”” árboles araucarias de 65 millones de años, declarado Monumento Natural Nacional.</li>
-        <li><strong>Cueva de las Manos</strong> ”” Patrimonio de la Humanidad UNESCO. Arte rupestre de más de 9.000 años en el cañadón del Río Pinturas.</li>
-        <li><strong>Lago Posadas</strong> ”” laguna de colores turquesa y celeste intenso, rodeada de mesetas y volcanes. Una de las postales más impactantes de Santa Cruz.</li>
-        <li><strong>Ruta Escénica 41</strong> ”” 160 km de paisaje cambiante: estepa, cordillera y lagunas de altura. Pico Zeballos a 1.500 msnm.</li>
-        <li><strong>Carretera Austral</strong> ”” cruce a Chile por el paso fronterizo con vistas a los Hielos Continentales.</li>
-        <li><strong>Capillas y Catedrales de Mármol</strong> ”” navegación 5 estrellas sobre el Lago General Carrera hacia las formaciones marmóreas. Una de las 10 maravillas naturales de Sudamérica.</li>
-        <li><strong>Regreso por Ruta 40</strong> ”” la mítica ruta patagónica en todo su esplendor.</li>
+        <li><strong>Bosque Petrificado Sarmiento</strong> — árboles araucarias de 65 millones de años, declarado Monumento Natural Nacional.</li>
+        <li><strong>Cueva de las Manos</strong> — Patrimonio de la Humanidad UNESCO. Arte rupestre de más de 9.000 años en el cañadón del Río Pinturas.</li>
+        <li><strong>Lago Posadas</strong> — laguna de colores turquesa y celeste intenso, rodeada de mesetas y volcanes. Una de las postales más impactantes de Santa Cruz.</li>
+        <li><strong>Ruta Escénica 41</strong> — 160 km de paisaje cambiante: estepa, cordillera y lagunas de altura. Pico Zeballos a 1.500 msnm.</li>
+        <li><strong>Carretera Austral</strong> — cruce a Chile por el paso fronterizo con vistas a los Hielos Continentales.</li>
+        <li><strong>Capillas y Catedrales de Mármol</strong> — navegación 5 estrellas sobre el Lago General Carrera hacia las formaciones marmóreas. Una de las 10 maravillas naturales de Sudamérica.</li>
+        <li><strong>Regreso por Ruta 40</strong> — la mítica ruta patagónica en todo su esplendor.</li>
       </ul>
     </div>
   </div>
@@ -441,12 +388,12 @@ img { background: #d8d0c3; }
       <div class="dia-num"><div class="dia-circle">1</div></div>
       <div class="dia-content">
         <div class="dia-label">Día 1 · Llegada</div>
-        <h3 class="dia-title">Perito Moreno â†’ <em>Bosque Petrificado</em></h3>
+        <h3 class="dia-title">Perito Moreno → <em>Bosque Petrificado</em></h3>
         <p class="dia-desc">Recepción en el aeropuerto de Perito Moreno o en el alojamiento. Por la tarde, primera salida al <strong>Bosque Petrificado de Sarmiento</strong>: árboles araucarias de 65 millones de años convertidos en piedra bajo la estepa patagónica. Un paisaje que parece de otro planeta. Cena y alojamiento en Perito Moreno.</p>
         <div class="dia-chips">
-          <span class="dia-chip">ðŸ“ Perito Moreno</span>
-          <span class="dia-chip">ðŸŒ² Bosque Petrificado</span>
-          <span class="dia-chip">ðŸ¨ Alojamiento en Perito Moreno</span>
+          <span class="dia-chip">📍 Perito Moreno</span>
+          <span class="dia-chip">🌲 Bosque Petrificado</span>
+          <span class="dia-chip">🏨 Alojamiento en Perito Moreno</span>
         </div>
       </div>
     </div>
@@ -458,11 +405,11 @@ img { background: #d8d0c3; }
         <div class="dia-label">Día 2 · Patrimonio UNESCO</div>
         <h3 class="dia-title"><em>Cueva de las Manos</em> · Río Pinturas</h3>
         <p class="dia-desc">Jornada completa hacia la <strong>Cueva de las Manos</strong>, en el cañadón del Río Pinturas. Descenso a pie por el cañadón con guía especializado. Contemplamos el arte rupestre más importante del continente americano: más de 2.000 imágenes de manos, guanacos y figuras geométricas realizadas entre 9.000 y 700 años antes de Cristo. Declarado Patrimonio de la Humanidad por la UNESCO en 1999. Almuerzo en el campo. Regreso al atardecer.</p>
-        <img class="dia-img" src="assets/cuevas_zoyen.jpg" alt="Cueva de las Manos">
+        <img class="dia-img" src="http://www.zoyenturismo.com.ar/wp-content/uploads/2022/10/cuevas_zoyen.jpg" alt="Cueva de las Manos">
         <div class="dia-chips">
-          <span class="dia-chip">ðŸŽ¨ Arte rupestre 9.000 años</span>
-          <span class="dia-chip">ðŸ›ï¸ Patrimonio UNESCO</span>
-          <span class="dia-chip">ðŸ¦™ Guanacos en libertad</span>
+          <span class="dia-chip">🎨 Arte rupestre 9.000 años</span>
+          <span class="dia-chip">🏛️ Patrimonio UNESCO</span>
+          <span class="dia-chip">🦙 Guanacos en libertad</span>
         </div>
       </div>
     </div>
@@ -474,12 +421,12 @@ img { background: #d8d0c3; }
         <div class="dia-label">Día 3 · Cordillera</div>
         <h3 class="dia-title"><em>Lago Posadas</em> · Ruta Escénica 41</h3>
         <p class="dia-desc">Salida temprana hacia el oeste por la <strong>Ruta Provincial 41</strong>, una de las rutas escénicas más espectaculares de la Argentina. En 160 km de recorrido ascendemos de los 400 metros de la estepa hasta los 1.500 msnm, con vistas de volcanes, cordillera de los Andes, lagunas de altura y el cerro Zeballos. Llegamos al <strong>Lago Posadas</strong>, con sus aguas turquesa y celeste intenso producto de la mezcla de dos lagunas con diferente composición mineral. Almuerzo en Estancia El Suyaí. Regreso por la tarde.</p>
-        <img class="dia-img" src="assets/posadas_zoyen.jpg" alt="Lago Posadas Ruta 41">
+        <img class="dia-img" src="http://www.zoyenturismo.com.ar/wp-content/uploads/2022/10/posadas_zoyen.jpg" alt="Lago Posadas Ruta 41">
         <div class="dia-chips">
-          <span class="dia-chip">ðŸ”ï¸ 1.500 msnm</span>
-          <span class="dia-chip">ðŸ”µ Lagos bicolores</span>
-          <span class="dia-chip">ðŸŒ‹ Volcanes y Cordillera</span>
-          <span class="dia-chip">ðŸ¥© Almuerzo en estancia</span>
+          <span class="dia-chip">🏔️ 1.500 msnm</span>
+          <span class="dia-chip">🔵 Lagos bicolores</span>
+          <span class="dia-chip">🌋 Volcanes y Cordillera</span>
+          <span class="dia-chip">🥩 Almuerzo en estancia</span>
         </div>
       </div>
     </div>
@@ -492,10 +439,10 @@ img { background: #d8d0c3; }
         <h3 class="dia-title">Carretera Austral · <em>Chile</em></h3>
         <p class="dia-desc">Cruce a Chile por el paso fronterizo Ingeniero Pallavicini. Descendemos hacia la <strong>Carretera Austral</strong>, la legendaria ruta que recorre el sur de Chile entre fiordos, bosques valdivianios y montañas nevadas. Pasamos por la <strong>confluencia del Río Nef y el Baker</strong>, el río de mayor caudal de Chile. Llegamos al Lago General Carrera, el segundo lago más grande de Sudamérica. Alojamiento en Chile Chico.</p>
         <div class="dia-chips">
-          <span class="dia-chip">ðŸ›‚ Cruce a Chile</span>
-          <span class="dia-chip">ðŸŒ² Carretera Austral</span>
-          <span class="dia-chip">ðŸ”ï¸ Río Baker</span>
-          <span class="dia-chip">ðŸ¨ Chile Chico</span>
+          <span class="dia-chip">🛂 Cruce a Chile</span>
+          <span class="dia-chip">🌲 Carretera Austral</span>
+          <span class="dia-chip">🏔️ Río Baker</span>
+          <span class="dia-chip">🏨 Chile Chico</span>
         </div>
       </div>
     </div>
@@ -507,12 +454,12 @@ img { background: #d8d0c3; }
         <div class="dia-label">Día 5 · La joya del tour</div>
         <h3 class="dia-title"><em>Capillas y Catedrales</em> de Mármol</h3>
         <p class="dia-desc">El día más esperado del tour. Embarcación privada sobre las aguas cristalinas del <strong>Lago General Carrera</strong> hacia las formaciones de mármol esculpidas durante millones de años por el agua: las <strong>Capillas de Mármol</strong> (Capilla de Mármol) y las <strong>Catedrales de Mármol</strong>. El reflejo del agua turquesa sobre el mármol blanco y gris crea una paleta de colores imposible de olvidar. Considerada una de las 10 maravillas naturales de Sudamérica por National Geographic. Por la tarde, regreso a Argentina cruzando la frontera hacia Los Antiguos.</p>
-        <img class="dia-img" src="assets/capillas.jpg" alt="Capillas de Mármol Lago General Carrera">
+        <img class="dia-img" src="http://www.zoyenturismo.com.ar/wp-content/uploads/2023/07/capillas.jpg" alt="Capillas de Mármol Lago General Carrera">
         <div class="dia-chips">
-          <span class="dia-chip">â›µ Navegación privada</span>
-          <span class="dia-chip">ðŸª¨ Mármol natural</span>
-          <span class="dia-chip">ðŸ† Top 10 Sudamérica</span>
-          <span class="dia-chip">ðŸŒˆ Aguas multicolor</span>
+          <span class="dia-chip">⛵ Navegación privada</span>
+          <span class="dia-chip">🪨 Mármol natural</span>
+          <span class="dia-chip">🏆 Top 10 Sudamérica</span>
+          <span class="dia-chip">🌈 Aguas multicolor</span>
         </div>
       </div>
     </div>
@@ -522,12 +469,12 @@ img { background: #d8d0c3; }
       <div class="dia-num"><div class="dia-circle">6</div></div>
       <div class="dia-content">
         <div class="dia-label">Día 6 · Regreso</div>
-        <h3 class="dia-title">Los Antiguos â†’ <em>Perito Moreno</em></h3>
+        <h3 class="dia-title">Los Antiguos → <em>Perito Moreno</em></h3>
         <p class="dia-desc">Mañana libre en <strong>Los Antiguos</strong>, conocida como la "ciudad de las cerezas" por su producción frutal única en la Patagonia. Visita opcional al lago Buenos Aires, el segundo lago más grande de Argentina. Almuerzo en la ciudad. Por la tarde, traslado de regreso a Perito Moreno por la Ruta Nacional 40 con vistas al cerro San Lorenzo. Transfer al aeropuerto para vuelos de regreso.</p>
         <div class="dia-chips">
-          <span class="dia-chip">ðŸ’ Los Antiguos</span>
-          <span class="dia-chip">ðŸ’§ Lago Buenos Aires</span>
-          <span class="dia-chip">âœˆï¸ Transfer aeropuerto</span>
+          <span class="dia-chip">🍒 Los Antiguos</span>
+          <span class="dia-chip">💧 Lago Buenos Aires</span>
+          <span class="dia-chip">✈️ Transfer aeropuerto</span>
         </div>
       </div>
     </div>
@@ -542,11 +489,11 @@ img { background: #d8d0c3; }
       <h2 class="section-title">Lo que vas a <em>ver</em></h2>
     </div>
     <div class="galeria-grid">
-      <img src="assets/full_inedita.jpg" alt="Patagonia Inédita panorámica" class="reveal">
-      <img src="assets/posadas_zoyen.jpg" alt="Lago Posadas" class="reveal reveal-delay">
-      <img src="assets/cuevas_zoyen.jpg" alt="Cueva de las Manos" class="reveal">
-      <img src="assets/capillas.jpg" alt="Capillas de Mármol" class="reveal reveal-delay">
-      <img src="assets/ruta41_zoyen.jpg" alt="Ruta 41 Monte Zeballos" class="reveal reveal-delay2">
+      <img src="https://www.zoyenturismo.com.ar/wp-content/uploads/2022/10/full_inedita.jpg" alt="Patagonia Inédita panorámica" class="reveal">
+      <img src="http://www.zoyenturismo.com.ar/wp-content/uploads/2022/10/posadas_zoyen.jpg" alt="Lago Posadas" class="reveal reveal-delay">
+      <img src="http://www.zoyenturismo.com.ar/wp-content/uploads/2022/10/cuevas_zoyen.jpg" alt="Cueva de las Manos" class="reveal">
+      <img src="http://www.zoyenturismo.com.ar/wp-content/uploads/2023/07/capillas.jpg" alt="Capillas de Mármol" class="reveal reveal-delay">
+      <img src="http://www.zoyenturismo.com.ar/wp-content/uploads/2022/10/ruta41_zoyen.jpg" alt="Ruta 41 Monte Zeballos" class="reveal reveal-delay2">
     </div>
   </div>
 </section>
@@ -604,9 +551,9 @@ img { background: #d8d0c3; }
 <line x1="37.01" y1="62.99" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
 <line x1="22.65" y1="50.0" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
 <line x1="37.01" y1="37.01" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
-<circle cx="50" cy="50" r="3.06" fill="#d4772a"/>
+<circle cx="50" cy="50" r="3.06" fill="#ff7a35"/>
 <circle cx="50" cy="50" r="1.84" fill="#1a1410"/>
-<circle cx="50" cy="50" r="0.9" fill="#d4772a"/>
+<circle cx="50" cy="50" r="0.9" fill="#ff7a35"/>
 </svg>
         <div class="footer-brand"><span class="footer-brand-zoyen">ZOYEN</span> <span>TURISMO</span></div>
       </div>

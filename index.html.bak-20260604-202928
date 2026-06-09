@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zoyen Turismo ”“ Agencia de viajes en Patagonia</title>
+<title>Zoyen Turismo – Agencia de viajes en Patagonia</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -35,9 +35,9 @@ body {
   overflow-x: hidden;
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ══════════════════════════════════════
    NAV
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+══════════════════════════════════════ */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 900;
   height: 72px;
@@ -109,9 +109,9 @@ nav {
 }
 .nav-cta-btn:hover { background: var(--ember-dim); }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ══════════════════════════════════════
    HERO SLIDER
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+══════════════════════════════════════ */
 .hero { position: relative; height: 100vh; min-height: 580px; overflow: hidden; }
 .slide {
   position: absolute; inset: 0;
@@ -133,7 +133,7 @@ nav {
 }
 .slide.active .slide-bg { transform: scale(1); }
 
-/* Duotone overlay ”” mantiene paleta tierra */
+/* Duotone overlay — mantiene paleta tierra */
 .slide-overlay {
   position: absolute; inset: 0;
   background:
@@ -150,7 +150,7 @@ nav {
   mix-blend-mode: multiply;
 }
 
-/* Emblema central ”” brújula 3D */
+/* Emblema central — brújula 3D */
 .slide-emblem {
   position: relative;
   width: 280px; height: auto;
@@ -196,7 +196,7 @@ nav {
   100% { transform: translate(-50%, -50%) rotateY(360deg); }
 }
 
-/* Efecto lenticular ”” en flujo dentro de slide-content, entre logo y eyebrow */
+/* Efecto lenticular — en flujo dentro de slide-content, entre logo y eyebrow */
 .lent-fixed {
   position: relative;
   left: auto; transform: none;
@@ -310,9 +310,9 @@ nav {
 }
 @keyframes bob { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ══════════════════════════════════════
    BANNER MANAGER
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+══════════════════════════════════════ */
 .banner-bar { display: none; }
 .bb-label {
   font-family: 'Sora', sans-serif;
@@ -343,9 +343,9 @@ nav {
 .bb-add:hover { background: rgba(212,119,42,.25); }
 .bb-add input[type=file] { display: none; }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ══════════════════════════════════════
    SECTIONS COMÚN
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+══════════════════════════════════════ */
 .eyebrow {
   font-family: 'Sora', sans-serif;
   font-size: .92rem; font-weight: 600; letter-spacing: .3em; text-transform: uppercase;
@@ -381,9 +381,9 @@ nav {
 .reveal-delay { transition-delay: .15s; }
 .reveal-delay2 { transition-delay: .25s; }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ══════════════════════════════════════
    EXCURSIONES
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+══════════════════════════════════════ */
 .excursiones {
   padding: 6rem 3vw 5rem;
   background: var(--fog);
@@ -398,9 +398,9 @@ nav {
 @media (max-width:960px){ .ex-grid { grid-template-columns: repeat(2,1fr); } }
 @media (max-width:560px){ .ex-grid { grid-template-columns: 1fr; } }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   TABLET ”” 641px a 960px
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+/* ══════════════════════════════════════
+   TABLET — 641px a 960px
+══════════════════════════════════════ */
 @media (min-width: 641px) and (max-width: 960px) {
   .nav-links { gap: 1.2rem; }
   .nav-links a { font-size: .72rem; }
@@ -418,12 +418,12 @@ nav {
   .reserva-section { padding: 4.5rem 3vw 4rem; }
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   MOBILE RESPONSIVE ”” max 640px
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+/* ══════════════════════════════════════
+   MOBILE RESPONSIVE — max 640px
+══════════════════════════════════════ */
 @media (max-width: 640px) {
 
-  /* â”€â”€ NAV â”€â”€ */
+  /* ── NAV ── */
   .nav-inner {
     padding: 0 1rem;
     height: 56px;
@@ -436,7 +436,7 @@ nav {
     letter-spacing: .12em;
   }
 
-  /* â”€â”€ HERO â”€â”€ */
+  /* ── HERO ── */
   .hero { min-height: 100svh; }
   .slide { padding-top: 56px; gap: 0.2rem; justify-content: center; }
 
@@ -478,7 +478,7 @@ nav {
   .dot.active { width: 32px; }
   .scroll-hint { display: none; }
 
-  /* â”€â”€ BANNER BAR â”€â”€ */
+  /* ── BANNER BAR ── */
   .banner-bar {
     padding: 0 .8rem;
     height: 46px;
@@ -488,7 +488,7 @@ nav {
   .bb-thumb { width: 44px; height: 30px; }
   .bb-add { padding: 0 .7rem; font-size: .7rem; }
 
-  /* â”€â”€ SECCIONES GENERALES â”€â”€ */
+  /* ── SECCIONES GENERALES ── */
   .excursiones,
   .manifesto-section,
   .stats-section,
@@ -501,37 +501,37 @@ nav {
   .section-sub { font-size: .9rem; }
   .eyebrow { font-size: .72rem; letter-spacing: .22em; }
 
-  /* â”€â”€ EXCURSIONES â”€â”€ */
+  /* ── EXCURSIONES ── */
   .ex-grid { gap: .8rem; }
 
-  /* â”€â”€ STATS â”€â”€ */
+  /* ── STATS ── */
   .stats { grid-template-columns: repeat(2,1fr); gap: 1rem; }
   .stat-num { font-size: clamp(2rem, 9vw, 2.8rem); }
 
-  /* â”€â”€ TOURS â”€â”€ */
+  /* ── TOURS ── */
   .tours-grid { grid-template-columns: 1fr; gap: 1rem; }
 
-  /* â”€â”€ TRASLADOS â”€â”€ */
+  /* ── TRASLADOS ── */
   .traslados { grid-template-columns: 1fr; gap: 1rem; }
 
-  /* â”€â”€ MANIFESTO â”€â”€ */
+  /* ── MANIFESTO ── */
   .manifesto { grid-template-columns: 1fr; gap: 2rem; }
 
-  /* â”€â”€ RESERVA â”€â”€ */
+  /* ── RESERVA ── */
   .res-grid { grid-template-columns: 1fr; }
   .frow { grid-template-columns: 1fr; }
   .sbar-item { flex: 1 1 100%; }
 
-  /* â”€â”€ FOOTER â”€â”€ */
+  /* ── FOOTER ── */
   .footer-top { grid-template-columns: 1fr; gap: 1.5rem; }
   .footer-emblem { width: 60px; height: 60px; }
   footer { padding: 3rem 1.2rem 2rem; }
 
-  /* â”€â”€ MODAL â”€â”€ */
+  /* ── MODAL ── */
   .modal-box,
   .adm-login-box { padding: 1.8rem 1.2rem; width: 94%; }
 
-  /* â”€â”€ WA FLOAT â”€â”€ */
+  /* ── WA FLOAT ── */
   .wa { bottom: 1.2rem; right: 1.2rem; width: 50px; height: 50px; }
   .wa svg { width: 24px; height: 24px; }
 }
@@ -581,11 +581,11 @@ nav {
   transition: gap .2s, color .2s;
 }
 .ex-link:hover { gap: 10px; color: var(--ember); }
-.ex-link::after { content: 'â†’'; }
+.ex-link::after { content: '→'; }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   FRANJA INTERMEDIA ”” MANIFIESTO
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+/* ══════════════════════════════════════
+   FRANJA INTERMEDIA — MANIFIESTO
+══════════════════════════════════════ */
 .manifesto {
   background: var(--bark);
   padding: 5rem 3vw;
@@ -614,9 +614,9 @@ nav {
 }
 .manifesto-btn:hover { background: var(--ember); border-color: var(--ember); color: var(--cream); }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ══════════════════════════════════════
    STATS
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+══════════════════════════════════════ */
 .stats {
   background: var(--ink);
   padding: 3.5rem 3vw;
@@ -633,9 +633,9 @@ nav {
   font-family: 'Sora', sans-serif;
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ══════════════════════════════════════
    TOURS DE AUTOR
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+══════════════════════════════════════ */
 .tours { padding: 6rem 3vw 5rem; background: var(--cream); }
 
 .tours-grid {
@@ -685,12 +685,12 @@ nav {
   color: var(--sand); text-decoration: none; display: flex; align-items: center; gap: 6px;
   transition: gap .2s;
 }
-.tour-link::after { content: 'â†’'; }
+.tour-link::after { content: '→'; }
 .tour-link:hover { gap: 10px; color: var(--ember); }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ══════════════════════════════════════
    BIENESTAR
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+══════════════════════════════════════ */
 .bienestar {
   position: relative;
   padding: 6rem 3vw;
@@ -700,7 +700,7 @@ nav {
 }
 .bw-bg {
   position: absolute; inset: 0;
-  background-image: url('assets/canadonpinturas_cuevadelasmanos.jpg');
+  background-image: url('https://www.zoyenturismo.com.ar/wp-content/uploads/2025/09/canadonpinturas_cuevadelasmanos.jpg');
   background-size: cover; background-position: center;
   opacity: .12;
 }
@@ -732,9 +732,9 @@ nav {
   color: rgba(201,169,110,.08); line-height: 1;
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ══════════════════════════════════════
    TRASLADOS
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+══════════════════════════════════════ */
 .traslados {
   display: grid; grid-template-columns: 1fr 1fr;
   background: var(--fog);
@@ -754,9 +754,9 @@ nav {
 }
 .traslados-btn:hover { background: var(--ember-dim); }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ══════════════════════════════════════
    FOOTER
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+══════════════════════════════════════ */
 footer {
   background: #0a0a0a;
   padding: 5rem 3vw 2.5rem;
@@ -802,7 +802,7 @@ footer {
   font-size: .8rem; font-weight: 300; transition: color .2s;
   display: flex; align-items: center; gap: 7px;
 }
-.footer-links a::before { content: '”“'; color: var(--ember); opacity: .5; font-size: .8rem; }
+.footer-links a::before { content: '–'; color: var(--ember); opacity: .5; font-size: .8rem; }
 .footer-links a:hover { color: var(--sand); }
 
 .footer-contact { font-size: .8rem; color: rgba(232,220,200,.70); line-height: 1.8; font-weight: 300; }
@@ -814,9 +814,9 @@ footer {
 }
 .footer-bottom a { color: rgba(201,169,110,.55); text-decoration: none; }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ══════════════════════════════════════
    WA FLOAT
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+══════════════════════════════════════ */
 .wa {
   position: fixed; bottom: 1.8rem; right: 1.8rem; z-index: 800;
   width: 52px; height: 52px; border-radius: 50%;
@@ -829,9 +829,9 @@ footer {
 .wa:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,.5); }
 .wa svg { width: 26px; height: 26px; }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-   RESERVAR ”” SECTION
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+/* ══════════════════════════════════════
+   RESERVAR — SECTION
+══════════════════════════════════════ */
 #reservar {
   background: var(--fog);
   padding: 6rem 3vw 5rem;
@@ -977,7 +977,7 @@ footer {
 .seat.selected { background: var(--ember); border-color: var(--ember-dim); color: #fff; }
 .seat.occupied { background: rgba(58,45,31,.12); color: rgba(58,45,31,.3); cursor: not-allowed; border-color: rgba(58,45,31,.1); }
 .seat.driver { background: var(--dark); color: rgba(245,240,232,.5); cursor: not-allowed; border-color: var(--dark); }
-.seat.driver::before { content: 'ðŸš—'; font-size: .7rem; }
+.seat.driver::before { content: '🚗'; font-size: .7rem; }
 .van-back {
   margin-top: 4px;
   width: 100%; display: flex; justify-content: center;
@@ -1168,9 +1168,9 @@ footer {
 }
 .pago-success p { font-size: 1rem; color: var(--stone); line-height: 1.7; font-weight: 300; }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ══════════════════════════════════════
    MODAL UPLOAD
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+══════════════════════════════════════ */
 .modal-wrap {
   display: none; position: fixed; inset: 0; z-index: 1000;
   background: rgba(26,20,16,.82); backdrop-filter: blur(8px);
@@ -1219,9 +1219,9 @@ footer {
   background: none; border: none; font-size: 1.3rem; color: var(--stone); cursor: pointer;
 }
 
-/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* ══════════════════════════════════════
    ADMIN PANEL
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+══════════════════════════════════════ */
 /* Trigger oculto */
 /* Login overlay */
 .admin-login-wrap {
@@ -1424,59 +1424,6 @@ footer {
 .admin-badge.visible { display: flex; }
 .admin-badge:hover { background: rgba(212,119,42,.28); }
 </style>
-<script>
-(function(){
-  document.documentElement.classList.add('js-ready');
-  const fallbackByHint = [
-    ['capillas', 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&q=80'],
-    ['marmol', 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&q=80'],
-    ['cueva', 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&q=80'],
-    ['manos', 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&q=80'],
-    ['ruta', 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1200&q=80'],
-    ['zeballos', 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1200&q=80'],
-    ['posadas', 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&q=80'],
-    ['patagonia', 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1200&q=80'],
-    ['carretera', 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1200&q=80'],
-    ['parque', 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&q=80']
-  ];
-  const genericFallback = 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1200&q=80';
-  function pickFallback(text){
-    const haystack = (text || '').toLowerCase();
-    const found = fallbackByHint.find(([hint]) => haystack.includes(hint));
-    return found ? found[1] : genericFallback;
-  }
-  window.zoyenPickFallback = pickFallback;
-  document.addEventListener('error', function(event){
-    const el = event.target;
-    if (!el || el.tagName !== 'IMG' || el.dataset.fallbackApplied === '1') return;
-    el.dataset.fallbackApplied = '1';
-    el.src = pickFallback((el.getAttribute('alt') || '') + ' ' + (el.getAttribute('src') || ''));
-  }, true);
-  function repairBackgrounds(){
-    const nodes = document.querySelectorAll('.slide-bg, .page-hero-bg, [style*="background-image"]');
-    nodes.forEach(function(el){
-      const bg = getComputedStyle(el).backgroundImage || '';
-      const match = bg.match(/url\(["']?([^"')]+)["']?\)/);
-      if (!match) return;
-      const original = match[1];
-      const probe = new Image();
-      probe.onerror = function(){ el.style.backgroundImage = "url('" + pickFallback(original) + "')"; };
-      probe.src = original;
-    });
-  }
-  function revealSafety(){ document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); }); }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function(){ repairBackgrounds(); setTimeout(revealSafety, 700); });
-  } else {
-    repairBackgrounds(); setTimeout(revealSafety, 700);
-  }
-  setTimeout(revealSafety, 1800);
-})();
-</script>
-<style id="zoyen-recovery-patch">
-html:not(.js-ready) .reveal { opacity: 1 !important; transform: none !important; }
-img { background: #d8d0c3; }
-</style>
 </head>
 <body>
 
@@ -1521,9 +1468,9 @@ img { background: #d8d0c3; }
 <line x1="37.01" y1="37.01" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
   </g>
   <!-- Centre dot stays fixed -->
-<circle cx="50" cy="50" r="3.06" fill="#d4772a"/>
+<circle cx="50" cy="50" r="3.06" fill="#ff7a35"/>
 <circle cx="50" cy="50" r="1.84" fill="#1a1410"/>
-<circle cx="50" cy="50" r="0.9" fill="#d4772a"/>
+<circle cx="50" cy="50" r="0.9" fill="#ff7a35"/>
 </svg>
     <div class="nav-logo-text">
       <div class="nav-logo-name">
@@ -1547,7 +1494,7 @@ img { background: #d8d0c3; }
 <!-- HERO SLIDER -->
 <section class="hero">
   <div class="slide active" id="s0">
-    <div class="slide-bg" style="background-image:url('assets/full_inedita.jpg')"></div>
+    <div class="slide-bg" style="background-image:url('https://www.zoyenturismo.com.ar/wp-content/uploads/2022/10/full_inedita.jpg')"></div>
     <div class="slide-overlay"></div>
     <div class="slide-emblem">
       <div class="emblem-3d">
@@ -1561,7 +1508,7 @@ img { background: #d8d0c3; }
     <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="0.8"/>
     <circle cx="140" cy="140" r="96" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.4"/>
     <text font-family="Sora,Arial Narrow,sans-serif" font-size="10.5" font-weight="700" letter-spacing="12" text-anchor="middle">
-      <textPath href="#hpO" startOffset="50%"><tspan fill="rgba(255,255,255,0.92)">ZOYEN</tspan><tspan fill="rgba(255,255,255,0.3)"> · </tspan><tspan fill="#d4772a">TURISMO</tspan></textPath>
+      <textPath href="#hpO" startOffset="50%"><tspan fill="rgba(255,255,255,0.92)">ZOYEN</tspan><tspan fill="rgba(255,255,255,0.3)"> · </tspan><tspan fill="#ff7a35">TURISMO</tspan></textPath>
     </text>
   </g>
   <g class="hero-ring-cw">
@@ -1603,9 +1550,9 @@ img { background: #d8d0c3; }
 <line x1="107.53" y1="172.47" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
 <line x1="71.63" y1="140.0" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
 <line x1="107.53" y1="107.53" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
-<circle cx="140" cy="140" r="7.65" fill="#d4772a"/>
+<circle cx="140" cy="140" r="7.65" fill="#ff7a35"/>
 <circle cx="140" cy="140" r="4.59" fill="#1a1410"/>
-<circle cx="140" cy="140" r="2.24" fill="#d4772a"/>
+<circle cx="140" cy="140" r="2.24" fill="#ff7a35"/>
   </g>
 </svg>
       </div>
@@ -1622,7 +1569,7 @@ img { background: #d8d0c3; }
   </div>
 
   <div class="slide" id="s1">
-    <div class="slide-bg" style="background-image:url('assets/cuevadelasmanos_zoyen.jpg')"></div>
+    <div class="slide-bg" style="background-image:url('https://www.zoyenturismo.com.ar/wp-content/uploads/2025/09/cuevadelasmanos_zoyen.jpg')"></div>
     <div class="slide-overlay"></div>
     <div class="slide-emblem">
       <div class="emblem-3d">
@@ -1636,7 +1583,7 @@ img { background: #d8d0c3; }
     <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="0.8"/>
     <circle cx="140" cy="140" r="96" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.4"/>
     <text font-family="Sora,Arial Narrow,sans-serif" font-size="10.5" font-weight="700" letter-spacing="12" text-anchor="middle">
-      <textPath href="#hpO" startOffset="50%"><tspan fill="rgba(255,255,255,0.92)">ZOYEN</tspan><tspan fill="rgba(255,255,255,0.3)"> · </tspan><tspan fill="#d4772a">TURISMO</tspan></textPath>
+      <textPath href="#hpO" startOffset="50%"><tspan fill="rgba(255,255,255,0.92)">ZOYEN</tspan><tspan fill="rgba(255,255,255,0.3)"> · </tspan><tspan fill="#ff7a35">TURISMO</tspan></textPath>
     </text>
   </g>
   <g class="hero-ring-cw">
@@ -1678,9 +1625,9 @@ img { background: #d8d0c3; }
 <line x1="107.53" y1="172.47" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
 <line x1="71.63" y1="140.0" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
 <line x1="107.53" y1="107.53" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
-<circle cx="140" cy="140" r="7.65" fill="#d4772a"/>
+<circle cx="140" cy="140" r="7.65" fill="#ff7a35"/>
 <circle cx="140" cy="140" r="4.59" fill="#1a1410"/>
-<circle cx="140" cy="140" r="2.24" fill="#d4772a"/>
+<circle cx="140" cy="140" r="2.24" fill="#ff7a35"/>
   </g>
 </svg>
       </div>
@@ -1697,7 +1644,7 @@ img { background: #d8d0c3; }
   </div>
 
   <div class="slide" id="s2">
-    <div class="slide-bg" style="background-image:url('assets/capillas.jpg')"></div>
+    <div class="slide-bg" style="background-image:url('http://www.zoyenturismo.com.ar/wp-content/uploads/2023/07/capillas.jpg')"></div>
     <div class="slide-overlay"></div>
     <div class="slide-emblem">
       <div class="emblem-3d">
@@ -1711,7 +1658,7 @@ img { background: #d8d0c3; }
     <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="0.8"/>
     <circle cx="140" cy="140" r="96" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.4"/>
     <text font-family="Sora,Arial Narrow,sans-serif" font-size="10.5" font-weight="700" letter-spacing="12" text-anchor="middle">
-      <textPath href="#hpO" startOffset="50%"><tspan fill="rgba(255,255,255,0.92)">ZOYEN</tspan><tspan fill="rgba(255,255,255,0.3)"> · </tspan><tspan fill="#d4772a">TURISMO</tspan></textPath>
+      <textPath href="#hpO" startOffset="50%"><tspan fill="rgba(255,255,255,0.92)">ZOYEN</tspan><tspan fill="rgba(255,255,255,0.3)"> · </tspan><tspan fill="#ff7a35">TURISMO</tspan></textPath>
     </text>
   </g>
   <g class="hero-ring-cw">
@@ -1753,9 +1700,9 @@ img { background: #d8d0c3; }
 <line x1="107.53" y1="172.47" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
 <line x1="71.63" y1="140.0" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
 <line x1="107.53" y1="107.53" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
-<circle cx="140" cy="140" r="7.65" fill="#d4772a"/>
+<circle cx="140" cy="140" r="7.65" fill="#ff7a35"/>
 <circle cx="140" cy="140" r="4.59" fill="#1a1410"/>
-<circle cx="140" cy="140" r="2.24" fill="#d4772a"/>
+<circle cx="140" cy="140" r="2.24" fill="#ff7a35"/>
   </g>
 </svg>
       </div>
@@ -1772,7 +1719,7 @@ img { background: #d8d0c3; }
   </div>
 
   <div class="slide" id="s3">
-    <div class="slide-bg" style="background-image:url('assets/ruta41_zoyen.jpg')"></div>
+    <div class="slide-bg" style="background-image:url('http://www.zoyenturismo.com.ar/wp-content/uploads/2022/10/ruta41_zoyen.jpg')"></div>
     <div class="slide-overlay"></div>
     <div class="slide-emblem">
       <div class="emblem-3d">
@@ -1786,7 +1733,7 @@ img { background: #d8d0c3; }
     <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="0.8"/>
     <circle cx="140" cy="140" r="96" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.4"/>
     <text font-family="Sora,Arial Narrow,sans-serif" font-size="10.5" font-weight="700" letter-spacing="12" text-anchor="middle">
-      <textPath href="#hpO" startOffset="50%"><tspan fill="rgba(255,255,255,0.92)">ZOYEN</tspan><tspan fill="rgba(255,255,255,0.3)"> · </tspan><tspan fill="#d4772a">TURISMO</tspan></textPath>
+      <textPath href="#hpO" startOffset="50%"><tspan fill="rgba(255,255,255,0.92)">ZOYEN</tspan><tspan fill="rgba(255,255,255,0.3)"> · </tspan><tspan fill="#ff7a35">TURISMO</tspan></textPath>
     </text>
   </g>
   <g class="hero-ring-cw">
@@ -1828,9 +1775,9 @@ img { background: #d8d0c3; }
 <line x1="107.53" y1="172.47" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
 <line x1="71.63" y1="140.0" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
 <line x1="107.53" y1="107.53" x2="140" y2="140" stroke="rgba(0,0,0,0.18)" stroke-width="0.31"/>
-<circle cx="140" cy="140" r="7.65" fill="#d4772a"/>
+<circle cx="140" cy="140" r="7.65" fill="#ff7a35"/>
 <circle cx="140" cy="140" r="4.59" fill="#1a1410"/>
-<circle cx="140" cy="140" r="2.24" fill="#d4772a"/>
+<circle cx="140" cy="140" r="2.24" fill="#ff7a35"/>
   </g>
 </svg>
       </div>
@@ -1968,57 +1915,57 @@ img { background: #d8d0c3; }
   </div>
   <div class="ex-grid">
     <div class="ex-card reveal">
-      <img src="assets/cuevas_zoyen.jpg" alt="Cueva de las Manos">
+      <img src="http://www.zoyenturismo.com.ar/wp-content/uploads/2022/10/cuevas_zoyen.jpg" alt="Cueva de las Manos">
       <span class="ex-tag">Todo el día</span>
       <div class="ex-card-overlay">
         <h3 class="ex-name">Cueva de las Manos</h3>
         <p class="ex-desc">Patrimonio UNESCO. Arte rupestre de más de 9.000 años en el cañadón del Río Pinturas.</p>
-        <a href="excursion-cueva-de-las-manos.html" class="ex-link">Ver más</a>
+        <a href="https://www.zoyenturismo.com.ar/cuevadelasmanos/" class="ex-link">Ver más</a>
       </div>
     </div>
     <div class="ex-card reveal reveal-delay">
-      <img src="assets/capillas.jpg" alt="Capillas de Mármol">
+      <img src="http://www.zoyenturismo.com.ar/wp-content/uploads/2023/07/capillas.jpg" alt="Capillas de Mármol">
       <span class="ex-tag">Día completo</span>
       <div class="ex-card-overlay">
         <h3 class="ex-name">Capillas y Catedrales de Mármol</h3>
         <p class="ex-desc">Navegación 5 estrellas por el Lago General Carrera hacia Chile. Imperdible.</p>
-        <a href="excursion-capillas-de-marmol.html" class="ex-link">Ver más</a>
+        <a href="https://www.zoyenturismo.com.ar/exc-capillasdemarmol/" class="ex-link">Ver más</a>
       </div>
     </div>
     <div class="ex-card reveal reveal-delay2">
-      <img src="assets/posadas_zoyen.jpg" alt="Lago Posadas con Vuelta a la Meseta por Ruta Escénica 41">
+      <img src="http://www.zoyenturismo.com.ar/wp-content/uploads/2022/10/posadas_zoyen.jpg" alt="Lago Posadas con Vuelta a la Meseta por Ruta Escénica 41">
       <span class="ex-tag">Ruta escénica</span>
       <div class="ex-card-overlay">
         <h3 class="ex-name">Lago Posadas con Vuelta a la Meseta por Ruta Escénica 41</h3>
         <p class="ex-desc">160 km por la Ruta 41 desde los 400 hasta los 1.500 msnm. Volcanes, Cordillera de los Andes, ríos, Lagos Pueyrredón y Posadas, Arco de Piedra y almuerzo en Estancia El Suyaí. 12 hs · 500 km. En camioneta 4x4 con chofer/guía.</p>
-        <a href="excursion-ruta41-lago-posadas.html" class="ex-link">Ver más</a>
+        <a href="https://www.zoyenturismo.com.ar/ruta41-posadas/" class="ex-link">Ver más</a>
       </div>
     </div>
     <div class="ex-card reveal">
-      <img src="assets/ruta41_zoyen.jpg" alt="Monte Zeballos">
+      <img src="http://www.zoyenturismo.com.ar/wp-content/uploads/2022/10/ruta41_zoyen.jpg" alt="Monte Zeballos">
       <span class="ex-tag">Alta montaña</span>
       <div class="ex-card-overlay">
         <h3 class="ex-name">Ruta 41 · Monte Zeballos</h3>
         <p class="ex-desc">400 a 1.500 msnm. Transición de la estepa patagónica al paisaje de alta montaña.</p>
-        <a href="excursion-monte-zeballos.html" class="ex-link">Ver más</a>
+        <a href="https://www.zoyenturismo.com.ar/ruta41_montezeballos/" class="ex-link">Ver más</a>
       </div>
     </div>
     <div class="ex-card reveal reveal-delay2">
-      <img src="assets/alerocharca_zoyen.jpg" alt="Alero Charcamata">
+      <img src="http://www.zoyenturismo.com.ar/wp-content/uploads/2022/10/alerocharca_zoyen.jpg" alt="Alero Charcamata">
       <span class="ex-tag">Arte rupestre</span>
       <div class="ex-card-overlay">
         <h3 class="ex-name">Alero Charcamata</h3>
         <p class="ex-desc">Arte rupestre intacto y alejado de la civilización. Un viaje en el tiempo inevitable.</p>
-        <a href="excursion-alero-charcamata.html" class="ex-link">Ver más</a>
+        <a href="https://www.zoyenturismo.com.ar/alerocharcamata/" class="ex-link">Ver más</a>
       </div>
     </div>
     <div class="ex-card reveal" style="grid-column: span 2; aspect-ratio: unset; min-height: 280px;">
-      <img src="assets/pps.jpg" alt="Parque Nacional Patagonia / Portal Cañadón Pinturas" style="height:100%; object-position:center 40%;">
+      <img src="http://www.zoyenturismo.com.ar/wp-content/uploads/2023/07/pps.jpg" alt="Parque Nacional Patagonia / Portal Cañadón Pinturas" style="height:100%; object-position:center 40%;">
       <span class="ex-tag">Medio día</span>
       <div class="ex-card-overlay" style="padding-bottom:1.8rem;">
         <h3 class="ex-name">Parque Nacional Patagonia / Portal Cañadón Pinturas</h3>
         <p class="ex-desc" style="-webkit-line-clamp:4;">Dos opciones de medio día para quienes llegan a mitad del día o tienen una mañana libre. <strong style="color:var(--sand);">Portal Cañadón Pinturas</strong> (5 hs, 45 km por Ruta 40): Sendero Tierra de Colores, Planetario, Museo y Sendero Los Balcones con vistas del Río Pinturas. <strong style="color:var(--sand);">PNP / Estancia La Escensión</strong> (4 hs, 30 min al oeste): senderos con vistas del Lago Buenos Aires y casco de estancia con historia ganadera.</p>
-        <a href="excursion-parque-patagonia.html" class="ex-link">Ver más</a>
+        <a href="https://www.zoyenturismo.com.ar/parquepatagonia-2/" class="ex-link">Ver más</a>
       </div>
     </div>
   </div>
@@ -2037,7 +1984,7 @@ img { background: #d8d0c3; }
   </div>
 </div>
 
-<!-- â•â• INDICADORES â•â• -->
+<!-- ══ INDICADORES ══ -->
 <div id="statsBarHome" style="background:var(--dark);padding:2.5rem 4vw;border-bottom:1px solid rgba(212,119,42,.2);">
   <div style="display:flex;flex-wrap:wrap;max-width:960px;margin:0 auto;justify-content:space-between;align-items:center;">
     <div class="sbar-item">
@@ -2113,7 +2060,7 @@ img { background: #d8d0c3; }
         <h2 class="section-title" style="color:var(--dust);">Tours de <em style="color:var(--sand)">Autor</em></h2>
         <p class="section-sub" style="color:rgba(232,220,200,.55);max-width:420px;">Itinerarios exclusivos diseñados por quienes conocen cada rincón de la Patagonia profunda.</p>
       </div>
-      <a href="https://wa.me/5492974432855" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.6rem;border:1px solid rgba(212,119,42,.5);color:var(--sand);text-decoration:none;font-family:'Sora',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;border-radius:2px;transition:all .2s;white-space:nowrap;flex-shrink:0;" onmouseover="this.style.background='var(--ember)';this.style.borderColor='var(--ember)';this.style.color='#fff'" onmouseout="this.style.background='';this.style.borderColor='rgba(212,119,42,.5)';this.style.color='var(--sand)'">Consultar disponibilidad â†’</a>
+      <a href="https://wa.me/5492974432855" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.6rem;border:1px solid rgba(212,119,42,.5);color:var(--sand);text-decoration:none;font-family:'Sora',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;border-radius:2px;transition:all .2s;white-space:nowrap;flex-shrink:0;" onmouseover="this.style.background='var(--ember)';this.style.borderColor='var(--ember)';this.style.color='#fff'" onmouseout="this.style.background='';this.style.borderColor='rgba(212,119,42,.5)';this.style.color='var(--sand)'">Consultar disponibilidad →</a>
     </div>
 
     <!-- Cards -->
@@ -2121,7 +2068,7 @@ img { background: #d8d0c3; }
 
       <!-- Tour 1 -->
       <div class="reveal tour2-card" style="position:relative;border-radius:4px;overflow:hidden;cursor:pointer;" onclick="location.href='patagonia-inedita.html'">
-        <img src="assets/full_inedita.jpg" alt="Patagonia Inédita" style="width:100%;height:420px;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.25,.1,.25,1);">
+        <img src="http://www.zoyenturismo.com.ar/wp-content/uploads/2022/10/full_inedita.jpg" alt="Patagonia Inédita" style="width:100%;height:420px;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.25,.1,.25,1);">
         <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,6,.95) 0%,rgba(10,8,6,.4) 50%,rgba(10,8,6,.05) 100%);transition:background .3s;" class="tour2-ov"></div>
         <div style="position:absolute;inset:0;padding:2rem;display:flex;flex-direction:column;justify-content:flex-end;">
           <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem;">
@@ -2130,14 +2077,14 @@ img { background: #d8d0c3; }
           <h3 style="font-family:'DM Serif Display',serif;font-size:1.9rem;font-weight:600;color:#f5f0e8;line-height:1.1;margin-bottom:.7rem;">Patagonia <em style="color:var(--sand)">Inédita</em></h3>
           <p style="font-size:.82rem;color:rgba(245,240,232,.65);line-height:1.6;margin-bottom:1.1rem;font-weight:300;">Bosque Petrificado · Cueva de las Manos · Lago Posadas · Carretera Austral · Catedrales de Mármol</p>
           <div style="display:flex;align-items:center;justify-content:space-between;">
-            <span style="font-family:'Sora',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--sand);">Ver itinerario â†’</span>
+            <span style="font-family:'Sora',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--sand);">Ver itinerario →</span>
           </div>
         </div>
       </div>
 
       <!-- Tour 2 -->
       <div class="reveal reveal-delay tour2-card" style="position:relative;border-radius:4px;overflow:hidden;cursor:pointer;" onclick="location.href='carretera-austral.html'">
-        <img src="assets/20221115_082320-1024x576-360x230.jpg" alt="Carretera Austral" onerror="this.src='https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=80'" style="width:100%;height:420px;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.25,.1,.25,1);">
+        <img src="https://www.zoyenturismo.com.ar/wp-content/uploads/2022/11/20221115_082320-1024x576-360x230.jpg" alt="Carretera Austral" onerror="this.src='https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=80'" style="width:100%;height:420px;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.25,.1,.25,1);">
         <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,6,.95) 0%,rgba(10,8,6,.4) 50%,rgba(10,8,6,.05) 100%);transition:background .3s;" class="tour2-ov"></div>
         <div style="position:absolute;inset:0;padding:2rem;display:flex;flex-direction:column;justify-content:flex-end;">
           <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem;">
@@ -2146,7 +2093,7 @@ img { background: #d8d0c3; }
           <h3 style="font-family:'DM Serif Display',serif;font-size:1.9rem;font-weight:600;color:#f5f0e8;line-height:1.1;margin-bottom:.7rem;">Carretera <em style="color:var(--sand)">Austral</em></h3>
           <p style="font-size:.82rem;color:rgba(245,240,232,.65);line-height:1.6;margin-bottom:1.1rem;font-weight:300;">Confluencia Nef y Baker · Lago General Carrera · Capillas de Mármol · Mirador Laguna Verde</p>
           <div style="display:flex;align-items:center;justify-content:space-between;">
-            <span style="font-family:'Sora',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--sand);">Ver itinerario â†’</span>
+            <span style="font-family:'Sora',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--sand);">Ver itinerario →</span>
           </div>
         </div>
       </div>
@@ -2171,19 +2118,19 @@ img { background: #d8d0c3; }
     <p class="section-sub" style="color:rgba(232,220,200,.55)">Aplicación especializada de los viajes con el propósito de intervenir y promover el crecimiento físico, emocional y social del individuo.</p>
     <a href="nosotros.html" class="bw-btn">Ver más</a>
   </div>
-  <div class="bw-deco"><div class="bw-deco-text">â™¦</div></div>
+  <div class="bw-deco"><div class="bw-deco-text">♦</div></div>
 </section>
 
 
 
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+<!-- ══════════════════════════════════════
    RESERVAR SECTION
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+══════════════════════════════════════ -->
 <section id="reservar">
   <div class="sec-head reveal">
     <p class="eyebrow">Asegurá tu lugar</p>
     <h2 class="section-title">Reservá tu <em>Tour</em></h2>
-    <p class="section-sub">Elegí el destino, la fecha y seleccioná tu asiento en la camioneta ”” igual que reservar una butaca en el cine, pero para la Renault Master que te lleva a la Patagonia.</p>
+    <p class="section-sub">Elegí el destino, la fecha y seleccioná tu asiento en la camioneta — igual que reservar una butaca en el cine, pero para la Renault Master que te lleva a la Patagonia.</p>
   </div>
 
   <!-- PASOS -->
@@ -2211,9 +2158,9 @@ img { background: #d8d0c3; }
         <div class="fgroup">
           <label>Tour</label>
           <select id="sel-excursion">
-            <option value="">”” Seleccioná un tour ””</option>
-            <option value="patagonia_inedita" data-precio="185000">Patagonia Inédita · 6 días / 5 noches ”” $185.000 p/p</option>
-            <option value="carretera_austral" data-precio="210000">Carretera Austral · 7 días / 6 noches ”” $210.000 p/p</option>
+            <option value="">— Seleccioná un tour —</option>
+            <option value="patagonia_inedita" data-precio="185000">Patagonia Inédita · 6 días / 5 noches — $185.000 p/p</option>
+            <option value="carretera_austral" data-precio="210000">Carretera Austral · 7 días / 6 noches — $210.000 p/p</option>
           </select>
         </div>
       </div>
@@ -2264,7 +2211,7 @@ img { background: #d8d0c3; }
       </div>
 
       <button class="btn-siguiente" id="btnSiguiente" disabled>
-        Elegir asientos â†’
+        Elegir asientos →
       </button>
     </div>
 
@@ -2282,7 +2229,7 @@ img { background: #d8d0c3; }
 
           <!-- Frente / chofer -->
           <div class="van-front">
-            <div class="van-front-icon">â–² FRENTE</div>
+            <div class="van-front-icon">▲ FRENTE</div>
           </div>
 
           <!-- Fila 0: Chofer + Copiloto -->
@@ -2342,7 +2289,7 @@ img { background: #d8d0c3; }
       </div>
 
       <button class="btn-siguiente" id="btnPagar" style="margin-top:1rem;" disabled>
-        Ir al pago â†’
+        Ir al pago →
       </button>
     </div>
 
@@ -2352,7 +2299,7 @@ img { background: #d8d0c3; }
 <!-- MODAL PAGO -->
 <div class="pago-modal-wrap" id="pagoModalWrap">
   <div class="pago-modal">
-    <button class="pago-x" id="pagoX">âœ•</button>
+    <button class="pago-x" id="pagoX">✕</button>
 
     <!-- Header -->
     <div class="pago-header">
@@ -2371,10 +2318,10 @@ img { background: #d8d0c3; }
       <!-- Tabs -->
       <div class="pago-tabs">
         <button class="pago-tab active" onclick="switchTab('mp')">
-          <span class="pago-tab-ico">ðŸ’³</span> Mercado Pago
+          <span class="pago-tab-ico">💳</span> Mercado Pago
         </button>
         <button class="pago-tab" onclick="switchTab('card')">
-          <span class="pago-tab-ico">ðŸ’³</span> Tarjeta de crédito
+          <span class="pago-tab-ico">💳</span> Tarjeta de crédito
         </button>
       </div>
 
@@ -2387,12 +2334,12 @@ img { background: #d8d0c3; }
           </svg>
           <p class="mp-desc">Al hacer clic serás redirigido a Mercado Pago para abonar la seña del 20% de forma segura. Podés pagar con saldo MP, débito o crédito.</p>
           <a href="#" class="mp-btn" id="mpBtn" onclick="abrirMercadoPago(event)">
-            Pagar con Mercado Pago â†’
+            Pagar con Mercado Pago →
           </a>
-          <p class="mp-safe">ðŸ”’ Pago 100% seguro · SSL</p>
+          <p class="mp-safe">🔒 Pago 100% seguro · SSL</p>
           <p style="font-size:11px;color:#888;margin-top:8px;text-align:center;">Después de pagar, volvé aquí y hacé clic en <strong>«Ya pagué»</strong> para confirmar tu reserva.</p>
           <button class="btn-pagar" id="btnYaPague" style="margin-top:12px;display:none;" onclick="confirmarPagado(event)">
-            âœ… Ya pagué ”” Confirmar reserva
+            ✅ Ya pagué — Confirmar reserva
           </button>
         </div>
       </div>
@@ -2424,17 +2371,17 @@ img { background: #d8d0c3; }
             </div>
           </div>
           <button class="btn-pagar" onclick="simularPago(event)">
-            Confirmar pago de seña â†’
+            Confirmar pago de seña →
           </button>
         </div>
-        <p class="pago-footer-note">ðŸ”’ Tus datos están cifrados y protegidos</p>
+        <p class="pago-footer-note">🔒 Tus datos están cifrados y protegidos</p>
       </div>
 
     </div>
 
     <!-- Success -->
     <div class="pago-success" id="pagoSuccess">
-      <div class="success-ico">âœ…</div>
+      <div class="success-ico">✅</div>
       <h3>¡Reserva confirmada!</h3>
       <p id="successMsg">Tu lugar está asegurado. Te enviamos la confirmación por WhatsApp y email. ¡Nos vemos en la excursión!</p>
     </div>
@@ -2446,12 +2393,12 @@ img { background: #d8d0c3; }
 
 <div class="modal-wrap" id="modalWrap">
   <div class="modal">
-    <button class="modal-x" id="modalX">âœ•</button>
+    <button class="modal-x" id="modalX">✕</button>
     <h3>Subir imagen de banner</h3>
     <p>Elegí una imagen para el slider principal. Se recomienda 1600×900px o mayor.</p>
     <label class="upload-zone" id="uZone">
       <input type="file" id="modalFile" accept="image/*">
-      <div class="upload-zone-ico">ðŸ–¼</div>
+      <div class="upload-zone-ico">🖼</div>
       <div class="upload-zone-txt"><strong>Hacé clic para subir</strong> o arrastrá aquí.<br>JPG, PNG o WEBP.</div>
     </label>
     <div class="slot-label">
@@ -2473,7 +2420,7 @@ img { background: #d8d0c3; }
   <div class="sec-head reveal">
     <p class="eyebrow">Encontranos</p>
     <h2 class="section-title">Ubicación y <em>Contacto</em></h2>
-    <p class="section-sub">Estamos en Perito Moreno, Santa Cruz ”” el corazón de la Patagonia profunda.</p>
+    <p class="section-sub">Estamos en Perito Moreno, Santa Cruz — el corazón de la Patagonia profunda.</p>
   </div>
 
   <div style="display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-top:3rem;" class="reveal">
@@ -2485,10 +2432,10 @@ img { background: #d8d0c3; }
         <div style="display:flex; flex-direction:column; gap:.9rem; font-size:.9rem; color:var(--stone); line-height:1.7;">
           <p><strong style="color:var(--ink);">✉ Email</strong><br>
             <a href="mailto:zoyenperitomoreno@gmail.com" style="color:var(--amber);">zoyenperitomoreno@gmail.com</a></p>
-          <p><strong style="color:var(--ink);">ðŸ“± WhatsApp / Tel</strong><br>
+          <p><strong style="color:var(--ink);">📱 WhatsApp / Tel</strong><br>
             <a href="https://wa.me/5492974432855" target="_blank" rel="noopener" style="color:var(--amber);">+54 9 297 443-2855</a></p>
-          <p><strong style="color:var(--ink);">ðŸ“ Dirección</strong><br>Perito Moreno, Santa Cruz, Argentina</p>
-          <p><strong style="color:var(--ink);">ðŸ”– Legajo</strong><br>15.625</p>
+          <p><strong style="color:var(--ink);">📍 Dirección</strong><br>Perito Moreno, Santa Cruz, Argentina</p>
+          <p><strong style="color:var(--ink);">🔖 Legajo</strong><br>15.625</p>
         </div>
         <a href="https://wa.me/5492974432855" target="_blank" rel="noopener" style="display:inline-block; margin-top:1.5rem; padding:.75rem 2rem; background:var(--ember); color:var(--cream); text-decoration:none; font-family:'Sora',sans-serif; font-size:.75rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; border-radius:1px; transition:background .25s;" onmouseover="this.style.background='var(--ember-dim)'" onmouseout="this.style.background='var(--ember)'">Escribinos por WhatsApp</a>
       </div>
@@ -2510,26 +2457,26 @@ img { background: #d8d0c3; }
       <div style="display:flex; flex-direction:column; gap:1.4rem;">
 
         <div style="border-left:2px solid var(--ember); padding-left:1rem;">
-          <p style="font-family:'Sora',sans-serif; font-size:.62rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--ember); margin-bottom:.4rem;">âœˆ Por avión</p>
+          <p style="font-family:'Sora',sans-serif; font-size:.62rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--ember); margin-bottom:.4rem;">✈ Por avión</p>
           <p style="font-size:.84rem; color:var(--stone); line-height:1.75;">Aeropuerto de Perito Moreno (PMY). Vuelos regulares desde Buenos Aires (Aeroparque) y Comodoro Rivadavia.<br>
           <a href="https://www.aerolineas.com.ar" target="_blank" rel="noopener" style="color:var(--amber);">Aerolíneas Argentinas</a> ·
           <a href="https://www.lade.com.ar" target="_blank" rel="noopener" style="color:var(--amber);">LADE</a></p>
         </div>
 
         <div style="border-left:2px solid var(--ember); padding-left:1rem;">
-          <p style="font-family:'Sora',sans-serif; font-size:.62rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--ember); margin-bottom:.4rem;">ðŸšŒ Por bus</p>
+          <p style="font-family:'Sora',sans-serif; font-size:.62rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--ember); margin-bottom:.4rem;">🚌 Por bus</p>
           <p style="font-size:.84rem; color:var(--stone); line-height:1.75;">Servicios regulares desde Comodoro Rivadavia, Bariloche y otras ciudades patagónicas.<br>
           <a href="https://www.sportman.com.ar" target="_blank" rel="noopener" style="color:var(--amber);">Sportman</a> · TAC / El Pingüino ·
           <a href="https://www.plataforma10.com" target="_blank" rel="noopener" style="color:var(--amber);">Plataforma 10</a></p>
         </div>
 
         <div style="border-left:2px solid var(--ember); padding-left:1rem;">
-          <p style="font-family:'Sora',sans-serif; font-size:.62rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--ember); margin-bottom:.4rem;">ðŸš— Por Ruta 40</p>
+          <p style="font-family:'Sora',sans-serif; font-size:.62rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--ember); margin-bottom:.4rem;">🚗 Por Ruta 40</p>
           <p style="font-size:.84rem; color:var(--stone); line-height:1.75;">La mítica RN 40 conecta toda la Patagonia. Perito Moreno queda aprox. 1.300 km al sur de Bariloche y 760 km al norte de El Calafate. Se recomienda vehículo con neumáticos adecuados para ripio.</p>
         </div>
 
         <div style="border-left:2px solid var(--ember); padding-left:1rem;">
-          <p style="font-family:'Sora',sans-serif; font-size:.62rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--ember); margin-bottom:.4rem;">ðŸš Traslados locales</p>
+          <p style="font-family:'Sora',sans-serif; font-size:.62rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--ember); margin-bottom:.4rem;">🚐 Traslados locales</p>
           <p style="font-size:.84rem; color:var(--stone); line-height:1.75;">Ofrecemos traslados en camioneta 4x4 desde el aeropuerto hacia Perito Moreno y Los Antiguos. <a href="https://wa.me/5492974432855" target="_blank" rel="noopener" style="color:var(--amber);">Consultanos por WhatsApp.</a></p>
         </div>
 
@@ -2590,9 +2537,9 @@ img { background: #d8d0c3; }
 <line x1="37.01" y1="37.01" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
   </g>
   <!-- Centre dot stays fixed -->
-<circle cx="50" cy="50" r="3.06" fill="#d4772a"/>
+<circle cx="50" cy="50" r="3.06" fill="#ff7a35"/>
 <circle cx="50" cy="50" r="1.84" fill="#1a1410"/>
-<circle cx="50" cy="50" r="0.9" fill="#d4772a"/>
+<circle cx="50" cy="50" r="0.9" fill="#ff7a35"/>
 </svg>
         <div class="footer-brand"><span class="footer-brand-zoyen">ZOYEN</span> <span>TURISMO</span></div>
       </div>
@@ -2627,12 +2574,12 @@ img { background: #d8d0c3; }
     <div>
       <div class="footer-col-title">Excursiones</div>
       <ul class="footer-links">
-        <li><a href="excursion-cueva-de-las-manos.html">Cueva de las Manos</a></li>
-        <li><a href="excursion-alero-charcamata.html">Alero Charcamata</a></li>
-        <li><a href="excursion-ruta41-lago-posadas.html">Lago Posadas · Ruta 41</a></li>
-        <li><a href="excursion-monte-zeballos.html">Monte Zeballos</a></li>
-        <li><a href="excursion-parque-patagonia.html">Portal Cañadón Pinturas / PNP</a></li>
-        <li><a href="excursion-capillas-de-marmol.html">Capillas de Mármol</a></li>
+        <li><a href="https://www.zoyenturismo.com.ar/cuevadelasmanos/">Cueva de las Manos</a></li>
+        <li><a href="https://www.zoyenturismo.com.ar/alerocharcamata/">Alero Charcamata</a></li>
+        <li><a href="https://www.zoyenturismo.com.ar/ruta41-posadas/">Lago Posadas · Ruta 41</a></li>
+        <li><a href="https://www.zoyenturismo.com.ar/ruta41_montezeballos/">Monte Zeballos</a></li>
+        <li><a href="https://www.zoyenturismo.com.ar/parquepatagonia-2/">Portal Cañadón Pinturas / PNP</a></li>
+        <li><a href="https://www.zoyenturismo.com.ar/exc-capillasdemarmol/">Capillas de Mármol</a></li>
       </ul>
     </div>
     <div>
@@ -2640,7 +2587,7 @@ img { background: #d8d0c3; }
       <div class="footer-contact">
         <p><strong>✉</strong> zoyenperitomoreno@gmail.com</p>
         <p><strong>☎</strong> +54 9 297 443-2855</p>
-        <p><strong>ðŸ“</strong> Perito Moreno, Santa Cruz</p>
+        <p><strong>📍</strong> Perito Moreno, Santa Cruz</p>
       </div>
       <div style="margin-top:1.8rem">
         <div class="footer-col-title">Navegación</div>
@@ -2656,7 +2603,7 @@ img { background: #d8d0c3; }
   </div>
   <div class="footer-bottom">
     <span>© Zoyen Turismo 2025 · Todos los derechos reservados</span>
-    
+    <a href="https://www.zoyenturismo.com.ar/">zoyenturismo.com.ar</a>
   </div>
 </footer>
 
@@ -2666,7 +2613,7 @@ img { background: #d8d0c3; }
 </a>
 
 <script>
-// â”€â”€ SLIDER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── SLIDER ──────────────────────────────
 const slides = [...document.querySelectorAll('.slide')];
 const dots   = [...document.querySelectorAll('.dot')];
 let cur = 0, t;
@@ -2686,7 +2633,7 @@ document.getElementById('prev').onclick = () => { go(cur - 1); startAuto(); };
 dots.forEach(d => d.addEventListener('click', () => { go(+d.dataset.i); startAuto(); }));
 startAuto();
 
-// â”€â”€ BANNER BAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── BANNER BAR ──────────────────────────
 const bbThumbs = document.getElementById('bbThumbs');
 
 function syncThumbs() {
@@ -2699,7 +2646,7 @@ bbThumbs.addEventListener('click', e => {
   if (th) { go(+th.dataset.i); startAuto(); }
 });
 
-// Quick upload â†’ applies to current slide
+// Quick upload → applies to current slide
 document.getElementById('quickUp').addEventListener('change', function() {
   const f = this.files[0]; if (!f) return;
   const r = new FileReader();
@@ -2715,7 +2662,7 @@ function applyImg(url, idx) {
   if (th) th.innerHTML = `<img src="${url}" alt="">`;
 }
 
-// â”€â”€ MODAL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── MODAL ────────────────────────────────
 const modalWrap = document.getElementById('modalWrap');
 let pendUrl = null;
 
@@ -2730,7 +2677,7 @@ mFile.addEventListener('change', function() {
   const r = new FileReader();
   r.onload = e => {
     pendUrl = e.target.result;
-    uZone.querySelector('.upload-zone-txt').innerHTML = `<strong style="color:var(--ember)">âœ“ Lista:</strong> ${f.name}`;
+    uZone.querySelector('.upload-zone-txt').innerHTML = `<strong style="color:var(--ember)">✓ Lista:</strong> ${f.name}`;
   };
   r.readAsDataURL(f);
 });
@@ -2743,7 +2690,7 @@ uZone.addEventListener('drop', e => {
   const r = new FileReader();
   r.onload = ev => {
     pendUrl = ev.target.result;
-    uZone.querySelector('.upload-zone-txt').innerHTML = `<strong style="color:var(--ember)">âœ“ Lista:</strong> ${f.name}`;
+    uZone.querySelector('.upload-zone-txt').innerHTML = `<strong style="color:var(--ember)">✓ Lista:</strong> ${f.name}`;
   };
   r.readAsDataURL(f);
 });
@@ -2794,7 +2741,7 @@ function addSlide(url) {
   go(idx); startAuto();
 }
 
-// â”€â”€ RESERVA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── RESERVA ─────────────────────────────────────────────────────
 
 // Asientos ocupados por tour de autor
 const ocupadosPorExcursion = {
@@ -2885,7 +2832,7 @@ function resetSeats() {
 function toggleSeat(el) {
   const exc = document.getElementById('sel-excursion').value;
   if (!exc) {
-    document.getElementById('seatInfo').textContent = 'âš ï¸ Primero elegí una excursión en el formulario.';
+    document.getElementById('seatInfo').textContent = '⚠️ Primero elegí una excursión en el formulario.';
     return;
   }
   if (el.classList.contains('occupied') || el.classList.contains('driver')) return;
@@ -2896,7 +2843,7 @@ function toggleSeat(el) {
     selectedSeats = selectedSeats.filter(s => s !== num);
   } else {
     if (selectedSeats.length >= maxSeats) {
-      document.getElementById('seatInfo').textContent = `âš ï¸ Ya elegiste ${maxSeats} asiento${maxSeats>1?'s':''} (según cantidad de personas).`;
+      document.getElementById('seatInfo').textContent = `⚠️ Ya elegiste ${maxSeats} asiento${maxSeats>1?'s':''} (según cantidad de personas).`;
       return;
     }
     el.classList.add('selected');
@@ -2911,7 +2858,7 @@ function updateSeatInfo() {
   if (selectedSeats.length === 0) {
     info.textContent = 'Hacé clic en los asientos disponibles para elegir tu lugar.';
   } else {
-    info.textContent = `âœ“ Asiento${selectedSeats.length>1?'s':''} seleccionado${selectedSeats.length>1?'s':''}: ${selectedSeats.sort((a,b)=>a-b).join(', ')}  ””  ${selectedSeats.length} de ${maxSeats} elegido${maxSeats>1?'s':''}`;
+    info.textContent = `✓ Asiento${selectedSeats.length>1?'s':''} seleccionado${selectedSeats.length>1?'s':''}: ${selectedSeats.sort((a,b)=>a-b).join(', ')}  —  ${selectedSeats.length} de ${maxSeats} elegido${maxSeats>1?'s':''}`;
   }
 }
 
@@ -2939,7 +2886,7 @@ document.getElementById('btnPagar').addEventListener('click', function() {
   const senia = Math.round(precioBase * parseInt(personas) * 0.20);
 
   document.getElementById('pagoResumen').innerHTML = `
-    <strong>Excursión:</strong> ${excText.split('””')[0].trim()}<br>
+    <strong>Excursión:</strong> ${excText.split('—')[0].trim()}<br>
     <strong>Fecha:</strong> ${new Date(fecha+'T12:00:00').toLocaleDateString('es-AR',{weekday:'long',year:'numeric',month:'long',day:'numeric'})}<br>
     <strong>Personas:</strong> ${personas}<br>
     <strong>Asientos:</strong> ${selectedSeats.sort((a,b)=>a-b).join(', ')}<br>
@@ -2947,7 +2894,7 @@ document.getElementById('btnPagar').addEventListener('click', function() {
     <strong>Seña a abonar (20%):</strong> <span style="color:var(--ember);font-weight:600">${formatPeso(senia)}</span>
   `;
   document.getElementById('pagoMontoBadge').textContent = formatPeso(senia);
-  document.getElementById('successMsg').innerHTML = `Tu lugar en el asiento ${selectedSeats.join('/')} para <strong>${excText.split('””')[0].trim()}</strong> el <strong>${new Date(fecha+'T12:00:00').toLocaleDateString('es-AR',{day:'numeric',month:'long'})}</strong> está asegurado.<br><br>Te enviamos la confirmación por email y WhatsApp. ¡Nos vemos en la excursión! ðŸ”`;
+  document.getElementById('successMsg').innerHTML = `Tu lugar en el asiento ${selectedSeats.join('/')} para <strong>${excText.split('—')[0].trim()}</strong> el <strong>${new Date(fecha+'T12:00:00').toLocaleDateString('es-AR',{day:'numeric',month:'long'})}</strong> está asegurado.<br><br>Te enviamos la confirmación por email y WhatsApp. ¡Nos vemos en la excursión! 🏔`;
 
   document.getElementById('step2-ind').classList.remove('active');
   document.getElementById('step2-ind').classList.add('done');
@@ -3086,7 +3033,7 @@ const obs = new IntersectionObserver(es => {
 }, { threshold: 0.1 });
 revEls.forEach(el => obs.observe(el));
 
-// â”€â”€ BRÚJULA REAL (solo mobile con giroscopio) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── BRÚJULA REAL (solo mobile con giroscopio) ─────────────────
 (function() {
   const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
   if (!isMobile) return;
@@ -3146,7 +3093,7 @@ revEls.forEach(el => obs.observe(el));
       `;
       document.body.appendChild(hint);
     }
-    hint.textContent = active ? 'ðŸ§­ Brújula activa' : '';
+    hint.textContent = active ? '🧭 Brújula activa' : '';
     hint.style.opacity = active ? '1' : '0';
     if (!active) setTimeout(() => hint.remove(), 500);
   }
@@ -3164,7 +3111,7 @@ revEls.forEach(el => obs.observe(el));
         })
         .catch(() => {});
     } else if (typeof DeviceOrientationEvent !== 'undefined') {
-      // Android y otros ”” sin permiso explícito
+      // Android y otros — sin permiso explícito
       window.addEventListener('deviceorientation', handleOrientation, true);
       activateCompass();
     }
@@ -3200,7 +3147,7 @@ revEls.forEach(el => obs.observe(el));
       color:rgba(201,169,110,0.9); pointer-events:none;
       animation: bob 2.2s ease-in-out infinite;
     `;
-    tip.textContent = 'ðŸ§­ Tocá el logo para activar brújula';
+    tip.textContent = '🧭 Tocá el logo para activar brújula';
     document.body.appendChild(tip);
     setTimeout(() => { tip.style.opacity='0'; tip.style.transition='opacity .6s'; setTimeout(()=>tip.remove(),700); }, 4000);
   }, 2000);
@@ -3208,7 +3155,7 @@ revEls.forEach(el => obs.observe(el));
 })();
 </script>
 
-<!-- â•â• MODAL RESERVAR â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<!-- ══ MODAL RESERVAR ══════════════════════════════════════════ -->
 <style>
 .rmod-wrap {
   display:none; position:fixed; inset:0; z-index:1000;
@@ -3295,7 +3242,7 @@ revEls.forEach(el => obs.observe(el));
 
 <div class="rmod-wrap" id="rmodWrap">
   <div class="rmod" id="rmodBox">
-    <button class="rmod-x" onclick="cerrarModalReservar()">âœ•</button>
+    <button class="rmod-x" onclick="cerrarModalReservar()">✕</button>
     <div class="rmod-eyebrow">Zoyen Turismo · Patagonia</div>
     <h2 class="rmod-title">¿Qué querés hacer?</h2>
     <p class="rmod-sub">Elegí el tipo de experiencia y te guiamos desde acá.</p>
@@ -3304,12 +3251,12 @@ revEls.forEach(el => obs.observe(el));
     <div class="rmod-step active" id="rmod-step1">
       <div class="rmod-cards">
         <div class="rmod-card" onclick="elegirTipo('tour')">
-          <div class="rmod-card-ico">ðŸ—ºï¸</div>
+          <div class="rmod-card-ico">🗺️</div>
           <div class="rmod-card-name">Tour de Autor</div>
           <div class="rmod-card-desc">Varios días · itinerarios exclusivos por la Patagonia profunda</div>
         </div>
         <div class="rmod-card" onclick="elegirTipo('excursion')">
-          <div class="rmod-card-ico">ðŸ”ï¸</div>
+          <div class="rmod-card-ico">🏔️</div>
           <div class="rmod-card-name">Excursión</div>
           <div class="rmod-card-desc">Paseos en el día · reservá tu lugar en el momento</div>
         </div>
@@ -3320,7 +3267,7 @@ revEls.forEach(el => obs.observe(el));
     <div class="rmod-step" id="rmod-step2">
       <label class="rmod-label" for="rmod-exc-sel">Elegí la excursión</label>
       <select class="rmod-select" id="rmod-exc-sel" onchange="onRmodExcChange()">
-        <option value="">”” Seleccioná una excursión ””</option>
+        <option value="">— Seleccioná una excursión —</option>
         <option value="cueva">Cueva de las Manos</option>
         <option value="capillas">Capillas y Catedrales de Mármol</option>
         <option value="posadas">Lago Posadas · Ruta Escénica 41</option>
@@ -3333,7 +3280,7 @@ revEls.forEach(el => obs.observe(el));
         <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         Consultar por WhatsApp
       </button>
-      <button class="rmod-back" onclick="volverStep1()">â† Volver</button>
+      <button class="rmod-back" onclick="volverStep1()">← Volver</button>
     </div>
   </div>
 </div>
@@ -3406,9 +3353,9 @@ revEls.forEach(el => obs.observe(el));
 })();
 </script>
 
-<!-- â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-     ADMIN ”“ iframe aislado
-â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• -->
+<!-- ═══════════════════════════════════════════════════════
+     ADMIN – iframe aislado
+════════════════════════════════════════════════════════ -->
 <style>
 /* Login overlay */
 .adm-login-wrap {
@@ -3463,7 +3410,7 @@ revEls.forEach(el => obs.observe(el));
 <!-- Login overlay (en el sitio) -->
 <div class="adm-login-wrap" id="admLoginWrap">
   <div class="adm-login-box">
-    <button class="adm-login-close" id="admLoginClose">âœ•</button>
+    <button class="adm-login-close" id="admLoginClose">✕</button>
     <div class="adm-login-logo">
       <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
         <circle cx="50" cy="50" r="46" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.2"/>
@@ -3487,7 +3434,7 @@ revEls.forEach(el => obs.observe(el));
     </div>
     <div class="adm-field">
       <label>Contraseña</label>
-      <input type="password" id="admPass" placeholder="”¢”¢”¢”¢”¢”¢”¢”¢" autocomplete="current-password"/>
+      <input type="password" id="admPass" placeholder="••••••••" autocomplete="current-password"/>
     </div>
     <button class="adm-login-btn" id="admLoginBtn">Ingresar</button>
     <div class="adm-login-err" id="admLoginErr">Usuario o contraseña incorrectos.</div>
@@ -3499,7 +3446,7 @@ revEls.forEach(el => obs.observe(el));
   <iframe id="admIframe" title="Panel Admin"></iframe>
 </div>
 
-<div class="adm-toast" id="admToast">âœ“ Cambios guardados</div>
+<div class="adm-toast" id="admToast">✓ Cambios guardados</div>
 
 <script>
 (function(){
@@ -3562,7 +3509,7 @@ document.getElementById('admUser').addEventListener('keydown', e=>{ if(e.key==='
 // Toast
 function showToast(msg){
   const t=document.getElementById('admToast');
-  t.textContent='âœ“ '+(msg||'Cambios guardados');
+  t.textContent='✓ '+(msg||'Cambios guardados');
   t.classList.add('show');
   setTimeout(()=>t.classList.remove('show'),2800);
 }
@@ -3609,7 +3556,7 @@ function openPanel(){
     },
     applyExcPrice: (key,precio)=>{
       const opts=document.querySelectorAll('#sel-excursion option');
-      opts.forEach(o=>{ if(o.value===key){ o.dataset.precio=precio; const d=excData.find(e=>e.key===key); if(d) o.textContent=`${d.name} ”” $${parseInt(precio).toLocaleString('es-AR')} p/p`; } });
+      opts.forEach(o=>{ if(o.value===key){ o.dataset.precio=precio; const d=excData.find(e=>e.key===key); if(d) o.textContent=`${d.name} — $${parseInt(precio).toLocaleString('es-AR')} p/p`; } });
     },
     applySliderImage: (i,url)=>{
       const bg=document.querySelector(`#s${i} .slide-bg`); if(bg) bg.style.backgroundImage=`url('${url}')`;
@@ -3650,7 +3597,7 @@ html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;font-size:15
 /* Layout */
 .panel{display:flex;flex-direction:column;height:100vh}
 
-/* Topbar ”” keeps brand dark */
+/* Topbar — keeps brand dark */
 .topbar{height:58px;background:var(--topbar);border-bottom:2.5px solid var(--ember);display:flex;align-items:center;justify-content:space-between;padding:0 24px;flex-shrink:0}
 .topbar-left{display:flex;align-items:center;gap:12px}
 .topbar-logo{display:flex;align-items:center;gap:10px}
@@ -3769,9 +3716,9 @@ file-lbl{cursor:pointer}
       <span class="topbar-badge">Admin</span>
     </div>
     <div class="topbar-right">
-      <span class="user-label">ðŸ‘¤ zoyen</span>
+      <span class="user-label">👤 zoyen</span>
       <button class="btn-logout" onclick="P.logout();P.showToast('Sesión cerrada.')">Cerrar sesión</button>
-      <button class="btn-back" onclick="P.closePanel()">â† Volver al sitio</button>
+      <button class="btn-back" onclick="P.closePanel()">← Volver al sitio</button>
     </div>
   </div>
 
@@ -3779,15 +3726,15 @@ file-lbl{cursor:pointer}
     <!-- Sidebar -->
     <nav class="sidebar">
       <div class="sidebar-section">General</div>
-      <div class="nav-item active" data-sec="dashboard"><span class="ico">ðŸ“Š</span> Dashboard</div>
+      <div class="nav-item active" data-sec="dashboard"><span class="ico">📊</span> Dashboard</div>
       <div class="nav-divider"></div>
       <div class="sidebar-section">Contenido</div>
-      <div class="nav-item" data-sec="textos"><span class="ico">âœï¸</span> Textos y descripciones</div>
-      <div class="nav-item" data-sec="excursiones"><span class="ico">ðŸ”</span> Excursiones</div>
-      <div class="nav-item" data-sec="slider"><span class="ico">ðŸ–¼</span> Slider / Banners</div>
+      <div class="nav-item" data-sec="textos"><span class="ico">✏️</span> Textos y descripciones</div>
+      <div class="nav-item" data-sec="excursiones"><span class="ico">🏔</span> Excursiones</div>
+      <div class="nav-item" data-sec="slider"><span class="ico">🖼</span> Slider / Banners</div>
       <div class="nav-divider"></div>
       <div class="sidebar-section">Operaciones</div>
-      <div class="nav-item" data-sec="reservas"><span class="ico">ðŸ“‹</span> Reservas</div>
+      <div class="nav-item" data-sec="reservas"><span class="ico">📋</span> Reservas</div>
     </nav>
 
     <!-- Main -->
@@ -3798,10 +3745,10 @@ file-lbl{cursor:pointer}
         <div class="sec-title">Dashboard</div>
         <div class="sec-sub">Resumen general · Zoyen Turismo</div>
         <div class="stats">
-          <div class="stat"><div class="stat-ico">ðŸ“‹</div><div class="stat-val" id="d-total">0</div><div class="stat-lbl">Reservas totales</div></div>
-          <div class="stat"><div class="stat-ico">â³</div><div class="stat-val" id="d-pend">0</div><div class="stat-lbl">Sin confirmar</div></div>
-          <div class="stat stat-abandon"><div class="stat-ico">ðŸ›’</div><div class="stat-val" id="d-abandon">0</div><div class="stat-lbl">Pago iniciado</div></div>
-          <div class="stat"><div class="stat-ico">âœ…</div><div class="stat-val" id="d-conf">0</div><div class="stat-lbl">Confirmadas</div></div>
+          <div class="stat"><div class="stat-ico">📋</div><div class="stat-val" id="d-total">0</div><div class="stat-lbl">Reservas totales</div></div>
+          <div class="stat"><div class="stat-ico">⏳</div><div class="stat-val" id="d-pend">0</div><div class="stat-lbl">Sin confirmar</div></div>
+          <div class="stat stat-abandon"><div class="stat-ico">🛒</div><div class="stat-val" id="d-abandon">0</div><div class="stat-lbl">Pago iniciado</div></div>
+          <div class="stat"><div class="stat-ico">✅</div><div class="stat-val" id="d-conf">0</div><div class="stat-lbl">Confirmadas</div></div>
         </div>
         <div class="card">
           <div class="card-title">Últimas reservas</div>
@@ -3847,7 +3794,7 @@ file-lbl{cursor:pointer}
         <!-- Toggle efecto lenticular -->
         <div class="card" style="margin-bottom:1.5rem;">
           <div class="card-title">Efecto lenticular en el banner</div>
-          <p style="font-size:12px;color:var(--text-light);margin-bottom:1rem;">Al mover el mouse o inclinar el celular sobre el banner aparece "ZOYEN â†’ TURISMO". Podés activarlo o desactivarlo acá.</p>
+          <p style="font-size:12px;color:var(--text-light);margin-bottom:1rem;">Al mover el mouse o inclinar el celular sobre el banner aparece "ZOYEN → TURISMO". Podés activarlo o desactivarlo acá.</p>
           <div style="display:flex;align-items:center;gap:12px;">
             <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px;font-weight:600;">
               <input type="checkbox" id="lent-toggle" onchange="toggleLent(this.checked)"
@@ -3894,7 +3841,7 @@ const excData = P.excData;
 // Always read live from parent (which reads sessionStorage)
 function getReservas(){ return P.reservas; }
 
-function showToast(msg){ const t=document.getElementById('toast'); t.textContent='âœ“ '+(msg||'Guardado'); t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2600); }
+function showToast(msg){ const t=document.getElementById('toast'); t.textContent='✓ '+(msg||'Guardado'); t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2600); }
 
 // Nav
 document.querySelectorAll('.nav-item').forEach(item=>{
@@ -3922,7 +3869,7 @@ function buildDash(){
   tb.innerHTML=reservas.slice(-8).reverse().map((r,i)=>\`<tr>
     <td style="color:var(--stone)">#\${reservas.length-i}</td>
     <td>\${r.nombre}</td><td>\${r.excursion}</td>
-    <td>\${r.fecha?new Date(r.fecha+'T12:00:00').toLocaleDateString('es-AR',{day:'numeric',month:'short'}):'””'}</td>
+    <td>\${r.fecha?new Date(r.fecha+'T12:00:00').toLocaleDateString('es-AR',{day:'numeric',month:'short'}):'—'}</td>
     <td style="text-align:center">\${r.personas}</td>
     <td style="color:var(--ember);font-weight:600">$\${(r.senia||0).toLocaleString('es-AR')}</td>
     <td>\${badge(r.estado)}</td>
@@ -3984,9 +3931,9 @@ function buildExc(){
       <div class="fgrid">
         <div class="field"><label>Precio por persona ($)</label><input type="number" id="ep-\${i}" value="\${e.precio}" min="0" step="500"/></div>
         <div class="field"><label>Estado</label><select id="ee-\${i}">
-          <option value="activa" \${e.estado==='activa'?'selected':''}>âœ… Activa</option>
-          <option value="pausada" \${e.estado==='pausada'?'selected':''}>â¸ Pausada</option>
-          <option value="completa" \${e.estado==='completa'?'selected':''}>ðŸ”´ Sin lugares</option>
+          <option value="activa" \${e.estado==='activa'?'selected':''}>✅ Activa</option>
+          <option value="pausada" \${e.estado==='pausada'?'selected':''}>⏸ Pausada</option>
+          <option value="completa" \${e.estado==='completa'?'selected':''}>🔴 Sin lugares</option>
         </select></div>
         <div class="field"><label>Duración</label><input type="text" id="ed-\${i}" value="\${e.duracion}"/></div>
         <div class="field"><label>Capacidad</label><input type="number" id="ec-\${i}" value="\${e.capacidad}" min="1" max="20"/></div>
@@ -4016,18 +3963,18 @@ function buildExcPreview(){
 }
 
 // Slider
-const slideLabels=['Banner 1 ”“ Patagonia','Banner 2 ”“ Cueva de las Manos','Banner 3 ”“ Capillas de Mármol','Banner 4 ”“ Monte Zeballos'];
+const slideLabels=['Banner 1 – Patagonia','Banner 2 – Cueva de las Manos','Banner 3 – Capillas de Mármol','Banner 4 – Monte Zeballos'];
 function toggleLent(val){
   if(window.top && window.top.setLentEnabled) window.top.setLentEnabled(val);
   try{ localStorage.setItem('lentEnabled', val ? 'true' : 'false'); }catch(e){}
-  document.getElementById('lent-status').textContent = val ? 'âœ“ Activado' : '✗ Desactivado';
+  document.getElementById('lent-status').textContent = val ? '✓ Activado' : '✗ Desactivado';
 }
 
 function initLentToggle(){
   let enabled = true;
   try{ enabled = localStorage.getItem('lentEnabled') !== 'false'; }catch(e){}
   const cb = document.getElementById('lent-toggle');
-  if(cb){ cb.checked = enabled; document.getElementById('lent-status').textContent = enabled ? 'âœ“ Activado' : '✗ Desactivado'; }
+  if(cb){ cb.checked = enabled; document.getElementById('lent-status').textContent = enabled ? '✓ Activado' : '✗ Desactivado'; }
 }
 
 function buildSlider(){
@@ -4038,11 +3985,11 @@ function buildSlider(){
       <div class="slide-body">
         <div class="slide-name">\${lbl}</div>
         <div class="slide-actions">
-          <label class="btn btn-g btn-sm" style="cursor:pointer">ðŸ“ Subir
+          <label class="btn btn-g btn-sm" style="cursor:pointer">📁 Subir
             <input type="file" accept="image/*" style="display:none" onchange="uploadImg(event,\${i})"/>
           </label>
           <input class="url-input" type="text" placeholder="URL…" id="surl-\${i}"/>
-          <button class="btn btn-p btn-sm" onclick="applyUrl(\${i})">â†’</button>
+          <button class="btn btn-p btn-sm" onclick="applyUrl(\${i})">→</button>
         </div>
       </div>
     </div>\`;
@@ -4067,18 +4014,18 @@ function buildReservas(){
     return \`<tr>
       <td style="color:var(--stone)">#\${idx+1}</td>
       <td style="font-weight:500">\${r.nombre}</td>
-      <td style="font-size:12px;color:var(--stone)">\${r.tel||'””'}<br>\${r.email||'””'}</td>
+      <td style="font-size:12px;color:var(--stone)">\${r.tel||'—'}<br>\${r.email||'—'}</td>
       <td>\${r.excursion}</td>
-      <td>\${r.fecha?new Date(r.fecha+'T12:00:00').toLocaleDateString('es-AR',{day:'2-digit',month:'2-digit',year:'numeric'}):'””'}</td>
+      <td>\${r.fecha?new Date(r.fecha+'T12:00:00').toLocaleDateString('es-AR',{day:'2-digit',month:'2-digit',year:'numeric'}):'—'}</td>
       <td style="text-align:center">\${r.personas}</td>
-      <td style="text-align:center">\${r.asientos||'””'}</td>
+      <td style="text-align:center">\${r.asientos||'—'}</td>
       <td style="color:var(--ember);font-weight:600">$\${(r.senia||0).toLocaleString('es-AR')}</td>
       <td>\${badge(r.estado)}</td>
-      <td style="font-size:11px;color:var(--muted)">\${r.ultimoIntento||r.creado||'””'}</td>
+      <td style="font-size:11px;color:var(--muted)">\${r.ultimoIntento||r.creado||'—'}</td>
       <td><div style="display:flex;gap:5px;flex-wrap:wrap;align-items:center">
-        \${puedeRetarget?\`<a href="\${waUrl}" target="_blank" class="btn btn-wa btn-sm" title="Retargeting por WhatsApp">ðŸ“² WA</a>\`:''}
-        \${r.estado!=='confirmada'?\`<button class="btn btn-p btn-sm" onclick="cambiarEstado(\${idx},'confirmada')">âœ“</button>\`:''}
-        \${r.estado!=='cancelada'?\`<button class="btn btn-d btn-sm" onclick="cambiarEstado(\${idx},'cancelada')">âœ•</button>\`:''}
+        \${puedeRetarget?\`<a href="\${waUrl}" target="_blank" class="btn btn-wa btn-sm" title="Retargeting por WhatsApp">📲 WA</a>\`:''}
+        \${r.estado!=='confirmada'?\`<button class="btn btn-p btn-sm" onclick="cambiarEstado(\${idx},'confirmada')">✓</button>\`:''}
+        \${r.estado!=='cancelada'?\`<button class="btn btn-d btn-sm" onclick="cambiarEstado(\${idx},'cancelada')">✕</button>\`:''}
       </div></td>
     </tr>\`;
   }).join('');

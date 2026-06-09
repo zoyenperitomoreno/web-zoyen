@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lago Posadas · Ruta Escénica 41 – Zoyen Turismo</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:       #1a1410;
+  --dark:      #231c14;
+  --bark:      #3a2d1f;
+  --ember:     #d4772a;
+  --ember-dim: #b8621e;
+  --amber:     #b87332;
+  --sand:      #c9a96e;
+  --dust:      #e8dcc8;
+  --cream:     #f5f0e8;
+  --fog:       #faf7f2;
+  --stone:     #7a6a5a;
+  --olive:     #5a6040;
+  --sky:       #8b9ba8;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Sora', sans-serif;
+  font-size: 16px; line-height: 1.7;
+  background: var(--fog); color: var(--ink);
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+  height: 72px;
+  display: grid; grid-template-columns: auto 1fr auto;
+  align-items: center; padding: 0 2vw; gap: 1rem;
+  background: rgba(10,10,10,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(212,119,42,0.20);
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none; line-height: 1; flex-shrink: 0;
+}
+.nav-emblem { width: 54px; height: 54px; flex-shrink: 0; }
+@keyframes nav-rose-spin { to { transform: rotate(360deg); } }
+@keyframes nav-ring-ccw  { to { transform: rotate(-360deg); } }
+.nav-emblem .nav-rose-anim { transform-origin: 50px 50px; animation: heroRoseSpin 18s linear infinite; animation-delay: -5s; }
+.nav-emblem .nav-ring-anim { transform-origin: 50px 50px; animation: heroRingCCW 45s linear infinite; animation-delay: -5s; }
+@keyframes heroRingCCW { to { transform: rotate(-360deg); } }
+@keyframes heroRoseSpin { to { transform: rotate(360deg); } }
+.nav-logo-text { display: flex; flex-direction: column; gap: 2px; justify-content: center; }
+.nav-logo .z { font-family: 'Sora',sans-serif; font-weight:700; font-size:1.4rem; letter-spacing:.12em; color:var(--cream); text-transform:uppercase; }
+.nav-logo .t { font-family: 'Sora',sans-serif; font-weight:700; font-size:1.4rem; letter-spacing:.12em; color:var(--ember); text-transform:uppercase; }
+.nav-logo sub { font-size:.60rem; font-weight:400; letter-spacing:.2em; color:var(--sand); opacity:.65; text-transform:uppercase; display:block; line-height:1.4; }
+.nav-links { display:flex; gap:1.2rem; list-style:none; align-items:center; justify-content:center; }
+.nav-links a { color:rgba(245,240,232,.75); text-decoration:none; font-size:.78rem; font-weight:500; letter-spacing:.06em; text-transform:uppercase; transition:color .2s; position:relative; white-space:nowrap; }
+.nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--ember); transform:scaleX(0); transform-origin:left; transition:transform .3s; }
+.nav-links a:hover { color:var(--cream); }
+.nav-links a:hover::after { transform:scaleX(1); }
+.nav-cta-btn { background:var(--ember); color:var(--cream); padding:.5rem 1.3rem; border-radius:2px; font-family:'Sora',sans-serif; font-size:.78rem; font-weight:600; letter-spacing:.15em; text-transform:uppercase; text-decoration:none; white-space:nowrap; flex-shrink:0; transition:background .2s; border:none; cursor:pointer; }
+.nav-cta-btn:hover { background:var(--ember-dim); }
+@media(max-width:960px){ .nav-links { display:none; } nav { grid-template-columns: auto 1fr; } }
+
+/* HERO EXCURSION */
+.exc-hero {
+  position: relative;
+  height: 60vh; min-height: 380px;
+  overflow: hidden;
+  display: flex; align-items: flex-end;
+  padding-bottom: 3rem;
+}
+.exc-hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('assets/posadas_zoyen.jpg');
+  background-size: cover; background-position: center;
+}
+.exc-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(26,20,16,.15) 0%, rgba(26,20,16,.0) 40%, rgba(26,20,16,.7) 80%, rgba(26,20,16,.9) 100%);
+}
+.exc-hero-content {
+  position: relative; z-index: 2;
+  padding: 0 5vw; color: var(--cream);
+  max-width: 900px;
+}
+.exc-tag {
+  display: inline-block;
+  background: var(--ember); color: var(--cream);
+  font-size: .72rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
+  padding: .3rem .9rem; margin-bottom: 1rem;
+  border-radius: 1px;
+}
+.exc-hero-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  font-weight: 600; line-height: 1.1;
+  text-shadow: 0 2px 20px rgba(26,20,16,.5);
+}
+.exc-hero-title em { font-style:italic; color:var(--sand); }
+
+/* BREADCRUMB */
+.breadcrumb {
+  background: var(--dark); border-bottom: 1px solid rgba(212,119,42,.15);
+  padding: .8rem 5vw;
+}
+.breadcrumb a { color: var(--sand); text-decoration: none; font-size:.78rem; letter-spacing:.1em; }
+.breadcrumb a:hover { color: var(--ember); }
+.breadcrumb span { color: var(--stone); font-size:.78rem; margin: 0 .5rem; }
+
+/* CONTENT LAYOUT */
+.exc-body {
+  max-width: 1100px; margin: 0 auto;
+  padding: 4rem 5vw 5rem;
+  display: grid; grid-template-columns: 1fr 340px; gap: 4rem;
+}
+@media(max-width:860px){ .exc-body { grid-template-columns: 1fr; } }
+
+.exc-main h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.5rem,3vw,2.2rem); color: var(--ink);
+  margin-bottom: 1.2rem; margin-top: 2.4rem;
+}
+.exc-main h2:first-child { margin-top: 0; }
+.exc-main h3 {
+  font-size: 1rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
+  color: var(--ember); margin-bottom: .8rem; margin-top: 2rem;
+}
+.exc-main p { color: var(--stone); line-height: 1.8; margin-bottom: 1rem; }
+.exc-main strong { color: var(--ink); }
+.exc-main ul { padding-left: 1.4rem; color: var(--stone); line-height: 1.8; margin-bottom: 1rem; }
+.exc-main ul li { margin-bottom: .4rem; }
+.exc-main .note {
+  background: rgba(212,119,42,.07); border-left: 3px solid var(--ember);
+  padding: 1rem 1.2rem; border-radius: 2px; margin: 1.5rem 0;
+  color: var(--ink); font-size: .93rem;
+}
+.exc-main .warn {
+  background: rgba(90,96,64,.08); border-left: 3px solid var(--olive);
+  padding: 1rem 1.2rem; border-radius: 2px; margin: 1.5rem 0;
+  color: var(--ink); font-size: .93rem;
+}
+
+/* SIDEBAR */
+.exc-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+.exc-card {
+  background: var(--dark); color: var(--cream);
+  border-radius: 3px; overflow: hidden;
+  border: 1px solid rgba(212,119,42,.15);
+}
+.exc-card-head {
+  padding: 1.2rem 1.4rem .6rem;
+  font-family: 'DM Serif Display',serif;
+  font-size: 1.2rem; color: var(--sand);
+}
+.exc-card-body { padding: .4rem 1.4rem 1.4rem; }
+.exc-card-body p { color: rgba(245,240,232,.7); font-size: .9rem; line-height: 1.7; margin-bottom: .6rem; }
+.exc-card-body .price {
+  font-size: 1.4rem; font-weight: 700; color: var(--ember);
+  margin: .8rem 0 .2rem;
+}
+.exc-card-body .price-label { font-size: .75rem; color: var(--stone); letter-spacing: .1em; }
+.btn-reservar {
+  display: block; width: 100%;
+  background: var(--ember); color: var(--cream);
+  text-align: center; padding: .85rem 1rem;
+  border-radius: 2px; text-decoration: none;
+  font-weight: 700; font-size: .85rem; letter-spacing: .2em; text-transform: uppercase;
+  transition: background .2s; margin-top: 1rem;
+  border: none; cursor: pointer; font-family: 'Sora',sans-serif;
+}
+.btn-reservar:hover { background: var(--ember-dim); }
+.exc-detail-list {
+  list-style: none; padding: 0;
+  display: flex; flex-direction: column; gap: .5rem;
+}
+.exc-detail-list li {
+  display: flex; align-items: flex-start; gap: .6rem;
+  font-size: .88rem; color: rgba(245,240,232,.7);
+}
+.exc-detail-list li .icon { color: var(--ember); flex-shrink: 0; font-size:1rem; }
+
+/* VIDEO */
+.video-wrap {
+  position: relative; padding-bottom: 56.25%;
+  height: 0; overflow: hidden; border-radius: 3px;
+  margin: 2rem 0;
+}
+.video-wrap iframe {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%; border: 0;
+}
+
+/* OTHER EXCURSIONS */
+.more-excursiones {
+  background: var(--dark);
+  padding: 4rem 5vw;
+  border-top: 1px solid rgba(212,119,42,.12);
+}
+.more-excursiones h2 {
+  font-family: 'DM Serif Display',serif;
+  font-size: 1.8rem; color: var(--cream);
+  margin-bottom: 2rem;
+}
+.exc-mini-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem;
+}
+@media(max-width:860px){ .exc-mini-grid { grid-template-columns: repeat(2,1fr); } }
+@media(max-width:560px){ .exc-mini-grid { grid-template-columns: 1fr; } }
+.exc-mini {
+  position: relative; border-radius: 3px; overflow: hidden;
+  aspect-ratio: 4/3; text-decoration: none;
+  display: block;
+}
+.exc-mini img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .5s;
+}
+.exc-mini:hover img { transform: scale(1.05); }
+.exc-mini-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(26,20,16,.85) 0%, transparent 50%);
+  display: flex; align-items: flex-end;
+  padding: .9rem;
+}
+.exc-mini-name {
+  color: var(--cream); font-weight: 600;
+  font-size: .82rem; letter-spacing: .04em; line-height: 1.3;
+}
+
+/* FOOTER */
+footer {
+  background: var(--dark);
+  border-top: 1px solid rgba(212,119,42,.2);
+  padding: 3rem 5vw 1.5rem;
+}
+.footer-top {
+  display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 3rem;
+  margin-bottom: 2.5rem;
+}
+@media(max-width:760px){ .footer-top { grid-template-columns: 1fr; gap: 2rem; } }
+.footer-brand-wrap { display:flex; align-items:center; gap:.8rem; margin-bottom:1rem; }
+.footer-emblem { width:48px; height:48px; flex-shrink:0; }
+@keyframes heroRingCW { to { transform: rotate(360deg); } }
+.ft-ring-anim { transform-origin:50px 50px; animation:heroRingCCW 45s linear infinite; }
+.ft-rose-anim { transform-origin:50px 50px; animation:heroRoseSpin 18s linear infinite; }
+.footer-brand { font-family:'Sora',sans-serif; font-weight:700; font-size:1.1rem; letter-spacing:.1em; text-transform:uppercase; }
+.footer-brand span { color:var(--sand); }
+.footer-brand-zoyen { color:var(--cream) !important; }
+.footer-tagline { color:var(--stone); font-size:.85rem; line-height:1.6; margin-bottom:1.2rem; }
+.socials { display:flex; gap:.6rem; }
+.social-btn { display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:2px; background:rgba(255,255,255,.06); color:var(--sand); text-decoration:none; transition:background .2s,color .2s; }
+.social-btn:hover { background:var(--ember); color:var(--cream); }
+.footer-col-title { font-size:.72rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--ember); margin-bottom:.9rem; }
+.footer-links { list-style:none; display:flex; flex-direction:column; gap:.45rem; }
+.footer-links a { color:var(--stone); text-decoration:none; font-size:.88rem; transition:color .2s; }
+.footer-links a:hover { color:var(--sand); }
+.footer-contact { color:var(--stone); font-size:.88rem; line-height:1.8; }
+.footer-bottom { border-top:1px solid rgba(201,169,110,.1); padding-top:1.2rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:.5rem; }
+.footer-bottom span, .footer-bottom a { color:var(--stone); font-size:.78rem; text-decoration:none; }
+.footer-bottom a:hover { color:var(--sand); }
+
+/* WA float */
+.wa {
+  position: fixed; bottom: 1.8rem; right: 1.8rem; z-index: 800;
+  width: 52px; height: 52px;
+  background: #25d366; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,.25);
+  transition: transform .2s;
+}
+.wa:hover { transform: scale(1.1); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg class="nav-emblem" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="nv-gl" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(255,255,255,0.95)"/><stop offset="100%" stop-color="rgba(182,196,212,0.82)"/></linearGradient>
+<linearGradient id="nv-gd" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(102,116,132,0.9)"/><stop offset="100%" stop-color="rgba(62,76,92,0.93)"/></linearGradient></defs>
+  <g class="nav-ring-anim"><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="0.8"/></g>
+  <g class="nav-rose-anim">
+<circle cx="50" cy="50" r="25.31" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.43"/>
+<circle cx="50" cy="50" r="22.04" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="0.24"/>
+<polygon points="50.0,22.65 46.33,50.0 50,50" fill="url(#nv-gl)"/>
+<polygon points="50.0,22.65 53.67,50.0 50,50" fill="url(#nv-gd)"/>
+<polygon points="50.0,19.79 48.57,22.65 51.43,22.65" fill="rgba(255,255,255,0.95)"/>
+<polygon points="62.99,37.01 48.27,48.27 50,50" fill="url(#nv-gl)"/>
+<polygon points="62.99,37.01 51.73,51.73 50,50" fill="url(#nv-gd)"/>
+<polygon points="77.35,50.0 50.0,46.33 50,50" fill="url(#nv-gl)"/>
+<polygon points="77.35,50.0 50.0,53.67 50,50" fill="url(#nv-gd)"/>
+<polygon points="62.99,62.99 51.73,48.27 50,50" fill="url(#nv-gl)"/>
+<polygon points="62.99,62.99 48.27,51.73 50,50" fill="url(#nv-gd)"/>
+<polygon points="50.0,77.35 53.67,50.0 50,50" fill="url(#nv-gl)"/>
+<polygon points="50.0,77.35 46.33,50.0 50,50" fill="url(#nv-gd)"/>
+<polygon points="37.01,62.99 51.73,51.73 50,50" fill="url(#nv-gl)"/>
+<polygon points="37.01,62.99 48.27,48.27 50,50" fill="url(#nv-gd)"/>
+<polygon points="22.65,50.0 50.0,53.67 50,50" fill="url(#nv-gl)"/>
+<polygon points="22.65,50.0 50.0,46.33 50,50" fill="url(#nv-gd)"/>
+<polygon points="37.01,37.01 48.27,51.73 50,50" fill="url(#nv-gl)"/>
+<polygon points="37.01,37.01 51.73,48.27 50,50" fill="url(#nv-gd)"/>
+  </g>
+  <circle cx="50" cy="50" r="3.06" fill="#d4772a"/>
+  <circle cx="50" cy="50" r="1.84" fill="#1a1410"/>
+  <circle cx="50" cy="50" r="0.9" fill="#d4772a"/>
+</svg>
+    <div class="nav-logo-text">
+      <div class="nav-logo-name">
+        <span class="z">ZOYEN&nbsp;</span>
+        <span class="t">TURISMO</span>
+      </div>
+      <sub>Patagonia · Legajo 15.625</sub>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#excursiones">Excursiones</a></li>
+    <li><a href="index.html#tours">Tours de Autor</a></li>
+    <li><a href="index.html#bienestar">Turismo de Bienestar</a></li>
+    <li><a href="index.html#ubicacion">Ubicación y Contacto</a></li>
+    <li><a href="nosotros.html">Quiénes somos</a></li>
+  </ul>
+  <a href="https://wa.me/5492974432855" class="nav-cta-btn" target="_blank" rel="noopener">Reservar</a>
+</nav>
+
+<div class="exc-hero">
+  <div class="exc-hero-bg"></div>
+  <div class="exc-hero-overlay"></div>
+  <div class="exc-hero-content">
+    <div class="exc-tag">Ruta escénica</div>
+    <h1 class="exc-hero-title">Lago Posadas · Ruta Escénica 41</h1>
+  </div>
+</div>
+
+<style>
+.exc-hero-bg { background-image: url('assets/posadas_zoyen.jpg'); }
+</style>
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="index.html">Inicio</a>
+  <span>›</span>
+  <a href="index.html#excursiones">Excursiones</a>
+  <span>›</span>
+  <span style="color:var(--sand)">Lago Posadas · Ruta Escénica 41</span>
+</nav>
+
+<div class="exc-body">
+  <main class="exc-main">
+    
+<h2>Historia, primeros pobladores, geología y <em>belleza paisajística</em></h2>
+<p>Saliendo temprano por la mañana, proponemos pasar desde la <strong>Estepa Patagónica hasta el Bosque de Montaña</strong>. Es un recorrido 100% paisajístico en la Ruta Escénica más hermosa y sorprendente de la Provincia de Santa Cruz, con postales de la Cordillera de Los Andes, del Cerro San Lorenzo y de la Meseta del Lago Buenos Aires.</p>
+<p>Lagos, montañas, ríos, lagunas y gran cantidad de aves acompañan todo el recorrido. Ascenderemos desde los 400 mts hasta los 1.500 metros s.n.m. Toda la actividad volcánica de miles de años atrás está a nuestra vista como así también la erosión de la última glaciación.</p>
+<p>Realizamos varias paradas fotográficas y llegamos a la <strong>Estancia El Suyaí</strong> donde nos deleitaremos con un típico almuerzo de campo patagónico frente al Lago Pueyrredón.</p>
+
+<h3>Itinerario</h3>
+<ul>
+  <li>Salida desde Perito Moreno a las 07:30 hs (desde Los Antiguos, a las 08:30 hs).</li>
+  <li>Tomamos la Ruta Escénica 41, desde los 400 msnm hasta los 1.500 msnm de alta montaña.</li>
+  <li>Vistas de la actividad volcánica, la cordillera de los Andes, ríos, arroyos, aves, lagos y montañas.</li>
+  <li>160 km por la ruta escénica hasta la Estancia El Suyaí, a orillas del lago Pueyrredón, casi en el límite con Chile. Almuerzo incluido (sin bebida).</li>
+  <li>Visita al Arco de Piedra, sobre el lago Posadas.</li>
+  <li>Regreso por Ruta 39 a Ruta 40, pasando por Bajo Caracoles hasta Perito Moreno o Los Antiguos.</li>
+  <li><strong>Duración: 12 hs · 500 km en camioneta 4x4 con chofer/guía.</strong></li>
+</ul>
+
+<div class="note"><strong>Clima adverso:</strong> Si por razones climáticas no se puede ir por la Ruta 41, el tour se realiza por la Ruta 40 ida y vuelta. Se recorre hasta Bajo Caracoles y luego la Ruta 39 hasta Lago Posadas. Recorrido de los lagos y almuerzo en Suyaí igual.</div>
+
+<div class="video-wrap">
+  <iframe src="https://www.youtube.com/embed/Jp2HZ-Kla_8?playsinline=1" allowfullscreen loading="lazy" title="Ruta 41 Lago Posadas - Zoyen Turismo"></iframe>
+</div>
+
+  </main>
+  <aside class="exc-sidebar">
+    <div class="exc-card">
+      <div class="exc-card-head">Reservar</div>
+      <div class="exc-card-body">
+        <p>Consultanos disponibilidad y precios por WhatsApp o reservá directamente.</p>
+        <a href="https://wa.me/5492974432855?text=Hola!%20Quiero%20información%20sobre%20la%20excursión%20Lago%20Posadas%20·%20Ruta%20Escénica%2041" class="btn-reservar" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+      </div>
+    </div>
+    <div class="exc-card">
+      <div class="exc-card-head">Detalles</div>
+      <div class="exc-card-body">
+        <ul class="exc-detail-list">
+          <li><span class="icon">✦</span> Salida desde Perito Moreno o Los Antiguos</li>
+          <li><span class="icon">✦</span> Guía especializado incluido</li>
+          <li><span class="icon">✦</span> Vehículo 4x4 o minibus</li>
+          <li><span class="icon">✦</span> Cupos limitados</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exc-card">
+      <div class="exc-card-head">Otras Excursiones</div>
+      <div class="exc-card-body">
+        <ul class="footer-links" style="gap:.6rem">
+          <li><a href="excursion-cueva-de-las-manos.html">Cueva de las Manos</a></li>
+          <li><a href="excursion-capillas-de-marmol.html">Capillas de Mármol</a></li>
+          <li><a href="excursion-ruta41-lago-posadas.html">Ruta 41 + Lago Posadas</a></li>
+          <li><a href="excursion-monte-zeballos.html">Monte Zeballos</a></li>
+          <li><a href="excursion-alero-charcamata.html">Alero Charcamata</a></li>
+          <li><a href="excursion-parque-patagonia.html">Parque Patagonia</a></li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<section class="more-excursiones">
+  <h2>Más Excursiones</h2>
+  <div class="exc-mini-grid">
+    <a href="excursion-cueva-de-las-manos.html" class="exc-mini">
+      <img src="assets/cuevas_zoyen.jpg" alt="Cueva de las Manos" loading="lazy">
+      <div class="exc-mini-overlay"><span class="exc-mini-name">Cueva de las Manos</span></div>
+    </a>
+    <a href="excursion-capillas-de-marmol.html" class="exc-mini">
+      <img src="assets/capillas.jpg" alt="Capillas de Mármol" loading="lazy">
+      <div class="exc-mini-overlay"><span class="exc-mini-name">Capillas de Mármol</span></div>
+    </a>
+    <a href="excursion-ruta41-lago-posadas.html" class="exc-mini">
+      <img src="assets/posadas_zoyen.jpg" alt="Lago Posadas" loading="lazy">
+      <div class="exc-mini-overlay"><span class="exc-mini-name">Ruta 41 + Lago Posadas</span></div>
+    </a>
+    <a href="excursion-monte-zeballos.html" class="exc-mini">
+      <img src="assets/ruta41_zoyen.jpg" alt="Monte Zeballos" loading="lazy">
+      <div class="exc-mini-overlay"><span class="exc-mini-name">Ruta 41 · Monte Zeballos</span></div>
+    </a>
+    <a href="excursion-alero-charcamata.html" class="exc-mini">
+      <img src="assets/alerocharca_zoyen.jpg" alt="Alero Charcamata" loading="lazy">
+      <div class="exc-mini-overlay"><span class="exc-mini-name">Alero Charcamata</span></div>
+    </a>
+    <a href="excursion-parque-patagonia.html" class="exc-mini">
+      <img src="assets/pps.jpg" alt="Parque Patagonia" loading="lazy">
+      <div class="exc-mini-overlay"><span class="exc-mini-name">Parque Patagonia</span></div>
+    </a>
+  </div>
+</section>
+
+<footer id="footer">
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-wrap">
+        <svg class="footer-emblem" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="ft-gl" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(255,255,255,0.95)"/><stop offset="100%" stop-color="rgba(182,196,212,0.82)"/></linearGradient>
+<linearGradient id="ft-gd" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(102,116,132,0.9)"/><stop offset="100%" stop-color="rgba(62,76,92,0.93)"/></linearGradient></defs>
+  <g class="ft-ring-anim"><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="0.8"/></g>
+  <g class="ft-rose-anim">
+<circle cx="50" cy="50" r="25.31" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.43"/>
+<polygon points="50.0,22.65 46.33,50.0 50,50" fill="url(#ft-gl)"/>
+<polygon points="50.0,22.65 53.67,50.0 50,50" fill="url(#ft-gd)"/>
+<polygon points="77.35,50.0 50.0,46.33 50,50" fill="url(#ft-gl)"/>
+<polygon points="77.35,50.0 50.0,53.67 50,50" fill="url(#ft-gd)"/>
+<polygon points="50.0,77.35 53.67,50.0 50,50" fill="url(#ft-gl)"/>
+<polygon points="50.0,77.35 46.33,50.0 50,50" fill="url(#ft-gd)"/>
+<polygon points="22.65,50.0 50.0,53.67 50,50" fill="url(#ft-gl)"/>
+<polygon points="22.65,50.0 50.0,46.33 50,50" fill="url(#ft-gd)"/>
+  </g>
+  <circle cx="50" cy="50" r="3.06" fill="#d4772a"/>
+  <circle cx="50" cy="50" r="1.84" fill="#1a1410"/>
+  <circle cx="50" cy="50" r="0.9" fill="#d4772a"/>
+</svg>
+        <div class="footer-brand"><span class="footer-brand-zoyen">ZOYEN</span> <span>TURISMO</span></div>
+      </div>
+      <p class="footer-tagline">Agencia de Turismo en la Patagonia Argentina.<br>Legajo 15.625 · Perito Moreno, Santa Cruz.</p>
+      <div class="socials">
+        <a href="https://www.instagram.com/turismozoyen/" class="social-btn" title="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/turismozoyen" class="social-btn" title="Facebook" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="https://www.youtube.com/channel/UCVuldIwQ74Pha-H0stMKoPg" class="social-btn" title="YouTube" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+        <a href="https://wa.me/5492974432855" class="social-btn" title="WhatsApp" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Excursiones</div>
+      <ul class="footer-links">
+        <li><a href="excursion-cueva-de-las-manos.html">Cueva de las Manos</a></li>
+        <li><a href="excursion-alero-charcamata.html">Alero Charcamata</a></li>
+        <li><a href="excursion-ruta41-lago-posadas.html">Lago Posadas · Ruta 41</a></li>
+        <li><a href="excursion-monte-zeballos.html">Monte Zeballos</a></li>
+        <li><a href="excursion-parque-patagonia.html">Portal Cañadón Pinturas / PNP</a></li>
+        <li><a href="excursion-capillas-de-marmol.html">Capillas de Mármol</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contacto</div>
+      <div class="footer-contact">
+        <p>✉ zoyenperitomoreno@gmail.com</p>
+        <p>☎ +54 9 297 443-2855</p>
+        <p>📍 Perito Moreno, Santa Cruz</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© Zoyen Turismo 2025 · Todos los derechos reservados</span>
+  </div>
+</footer>
+
+<a href="https://wa.me/5492974432855" class="wa" title="WhatsApp" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" fill="white" width="28" height="28"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+</body>
+</html>
