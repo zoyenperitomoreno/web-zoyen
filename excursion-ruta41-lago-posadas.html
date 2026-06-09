@@ -597,23 +597,47 @@ body > nav .nav-actions .nav-contact-btn svg {
 
 </style>
 <style id="zoyen-header-cta-motion">
-.nav-logo-name { animation: navBrandReveal .9s cubic-bezier(.2,.8,.2,1) .15s both; }
-.nav-logo sub { animation: navSubReveal .9s cubic-bezier(.2,.8,.2,1) .36s both; }
-.nav-emblem { animation: navEmblemWake .9s cubic-bezier(.2,.8,.2,1) .06s both; }
-body > nav .nav-actions.cta-nudge .nav-cta-btn { animation: ctaReservarNudge 1.15s ease both; }
-body > nav .nav-actions.cta-nudge .nav-contact-btn { animation: ctaContactNudge 1.15s ease .12s both; }
-@keyframes navBrandReveal {
-  0% { opacity: 0; transform: translateY(8px); filter: blur(5px); letter-spacing: .2em; }
-  65% { opacity: 1; filter: blur(0); }
-  100% { opacity: 1; transform: none; letter-spacing: inherit; }
+.nav-logo {
+  animation: navHeaderWake 1.15s cubic-bezier(.16,.84,.18,1) .05s both;
 }
-@keyframes navSubReveal {
-  0% { opacity: 0; transform: translateY(-4px); filter: blur(3px); }
-  100% { opacity: .65; transform: none; filter: blur(0); }
+.nav-emblem {
+  animation: navEmblemPop 1.25s cubic-bezier(.16,.84,.18,1) .08s both !important;
 }
-@keyframes navEmblemWake {
-  0% { opacity: 0; transform: scale(.86) rotate(-10deg); filter: blur(4px); }
+.nav-logo-name .z,
+.nav-logo-name .t {
+  display: inline-block;
+  animation: navBrandLetterIn 1.05s cubic-bezier(.16,.84,.18,1) .28s both;
+}
+.nav-logo-name .t {
+  animation-delay: .42s;
+}
+.nav-logo sub {
+  animation: navSubSlideIn 1s cubic-bezier(.16,.84,.18,1) .68s both;
+}
+body > nav .nav-actions.cta-nudge .nav-cta-btn {
+  animation: ctaReservarNudge 1.15s ease both;
+}
+body > nav .nav-actions.cta-nudge .nav-contact-btn {
+  animation: ctaContactNudge 1.15s ease .12s both;
+}
+@keyframes navHeaderWake {
+  0% { opacity: 0; transform: translateX(-18px); filter: blur(7px); }
+  55% { opacity: 1; filter: blur(0); }
+  100% { opacity: 1; transform: translateX(0); filter: blur(0); }
+}
+@keyframes navEmblemPop {
+  0% { opacity: 0; transform: scale(.55) rotate(-28deg); filter: blur(6px); }
+  58% { opacity: 1; transform: scale(1.12) rotate(8deg); filter: blur(0); }
   100% { opacity: 1; transform: scale(1) rotate(0); filter: blur(0); }
+}
+@keyframes navBrandLetterIn {
+  0% { opacity: 0; transform: translateY(14px) scale(.94); filter: blur(5px); letter-spacing: .24em; }
+  68% { opacity: 1; filter: blur(0); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); letter-spacing: .12em; }
+}
+@keyframes navSubSlideIn {
+  0% { opacity: 0; transform: translateY(-8px); filter: blur(4px); letter-spacing: .32em; }
+  100% { opacity: .78; transform: translateY(0); filter: blur(0); letter-spacing: .2em; }
 }
 @keyframes ctaReservarNudge {
   0%, 100% { transform: translateY(0) scale(1); box-shadow: none; }
@@ -625,11 +649,7 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn { animation: ctaContactNudge 
   24% { transform: translateY(-2px) scale(1.035); box-shadow: 0 0 0 0 rgba(37,211,102,.34), 0 10px 24px rgba(37,211,102,.14); }
   58% { transform: translateY(0) scale(1); box-shadow: 0 0 0 8px rgba(37,211,102,0); }
 }
-@media (prefers-reduced-motion: reduce) {
-  .nav-logo-name, .nav-logo sub, .nav-emblem,
-  body > nav .nav-actions.cta-nudge .nav-cta-btn,
-  body > nav .nav-actions.cta-nudge .nav-contact-btn { animation: none !important; }
-}
+
 </style>
 </head>
 <body>
@@ -686,8 +706,8 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn { animation: ctaContactNudge 
   </div>
   <ul class="nav-links">
     <li><a href="index.html" data-i18n="nav_home">Home</a></li>
-    <li><a href="index.html#excursiones" data-i18n="nav_excursiones">Excursiones</a></li>
-    <li><a href="index.html#tours" data-i18n="nav_tours">Tours de Autor</a></li>
+    <li><a href="index.html#excursiones" data-i18n="nav_excursiones"><span data-i18n="bread_exc">Excursiones</span></a></li>
+    <li><a href="index.html#tours" data-i18n="nav_tours"><span data-i18n="bread_tours">Tours de Autor</span></a></li>
     <li><a href="index.html#bienestar" data-i18n="nav_bienestar">Turismo de Bienestar</a></li>
     <li><a href="index.html#ubicacion" data-i18n="nav_ubicacion">Ubicación y Contacto</a></li>
     <li><a href="nosotros.html" data-i18n="nav_nosotros">Quiénes somos</a></li>
@@ -699,8 +719,8 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn { animation: ctaContactNudge 
   <div class="exc-hero-bg"></div>
   <div class="exc-hero-overlay"></div>
   <div class="exc-hero-content">
-    <div class="exc-tag">Ruta escénica</div>
-    <h1 class="exc-hero-title">Lago Posadas · Ruta Escénica 41</h1>
+    <div class="exc-tag"><span data-i18n="exc_tag"></div></span></div>
+    <h1 class="exc-hero-title" data-i18n="exc_title">Lago Posadas · Ruta Escénica 41</h1>
   </div>
 </div>
 
@@ -709,9 +729,9 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn { animation: ctaContactNudge 
 </style>
 
 <nav class="breadcrumb" aria-label="Breadcrumb">
-  <a href="index.html">Inicio</a>
+  <a href="index.html" data-i18n="bread_inicio">Inicio</a>
   <span>›</span>
-  <a href="index.html#excursiones">Excursiones</a>
+  <a href="index.html#excursiones"><span data-i18n="bread_exc">Excursiones</span></a>
   <span>›</span>
   <span style="color:var(--sand)">Lago Posadas · Ruta Escénica 41</span>
 </nav>
@@ -744,14 +764,14 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn { animation: ctaContactNudge 
   </main>
   <aside class="exc-sidebar">
     <div class="exc-card">
-      <div class="exc-card-head">Reservar</div>
+      <div class="exc-card-head"><span data-i18n="sidebar_book">Reservar</span></div>
       <div class="exc-card-body">
-        <p>Consultanos disponibilidad y precios por WhatsApp o reservá directamente.</p>
+        <p><span data-i18n="sidebar_book_desc">Consultanos disponibilidad y precios por WhatsApp o reservá directamente.</span></p>
         <a href="https://wa.me/5492974432855?text=Hola!%20Quiero%20información%20sobre%20la%20excursión%20Lago%20Posadas%20·%20Ruta%20Escénica%2041" class="btn-reservar" target="_blank" rel="noopener">Consultar por WhatsApp</a>
       </div>
     </div>
     <div class="exc-card">
-      <div class="exc-card-head">Detalles</div>
+      <div class="exc-card-head"><span data-i18n="sidebar_details">Detalles</span></div>
       <div class="exc-card-body">
         <ul class="exc-detail-list">
           <li><span class="icon">✦</span> Salida desde Perito Moreno o Los Antiguos</li>
@@ -762,7 +782,7 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn { animation: ctaContactNudge 
       </div>
     </div>
     <div class="exc-card">
-      <div class="exc-card-head">Otras Excursiones</div>
+      <div class="exc-card-head"><span data-i18n="sidebar_other">Otras Excursiones</span></div>
       <div class="exc-card-body">
         <ul class="footer-links" style="gap:.6rem">
           <li><a href="excursion-cueva-de-las-manos.html">Cueva de las Manos</a></li>
@@ -778,7 +798,7 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn { animation: ctaContactNudge 
 </div>
 
 <section class="more-excursiones">
-  <h2>Más Excursiones</h2>
+  <h2><span data-i18n="more_title">Más Excursiones</span></h2>
   <div class="exc-mini-grid">
     <a href="excursion-cueva-de-las-manos.html" class="exc-mini">
       <img src="assets/cuevas_zoyen.jpg" alt="Cueva de las Manos" loading="lazy">
@@ -849,7 +869,7 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn { animation: ctaContactNudge 
       </div>
     </div>
     <div>
-      <div class="footer-col-title">Excursiones</div>
+      <div class="footer-col-title" data-i18n="ft_exc">Excursiones</div>
       <ul class="footer-links">
         <li><a href="excursion-cueva-de-las-manos.html">Cueva de las Manos</a></li>
         <li><a href="excursion-alero-charcamata.html">Alero Charcamata</a></li>
@@ -860,7 +880,7 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn { animation: ctaContactNudge 
       </ul>
     </div>
     <div>
-      <div class="footer-col-title">Contacto</div>
+      <div class="footer-col-title" data-i18n="ft_contact">Contacto</div>
       <div class="footer-contact">
         <p>✉ zoyenperitomoreno@gmail.com</p>
         <p>☎ +54 9 297 443-2855</p>
@@ -869,16 +889,148 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn { animation: ctaContactNudge 
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© Zoyen Turismo 2025 · Todos los derechos reservados</span>
+    <span><span data-i18n="ft_copy">© Zoyen Turismo 2025 · Todos los derechos reservados</span></span>
   </div>
 </footer>
 <script id="zoyen-lang-script">
 (function(){
-  var navTranslations = {
-    es: { nav_home:'Home', nav_excursiones:'Excursiones', nav_tours:'Tours de Autor', nav_bienestar:'Turismo de Bienestar', nav_ubicacion:'Ubicación y Contacto', nav_nosotros:'Quiénes somos', nav_reservar:'Reservar' },
-    en: { nav_home:'Home', nav_excursiones:'Excursions', nav_tours:'Author Tours', nav_bienestar:'Wellness Tourism', nav_ubicacion:'Location & Contact', nav_nosotros:'About Us', nav_reservar:'Book Now' },
-    pt: { nav_home:'Início', nav_excursiones:'Excursões', nav_tours:'Tours de Autor', nav_bienestar:'Turismo de Bem-Estar', nav_ubicacion:'Localização e Contato', nav_nosotros:'Quem somos', nav_reservar:'Reservar' },
-    ko: { nav_home:'홈', nav_excursiones:'투어', nav_tours:'오서 투어', nav_bienestar:'웰니스 관광', nav_ubicacion:'위치 및 연락처', nav_nosotros:'우리에 대해', nav_reservar:'예약하기' }
+    var pageTranslations = {
+    es: {
+      'nav_home': 'Home',
+      'nav_excursiones': 'Excursiones',
+      'nav_tours': 'Tours de Autor',
+      'nav_bienestar': 'Turismo de Bienestar',
+      'nav_ubicacion': 'Ubicación y Contacto',
+      'nav_nosotros': 'Quiénes somos',
+      'nav_reservar': 'Reservar',
+      'nav_contact': 'Contactarse',
+      'sidebar_book': 'Reservar',
+      'sidebar_book_desc': 'Consultanos disponibilidad y precios por WhatsApp o reservá directamente.',
+      'sidebar_wa': 'Consultar por WhatsApp',
+      'sidebar_details': 'Detalles',
+      'sidebar_other': 'Otras Excursiones',
+      'more_title': 'Más Excursiones',
+      'ft_tagline': 'Agencia de Turismo en la Patagonia Argentina.<br>Legajo 15.625 · Perito Moreno, Santa Cruz.',
+      'ft_copy': '© Zoyen Turismo 2025 · Todos los derechos reservados',
+      'ft_exc': 'Excursiones',
+      'ft_contact': 'Contacto',
+      'ft_nav': 'Navegación',
+      'bread_inicio': 'Inicio',
+      'bread_exc': 'Excursiones',
+      'bread_tours': 'Tours de Autor',
+      'prices_title': 'Precios',
+      'prices_note': 'No incluye ingreso al Parque Provincial.',
+      'detail_salida': 'Salida desde Perito Moreno o Los Antiguos',
+      'detail_guia': 'Guía especializado incluido',
+      'detail_vehiculo': 'Vehículo 4x4 o minibus',
+      'detail_cupos': 'Cupos limitados',
+      'cta_btn': 'Reservar lugar',
+    },
+    en: {
+      'nav_home': 'Home',
+      'nav_excursiones': 'Excursions',
+      'nav_tours': 'Author Tours',
+      'nav_bienestar': 'Wellness Tourism',
+      'nav_ubicacion': 'Location & Contact',
+      'nav_nosotros': 'About Us',
+      'nav_reservar': 'Book Now',
+      'nav_contact': 'Contact',
+      'sidebar_book': 'Book',
+      'sidebar_book_desc': 'Check availability and prices via WhatsApp or book directly.',
+      'sidebar_wa': 'Contact via WhatsApp',
+      'sidebar_details': 'Details',
+      'sidebar_other': 'Other Excursions',
+      'more_title': 'More Excursions',
+      'ft_tagline': 'Tourism Agency in Argentine Patagonia.<br>License 15.625 · Perito Moreno, Santa Cruz.',
+      'ft_copy': '© Zoyen Turismo 2025 · All rights reserved',
+      'ft_exc': 'Excursions',
+      'ft_contact': 'Contact',
+      'ft_nav': 'Navigation',
+      'bread_inicio': 'Start',
+      'bread_exc': 'Excursions',
+      'bread_tours': 'Author Tours',
+      'prices_title': 'Prices',
+      'prices_note': 'Park entrance fee not included.',
+      'detail_salida': 'Departure from Perito Moreno or Los Antiguos',
+      'detail_guia': 'Specialist guide included',
+      'detail_vehiculo': '4x4 vehicle or minibus',
+      'detail_cupos': 'Limited spots',
+      'exc_tag': 'Scenic route',
+      'exc_title': 'Lake Posadas · Scenic Route 41',
+      'exc_eyebrow': 'Scenic Route 41',
+      'main_h2': 'From <em>400 to 1,500 meters</em> of altitude',
+      'sidebar_wa_msg': 'Hello! I want information about the Lake Posadas excursion',
+    },
+    pt: {
+      'nav_home': 'Início',
+      'nav_excursiones': 'Excursões',
+      'nav_tours': 'Tours de Autor',
+      'nav_bienestar': 'Turismo de Bem-Estar',
+      'nav_ubicacion': 'Localização e Contato',
+      'nav_nosotros': 'Quem somos',
+      'nav_reservar': 'Reservar',
+      'nav_contact': 'Contato',
+      'sidebar_book': 'Reservar',
+      'sidebar_book_desc': 'Consulte disponibilidade e preços pelo WhatsApp ou reserve diretamente.',
+      'sidebar_wa': 'Contato pelo WhatsApp',
+      'sidebar_details': 'Detalhes',
+      'sidebar_other': 'Outras Excursões',
+      'more_title': 'Mais Excursões',
+      'ft_tagline': 'Agência de Turismo na Patagônia Argentina.<br>Licença 15.625 · Perito Moreno, Santa Cruz.',
+      'ft_copy': '© Zoyen Turismo 2025 · Todos os direitos reservados',
+      'ft_exc': 'Excursões',
+      'ft_contact': 'Contato',
+      'ft_nav': 'Navegação',
+      'bread_inicio': 'Início',
+      'bread_exc': 'Excursões',
+      'bread_tours': 'Tours de Autor',
+      'prices_title': 'Preços',
+      'prices_note': 'Taxa de entrada no Parque não incluída.',
+      'detail_salida': 'Saída de Perito Moreno ou Los Antiguos',
+      'detail_guia': 'Guia especializado incluído',
+      'detail_vehiculo': 'Veículo 4x4 ou minibus',
+      'detail_cupos': 'Vagas limitadas',
+      'exc_tag': 'Rota cênica',
+      'exc_title': 'Lago Posadas · Rota Cênica 41',
+      'exc_eyebrow': 'Rota Cênica 41',
+      'main_h2': 'De <em>400 a 1.500 metros</em> de altitude',
+      'sidebar_wa_msg': 'Olá! Quero informações sobre a excursão Lago Posadas',
+    },
+    ko: {
+      'nav_home': '홈',
+      'nav_excursiones': '투어',
+      'nav_tours': '오서 투어',
+      'nav_bienestar': '웰니스 관광',
+      'nav_ubicacion': '위치 및 연락처',
+      'nav_nosotros': '우리에 대해',
+      'nav_reservar': '예약하기',
+      'nav_contact': '연락처',
+      'sidebar_book': '예약',
+      'sidebar_book_desc': 'WhatsApp으로 가능 여부와 가격을 확인하거나 직접 예약하세요.',
+      'sidebar_wa': 'WhatsApp으로 문의',
+      'sidebar_details': '세부 정보',
+      'sidebar_other': '다른 투어',
+      'more_title': '더 많은 투어',
+      'ft_tagline': '아르헨티나 파타고니아 관광 에이전시.<br>라이센스 15.625 · 페리토 모레노, 산타크루스.',
+      'ft_copy': '© Zoyen Turismo 2025 · 모든 권리 보유',
+      'ft_exc': '투어',
+      'ft_contact': '연락처',
+      'ft_nav': '메뉴',
+      'bread_inicio': '홈',
+      'bread_exc': '투어',
+      'bread_tours': '오서 투어',
+      'prices_title': '가격',
+      'prices_note': '공원 입장료 불포함.',
+      'detail_salida': '페리토 모레노 또는 로스 안티구오스 출발',
+      'detail_guia': '전문 가이드 포함',
+      'detail_vehiculo': '4x4 차량 또는 미니버스',
+      'detail_cupos': '제한된 인원',
+      'exc_tag': '경치 도로',
+      'exc_title': '포사다스 호수 · 경치 41번 도로',
+      'exc_eyebrow': '경치 좋은 41번 도로',
+      'main_h2': '해발 <em>400~1,500미터</em>',
+      'sidebar_wa_msg': '안녕하세요! 포사다스 호수 투어 정보를 원합니다',
+    },
   };
   var currentLang = localStorage.getItem('zoyen_lang') || 'es';
   var langSwitcher = document.getElementById('langSwitcher');
@@ -889,7 +1041,7 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn { animation: ctaContactNudge 
     langCurrent.setAttribute('aria-expanded', 'false');
   }
   function applyLang(lang) {
-    var t = navTranslations[lang] || navTranslations.es;
+    var t = pageTranslations[lang] || pageTranslations.es;
     document.querySelectorAll('[data-i18n]').forEach(function(el) {
       var key = el.getAttribute('data-i18n');
       if (t[key] !== undefined) el.innerHTML = t[key];
@@ -942,7 +1094,7 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn { animation: ctaContactNudge 
       <button class="zoyi-chip" type="button">Excursiones</button>
       <button class="zoyi-chip" type="button">Precios</button>
       <button class="zoyi-chip" type="button">Reservas</button>
-      <button class="zoyi-chip" type="button">Ubicacion</button>
+      <button class="zoyi-chip" type="button">Ubicación</button>
       <button class="zoyi-chip" type="button">Hablar con una persona</button>
     </div>    <form class="zoyi-form" id="zoyiForm">
       <input class="zoyi-input" id="zoyiInput" type="text" autocomplete="off" placeholder="Preguntale a Zoyi..." aria-label="Consulta para Zoyi">
@@ -1058,7 +1210,7 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn { animation: ctaContactNudge 
     if (isAsking(q, ["zoyen","agencia","legajo","quienes","quienes son"])) return "Zoyen Turismo es una agencia local de Perito Moreno, Santa Cruz, legajo 15.625. Disena excursiones y tours de autor en Patagonia.";
     if (product) return productLine(product) + " " + product.summary;
 
-    return "Puedo ayudarte con informacion del sitio: fechas disponibles, precios en AR, cupos, tipos de excursiones, tours de autor, ubicacion, itinerarios PDF y como reservar. Proba preguntarme, por ejemplo: 'precio de Capillas', 'fechas para Patagonia Inedita' o 'que excursion me recomendas'.";
+    return "Puedo ayudarte con informacion del sitio: fechas disponibles, precios en AR, cupos, tipos de excursiones, tours de autor, ubicación, itinerarios PDF y como reservar. Proba preguntarme, por ejemplo: 'precio de Capillas', 'fechas para Patagonia Inedita' o 'que excursion me recomendas'.";
   }
   function submit(text){
     var value = (text || (input ? input.value : "") || "").trim();
@@ -1075,7 +1227,7 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn { animation: ctaContactNudge 
   if (closeBtn) closeBtn.addEventListener("click", function(){ widget.classList.remove("open"); if (toggle) toggle.setAttribute("aria-expanded","false"); });
   if (form) form.addEventListener("submit", function(e){ e.preventDefault(); submit(); });
   if (chips) chips.addEventListener("click", function(e){ if (e.target.matches("button")) submit(e.target.textContent); });
-  addMessage("Hola, soy Zoyi. Puedo responder sobre excursiones, tours, precios en AR, fechas disponibles, cupos, ubicacion e itinerarios. Solo te paso con una persona si me lo pedis.", "bot");
+  addMessage("Hola, soy Zoyi. Puedo responder sobre excursiones, tours, precios en AR, fechas disponibles, cupos, ubicación e itinerarios. Solo te paso con una persona si me lo pedis.", "bot");
 })();
 </script>
 
