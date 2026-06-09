@@ -6,6 +6,9 @@
 <title>Carretera Austral – Tour 8 días · Zoyen Turismo</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
+/* Ajuste global de tipograf?a */
+html { font-size: 18px; }
+
 :root {
   --ink:       #1a1410;
   --dark:      #231c14;
@@ -453,6 +456,56 @@ footer { background: #0a0a0a; padding: 5rem 3vw 2.5rem; }
   .zoyi-huemul-mark { width: 28px; height: 28px; }
 }
 
+
+
+/* Ajuste de menú con tipografía ampliada */
+@media (min-width: 961px) and (max-width: 1360px) {
+  body > nav .nav-links { gap: .45rem; }
+  body > nav .nav-cta-btn { padding-left: .65rem !important; padding-right: .65rem !important; letter-spacing: .09em !important; }
+  body > nav .nav-contact-btn { width: 38px; min-width: 38px; padding-left: 0; padding-right: 0; }
+  body > nav .nav-contact-btn span { display: none; }
+}
+
+
+
+/* Botones del menú igualados */
+body > nav .nav-actions .nav-cta-btn,
+body > nav .nav-actions .nav-contact-btn {
+  width: 132px;
+  height: 36px;
+  min-height: 36px;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 .65rem !important;
+  line-height: 1;
+}
+body > nav .nav-actions .nav-contact-btn {
+  gap: .36rem;
+  font-size: .62rem;
+  letter-spacing: .08em;
+}
+body > nav .nav-actions .nav-contact-btn svg {
+  width: 14px;
+  height: 14px;
+}
+@media (min-width: 961px) and (max-width: 1360px) {
+  body > nav .nav-actions .nav-cta-btn,
+  body > nav .nav-actions .nav-contact-btn {
+    width: 104px;
+  }
+  body > nav .nav-actions .nav-contact-btn span {
+    display: none;
+  }
+}
+@media (max-width: 640px) {
+  body > nav .nav-actions .nav-cta-btn,
+  body > nav .nav-actions .nav-contact-btn {
+    width: 132px;
+  }
+}
+
 </style>
 <script>
 (function(){
@@ -506,6 +559,41 @@ footer { background: #0a0a0a; padding: 5rem 3vw 2.5rem; }
 <style id="zoyen-recovery-patch">
 html:not(.js-ready) .reveal { opacity: 1 !important; transform: none !important; }
 img { background: #d8d0c3; }
+</style>
+<style id="zoyen-header-cta-motion">
+.nav-logo-name { animation: navBrandReveal .9s cubic-bezier(.2,.8,.2,1) .15s both; }
+.nav-logo sub { animation: navSubReveal .9s cubic-bezier(.2,.8,.2,1) .36s both; }
+.nav-emblem { animation: navEmblemWake .9s cubic-bezier(.2,.8,.2,1) .06s both; }
+body > nav .nav-actions.cta-nudge .nav-cta-btn { animation: ctaReservarNudge 1.15s ease both; }
+body > nav .nav-actions.cta-nudge .nav-contact-btn { animation: ctaContactNudge 1.15s ease .12s both; }
+@keyframes navBrandReveal {
+  0% { opacity: 0; transform: translateY(8px); filter: blur(5px); letter-spacing: .2em; }
+  65% { opacity: 1; filter: blur(0); }
+  100% { opacity: 1; transform: none; letter-spacing: inherit; }
+}
+@keyframes navSubReveal {
+  0% { opacity: 0; transform: translateY(-4px); filter: blur(3px); }
+  100% { opacity: .65; transform: none; filter: blur(0); }
+}
+@keyframes navEmblemWake {
+  0% { opacity: 0; transform: scale(.86) rotate(-10deg); filter: blur(4px); }
+  100% { opacity: 1; transform: scale(1) rotate(0); filter: blur(0); }
+}
+@keyframes ctaReservarNudge {
+  0%, 100% { transform: translateY(0) scale(1); box-shadow: none; }
+  24% { transform: translateY(-2px) scale(1.035); box-shadow: 0 0 0 0 rgba(212,119,42,.42), 0 10px 24px rgba(212,119,42,.18); }
+  58% { transform: translateY(0) scale(1); box-shadow: 0 0 0 8px rgba(212,119,42,0); }
+}
+@keyframes ctaContactNudge {
+  0%, 100% { transform: translateY(0) scale(1); box-shadow: none; }
+  24% { transform: translateY(-2px) scale(1.035); box-shadow: 0 0 0 0 rgba(37,211,102,.34), 0 10px 24px rgba(37,211,102,.14); }
+  58% { transform: translateY(0) scale(1); box-shadow: 0 0 0 8px rgba(37,211,102,0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-logo-name, .nav-logo sub, .nav-emblem,
+  body > nav .nav-actions.cta-nudge .nav-cta-btn,
+  body > nav .nav-actions.cta-nudge .nav-contact-btn { animation: none !important; }
+}
 </style>
 </head>
 <body>
@@ -939,14 +1027,13 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
     </div>
     <div class="zoyi-messages" id="zoyiMessages"></div>
     <div class="zoyi-chip-row" id="zoyiChips">
+      <button class="zoyi-chip" type="button">Fechas disponibles</button>
       <button class="zoyi-chip" type="button">Excursiones</button>
-      <button class="zoyi-chip" type="button">Tours de autor</button>
-      <button class="zoyi-chip" type="button">Itinerarios</button>
       <button class="zoyi-chip" type="button">Precios</button>
       <button class="zoyi-chip" type="button">Reservas</button>
-      <button class="zoyi-chip" type="button">Contacto</button>
-    </div>
-    <form class="zoyi-form" id="zoyiForm">
+      <button class="zoyi-chip" type="button">Ubicacion</button>
+      <button class="zoyi-chip" type="button">Hablar con una persona</button>
+    </div>    <form class="zoyi-form" id="zoyiForm">
       <input class="zoyi-input" id="zoyiInput" type="text" autocomplete="off" placeholder="Preguntale a Zoyi..." aria-label="Consulta para Zoyi">
       <button class="zoyi-send" type="submit" aria-label="Enviar consulta">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -959,31 +1046,40 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   var widget = document.getElementById("zoyiWidget");
   if (!widget || widget.dataset.ready) return;
   widget.dataset.ready = "true";
+
   var toggle = document.getElementById("zoyiToggle");
   var closeBtn = document.getElementById("zoyiClose");
   var form = document.getElementById("zoyiForm");
   var input = document.getElementById("zoyiInput");
   var messages = document.getElementById("zoyiMessages");
   var chips = document.getElementById("zoyiChips");
-  var contactText = "WhatsApp +54 9 297 443-2855 y email zoyenperitomoreno@gmail.com.";
-  var db = [
-    {keys:["cueva","manos","pinturas","arqueologia"], answer:"La excursión Cueva de las Manos recorre uno de los sitios arqueológicos más importantes de la Patagonia, con pinturas rupestres y paisaje del Cañadón del Río Pinturas."},
-    {keys:["capillas","marmol","mármol","catedrales","general carrera"], answer:"Capillas y Catedrales de Mármol navega formaciones naturales sobre el Lago General Carrera. Es una salida ideal para combinar paisaje, fotografía y navegación."},
-    {keys:["lago posadas","posadas","ruta 41","escenica","escénica"], answer:"Lago Posadas y Ruta Escénica 41 combina caminos panorámicos, lagos patagónicos y miradores. Es una de las experiencias fuertes cerca de Perito Moreno."},
-    {keys:["monte zeballos","zeballos"], answer:"Ruta 41 Monte Zeballos propone una travesía escénica por altura, estepa, bosques y vistas cordilleranas."},
-    {keys:["charcamata","alero"], answer:"Alero Charcamata es una experiencia vinculada al arte rupestre y al patrimonio natural de la zona."},
-    {keys:["parque patagonia","canadon pinturas","cañadon pinturas","portal"], answer:"Parque Nacional Patagonia y Portal Cañadón Pinturas conectan senderos, fauna, geología y vistas amplias del noroeste de Santa Cruz."},
-    {keys:["patagonia inedita","patagonia inédita","inedita","inédita"], answer:"Patagonia Inédita es un tour de 6 días y 5 noches. Comienza en Comodoro Rivadavia y recorre Perito Moreno, Cueva de las Manos, Parque Patagonia, Los Antiguos, Ruta Escénica 41, Carretera Austral, Puerto Río Tranquilo y Capillas de Mármol. El PDF del itinerario está en assets/pdfs/patagonia-inedita-itinerario.pdf."},
-    {keys:["carretera austral","austral","ohiggins","o higgins","villa ohiggins"], answer:"Carretera Austral es un tour de 8 días y 7 noches desde y hasta Perito Moreno. Incluye Chile Chico, Cochrane, Caleta Tortel, Villa O’Higgins, Puerto Río Tranquilo, Capillas de Mármol, Coyhaique y regreso por Paso Huemules. El PDF está en assets/pdfs/carretera-austral-itinerario.pdf."},
-    {keys:["precio","precios","tarifa","tarifas","valor","valores","ar"], answer:"Los precios del sitio se mantienen en AR, pesos argentinos. Para confirmar disponibilidad, cupos y valores actualizados, conviene escribir por WhatsApp: " + contactText},
-    {keys:["reservar","reserva","disponibilidad","cupos","contratar"], answer:"Para reservar podés usar el botón Reservar del menú o escribir directo por WhatsApp. " + contactText},
-    {keys:["contacto","whatsapp","telefono","teléfono","mail","email","ubicacion","ubicación","direccion","dirección"], answer:"Podés contactarte con Zoyen Turismo por " + contactText + " Estamos en Perito Moreno, Santa Cruz, Patagonia Argentina."},
-    {keys:["quienes","quiénes","agencia","legajo","zoyen"], answer:"Zoyen Turismo es una agencia local de Perito Moreno, Santa Cruz, con legajo 15.625. Diseña excursiones y tours de autor en Patagonia."},
-    {keys:["bienestar","wellness","yoga","masajes"], answer:"La sección de Turismo de Bienestar reúne propuestas para complementar el viaje con pausa, naturaleza y experiencias de cuidado."},
-    {keys:["pdf","descargar","itinerario","itinerarios"], answer:"Los tours de autor tienen botón para descargar el itinerario en PDF: Patagonia Inédita y Carretera Austral."},
-    {keys:["huemul","zoyi"], answer:"Soy Zoyi, el huemul asistente de Zoyen. Te puedo orientar sobre excursiones, tours, itinerarios, reservas, precios y contacto."}
+
+  var contactText = "WhatsApp +54 9 297 443-2855 y email zoyenperitomoreno@gmail.com";
+  var waLink = "https://wa.me/5492974432855";
+  var pageTitle = (document.title || "").replace(/\s+/g," ").trim();
+
+  var excursiones = [
+    {id:"cueva", name:"Cueva de las Manos", aliases:["cueva","manos","pinturas","arqueologia","rio pinturas"], price:18000, duration:"dia completo", capacity:14, type:"excursion", summary:"sitio arqueologico Patrimonio Mundial, pinturas rupestres de mas de 9.000 anos y paisaje del Canon del Rio Pinturas."},
+    {id:"capillas", name:"Capillas y Catedrales de Marmol", aliases:["capillas","marmol","catedrales","general carrera"], price:24000, duration:"dia completo", capacity:14, type:"excursion", summary:"navegacion por el Lago General Carrera para ver formaciones de marmol, ideal para fotografia y paisaje."},
+    {id:"posadas", name:"Lago Posadas y Ruta Escenica 41", aliases:["posadas","lago posadas","ruta 41","ruta escenica"], price:15000, duration:"dia completo (12 hs)", capacity:14, type:"excursion", summary:"recorrido panoramico por lagos, miradores y la Ruta Escenica 41 cerca de Perito Moreno."},
+    {id:"zeballos", name:"Ruta 41 y Monte Zeballos", aliases:["zeballos","monte zeballos","ruta 41"], price:16000, duration:"dia completo", capacity:14, type:"excursion", summary:"travesia de altura por estepa, bosque, cordillera y uno de los caminos mas escenicos de Santa Cruz."},
+    {id:"charcamata", name:"Alero Charcamata", aliases:["charcamata","alero"], price:12000, duration:"medio dia", capacity:14, type:"excursion", summary:"experiencia vinculada al arte rupestre, patrimonio cultural y paisaje natural de la zona."},
+    {id:"parque", name:"Portal Canon Pinturas - Parque Patagonia", aliases:["parque","parque patagonia","canadon","canon","pinturas","portal"], price:8000, duration:"medio dia (5 hs)", capacity:14, type:"excursion", summary:"senderos, fauna, geologia y vistas amplias del noroeste de Santa Cruz."},
+    {id:"escension", name:"PNP / Estancia La Escension", aliases:["escension","estancia","la escension","pnp"], price:7000, duration:"medio dia (4 hs)", capacity:14, type:"excursion", summary:"salida corta vinculada al Parque Patagonia y la historia de estancia de la region."}
   ];
-  function normalize(text){ return (text || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,""); }
+
+  var tours = [
+    {id:"patagonia", name:"Patagonia Inedita", aliases:["patagonia inedita","inedita"], price:185000, duration:"6 dias / 5 noches", capacity:14, type:"tour", pdf:"assets/pdfs/patagonia-inedita-itinerario.pdf", summary:"sale desde Comodoro Rivadavia y recorre Perito Moreno, Cueva de las Manos, Parque Patagonia, Los Antiguos, Ruta Escenica 41, Carretera Austral, Puerto Rio Tranquilo y Capillas de Marmol."},
+    {id:"carretera", name:"Carretera Austral", aliases:["carretera austral","austral","ohiggins","villa ohiggins","tortel","cochrane"], price:210000, duration:"8 dias / 7 noches", capacity:14, type:"tour", pdf:"assets/pdfs/carretera-austral-itinerario.pdf", summary:"sale desde Perito Moreno e incluye Chile Chico, Cochrane, Caleta Tortel, Villa O'Higgins, Puerto Rio Tranquilo, Capillas de Marmol, Coyhaique y regreso por Paso Huemules."}
+  ];
+
+  var allProducts = excursiones.concat(tours);
+
+  function normalize(text){
+    return (text || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/&middot;|·/g," ").replace(/[^a-z0-9ñ\s/.-]/g," ").replace(/\s+/g," ").trim();
+  }
+  function money(n){ return "$" + Number(n || 0).toLocaleString("es-AR") + " AR p/p"; }
+  function todayText(){ return new Date().toLocaleDateString("es-AR", { day:"numeric", month:"long", year:"numeric" }); }
   function addMessage(text, who){
     if (!messages) return;
     var div = document.createElement("div");
@@ -992,27 +1088,73 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
     messages.appendChild(div);
     messages.scrollTop = messages.scrollHeight;
   }
+  function productLine(p){ return p.name + ": " + p.duration + ", " + money(p.price) + ", cupos hasta " + p.capacity + " personas."; }
+  function findProduct(q){
+    var best = null, score = 0;
+    allProducts.forEach(function(p){
+      var local = 0;
+      [p.name].concat(p.aliases || []).forEach(function(alias){
+        alias = normalize(alias);
+        if (alias && q.indexOf(alias) !== -1) local += alias.length > 8 ? 3 : 2;
+      });
+      if (local > score) { best = p; score = local; }
+    });
+    return best;
+  }
+  function isAsking(q, words){ return words.some(function(w){ return q.indexOf(normalize(w)) !== -1; }); }
+  function listExcursions(){ return "Excursiones de dia o medio dia disponibles: " + excursiones.map(productLine).join(" "); }
+  function listTours(){ return "Tours de autor disponibles: " + tours.map(productLine).join(" ") + " Ambos tienen itinerario descargable en PDF desde su pagina."; }
+  function pricesAnswer(product){
+    if (product) return productLine(product) + " El precio esta expresado en pesos argentinos AR por persona.";
+    return "Precios en AR por persona: " + allProducts.map(function(p){ return p.name + " " + money(p.price); }).join("; ") + ".";
+  }
+  function datesAnswer(product){
+    var base = "Las reservas del sitio permiten elegir fecha desde hoy (" + todayText() + ") en adelante. La disponibilidad real se valida por fecha, excursion/tour y cupos.";
+    if (product) base += " Para " + product.name + " la capacidad de referencia es de hasta " + product.capacity + " personas.";
+    return base + " Si queres reservar, toca Reservar, elegi experiencia, fecha, cantidad de personas y asientos disponibles.";
+  }
+  function reservationAnswer(){
+    return "Para reservar desde la web: 1) toca Reservar, 2) elegi Tour de autor o Excursion, 3) selecciona fecha desde hoy en adelante, 4) indica personas y datos, 5) elegi asiento. La sena se calcula como 20% del total.";
+  }
+  function locationAnswer(){
+    return "Zoyen Turismo esta en Perito Moreno, Santa Cruz, Patagonia Argentina. Desde ahi se operan excursiones a Cueva de las Manos, Parque Patagonia, Ruta 41, Lago Posadas y conexiones hacia Carretera Austral.";
+  }
+  function humanAnswer(){
+    return "Si queres hablar con una persona del equipo, podes usar " + contactText + ". Link directo: " + waLink;
+  }
+  function compareAnswer(){
+    return "Si tenes poco tiempo, mira excursiones de dia: Cueva de las Manos, Capillas de Marmol, Ruta 41, Lago Posadas o Parque Patagonia. Si buscas viaje completo, Patagonia Inedita dura 6 dias y Carretera Austral dura 8 dias. Para arqueologia: Cueva o Charcamata. Para navegacion: Capillas. Para ruta escenica: Ruta 41/Zeballos o Lago Posadas.";
+  }
+  function pdfAnswer(product){
+    if (product && product.pdf) return "El itinerario PDF de " + product.name + " se descarga desde su pagina. Ruta del archivo: " + product.pdf;
+    return "Los tours con PDF descargable son Patagonia Inedita y Carretera Austral. En cada pagina hay un boton de descarga del itinerario.";
+  }
   function answer(raw){
     var q = normalize(raw);
-    if (/\b(precio|precios|tarifa|tarifas|valor|valores|ar)\b/.test(q)) return db[8].answer;
-    if (/\b(reservar|reserva|disponibilidad|cupos|contratar)\b/.test(q)) return db[9].answer;
-    if (/\b(contacto|whatsapp|telefono|mail|email|ubicacion|direccion)\b/.test(q)) return db[10].answer;
-    var best = null;
-    var bestScore = 0;
-    db.forEach(function(item){
-      var score = item.keys.reduce(function(total, key){ return total + (q.indexOf(normalize(key)) !== -1 ? 1 : 0); }, 0);
-      if (score > bestScore) { best = item; bestScore = score; }
-    });
-    if (best) return best.answer;
-    if (q.length < 3) return "Decime qué querés saber: excursiones, tours, precios, reservas, contacto o itinerarios.";
-    return "Puedo ayudarte con excursiones, tours de autor, itinerarios PDF, reservas, precios en AR y contacto. Para una respuesta personalizada, escribinos por WhatsApp: " + contactText;
+    if (!q || q.length < 2) return "Preguntame por fechas, disponibilidad, precios, excursiones, tours, ubicacion o reservas.";
+    var product = findProduct(q);
+
+    if (isAsking(q, ["persona","humano","asesor","asesora","hablar con alguien","whatsapp","telefono","email","mail","contactar","contacto directo"])) return humanAnswer();
+    if (isAsking(q, ["fecha","fechas","disponible","disponibilidad","cupos","lugar","lugares","cuando","calendario"])) return datesAnswer(product);
+    if (isAsking(q, ["precio","precios","tarifa","tarifas","valor","valores","cuanto","sale","costo","costos"])) return pricesAnswer(product);
+    if (isAsking(q, ["reservar","reserva","reservas","contratar","sena","seña","asiento","asientos","pago"])) return reservationAnswer();
+    if (isAsking(q, ["ubicacion","ubicación","donde estan","direccion","dirección","perito moreno","santa cruz","como llegar"])) return locationAnswer();
+    if (isAsking(q, ["itinerario","pdf","descargar","programa","recorrido"])) return pdfAnswer(product);
+    if (isAsking(q, ["excursion","excursiones","paseos","salidas","dia completo","medio dia"])) return product ? productLine(product) + " " + product.summary : listExcursions();
+    if (isAsking(q, ["tour","tours","autor","varios dias","viaje completo","paquete"])) return product ? productLine(product) + " " + product.summary : listTours();
+    if (isAsking(q, ["recomendas","recomendacion","conviene","diferencia","comparar","mejor","cual elijo","que hago"])) return compareAnswer();
+    if (isAsking(q, ["bienestar","wellness","yoga","masajes"])) return "Turismo de Bienestar es una linea complementaria para sumar pausa, naturaleza y cuidado al viaje. Si buscas algo tranquilo, se puede combinar con excursiones de medio dia o estadias en la zona.";
+    if (isAsking(q, ["zoyen","agencia","legajo","quienes","quienes son"])) return "Zoyen Turismo es una agencia local de Perito Moreno, Santa Cruz, legajo 15.625. Disena excursiones y tours de autor en Patagonia.";
+    if (product) return productLine(product) + " " + product.summary;
+
+    return "Puedo ayudarte con informacion del sitio: fechas disponibles, precios en AR, cupos, tipos de excursiones, tours de autor, ubicacion, itinerarios PDF y como reservar. Proba preguntarme, por ejemplo: 'precio de Capillas', 'fechas para Patagonia Inedita' o 'que excursion me recomendas'.";
   }
   function submit(text){
     var value = (text || (input ? input.value : "") || "").trim();
     if (!value) return;
     addMessage(value, "user");
     if (input) input.value = "";
-    window.setTimeout(function(){ addMessage(answer(value), "bot"); }, 180);
+    window.setTimeout(function(){ addMessage(answer(value), "bot"); }, 160);
   }
   if (toggle) toggle.addEventListener("click", function(){
     widget.classList.toggle("open");
@@ -1022,10 +1164,42 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   if (closeBtn) closeBtn.addEventListener("click", function(){ widget.classList.remove("open"); if (toggle) toggle.setAttribute("aria-expanded","false"); });
   if (form) form.addEventListener("submit", function(e){ e.preventDefault(); submit(); });
   if (chips) chips.addEventListener("click", function(e){ if (e.target.matches("button")) submit(e.target.textContent); });
-  addMessage("Hola, soy Zoyi, el huemul asistente de Zoyen. Puedo ayudarte con excursiones, tours, itinerarios, precios en AR, reservas y contacto.", "bot");
+  addMessage("Hola, soy Zoyi. Puedo responder sobre excursiones, tours, precios en AR, fechas disponibles, cupos, ubicacion e itinerarios. Solo te paso con una persona si me lo pedis.", "bot");
 })();
 </script>
 
+<script id="zoyen-cta-scroll-motion">
+(function(){
+  function initCtaNudge(){
+    const navActions = document.querySelector('body > nav .nav-actions');
+    if (!navActions || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let lastSection = '';
+    let pulseTimer = null;
+    function pulseActions(){
+      navActions.classList.remove('cta-nudge');
+      void navActions.offsetWidth;
+      navActions.classList.add('cta-nudge');
+      clearTimeout(pulseTimer);
+      pulseTimer = setTimeout(function(){ navActions.classList.remove('cta-nudge'); }, 1300);
+    }
+    window.addEventListener('load', function(){ setTimeout(pulseActions, 1200); }, { once: true });
+    const sections = document.querySelectorAll('section[id], footer[id], main[id], .hero, .page-hero');
+    if (!('IntersectionObserver' in window) || !sections.length) return;
+    const observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (!entry.isIntersecting) return;
+        const id = entry.target.id || entry.target.className || 'section';
+        if (id === lastSection) return;
+        lastSection = id;
+        pulseActions();
+      });
+    }, { threshold: 0.45 });
+    sections.forEach(function(section){ observer.observe(section); });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initCtaNudge);
+  else initCtaNudge();
+})();
+</script>
 </body>
 </html>
 

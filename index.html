@@ -6,6 +6,9 @@
 <title>Zoyen Turismo – Agencia de viajes en Patagonia</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
+/* Ajuste global de tipograf?a */
+html { font-size: 18px; }
+
 :root {
   /* Paleta extraída de la imagen real */
   --ink:       #1a1410;      /* negro tierra */
@@ -228,7 +231,7 @@ nav {
 /* Emblema central – brújula 3D */
 .slide-emblem {
   position: relative;
-  width: 280px; height: auto;
+  width: 310px; height: auto;
   display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
   flex-shrink: 0;
   margin-top: 0;
@@ -237,15 +240,16 @@ nav {
 .slide.active .slide-emblem { opacity: 1; }
 
 .emblem-3d {
-  width: 280px; height: 280px;
+  width: 310px; height: 310px;
   position: relative;
 }
 
 /* Capas SVG: todas 200x200 apiladas */
-.emblem-svg        { width: 280px; height: 280px; position: absolute; top:0; left:0; }
-.emblem-text-path  { width: 280px; height: 280px; position: absolute; top:0; left:0;
+.emblem-3d > svg { width: 100% !important; height: 100% !important; }
+.emblem-svg        { width: 310px; height: 310px; position: absolute; top:0; left:0; }
+.emblem-text-path  { width: 310px; height: 310px; position: absolute; top:0; left:0;
                      animation: spin-ccw 45s linear infinite; }
-.emblem-text-inner { width: 280px; height: 280px; position: absolute; top:0; left:0;
+.emblem-text-inner { width: 310px; height: 310px; position: absolute; top:0; left:0;
                      animation: spin-cw  45s linear infinite; }
 .emblem-text-path text, .emblem-text-inner text {
   paint-order: stroke fill;
@@ -275,7 +279,7 @@ nav {
 .lent-fixed {
   position: relative;
   left: auto; transform: none;
-  width: 220px; height: 46px;
+  width: 292px; height: 58px;
   overflow: hidden;
   opacity: 0; transition: opacity 0.4s ease;
   z-index: 8;
@@ -290,7 +294,7 @@ nav {
   position: absolute; inset: 0;
   display: flex; align-items: center; justify-content: center;
   font-family: 'Sora', sans-serif; font-weight: 700;
-  font-size: 21px; letter-spacing: .14em; text-transform: uppercase; white-space: nowrap;
+  font-size: 26px; letter-spacing: .14em; text-transform: uppercase; white-space: nowrap;
 }
 
 .slide-content {
@@ -493,11 +497,11 @@ nav {
   .lang-btn { min-width: 28px; height: 26px; padding: 0 .35rem; font-size: .58rem; }
   .nav-cta-btn { padding: .45rem .85rem; font-size: .68rem; letter-spacing: .1em; }
   .slide-title { font-size: clamp(2rem, 5.5vw, 3.6rem); }
-  .slide-emblem { width: 220px; }
+  .slide-emblem { width: 245px; }
   .emblem-3d,
   .emblem-svg,
   .emblem-text-path,
-  .emblem-text-inner { width: 220px; height: 220px; }
+  .emblem-text-inner { width: 245px; height: 245px; }
   .excursiones,
   .manifesto-section,
   .stats-section,
@@ -542,11 +546,13 @@ nav {
   .hero { min-height: 100svh; }
   .slide { padding-top: 56px; gap: 0.2rem; justify-content: center; }
 
-  .slide-emblem { width: 180px; }
+  .slide-emblem { width: 200px; }
   .emblem-3d,
   .emblem-svg,
   .emblem-text-path,
-  .emblem-text-inner { width: 180px; height: 180px; }
+  .emblem-text-inner { width: 200px; height: 200px; }
+  .lent-fixed { width: 250px; height: 52px; }
+  .lent-word { font-size: 22px; letter-spacing: .12em; }
 
   .slide-content { padding: 0 1.2rem; gap: 0; }
   .slide-eyebrow {
@@ -1740,6 +1746,106 @@ footer {
   .zoyi-huemul-mark { width: 28px; height: 28px; }
 }
 
+
+
+/* Ajuste de menú con tipografía ampliada */
+@media (min-width: 961px) and (max-width: 1360px) {
+  body > nav .nav-links { gap: .45rem; }
+  body > nav .nav-cta-btn { padding-left: .65rem !important; padding-right: .65rem !important; letter-spacing: .09em !important; }
+  body > nav .nav-contact-btn { width: 38px; min-width: 38px; padding-left: 0; padding-right: 0; }
+  body > nav .nav-contact-btn span { display: none; }
+}
+
+
+
+/* Botones del menú igualados */
+body > nav .nav-actions .nav-cta-btn,
+body > nav .nav-actions .nav-contact-btn {
+  width: 132px;
+  height: 36px;
+  min-height: 36px;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 .65rem !important;
+  line-height: 1;
+}
+body > nav .nav-actions .nav-contact-btn {
+  gap: .36rem;
+  font-size: .62rem;
+  letter-spacing: .08em;
+}
+body > nav .nav-actions .nav-contact-btn svg {
+  width: 14px;
+  height: 14px;
+}
+.nav-logo-name {
+  animation: navBrandReveal .9s cubic-bezier(.2,.8,.2,1) .15s both;
+}
+.nav-logo sub {
+  animation: navSubReveal .9s cubic-bezier(.2,.8,.2,1) .36s both;
+}
+.nav-emblem {
+  animation: navEmblemWake .9s cubic-bezier(.2,.8,.2,1) .06s both;
+}
+body > nav .nav-actions.cta-nudge .nav-cta-btn {
+  animation: ctaReservarNudge 1.15s ease both;
+}
+body > nav .nav-actions.cta-nudge .nav-contact-btn {
+  animation: ctaContactNudge 1.15s ease .12s both;
+}
+@keyframes navBrandReveal {
+  0% { opacity: 0; transform: translateY(8px); filter: blur(5px); letter-spacing: .2em; }
+  65% { opacity: 1; filter: blur(0); }
+  100% { opacity: 1; transform: none; letter-spacing: inherit; }
+}
+@keyframes navSubReveal {
+  0% { opacity: 0; transform: translateY(-4px); filter: blur(3px); }
+  100% { opacity: .65; transform: none; filter: blur(0); }
+}
+@keyframes navEmblemWake {
+  0% { opacity: 0; transform: scale(.86) rotate(-10deg); filter: blur(4px); }
+  100% { opacity: 1; transform: scale(1) rotate(0); filter: blur(0); }
+}
+@keyframes ctaReservarNudge {
+  0%, 100% { transform: translateY(0) scale(1); box-shadow: none; }
+  24% { transform: translateY(-2px) scale(1.035); box-shadow: 0 0 0 0 rgba(212,119,42,.42), 0 10px 24px rgba(212,119,42,.18); }
+  58% { transform: translateY(0) scale(1); box-shadow: 0 0 0 8px rgba(212,119,42,0); }
+}
+@keyframes ctaContactNudge {
+  0%, 100% { transform: translateY(0) scale(1); box-shadow: none; }
+  24% { transform: translateY(-2px) scale(1.035); box-shadow: 0 0 0 0 rgba(37,211,102,.34), 0 10px 24px rgba(37,211,102,.14); }
+  58% { transform: translateY(0) scale(1); box-shadow: 0 0 0 8px rgba(37,211,102,0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-logo-name,
+  .nav-logo sub,
+  .nav-emblem,
+  body > nav .nav-actions.cta-nudge .nav-cta-btn,
+  body > nav .nav-actions.cta-nudge .nav-contact-btn {
+    animation: none !important;
+  }
+}
+@media (min-width: 961px) and (max-width: 1360px) {
+  body > nav .nav-actions .nav-cta-btn,
+  body > nav .nav-actions .nav-contact-btn {
+    width: 104px;
+  }
+  body > nav .nav-actions .nav-contact-btn span {
+    display: none;
+  }
+}
+@media (max-width: 640px) {
+  body > nav .nav-actions .nav-cta-btn,
+  body > nav .nav-actions .nav-contact-btn {
+    width: 132px;
+  }
+}
+
+
+/* Scroll hint eliminado */
+.scroll-hint { display: none !important; }
 </style>
 <script>
 (function(){
@@ -1788,6 +1894,41 @@ footer {
     repairBackgrounds(); setTimeout(revealSafety, 700);
   }
   setTimeout(revealSafety, 1800);
+})();
+</script>
+<script>
+(function(){
+  function initCtaNudge(){
+    const navActions = document.querySelector('body > nav .nav-actions');
+    if (!navActions || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let lastSection = '';
+    let pulseTimer = null;
+    function pulseActions(){
+      navActions.classList.remove('cta-nudge');
+      void navActions.offsetWidth;
+      navActions.classList.add('cta-nudge');
+      clearTimeout(pulseTimer);
+      pulseTimer = setTimeout(function(){ navActions.classList.remove('cta-nudge'); }, 1300);
+    }
+    window.addEventListener('load', function(){ setTimeout(pulseActions, 1200); }, { once: true });
+    const sections = document.querySelectorAll('section[id], footer[id], .hero');
+    if (!('IntersectionObserver' in window) || !sections.length) return;
+    const observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (!entry.isIntersecting) return;
+        const id = entry.target.id || 'hero';
+        if (id === lastSection) return;
+        lastSection = id;
+        pulseActions();
+      });
+    }, { threshold: 0.45 });
+    sections.forEach(function(section){ observer.observe(section); });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCtaNudge);
+  } else {
+    initCtaNudge();
+  }
 })();
 </script>
 <style id="zoyen-recovery-patch">
@@ -1847,7 +1988,7 @@ img { background: #d8d0c3; }
         <span class="z">ZOYEN&nbsp;</span>
         <span class="t">TURISMO</span>
       </div>
-      <sub>Patagonia · Legajo 15.625</sub>
+      <sub>Patagonia &middot; Legajo 15.625</sub>
     </div>
   </a>
 
@@ -1889,8 +2030,8 @@ img { background: #d8d0c3; }
     <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="14"/>
     <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="0.8"/>
     <circle cx="140" cy="140" r="96" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.4"/>
-    <text font-family="Sora,Arial Narrow,sans-serif" font-size="10.5" font-weight="700" letter-spacing="12" text-anchor="middle">
-      <textPath href="#hpO" startOffset="50%"><tspan fill="rgba(255,255,255,0.92)">ZOYEN</tspan><tspan fill="rgba(255,255,255,0.3)"> · </tspan><tspan fill="#d4772a">TURISMO</tspan></textPath>
+    <text font-family="Sora,Arial Narrow,sans-serif" font-size="12" font-weight="800" letter-spacing="10.5" text-anchor="middle">
+      <textPath href="#hpO" startOffset="50%"><tspan fill="rgba(255,255,255,1)">ZOYEN</tspan><tspan fill="rgba(255,255,255,0.3)"> &middot; </tspan><tspan fill="#d4772a">TURISMO</tspan></textPath>
     </text>
   </g>
   <g class="hero-ring-cw">
@@ -1899,7 +2040,7 @@ img { background: #d8d0c3; }
   </g>
   <g class="hero-ring-ccw">
     <text font-family="Sora,Arial Narrow,sans-serif" font-size="9" font-weight="400" letter-spacing="9" text-anchor="middle" fill="rgba(255,255,255,0.7)">
-      <textPath href="#hpI" startOffset="50%">· PATAGONIA · ARG ·</textPath>
+      <textPath href="#hpI" startOffset="50%">&middot; PATAGONIA &middot; ARG &middot;</textPath>
     </text>
   </g>
   <g class="hero-rose-spin">
@@ -1964,8 +2105,8 @@ img { background: #d8d0c3; }
     <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="14"/>
     <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="0.8"/>
     <circle cx="140" cy="140" r="96" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.4"/>
-    <text font-family="Sora,Arial Narrow,sans-serif" font-size="10.5" font-weight="700" letter-spacing="12" text-anchor="middle">
-      <textPath href="#hpO" startOffset="50%"><tspan fill="rgba(255,255,255,0.92)">ZOYEN</tspan><tspan fill="rgba(255,255,255,0.3)"> · </tspan><tspan fill="#d4772a">TURISMO</tspan></textPath>
+    <text font-family="Sora,Arial Narrow,sans-serif" font-size="12" font-weight="800" letter-spacing="10.5" text-anchor="middle">
+      <textPath href="#hpO" startOffset="50%"><tspan fill="rgba(255,255,255,1)">ZOYEN</tspan><tspan fill="rgba(255,255,255,0.3)"> &middot; </tspan><tspan fill="#d4772a">TURISMO</tspan></textPath>
     </text>
   </g>
   <g class="hero-ring-cw">
@@ -1974,7 +2115,7 @@ img { background: #d8d0c3; }
   </g>
   <g class="hero-ring-ccw">
     <text font-family="Sora,Arial Narrow,sans-serif" font-size="9" font-weight="400" letter-spacing="9" text-anchor="middle" fill="rgba(255,255,255,0.7)">
-      <textPath href="#hpI" startOffset="50%">· PATAGONIA · ARG ·</textPath>
+      <textPath href="#hpI" startOffset="50%">&middot; PATAGONIA &middot; ARG &middot;</textPath>
     </text>
   </g>
   <g class="hero-rose-spin">
@@ -2039,8 +2180,8 @@ img { background: #d8d0c3; }
     <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="14"/>
     <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="0.8"/>
     <circle cx="140" cy="140" r="96" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.4"/>
-    <text font-family="Sora,Arial Narrow,sans-serif" font-size="10.5" font-weight="700" letter-spacing="12" text-anchor="middle">
-      <textPath href="#hpO" startOffset="50%"><tspan fill="rgba(255,255,255,0.92)">ZOYEN</tspan><tspan fill="rgba(255,255,255,0.3)"> · </tspan><tspan fill="#d4772a">TURISMO</tspan></textPath>
+    <text font-family="Sora,Arial Narrow,sans-serif" font-size="12" font-weight="800" letter-spacing="10.5" text-anchor="middle">
+      <textPath href="#hpO" startOffset="50%"><tspan fill="rgba(255,255,255,1)">ZOYEN</tspan><tspan fill="rgba(255,255,255,0.3)"> &middot; </tspan><tspan fill="#d4772a">TURISMO</tspan></textPath>
     </text>
   </g>
   <g class="hero-ring-cw">
@@ -2049,7 +2190,7 @@ img { background: #d8d0c3; }
   </g>
   <g class="hero-ring-ccw">
     <text font-family="Sora,Arial Narrow,sans-serif" font-size="9" font-weight="400" letter-spacing="9" text-anchor="middle" fill="rgba(255,255,255,0.7)">
-      <textPath href="#hpI" startOffset="50%">· PATAGONIA · ARG ·</textPath>
+      <textPath href="#hpI" startOffset="50%">&middot; PATAGONIA &middot; ARG &middot;</textPath>
     </text>
   </g>
   <g class="hero-rose-spin">
@@ -2093,7 +2234,7 @@ img { background: #d8d0c3; }
       <div class="lent-fixed" id="lentFixed2">
         <div class="lent-strips" id="lentStrips2"></div>
       </div>
-            <div class="slide-eyebrow">Chile · Carretera Austral</div>
+            <div class="slide-eyebrow">Chile &middot; Carretera Austral</div>
       <h1 class="slide-title">Capillas de <em>Mármol</em></h1>
       <p class="slide-desc" data-i18n="h3_desc">Navegación sobre el Lago General Carrera. Una de las maravillas naturales del extremo sur.</p>
       <a href="#tours" class="slide-btn"><span data-i18n="slide_vertour">Ver tours</span></a>
@@ -2114,8 +2255,8 @@ img { background: #d8d0c3; }
     <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="14"/>
     <circle cx="140" cy="140" r="108" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="0.8"/>
     <circle cx="140" cy="140" r="96" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.4"/>
-    <text font-family="Sora,Arial Narrow,sans-serif" font-size="10.5" font-weight="700" letter-spacing="12" text-anchor="middle">
-      <textPath href="#hpO" startOffset="50%"><tspan fill="rgba(255,255,255,0.92)">ZOYEN</tspan><tspan fill="rgba(255,255,255,0.3)"> · </tspan><tspan fill="#d4772a">TURISMO</tspan></textPath>
+    <text font-family="Sora,Arial Narrow,sans-serif" font-size="12" font-weight="800" letter-spacing="10.5" text-anchor="middle">
+      <textPath href="#hpO" startOffset="50%"><tspan fill="rgba(255,255,255,1)">ZOYEN</tspan><tspan fill="rgba(255,255,255,0.3)"> &middot; </tspan><tspan fill="#d4772a">TURISMO</tspan></textPath>
     </text>
   </g>
   <g class="hero-ring-cw">
@@ -2124,7 +2265,7 @@ img { background: #d8d0c3; }
   </g>
   <g class="hero-ring-ccw">
     <text font-family="Sora,Arial Narrow,sans-serif" font-size="9" font-weight="400" letter-spacing="9" text-anchor="middle" fill="rgba(255,255,255,0.7)">
-      <textPath href="#hpI" startOffset="50%">· PATAGONIA · ARG ·</textPath>
+      <textPath href="#hpI" startOffset="50%">&middot; PATAGONIA &middot; ARG &middot;</textPath>
     </text>
   </g>
   <g class="hero-rose-spin">
@@ -2185,7 +2326,6 @@ img { background: #d8d0c3; }
     <button class="dot" data-i="2"></button>
     <button class="dot" data-i="3"></button>
   </div>
-  <div class="scroll-hint">Scroll</div>
 </section>
 
 <script>
@@ -2319,7 +2459,7 @@ img { background: #d8d0c3; }
       <span class="ex-tag" data-i18n="ex3_tag">Ruta escénica</span>
       <div class="ex-card-overlay">
         <h3 class="ex-name" data-i18n="ex3_name">Lago Posadas con Vuelta a la Meseta por Ruta Escénica 41</h3>
-        <p class="ex-desc">160 km por la Ruta 41 desde los 400 hasta los 1.500 msnm. Volcanes, Cordillera de los Andes, ríos, Lagos Pueyrredón y Posadas, Arco de Piedra y almuerzo en Estancia El Suyaí. 12 hs · 500 km. En camioneta 4x4 con chofer/guía.</p>
+        <p class="ex-desc">160 km por la Ruta 41 desde los 400 hasta los 1.500 msnm. Volcanes, Cordillera de los Andes, ríos, Lagos Pueyrredón y Posadas, Arco de Piedra y almuerzo en Estancia El Suyaí. 12 hs &middot; 500 km. En camioneta 4x4 con chofer/guía.</p>
         <a href="excursion-ruta41-lago-posadas.html" class="ex-link"><span data-i18n="vermás">Ver más</span></a>
       </div>
     </div>
@@ -2327,7 +2467,7 @@ img { background: #d8d0c3; }
       <img src="assets/ruta41_zoyen.jpg" data-card-href="excursion-monte-zeballos.html" alt="Monte Zeballos">
       <span class="ex-tag" data-i18n="ex4_tag">Alta montaña</span>
       <div class="ex-card-overlay">
-        <h3 class="ex-name" data-i18n="ex4_name">Ruta 41 · Monte Zeballos</h3>
+        <h3 class="ex-name" data-i18n="ex4_name">Ruta 41 &middot; Monte Zeballos</h3>
         <p class="ex-desc" data-i18n="ex4_desc">400 a 1.500 msnm. Transición de la estepa patagónica al paisaje de alta montaña.</p>
         <a href="excursion-monte-zeballos.html" class="ex-link"><span data-i18n="vermás">Ver más</span></a>
       </div>
@@ -2454,10 +2594,10 @@ img { background: #d8d0c3; }
         <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,6,.95) 0%,rgba(10,8,6,.4) 50%,rgba(10,8,6,.05) 100%);transition:background .3s;" class="tour2-ov"></div>
         <div style="position:absolute;inset:0;padding:2rem;display:flex;flex-direction:column;justify-content:flex-end;">
           <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem;">
-            <span style="font-family:'Sora',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ember);background:rgba(212,119,42,.15);border:1px solid rgba(212,119,42,.4);padding:.22rem .7rem;border-radius:1px;">6 días · 5 noches</span>
+            <span style="font-family:'Sora',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ember);background:rgba(212,119,42,.15);border:1px solid rgba(212,119,42,.4);padding:.22rem .7rem;border-radius:1px;">6 días &middot; 5 noches</span>
           </div>
           <h3 style="font-family:'DM Serif Display',serif;font-size:1.9rem;font-weight:600;color:#f5f0e8;line-height:1.1;margin-bottom:.7rem;">Patagonia <em style="color:var(--sand)">Inédita</em></h3>
-          <p style="font-size:.82rem;color:rgba(245,240,232,.65);line-height:1.6;margin-bottom:1.1rem;font-weight:300;">Bosque Petrificado · Cueva de las Manos · Lago Posadas · Carretera Austral · Catedrales de Mármol</p>
+          <p style="font-size:.82rem;color:rgba(245,240,232,.65);line-height:1.6;margin-bottom:1.1rem;font-weight:300;">Bosque Petrificado &middot; Cueva de las Manos &middot; Lago Posadas &middot; Carretera Austral &middot; Catedrales de Mármol</p>
           <div style="display:flex;align-items:center;justify-content:space-between;">
             <span style="font-family:'Sora',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--sand);">Ver itinerario →</span>
           </div>
@@ -2470,10 +2610,10 @@ img { background: #d8d0c3; }
         <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,6,.95) 0%,rgba(10,8,6,.4) 50%,rgba(10,8,6,.05) 100%);transition:background .3s;" class="tour2-ov"></div>
         <div style="position:absolute;inset:0;padding:2rem;display:flex;flex-direction:column;justify-content:flex-end;">
           <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem;">
-            <span style="font-family:'Sora',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ember);background:rgba(212,119,42,.15);border:1px solid rgba(212,119,42,.4);padding:.22rem .7rem;border-radius:1px;">8 días · 7 noches</span>
+            <span style="font-family:'Sora',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ember);background:rgba(212,119,42,.15);border:1px solid rgba(212,119,42,.4);padding:.22rem .7rem;border-radius:1px;">8 días &middot; 7 noches</span>
           </div>
           <h3 style="font-family:'DM Serif Display',serif;font-size:1.9rem;font-weight:600;color:#f5f0e8;line-height:1.1;margin-bottom:.7rem;">Carretera <em style="color:var(--sand)">Austral</em></h3>
-          <p style="font-size:.82rem;color:rgba(245,240,232,.65);line-height:1.6;margin-bottom:1.1rem;font-weight:300;">Confluencia Nef y Baker · Lago General Carrera · Capillas de Mármol · Mirador Laguna Verde</p>
+          <p style="font-size:.82rem;color:rgba(245,240,232,.65);line-height:1.6;margin-bottom:1.1rem;font-weight:300;">Confluencia Nef y Baker &middot; Lago General Carrera &middot; Capillas de Mármol &middot; Mirador Laguna Verde</p>
           <div style="display:flex;align-items:center;justify-content:space-between;">
             <span style="font-family:'Sora',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--sand);">Ver itinerario →</span>
           </div>
@@ -2541,8 +2681,8 @@ img { background: #d8d0c3; }
           <label>Tour</label>
           <select id="sel-excursion">
             <option value="">– Seleccioná un tour –</option>
-            <option value="patagonia_inedita" data-precio="185000">Patagonia Inédita · 6 días / 5 noches – $185.000 p/p</option>
-            <option value="carretera_austral" data-precio="210000">Carretera Austral · 8 días / 7 noches – $210.000 p/p</option>
+            <option value="patagonia_inedita" data-precio="185000">Patagonia Inédita &middot; 6 días / 5 noches – $185.000 p/p</option>
+            <option value="carretera_austral" data-precio="210000">Carretera Austral &middot; 8 días / 7 noches – $210.000 p/p</option>
           </select>
         </div>
       </div>
@@ -2601,12 +2741,12 @@ img { background: #d8d0c3; }
     <div class="res-seat-panel" id="seatPanel">
       <h3>Elegí tu lugar</h3>
       <p class="seat-subtitle">
-        Renault Master · 14 pasajeros<br>
+        Renault Master &middot; 14 pasajeros<br>
         Seleccioná los asientos para tu grupo. Los asientos ocupados están reservados por otros viajeros.
       </p>
 
       <div class="van-wrap">
-        <div class="van-label">Vista superior · Renault Master</div>
+        <div class="van-label">Vista superior &middot; Renault Master</div>
         <div class="van-body">
 
           <!-- Frente / chofer -->
@@ -2718,7 +2858,7 @@ img { background: #d8d0c3; }
           <a href="#" class="mp-btn" id="mpBtn" onclick="abrirMercadoPago(event)">
             Pagar con Mercado Pago →
           </a>
-          <p class="mp-safe">Pago 100% seguro · SSL</p>
+          <p class="mp-safe">Pago 100% seguro &middot; SSL</p>
           <p style="font-size:11px;color:#888;margin-top:8px;text-align:center;">Después de pagar, volvé aquí y hacé clic en <strong>«Ya pagué»</strong> para confirmar tu reserva.</p>
           <button class="btn-pagar" id="btnYaPague" style="margin-top:12px;display:none;" onclick="confirmarPagado(event)">
             ✓ Ya pagué – Confirmar reserva
@@ -2848,7 +2988,7 @@ img { background: #d8d0c3; }
         <div style="border-left:2px solid var(--ember); padding-left:1rem;">
           <p style="font-family:'Sora',sans-serif; font-size:.62rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--ember); margin-bottom:.4rem;">Por bus</p>
           <p style="font-size:.84rem; color:var(--stone); line-height:1.75;">Servicios regulares desde Comodoro Rivadavia, Bariloche y otras ciudades patagónicas.<br>
-          <a href="https://www.sportman.com.ar" target="_blank" rel="noopener" style="color:var(--amber);">Sportman</a> · TAC / El Pingüino ·
+          <a href="https://www.sportman.com.ar" target="_blank" rel="noopener" style="color:var(--amber);">Sportman</a> &middot; TAC / El Pingüino ·
           <a href="https://www.plataforma10.com" target="_blank" rel="noopener" style="color:var(--amber);">Plataforma 10</a></p>
         </div>
 
@@ -2925,7 +3065,7 @@ img { background: #d8d0c3; }
 </svg>
         <div class="footer-brand"><span class="footer-brand-zoyen">ZOYEN</span> <span>TURISMO</span></div>
       </div>
-      <p class="footer-tagline">Agencia de Turismo en la Patagonia Argentina.<br>Legajo 15.625 · Perito Moreno, Santa Cruz.</p>
+      <p class="footer-tagline">Agencia de Turismo en la Patagonia Argentina.<br>Legajo 15.625 &middot; Perito Moreno, Santa Cruz.</p>
       <div class="socials">
         <!-- Instagram -->
         <a href="https://www.instagram.com/turismozoyen/" class="social-btn" title="Instagram" target="_blank" rel="noopener">
@@ -2958,7 +3098,7 @@ img { background: #d8d0c3; }
       <ul class="footer-links">
         <li><a href="excursion-cueva-de-las-manos.html">Cueva de las Manos</a></li>
         <li><a href="excursion-alero-charcamata.html">Alero Charcamata</a></li>
-        <li><a href="excursion-ruta41-lago-posadas.html">Lago Posadas · Ruta 41</a></li>
+        <li><a href="excursion-ruta41-lago-posadas.html">Lago Posadas &middot; Ruta 41</a></li>
         <li><a href="excursion-monte-zeballos.html">Monte Zeballos</a></li>
         <li><a href="excursion-parque-patagonia.html">Portal Cañadón Pinturas / PNP</a></li>
         <li><a href="excursion-capillas-de-marmol.html">Capillas de Mármol</a></li>
@@ -2984,7 +3124,7 @@ img { background: #d8d0c3; }
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© Zoyen Turismo 2025 · Todos los derechos reservados</span>
+    <span>© Zoyen Turismo 2025 &middot; Todos los derechos reservados</span>
     
   </div>
 </footer>
@@ -3536,90 +3676,102 @@ revEls.forEach(el => obs.observe(el));
 .rmod-wrap {
   display:none; position:fixed; inset:0; z-index:1000;
   background:rgba(10,8,6,.75); backdrop-filter:blur(10px);
-  align-items:center; justify-content:center;
+  align-items:center; justify-content:center; padding:2rem;
 }
 .rmod-wrap.open { display:flex; }
 .rmod {
   background:#231c14; border:1px solid rgba(212,119,42,.3);
-  border-radius:6px; padding:2.4rem 2.2rem;
-  width:100%; max-width:440px; position:relative;
+  border-radius:6px; padding:3.2rem 3rem 2.8rem;
+  width:min(760px, 94vw); max-height:calc(100svh - 3rem); overflow-y:auto; position:relative;
   box-shadow:0 28px 80px rgba(0,0,0,.7);
   font-family:'Sora',sans-serif; color:#f5f0e8;
   animation: rmod-in .25s ease;
 }
 @keyframes rmod-in { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:none} }
 .rmod-x {
-  position:absolute; top:.9rem; right:.9rem;
+  position:absolute; top:1.1rem; right:1.15rem;
   background:none; border:none; color:#7a6a5a;
-  font-size:1.1rem; cursor:pointer; line-height:1; padding:.25rem;
+  font-size:1.45rem; cursor:pointer; line-height:1; padding:.25rem;
 }
 .rmod-x:hover { color:#f5f0e8; }
 .rmod-eyebrow {
-  font-size:.6rem; font-weight:700; letter-spacing:.28em; text-transform:uppercase;
-  color:#d4772a; text-align:center; margin-bottom:.5rem;
+  font-size:.72rem; font-weight:700; letter-spacing:.28em; text-transform:uppercase;
+  color:#d4772a; text-align:center; margin-bottom:.75rem;
 }
 .rmod-title {
-  font-family:'DM Serif Display',serif; font-size:1.6rem; font-weight:600;
-  text-align:center; color:#f5f0e8; margin-bottom:.4rem; line-height:1.15;
+  font-family:'DM Serif Display',serif; font-size:clamp(2rem,3vw,2.65rem); font-weight:600;
+  text-align:center; color:#f5f0e8; margin-bottom:.55rem; line-height:1.12;
 }
 .rmod-sub {
-  font-size:.78rem; color:rgba(201,169,110,.7); text-align:center;
-  margin-bottom:1.8rem; line-height:1.6;
+  font-size:1rem; color:rgba(201,169,110,.7); text-align:center;
+  margin-bottom:2.35rem; line-height:1.6;
 }
 /* Step 1: Tour / Excursion cards */
 .rmod-cards {
-  display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:.5rem;
+  display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin-bottom:.5rem;
 }
 .rmod-card {
   background:rgba(255,255,255,.05); border:1.5px solid rgba(201,169,110,.2);
-  border-radius:5px; padding:1.4rem 1rem; text-align:center; cursor:pointer;
+  border-radius:5px; min-height:176px; padding:2rem 1.45rem; text-align:center; cursor:pointer;
   transition:all .2s;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
 }
 .rmod-card:hover, .rmod-card.sel {
   border-color:#d4772a; background:rgba(212,119,42,.12);
 }
-.rmod-card-ico { font-size:2rem; margin-bottom:.6rem; }
+.rmod-card-ico { font-size:2.25rem; margin-bottom:.75rem; }
 .rmod-card-name {
-  font-size:.78rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+  font-size:1rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
   color:#f5f0e8; margin-bottom:.3rem;
 }
-.rmod-card-desc { font-size:.68rem; color:rgba(201,169,110,.65); line-height:1.5; }
+.rmod-card-desc { font-size:.9rem; color:rgba(201,169,110,.65); line-height:1.5; max-width:240px; }
 /* Step 2: excursion selector */
 .rmod-step { display:none; }
 .rmod-step.active { display:block; }
 .rmod-label {
-  font-size:.62rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
+  font-size:.78rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
   color:#c9a96e; display:block; margin-bottom:.55rem;
 }
 .rmod-select {
   width:100%; background:rgba(255,255,255,.07); border:1.5px solid rgba(201,169,110,.25);
-  border-radius:4px; padding:.65rem .9rem; color:#f5f0e8;
-  font-family:'Sora',sans-serif; font-size:.88rem; outline:none;
+  border-radius:4px; padding:.9rem 1rem; color:#f5f0e8;
+  font-family:'Sora',sans-serif; font-size:1rem; outline:none;
   transition:border-color .2s; margin-bottom:1.2rem; cursor:pointer;
 }
 .rmod-select:focus { border-color:#d4772a; }
 .rmod-select option { background:#231c14; color:#f5f0e8; }
 .rmod-btn {
-  width:100%; padding:.78rem; background:#d4772a; color:#f5f0e8; border:none;
-  border-radius:4px; font-family:'Sora',sans-serif; font-size:.78rem; font-weight:700;
+  width:100%; padding:1rem; background:#d4772a; color:#f5f0e8; border:none;
+  border-radius:4px; font-family:'Sora',sans-serif; font-size:.92rem; font-weight:700;
   letter-spacing:.18em; text-transform:uppercase; cursor:pointer; transition:background .2s;
   display:flex; align-items:center; justify-content:center; gap:.5rem;
 }
 .rmod-btn:hover { background:#b8621e; }
 .rmod-btn:disabled { background:rgba(212,119,42,.3); cursor:not-allowed; }
 .rmod-back {
-  background:none; border:none; color:rgba(201,169,110,.6); font-size:.72rem;
+  background:none; border:none; color:rgba(201,169,110,.6); font-size:.9rem;
   cursor:pointer; font-family:'Sora',sans-serif; letter-spacing:.1em;
-  text-transform:uppercase; margin-top:.8rem; width:100%; text-align:center;
+  text-transform:uppercase; margin-top:1rem; width:100%; text-align:center;
   padding:.3rem; transition:color .2s;
 }
 .rmod-back:hover { color:#c9a96e; }
+@media (max-width: 640px) {
+  .rmod-wrap { padding:.75rem; }
+  .rmod {
+    width:96vw;
+    max-height:calc(100svh - 1.5rem);
+    padding:2.2rem 1.2rem 1.8rem;
+  }
+  .rmod-cards { grid-template-columns:1fr; }
+  .rmod-card { min-height:140px; padding:1.4rem 1rem; }
+  .rmod-title { font-size:2rem; }
+}
 </style>
 
 <div class="rmod-wrap" id="rmodWrap">
   <div class="rmod" id="rmodBox">
     <button class="rmod-x" onclick="cerrarModalReservar()">×</button>
-    <div class="rmod-eyebrow">Zoyen Turismo · Patagonia</div>
+    <div class="rmod-eyebrow">Zoyen Turismo &middot; Patagonia</div>
     <h2 class="rmod-title">¿Qué querés hacer?</h2>
     <p class="rmod-sub">Elegí el tipo de experiencia y te guiamos desde acá.</p>
 
@@ -3629,12 +3781,12 @@ revEls.forEach(el => obs.observe(el));
         <div class="rmod-card" onclick="elegirTipo('tour')">
           
           <div class="rmod-card-name">Tour de Autor</div>
-          <div class="rmod-card-desc">Varios días · itinerarios exclusivos por la Patagonia profunda</div>
+          <div class="rmod-card-desc">Varios días &middot; itinerarios exclusivos por la Patagonia profunda</div>
         </div>
         <div class="rmod-card" onclick="elegirTipo('excursion')">
           
           <div class="rmod-card-name">Excursión</div>
-          <div class="rmod-card-desc">Paseos en el día · reservá tu lugar en el momento</div>
+          <div class="rmod-card-desc">Paseos en el día &middot; reservá tu lugar en el momento</div>
         </div>
       </div>
     </div>
@@ -3646,8 +3798,8 @@ revEls.forEach(el => obs.observe(el));
         <option value="">– Seleccioná una excursión –</option>
         <option value="cueva">Cueva de las Manos</option>
         <option value="capillas">Capillas y Catedrales de Mármol</option>
-        <option value="posadas">Lago Posadas · Ruta Escénica 41</option>
-        <option value="zeballos">Ruta 41 · Monte Zeballos</option>
+        <option value="posadas">Lago Posadas &middot; Ruta Escénica 41</option>
+        <option value="zeballos">Ruta 41 &middot; Monte Zeballos</option>
         <option value="charcamata">Alero Charcamata</option>
         <option value="parque_caniadon">Portal Cañadón Pinturas (Parque Patagonia)</option>
         <option value="parque_escension">PNP / Estancia La Escensión</option>
@@ -3668,8 +3820,8 @@ revEls.forEach(el => obs.observe(el));
   const excInfo = {
     cueva:             { nombre:'Cueva de las Manos',                          dur:'Día completo', precio:'$18.000 p/p' },
     capillas:          { nombre:'Capillas y Catedrales de Mármol',             dur:'Día completo', precio:'$24.000 p/p' },
-    posadas:           { nombre:'Lago Posadas · Ruta Escénica 41',             dur:'Día completo (12 hs)', precio:'$15.000 p/p' },
-    zeballos:          { nombre:'Ruta 41 · Monte Zeballos',                    dur:'Día completo', precio:'$16.000 p/p' },
+    posadas:           { nombre:'Lago Posadas &middot; Ruta Escénica 41',             dur:'Día completo (12 hs)', precio:'$15.000 p/p' },
+    zeballos:          { nombre:'Ruta 41 &middot; Monte Zeballos',                    dur:'Día completo', precio:'$16.000 p/p' },
     charcamata:        { nombre:'Alero Charcamata',                            dur:'Medio día', precio:'$12.000 p/p' },
     parque_caniadon:   { nombre:'Portal Cañadón Pinturas (Parque Patagonia)',  dur:'Medio día (5 hs)', precio:'$8.000 p/p' },
     parque_escension:  { nombre:'PNP / Estancia La Escensión',                 dur:'Medio día (4 hs)', precio:'$7.000 p/p' },
@@ -3715,7 +3867,7 @@ revEls.forEach(el => obs.observe(el));
     if (!exc) return;
     const msg = encodeURIComponent(
       'Hola! Quisiera consultar información sobre la excursión *' + exc.nombre + '*' +
-      ' (' + exc.dur + ' · ' + exc.precio + ').' +
+      ' (' + exc.dur + ' &middot; ' + exc.precio + ').' +
       ' ¿Tienen disponibilidad? ¿Qué incluye?'
     );
     window.open('https://wa.me/' + WA_NUM + '?text=' + msg, '_blank', 'noopener');
@@ -3834,7 +3986,7 @@ const excData = [
   { key:'cueva',           name:'Cueva de las Manos',                                          precio:18000, estado:'activa', duracion:'Día completo', capacidad:14 },
   { key:'capillas',        name:'Capillas y Catedrales de Mármol',                             precio:24000, estado:'activa', duracion:'Día completo', capacidad:14 },
   { key:'posadas',         name:'Lago Posadas con Vuelta a la Meseta por Ruta Escénica 41',    precio:15000, estado:'activa', duracion:'Día completo (12 hs)', capacidad:14 },
-  { key:'zeballos',        name:'Ruta 41 · Monte Zeballos',                                    precio:16000, estado:'activa', duracion:'Día completo', capacidad:14 },
+  { key:'zeballos',        name:'Ruta 41 &middot; Monte Zeballos',                                    precio:16000, estado:'activa', duracion:'Día completo', capacidad:14 },
   { key:'charcamata',      name:'Alero Charcamata',                                            precio:12000, estado:'activa', duracion:'Medio día',    capacidad:14 },
   { key:'parque_caniadon', name:'Portal Cañadón Pinturas (Parque Patagonia)',                  precio:8000,  estado:'activa', duracion:'Medio día (5 hs)', capacidad:14 },
   { key:'parque_escension',name:'PNP / Estancia La Escensión',                                 precio:7000,  estado:'activa', duracion:'Medio día (4 hs)', capacidad:14 },
@@ -4147,7 +4299,7 @@ file-lbl{cursor:pointer}
       <!-- DASHBOARD -->
       <div class="sec active" id="sec-dashboard">
         <div class="sec-title">Dashboard</div>
-        <div class="sec-sub">Resumen general · Zoyen Turismo</div>
+        <div class="sec-sub">Resumen general &middot; Zoyen Turismo</div>
         <div class="stats">
           <div class="stat"><div class="stat-val" id="d-total">0</div><div class="stat-lbl">Reservas totales</div></div>
           <div class="stat"><div class="stat-val" id="d-pend">0</div><div class="stat-lbl">Sin confirmar</div></div>
@@ -4300,13 +4452,13 @@ function badge(e){
 const slideDefaults=[
   {ey:'Patagonia Argentina',ti:'Explorá la Patagonia Inédita',de:'De la mano de quienes la vivimos. Excursiones únicas en la Patagonia profunda.'},
   {ey:'Patrimonio UNESCO',ti:'Cueva de las Manos',de:'Uno de los sitios arqueológicos más importantes del mundo. Arte rupestre de más de 9.000 años.'},
-  {ey:'Chile · Carretera Austral',ti:'Capillas de Mármol',de:'Navegación sobre el Lago General Carrera. Una de las maravillas naturales del extremo sur.'},
+  {ey:'Chile &middot; Carretera Austral',ti:'Capillas de Mármol',de:'Navegación sobre el Lago General Carrera. Una de las maravillas naturales del extremo sur.'},
   {ey:'Ruta Escénica 41',ti:'Monte Zeballos',de:'Desde los 400 hasta los 1.500 metros. La ruta escénica más impactante de Santa Cruz.'},
 ];
 function buildTextos(){
   document.getElementById('slides-cards').innerHTML=slideDefaults.map((s,i)=>\`
     <div class="card">
-      <div class="card-title">Hero · Slide \${i+1}</div>
+      <div class="card-title">Hero &middot; Slide \${i+1}</div>
       <div class="fgrid">
         <div class="field"><label>Eyebrow</label><input type="text" id="t-s\${i}-ey" value="\${s.ey}"/></div>
         <div class="field"><label>Título</label><input type="text" id="t-s\${i}-ti" value="\${s.ti}"/></div>
@@ -4480,7 +4632,7 @@ var translations = {
     h2_eye: 'Patrimonio UNESCO',
     h2_title: 'Cueva de <em>las Manos</em>',
     h2_desc: 'Uno de los sitios arqueológicos más importantes del mundo. Arte rupestre de más de 9.000 años.',
-    h3_eye: 'Chile · Carretera Austral',
+    h3_eye: 'Chile &middot; Carretera Austral',
     h3_title: 'Capillas de <em>Mármol</em>',
     h3_desc: 'Navegación sobre el Lago General Carrera. Una de las maravillas naturales del extremo sur.',
     h4_eye: 'Ruta Escénica 41',
@@ -4494,7 +4646,7 @@ var translations = {
     ex2_tag: 'Día completo', ex2_name: 'Capillas y Catedrales de Mármol',
     ex2_desc: 'Navegación 5 estrellas por el Lago General Carrera hacia Chile. Imperdible.',
     ex3_tag: 'Ruta escénica', ex3_name: 'Lago Posadas con Vuelta a la Meseta por Ruta Escénica 41',
-    ex4_tag: 'Alta montaña', ex4_name: 'Ruta 41 · Monte Zeballos',
+    ex4_tag: 'Alta montaña', ex4_name: 'Ruta 41 &middot; Monte Zeballos',
     ex4_desc: '400 a 1.500 msnm. Transición de la estepa patagónica al paisaje de alta montaña.',
     ex5_tag: 'Arte rupestre', ex5_name: 'Alero Charcamata',
     ex5_desc: 'Arte rupestre intacto y alejado de la civilización. Un viaje en el tiempo inevitable.',
@@ -4527,7 +4679,7 @@ var translations = {
     h2_eye: 'UNESCO Heritage',
     h2_title: 'Cave of <em>Hands</em>',
     h2_desc: 'One of the most important archaeological sites in the world. Cave art over 9,000 years old.',
-    h3_eye: 'Chile · Carretera Austral',
+    h3_eye: 'Chile &middot; Carretera Austral',
     h3_title: 'Marble <em>Chapels</em>',
     h3_desc: 'Navigation on Lake General Carrera. One of the natural wonders of the far south.',
     h4_eye: 'Scenic Route 41',
@@ -4541,7 +4693,7 @@ var translations = {
     ex2_tag: 'Full day', ex2_name: 'Marble Chapels & Cathedrals',
     ex2_desc: '5-star navigation on Lake General Carrera towards Chile. Not to be missed.',
     ex3_tag: 'Scenic route', ex3_name: 'Lake Posadas & Scenic Route 41',
-    ex4_tag: 'High altitude', ex4_name: 'Route 41 · Mount Zeballos',
+    ex4_tag: 'High altitude', ex4_name: 'Route 41 &middot; Mount Zeballos',
     ex4_desc: '400 to 1,500 m. Transition from Patagonian steppe to high mountain landscape.',
     ex5_tag: 'Rock art', ex5_name: 'Alero Charcamata',
     ex5_desc: 'Pristine rock art far from civilization. An inevitable journey through time.',
@@ -4574,7 +4726,7 @@ var translations = {
     h2_eye: 'Patrimônio UNESCO',
     h2_title: 'Cueva de <em>las Manos</em>',
     h2_desc: 'Um dos sítios arqueológicos mais importantes do mundo. Arte rupestre com mais de 9.000 anos.',
-    h3_eye: 'Chile · Carretera Austral',
+    h3_eye: 'Chile &middot; Carretera Austral',
     h3_title: 'Capelas de <em>Mármore</em>',
     h3_desc: 'Navegação no Lago General Carrera. Uma das maravilhas naturais do extremo sul.',
     h4_eye: 'Rota Cênica 41',
@@ -4588,7 +4740,7 @@ var translations = {
     ex2_tag: 'Dia completo', ex2_name: 'Capelas e Catedrais de Mármore',
     ex2_desc: 'Navegação 5 estrelas pelo Lago General Carrera até o Chile. Imperdível.',
     ex3_tag: 'Rota cênica', ex3_name: 'Lago Posadas e Rota Cênica 41',
-    ex4_tag: 'Alta montanha', ex4_name: 'Rota 41 · Monte Zeballos',
+    ex4_tag: 'Alta montanha', ex4_name: 'Rota 41 &middot; Monte Zeballos',
     ex4_desc: '400 a 1.500 m. Transição da estepe patagônica para a paisagem de alta montanha.',
     ex5_tag: 'Arte rupestre', ex5_name: 'Alero Charcamata',
     ex5_desc: 'Arte rupestre intacta e distante da civilização. Uma viagem inevitável no tempo.',
@@ -4621,7 +4773,7 @@ var translations = {
     h2_eye: 'UNESCO 유산',
     h2_title: '<em>손의 동굴</em>',
     h2_desc: '세계에서 가장 중요한 고고학 유적지 중 하나. 9,000년 이상 된 동굴 벽화.',
-    h3_eye: '칠레 · 카레테라 아우스트랄',
+    h3_eye: '칠레 &middot; 카레테라 아우스트랄',
     h3_title: '마블 <em>채플</em>',
     h3_desc: '헤네랄 카레라 호수 위의 항해. 극남쪽의 자연 경이로움 중 하나.',
     h4_eye: '경치 좋은 41번 도로',
@@ -4634,8 +4786,8 @@ var translations = {
     ex1_desc: 'UNESCO 유산. 핀투라스 강 협곡의 9,000년 이상 된 암각화.',
     ex2_tag: '하루 종일', ex2_name: '마블 채플 & 대성당',
     ex2_desc: '칠레로 향하는 헤네랄 카레라 호수의 5성급 항해. 꼭 가봐야 할 곳.',
-    ex3_tag: '경치 도로', ex3_name: '포사다스 호수 · 41번 경치 도로',
-    ex4_tag: '고산 지대', ex4_name: '41번 도로 · 세바요스 산',
+    ex3_tag: '경치 도로', ex3_name: '포사다스 호수 &middot; 41번 경치 도로',
+    ex4_tag: '고산 지대', ex4_name: '41번 도로 &middot; 세바요스 산',
     ex4_desc: '해발 400~1,500m. 파타고니아 초원에서 고산 풍경으로의 전환.',
     ex5_tag: '암각화', ex5_name: '알레로 차르카마타',
     ex5_desc: '문명에서 멀리 떨어진 원시 암각화. 시간을 거슬러 올라가는 불가피한 여행.',
@@ -4724,7 +4876,7 @@ var translations = {
     h2_eye: 'Patrimonio UNESCO',
     h2_title: 'Cueva de <em>las Manos</em>',
     h2_desc: 'Uno de los sitios arqueológicos más importantes del mundo. Arte rupestre de más de 9.000 años.',
-    h3_eye: 'Chile · Carretera Austral',
+    h3_eye: 'Chile &middot; Carretera Austral',
     h3_title: 'Capillas de <em>Mármol</em>',
     h3_desc: 'Navegación sobre el Lago General Carrera. Una de las maravillas naturales del extremo sur.',
     h4_eye: 'Ruta Escénica 41',
@@ -4738,7 +4890,7 @@ var translations = {
     ex2_tag: 'Día completo', ex2_name: 'Capillas y Catedrales de Mármol',
     ex2_desc: 'Navegación 5 estrellas por el Lago General Carrera hacia Chile. Imperdible.',
     ex3_tag: 'Ruta escénica', ex3_name: 'Lago Posadas con Vuelta a la Meseta por Ruta Escénica 41',
-    ex4_tag: 'Alta montaña', ex4_name: 'Ruta 41 · Monte Zeballos',
+    ex4_tag: 'Alta montaña', ex4_name: 'Ruta 41 &middot; Monte Zeballos',
     ex4_desc: '400 a 1.500 msnm. Transición de la estepa patagónica al paisaje de alta montaña.',
     ex5_tag: 'Arte rupestre', ex5_name: 'Alero Charcamata',
     ex5_desc: 'Arte rupestre intacto y alejado de la civilización. Un viaje en el tiempo inevitable.',
@@ -4771,7 +4923,7 @@ var translations = {
     h2_eye: 'UNESCO Heritage',
     h2_title: 'Cave of <em>Hands</em>',
     h2_desc: 'One of the most important archaeological sites in the world. Cave art over 9,000 years old.',
-    h3_eye: 'Chile · Carretera Austral',
+    h3_eye: 'Chile &middot; Carretera Austral',
     h3_title: 'Marble <em>Chapels</em>',
     h3_desc: 'Navigation on Lake General Carrera. One of the natural wonders of the far south.',
     h4_eye: 'Scenic Route 41',
@@ -4785,7 +4937,7 @@ var translations = {
     ex2_tag: 'Full day', ex2_name: 'Marble Chapels & Cathedrals',
     ex2_desc: '5-star navigation on Lake General Carrera towards Chile. Not to be missed.',
     ex3_tag: 'Scenic route', ex3_name: 'Lake Posadas & Scenic Route 41',
-    ex4_tag: 'High altitude', ex4_name: 'Route 41 · Mount Zeballos',
+    ex4_tag: 'High altitude', ex4_name: 'Route 41 &middot; Mount Zeballos',
     ex4_desc: '400 to 1,500 m. Transition from Patagonian steppe to high mountain landscape.',
     ex5_tag: 'Rock art', ex5_name: 'Alero Charcamata',
     ex5_desc: 'Pristine rock art far from civilization. An inevitable journey through time.',
@@ -4818,7 +4970,7 @@ var translations = {
     h2_eye: 'Patrimônio UNESCO',
     h2_title: 'Cueva de <em>las Manos</em>',
     h2_desc: 'Um dos sítios arqueológicos mais importantes do mundo. Arte rupestre com mais de 9.000 anos.',
-    h3_eye: 'Chile · Carretera Austral',
+    h3_eye: 'Chile &middot; Carretera Austral',
     h3_title: 'Capelas de <em>Mármore</em>',
     h3_desc: 'Navegação no Lago General Carrera. Uma das maravilhas naturais do extremo sul.',
     h4_eye: 'Rota Cênica 41',
@@ -4832,7 +4984,7 @@ var translations = {
     ex2_tag: 'Dia completo', ex2_name: 'Capelas e Catedrais de Mármore',
     ex2_desc: 'Navegação 5 estrelas pelo Lago General Carrera até o Chile. Imperdível.',
     ex3_tag: 'Rota cênica', ex3_name: 'Lago Posadas e Rota Cênica 41',
-    ex4_tag: 'Alta montanha', ex4_name: 'Rota 41 · Monte Zeballos',
+    ex4_tag: 'Alta montanha', ex4_name: 'Rota 41 &middot; Monte Zeballos',
     ex4_desc: '400 a 1.500 m. Transição da estepe patagônica para a paisagem de alta montanha.',
     ex5_tag: 'Arte rupestre', ex5_name: 'Alero Charcamata',
     ex5_desc: 'Arte rupestre intacta e distante da civilização. Uma viagem inevitável no tempo.',
@@ -4865,7 +5017,7 @@ var translations = {
     h2_eye: 'UNESCO 유산',
     h2_title: '<em>손의 동굴</em>',
     h2_desc: '세계에서 가장 중요한 고고학 유적지 중 하나. 9,000년 이상 된 동굴 벽화.',
-    h3_eye: '칠레 · 카레테라 아우스트랄',
+    h3_eye: '칠레 &middot; 카레테라 아우스트랄',
     h3_title: '마블 <em>채플</em>',
     h3_desc: '헤네랄 카레라 호수 위의 항해. 극남쪽의 자연 경이로움 중 하나.',
     h4_eye: '경치 좋은 41번 도로',
@@ -4878,8 +5030,8 @@ var translations = {
     ex1_desc: 'UNESCO 유산. 핀투라스 강 협곡의 9,000년 이상 된 암각화.',
     ex2_tag: '하루 종일', ex2_name: '마블 채플 & 대성당',
     ex2_desc: '칠레로 향하는 헤네랄 카레라 호수의 5성급 항해. 꼭 가봐야 할 곳.',
-    ex3_tag: '경치 도로', ex3_name: '포사다스 호수 · 41번 경치 도로',
-    ex4_tag: '고산 지대', ex4_name: '41번 도로 · 세바요스 산',
+    ex3_tag: '경치 도로', ex3_name: '포사다스 호수 &middot; 41번 경치 도로',
+    ex4_tag: '고산 지대', ex4_name: '41번 도로 &middot; 세바요스 산',
     ex4_desc: '해발 400~1,500m. 파타고니아 초원에서 고산 풍경으로의 전환.',
     ex5_tag: '암각화', ex5_name: '알레로 차르카마타',
     ex5_desc: '문명에서 멀리 떨어진 원시 암각화. 시간을 거슬러 올라가는 불가피한 여행.',
@@ -4976,14 +5128,13 @@ applyLang(currentLang);
     </div>
     <div class="zoyi-messages" id="zoyiMessages"></div>
     <div class="zoyi-chip-row" id="zoyiChips">
+      <button class="zoyi-chip" type="button">Fechas disponibles</button>
       <button class="zoyi-chip" type="button">Excursiones</button>
-      <button class="zoyi-chip" type="button">Tours de autor</button>
-      <button class="zoyi-chip" type="button">Itinerarios</button>
       <button class="zoyi-chip" type="button">Precios</button>
       <button class="zoyi-chip" type="button">Reservas</button>
-      <button class="zoyi-chip" type="button">Contacto</button>
-    </div>
-    <form class="zoyi-form" id="zoyiForm">
+      <button class="zoyi-chip" type="button">Ubicacion</button>
+      <button class="zoyi-chip" type="button">Hablar con una persona</button>
+    </div>    <form class="zoyi-form" id="zoyiForm">
       <input class="zoyi-input" id="zoyiInput" type="text" autocomplete="off" placeholder="Preguntale a Zoyi..." aria-label="Consulta para Zoyi">
       <button class="zoyi-send" type="submit" aria-label="Enviar consulta">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -4996,31 +5147,40 @@ applyLang(currentLang);
   var widget = document.getElementById("zoyiWidget");
   if (!widget || widget.dataset.ready) return;
   widget.dataset.ready = "true";
+
   var toggle = document.getElementById("zoyiToggle");
   var closeBtn = document.getElementById("zoyiClose");
   var form = document.getElementById("zoyiForm");
   var input = document.getElementById("zoyiInput");
   var messages = document.getElementById("zoyiMessages");
   var chips = document.getElementById("zoyiChips");
-  var contactText = "WhatsApp +54 9 297 443-2855 y email zoyenperitomoreno@gmail.com.";
-  var db = [
-    {keys:["cueva","manos","pinturas","arqueologia"], answer:"La excursión Cueva de las Manos recorre uno de los sitios arqueológicos más importantes de la Patagonia, con pinturas rupestres y paisaje del Cañadón del Río Pinturas."},
-    {keys:["capillas","marmol","mármol","catedrales","general carrera"], answer:"Capillas y Catedrales de Mármol navega formaciones naturales sobre el Lago General Carrera. Es una salida ideal para combinar paisaje, fotografía y navegación."},
-    {keys:["lago posadas","posadas","ruta 41","escenica","escénica"], answer:"Lago Posadas y Ruta Escénica 41 combina caminos panorámicos, lagos patagónicos y miradores. Es una de las experiencias fuertes cerca de Perito Moreno."},
-    {keys:["monte zeballos","zeballos"], answer:"Ruta 41 Monte Zeballos propone una travesía escénica por altura, estepa, bosques y vistas cordilleranas."},
-    {keys:["charcamata","alero"], answer:"Alero Charcamata es una experiencia vinculada al arte rupestre y al patrimonio natural de la zona."},
-    {keys:["parque patagonia","canadon pinturas","cañadon pinturas","portal"], answer:"Parque Nacional Patagonia y Portal Cañadón Pinturas conectan senderos, fauna, geología y vistas amplias del noroeste de Santa Cruz."},
-    {keys:["patagonia inedita","patagonia inédita","inedita","inédita"], answer:"Patagonia Inédita es un tour de 6 días y 5 noches. Comienza en Comodoro Rivadavia y recorre Perito Moreno, Cueva de las Manos, Parque Patagonia, Los Antiguos, Ruta Escénica 41, Carretera Austral, Puerto Río Tranquilo y Capillas de Mármol. El PDF del itinerario está en assets/pdfs/patagonia-inedita-itinerario.pdf."},
-    {keys:["carretera austral","austral","ohiggins","o higgins","villa ohiggins"], answer:"Carretera Austral es un tour de 8 días y 7 noches desde y hasta Perito Moreno. Incluye Chile Chico, Cochrane, Caleta Tortel, Villa O’Higgins, Puerto Río Tranquilo, Capillas de Mármol, Coyhaique y regreso por Paso Huemules. El PDF está en assets/pdfs/carretera-austral-itinerario.pdf."},
-    {keys:["precio","precios","tarifa","tarifas","valor","valores","ar"], answer:"Los precios del sitio se mantienen en AR, pesos argentinos. Para confirmar disponibilidad, cupos y valores actualizados, conviene escribir por WhatsApp: " + contactText},
-    {keys:["reservar","reserva","disponibilidad","cupos","contratar"], answer:"Para reservar podés usar el botón Reservar del menú o escribir directo por WhatsApp. " + contactText},
-    {keys:["contacto","whatsapp","telefono","teléfono","mail","email","ubicacion","ubicación","direccion","dirección"], answer:"Podés contactarte con Zoyen Turismo por " + contactText + " Estamos en Perito Moreno, Santa Cruz, Patagonia Argentina."},
-    {keys:["quienes","quiénes","agencia","legajo","zoyen"], answer:"Zoyen Turismo es una agencia local de Perito Moreno, Santa Cruz, con legajo 15.625. Diseña excursiones y tours de autor en Patagonia."},
-    {keys:["bienestar","wellness","yoga","masajes"], answer:"La sección de Turismo de Bienestar reúne propuestas para complementar el viaje con pausa, naturaleza y experiencias de cuidado."},
-    {keys:["pdf","descargar","itinerario","itinerarios"], answer:"Los tours de autor tienen botón para descargar el itinerario en PDF: Patagonia Inédita y Carretera Austral."},
-    {keys:["huemul","zoyi"], answer:"Soy Zoyi, el huemul asistente de Zoyen. Te puedo orientar sobre excursiones, tours, itinerarios, reservas, precios y contacto."}
+
+  var contactText = "WhatsApp +54 9 297 443-2855 y email zoyenperitomoreno@gmail.com";
+  var waLink = "https://wa.me/5492974432855";
+  var pageTitle = (document.title || "").replace(/\s+/g," ").trim();
+
+  var excursiones = [
+    {id:"cueva", name:"Cueva de las Manos", aliases:["cueva","manos","pinturas","arqueologia","rio pinturas"], price:18000, duration:"dia completo", capacity:14, type:"excursion", summary:"sitio arqueologico Patrimonio Mundial, pinturas rupestres de mas de 9.000 anos y paisaje del Canon del Rio Pinturas."},
+    {id:"capillas", name:"Capillas y Catedrales de Marmol", aliases:["capillas","marmol","catedrales","general carrera"], price:24000, duration:"dia completo", capacity:14, type:"excursion", summary:"navegacion por el Lago General Carrera para ver formaciones de marmol, ideal para fotografia y paisaje."},
+    {id:"posadas", name:"Lago Posadas y Ruta Escenica 41", aliases:["posadas","lago posadas","ruta 41","ruta escenica"], price:15000, duration:"dia completo (12 hs)", capacity:14, type:"excursion", summary:"recorrido panoramico por lagos, miradores y la Ruta Escenica 41 cerca de Perito Moreno."},
+    {id:"zeballos", name:"Ruta 41 y Monte Zeballos", aliases:["zeballos","monte zeballos","ruta 41"], price:16000, duration:"dia completo", capacity:14, type:"excursion", summary:"travesia de altura por estepa, bosque, cordillera y uno de los caminos mas escenicos de Santa Cruz."},
+    {id:"charcamata", name:"Alero Charcamata", aliases:["charcamata","alero"], price:12000, duration:"medio dia", capacity:14, type:"excursion", summary:"experiencia vinculada al arte rupestre, patrimonio cultural y paisaje natural de la zona."},
+    {id:"parque", name:"Portal Canon Pinturas - Parque Patagonia", aliases:["parque","parque patagonia","canadon","canon","pinturas","portal"], price:8000, duration:"medio dia (5 hs)", capacity:14, type:"excursion", summary:"senderos, fauna, geologia y vistas amplias del noroeste de Santa Cruz."},
+    {id:"escension", name:"PNP / Estancia La Escension", aliases:["escension","estancia","la escension","pnp"], price:7000, duration:"medio dia (4 hs)", capacity:14, type:"excursion", summary:"salida corta vinculada al Parque Patagonia y la historia de estancia de la region."}
   ];
-  function normalize(text){ return (text || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,""); }
+
+  var tours = [
+    {id:"patagonia", name:"Patagonia Inedita", aliases:["patagonia inedita","inedita"], price:185000, duration:"6 dias / 5 noches", capacity:14, type:"tour", pdf:"assets/pdfs/patagonia-inedita-itinerario.pdf", summary:"sale desde Comodoro Rivadavia y recorre Perito Moreno, Cueva de las Manos, Parque Patagonia, Los Antiguos, Ruta Escenica 41, Carretera Austral, Puerto Rio Tranquilo y Capillas de Marmol."},
+    {id:"carretera", name:"Carretera Austral", aliases:["carretera austral","austral","ohiggins","villa ohiggins","tortel","cochrane"], price:210000, duration:"8 dias / 7 noches", capacity:14, type:"tour", pdf:"assets/pdfs/carretera-austral-itinerario.pdf", summary:"sale desde Perito Moreno e incluye Chile Chico, Cochrane, Caleta Tortel, Villa O'Higgins, Puerto Rio Tranquilo, Capillas de Marmol, Coyhaique y regreso por Paso Huemules."}
+  ];
+
+  var allProducts = excursiones.concat(tours);
+
+  function normalize(text){
+    return (text || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/&middot;|·/g," ").replace(/[^a-z0-9ñ\s/.-]/g," ").replace(/\s+/g," ").trim();
+  }
+  function money(n){ return "$" + Number(n || 0).toLocaleString("es-AR") + " AR p/p"; }
+  function todayText(){ return new Date().toLocaleDateString("es-AR", { day:"numeric", month:"long", year:"numeric" }); }
   function addMessage(text, who){
     if (!messages) return;
     var div = document.createElement("div");
@@ -5029,27 +5189,73 @@ applyLang(currentLang);
     messages.appendChild(div);
     messages.scrollTop = messages.scrollHeight;
   }
+  function productLine(p){ return p.name + ": " + p.duration + ", " + money(p.price) + ", cupos hasta " + p.capacity + " personas."; }
+  function findProduct(q){
+    var best = null, score = 0;
+    allProducts.forEach(function(p){
+      var local = 0;
+      [p.name].concat(p.aliases || []).forEach(function(alias){
+        alias = normalize(alias);
+        if (alias && q.indexOf(alias) !== -1) local += alias.length > 8 ? 3 : 2;
+      });
+      if (local > score) { best = p; score = local; }
+    });
+    return best;
+  }
+  function isAsking(q, words){ return words.some(function(w){ return q.indexOf(normalize(w)) !== -1; }); }
+  function listExcursions(){ return "Excursiones de dia o medio dia disponibles: " + excursiones.map(productLine).join(" "); }
+  function listTours(){ return "Tours de autor disponibles: " + tours.map(productLine).join(" ") + " Ambos tienen itinerario descargable en PDF desde su pagina."; }
+  function pricesAnswer(product){
+    if (product) return productLine(product) + " El precio esta expresado en pesos argentinos AR por persona.";
+    return "Precios en AR por persona: " + allProducts.map(function(p){ return p.name + " " + money(p.price); }).join("; ") + ".";
+  }
+  function datesAnswer(product){
+    var base = "Las reservas del sitio permiten elegir fecha desde hoy (" + todayText() + ") en adelante. La disponibilidad real se valida por fecha, excursion/tour y cupos.";
+    if (product) base += " Para " + product.name + " la capacidad de referencia es de hasta " + product.capacity + " personas.";
+    return base + " Si queres reservar, toca Reservar, elegi experiencia, fecha, cantidad de personas y asientos disponibles.";
+  }
+  function reservationAnswer(){
+    return "Para reservar desde la web: 1) toca Reservar, 2) elegi Tour de autor o Excursion, 3) selecciona fecha desde hoy en adelante, 4) indica personas y datos, 5) elegi asiento. La sena se calcula como 20% del total.";
+  }
+  function locationAnswer(){
+    return "Zoyen Turismo esta en Perito Moreno, Santa Cruz, Patagonia Argentina. Desde ahi se operan excursiones a Cueva de las Manos, Parque Patagonia, Ruta 41, Lago Posadas y conexiones hacia Carretera Austral.";
+  }
+  function humanAnswer(){
+    return "Si queres hablar con una persona del equipo, podes usar " + contactText + ". Link directo: " + waLink;
+  }
+  function compareAnswer(){
+    return "Si tenes poco tiempo, mira excursiones de dia: Cueva de las Manos, Capillas de Marmol, Ruta 41, Lago Posadas o Parque Patagonia. Si buscas viaje completo, Patagonia Inedita dura 6 dias y Carretera Austral dura 8 dias. Para arqueologia: Cueva o Charcamata. Para navegacion: Capillas. Para ruta escenica: Ruta 41/Zeballos o Lago Posadas.";
+  }
+  function pdfAnswer(product){
+    if (product && product.pdf) return "El itinerario PDF de " + product.name + " se descarga desde su pagina. Ruta del archivo: " + product.pdf;
+    return "Los tours con PDF descargable son Patagonia Inedita y Carretera Austral. En cada pagina hay un boton de descarga del itinerario.";
+  }
   function answer(raw){
     var q = normalize(raw);
-    if (/\b(precio|precios|tarifa|tarifas|valor|valores|ar)\b/.test(q)) return db[8].answer;
-    if (/\b(reservar|reserva|disponibilidad|cupos|contratar)\b/.test(q)) return db[9].answer;
-    if (/\b(contacto|whatsapp|telefono|mail|email|ubicacion|direccion)\b/.test(q)) return db[10].answer;
-    var best = null;
-    var bestScore = 0;
-    db.forEach(function(item){
-      var score = item.keys.reduce(function(total, key){ return total + (q.indexOf(normalize(key)) !== -1 ? 1 : 0); }, 0);
-      if (score > bestScore) { best = item; bestScore = score; }
-    });
-    if (best) return best.answer;
-    if (q.length < 3) return "Decime qué querés saber: excursiones, tours, precios, reservas, contacto o itinerarios.";
-    return "Puedo ayudarte con excursiones, tours de autor, itinerarios PDF, reservas, precios en AR y contacto. Para una respuesta personalizada, escribinos por WhatsApp: " + contactText;
+    if (!q || q.length < 2) return "Preguntame por fechas, disponibilidad, precios, excursiones, tours, ubicacion o reservas.";
+    var product = findProduct(q);
+
+    if (isAsking(q, ["persona","humano","asesor","asesora","hablar con alguien","whatsapp","telefono","email","mail","contactar","contacto directo"])) return humanAnswer();
+    if (isAsking(q, ["fecha","fechas","disponible","disponibilidad","cupos","lugar","lugares","cuando","calendario"])) return datesAnswer(product);
+    if (isAsking(q, ["precio","precios","tarifa","tarifas","valor","valores","cuanto","sale","costo","costos"])) return pricesAnswer(product);
+    if (isAsking(q, ["reservar","reserva","reservas","contratar","sena","seña","asiento","asientos","pago"])) return reservationAnswer();
+    if (isAsking(q, ["ubicacion","ubicación","donde estan","direccion","dirección","perito moreno","santa cruz","como llegar"])) return locationAnswer();
+    if (isAsking(q, ["itinerario","pdf","descargar","programa","recorrido"])) return pdfAnswer(product);
+    if (isAsking(q, ["excursion","excursiones","paseos","salidas","dia completo","medio dia"])) return product ? productLine(product) + " " + product.summary : listExcursions();
+    if (isAsking(q, ["tour","tours","autor","varios dias","viaje completo","paquete"])) return product ? productLine(product) + " " + product.summary : listTours();
+    if (isAsking(q, ["recomendas","recomendacion","conviene","diferencia","comparar","mejor","cual elijo","que hago"])) return compareAnswer();
+    if (isAsking(q, ["bienestar","wellness","yoga","masajes"])) return "Turismo de Bienestar es una linea complementaria para sumar pausa, naturaleza y cuidado al viaje. Si buscas algo tranquilo, se puede combinar con excursiones de medio dia o estadias en la zona.";
+    if (isAsking(q, ["zoyen","agencia","legajo","quienes","quienes son"])) return "Zoyen Turismo es una agencia local de Perito Moreno, Santa Cruz, legajo 15.625. Disena excursiones y tours de autor en Patagonia.";
+    if (product) return productLine(product) + " " + product.summary;
+
+    return "Puedo ayudarte con informacion del sitio: fechas disponibles, precios en AR, cupos, tipos de excursiones, tours de autor, ubicacion, itinerarios PDF y como reservar. Proba preguntarme, por ejemplo: 'precio de Capillas', 'fechas para Patagonia Inedita' o 'que excursion me recomendas'.";
   }
   function submit(text){
     var value = (text || (input ? input.value : "") || "").trim();
     if (!value) return;
     addMessage(value, "user");
     if (input) input.value = "";
-    window.setTimeout(function(){ addMessage(answer(value), "bot"); }, 180);
+    window.setTimeout(function(){ addMessage(answer(value), "bot"); }, 160);
   }
   if (toggle) toggle.addEventListener("click", function(){
     widget.classList.toggle("open");
@@ -5059,9 +5265,10 @@ applyLang(currentLang);
   if (closeBtn) closeBtn.addEventListener("click", function(){ widget.classList.remove("open"); if (toggle) toggle.setAttribute("aria-expanded","false"); });
   if (form) form.addEventListener("submit", function(e){ e.preventDefault(); submit(); });
   if (chips) chips.addEventListener("click", function(e){ if (e.target.matches("button")) submit(e.target.textContent); });
-  addMessage("Hola, soy Zoyi, el huemul asistente de Zoyen. Puedo ayudarte con excursiones, tours, itinerarios, precios en AR, reservas y contacto.", "bot");
+  addMessage("Hola, soy Zoyi. Puedo responder sobre excursiones, tours, precios en AR, fechas disponibles, cupos, ubicacion e itinerarios. Solo te paso con una persona si me lo pedis.", "bot");
 })();
 </script>
 
 </body>
 </html>
+
