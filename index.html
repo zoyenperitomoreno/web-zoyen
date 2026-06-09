@@ -468,18 +468,39 @@ nav {
    EXCURSIONES
 ====================================== */
 .excursiones {
-  padding: 6rem 3vw 5rem;
+  padding: 3.5rem 3vw 3rem;
   background: var(--fog);
 }
-.sec-head { margin-bottom: 3rem; }
+.sec-head { margin-bottom: 1.8rem; }
 
 .ex-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.2rem;
+  grid-template-columns: repeat(6, 1fr);
+  gap: .8rem;
 }
-@media (max-width:960px){ .ex-grid { grid-template-columns: repeat(2,1fr); } }
-@media (max-width:560px){ .ex-grid { grid-template-columns: 1fr; } }
+/* Fila 1: 3 cards iguales */
+.ex-grid .ex-card:nth-child(1),
+.ex-grid .ex-card:nth-child(2),
+.ex-grid .ex-card:nth-child(3) { grid-column: span 2; }
+/* Fila 2: 2 cards más anchas centradas */
+/* Fila 3: Parque Patagonia full ancho */
+.ex-grid .ex-card:nth-child(4),
+.ex-grid .ex-card:nth-child(5) { grid-column: span 3; aspect-ratio: unset; height: 360px; }
+.ex-grid .ex-card:nth-child(6) { grid-column: span 6 !important; aspect-ratio: unset; height: 540px; }
+
+@media (max-width:960px){
+  .ex-grid { grid-template-columns: repeat(2,1fr); }
+  .ex-grid .ex-card:nth-child(1),
+  .ex-grid .ex-card:nth-child(2),
+  .ex-grid .ex-card:nth-child(3),
+  .ex-grid .ex-card:nth-child(4),
+  .ex-grid .ex-card:nth-child(5) { grid-column: span 1; }
+  .ex-grid .ex-card:nth-child(6) { grid-column: span 2 !important; }
+}
+@media (max-width:560px){
+  .ex-grid { grid-template-columns: 1fr; }
+  .ex-grid .ex-card { grid-column: span 1 !important; }
+}
 
 /* ======================================
    TABLET – 641px a 960px
@@ -647,9 +668,8 @@ nav {
 
 .ex-card {
   position: relative; border-radius: 3px; overflow: hidden;
-  aspect-ratio: 4/3;
+  aspect-ratio: 5/4;
   cursor: pointer;
-  /* Borde ember sutil */
   box-shadow: 0 0 0 0 var(--ember);
   transition: box-shadow .35s, transform .35s;
 }
@@ -664,24 +684,24 @@ nav {
   position: absolute; inset: 0;
   background: linear-gradient(to top, rgba(26,20,16,.92) 0%, rgba(26,20,16,.1) 55%);
   display: flex; flex-direction: column; justify-content: flex-end;
-  padding: 1.4rem 1.3rem;
+  padding: 1rem 1.1rem;
 }
 .ex-tag {
-  position: absolute; top: 12px; left: 12px;
+  position: absolute; top: 10px; left: 10px;
   font-family: 'Sora', sans-serif;
-  font-size: .6rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase;
+  font-size: .55rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase;
   background: var(--ember); color: var(--cream);
-  padding: 3px 9px; border-radius: 1px;
+  padding: 3px 8px; border-radius: 1px;
 }
 .ex-name {
   font-family: 'DM Serif Display', serif;
-  font-size: 1.2rem; font-weight: 600; color: var(--cream); line-height: 1.2;
-  margin-bottom: .4rem;
+  font-size: 1rem; font-weight: 600; color: var(--cream); line-height: 1.2;
+  margin-bottom: .3rem;
 }
 .ex-desc {
-  font-size: 1rem; color: rgba(245,240,232,.65); line-height: 1.55; font-weight: 300;
+  font-size: .82rem; color: rgba(245,240,232,.65); line-height: 1.5; font-weight: 300;
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
-  margin-bottom: .8rem;
+  margin-bottom: .6rem;
 }
 .ex-link {
   display: inline-flex; align-items: center; justify-content: center; gap: 6px;
@@ -2545,7 +2565,7 @@ img { background: #d8d0c3; }
         <a href="excursion-alero-charcamata.html" class="ex-link"><span data-i18n="vermás">Ver más</span></a>
       </div>
     </div>
-    <div class="ex-card reveal" style="grid-column: span 2; aspect-ratio: unset; min-height: 280px;">
+    <div class="ex-card reveal">
       <img src="assets/pps.jpg" data-card-href="excursion-parque-patagonia.html" alt="Parque Nacional Patagonia / Portal Cañadón Pinturas" style="height:100%; object-position:center 40%;">
       <span class="ex-tag" data-i18n="ex6_tag">Medio día</span>
       <div class="ex-card-overlay" style="padding-bottom:1.8rem;">
