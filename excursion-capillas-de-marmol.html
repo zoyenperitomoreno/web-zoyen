@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catedrales y Capillas de Mármol – Zoyen Turismo</title>
+<title>Catedrales y Capillas de MÃ¡rmol â€“ Zoyen Turismo</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* Ajuste global de tipograf?a */
@@ -454,6 +454,47 @@ footer {
 }
 .zoyi-msg.bot { align-self: flex-start; background: #fff; border: 1px solid rgba(37,29,23,.10); }
 .zoyi-msg.user { align-self: flex-end; background: #d4772a; color: #fffaf1; }
+/* Zoyi legibilidad: respuestas con aire y listas claras */
+.zoyi-msg {
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+.zoyi-msg.bot {
+  max-width: min(96%, 430px);
+  line-height: 1.62;
+  color: #2d241d;
+}
+.zoyi-msg .zoyi-answer-title {
+  display: block;
+  font-family: 'Sora', sans-serif;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #8a4b1c;
+  margin: .1rem 0 .42rem;
+}
+.zoyi-msg .zoyi-list-line {
+  display: block;
+  padding: .42rem 0 .42rem .72rem;
+  margin-top: .18rem;
+  border-top: 1px solid rgba(37,29,23,.08);
+  position: relative;
+}
+.zoyi-msg .zoyi-list-line::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1.08em;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #d4772a;
+}
+.zoyi-msg .zoyi-soft-break {
+  display: block;
+  height: .36rem;
+}
 .zoyi-chip-row { display: flex; flex-wrap: wrap; gap: .42rem; padding: 0 .95rem .82rem; }
 .zoyi-chip {
   border: 1px solid rgba(212,119,42,.28);
@@ -547,7 +588,7 @@ footer {
 
 
 
-/* Ajuste de menú con tipografía ampliada */
+/* Ajuste de menÃº con tipografÃ­a ampliada */
 @media (min-width: 961px) and (max-width: 1360px) {
   body > nav .nav-links { gap: .45rem; }
   body > nav .nav-cta-btn { padding-left: .65rem !important; padding-right: .65rem !important; letter-spacing: .09em !important; }
@@ -557,7 +598,7 @@ footer {
 
 
 
-/* Botones del menú igualados */
+/* Botones del menÃº igualados */
 body > nav .nav-actions .nav-cta-btn,
 body > nav .nav-actions .nav-contact-btn {
   width: 132px;
@@ -595,6 +636,58 @@ body > nav .nav-actions .nav-contact-btn svg {
   }
 }
 
+
+/* CTA unificado: los dos botones llaman la atencion sin agrandarse de mas */
+body > nav .nav-actions {
+  position: relative;
+}
+body > nav .nav-actions .nav-cta-btn,
+body > nav .nav-actions .nav-contact-btn {
+  transform-origin: center;
+  will-change: transform, box-shadow, background-position;
+}
+body > nav .nav-actions.cta-nudge .nav-cta-btn {
+  animation: zoyenCtaReserve 1.9s cubic-bezier(.2,.82,.2,1) both !important;
+}
+body > nav .nav-actions.cta-nudge .nav-contact-btn {
+  animation: zoyenCtaContact 1.9s cubic-bezier(.2,.82,.2,1) .08s both !important;
+}
+body > nav .nav-actions.cta-nudge::before {
+  content: 'Consulta cupos';
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  padding: .32rem .58rem;
+  border: 1px solid rgba(212,119,42,.48);
+  background: rgba(26,20,16,.86);
+  color: #f5f0e8;
+  font-family: 'Sora', sans-serif;
+  font-size: .56rem;
+  font-weight: 800;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 10px 24px rgba(0,0,0,.2);
+  animation: zoyenCtaHint 1.9s ease both;
+  pointer-events: none;
+}
+@keyframes zoyenCtaReserve {
+  0%, 100% { transform: translateY(0) scale(1); box-shadow: none; }
+  22% { transform: translateY(-3px) scale(1.018); box-shadow: 0 0 0 0 rgba(212,119,42,.55), 0 12px 26px rgba(212,119,42,.22); }
+  58% { transform: translateY(0) scale(1); box-shadow: 0 0 0 9px rgba(212,119,42,0); }
+  76% { transform: translateY(-2px) scale(1.01); }
+}
+@keyframes zoyenCtaContact {
+  0%, 100% { transform: translateY(0) scale(1); box-shadow: none; }
+  22% { transform: translateY(-3px) scale(1.018); box-shadow: 0 0 0 0 rgba(37,211,102,.46), 0 12px 26px rgba(37,211,102,.18); }
+  58% { transform: translateY(0) scale(1); box-shadow: 0 0 0 9px rgba(37,211,102,0); }
+  76% { transform: translateY(-2px) scale(1.01); }
+}
+@keyframes zoyenCtaHint {
+  0% { opacity: 0; transform: translateY(-5px); }
+  18%, 78% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-3px); }
+}
 </style>
 <style id="zoyen-header-cta-motion">
 .nav-logo {
@@ -690,18 +783,18 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
         <span class="z">ZOYEN&nbsp;</span>
         <span class="t">TURISMO</span>
       </div>
-      <sub>Patagonia · Legajo 15.625</sub>
+      <sub>Patagonia Â· Legajo 15.625</sub>
     </div>
   </a>
   <div class="lang-switcher" id="langSwitcher" aria-label="Selector de idioma">
     <button class="lang-current" type="button" aria-haspopup="true" aria-expanded="false">
-      <span id="langCurrentLabel">Español</span>
+      <span id="langCurrentLabel">EspaÃ±ol</span>
     </button>
     <ul class="lang-menu" aria-label="Idiomas">
-      <li><button class="lang-btn active" type="button" data-lang="es" data-label="Español">Español <span class="lang-code">ES</span></button></li>
+      <li><button class="lang-btn active" type="button" data-lang="es" data-label="EspaÃ±ol">EspaÃ±ol <span class="lang-code">ES</span></button></li>
       <li><button class="lang-btn" type="button" data-lang="en" data-label="English">English <span class="lang-code">EN</span></button></li>
-      <li><button class="lang-btn" type="button" data-lang="pt" data-label="Português">Português <span class="lang-code">PT</span></button></li>
-      <li><button class="lang-btn" type="button" data-lang="ko" data-label="한국어">한국어 <span class="lang-code">KO</span></button></li>
+      <li><button class="lang-btn" type="button" data-lang="pt" data-label="PortuguÃªs">PortuguÃªs <span class="lang-code">PT</span></button></li>
+      <li><button class="lang-btn" type="button" data-lang="ko" data-label="í•œêµ­ì–´">í•œêµ­ì–´ <span class="lang-code">KO</span></button></li>
     </ul>
   </div>
   <ul class="nav-links">
@@ -709,8 +802,8 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
     <li><a href="index.html#excursiones" data-i18n="nav_excursiones"><span data-i18n="bread_exc">Excursiones</span></a></li>
     <li><a href="index.html#tours" data-i18n="nav_tours"><span data-i18n="bread_tours">Tours de Autor</span></a></li>
     <li><a href="index.html#bienestar" data-i18n="nav_bienestar">Turismo de Bienestar</a></li>
-    <li><a href="index.html#ubicacion" data-i18n="nav_ubicacion">Ubicación y Contacto</a></li>
-    <li><a href="nosotros.html" data-i18n="nav_nosotros">Quiénes somos</a></li>
+    <li><a href="index.html#ubicacion" data-i18n="nav_ubicacion">UbicaciÃ³n y Contacto</a></li>
+    <li><a href="nosotros.html" data-i18n="nav_nosotros">QuiÃ©nes somos</a></li>
   </ul>
   <div class="nav-actions"><a href="https://wa.me/5492974432855" class="nav-cta-btn" target="_blank" rel="noopener" data-i18n="nav_reservar">Reservar</a><a href="https://wa.me/5492974432855" class="nav-contact-btn" target="_blank" rel="noopener" aria-label="Contactarse por WhatsApp" data-i18n-aria-label="nav_contact"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span data-i18n="nav_contact">Contactarse</span></a></div>
 </nav>
@@ -720,7 +813,7 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
   <div class="exc-hero-overlay"></div>
   <div class="exc-hero-content">
     <div class="exc-tag"><span data-i18n="exc_tag"></div></span></div>
-    <h1 class="exc-hero-title" data-i18n="exc_title">Catedrales y Capillas de Mármol</h1>
+    <h1 class="exc-hero-title" data-i18n="exc_title">Catedrales y Capillas de MÃ¡rmol</h1>
   </div>
 </div>
 
@@ -730,47 +823,47 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
 
 <nav class="breadcrumb" aria-label="Breadcrumb">
   <a href="index.html" data-i18n="bread_inicio">Inicio</a>
-  <span>›</span>
+  <span>â€º</span>
   <a href="index.html#excursiones"><span data-i18n="bread_exc">Excursiones</span></a>
-  <span>›</span>
-  <span style="color:var(--sand)">Catedrales y Capillas de Mármol</span>
+  <span>â€º</span>
+  <span style="color:var(--sand)">Catedrales y Capillas de MÃ¡rmol</span>
 </nav>
 
 <div class="exc-body">
   <main class="exc-main">
     
-<h2>Navegación 5 estrellas por el <em>Lago General Carrera</em></h2>
-<p>Esta propuesta tiene en el paisaje de montaña, cordillera de los andes, lagos, ríos y cascadas un gran potencial y a todo eso se suma la navegación a las <strong>Catedrales y Capillas de Mármol</strong> que despierta la admiración de todo el mundo por su belleza.</p>
-<p>Desde 2023 realizamos la excursión <strong>gracias al trabajo conjunto con varios transportistas locales y al prestador turístico chileno "Carrera Tours"</strong>. La salida se hace desde Mallín Grande, una localidad más cercana, <strong>reduciendo los tiempos de viaje en un 50%</strong> aproximadamente.</p>
+<h2>NavegaciÃ³n 5 estrellas por el <em>Lago General Carrera</em></h2>
+<p>Esta propuesta tiene en el paisaje de montaÃ±a, cordillera de los andes, lagos, rÃ­os y cascadas un gran potencial y a todo eso se suma la navegaciÃ³n a las <strong>Catedrales y Capillas de MÃ¡rmol</strong> que despierta la admiraciÃ³n de todo el mundo por su belleza.</p>
+<p>Desde 2023 realizamos la excursiÃ³n <strong>gracias al trabajo conjunto con varios transportistas locales y al prestador turÃ­stico chileno "Carrera Tours"</strong>. La salida se hace desde MallÃ­n Grande, una localidad mÃ¡s cercana, <strong>reduciendo los tiempos de viaje en un 50%</strong> aproximadamente.</p>
 
 <div class="video-wrap">
-  <iframe src="https://www.youtube.com/embed/PtcfBSVt2zw?playsinline=1" allowfullscreen loading="lazy" title="Capillas de Mármol - Zoyen Turismo"></iframe>
+  <iframe src="https://www.youtube.com/embed/PtcfBSVt2zw?playsinline=1" allowfullscreen loading="lazy" title="Capillas de MÃ¡rmol - Zoyen Turismo"></iframe>
 </div>
 
 <h2>Precios</h2>
 <p><strong>Temporada 2025/2026</strong> (vigencia hasta el 30 de abril 2026)</p>
 <ul>
   <li><strong>USD 230 por persona</strong></li>
-  <li>10% de descuento para 2 o más personas</li>
+  <li>10% de descuento para 2 o mÃ¡s personas</li>
 </ul>
-<div class="note">Si la navegación no se realiza por viento o muelle cerrado, se devuelven USD 50 o su equivalente en pesos.</div>
+<div class="note">Si la navegaciÃ³n no se realiza por viento o muelle cerrado, se devuelven USD 50 o su equivalente en pesos.</div>
 
 <h3>Itinerario</h3>
 <ul>
   <li>Salida a las 07:00 hs desde Perito Moreno y 07:45 hs desde Los Antiguos.</li>
-  <li>Trámites aduaneros al abrir (08:00 hs). Llevar DNI o pasaporte vigente.</li>
-  <li>Pasando a Chile Chico, 80 km a orillas del lago General Carrera hasta Mallín Grande. Tiempo estimado de viaje desde la frontera: aprox. 2 horas.</li>
-  <li>Al llegar, algo caliente para beber y una colación. Luego, navegación en embarcaciones pequeñas y descubiertas por aprox. 2 horas 30 minutos.</li>
-  <li>Finalizada la navegación, almuerzo de asado con acompañamiento y bebida incluida.</li>
+  <li>TrÃ¡mites aduaneros al abrir (08:00 hs). Llevar DNI o pasaporte vigente.</li>
+  <li>Pasando a Chile Chico, 80 km a orillas del lago General Carrera hasta MallÃ­n Grande. Tiempo estimado de viaje desde la frontera: aprox. 2 horas.</li>
+  <li>Al llegar, algo caliente para beber y una colaciÃ³n. Luego, navegaciÃ³n en embarcaciones pequeÃ±as y descubiertas por aprox. 2 horas 30 minutos.</li>
+  <li>Finalizada la navegaciÃ³n, almuerzo de asado con acompaÃ±amiento y bebida incluida.</li>
   <li>Regreso por el mismo camino. Llegada al origen al atardecer, pasadas las 19:00 hs.</li>
 </ul>
 
 <div class="warn">
-  <strong>⚠ Importante: Requisitos para Paso Fronterizo</strong><br><br>
-  • DNI o Pasaporte actualizado y vigente. Sin él, no podrás cruzar.<br>
-  • Menores con DNI y autorización si viajan con un solo progenitor.<br>
-  • Prohibido transportar frutas, verduras, carnes crudas, embutidos, frutos secos sin vacío. Deberás completar la declaración jurada del SAG de Chile.<br>
-  • Podés llevar agua, mate, yerba, paquetes de galletitas cerrados.
+  <strong>âš  Importante: Requisitos para Paso Fronterizo</strong><br><br>
+  â€¢ DNI o Pasaporte actualizado y vigente. Sin Ã©l, no podrÃ¡s cruzar.<br>
+  â€¢ Menores con DNI y autorizaciÃ³n si viajan con un solo progenitor.<br>
+  â€¢ Prohibido transportar frutas, verduras, carnes crudas, embutidos, frutos secos sin vacÃ­o. DeberÃ¡s completar la declaraciÃ³n jurada del SAG de Chile.<br>
+  â€¢ PodÃ©s llevar agua, mate, yerba, paquetes de galletitas cerrados.
 </div>
 
   </main>
@@ -778,18 +871,18 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
     <div class="exc-card">
       <div class="exc-card-head"><span data-i18n="sidebar_book">Reservar</span></div>
       <div class="exc-card-body">
-        <p><span data-i18n="sidebar_book_desc">Consultanos disponibilidad y precios por WhatsApp o reservá directamente.</span></p>
-        <a href="https://wa.me/5492974432855?text=Hola!%20Quiero%20información%20sobre%20la%20excursión%20Catedrales%20y%20Capillas%20de%20Mármol" class="btn-reservar" target="_blank" rel="noopener" data-i18n="sidebar_wa">Consultar por WhatsApp</a>
+        <p><span data-i18n="sidebar_book_desc">Consultanos disponibilidad y precios por WhatsApp o reservÃ¡ directamente.</span></p>
+        <a href="https://wa.me/5492974432855?text=Hola!%20Quiero%20informaciÃ³n%20sobre%20la%20excursiÃ³n%20Catedrales%20y%20Capillas%20de%20MÃ¡rmol" class="btn-reservar" target="_blank" rel="noopener" data-i18n="sidebar_wa">Consultar por WhatsApp</a>
       </div>
     </div>
     <div class="exc-card">
       <div class="exc-card-head"><span data-i18n="sidebar_details">Detalles</span></div>
       <div class="exc-card-body">
         <ul class="exc-detail-list">
-          <li><span class="icon">✦</span> Salida desde Perito Moreno o Los Antiguos</li>
-          <li><span class="icon">✦</span> Guía especializado incluido</li>
-          <li><span class="icon">✦</span> Vehículo 4x4 o minibus</li>
-          <li><span class="icon">✦</span> Cupos limitados</li>
+          <li><span class="icon">âœ¦</span> Salida desde Perito Moreno o Los Antiguos</li>
+          <li><span class="icon">âœ¦</span> GuÃ­a especializado incluido</li>
+          <li><span class="icon">âœ¦</span> VehÃ­culo 4x4 o minibus</li>
+          <li><span class="icon">âœ¦</span> Cupos limitados</li>
         </ul>
       </div>
     </div>
@@ -798,7 +891,7 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
       <div class="exc-card-body">
         <ul class="footer-links" style="gap:.6rem">
           <li><a href="excursion-cueva-de-las-manos.html">Cueva de las Manos</a></li>
-          <li><a href="excursion-capillas-de-marmol.html">Capillas de Mármol</a></li>
+          <li><a href="excursion-capillas-de-marmol.html">Capillas de MÃ¡rmol</a></li>
           <li><a href="excursion-ruta41-lago-posadas.html">Ruta 41 + Lago Posadas</a></li>
           <li><a href="excursion-monte-zeballos.html">Monte Zeballos</a></li>
           <li><a href="excursion-alero-charcamata.html">Alero Charcamata</a></li>
@@ -810,15 +903,15 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
 </div>
 
 <section class="more-excursiones">
-  <h2><span data-i18n="more_title">Más Excursiones</span></h2>
+  <h2><span data-i18n="more_title">MÃ¡s Excursiones</span></h2>
   <div class="exc-mini-grid">
     <a href="excursion-cueva-de-las-manos.html" class="exc-mini">
       <img src="assets/cuevas_zoyen.jpg" alt="Cueva de las Manos" loading="lazy">
       <div class="exc-mini-overlay"><span class="exc-mini-name">Cueva de las Manos</span></div>
     </a>
     <a href="excursion-capillas-de-marmol.html" class="exc-mini">
-      <img src="assets/capillas.jpg" alt="Capillas de Mármol" loading="lazy">
-      <div class="exc-mini-overlay"><span class="exc-mini-name">Capillas de Mármol</span></div>
+      <img src="assets/capillas.jpg" alt="Capillas de MÃ¡rmol" loading="lazy">
+      <div class="exc-mini-overlay"><span class="exc-mini-name">Capillas de MÃ¡rmol</span></div>
     </a>
     <a href="excursion-ruta41-lago-posadas.html" class="exc-mini">
       <img src="assets/posadas_zoyen.jpg" alt="Lago Posadas" loading="lazy">
@@ -826,7 +919,7 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
     </a>
     <a href="excursion-monte-zeballos.html" class="exc-mini">
       <img src="assets/ruta41_zoyen.jpg" alt="Monte Zeballos" loading="lazy">
-      <div class="exc-mini-overlay"><span class="exc-mini-name">Ruta 41 · Monte Zeballos</span></div>
+      <div class="exc-mini-overlay"><span class="exc-mini-name">Ruta 41 Â· Monte Zeballos</span></div>
     </a>
     <a href="excursion-alero-charcamata.html" class="exc-mini">
       <img src="assets/alerocharca_zoyen.jpg" alt="Alero Charcamata" loading="lazy">
@@ -864,7 +957,7 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
 </svg>
         <div class="footer-brand"><span class="footer-brand-zoyen">ZOYEN</span> <span>TURISMO</span></div>
       </div>
-      <p class="footer-tagline">Agencia de Turismo en la Patagonia Argentina.<br>Legajo 15.625 · Perito Moreno, Santa Cruz.</p>
+      <p class="footer-tagline">Agencia de Turismo en la Patagonia Argentina.<br>Legajo 15.625 Â· Perito Moreno, Santa Cruz.</p>
       <div class="socials">
         <a href="https://www.instagram.com/turismozoyen/" class="social-btn" title="Instagram" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
@@ -885,23 +978,23 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
       <ul class="footer-links">
         <li><a href="excursion-cueva-de-las-manos.html">Cueva de las Manos</a></li>
         <li><a href="excursion-alero-charcamata.html">Alero Charcamata</a></li>
-        <li><a href="excursion-ruta41-lago-posadas.html">Lago Posadas · Ruta 41</a></li>
+        <li><a href="excursion-ruta41-lago-posadas.html">Lago Posadas Â· Ruta 41</a></li>
         <li><a href="excursion-monte-zeballos.html">Monte Zeballos</a></li>
-        <li><a href="excursion-parque-patagonia.html">Portal Cañadón Pinturas / PNP</a></li>
-        <li><a href="excursion-capillas-de-marmol.html">Capillas de Mármol</a></li>
+        <li><a href="excursion-parque-patagonia.html">Portal CaÃ±adÃ³n Pinturas / PNP</a></li>
+        <li><a href="excursion-capillas-de-marmol.html">Capillas de MÃ¡rmol</a></li>
       </ul>
     </div>
     <div>
       <div class="footer-col-title" data-i18n="ft_contact">Contacto</div>
       <div class="footer-contact">
-        <p>✉ zoyenperitomoreno@gmail.com</p>
-        <p>☎ +54 9 297 443-2855</p>
+        <p>âœ‰ zoyenperitomoreno@gmail.com</p>
+        <p>â˜Ž +54 9 297 443-2855</p>
         <p> Perito Moreno, Santa Cruz</p>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <span><span data-i18n="ft_copy">© Zoyen Turismo 2025 · Todos los derechos reservados</span></span>
+    <span><span data-i18n="ft_copy">Â© Zoyen Turismo 2025 Â· Todos los derechos reservados</span></span>
   </div>
 </footer>
 <script id="zoyen-lang-script">
@@ -912,29 +1005,29 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
       'nav_excursiones': 'Excursiones',
       'nav_tours': 'Tours de Autor',
       'nav_bienestar': 'Turismo de Bienestar',
-      'nav_ubicacion': 'Ubicación y Contacto',
-      'nav_nosotros': 'Quiénes somos',
+      'nav_ubicacion': 'UbicaciÃ³n y Contacto',
+      'nav_nosotros': 'QuiÃ©nes somos',
       'nav_reservar': 'Reservar',
       'nav_contact': 'Contactarse',
       'sidebar_book': 'Reservar',
-      'sidebar_book_desc': 'Consultanos disponibilidad y precios por WhatsApp o reservá directamente.',
+      'sidebar_book_desc': 'Consultanos disponibilidad y precios por WhatsApp o reservÃ¡ directamente.',
       'sidebar_wa': 'Consultar por WhatsApp',
       'sidebar_details': 'Detalles',
       'sidebar_other': 'Otras Excursiones',
-      'more_title': 'Más Excursiones',
-      'ft_tagline': 'Agencia de Turismo en la Patagonia Argentina.<br>Legajo 15.625 · Perito Moreno, Santa Cruz.',
-      'ft_copy': '© Zoyen Turismo 2025 · Todos los derechos reservados',
+      'more_title': 'MÃ¡s Excursiones',
+      'ft_tagline': 'Agencia de Turismo en la Patagonia Argentina.<br>Legajo 15.625 Â· Perito Moreno, Santa Cruz.',
+      'ft_copy': 'Â© Zoyen Turismo 2025 Â· Todos los derechos reservados',
       'ft_exc': 'Excursiones',
       'ft_contact': 'Contacto',
-      'ft_nav': 'Navegación',
+      'ft_nav': 'NavegaciÃ³n',
       'bread_inicio': 'Inicio',
       'bread_exc': 'Excursiones',
       'bread_tours': 'Tours de Autor',
       'prices_title': 'Precios',
       'prices_note': 'No incluye ingreso al Parque Provincial.',
       'detail_salida': 'Salida desde Perito Moreno o Los Antiguos',
-      'detail_guia': 'Guía especializado incluido',
-      'detail_vehiculo': 'Vehículo 4x4 o minibus',
+      'detail_guia': 'GuÃ­a especializado incluido',
+      'detail_vehiculo': 'VehÃ­culo 4x4 o minibus',
       'detail_cupos': 'Cupos limitados',
       'cta_btn': 'Reservar lugar',
     },
@@ -953,8 +1046,8 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
       'sidebar_details': 'Details',
       'sidebar_other': 'Other Excursions',
       'more_title': 'More Excursions',
-      'ft_tagline': 'Tourism Agency in Argentine Patagonia.<br>License 15.625 · Perito Moreno, Santa Cruz.',
-      'ft_copy': '© Zoyen Turismo 2025 · All rights reserved',
+      'ft_tagline': 'Tourism Agency in Argentine Patagonia.<br>License 15.625 Â· Perito Moreno, Santa Cruz.',
+      'ft_copy': 'Â© Zoyen Turismo 2025 Â· All rights reserved',
       'ft_exc': 'Excursions',
       'ft_contact': 'Contact',
       'ft_nav': 'Navigation',
@@ -969,79 +1062,79 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
       'detail_cupos': 'Limited spots',
       'exc_tag': 'Full day',
       'exc_title': 'Marble Cathedrals & Chapels',
-      'exc_eyebrow': 'Lake General Carrera · Chile',
+      'exc_eyebrow': 'Lake General Carrera Â· Chile',
       'main_h2': 'Navigation on <em>Lake General Carrera</em>',
       'sidebar_wa_msg': 'Hello! I want information about the Marble Chapels excursion',
     },
     pt: {
-      'nav_home': 'Início',
-      'nav_excursiones': 'Excursões',
+      'nav_home': 'InÃ­cio',
+      'nav_excursiones': 'ExcursÃµes',
       'nav_tours': 'Tours de Autor',
       'nav_bienestar': 'Turismo de Bem-Estar',
-      'nav_ubicacion': 'Localização e Contato',
+      'nav_ubicacion': 'LocalizaÃ§Ã£o e Contato',
       'nav_nosotros': 'Quem somos',
       'nav_reservar': 'Reservar',
       'nav_contact': 'Contato',
       'sidebar_book': 'Reservar',
-      'sidebar_book_desc': 'Consulte disponibilidade e preços pelo WhatsApp ou reserve diretamente.',
+      'sidebar_book_desc': 'Consulte disponibilidade e preÃ§os pelo WhatsApp ou reserve diretamente.',
       'sidebar_wa': 'Contato pelo WhatsApp',
       'sidebar_details': 'Detalhes',
-      'sidebar_other': 'Outras Excursões',
-      'more_title': 'Mais Excursões',
-      'ft_tagline': 'Agência de Turismo na Patagônia Argentina.<br>Licença 15.625 · Perito Moreno, Santa Cruz.',
-      'ft_copy': '© Zoyen Turismo 2025 · Todos os direitos reservados',
-      'ft_exc': 'Excursões',
+      'sidebar_other': 'Outras ExcursÃµes',
+      'more_title': 'Mais ExcursÃµes',
+      'ft_tagline': 'AgÃªncia de Turismo na PatagÃ´nia Argentina.<br>LicenÃ§a 15.625 Â· Perito Moreno, Santa Cruz.',
+      'ft_copy': 'Â© Zoyen Turismo 2025 Â· Todos os direitos reservados',
+      'ft_exc': 'ExcursÃµes',
       'ft_contact': 'Contato',
-      'ft_nav': 'Navegação',
-      'bread_inicio': 'Início',
-      'bread_exc': 'Excursões',
+      'ft_nav': 'NavegaÃ§Ã£o',
+      'bread_inicio': 'InÃ­cio',
+      'bread_exc': 'ExcursÃµes',
       'bread_tours': 'Tours de Autor',
-      'prices_title': 'Preços',
-      'prices_note': 'Taxa de entrada no Parque não incluída.',
-      'detail_salida': 'Saída de Perito Moreno ou Los Antiguos',
-      'detail_guia': 'Guia especializado incluído',
-      'detail_vehiculo': 'Veículo 4x4 ou minibus',
+      'prices_title': 'PreÃ§os',
+      'prices_note': 'Taxa de entrada no Parque nÃ£o incluÃ­da.',
+      'detail_salida': 'SaÃ­da de Perito Moreno ou Los Antiguos',
+      'detail_guia': 'Guia especializado incluÃ­do',
+      'detail_vehiculo': 'VeÃ­culo 4x4 ou minibus',
       'detail_cupos': 'Vagas limitadas',
       'exc_tag': 'Dia completo',
-      'exc_title': 'Catedrais e Capelas de Mármore',
-      'exc_eyebrow': 'Lago General Carrera · Chile',
-      'main_h2': 'Navegação no <em>Lago General Carrera</em>',
-      'sidebar_wa_msg': 'Olá! Quero informações sobre a excursão Capelas de Mármore',
+      'exc_title': 'Catedrais e Capelas de MÃ¡rmore',
+      'exc_eyebrow': 'Lago General Carrera Â· Chile',
+      'main_h2': 'NavegaÃ§Ã£o no <em>Lago General Carrera</em>',
+      'sidebar_wa_msg': 'OlÃ¡! Quero informaÃ§Ãµes sobre a excursÃ£o Capelas de MÃ¡rmore',
     },
     ko: {
-      'nav_home': '홈',
-      'nav_excursiones': '투어',
-      'nav_tours': '오서 투어',
-      'nav_bienestar': '웰니스 관광',
-      'nav_ubicacion': '위치 및 연락처',
-      'nav_nosotros': '우리에 대해',
-      'nav_reservar': '예약하기',
-      'nav_contact': '연락처',
-      'sidebar_book': '예약',
-      'sidebar_book_desc': 'WhatsApp으로 가능 여부와 가격을 확인하거나 직접 예약하세요.',
-      'sidebar_wa': 'WhatsApp으로 문의',
-      'sidebar_details': '세부 정보',
-      'sidebar_other': '다른 투어',
-      'more_title': '더 많은 투어',
-      'ft_tagline': '아르헨티나 파타고니아 관광 에이전시.<br>라이센스 15.625 · 페리토 모레노, 산타크루스.',
-      'ft_copy': '© Zoyen Turismo 2025 · 모든 권리 보유',
-      'ft_exc': '투어',
-      'ft_contact': '연락처',
-      'ft_nav': '메뉴',
-      'bread_inicio': '홈',
-      'bread_exc': '투어',
-      'bread_tours': '오서 투어',
-      'prices_title': '가격',
-      'prices_note': '공원 입장료 불포함.',
-      'detail_salida': '페리토 모레노 또는 로스 안티구오스 출발',
-      'detail_guia': '전문 가이드 포함',
-      'detail_vehiculo': '4x4 차량 또는 미니버스',
-      'detail_cupos': '제한된 인원',
-      'exc_tag': '하루 종일',
-      'exc_title': '대리석 성당 & 채플',
-      'exc_eyebrow': '헤네랄 카레라 호수 · 칠레',
-      'main_h2': '<em>헤네랄 카레라 호수</em> 항해',
-      'sidebar_wa_msg': '안녕하세요! 마블 채플 투어 정보를 원합니다',
+      'nav_home': 'í™ˆ',
+      'nav_excursiones': 'íˆ¬ì–´',
+      'nav_tours': 'ì˜¤ì„œ íˆ¬ì–´',
+      'nav_bienestar': 'ì›°ë‹ˆìŠ¤ ê´€ê´‘',
+      'nav_ubicacion': 'ìœ„ì¹˜ ë° ì—°ë½ì²˜',
+      'nav_nosotros': 'ìš°ë¦¬ì— ëŒ€í•´',
+      'nav_reservar': 'ì˜ˆì•½í•˜ê¸°',
+      'nav_contact': 'ì—°ë½ì²˜',
+      'sidebar_book': 'ì˜ˆì•½',
+      'sidebar_book_desc': 'WhatsAppìœ¼ë¡œ ê°€ëŠ¥ ì—¬ë¶€ì™€ ê°€ê²©ì„ í™•ì¸í•˜ê±°ë‚˜ ì§ì ‘ ì˜ˆì•½í•˜ì„¸ìš”.',
+      'sidebar_wa': 'WhatsAppìœ¼ë¡œ ë¬¸ì˜',
+      'sidebar_details': 'ì„¸ë¶€ ì •ë³´',
+      'sidebar_other': 'ë‹¤ë¥¸ íˆ¬ì–´',
+      'more_title': 'ë” ë§Žì€ íˆ¬ì–´',
+      'ft_tagline': 'ì•„ë¥´í—¨í‹°ë‚˜ íŒŒíƒ€ê³ ë‹ˆì•„ ê´€ê´‘ ì—ì´ì „ì‹œ.<br>ë¼ì´ì„¼ìŠ¤ 15.625 Â· íŽ˜ë¦¬í†  ëª¨ë ˆë…¸, ì‚°íƒ€í¬ë£¨ìŠ¤.',
+      'ft_copy': 'Â© Zoyen Turismo 2025 Â· ëª¨ë“  ê¶Œë¦¬ ë³´ìœ ',
+      'ft_exc': 'íˆ¬ì–´',
+      'ft_contact': 'ì—°ë½ì²˜',
+      'ft_nav': 'ë©”ë‰´',
+      'bread_inicio': 'í™ˆ',
+      'bread_exc': 'íˆ¬ì–´',
+      'bread_tours': 'ì˜¤ì„œ íˆ¬ì–´',
+      'prices_title': 'ê°€ê²©',
+      'prices_note': 'ê³µì› ìž…ìž¥ë£Œ ë¶ˆí¬í•¨.',
+      'detail_salida': 'íŽ˜ë¦¬í†  ëª¨ë ˆë…¸ ë˜ëŠ” ë¡œìŠ¤ ì•ˆí‹°êµ¬ì˜¤ìŠ¤ ì¶œë°œ',
+      'detail_guia': 'ì „ë¬¸ ê°€ì´ë“œ í¬í•¨',
+      'detail_vehiculo': '4x4 ì°¨ëŸ‰ ë˜ëŠ” ë¯¸ë‹ˆë²„ìŠ¤',
+      'detail_cupos': 'ì œí•œëœ ì¸ì›',
+      'exc_tag': 'í•˜ë£¨ ì¢…ì¼',
+      'exc_title': 'ëŒ€ë¦¬ì„ ì„±ë‹¹ & ì±„í”Œ',
+      'exc_eyebrow': 'í—¤ë„¤ëž„ ì¹´ë ˆë¼ í˜¸ìˆ˜ Â· ì¹ ë ˆ',
+      'main_h2': '<em>í—¤ë„¤ëž„ ì¹´ë ˆë¼ í˜¸ìˆ˜</em> í•­í•´',
+      'sidebar_wa_msg': 'ì•ˆë…•í•˜ì„¸ìš”! ë§ˆë¸” ì±„í”Œ íˆ¬ì–´ ì •ë³´ë¥¼ ì›í•©ë‹ˆë‹¤',
     },
   };
   var currentLang = localStorage.getItem('zoyen_lang') || 'es';
@@ -1110,7 +1203,7 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
       <button class="zoyi-chip" type="button">Excursiones</button>
       <button class="zoyi-chip" type="button">Precios</button>
       <button class="zoyi-chip" type="button">Reservas</button>
-      <button class="zoyi-chip" type="button">Ubicación</button>
+      <button class="zoyi-chip" type="button">UbicaciÃ³n</button>
       <button class="zoyi-chip" type="button">Hablar con una persona</button>
     </div>    <form class="zoyi-form" id="zoyiForm">
       <input class="zoyi-input" id="zoyiInput" type="text" autocomplete="off" placeholder="Preguntale a Zoyi..." aria-label="Consulta para Zoyi">
@@ -1155,15 +1248,29 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
   var allProducts = excursiones.concat(tours);
 
   function normalize(text){
-    return (text || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/&middot;|·/g," ").replace(/[^a-z0-9ñ\s/.-]/g," ").replace(/\s+/g," ").trim();
+    return (text || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/&middot;|Â·/g," ").replace(/[^a-z0-9Ã±\s/.-]/g," ").replace(/\s+/g," ").trim();
   }
   function money(n){ return "$" + Number(n || 0).toLocaleString("es-AR") + " AR p/p"; }
   function todayText(){ return new Date().toLocaleDateString("es-AR", { day:"numeric", month:"long", year:"numeric" }); }
-  function addMessage(text, who){
+  function escapeHtml(text){
+    return String(text || '').replace(/[&<>"']/g, function(ch){
+      return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[ch];
+    });
+  }
+  function formatZoyiText(text){
+    var out = escapeHtml(text);
+    out = out.replace(/;\s*/g, '\n- ');
+    out = out.replace(/\.\s+(?=[A-ZÁÉÍÓÚÑ0-9])/g, '.\n');
+    out = out.replace(/\n{2,}/g, '\n');
+    out = out.replace(/(^|\n)([^\n:<]{3,46}:)/g, '$1<span class="zoyi-answer-title">$2</span>');
+    out = out.replace(/\n-\s*([^\n]+)/g, '\n<span class="zoyi-list-line">$1</span>');
+    out = out.replace(/\n/g, '<span class="zoyi-soft-break"></span>');
+    return out;
+  }  function addMessage(text, who){
     if (!messages) return;
     var div = document.createElement("div");
     div.className = "zoyi-msg " + who;
-    div.textContent = text;
+    if (who === "bot") div.innerHTML = formatZoyiText(text); else div.textContent = text;
     messages.appendChild(div);
     messages.scrollTop = messages.scrollHeight;
   }
@@ -1216,8 +1323,8 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
     if (isAsking(q, ["persona","humano","asesor","asesora","hablar con alguien","whatsapp","telefono","email","mail","contactar","contacto directo"])) return humanAnswer();
     if (isAsking(q, ["fecha","fechas","disponible","disponibilidad","cupos","lugar","lugares","cuando","calendario"])) return datesAnswer(product);
     if (isAsking(q, ["precio","precios","tarifa","tarifas","valor","valores","cuanto","sale","costo","costos"])) return pricesAnswer(product);
-    if (isAsking(q, ["reservar","reserva","reservas","contratar","sena","seña","asiento","asientos","pago"])) return reservationAnswer();
-    if (isAsking(q, ["ubicacion","ubicación","donde estan","direccion","dirección","perito moreno","santa cruz","como llegar"])) return locationAnswer();
+    if (isAsking(q, ["reservar","reserva","reservas","contratar","sena","seÃ±a","asiento","asientos","pago"])) return reservationAnswer();
+    if (isAsking(q, ["ubicacion","ubicaciÃ³n","donde estan","direccion","direcciÃ³n","perito moreno","santa cruz","como llegar"])) return locationAnswer();
     if (isAsking(q, ["itinerario","pdf","descargar","programa","recorrido"])) return pdfAnswer(product);
     if (isAsking(q, ["excursion","excursiones","paseos","salidas","dia completo","medio dia"])) return product ? productLine(product) + " " + product.summary : listExcursions();
     if (isAsking(q, ["tour","tours","autor","varios dias","viaje completo","paquete"])) return product ? productLine(product) + " " + product.summary : listTours();
@@ -1226,7 +1333,7 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
     if (isAsking(q, ["zoyen","agencia","legajo","quienes","quienes son"])) return "Zoyen Turismo es una agencia local de Perito Moreno, Santa Cruz, legajo 15.625. Disena excursiones y tours de autor en Patagonia.";
     if (product) return productLine(product) + " " + product.summary;
 
-    return "Puedo ayudarte con informacion del sitio: fechas disponibles, precios en AR, cupos, tipos de excursiones, tours de autor, ubicación, itinerarios PDF y como reservar. Proba preguntarme, por ejemplo: 'precio de Capillas', 'fechas para Patagonia Inedita' o 'que excursion me recomendas'.";
+    return "Puedo ayudarte con informacion del sitio: fechas disponibles, precios en AR, cupos, tipos de excursiones, tours de autor, ubicaciÃ³n, itinerarios PDF y como reservar. Proba preguntarme, por ejemplo: 'precio de Capillas', 'fechas para Patagonia Inedita' o 'que excursion me recomendas'.";
   }
   function submit(text){
     var value = (text || (input ? input.value : "") || "").trim();
@@ -1243,7 +1350,7 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
   if (closeBtn) closeBtn.addEventListener("click", function(){ widget.classList.remove("open"); if (toggle) toggle.setAttribute("aria-expanded","false"); });
   if (form) form.addEventListener("submit", function(e){ e.preventDefault(); submit(); });
   if (chips) chips.addEventListener("click", function(e){ if (e.target.matches("button")) submit(e.target.textContent); });
-  addMessage("Hola, soy Zoyi. Puedo responder sobre excursiones, tours, precios en AR, fechas disponibles, cupos, ubicación e itinerarios. Solo te paso con una persona si me lo pedis.", "bot");
+  addMessage("Hola, soy Zoyi. Puedo responder sobre excursiones, tours, precios en AR, fechas disponibles, cupos, ubicaciÃ³n e itinerarios. Solo te paso con una persona si me lo pedis.", "bot");
 })();
 </script>
 
@@ -1251,7 +1358,7 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
 (function(){
   function initCtaNudge(){
     const navActions = document.querySelector('body > nav .nav-actions');
-    if (!navActions || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!navActions) return;
     let lastSection = '';
     let pulseTimer = null;
     function pulseActions(){
@@ -1259,9 +1366,10 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
       void navActions.offsetWidth;
       navActions.classList.add('cta-nudge');
       clearTimeout(pulseTimer);
-      pulseTimer = setTimeout(function(){ navActions.classList.remove('cta-nudge'); }, 1300);
+      pulseTimer = setTimeout(function(){ navActions.classList.remove('cta-nudge'); }, 1900);
     }
-    window.addEventListener('load', function(){ setTimeout(pulseActions, 1200); }, { once: true });
+    window.addEventListener('load', function(){ setTimeout(pulseActions, 900); }, { once: true });
+    window.setInterval(pulseActions, 5200);
     const sections = document.querySelectorAll('section[id], footer[id], main[id], .hero, .page-hero');
     if (!('IntersectionObserver' in window) || !sections.length) return;
     const observer = new IntersectionObserver(function(entries){
@@ -1281,3 +1389,6 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
 </script>
 </body>
 </html>
+
+
+
