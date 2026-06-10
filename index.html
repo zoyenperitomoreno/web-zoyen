@@ -1887,13 +1887,12 @@ footer {
 
 /* Aplicar al toggle cuando NO está abierto */
 .zoyi-widget:not(.open) .zoyi-toggle {
-  animation: zoyiPulseRing 2.4s ease-out 2.5s infinite,
-             zoyiBounce    3.2s cubic-bezier(.36,.07,.19,.97) 4s infinite;
-  animation-fill-mode: both;
+  animation: zoyiPulseRing 2.4s ease-out 1s infinite,
+             zoyiBounce    3.2s cubic-bezier(.36,.07,.19,.97) 1.5s infinite;
 }
 .zoyi-widget:not(.open) .zoyi-toggle .zoyi-huemul-mark {
   display: inline-flex;
-  animation: zoyiWiggle 2.8s ease-in-out 4.8s infinite;
+  animation: zoyiWiggle 2.8s ease-in-out 2s infinite;
   transform-origin: 50% 80%;
 }
 /* Cuando se abre, cancelar las animaciones de idle */
@@ -1946,6 +1945,9 @@ footer {
 .zoyi-bubble-close:hover { color: var(--ember, #d4772a); }
 .zoyi-bubble-avatar .zoyi-huemul-mark {
   width: 34px; height: 34px; flex-shrink: 0;
+  display: inline-flex;
+  animation: zoyiWiggle 3.5s ease-in-out 1.2s infinite;
+  transform-origin: 50% 80%;
 }
 .zoyi-bubble-body { flex: 1; min-width: 0; padding-right: .5rem; }
 .zoyi-bubble-name {
@@ -6037,7 +6039,7 @@ applyLang(currentLang);
     </div>
     <div class="zoyi-bubble-body">
       <p class="zoyi-bubble-name">Zoyi</p>
-      <p class="zoyi-bubble-msg" id="zoyiBubbleMsg">Hola! Soy Zoyi, asistente de Zoyen Turismo. ¿Tenés una consulta?</p>
+      <p class="zoyi-bubble-msg" id="zoyiBubbleMsg">Hola! Soy Zoyi, asistente de Zoyen Turismo. ¿Tenes alguna consulta?</p>
     </div>
   </div>
 
