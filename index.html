@@ -4690,10 +4690,8 @@ function reloadReservas(){ reservas = readReservas(); }
 
 // Auto-open admin if URL has ?admin=1
 if(new URLSearchParams(location.search).get('admin')==='1'){
-  window.addEventListener('DOMContentLoaded', ()=>{
-    document.getElementById('admLoginWrap').classList.add('open');
-    document.getElementById('admUser').focus();
-  });
+  const _el = document.getElementById('admLoginWrap');
+  if(_el){ _el.classList.add('open'); document.getElementById('admUser').focus(); }
 }
 
 // Triple-click on nav logo
@@ -4706,7 +4704,7 @@ if(logo){ logo.addEventListener('click', e=>{
   timer = setTimeout(()=>{ clicks=0; }, 600);
   if(clicks>=3){
     clicks=0; clearTimeout(timer);
-    window.open(location.pathname + '?admin=1', '_blank');
+    window.open(location.href.split('?')[0] + '?admin=1', '_blank');
   }
 });}
 
