@@ -280,7 +280,7 @@ nav {
 .lent-fixed {
   position: relative;
   left: auto; transform: none;
-  width: 292px; height: 58px;
+  width: 420px; height: 84px;
   overflow: hidden;
   opacity: 0; transition: opacity 0.4s ease;
   z-index: 8;
@@ -295,7 +295,8 @@ nav {
   position: absolute; inset: 0;
   display: flex; align-items: center; justify-content: center;
   font-family: 'Sora', sans-serif; font-weight: 700;
-  font-size: 26px; letter-spacing: .14em; text-transform: uppercase; white-space: nowrap;
+  font-size: 40px; letter-spacing: .18em; text-transform: uppercase; white-space: nowrap;
+  text-shadow: 0 4px 22px rgba(0,0,0,.42), 0 0 18px rgba(212,119,42,.16);
 }
 
 .slide-content {
@@ -566,8 +567,8 @@ nav {
   .emblem-svg,
   .emblem-text-path,
   .emblem-text-inner { width: 260px; height: 260px; }
-  .lent-fixed { width: 250px; height: 52px; }
-  .lent-word { font-size: 22px; letter-spacing: .12em; }
+  .lent-fixed { width: min(330px, 86vw); height: 70px; }
+  .lent-word { font-size: 30px; letter-spacing: .14em; }
 
   .slide-content { padding: 0 1.2rem; gap: 0; }
   .slide-eyebrow {
@@ -1703,12 +1704,20 @@ footer {
 }
 .zoyi-msg {
   max-width: 92%;
-  padding: .72rem .82rem;
+  padding: .78rem .88rem;
   border-radius: 8px;
   font-family: 'Inter', sans-serif;
   font-size: .88rem;
-  line-height: 1.45;
+  line-height: 1.58;
+  white-space: pre-line;
+  word-break: normal;
 }
+.zoyi-msg.bot { max-width: 94%; }
+.zoyi-msg strong,
+.zoyi-msg .zoyi-answer-title { display:block; font-weight:700; color:#2b2119; margin-bottom:.35rem; }
+.zoyi-msg .zoyi-list { display:block; margin-top:.3rem; }
+.zoyi-msg .zoyi-list-line { display:block; padding:.28rem 0; border-top:1px solid rgba(37,29,23,.08); }
+.zoyi-msg .zoyi-list-line:first-child { border-top:0; }
 .zoyi-msg.bot { align-self: flex-start; background: #fff; border: 1px solid rgba(37,29,23,.10); }
 .zoyi-msg.user { align-self: flex-end; background: #d4772a; color: #fffaf1; }
 .zoyi-chip-row { display: flex; flex-wrap: wrap; gap: .42rem; padding: 0 .95rem .82rem; }
@@ -1896,6 +1905,9 @@ body > nav .nav-actions .nav-contact-btn {
   padding: 0 .65rem !important;
   line-height: 1;
 }
+body > nav .nav-actions {
+  position: relative;
+}
 body > nav .nav-actions .nav-contact-btn {
   gap: .36rem;
   font-size: .62rem;
@@ -1934,9 +1946,43 @@ body > nav .nav-actions.cta-nudge.cta-nudge-strong .nav-cta-btn {
 body > nav .nav-actions.cta-nudge.cta-nudge-strong .nav-contact-btn {
   animation: ctaContactStrong 1.65s cubic-bezier(.2,.82,.2,1) .16s both;
 }
+body > nav .nav-actions.cta-zone::before,
+body > nav .nav-actions.cta-nudge-strong::before {
+  content: 'Consulta cupos';
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  padding: .34rem .62rem;
+  border: 1px solid rgba(212,119,42,.46);
+  background: rgba(26,20,16,.82);
+  color: var(--cream);
+  font-family: 'Sora', sans-serif;
+  font-size: .58rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 10px 24px rgba(0,0,0,.18);
+  pointer-events: none;
+}
+body > nav .nav-actions.cta-zone::before {
+  opacity: 1;
+  transform: translateY(0);
+}
+body > nav .nav-actions.cta-nudge-strong::before {
+  animation: ctaHintIn 2.25s cubic-bezier(.2,.82,.2,1) both;
+}
+body > nav .nav-actions.cta-zone .nav-cta-btn,
 body > nav .nav-actions.cta-nudge-strong .nav-cta-btn {
   background-image: linear-gradient(110deg, var(--ember) 0%, var(--ember) 34%, rgba(255,255,255,.22) 49%, var(--ember) 64%, var(--ember) 100%);
   background-size: 230% 100%;
+  box-shadow: 0 0 0 1px rgba(212,119,42,.24), 0 8px 20px rgba(212,119,42,.12);
+}
+body > nav .nav-actions.cta-zone .nav-contact-btn,
+body > nav .nav-actions.cta-nudge-strong .nav-contact-btn {
+  background-image: linear-gradient(110deg, rgba(37,211,102,.08) 0%, rgba(37,211,102,.08) 34%, rgba(255,255,255,.18) 49%, rgba(37,211,102,.08) 64%, rgba(37,211,102,.08) 100%);
+  background-size: 230% 100%;
+  box-shadow: 0 0 0 1px rgba(37,211,102,.24), 0 8px 20px rgba(37,211,102,.10);
 }
 
 /* ── CTA scroll-aware pulse ───────────────────────────── */
@@ -1961,8 +2007,18 @@ body > nav.nav-scrolled .nav-actions .nav-cta-btn {
   animation-delay: 0s;
 }
 body > nav.nav-scrolled .nav-actions .nav-contact-btn {
-  animation: ctaPulseGreen 2.4s ease-out infinite;
-  animation-delay: .7s;
+  background-image: linear-gradient(
+    110deg,
+    rgba(37,211,102,.08) 0%,
+    rgba(37,211,102,.08) 38%,
+    rgba(255,255,255,.16) 50%,
+    rgba(37,211,102,.08) 62%,
+    rgba(37,211,102,.08) 100%
+  );
+  background-size: 220% 100%;
+  animation:
+    ctaPulseGreen 2.4s ease-out infinite .7s,
+    ctaShimmer    4.5s linear infinite .35s;
 }
 
 /* Shimmer suave en el botón Reservar al scrollear */
@@ -2011,16 +2067,22 @@ body > nav.nav-scrolled .nav-actions .nav-cta-btn {
 }
 @keyframes ctaReservarStrong {
   0%, 100% { transform: translateY(0) scale(1); background-position: -180% center; box-shadow: none; }
-  18% { transform: translateY(-3px) scale(1.045); box-shadow: 0 0 0 0 rgba(212,119,42,.48), 0 12px 26px rgba(212,119,42,.22); }
+  18% { transform: translateY(-3px) scale(1.018); box-shadow: 0 0 0 0 rgba(212,119,42,.48), 0 12px 26px rgba(212,119,42,.22); }
   42% { transform: translateY(0) scale(1); background-position: 80% center; box-shadow: 0 0 0 9px rgba(212,119,42,0); }
-  64% { transform: translateY(-2px) scale(1.025); box-shadow: 0 0 0 0 rgba(212,119,42,.28), 0 9px 20px rgba(212,119,42,.14); }
+  64% { transform: translateY(-2px) scale(1.012); box-shadow: 0 0 0 0 rgba(212,119,42,.28), 0 9px 20px rgba(212,119,42,.14); }
   86% { transform: translateY(0) scale(1); background-position: 180% center; box-shadow: 0 0 0 7px rgba(212,119,42,0); }
 }
 @keyframes ctaContactStrong {
-  0%, 100% { transform: translateY(0) scale(1); box-shadow: none; }
-  22% { transform: translateY(-3px) scale(1.04); box-shadow: 0 0 0 0 rgba(37,211,102,.38), 0 12px 26px rgba(37,211,102,.18); }
-  50% { transform: translateY(0) scale(1); box-shadow: 0 0 0 9px rgba(37,211,102,0); }
-  72% { transform: translateY(-2px) scale(1.022); box-shadow: 0 0 0 0 rgba(37,211,102,.24), 0 8px 18px rgba(37,211,102,.12); }
+  0%, 100% { transform: translateY(0) scale(1); background-position: -180% center; box-shadow: none; }
+  22% { transform: translateY(-3px) scale(1.018); box-shadow: 0 0 0 0 rgba(37,211,102,.38), 0 12px 26px rgba(37,211,102,.18); }
+  50% { transform: translateY(0) scale(1); background-position: 80% center; box-shadow: 0 0 0 9px rgba(37,211,102,0); }
+  72% { transform: translateY(-2px) scale(1.012); box-shadow: 0 0 0 0 rgba(37,211,102,.24), 0 8px 18px rgba(37,211,102,.12); }
+  90% { background-position: 180% center; }
+}
+@keyframes ctaHintIn {
+  0% { opacity: 0; transform: translateY(-5px); }
+  18%, 72% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-3px); }
 }
 @media (min-width: 961px) and (max-width: 1360px) {
   body > nav .nav-actions .nav-cta-btn,
@@ -2095,17 +2157,23 @@ body > nav.nav-scrolled .nav-actions .nav-cta-btn {
 (function(){
   function initCtaNudge(){
     const navActions = document.querySelector('body > nav .nav-actions');
-    if (!navActions || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!navActions) return;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let lastSection = '';
     let pulseTimer = null;
     const strongSections = new Set(['excursiones', 'tours', 'reservar']);
+    function setCtaZone(active){
+      navActions.classList.toggle('cta-zone', active);
+    }
     function pulseActions(strong){
+      setCtaZone(strong);
+      if (reduceMotion) return;
       navActions.classList.remove('cta-nudge', 'cta-nudge-strong');
       void navActions.offsetWidth;
       if (strong) navActions.classList.add('cta-nudge-strong');
       navActions.classList.add('cta-nudge');
       clearTimeout(pulseTimer);
-      pulseTimer = setTimeout(function(){ navActions.classList.remove('cta-nudge', 'cta-nudge-strong'); }, strong ? 1900 : 1550);
+      pulseTimer = setTimeout(function(){ navActions.classList.remove('cta-nudge', 'cta-nudge-strong'); }, strong ? 2250 : 1550);
     }
     window.addEventListener('load', function(){ setTimeout(function(){ pulseActions(false); }, 1200); }, { once: true });
     const sections = document.querySelectorAll('section[id], footer[id], .hero');
@@ -2124,6 +2192,7 @@ body > nav.nav-scrolled .nav-actions .nav-cta-btn {
       link.addEventListener('click', function(){ setTimeout(function(){ pulseActions(true); }, 520); });
     });
     let scrollTicking = false;
+    let strongCtaActive = false;
     function checkStrongCtaSection(){
       scrollTicking = false;
       const probeY = Math.round(window.innerHeight * 0.46);
@@ -2135,9 +2204,14 @@ body > nav.nav-scrolled .nav-actions .nav-cta-btn {
         activeStrong = r.top <= probeY && r.bottom >= probeY;
       });
       const markerId = activeStrong ? 'strong-' + Math.round(window.scrollY / 160) : '';
-      if (activeStrong && markerId !== lastSection) {
+      if (activeStrong && (!strongCtaActive || markerId !== lastSection)) {
+        strongCtaActive = true;
+        setCtaZone(true);
         lastSection = markerId;
         pulseActions(true);
+      } else if (!activeStrong) {
+        strongCtaActive = false;
+        setCtaZone(false);
       }
     }
     window.addEventListener('scroll', function(){
@@ -2146,6 +2220,8 @@ body > nav.nav-scrolled .nav-actions .nav-cta-btn {
         requestAnimationFrame(checkStrongCtaSection);
       }
     }, { passive: true });
+    checkStrongCtaSection();
+    window.setInterval(checkStrongCtaSection, 700);
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initCtaNudge);
@@ -5963,8 +6039,31 @@ applyLang(currentLang);
 
   function normalize(t){ return (t||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/&middot;|·/g," ").replace(/[^a-z0-9\s/.-]/g," ").replace(/\s+/g," ").trim(); }
   function money(n){ return "$"+Number(n||0).toLocaleString("es-AR")+" AR p/p"; }
-  function addMessage(text,who){ if(!messages)return; var d=document.createElement("div"); d.className="zoyi-msg "+who; d.textContent=text; messages.appendChild(d); messages.scrollTop=messages.scrollHeight; }
+  function escapeHtml(s){
+    return String(s||"").replace(/[&<>"']/g,function(c){
+      return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]||c;
+    });
+  }
+  function formatZoyiText(text){
+    return escapeHtml(text)
+      .replace(/\n/g,"<br>")
+      .replace(/(^|<br>)([^<][^:<]{2,42}:)/g,'$1<span class="zoyi-answer-title">$2</span>')
+      .replace(/<br>- /g,'<br><span class="zoyi-list-line">- ')
+      .replace(/(<span class="zoyi-list-line">[^<]*(?:<br>|$))/g,function(m){return m.replace(/<br>$/,'</span><br>');});
+  }
+  function addMessage(text,who){
+    if(!messages)return;
+    var d=document.createElement("div");
+    d.className="zoyi-msg "+who;
+    if(who==="bot") d.innerHTML=formatZoyiText(text);
+    else d.textContent=text;
+    messages.appendChild(d);
+    messages.scrollTop=messages.scrollHeight;
+  }
   function productLine(p,ui){ return p.name+": "+p.duration+", "+money(p.price)+", "+p.capacity+(ui?ui.capacity:" personas")+"."; }
+  function productBullet(p,ui){ return "- "+p.name+"\n  "+p.duration+" - "+money(p.price)+" - "+p.capacity+(ui?ui.capacity:" personas"); }
+  function productSummary(p,ui){ return productBullet(p,ui)+"\n  "+p.summary; }
+  function numberedSteps(text){ return String(text||"").replace(/\s*(\d\))/g,"\n$1").trim(); }
   function findProduct(q){ var b=null,s=0; allProducts.forEach(function(p){ var l=0; [p.name].concat(p.aliases||[]).forEach(function(a){ a=normalize(a); if(a&&q.indexOf(a)!==-1)l+=a.length>8?3:2; }); if(l>s){b=p;s=l;} }); return b; }
   function isAsking(q,words){ return words.some(function(w){ return q.indexOf(normalize(w))!==-1; }); }
 
@@ -5975,12 +6074,12 @@ applyLang(currentLang);
     var p=findProduct(q);
     if(isAsking(q,k.human))    return ui.humanAns();
     if(isAsking(q,k.dates))    return ui.datesBase+(p?ui.datesExtra(p):"")+ui.datesCta;
-    if(isAsking(q,k.prices))   return p ? productLine(p,ui)+ui.pricesPer : ui.pricesAll+allProducts.map(function(x){return x.name+" "+money(x.price);}).join("; ")+".";
-    if(isAsking(q,k.book))     return ui.resAnswer;
+    if(isAsking(q,k.prices))   return p ? productBullet(p,ui)+"\n"+ui.pricesPer.trim() : ui.pricesAll.trim()+"\n"+allProducts.map(function(x){return productBullet(x,ui);}).join("\n");
+    if(isAsking(q,k.book))     return numberedSteps(ui.resAnswer);
     if(isAsking(q,k.location)) return ui.locAnswer;
     if(isAsking(q,k.pdf))      return p&&p.pdf ? ui.pdfProduct(p) : ui.pdfBase;
-    if(isAsking(q,k.excursion))return p ? productLine(p,ui)+" "+p.summary : ui.listExc+excursiones.map(function(x){return productLine(x,ui);}).join(" ");
-    if(isAsking(q,k.tour))     return p ? productLine(p,ui)+" "+p.summary : ui.listTours+tours.map(function(x){return productLine(x,ui);}).join(" ")+ui.listToursSuffix;
+    if(isAsking(q,k.excursion))return p ? productSummary(p,ui) : ui.listExc.trim()+"\n"+excursiones.map(function(x){return productBullet(x,ui);}).join("\n");
+    if(isAsking(q,k.tour))     return p ? productSummary(p,ui) : ui.listTours.trim()+"\n"+tours.map(function(x){return productBullet(x,ui);}).join("\n")+"\n"+ui.listToursSuffix;
     if(isAsking(q,k.compare))  return ui.compareAnswer;
     if(isAsking(q,k.wellness)) return ui.wellnessAnswer;
     if(isAsking(q,k.agency))   return ui.agencyAnswer;
@@ -6059,4 +6158,3 @@ applyLang(currentLang);
 
 </body>
 </html>
-
