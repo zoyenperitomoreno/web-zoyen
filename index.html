@@ -1852,6 +1852,58 @@ footer {
   .zoyi-huemul-mark { width: 28px; height: 28px; }
 }
 
+/* ── Zoyi animaciones ─────────────────────────────────── */
+
+/* Latido del borde del botón toggle */
+@keyframes zoyiPulseRing {
+  0%   { box-shadow: 0 18px 42px rgba(0,0,0,.32), 0 0 0 0 rgba(212,119,42,.55); }
+  60%  { box-shadow: 0 18px 42px rgba(0,0,0,.32), 0 0 0 10px rgba(212,119,42,0); }
+  100% { box-shadow: 0 18px 42px rgba(0,0,0,.32), 0 0 0 0 rgba(212,119,42,0); }
+}
+/* Bounce suave periódico del botón */
+@keyframes zoyiBounce {
+  0%, 100% { transform: translateY(0); }
+  30%       { transform: translateY(-7px); }
+  55%       { transform: translateY(-3px); }
+  75%       { transform: translateY(-5px); }
+  90%       { transform: translateY(-1px); }
+}
+/* Wiggle del ícono huemul */
+@keyframes zoyiWiggle {
+  0%, 100% { transform: rotate(0deg); }
+  15%       { transform: rotate(-12deg); }
+  35%       { transform: rotate(10deg); }
+  55%       { transform: rotate(-7deg); }
+  75%       { transform: rotate(5deg); }
+  90%       { transform: rotate(-2deg); }
+}
+/* Entrada de la burbuja con bounce */
+@keyframes zoyiBubbleIn {
+  0%   { opacity: 0; transform: translateY(18px) scale(.88); }
+  55%  { opacity: 1; transform: translateY(-5px) scale(1.03); }
+  75%  { transform: translateY(3px) scale(.99); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* Aplicar al toggle cuando NO está abierto */
+.zoyi-widget:not(.open) .zoyi-toggle {
+  animation: zoyiPulseRing 2.4s ease-out 2.5s infinite,
+             zoyiBounce    3.2s cubic-bezier(.36,.07,.19,.97) 4s infinite;
+  animation-fill-mode: both;
+}
+.zoyi-widget:not(.open) .zoyi-toggle .zoyi-huemul-mark {
+  display: inline-flex;
+  animation: zoyiWiggle 2.8s ease-in-out 4.8s infinite;
+  transform-origin: 50% 80%;
+}
+/* Cuando se abre, cancelar las animaciones de idle */
+.zoyi-widget.open .zoyi-toggle {
+  animation: none;
+}
+.zoyi-widget.open .zoyi-toggle .zoyi-huemul-mark {
+  animation: none;
+}
+
 /* ── Zoyi bubble de presentación ─────────────────────── */
 .zoyi-bubble {
   position: absolute;
@@ -1875,6 +1927,7 @@ footer {
   opacity: 1;
   transform: translateY(0) scale(1);
   pointer-events: auto;
+  animation: zoyiBubbleIn .55s cubic-bezier(.22,.68,0,1.4) both;
 }
 .zoyi-bubble.hiding {
   opacity: 0;
@@ -4633,17 +4686,25 @@ let reservas = readReservas();
 function saveReservas(){ writeReservas(reservas); }
 function reloadReservas(){ reservas = readReservas(); }
 
+// Auto-open admin if URL has ?admin=1
+if(new URLSearchParams(location.search).get('admin')==='1'){
+  window.addEventListener('DOMContentLoaded', ()=>{
+    document.getElementById('admLoginWrap').classList.add('open');
+    document.getElementById('admUser').focus();
+  });
+}
+
 // Triple-click on nav logo
 let clicks=0, timer=null;
 const logo = document.querySelector('.nav-logo');
 if(logo){ logo.addEventListener('click', e=>{
+  e.preventDefault();
   clicks++;
   if(timer) clearTimeout(timer);
   timer = setTimeout(()=>{ clicks=0; }, 600);
   if(clicks>=3){
-    clicks=0; clearTimeout(timer); e.preventDefault();
-    if(loggedIn){ openPanel(); }
-    else{ document.getElementById('admLoginWrap').classList.add('open'); document.getElementById('admUser').focus(); }
+    clicks=0; clearTimeout(timer);
+    window.open(location.pathname + '?admin=1', '_blank');
   }
 });}
 
@@ -5976,7 +6037,7 @@ applyLang(currentLang);
     </div>
     <div class="zoyi-bubble-body">
       <p class="zoyi-bubble-name">Zoyi</p>
-      <p class="zoyi-bubble-msg" id="zoyiBubbleMsg">Hola! Soy Zoyi, asistente de Zoyen Turismo. Tens una consulta</p>
+      <p class="zoyi-bubble-msg" id="zoyiBubbleMsg">Hola! Soy Zoyi, asistente de Zoyen Turismo. ¿Tenés una consulta?</p>
     </div>
   </div>
 
