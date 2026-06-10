@@ -1065,6 +1065,12 @@ footer {
   color: var(--stone); text-align: center; margin-bottom: 1rem;
   display: flex; align-items: center; justify-content: center; gap: 8px;
 }
+.vehicle-model-line { display: inline-flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+.vehicle-icon { width: 30px; height: 20px; display: inline-flex; align-items: center; justify-content: center; color: var(--ember); flex: 0 0 auto; }
+.vehicle-icon svg { width: 30px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.vehicle-icon .fill { fill: rgba(212,119,42,.12); stroke: currentColor; }
+.vehicle-admin-preview { display:flex; align-items:center; gap:10px; margin-top:8px; color:var(--muted); font-size:12px; }
+.vehicle-admin-preview .vehicle-icon { color: var(--ember); }
 .van-label::before, .van-label::after {
   content: ''; flex: 1; height: 1px; background: rgba(58,45,31,.12);
 }
@@ -1163,6 +1169,42 @@ footer {
   font-size: .92rem;
 }
 .step-sep { flex: 1; height: 1px; background: rgba(58,45,31,.12); margin: 0 .5rem; }
+
+/* Reserva compacta: permite ver formulario + mapa con menos scroll */
+#reservar { padding: 3rem 3vw 3.25rem; }
+#reservar .sec-head { max-width: 1120px; margin: 0 auto; }
+#reservar .eyebrow { margin-bottom: .45rem; }
+#reservar .section-title { font-size: clamp(2.15rem, 4vw, 3.35rem); line-height: .98; margin-bottom: .65rem; }
+#reservar .section-sub { max-width: 620px; font-size: .98rem; line-height: 1.55; }
+#reservar .res-steps { margin-top: 1.2rem !important; margin-bottom: 1.2rem; }
+#reservar .res-grid { gap: 1.6rem; margin-top: 1.2rem; align-items: start; }
+#reservar .res-form-panel, #reservar .res-seat-panel { padding: 1.45rem 1.6rem; }
+#reservar .res-form-panel h3, #reservar .res-seat-panel h3 { font-size: 1.25rem; margin-bottom: 1rem; }
+#reservar .seat-subtitle { margin-bottom: .95rem; font-size: .88rem; }
+#reservar .frow { gap: .8rem; margin-bottom: .75rem; }
+#reservar .fgroup { gap: .25rem; }
+#reservar .fgroup label { font-size: .78rem; letter-spacing: .14em; }
+#reservar .fgroup input, #reservar .fgroup select { padding: .58rem .75rem; font-size: .92rem; }
+#reservar .precio-preview { margin-top: .75rem; padding: .75rem .9rem; }
+#reservar .precio-preview .monto { font-size: 1.25rem; }
+#reservar .btn-siguiente { margin-top: .9rem; padding: .72rem; font-size: .82rem; }
+#reservar .van-wrap { padding: .85rem .75rem .75rem; }
+#reservar .van-label { margin-bottom: .7rem; }
+#reservar .van-body { gap: 4px; }
+#reservar .van-front { margin-bottom: 2px; }
+#reservar .van-front-icon { padding: 3px 18px; }
+#reservar .seat-row { gap: 4px; }
+#reservar .seat-aisle { width: 16px; }
+#reservar .seat { width: 32px; height: 28px; font-size: .56rem; }
+#reservar .seat-legend { margin-top: .75rem; gap: 10px; }
+#reservar .seat-selection-info { margin-top: .75rem; padding: .65rem .8rem; min-height: 32px; font-size: .84rem; }
+.available-date-hint { margin-top: .42rem; font-size: .78rem; color: var(--stone); line-height: 1.45; }
+.available-date-list { display:flex; flex-wrap:wrap; gap: .35rem; margin-top: .45rem; }
+.available-date-chip { border:1px solid rgba(212,119,42,.35); background: rgba(212,119,42,.08); color: var(--ember); border-radius: 999px; padding: .22rem .5rem; font-size: .72rem; cursor:pointer; font-family:'Sora',sans-serif; }
+.available-date-chip:hover { background: rgba(212,119,42,.16); }
+.seat.manual-blocked { background: rgba(91,64,43,.24); color: rgba(58,45,31,.45); cursor: not-allowed; border-color: rgba(91,64,43,.16); }
+@media (max-width: 860px) { #reservar { padding: 2.4rem 1rem 2.7rem; } }
+@media (max-width: 520px) { #reservar .res-form-panel, #reservar .res-seat-panel { padding: 1.2rem 1rem; } }
 
 /* PAGO MODAL */
 .pago-modal-wrap {
@@ -1881,10 +1923,20 @@ body > nav .nav-actions .nav-contact-btn svg {
   animation: navSubSlideIn 1s cubic-bezier(.16,.84,.18,1) .68s both;
 }
 body > nav .nav-actions.cta-nudge .nav-cta-btn {
-  animation: ctaReservarNudge 1.5s ease both;
+  animation: ctaReservarNudge 1.45s cubic-bezier(.2,.82,.2,1) both;
 }
 body > nav .nav-actions.cta-nudge .nav-contact-btn {
-  animation: ctaContactNudge 1.4s ease .15s both;
+  animation: ctaContactNudge 1.35s cubic-bezier(.2,.82,.2,1) .12s both;
+}
+body > nav .nav-actions.cta-nudge.cta-nudge-strong .nav-cta-btn {
+  animation: ctaReservarStrong 1.75s cubic-bezier(.2,.82,.2,1) both;
+}
+body > nav .nav-actions.cta-nudge.cta-nudge-strong .nav-contact-btn {
+  animation: ctaContactStrong 1.65s cubic-bezier(.2,.82,.2,1) .16s both;
+}
+body > nav .nav-actions.cta-nudge-strong .nav-cta-btn {
+  background-image: linear-gradient(110deg, var(--ember) 0%, var(--ember) 34%, rgba(255,255,255,.22) 49%, var(--ember) 64%, var(--ember) 100%);
+  background-size: 230% 100%;
 }
 
 /* ── CTA scroll-aware pulse ───────────────────────────── */
@@ -1948,17 +2000,27 @@ body > nav.nav-scrolled .nav-actions .nav-cta-btn {
   100% { opacity: .78; transform: translateY(0); filter: blur(0); letter-spacing: .2em; }
 }
 @keyframes ctaReservarNudge {
-  0%   { transform: translateY(0) scale(1);     box-shadow: 0 0 0 0   rgba(212,119,42,.7); }
-  20%  { transform: translateY(-3px) scale(1.06); box-shadow: 0 0 0 0   rgba(212,119,42,.5); }
-  50%  { transform: translateY(0) scale(1);     box-shadow: 0 0 0 10px rgba(212,119,42,0); }
-  70%  { transform: translateY(-2px) scale(1.03); box-shadow: 0 0 0 0   rgba(212,119,42,.35); }
-  100% { transform: translateY(0) scale(1);     box-shadow: 0 0 0 6px  rgba(212,119,42,0); }
+  0%, 100% { transform: translateY(0) scale(1); box-shadow: none; }
+  24% { transform: translateY(-2px) scale(1.025); box-shadow: 0 0 0 0 rgba(212,119,42,.34), 0 8px 18px rgba(212,119,42,.16); }
+  58% { transform: translateY(0) scale(1); box-shadow: 0 0 0 7px rgba(212,119,42,0); }
 }
 @keyframes ctaContactNudge {
-  0%   { transform: translateY(0) scale(1);     box-shadow: none; }
-  30%  { transform: translateY(-2px) scale(1.04); box-shadow: 0 0 0 0 rgba(37,211,102,.4); }
-  65%  { transform: translateY(0) scale(1);     box-shadow: 0 0 0 8px rgba(37,211,102,0); }
-  100% { transform: translateY(0) scale(1);     box-shadow: none; }
+  0%, 100% { transform: translateY(0) scale(1); box-shadow: none; }
+  28% { transform: translateY(-2px) scale(1.022); box-shadow: 0 0 0 0 rgba(37,211,102,.28), 0 8px 18px rgba(37,211,102,.12); }
+  62% { transform: translateY(0) scale(1); box-shadow: 0 0 0 7px rgba(37,211,102,0); }
+}
+@keyframes ctaReservarStrong {
+  0%, 100% { transform: translateY(0) scale(1); background-position: -180% center; box-shadow: none; }
+  18% { transform: translateY(-3px) scale(1.045); box-shadow: 0 0 0 0 rgba(212,119,42,.48), 0 12px 26px rgba(212,119,42,.22); }
+  42% { transform: translateY(0) scale(1); background-position: 80% center; box-shadow: 0 0 0 9px rgba(212,119,42,0); }
+  64% { transform: translateY(-2px) scale(1.025); box-shadow: 0 0 0 0 rgba(212,119,42,.28), 0 9px 20px rgba(212,119,42,.14); }
+  86% { transform: translateY(0) scale(1); background-position: 180% center; box-shadow: 0 0 0 7px rgba(212,119,42,0); }
+}
+@keyframes ctaContactStrong {
+  0%, 100% { transform: translateY(0) scale(1); box-shadow: none; }
+  22% { transform: translateY(-3px) scale(1.04); box-shadow: 0 0 0 0 rgba(37,211,102,.38), 0 12px 26px rgba(37,211,102,.18); }
+  50% { transform: translateY(0) scale(1); box-shadow: 0 0 0 9px rgba(37,211,102,0); }
+  72% { transform: translateY(-2px) scale(1.022); box-shadow: 0 0 0 0 rgba(37,211,102,.24), 0 8px 18px rgba(37,211,102,.12); }
 }
 @media (min-width: 961px) and (max-width: 1360px) {
   body > nav .nav-actions .nav-cta-btn,
@@ -2036,14 +2098,16 @@ body > nav.nav-scrolled .nav-actions .nav-cta-btn {
     if (!navActions || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     let lastSection = '';
     let pulseTimer = null;
-    function pulseActions(){
-      navActions.classList.remove('cta-nudge');
+    const strongSections = new Set(['excursiones', 'tours', 'reservar']);
+    function pulseActions(strong){
+      navActions.classList.remove('cta-nudge', 'cta-nudge-strong');
       void navActions.offsetWidth;
+      if (strong) navActions.classList.add('cta-nudge-strong');
       navActions.classList.add('cta-nudge');
       clearTimeout(pulseTimer);
-      pulseTimer = setTimeout(function(){ navActions.classList.remove('cta-nudge'); }, 1600);
+      pulseTimer = setTimeout(function(){ navActions.classList.remove('cta-nudge', 'cta-nudge-strong'); }, strong ? 1900 : 1550);
     }
-    window.addEventListener('load', function(){ setTimeout(pulseActions, 1200); }, { once: true });
+    window.addEventListener('load', function(){ setTimeout(function(){ pulseActions(false); }, 1200); }, { once: true });
     const sections = document.querySelectorAll('section[id], footer[id], .hero');
     if (!('IntersectionObserver' in window) || !sections.length) return;
     const observer = new IntersectionObserver(function(entries){
@@ -2052,10 +2116,36 @@ body > nav.nav-scrolled .nav-actions .nav-cta-btn {
         const id = entry.target.id || 'hero';
         if (id === lastSection) return;
         lastSection = id;
-        pulseActions();
+        pulseActions(strongSections.has(id));
       });
-    }, { threshold: 0.45 });
+    }, { threshold: 0.18, rootMargin: '-18% 0px -35% 0px' });
     sections.forEach(function(section){ observer.observe(section); });
+    document.querySelectorAll('a[href="#excursiones"], a[href="#tours"], a[href="#reservar"], #btnReservarNav').forEach(function(link){
+      link.addEventListener('click', function(){ setTimeout(function(){ pulseActions(true); }, 520); });
+    });
+    let scrollTicking = false;
+    function checkStrongCtaSection(){
+      scrollTicking = false;
+      const probeY = Math.round(window.innerHeight * 0.46);
+      let activeStrong = false;
+      strongSections.forEach(function(id){
+        const el = document.getElementById(id);
+        if (!el || activeStrong) return;
+        const r = el.getBoundingClientRect();
+        activeStrong = r.top <= probeY && r.bottom >= probeY;
+      });
+      const markerId = activeStrong ? 'strong-' + Math.round(window.scrollY / 160) : '';
+      if (activeStrong && markerId !== lastSection) {
+        lastSection = markerId;
+        pulseActions(true);
+      }
+    }
+    window.addEventListener('scroll', function(){
+      if (!scrollTicking) {
+        scrollTicking = true;
+        requestAnimationFrame(checkStrongCtaSection);
+      }
+    }, { passive: true });
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initCtaNudge);
@@ -2164,7 +2254,7 @@ img { background: #d8d0c3; }
     <li><a href="#ubicacion" data-i18n="nav_ubicacion">Ubicación y Contacto</a></li>
     <li><a href="nosotros.html" data-i18n="nav_nosotros">Quiénes somos</a></li>
   </ul>
-  <div class="nav-actions"><button class="nav-cta-btn" id="btnReservarNav" onclick="abrirModalReservar()" data-i18n="nav_reservar">Reservar</button><a href="https://wa.me/5492974432855" class="nav-contact-btn" target="_blank" rel="noopener" aria-label="Contactarse por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span data-i18n="nav_contact">Contactarse</span></a></div>
+  <div class="nav-actions"><button class="nav-cta-btn" id="btnReservarNav" onclick="abrirModalReservar()" data-i18n="nav_reservar">Reservar</button><a href="https://wa.me/5492974432855" class="nav-contact-btn" target="_blank" rel="noopener" aria-label="Contactarse por WhatsApp" data-i18n-aria-label="nav_contact"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span data-i18n="nav_contact">Contactarse</span></a></div>
 </nav>
 
 <!-- HERO SLIDER -->
@@ -2844,6 +2934,7 @@ img { background: #d8d0c3; }
         <div class="fgroup">
           <label>Fecha</label>
           <input type="date" id="sel-fecha" min="">
+          <div class="available-date-hint" id="availableDateHint">Elegi un tour para ver fechas disponibles.</div>
         </div>
         <div class="fgroup">
           <label>Personas</label>
@@ -2894,12 +2985,12 @@ img { background: #d8d0c3; }
     <div class="res-seat-panel" id="seatPanel">
       <h3>Elegí tu lugar</h3>
       <p class="seat-subtitle">
-        Renault Master &middot; 14 pasajeros<br>
-        Seleccioná los asientos para tu grupo. Los asientos ocupados están reservados por otros viajeros.
+        <span class="vehicle-model-line"><span class="vehicle-icon" id="bookingVehicleIcon" aria-hidden="true"></span><span id="bookingVehicleName">Renault Master</span> &middot; <span id="bookingVehicleCapacity">16</span> pasajeros</span><br>
+        Selecciona los asientos para tu grupo. Los asientos ocupados estan reservados por otros viajeros.
       </p>
 
       <div class="van-wrap">
-        <div class="van-label">Vista superior &middot; Renault Master</div>
+        <div class="van-label">Vista superior &middot; <span id="bookingVehicleLabel">Renault Master</span></div>
         <div class="van-body">
 
           <!-- Frente / chofer -->
@@ -3420,11 +3511,140 @@ function addSlide(url) {
 
 // -- RESERVA -----------------------------------------------------
 
-// Asientos ocupados por tour de autor
-const ocupadosPorExcursion = {
-  patagonia_inedita:  [2, 5, 9, 13],
-  carretera_austral:  [1, 4, 7, 11, 14],
+const ZYT_RESERVAS_KEY = 'zyt_reservas';
+const ZYT_TOUR_CONFIG_KEY = 'zyt_tour_config';
+const TOUR_SEAT_COUNT = 16;
+const VEHICLE_OPTIONS = {
+  renault_master: { name: 'Renault Master', capacity: 16, icon: 'van' },
+  mercedes_sprinter: { name: 'Mercedes-Benz Sprinter', capacity: 19, icon: 'sprinter' },
+  iveco_daily: { name: 'Iveco Daily Minibus', capacity: 19, icon: 'minibus' },
+  toyota_hiace: { name: 'Toyota Hiace', capacity: 12, icon: 'shuttle' },
+  ford_transit: { name: 'Ford Transit', capacity: 17, icon: 'transit' }
 };
+const DEFAULT_TOUR_CONFIG = {
+  patagonia_inedita: {
+    name: 'Patagonia Inedita',
+    duration: '6 dias / 5 noches',
+    precio: 185000,
+    capacity: 16,
+    vehicle: 'renault_master',
+    dates: ['2026-07-12','2026-08-16','2026-09-20'],
+    blockedSeats: {}
+  },
+  carretera_austral: {
+    name: 'Carretera Austral',
+    duration: '8 dias / 7 noches',
+    precio: 210000,
+    capacity: 16,
+    vehicle: 'renault_master',
+    dates: ['2026-07-26','2026-09-06','2026-10-18'],
+    blockedSeats: {}
+  }
+};
+
+function cloneTourDefaults() {
+  return JSON.parse(JSON.stringify(DEFAULT_TOUR_CONFIG));
+}
+function readReservas() {
+  try {
+    const raw = localStorage.getItem(ZYT_RESERVAS_KEY) || sessionStorage.getItem(ZYT_RESERVAS_KEY) || '[]';
+    const arr = JSON.parse(raw);
+    if (sessionStorage.getItem(ZYT_RESERVAS_KEY) && !localStorage.getItem(ZYT_RESERVAS_KEY)) {
+      localStorage.setItem(ZYT_RESERVAS_KEY, JSON.stringify(arr));
+    }
+    return Array.isArray(arr) ? arr : [];
+  } catch(e) { return []; }
+}
+function writeReservas(arr) {
+  localStorage.setItem(ZYT_RESERVAS_KEY, JSON.stringify(arr || []));
+  sessionStorage.setItem(ZYT_RESERVAS_KEY, JSON.stringify(arr || []));
+}
+function normalizeSeatList(list) {
+  return Array.from(new Set((list || []).map(n => parseInt(n, 10)).filter(n => n >= 1 && n <= TOUR_SEAT_COUNT))).sort((a,b)=>a-b);
+}
+function parseSeatString(str) {
+  return normalizeSeatList(String(str || '').split(/[^0-9]+/).filter(Boolean));
+}
+function loadTourConfig() {
+  const defaults = cloneTourDefaults();
+  try {
+    const saved = JSON.parse(localStorage.getItem(ZYT_TOUR_CONFIG_KEY) || '{}');
+    Object.keys(defaults).forEach(key => {
+      const src = saved[key] || {};
+      defaults[key] = {
+        ...defaults[key],
+        ...src,
+        dates: Array.isArray(src.dates) ? Array.from(new Set(src.dates)).sort() : defaults[key].dates,
+        blockedSeats: src.blockedSeats && typeof src.blockedSeats === 'object' ? src.blockedSeats : defaults[key].blockedSeats,
+        vehicle: VEHICLE_OPTIONS[src.vehicle] ? src.vehicle : (defaults[key].vehicle || 'renault_master')
+      };
+    });
+  } catch(e) {}
+  return defaults;
+}
+function saveTourConfig(config) {
+  localStorage.setItem(ZYT_TOUR_CONFIG_KEY, JSON.stringify(config));
+  applyTourConfigToBooking(config);
+}
+function getTourConfig() { return loadTourConfig(); }
+function getTour(key) { return getTourConfig()[key]; }
+function formatTourOption(key, tour) {
+  return tour.name + ' - ' + tour.duration + ' - ' + formatPeso(parseInt(tour.precio || 0)) + ' p/p';
+}
+function vehicleSvg(icon) {
+  const common = {
+    van: '<svg viewBox="0 0 48 28"><path class="fill" d="M5 10h25l7 7h6v7H5z"/><path d="M30 10v7h7M12 24a3 3 0 1 0 0 .1M36 24a3 3 0 1 0 0 .1"/></svg>',
+    sprinter: '<svg viewBox="0 0 54 28"><path class="fill" d="M4 9h31l9 8h6v7H4z"/><path d="M35 9v8h9M13 24a3 3 0 1 0 0 .1M40 24a3 3 0 1 0 0 .1"/></svg>',
+    minibus: '<svg viewBox="0 0 52 28"><path class="fill" d="M5 8h34l7 9h3v7H5z"/><path d="M11 12h6M20 12h6M29 12h6M14 24a3 3 0 1 0 0 .1M39 24a3 3 0 1 0 0 .1"/></svg>',
+    shuttle: '<svg viewBox="0 0 46 28"><path class="fill" d="M5 11h25l6 6h5v7H5z"/><path d="M11 14h7M22 14h7M13 24a3 3 0 1 0 0 .1M34 24a3 3 0 1 0 0 .1"/></svg>',
+    transit: '<svg viewBox="0 0 50 28"><path class="fill" d="M5 9h29l8 8h5v7H5z"/><path d="M34 9v8h8M12 24a3 3 0 1 0 0 .1M38 24a3 3 0 1 0 0 .1"/></svg>'
+  };
+  return common[icon] || common.van;
+}
+function renderBookingVehicle(tourKey) {
+  const tour = getTour(tourKey) || getTourConfig().patagonia_inedita;
+  const vehicle = VEHICLE_OPTIONS[(tour && tour.vehicle) || 'renault_master'] || VEHICLE_OPTIONS.renault_master;
+  const iconEl = document.getElementById('bookingVehicleIcon');
+  const nameEl = document.getElementById('bookingVehicleName');
+  const capEl = document.getElementById('bookingVehicleCapacity');
+  const labelEl = document.getElementById('bookingVehicleLabel');
+  if (iconEl) iconEl.innerHTML = vehicleSvg(vehicle.icon);
+  if (nameEl) nameEl.textContent = vehicle.name;
+  if (capEl) capEl.textContent = tour && tour.capacity ? tour.capacity : vehicle.capacity;
+  if (labelEl) labelEl.textContent = vehicle.name;
+}
+function applyTourConfigToBooking(config = getTourConfig()) {
+  const sel = document.getElementById('sel-excursion');
+  if (!sel) return;
+  Array.from(sel.options).forEach(opt => {
+    if (!opt.value || !config[opt.value]) return;
+    opt.dataset.precio = parseInt(config[opt.value].precio || opt.dataset.precio || 0);
+    opt.textContent = formatTourOption(opt.value, config[opt.value]);
+  });
+  renderBookingVehicle(sel.value || 'patagonia_inedita');
+}
+function availableDatesFor(excKey) {
+  const tour = getTour(excKey);
+  return tour ? (tour.dates || []).slice().sort() : [];
+}
+function isDateAvailable(excKey, date) {
+  return !!excKey && !!date && availableDatesFor(excKey).includes(date);
+}
+function manualBlockedSeats(excKey, fecha) {
+  const tour = getTour(excKey);
+  return normalizeSeatList(tour && tour.blockedSeats ? tour.blockedSeats[fecha] : []);
+}
+function reservedSeats(excKey, fecha) {
+  return normalizeSeatList(readReservas()
+    .filter(r => (r.excursionKey || '') === excKey && r.fecha === fecha && r.estado !== 'cancelada')
+    .flatMap(r => parseSeatString(r.asientos)));
+}
+function blockedSeatsFor(excKey, fecha) {
+  return normalizeSeatList([...manualBlockedSeats(excKey, fecha), ...reservedSeats(excKey, fecha)]);
+}
+function formatDateHuman(dateStr) {
+  return new Date(dateStr + 'T12:00:00').toLocaleDateString('es-AR', { day:'2-digit', month:'short' });
+}
 
 let selectedSeats = [];
 let maxSeats = 1;
@@ -3436,6 +3656,8 @@ const yyyy = today.getFullYear();
 const mm = String(today.getMonth()+1).padStart(2,'0');
 const dd = String(today.getDate()).padStart(2,'0');
 document.getElementById('sel-fecha').min = `${yyyy}-${mm}-${dd}`;
+applyTourConfigToBooking();
+updateAvailableDateHint();
 
 function formatPeso(n) {
   return '$' + n.toLocaleString('es-AR');
@@ -3454,10 +3676,57 @@ function calcPrecio() {
   const mont = document.getElementById('montoPrev');
   if (precioBase > 0) {
     prev.style.display = 'flex';
-    det.textContent = `${formatPeso(precioBase)} × ${personas} persona${personas>1?'s':''} = ${formatPeso(total)} total`;
+    det.textContent = `${formatPeso(precioBase)} x ${personas} persona${personas>1?'s':''} = ${formatPeso(total)} total`;
     mont.textContent = formatPeso(senia);
   } else {
     prev.style.display = 'none';
+  }
+  if (selectedSeats.length > maxSeats) {
+    selectedSeats.slice(maxSeats).forEach(n => document.getElementById('seat-' + n)?.classList.remove('selected'));
+    selectedSeats = selectedSeats.slice(0, maxSeats);
+  }
+  updateSeatInfo();
+  checkForm();
+}
+
+function updateAvailableDateHint() {
+  const exc = document.getElementById('sel-excursion').value;
+  const input = document.getElementById('sel-fecha');
+  const hint = document.getElementById('availableDateHint');
+  const dates = availableDatesFor(exc);
+  if (!hint) return;
+  if (!exc) {
+    hint.innerHTML = 'Elegi un tour para ver fechas disponibles.';
+    return;
+  }
+  if (!dates.length) {
+    hint.innerHTML = 'Este tour todavia no tiene fechas cargadas en el panel admin.';
+    input.value = '';
+    return;
+  }
+  input.min = dates[0];
+  input.max = dates[dates.length - 1];
+  hint.innerHTML = 'Fechas disponibles: <span class="available-date-list">' + dates.map(d => `<button class="available-date-chip" type="button" data-date="${d}">${formatDateHuman(d)}</button>`).join('') + '</span>';
+  hint.querySelectorAll('.available-date-chip').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.getElementById('sel-fecha').value = this.getAttribute('data-date');
+      onDateChanged();
+    });
+  });
+}
+function selectAvailableDate(date) {
+  document.getElementById('sel-fecha').value = date;
+  onDateChanged();
+}
+function onDateChanged() {
+  const exc = document.getElementById('sel-excursion').value;
+  const fecha = document.getElementById('sel-fecha').value;
+  if (fecha && !isDateAvailable(exc, fecha)) {
+    document.getElementById('availableDateHint').innerHTML = 'Esa fecha no esta habilitada para este tour. Elegi una de las fechas disponibles.';
+    document.getElementById('sel-fecha').value = '';
+    resetSeats();
+  } else if (exc && fecha) {
+    renderOccupied(exc, fecha);
   }
   checkForm();
 }
@@ -3468,48 +3737,61 @@ function checkForm() {
   const nombre = document.getElementById('inp-nombre').value.trim();
   const tel = document.getElementById('inp-tel').value.trim();
   const email = document.getElementById('inp-email').value.trim();
-  const ok = exc && fecha && nombre && tel && email;
+  const ok = exc && fecha && isDateAvailable(exc, fecha) && nombre && tel && email;
   document.getElementById('btnSiguiente').disabled = !ok;
+  checkSeatBtn();
 }
 
 document.getElementById('sel-excursion').addEventListener('change', function() {
+  renderBookingVehicle(this.value || 'patagonia_inedita');
+  updateAvailableDateHint();
+  document.getElementById('sel-fecha').value = '';
   calcPrecio();
   resetSeats();
-  if (this.value) renderOccupied(this.value);
 });
 document.getElementById('sel-personas').addEventListener('change', calcPrecio);
 document.getElementById('inp-nombre').addEventListener('input', checkForm);
 document.getElementById('inp-tel').addEventListener('input', checkForm);
 document.getElementById('inp-email').addEventListener('input', checkForm);
-document.getElementById('sel-fecha').addEventListener('change', checkForm);
+document.getElementById('sel-fecha').addEventListener('change', onDateChanged);
 
-function renderOccupied(excKey) {
-  resetSeats();
-  const ocupados = ocupadosPorExcursion[excKey] || [];
-  ocupados.forEach(n => {
+function renderOccupied(excKey, fecha = document.getElementById('sel-fecha').value) {
+  resetSeats(false);
+  if (!excKey || !fecha || !isDateAvailable(excKey, fecha)) {
+    document.getElementById('seatInfo').textContent = 'Eleg? un tour y una fecha disponible para habilitar los asientos.';
+    return;
+  }
+  const manual = manualBlockedSeats(excKey, fecha);
+  const reservas = reservedSeats(excKey, fecha);
+  normalizeSeatList([...manual, ...reservas]).forEach(n => {
     const el = document.getElementById('seat-' + n);
-    if (el) { el.classList.add('occupied'); el.onclick = null; }
+    if (el) {
+      el.classList.add('occupied');
+      if (manual.includes(n) && !reservas.includes(n)) el.classList.add('manual-blocked');
+      el.onclick = null;
+    }
   });
-  document.getElementById('seatInfo').textContent = 'Hacé clic en los asientos disponibles para elegir tu lugar.';
+  document.getElementById('seatInfo').textContent = 'Hac? clic en los asientos disponibles para elegir tu lugar.';
   checkSeatBtn();
 }
 
-function resetSeats() {
+function resetSeats(clearInfo = true) {
   selectedSeats = [];
-  for (let i = 1; i <= 16; i++) {
+  for (let i = 1; i <= TOUR_SEAT_COUNT; i++) {
     const el = document.getElementById('seat-' + i);
     if (!el) continue;
-    el.classList.remove('selected','occupied');
+    el.classList.remove('selected','occupied','manual-blocked');
     el.onclick = function() { toggleSeat(this); };
   }
-  document.getElementById('seatInfo').textContent = 'Completá el formulario y elegí tu excursión para habilitar la selección de asientos.';
+  if (clearInfo) document.getElementById('seatInfo').textContent = 'Complet? el formulario, eleg? tour y fecha para habilitar la selecci?n de asientos.';
   checkSeatBtn();
 }
 
 function toggleSeat(el) {
   const exc = document.getElementById('sel-excursion').value;
-  if (!exc) {
-    document.getElementById('seatInfo').textContent = 'ï¸ Primero elegí una excursión en el formulario.';
+  const fecha = document.getElementById('sel-fecha').value;
+  if (!exc || !fecha || !isDateAvailable(exc, fecha)) {
+    document.getElementById('seatInfo').textContent = 'Primero eleg? un tour y una fecha disponible.';
     return;
   }
   if (el.classList.contains('occupied') || el.classList.contains('driver')) return;
@@ -3520,7 +3802,7 @@ function toggleSeat(el) {
     selectedSeats = selectedSeats.filter(s => s !== num);
   } else {
     if (selectedSeats.length >= maxSeats) {
-      document.getElementById('seatInfo').textContent = `ï¸ Ya elegiste ${maxSeats} asiento${maxSeats>1?'s':''} (según cantidad de personas).`;
+      document.getElementById('seatInfo').textContent = `Ya elegiste ${maxSeats} asiento${maxSeats>1?'s':''} seg?n la cantidad de personas.`;
       return;
     }
     el.classList.add('selected');
@@ -3533,29 +3815,30 @@ function toggleSeat(el) {
 function updateSeatInfo() {
   const info = document.getElementById('seatInfo');
   if (selectedSeats.length === 0) {
-    info.textContent = 'Hacé clic en los asientos disponibles para elegir tu lugar.';
+    info.textContent = 'Hac? clic en los asientos disponibles para elegir tu lugar.';
   } else {
-    info.textContent = `✓ Asiento${selectedSeats.length>1?'s':''} seleccionado${selectedSeats.length>1?'s':''}: ${selectedSeats.sort((a,b)=>a-b).join(', ')}  –  ${selectedSeats.length} de ${maxSeats} elegido${maxSeats>1?'s':''}`;
+    info.textContent = `Asiento${selectedSeats.length>1?'s':''} seleccionado${selectedSeats.length>1?'s':''}: ${selectedSeats.sort((a,b)=>a-b).join(', ')} - ${selectedSeats.length} de ${maxSeats} elegido${maxSeats>1?'s':''}`;
   }
 }
 
 function checkSeatBtn() {
-  document.getElementById('btnPagar').disabled = selectedSeats.length === 0;
+  const exc = document.getElementById('sel-excursion').value;
+  const fecha = document.getElementById('sel-fecha').value;
+  document.getElementById('btnPagar').disabled = !(selectedSeats.length === maxSeats && isDateAvailable(exc, fecha));
 }
 
 document.getElementById('btnSiguiente').addEventListener('click', function() {
-  // Animate step indicator
   document.getElementById('step1-ind').classList.remove('active');
   document.getElementById('step1-ind').classList.add('done');
   document.getElementById('step2-ind').classList.add('active');
-  document.getElementById('seatPanel').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  document.getElementById('seatPanel').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
   const exc = document.getElementById('sel-excursion').value;
-  if (exc) renderOccupied(exc);
+  const fecha = document.getElementById('sel-fecha').value;
+  if (exc && fecha) renderOccupied(exc, fecha);
 });
 
 document.getElementById('btnPagar').addEventListener('click', function() {
-  // Build resumen
   const excText = document.getElementById('sel-excursion').selectedOptions[0].text;
   const fecha = document.getElementById('sel-fecha').value;
   const personas = document.getElementById('sel-personas').value;
@@ -3563,15 +3846,15 @@ document.getElementById('btnPagar').addEventListener('click', function() {
   const senia = Math.round(precioBase * parseInt(personas) * 0.20);
 
   document.getElementById('pagoResumen').innerHTML = `
-    <strong>Excursión:</strong> ${excText.split('–')[0].trim()}<br>
+    <strong>Excursi?n:</strong> ${excText.split('?')[0].trim()}<br>
     <strong>Fecha:</strong> ${new Date(fecha+'T12:00:00').toLocaleDateString('es-AR',{weekday:'long',year:'numeric',month:'long',day:'numeric'})}<br>
     <strong>Personas:</strong> ${personas}<br>
     <strong>Asientos:</strong> ${selectedSeats.sort((a,b)=>a-b).join(', ')}<br>
     <strong>Pasajero:</strong> ${nombre}<br>
-    <strong>Seña a abonar (20%):</strong> <span style="color:var(--ember);font-weight:600">${formatPeso(senia)}</span>
+    <strong>Se?a a abonar (20%):</strong> <span style="color:var(--ember);font-weight:600">${formatPeso(senia)}</span>
   `;
   document.getElementById('pagoMontoBadge').textContent = formatPeso(senia);
-  document.getElementById('successMsg').innerHTML = `Tu lugar en el asiento ${selectedSeats.join('/')} para <strong>${excText.split('–')[0].trim()}</strong> el <strong>${new Date(fecha+'T12:00:00').toLocaleDateString('es-AR',{day:'numeric',month:'long'})}</strong> está asegurado.<br><br>Te enviamos la confirmación por email y WhatsApp. ¡Nos vemos en la excursión! `;
+  document.getElementById('successMsg').innerHTML = `Tu lugar en el asiento ${selectedSeats.join('/')} para <strong>${excText.split('?')[0].trim()}</strong> el <strong>${new Date(fecha+'T12:00:00').toLocaleDateString('es-AR',{day:'numeric',month:'long'})}</strong> est? asegurado.<br><br>Te enviamos la confirmaci?n por email y WhatsApp. ?Nos vemos en la excursi?n! `;
 
   document.getElementById('step2-ind').classList.remove('active');
   document.getElementById('step2-ind').classList.add('done');
@@ -3581,22 +3864,6 @@ document.getElementById('btnPagar').addEventListener('click', function() {
   document.getElementById('pagoBody').style.display = '';
   document.getElementById('pagoSuccess').classList.remove('show');
 });
-
-document.getElementById('pagoX').onclick = () => {
-  document.getElementById('pagoModalWrap').classList.remove('open');
-};
-document.getElementById('pagoModalWrap').addEventListener('click', e => {
-  if (e.target === document.getElementById('pagoModalWrap'))
-    document.getElementById('pagoModalWrap').classList.remove('open');
-});
-
-function switchTab(tab) {
-  document.querySelectorAll('.pago-tab').forEach((t,i) => {
-    t.classList.toggle('active', (tab==='mp'&&i===0)||(tab==='card'&&i===1));
-  });
-  document.getElementById('panelMp').classList.toggle('active', tab==='mp');
-  document.getElementById('panelCard').classList.toggle('active', tab==='card');
-}
 
 // =====================================================
 // REEMPLAZAR con el link real de cobro de Mercado Pago
@@ -3617,14 +3884,15 @@ function getReservaData() {
   const pers   = (document.getElementById('sel-personas')||{}).value || '1';
   const precio = excOpt && excOpt.dataset.precio ? parseInt(excOpt.dataset.precio) : 0;
   const senia  = Math.round(precio * parseInt(pers) * 0.20);
-  return { excOpt, nombre, tel, email, fecha, pers, precio, senia };
+  const excKey = excEl ? excEl.value : '';
+  return { excOpt, excKey, nombre, tel, email, fecha, pers, precio, senia };
 }
 
 // Crea la reserva o actualiza el estado si ya existe
 function guardarReserva(estado) {
   const d = getReservaData();
   if (!d.nombre || !d.excOpt) return;
-  const reservas = JSON.parse(sessionStorage.getItem('zyt_reservas') || '[]');
+  const reservas = readReservas();
   const idx = _reservaActivaId ? reservas.findIndex(r => r.id === _reservaActivaId) : -1;
   const ahora = new Date().toLocaleString('es-AR');
   if (idx >= 0) {
@@ -3633,16 +3901,17 @@ function guardarReserva(estado) {
   } else {
     const nueva = {
       id: Date.now(), nombre: d.nombre, tel: d.tel, email: d.email,
-      excursion: d.excOpt.text.split('\u2014')[0].trim(),
+      excursionKey: d.excKey,
+      excursion: d.excOpt.text.split(' - ')[0].trim(),
       fecha: d.fecha, personas: d.pers,
-      asientos: (window.selectedSeats || []).slice().sort((a,b) => a-b).join(', '),
+      asientos: selectedSeats.slice().sort((a,b) => a-b).join(', '),
       senia: d.senia, estado: estado,
       creado: ahora, ultimoIntento: ahora
     };
     _reservaActivaId = nueva.id;
     reservas.push(nueva);
   }
-  sessionStorage.setItem('zyt_reservas', JSON.stringify(reservas));
+  writeReservas(reservas);
 }
 
 function mostrarExito() {
@@ -3652,6 +3921,9 @@ function mostrarExito() {
   document.getElementById('step2-ind').classList.add('done');
   document.getElementById('step3-ind').classList.add('active');
   _reservaActivaId = null;
+  const exc = document.getElementById('sel-excursion').value;
+  const fecha = document.getElementById('sel-fecha').value;
+  if (exc && fecha) renderOccupied(exc, fecha);
 }
 
 // Al abrir el modal de pago: guardar como "pendiente" para capturar abandonos
@@ -4188,13 +4460,9 @@ const excData = [
   { key:'parque_caniadon', name:'Portal Cañadón Pinturas (Parque Patagonia)',                  precio:8000,  estado:'activa', duracion:'Medio día (5 hs)', capacidad:14 },
   { key:'parque_escension',name:'PNP / Estancia La Escensión',                                 precio:7000,  estado:'activa', duracion:'Medio día (4 hs)', capacidad:14 },
 ];
-let reservas = JSON.parse(sessionStorage.getItem('zyt_reservas')||'[]');
-function saveReservas(){
-  sessionStorage.setItem('zyt_reservas', JSON.stringify(reservas));
-}
-function reloadReservas(){
-  reservas = JSON.parse(sessionStorage.getItem('zyt_reservas')||'[]');
-}
+let reservas = readReservas();
+function saveReservas(){ writeReservas(reservas); }
+function reloadReservas(){ reservas = readReservas(); }
 
 // Triple-click on nav logo
 let clicks=0, timer=null;
@@ -4257,14 +4525,19 @@ function openPanel(){
   // Wire iframe->parent communication
   iframe.contentWindow._parent = {
     excData,
+    getTourConfig: () => getTourConfig(),
+    getVehicleOptions: () => VEHICLE_OPTIONS,
+    vehicleSvg: (icon) => vehicleSvg(icon),
+    saveTourConfig: (config) => { saveTourConfig(config); showToast('Disponibilidad actualizada.'); },
+    refreshBookingAvailability: () => { updateAvailableDateHint(); resetSeats(); checkForm(); },
     get reservas(){ return reservas; },
     saveReservas: function(arr){
       if(arr) reservas = arr;
-      sessionStorage.setItem('zyt_reservas', JSON.stringify(reservas));
+      writeReservas(reservas);
     },
     updateEstado: function(idx, estado){
       reservas[idx].estado = estado;
-      sessionStorage.setItem('zyt_reservas', JSON.stringify(reservas));
+      writeReservas(reservas);
     },
     showToast,
     closePanel: ()=>{ wrap.classList.remove('open'); },
@@ -4419,6 +4692,15 @@ file-lbl{cursor:pointer}
 /* Filter select */
 .filter-sel{background:#fff;border:1.5px solid var(--border);color:var(--text);padding:6px 10px;border-radius:6px;font-size:12px;outline:none}
 .filter-sel option{background:#fff;color:var(--text)}
+.date-admin-list{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.date-pill{display:flex;align-items:center;gap:7px;border:1px solid var(--border);background:#fff;border-radius:999px;padding:6px 8px 6px 12px;font-size:12px;color:var(--text)}
+.date-pill button{border:none;background:#fee2e2;color:#dc2626;border-radius:50%;width:20px;height:20px;cursor:pointer;font-weight:700}
+.manual-seat-grid{display:grid;grid-template-columns:repeat(8,minmax(42px,1fr));gap:8px;margin-top:12px}
+.manual-seat{border:1.5px solid var(--border);border-radius:6px;background:#fff;padding:9px 0;text-align:center;font-size:12px;font-weight:700;color:var(--muted);cursor:pointer;user-select:none}
+.manual-seat input{display:none}
+.manual-seat:has(input:checked){background:var(--ember-bg);border-color:var(--ember);color:var(--ember)}
+.manual-seat.reserved{background:#f3f4f6;color:#9ca3af;border-style:dashed;cursor:not-allowed}
+@media(max-width:760px){.manual-seat-grid{grid-template-columns:repeat(4,1fr)}}
 
 /* ── LANGUAGE SWITCHER ── */
 .lang-switcher {
@@ -4488,6 +4770,7 @@ file-lbl{cursor:pointer}
       <div class="nav-divider"></div>
       <div class="sidebar-section">Operaciones</div>
       <div class="nav-item" data-sec="reservas">Reservas</div>
+      <div class="nav-item" data-sec="disponibilidad">Disponibilidad</div>
     </nav>
 
     <!-- Main -->
@@ -4561,6 +4844,40 @@ file-lbl{cursor:pointer}
         <div class="slider-grid" id="slider-grid"></div>
       </div>
 
+      <!-- DISPONIBILIDAD -->
+      <div class="sec" id="sec-disponibilidad">
+        <div class="sec-title">Disponibilidad</div>
+        <div class="sec-sub">Configur? fechas por tour y ocup? o liber? asientos manualmente.</div>
+        <div class="card">
+          <div class="card-title">Fechas por tour</div>
+          <div class="fgrid">
+            <div class="field"><label>Tour</label><select id="av-tour" onchange="refreshAvailabilityAdmin()"></select></div>
+            <div class="field"><label>Nueva fecha</label><input type="date" id="av-new-date"></div>
+            <div class="field"><label>Precio por persona ($)</label><input type="number" id="av-price" min="0" step="500"></div>
+            <div class="field"><label>Capacidad visible</label><input type="number" id="av-capacity" min="1" max="24"></div>
+            <div class="field"><label>Tipo de vehiculo</label><select id="av-vehicle" onchange="updateVehicleAdminPreview()"></select><div class="vehicle-admin-preview"><span class="vehicle-icon" id="av-vehicle-icon"></span><span id="av-vehicle-name"></span></div></div>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <button class="btn btn-p" onclick="saveTourSettings()">Guardar tour</button>
+            <button class="btn btn-g" onclick="addAvailabilityDate()">Agregar fecha</button>
+          </div>
+          <div id="av-date-list" class="date-admin-list"></div>
+        </div>
+        <div class="card">
+          <div class="card-title">Bloqueo manual de asientos</div>
+          <div class="fgrid">
+            <div class="field"><label>Tour</label><select id="blk-tour" onchange="refreshBlockDateOptions()"></select></div>
+            <div class="field"><label>Fecha</label><select id="blk-date" onchange="renderManualSeatGrid()"></select></div>
+          </div>
+          <div class="manual-seat-grid" id="manual-seat-grid"></div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;">
+            <button class="btn btn-p" onclick="saveManualSeats()">Guardar bloqueos</button>
+            <button class="btn btn-g" onclick="clearManualSeats()">Liberar todos</button>
+          </div>
+          <p style="font-size:12px;color:var(--muted);margin-top:10px;line-height:1.5;">Los asientos bloqueados ac? quedan ocupados para ese tour y esa fecha. Las reservas confirmadas o pendientes tambi?n ocupan asiento autom?ticamente.</p>
+        </div>
+      </div>
+
       <!-- RESERVAS -->
       <div class="sec" id="sec-reservas">
         <div class="sec-title">Reservas</div>
@@ -4591,6 +4908,7 @@ file-lbl{cursor:pointer}
 <script>
 const P = window._parent;
 const excData = P.excData;
+const vehicleOptions = P.getVehicleOptions();
 // Always read live from parent (which reads sessionStorage)
 function getReservas(){ return P.reservas; }
 
@@ -4752,6 +5070,110 @@ function uploadImg(e,i){ const f=e.target.files[0]; if(!f) return; const r=new F
 function applyUrl(i){ const u=document.getElementById('surl-'+i).value.trim(); if(u) applyImg(i,u); }
 function applyImg(i,url){ P.applySliderImage(i,url); document.getElementById('sp-'+i).src=url; showToast('Banner '+(i+1)+' actualizado.'); }
 
+
+// Disponibilidad
+function getTourConfigAdmin(){ return JSON.parse(JSON.stringify(P.getTourConfig())); }
+function tourLabel(key, t){ return (t.name || key) + ' - ' + (t.duration || ''); }
+function buildAvailability(){
+  const cfg=getTourConfigAdmin();
+  const opts=Object.keys(cfg).map(k=>`<option value="${k}">${tourLabel(k,cfg[k])}</option>`).join('');
+  document.getElementById('av-tour').innerHTML=opts;
+  document.getElementById('blk-tour').innerHTML=opts;
+  document.getElementById('av-vehicle').innerHTML=Object.keys(vehicleOptions).map(k=>`<option value="${k}">${vehicleOptions[k].name}</option>`).join('');
+  refreshAvailabilityAdmin();
+  refreshBlockDateOptions();
+}
+function refreshAvailabilityAdmin(){
+  const cfg=getTourConfigAdmin();
+  const key=document.getElementById('av-tour').value || Object.keys(cfg)[0];
+  const t=cfg[key];
+  const list=document.getElementById('av-date-list');
+  if(t){
+    document.getElementById('av-price').value=t.precio||0;
+    document.getElementById('av-capacity').value=t.capacity||16;
+    document.getElementById('av-vehicle').value=t.vehicle||'renault_master';
+    updateVehicleAdminPreview();
+  }
+  if(!t || !t.dates || !t.dates.length){ list.innerHTML='<span class="empty" style="padding:12px!important">Sin fechas cargadas.</span>'; return; }
+  list.innerHTML=t.dates.slice().sort().map(d=>`<span class="date-pill">${new Date(d+'T12:00:00').toLocaleDateString('es-AR',{day:'2-digit',month:'long',year:'numeric'})}<button onclick="removeAvailabilityDate('\${key}','\${d}')">x</button></span>`).join('');
+}
+function updateVehicleAdminPreview(){
+  const key=document.getElementById('av-vehicle').value || 'renault_master';
+  const v=vehicleOptions[key] || vehicleOptions.renault_master;
+  document.getElementById('av-vehicle-icon').innerHTML=P.vehicleSvg(v.icon);
+  document.getElementById('av-vehicle-name').textContent=v.name+' - capacidad sugerida '+v.capacity;
+}
+function saveTourSettings(){
+  const cfg=getTourConfigAdmin();
+  const key=document.getElementById('av-tour').value;
+  if(!key || !cfg[key]) return;
+  cfg[key].precio=parseInt(document.getElementById('av-price').value)||0;
+  cfg[key].capacity=parseInt(document.getElementById('av-capacity').value)||16;
+  cfg[key].vehicle=document.getElementById('av-vehicle').value || 'renault_master';
+  P.saveTourConfig(cfg); P.refreshBookingAvailability();
+  refreshAvailabilityAdmin(); refreshBlockDateOptions(); showToast('Tour actualizado.');
+}
+function addAvailabilityDate(){
+  const cfg=getTourConfigAdmin();
+  const key=document.getElementById('av-tour').value;
+  const d=document.getElementById('av-new-date').value;
+  if(!key || !d) return showToast('Elegi tour y fecha.');
+  cfg[key].dates=Array.from(new Set([...(cfg[key].dates||[]), d])).sort();
+  cfg[key].blockedSeats=cfg[key].blockedSeats||{};
+  cfg[key].blockedSeats[d]=cfg[key].blockedSeats[d]||[];
+  P.saveTourConfig(cfg); P.refreshBookingAvailability();
+  document.getElementById('av-new-date').value='';
+  refreshAvailabilityAdmin(); refreshBlockDateOptions(); showToast('Fecha agregada.');
+}
+function removeAvailabilityDate(key,d){
+  const cfg=getTourConfigAdmin();
+  cfg[key].dates=(cfg[key].dates||[]).filter(x=>x!==d);
+  if(cfg[key].blockedSeats) delete cfg[key].blockedSeats[d];
+  P.saveTourConfig(cfg); P.refreshBookingAvailability();
+  refreshAvailabilityAdmin(); refreshBlockDateOptions(); showToast('Fecha eliminada.');
+}
+function refreshBlockDateOptions(){
+  const cfg=getTourConfigAdmin();
+  const key=document.getElementById('blk-tour').value || Object.keys(cfg)[0];
+  const dates=(cfg[key] && cfg[key].dates) ? cfg[key].dates.slice().sort() : [];
+  document.getElementById('blk-date').innerHTML=dates.map(d=>`<option value="${d}">${new Date(d+'T12:00:00').toLocaleDateString('es-AR',{day:'2-digit',month:'long',year:'numeric'})}</option>`).join('');
+  renderManualSeatGrid();
+}
+function reservedSeatsForAdmin(key,date){
+  return getReservas().filter(r=>(r.excursionKey||'')===key && r.fecha===date && r.estado!=='cancelada').flatMap(r=>String(r.asientos||'').split(/[^0-9]+/).filter(Boolean).map(Number));
+}
+function renderManualSeatGrid(){
+  const cfg=getTourConfigAdmin();
+  const key=document.getElementById('blk-tour').value;
+  const date=document.getElementById('blk-date').value;
+  const grid=document.getElementById('manual-seat-grid');
+  if(!key || !date){ grid.innerHTML='<div class="empty" style="grid-column:1/-1">Carga una fecha para poder bloquear asientos.</div>'; return; }
+  const manual=((cfg[key].blockedSeats||{})[date]||[]).map(Number);
+  const reserved=reservedSeatsForAdmin(key,date);
+  grid.innerHTML=Array.from({length:16},(_,i)=>i+1).map(n=>{
+    const isReserved=reserved.includes(n);
+    return `<label class="manual-seat ${isReserved?'reserved':''}" title="${isReserved?'Ocupado por reserva':'Bloqueo manual'}"><input type="checkbox" value="${n}" ${manual.includes(n)?'checked':''} ${isReserved?'disabled':''}>${n}</label>`;
+  }).join('');
+}
+function saveManualSeats(){
+  const cfg=getTourConfigAdmin();
+  const key=document.getElementById('blk-tour').value;
+  const date=document.getElementById('blk-date').value;
+  if(!key || !date) return;
+  cfg[key].blockedSeats=cfg[key].blockedSeats||{};
+  cfg[key].blockedSeats[date]=Array.from(document.querySelectorAll('#manual-seat-grid input:checked')).map(i=>parseInt(i.value,10)).sort((a,b)=>a-b);
+  P.saveTourConfig(cfg); P.refreshBookingAvailability(); renderManualSeatGrid(); showToast('Asientos bloqueados actualizados.');
+}
+function clearManualSeats(){
+  const cfg=getTourConfigAdmin();
+  const key=document.getElementById('blk-tour').value;
+  const date=document.getElementById('blk-date').value;
+  if(!key || !date) return;
+  cfg[key].blockedSeats=cfg[key].blockedSeats||{};
+  cfg[key].blockedSeats[date]=[];
+  P.saveTourConfig(cfg); P.refreshBookingAvailability(); renderManualSeatGrid(); showToast('Asientos liberados.');
+}
+
 // Reservas
 function buildReservas(){
   const reservas=getReservas();
@@ -4795,6 +5217,7 @@ buildDash();
 buildTextos();
 buildExc();
 buildSlider();
+buildAvailability();
 buildReservas();
 initLentToggle();
 <\/script>
@@ -5015,6 +5438,10 @@ function applyLang(lang) {
       el.innerHTML = t[key];
     }
   });
+    document.querySelectorAll('[data-i18n-aria-label]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n-aria-label');
+      if (t[key] !== undefined) el.setAttribute('aria-label', t[key]);
+    });
   // Update placeholders
   document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
     var key = el.getAttribute('data-i18n-placeholder');
@@ -5066,7 +5493,7 @@ var translations = {
   es: {
     nav_home: 'Home', nav_excursiones: 'Excursiones', nav_tours: 'Tours de Autor',
     nav_bienestar: 'Turismo de Bienestar', nav_ubicacion: 'Ubicación y Contacto',
-    nav_nosotros: 'Quiénes somos', nav_reservar: 'Reservar',
+    nav_nosotros: 'Quiénes somos', nav_reservar: 'Reservar', nav_contact: 'Contactarse',
     h1_eye: 'Patagonia Argentina', h1_title: 'Explorá la Patagonia <em>Inédita</em>',
     h1_desc: 'De la mano de quienes la vivimos. Excursiones únicas en la Patagonia profunda.', h1_btn: 'Descubrir excursiones',
     h2_eye: 'Patrimonio UNESCO', h2_title: 'Cueva de <em>las Manos</em>',
@@ -5126,7 +5553,7 @@ var translations = {
   en: {
     nav_home: 'Home', nav_excursiones: 'Excursions', nav_tours: 'Author Tours',
     nav_bienestar: 'Wellness Tourism', nav_ubicacion: 'Location & Contact',
-    nav_nosotros: 'About Us', nav_reservar: 'Book Now',
+    nav_nosotros: 'About Us', nav_reservar: 'Book Now', nav_contact: 'Contact', nav_contact: 'Contact',
     h1_eye: 'Argentine Patagonia', h1_title: 'Explore <em>Hidden</em> Patagonia',
     h1_desc: 'Guided by those who live it. Unique excursions in the heart of Patagonia.', h1_btn: 'Discover excursions',
     h2_eye: 'UNESCO Heritage', h2_title: 'Cave of <em>Hands</em>',
@@ -5186,7 +5613,7 @@ var translations = {
   pt: {
     nav_home: 'Início', nav_excursiones: 'Excursões', nav_tours: 'Tours de Autor',
     nav_bienestar: 'Turismo de Bem-Estar', nav_ubicacion: 'Localização e Contato',
-    nav_nosotros: 'Quem somos', nav_reservar: 'Reservar',
+    nav_nosotros: 'Quem somos', nav_reservar: 'Reservar', nav_contact: 'Contato', nav_contact: 'Contato',
     h1_eye: 'Patagônia Argentina', h1_title: 'Explore a Patagônia <em>Inédita</em>',
     h1_desc: 'Guiado por quem a vive. Excursões únicas no coração da Patagônia.', h1_btn: 'Descobrir excursões',
     h2_eye: 'Patrimônio UNESCO', h2_title: 'Cueva de <em>las Manos</em>',
@@ -5246,7 +5673,7 @@ var translations = {
   ko: {
     nav_home: '홈', nav_excursiones: '투어', nav_tours: '오서 투어',
     nav_bienestar: '웰니스 관광', nav_ubicacion: '위치 및 연락처',
-    nav_nosotros: '우리에 대해', nav_reservar: '예약하기',
+    nav_nosotros: '우리에 대해', nav_reservar: '예약하기', nav_contact: '연락처', nav_contact: '연락처',
     h1_eye: '아르헨티나 파타고니아', h1_title: '<em>미지의</em> 파타고니아 탐험',
     h1_desc: '이 땅을 삶으로 아는 이들이 안내합니다. 파타고니아 깊은 곳의 독특한 투어.', h1_btn: '투어 보기',
     h2_eye: 'UNESCO 유산', h2_title: '<em>손의 동굴</em>',
@@ -5315,6 +5742,10 @@ function applyLang(lang) {
       el.innerHTML = t[key];
     }
   });
+    document.querySelectorAll('[data-i18n-aria-label]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n-aria-label');
+      if (t[key] !== undefined) el.setAttribute('aria-label', t[key]);
+    });
 
   document.documentElement.lang = lang;
   document.querySelectorAll('.lang-btn').forEach(function(btn) {
