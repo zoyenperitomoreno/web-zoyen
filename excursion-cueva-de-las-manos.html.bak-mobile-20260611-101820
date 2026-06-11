@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catedrales y Capillas de Mármol – Zoyen Turismo</title>
+<title>Cueva de las Manos – Zoyen Turismo</title>
 <link href="https://fonts.googleapis.com/css2family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* Ajuste global de tipografa */
@@ -34,7 +34,7 @@ body {
 }
 
 /* NAV */
-body > nav:not(.breadcrumb):not(.mobile-drawer) {
+body > nav:not(.breadcrumb) {
   position: fixed; top: 0; left: 0; right: 0; z-index: 900;
   height: 72px;
   display: grid; grid-template-columns: auto auto 1fr auto;
@@ -65,7 +65,7 @@ body > nav:not(.breadcrumb):not(.mobile-drawer) {
 .nav-links a:hover::after { transform:scaleX(1); }
 .nav-cta-btn { background:var(--ember); color:var(--cream); padding:.5rem 1.3rem; border-radius:2px; font-family:'Sora',sans-serif; font-size:.78rem; font-weight:600; letter-spacing:.15em; text-transform:uppercase; text-decoration:none; white-space:nowrap; flex-shrink:0; transition:background .2s; border:none; cursor:pointer; }
 .nav-cta-btn:hover { background:var(--ember-dim); }
-@media(max-width:960px){ .nav-links { display:none; } body > nav:not(.breadcrumb):not(.mobile-drawer) { grid-template-columns: auto auto 1fr; } }
+@media(max-width:960px){ .nav-links { display:none; } body > nav:not(.breadcrumb) { grid-template-columns: auto auto 1fr; } }
 
 /* HERO EXCURSION */
 .exc-hero {
@@ -77,7 +77,7 @@ body > nav:not(.breadcrumb):not(.mobile-drawer) {
 }
 .exc-hero-bg {
   position: absolute; inset: 0;
-  background-image: url('assets/capillas.jpg');
+  background-image: url('assets/cuevas_zoyen.jpg');
   background-size: cover; background-position: center;
 }
 .exc-hero-overlay {
@@ -813,12 +813,12 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
   <div class="exc-hero-overlay"></div>
   <div class="exc-hero-content">
     <div class="exc-tag"><span data-i18n="exc_tag"></div></span></div>
-    <h1 class="exc-hero-title" data-i18n="exc_title">Catedrales y Capillas de Mármol</h1>
+    <h1 class="exc-hero-title" data-i18n="exc_title">Cueva de las Manos</h1>
   </div>
 </div>
 
 <style>
-.exc-hero-bg { background-image: url('assets/capillas.jpg'); }
+.exc-hero-bg { background-image: url('assets/cuevas_zoyen.jpg'); }
 </style>
 
 <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -826,45 +826,64 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
   <span>›</span>
   <a href="index.html#excursiones"><span data-i18n="bread_exc">Excursiones</span></a>
   <span>›</span>
-  <span style="color:var(--sand)">Catedrales y Capillas de Mármol</span>
+  <span style="color:var(--sand)">Cueva de las Manos</span>
 </nav>
 
 <div class="exc-body">
   <main class="exc-main">
     
-<h2>Navegación 5 estrellas por el <em>Lago General Carrera</em></h2>
-<p>Esta propuesta tiene en el paisaje de montaña, cordillera de los andes, lagos, ríos y cascadas un gran potencial y a todo eso se suma la navegación a las <strong>Catedrales y Capillas de Mármol</strong> que despierta la admiración de todo el mundo por su belleza.</p>
-<p>Desde 2023 realizamos la excursión <strong>gracias al trabajo conjunto con varios transportistas locales y al prestador turístico chileno "Carrera Tours"</strong>. La salida se hace desde Mallín Grande, una localidad más cercana, <strong>reduciendo los tiempos de viaje en un 50%</strong> aproximadamente.</p>
+<h2>Arte Rupestre Milenario. <em>Patrimonio de la Humanidad UNESCO 1999</em></h2>
+<p>En esta excursión de <strong>todo el día</strong>, proponemos visitar uno de los sitios arqueológicos más importantes de Sudamérica y el mundo, <strong>declarado Patrimonio de la Humanidad por la UNESCO en el año 1999</strong>. Posee una enorme cantidad de pinturas rupestres de más de 9.300 años de antigüedad que se pueden observar con facilidad debido al excelente estado de conservación.</p>
+<p>Un verdadero viaje a nuestro pasado conociendo la manera de vivir de nuestros ancestros reflejado en el arte rupestre. Todo esto sumado a la inigualable belleza del cañadón del río Pinturas lo convierten en un lugar único.</p>
+<p>Dentro de la misma salida, dependiendo del día de la semana, tendremos salidas con trekking por el cañadón del río Pinturas. Una excursión verdaderamente IMPERDIBLE.</p>
 
 <div class="video-wrap">
-  <iframe src="https://www.youtube.com/embed/PtcfBSVt2zw?playsinline=1" allowfullscreen loading="lazy" title="Capillas de Mármol - Zoyen Turismo"></iframe>
+  <iframe src="https://www.youtube.com/embed/OcBxlJYSuo4playsinline=1" allowfullscreen loading="lazy" title="Cueva de las Manos - Zoyen Turismo"></iframe>
 </div>
 
 <h2>Precios</h2>
-<p><strong>Temporada 2025/2026</strong> (vigencia hasta el 30 de abril 2026)</p>
+<p><strong>Temporada 2025</strong> (vigencia hasta el 31 de diciembre)</p>
 <ul>
-  <li><strong>USD 230 por persona</strong></li>
-  <li>10% de descuento para 2 o más personas</li>
+  <li>En privado: $180.000 c/u</li>
+  <li>En salida grupal: $150.000 c/u</li>
 </ul>
-<div class="note">Si la navegación no se realiza por viento o muelle cerrado, se devuelven USD 50 o su equivalente en pesos.</div>
-
-<h3>Itinerario</h3>
+<p><strong>Temporada 2026</strong> (vigencia hasta el 30 de abril)</p>
 <ul>
-  <li>Salida a las 07:00 hs desde Perito Moreno y 07:45 hs desde Los Antiguos.</li>
-  <li>Trámites aduaneros al abrir (08:00 hs). Llevar DNI o pasaporte vigente.</li>
-  <li>Pasando a Chile Chico, 80 km a orillas del lago General Carrera hasta Mallín Grande. Tiempo estimado de viaje desde la frontera: aprox. 2 horas.</li>
-  <li>Al llegar, algo caliente para beber y una colación. Luego, navegación en embarcaciones pequeñas y descubiertas por aprox. 2 horas 30 minutos.</li>
-  <li>Finalizada la navegación, almuerzo de asado con acompañamiento y bebida incluida.</li>
-  <li>Regreso por el mismo camino. Llegada al origen al atardecer, pasadas las 19:00 hs.</li>
+  <li>En privado: $200.000 c/u</li>
+  <li>En salida grupal: $170.000 c/u</li>
+</ul>
+<div class="note">⚠ No incluye ingreso al Parque Provincial Cueva de las Manos. Ver valores de ingreso abajo.</div>
+
+<h3>Opción 1: Salida Clásica</h3>
+<ul>
+  <li>Salida desde el alojamiento o terminal de bus en Perito Moreno.</li>
+  <li>Se transita por la Ruta 40 hacia el sur, recorriendo 90 km de asfalto hasta el empalme con el camino de ripio que lleva al sitio arqueológico. Duración aproximada: 2 horas desde Perito Moreno.</li>
+  <li>En el camino se pasa por los ríos Pinturas y Ecker.</li>
+  <li>Se atraviesa el "Cañadón Caracoles Chico", entendiendo la geografía del lugar.</li>
+  <li>Continuamos por la Ruta 97 hasta un mirador del Cañadón del Río Pinturas y el Centro de Interpretación. La visita guiada dura aproximadamente 1 hora 30 minutos.</li>
+  <li>Finalizada la visita, almuerzo y Sendero Tierras de Colores del Parque Patagonia (800 msnm). Regreso aproximado: 18 hs.</li>
 </ul>
 
-<div class="warn">
-  <strong>⚠ Importante: Requisitos para Paso Fronterizo</strong><br><br>
-  • DNI o Pasaporte actualizado y vigente. Sin él, no podrás cruzar.<br>
-  • Menores con DNI y autorización si viajan con un solo progenitor.<br>
-  • Prohibido transportar frutas, verduras, carnes crudas, embutidos, frutos secos sin vacío. Deberás completar la declaración jurada del SAG de Chile.<br>
-  • Podés llevar agua, mate, yerba, paquetes de galletitas cerrados.
-</div>
+<h3>Opción 2: Con Trekking en Parque Patagonia</h3>
+<ul>
+  <li>Salidas desde Perito Moreno por la mañana.</li>
+  <li>60 km hasta el portal Cañadón Pinturas. Sendero "Tierra de Colores" (1 hora).</li>
+  <li>20 km más hasta el borde del Cañadón del Río Pinturas.</li>
+  <li>Caminata por el sendero "Los Balcones" con vistas del Cañadón del Río Pinturas, conectando con la "Bajada de Los Toldos" para cruzar hasta el sitio oficial.</li>
+  <li>Visita guiada a la Cueva de las Manos (aprox. 1 hora 30 minutos). Tiempo libre para almorzar.</li>
+  <li>Regreso a Perito Moreno por Ruta 40. Llegada aproximada: 18:00 hs.</li>
+  <li><strong>Duración total del tour: 10 horas.</strong></li>
+</ul>
+
+<h2>Valores de ingreso al Parque Provincial</h2>
+<ul>
+  <li>General: $36.000</li>
+  <li>Residentes Nacionales: $12.000</li>
+  <li>Residentes de la Provincia de Santa Cruz, jubilados y pensionados nacionales: $4.000</li>
+  <li>Residentes locales y jubilados provinciales: $3.000</li>
+  <li>Menores de 12 años, personas con CUD vigente y acompañante: sin cargo</li>
+</ul>
+<p style="font-size:.82rem;color:var(--stone)">Última actualización: abril 2025</p>
 
   </main>
   <aside class="exc-sidebar">
@@ -872,7 +891,7 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
       <div class="exc-card-head"><span data-i18n="sidebar_book">Reservar</span></div>
       <div class="exc-card-body">
         <p><span data-i18n="sidebar_book_desc">Consultanos disponibilidad y precios por WhatsApp o reservá directamente.</span></p>
-        <a href="https://wa.me/5492974432855?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20la%20excursi%C3%B3n%20Catedrales%20y%20Capillas%20de%20M%C3%A1rmol" class="btn-reservar" target="_blank" rel="noopener" data-i18n="sidebar_wa">Consultar por WhatsApp</a>
+        <a href="https://wa.me/5492974432855?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20la%20excursi%C3%B3n%20Cueva%20de%20las%20Manos" class="btn-reservar" target="_blank" rel="noopener" data-i18n="sidebar_wa">Consultar por WhatsApp</a>
       </div>
     </div>
     <div class="exc-card">
@@ -1061,10 +1080,13 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
       'detail_vehiculo': '4x4 vehicle or minibus',
       'detail_cupos': 'Limited spots',
       'exc_tag': 'Full day',
-      'exc_title': 'Marble Cathedrals & Chapels',
-      'exc_eyebrow': 'Lake General Carrera · Chile',
-      'main_h2': 'Navigation on <em>Lake General Carrera</em>',
-      'sidebar_wa_msg': 'Hello! I want information about the Marble Chapels excursion',
+      'exc_title': 'Cave of Hands',
+      'exc_eyebrow': 'UNESCO Heritage',
+      'main_h2': 'Ancient Rock Art. <em>UNESCO World Heritage 1999</em>',
+      'main_p1': 'On this <strong>full-day excursion</strong>, we visit one of the most important archaeological sites in South America and the world, <strong>declared a UNESCO World Heritage Site in 1999</strong>. It features an enormous collection of rock paintings over 9,300 years old, remarkably well preserved.',
+      'main_p2': 'A true journey into our past, experiencing the way our ancestors lived through their rock art. Combined with the breathtaking beauty of the Río Pinturas canyon, this is a truly unique destination.',
+      'main_p3': 'Depending on the day of the week, outings include trekking through the Río Pinturas canyon. An absolute MUST-SEE.',
+      'sidebar_wa_msg': 'Hello! I want information about the Cave of Hands excursion',
     },
     pt: {
       'nav_home': 'Início',
@@ -1095,11 +1117,14 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
       'detail_guia': 'Guia especializado incluído',
       'detail_vehiculo': 'Veículo 4x4 ou minibus',
       'detail_cupos': 'Vagas limitadas',
-      'exc_tag': 'Dia completo',
-      'exc_title': 'Catedrais e Capelas de Mármore',
-      'exc_eyebrow': 'Lago General Carrera · Chile',
-      'main_h2': 'Navegação no <em>Lago General Carrera</em>',
-      'sidebar_wa_msg': 'Olá! Quero informações sobre a excursão Capelas de Mármore',
+      'exc_tag': 'Dia inteiro',
+      'exc_title': 'Cueva de las Manos',
+      'exc_eyebrow': 'Patrimônio UNESCO',
+      'main_h2': 'Arte Rupestre Milenar. <em>Patrimônio da Humanidade UNESCO 1999</em>',
+      'main_p1': 'Nesta excursão de <strong>dia inteiro</strong>, visitamos um dos sítios arqueológicos mais importantes da América do Sul e do mundo, <strong>declarado Patrimônio da Humanidade pela UNESCO em 1999</strong>. Possui uma enorme quantidade de pinturas rupestres com mais de 9.300 anos, em excelente estado de conservação.',
+      'main_p2': 'Uma verdadeira viagem ao nosso passado, conhecendo a forma de vida dos nossos ancestrais refletida na arte rupestre, combinada com a beleza inigualável do cañadón do Rio Pinturas.',
+      'main_p3': 'Dependendo do dia da semana, as saídas incluem trekking pelo cañadón do Rio Pinturas. Uma excursão verdadeiramente IMPERDVEL.',
+      'sidebar_wa_msg': 'Olá! Quero informações sobre a excursão Cueva de las Manos',
     },
     ko: {
       'nav_home': '홈',
@@ -1131,10 +1156,13 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
       'detail_vehiculo': '4x4 차량 는 미니버스',
       'detail_cupos': '제한 ',
       'exc_tag': '하루 종',
-      'exc_title': '대리 성당 & 채플',
-      'exc_eyebrow': '헤네랄 카레 호수 · 칠레',
-      'main_h2': '<em>헤네랄 카레 호수</em> 항해',
-      'sidebar_wa_msg': '안녕하세요! 마블 채플 투어 정보를 합니다',
+      'exc_title': ' 굴',
+      'exc_eyebrow': 'UNESCO 세계유산',
+      'main_h2': '수천 년 암화. <em>1999년 UNESCO 세계유산</em>',
+      'main_p1': ' <strong>하루 종</strong> 투어서 남미와 세계서 가장 중요한 고고학 유지 중 하나를 방문합니다. <strong>1999년 UNESCO 세계유산으로 지정</strong> 곳 9,300년   암화를 완벽한 보존 태로 할 수 있습니다.',
+      'main_p2': '조들 삶 담긴 암화를 통해 우리 과거로 진정한 여행 떠나보세요. 핀투스 강 협곡 아름다움과 함께 특한 경험 선사합니다.',
+      'main_p3': '요 따 핀투스 강 협곡 트레킹 함니다. 절대 놓칠 수 없는 투어입니다.',
+      'sidebar_wa_msg': '안녕하세요!  굴 투어 정보를 합니다',
     },
   };
   var currentLang = localStorage.getItem('zoyen_lang') || 'es';
@@ -1387,404 +1415,8 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
   else initCtaNudge();
 })();
 </script>
-<style id="zoyen-mobile-baseline-20260611">
-/* ZOYEN mobile baseline patch - 2026-06-11 */
-html,
-body {
-  max-width: 100%;
-  overflow-x: hidden;
-}
-*,
-*::before,
-*::after {
-  min-width: 0;
-}
-img,
-video,
-canvas,
-iframe,
-svg {
-  max-width: 100%;
-}
-img,
-video {
-  height: auto;
-}
-button,
-a,
-input,
-select,
-textarea {
-  max-width: 100%;
-}
-@media (max-width: 900px) {
-  html { font-size: 16px; }
-  body { width: 100%; }
-  body > nav:not(.breadcrumb):not(.mobile-drawer) {
-    display: flex !important;
-    grid-template-columns: none !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    gap: .6rem !important;
-    height: 60px !important;
-    padding: 0 max(14px, env(safe-area-inset-left)) 0 max(14px, env(safe-area-inset-right)) !important;
-  }
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo {
-    flex: 1 1 auto !important;
-    min-width: 0 !important;
-    max-width: calc(100vw - 126px) !important;
-    overflow: hidden !important;
-  }
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo-text,
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo-name {
-    min-width: 0 !important;
-  }
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-emblem {
-    width: 40px !important;
-    height: 40px !important;
-  }
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .z,
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .t {
-    font-size: .98rem !important;
-    letter-spacing: .075em !important;
-  }
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo sub,
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-links,
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-actions,
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-cta-btn,
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-contact-btn {
-    display: none !important;
-  }
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .lang-switcher {
-    display: block !important;
-    flex: 0 0 auto !important;
-    margin-left: auto !important;
-    justify-self: end !important;
-  }
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .lang-current {
-    min-width: 76px !important;
-    width: 76px !important;
-    height: 32px !important;
-    padding: 0 .45rem !important;
-    font-size: .57rem !important;
-    letter-spacing: .05em !important;
-  }
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .lang-menu {
-    left: auto !important;
-    right: 0 !important;
-    min-width: 150px !important;
-  }
-  .ham-btn { display: flex !important; }
-  .mobile-drawer { width: min(86vw, 340px) !important; max-width: 100vw !important; }
-  .drawer-overlay.open { display: block !important; }
-
-  .hero,
-  .page-hero,
-  .exc-hero {
-    height: auto !important;
-    min-height: min(760px, 100svh) !important;
-    padding-top: 60px !important;
-  }
-  .page-hero,
-  .exc-hero {
-    align-items: flex-end !important;
-    padding-bottom: 2.4rem !important;
-  }
-  .page-hero-content,
-  .exc-hero-content,
-  .slide-content {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-  }
-  .page-hero-title,
-  .exc-hero-title,
-  .slide-title,
-  .section-title {
-    overflow-wrap: anywhere;
-    word-break: normal;
-  }
-  .page-hero-title,
-  .exc-hero-title {
-    font-size: clamp(2rem, 11vw, 3.2rem) !important;
-    line-height: 1.02 !important;
-  }
-  .page-hero-eyebrow,
-  .exc-hero-kicker,
-  .eyebrow {
-    letter-spacing: .16em !important;
-  }
-
-  section,
-  .tour-intro,
-  .itinerario-section,
-  .galeria-section,
-  .tour-cta,
-  .nosotros-section,
-  .valores-section,
-  .equipo-section,
-  .exc-main,
-  .manifesto,
-  .tours,
-  .traslados,
-  #reservar {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-  }
-  .overview-strip,
-  .stats,
-  .banner-bar {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-  }
-  .overview-inner,
-  .stats,
-  .sbar-inner {
-    gap: 1rem !important;
-  }
-  .ov-sep,
-  .sbar-sep { display: none !important; }
-  .ov-item,
-  .sbar-item { flex: 1 1 42% !important; }
-
-  .tour-intro-inner,
-  .exc-body,
-  .nosotros-intro,
-  .equipo-content,
-  .res-grid,
-  .footer-top,
-  [style*="grid-template-columns"] {
-    grid-template-columns: 1fr !important;
-  }
-  .galeria-grid,
-  .exc-mini-grid,
-  .tours-grid,
-  .valores-grid,
-  .inc-grid,
-  .traslados,
-  [style*="repeat(3,1fr)"],
-  [style*="repeat(3, 1fr)"],
-  [style*="repeat(2,1fr)"],
-  [style*="repeat(2, 1fr)"] {
-    grid-template-columns: 1fr !important;
-  }
-  .galeria-grid img:first-child {
-    grid-column: auto !important;
-    aspect-ratio: 4 / 3 !important;
-  }
-  .dia-block {
-    grid-template-columns: 46px 1fr !important;
-  }
-  .dia-block:not(:last-child)::before {
-    left: 20px !important;
-  }
-  .dia-content {
-    padding-left: .8rem !important;
-  }
-  .dia-img { aspect-ratio: 4 / 3 !important; }
-  .cta-btns,
-  .hero-tags,
-  .footer-bottom,
-  .pago-actions,
-  .modal-actions {
-    flex-direction: column !important;
-    align-items: stretch !important;
-  }
-  .cta-btn-p,
-  .cta-btn-g,
-  .btn-reservar,
-  .download-pdf-btn,
-  .slide-btn,
-  .nav-cta,
-  .res-submit,
-  .pago-btn,
-  .modal-actions button,
-  .modal-actions a {
-    width: 100% !important;
-    justify-content: center !important;
-    text-align: center !important;
-  }
-  .exc-card,
-  .tour-highlights,
-  .inc-card,
-  .res-form-panel,
-  .res-seat-panel,
-  .admin-panel,
-  .modal-content,
-  .zoyi-panel {
-    max-width: calc(100vw - 2rem) !important;
-  }
-  .zoyi-widget {
-    right: 12px !important;
-    bottom: 12px !important;
-    max-width: calc(100vw - 24px) !important;
-  }
-  .zoyi-panel {
-    right: 0 !important;
-    width: calc(100vw - 24px) !important;
-  }
-  .wa {
-    right: 14px !important;
-    bottom: 14px !important;
-    width: 48px !important;
-    height: 48px !important;
-  }
-}
-@media (max-width: 430px) {
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo {
-    max-width: calc(100vw - 104px) !important;
-  }
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .lang-current {
-    min-width: 62px !important;
-    width: 62px !important;
-  }
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .z,
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .t {
-    font-size: .88rem !important;
-    letter-spacing: .055em !important;
-  }
-  .page-hero-title,
-  .exc-hero-title,
-  .slide-title {
-    font-size: clamp(1.75rem, 10.5vw, 2.7rem) !important;
-  }
-  .slide-emblem,
-  .emblem-3d,
-  .emblem-svg,
-  .emblem-text-path,
-  .emblem-text-inner {
-    width: min(245px, 76vw) !important;
-    height: min(245px, 76vw) !important;
-  }
-  .lent-fixed { width: min(310px, 84vw) !important; }
-  .lent-word { font-size: clamp(1.55rem, 8vw, 1.9rem) !important; }
-}
-
-/* Keep the closed mobile drawer fully outside the viewport. */
-@media (max-width: 900px) {
-  .mobile-drawer {
-    right: 0 !important;
-    left: auto !important;
-  }
-  .mobile-drawer:not(.open) {
-    transform: translate3d(110vw, 0, 0) !important;
-    visibility: hidden !important;
-    pointer-events: none !important;
-  }
-  .mobile-drawer.open {
-    transform: translate3d(0, 0, 0) !important;
-    visibility: visible !important;
-    pointer-events: auto !important;
-  }
-  .drawer-overlay:not(.open) {
-    display: none !important;
-    pointer-events: none !important;
-  }
-}
-/* Restore mobile drawer geometry after top-nav rules. */
-@media (max-width: 900px) {
-  .mobile-drawer {
-    position: fixed !important;
-    top: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    left: auto !important;
-    height: auto !important;
-    width: min(86vw, 340px) !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    justify-content: flex-start !important;
-    gap: 0 !important;
-    padding: 80px 2rem 2rem !important;
-    background: rgba(10,8,6,0.98) !important;
-  }
-  .mobile-drawer:not(.open) {
-    transform: translate3d(110vw, 0, 0) !important;
-    visibility: hidden !important;
-    pointer-events: none !important;
-  }
-  .mobile-drawer.open {
-    transform: translate3d(0, 0, 0) !important;
-    visibility: visible !important;
-    pointer-events: auto !important;
-  }
-}
-/* Hero titles must stay readable over photo backgrounds on mobile. */
-@media (max-width: 900px) {
-  .page-hero-content,
-  .exc-hero-content {
-    color: var(--cream) !important;
-    text-align: left !important;
-  }
-  .page-hero-title,
-  .exc-hero-title {
-    color: var(--cream) !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    text-align: left !important;
-    text-shadow: 0 2px 22px rgba(0,0,0,.62) !important;
-  }
-  .page-hero-title em,
-  .exc-hero-title em {
-    color: var(--sand) !important;
-  }
-  .exc-tag,
-  .hero-tag,
-  .page-hero-eyebrow {
-    max-width: 100% !important;
-  }
-}
-/* Correct mobile hero layer order: image, overlay, then readable text. */
-@media (max-width: 900px) {
-  .page-hero-bg,
-  .exc-hero-bg {
-    z-index: 0 !important;
-  }
-  .page-hero-overlay,
-  .exc-hero-overlay {
-    z-index: 1 !important;
-    pointer-events: none !important;
-  }
-  .page-hero-content,
-  .exc-hero-content,
-  .page-hero-title,
-  .exc-hero-title,
-  .hero-tags,
-  .breadcrumb {
-    position: relative !important;
-    z-index: 2 !important;
-  }
-  .exc-hero {
-    align-items: stretch !important;
-    justify-content: flex-end !important;
-  }
-  .exc-hero-title {
-    display: block !important;
-    margin: 0 1rem 2.2rem !important;
-  }
-}
-/* Full-width mobile excursion titles. */
-@media (max-width: 900px) {
-  .exc-hero > .exc-hero-title,
-  .exc-hero-title {
-    flex: 0 0 calc(100% - 2rem) !important;
-    width: calc(100% - 2rem) !important;
-    max-width: calc(100% - 2rem) !important;
-    margin: 0 1rem 2.2rem !important;
-    align-self: center !important;
-    text-align: left !important;
-    white-space: normal !important;
-  }
-}</style>
 </body>
 </html>
-
-
-
-
-
 
 
 

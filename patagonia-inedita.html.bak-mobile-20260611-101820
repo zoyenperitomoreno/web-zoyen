@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catedrales y Capillas de Mármol – Zoyen Turismo</title>
+<title>Patagonia Inédita – Tour 6 días · Zoyen Turismo</title>
 <link href="https://fonts.googleapis.com/css2family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* Ajuste global de tipografa */
@@ -22,259 +22,229 @@ html { font-size: 18px; }
   --fog:       #faf7f2;
   --stone:     #7a6a5a;
   --olive:     #5a6040;
-  --sky:       #8b9ba8;
 }
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
   font-family: 'Sora', sans-serif;
   font-size: 16px; line-height: 1.7;
-  background: var(--fog); color: var(--ink);
-  overflow-x: hidden;
+  background: var(--fog); color: var(--ink); overflow-x: hidden;
 }
 
 /* NAV */
-body > nav:not(.breadcrumb):not(.mobile-drawer) {
+body > nav:not(.breadcrumb) {
   position: fixed; top: 0; left: 0; right: 0; z-index: 900;
   height: 72px;
   display: grid; grid-template-columns: auto auto 1fr auto;
   align-items: center; padding: 0 2vw; gap: 1rem;
-  background: rgba(10,10,10,0.92);
-  backdrop-filter: blur(16px);
+  background: rgba(10,10,10,0.92); backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(212,119,42,0.20);
 }
-.nav-logo {
-  display: flex; align-items: center; gap: 10px;
-  text-decoration: none; line-height: 1; flex-shrink: 0;
-}
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; line-height: 1; flex-shrink: 0; }
 .nav-emblem { width: 54px; height: 54px; flex-shrink: 0; }
-@keyframes nav-rose-spin { to { transform: rotate(360deg); } }
-@keyframes nav-ring-ccw  { to { transform: rotate(-360deg); } }
-.nav-emblem .nav-rose-anim { transform-origin: 50px 50px; animation: heroRoseSpin 18s linear infinite; animation-delay: -5s; }
-.nav-emblem .nav-ring-anim { transform-origin: 50px 50px; animation: heroRingCCW 45s linear infinite; animation-delay: -5s; }
-@keyframes heroRingCCW { to { transform: rotate(-360deg); } }
-@keyframes heroRoseSpin { to { transform: rotate(360deg); } }
 .nav-logo-text { display: flex; flex-direction: column; gap: 2px; justify-content: center; }
-.nav-logo .z { font-family: 'Sora',sans-serif; font-weight:700; font-size:1.4rem; letter-spacing:.12em; color:var(--cream); text-transform:uppercase; }
-.nav-logo .t { font-family: 'Sora',sans-serif; font-weight:700; font-size:1.4rem; letter-spacing:.12em; color:var(--ember); text-transform:uppercase; }
-.nav-logo sub { font-size:.60rem; font-weight:400; letter-spacing:.2em; color:var(--sand); opacity:.65; text-transform:uppercase; display:block; line-height:1.4; }
-.nav-links { display:flex; gap:1.2rem; list-style:none; align-items:center; justify-content:center; }
-.nav-links a { color:rgba(245,240,232,.75); text-decoration:none; font-size:.78rem; font-weight:500; letter-spacing:.06em; text-transform:uppercase; transition:color .2s; position:relative; white-space:nowrap; }
+.nav-logo-name { display: flex; align-items: baseline; }
+.nav-logo .z { font-family: 'Sora',sans-serif; font-weight: 700; font-size: 1.4rem; letter-spacing: .12em; color: var(--cream); text-transform: uppercase; }
+.nav-logo .t { font-family: 'Sora',sans-serif; font-weight: 700; font-size: 1.4rem; letter-spacing: .12em; color: var(--ember); text-transform: uppercase; }
+.nav-logo sub { font-size: .60rem; font-weight: 400; letter-spacing: .2em; color: var(--sand); opacity: .65; text-transform: uppercase; display: block; }
+.nav-links { display: flex; gap: 1.2rem; list-style: none; align-items: center; justify-content: center; }
+.nav-links a { color: rgba(245,240,232,.75); text-decoration: none; font-size: .78rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; transition: color .2s; position: relative; white-space: nowrap; }
 .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--ember); transform:scaleX(0); transform-origin:left; transition:transform .3s; }
-.nav-links a:hover { color:var(--cream); }
-.nav-links a:hover::after { transform:scaleX(1); }
-.nav-cta-btn { background:var(--ember); color:var(--cream); padding:.5rem 1.3rem; border-radius:2px; font-family:'Sora',sans-serif; font-size:.78rem; font-weight:600; letter-spacing:.15em; text-transform:uppercase; text-decoration:none; white-space:nowrap; flex-shrink:0; transition:background .2s; border:none; cursor:pointer; }
-.nav-cta-btn:hover { background:var(--ember-dim); }
-@media(max-width:960px){ .nav-links { display:none; } body > nav:not(.breadcrumb):not(.mobile-drawer) { grid-template-columns: auto auto 1fr; } }
+.nav-links a:hover { color: var(--cream); }
+.nav-links a:hover::after { transform: scaleX(1); }
+.nav-links a.active { color: var(--ember); }
+.nav-links a.active::after { transform: scaleX(1); }
+.nav-cta-btn { background: var(--ember); color: var(--cream); padding: .5rem 1.3rem; border-radius: 2px; font-family: 'Sora',sans-serif; font-size: .78rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; text-decoration: none; white-space: nowrap; flex-shrink: 0; transition: background .2s; }
+.nav-cta-btn:hover { background: var(--ember-dim); }
 
-/* HERO EXCURSION */
-.exc-hero {
-  position: relative;
-  height: 60vh; min-height: 380px;
-  overflow: hidden;
-  display: flex; align-items: flex-end;
-  padding-bottom: 3rem;
-}
-.exc-hero-bg {
-  position: absolute; inset: 0;
-  background-image: url('assets/capillas.jpg');
-  background-size: cover; background-position: center;
-}
-.exc-hero-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to bottom, rgba(26,20,16,.15) 0%, rgba(26,20,16,.0) 40%, rgba(26,20,16,.7) 80%, rgba(26,20,16,.9) 100%);
-}
-.exc-hero-content {
-  position: relative; z-index: 2;
-  padding: 0 5vw; color: var(--cream);
-  max-width: 900px;
-}
-.exc-tag {
-  display: inline-block;
-  background: var(--ember); color: var(--cream);
-  font-size: .72rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
-  padding: .3rem .9rem; margin-bottom: 1rem;
-  border-radius: 1px;
-}
-.exc-hero-title {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(2rem, 5vw, 3.8rem);
-  font-weight: 600; line-height: 1.1;
-  text-shadow: 0 2px 20px rgba(26,20,16,.5);
-}
-.exc-hero-title em { font-style:italic; color:var(--sand); }
+/* HERO */
+.page-hero { position: relative; height: 65vh; min-height: 480px; display: flex; align-items: flex-end; padding-bottom: 4rem; overflow: hidden; }
+.page-hero-bg { position: absolute; inset: 0; background-image: url('assets/full_inedita.jpg'); background-size: cover; background-position: center; transform: scale(1.04); animation: heroZoom 12s ease-out forwards; }
+@keyframes heroZoom { to { transform: scale(1); } }
+.page-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(26,20,16,.2) 0%, rgba(26,20,16,.8) 100%); }
+.page-hero-content { position: relative; z-index: 2; padding: 0 4vw; color: var(--cream); animation: fadeUp .9s .3s both; }
+@keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
+.page-hero-eyebrow { font-size: .88rem; font-weight: 700; letter-spacing: .32em; text-transform: uppercase; color: var(--ember); margin-bottom: .8rem; display: inline-flex; align-items: center; gap: 10px; }
+.page-hero-eyebrow::before, .page-hero-eyebrow::after { content: ''; width: 22px; height: 1px; background: var(--ember); }
+.page-hero-title { font-family: 'DM Serif Display', serif; font-size: clamp(2.4rem, 6vw, 4.5rem); font-weight: 600; line-height: 1.05; text-shadow: 0 2px 20px rgba(26,20,16,.5); }
+.page-hero-title em { font-style: italic; color: var(--sand); }
+.hero-tags { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: 1.2rem; }
+.hero-tag { background: rgba(26,20,16,.6); border: 1px solid rgba(212,119,42,.4); color: var(--dust); padding: .3rem .9rem; border-radius: 1px; font-size: .72rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; backdrop-filter: blur(6px); }
+.hero-tag.main { background: var(--ember); border-color: var(--ember-dim); }
+.breadcrumb { margin-top: .8rem; font-size: .75rem; color: rgba(245,240,232,.5); letter-spacing: .1em; text-transform: uppercase; }
+.breadcrumb a { color: rgba(245,240,232,.5); text-decoration: none; }
+.breadcrumb a:hover { color: var(--sand); }
+.breadcrumb span { color: var(--ember); }
 
-/* BREADCRUMB */
-.breadcrumb {
-  background: var(--dark); border-bottom: 1px solid rgba(212,119,42,.15);
-  padding: .8rem 5vw;
-}
-.breadcrumb a { color: var(--sand); text-decoration: none; font-size:.78rem; letter-spacing:.1em; }
-.breadcrumb a:hover { color: var(--ember); }
-.breadcrumb span { color: var(--stone); font-size:.78rem; margin: 0 .5rem; }
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .75s, transform .75s; }
+.reveal.in { opacity: 1; transform: none; }
+.reveal-delay { transition-delay: .15s; }
+.reveal-delay2 { transition-delay: .28s; }
+.eyebrow { font-size: .92rem; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: var(--ember); margin-bottom: .5rem; }
+.section-title { font-family: 'DM Serif Display', serif; font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 600; line-height: 1.1; color: var(--ink); }
+.section-title em { font-style: italic; color: var(--amber); }
 
-/* CONTENT LAYOUT */
-.exc-body {
-  max-width: 1100px; margin: 0 auto;
-  padding: 4rem 5vw 5rem;
-  display: grid; grid-template-columns: 1fr 340px; gap: 4rem;
-}
-@media(max-width:860px){ .exc-body { grid-template-columns: 1fr; } }
-
-.exc-main h2 {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(1.5rem,3vw,2.2rem); color: var(--ink);
-  margin-bottom: 1.2rem; margin-top: 2.4rem;
-}
-.exc-main h2:first-child { margin-top: 0; }
-.exc-main h3 {
-  font-size: 1rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
-  color: var(--ember); margin-bottom: .8rem; margin-top: 2rem;
-}
-.exc-main p { color: var(--stone); line-height: 1.8; margin-bottom: 1rem; }
-.exc-main strong { color: var(--ink); }
-.exc-main ul { padding-left: 1.4rem; color: var(--stone); line-height: 1.8; margin-bottom: 1rem; }
-.exc-main ul li { margin-bottom: .4rem; }
-.exc-main .note {
-  background: rgba(212,119,42,.07); border-left: 3px solid var(--ember);
-  padding: 1rem 1.2rem; border-radius: 2px; margin: 1.5rem 0;
-  color: var(--ink); font-size: .93rem;
-}
-.exc-main .warn {
-  background: rgba(90,96,64,.08); border-left: 3px solid var(--olive);
-  padding: 1rem 1.2rem; border-radius: 2px; margin: 1.5rem 0;
-  color: var(--ink); font-size: .93rem;
-}
-
-/* SIDEBAR */
-.exc-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
-.exc-card {
-  background: var(--dark); color: var(--cream);
-  border-radius: 3px; overflow: hidden;
-  border: 1px solid rgba(212,119,42,.15);
-}
-.exc-card-head {
-  padding: 1.2rem 1.4rem .6rem;
-  font-family: 'DM Serif Display',serif;
-  font-size: 1.2rem; color: var(--sand);
-}
-.exc-card-body { padding: .4rem 1.4rem 1.4rem; }
-.exc-card-body p { color: rgba(245,240,232,.7); font-size: .9rem; line-height: 1.7; margin-bottom: .6rem; }
-.exc-card-body .price {
-  font-size: 1.4rem; font-weight: 700; color: var(--ember);
-  margin: .8rem 0 .2rem;
-}
-.exc-card-body .price-label { font-size: .75rem; color: var(--stone); letter-spacing: .1em; }
-.btn-reservar {
-  display: block; width: 100%;
-  background: var(--ember); color: var(--cream);
-  text-align: center; padding: .85rem 1rem;
-  border-radius: 2px; text-decoration: none;
-  font-weight: 700; font-size: .85rem; letter-spacing: .2em; text-transform: uppercase;
-  transition: background .2s; margin-top: 1rem;
-  border: none; cursor: pointer; font-family: 'Sora',sans-serif;
-}
-.btn-reservar:hover { background: var(--ember-dim); }
-.exc-detail-list {
-  list-style: none; padding: 0;
-  display: flex; flex-direction: column; gap: .5rem;
-}
-.exc-detail-list li {
-  display: flex; align-items: flex-start; gap: .6rem;
-  font-size: .88rem; color: rgba(245,240,232,.7);
-}
-.exc-detail-list li .icon { color: var(--ember); flex-shrink: 0; font-size:1rem; }
-
-/* VIDEO */
-.video-wrap {
-  position: relative; padding-bottom: 56.25%;
-  height: 0; overflow: hidden; border-radius: 3px;
-  margin: 2rem 0;
-}
-.video-wrap iframe {
-  position: absolute; top: 0; left: 0;
-  width: 100%; height: 100%; border: 0;
-}
-
-/* OTHER EXCURSIONS */
-.more-excursiones {
+/* OVERVIEW STRIP */
+.overview-strip {
   background: var(--dark);
-  padding: 4rem 5vw;
-  border-top: 1px solid rgba(212,119,42,.12);
+  padding: 2.5rem 4vw;
+  border-bottom: 1px solid rgba(212,119,42,.2);
 }
-.more-excursiones h2 {
-  font-family: 'DM Serif Display',serif;
-  font-size: 1.8rem; color: var(--cream);
-  margin-bottom: 2rem;
+.overview-inner {
+  display: flex; gap: 3rem; flex-wrap: wrap; align-items: center;
+  max-width: 1100px; margin: 0 auto;
+  justify-content: space-between;
 }
-.exc-mini-grid {
-  display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem;
+.ov-item { text-align: center; }
+.ov-num { font-family: 'DM Serif Display', serif; font-size: 2.2rem; font-weight: 600; color: var(--ember); line-height: 1; }
+.ov-lbl { font-size: .65rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: rgba(201,169,110,.6); margin-top: .3rem; }
+.ov-sep { width: 1px; height: 48px; background: rgba(212,119,42,.2); }
+
+/* INTRO SECTION */
+.tour-intro {
+  padding: 5rem 4vw;
+  background: var(--fog);
 }
-@media(max-width:860px){ .exc-mini-grid { grid-template-columns: repeat(2,1fr); } }
-@media(max-width:560px){ .exc-mini-grid { grid-template-columns: 1fr; } }
-.exc-mini {
-  position: relative; border-radius: 3px; overflow: hidden;
-  aspect-ratio: 4/3; text-decoration: none;
-  display: block;
+.tour-intro-inner {
+  display: grid; grid-template-columns: 1.1fr 1fr; gap: 5rem;
+  align-items: start; max-width: 1200px; margin: 0 auto;
 }
-.exc-mini img {
-  width: 100%; height: 100%; object-fit: cover;
-  transition: transform .5s;
+@media (max-width:800px) { .tour-intro-inner { grid-template-columns:1fr; gap:2.5rem; } }
+.tour-intro-text p { font-size: 1.02rem; color: var(--stone); line-height: 1.85; font-weight: 300; margin-bottom: 1.2rem; }
+.tour-intro-text p strong { color: var(--ink); font-weight: 600; }
+.tour-intro-text h2 { margin-bottom: 1.4rem; }
+.tour-highlights {
+  background: var(--cream);
+  border: 1px solid rgba(58,45,31,.1);
+  border-top: 3px solid var(--ember);
+  border-radius: 3px; padding: 1.8rem;
 }
-.exc-mini:hover img { transform: scale(1.05); }
-.exc-mini-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(26,20,16,.85) 0%, transparent 50%);
-  display: flex; align-items: flex-end;
-  padding: .9rem;
+.tour-highlights h3 { font-family: 'DM Serif Display', serif; font-size: 1.2rem; font-weight: 600; color: var(--ink); margin-bottom: 1.2rem; padding-bottom: .8rem; border-bottom: 1px solid rgba(58,45,31,.1); }
+.hl-list { list-style: none; display: flex; flex-direction: column; gap: .7rem; }
+.hl-list li { display: flex; align-items: flex-start; gap: .8rem; font-size: .96rem; color: var(--stone); line-height: 1.5; }
+.hl-list li::before { content: '\2192'; color: var(--ember); font-weight: 700; flex-shrink: 0; margin-top: .1rem; }
+.hl-list li strong { color: var(--ink); font-weight: 600; }
+
+/* INCLUYE / NO INCLUYE */
+.inc-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  margin-top: 1.5rem;
 }
-.exc-mini-name {
-  color: var(--cream); font-weight: 600;
-  font-size: .82rem; letter-spacing: .04em; line-height: 1.3;
+@media (max-width:600px) { .inc-grid { grid-template-columns:1fr; } }
+.inc-card { background: #fff; border: 1px solid rgba(58,45,31,.1); border-radius: 3px; padding: 1.4rem 1.3rem; }
+.inc-card h4 { font-size: .75rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; margin-bottom: .9rem; padding-bottom: .6rem; border-bottom: 1px solid rgba(58,45,31,.08); }
+.inc-card.yes h4 { color: var(--olive); }
+.inc-card.no h4 { color: var(--stone); }
+.inc-list { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+.inc-list li { font-size: .88rem; color: var(--stone); display: flex; gap: .6rem; align-items: flex-start; }
+.inc-list li span.ico { flex-shrink: 0; }
+
+.itinerario-head { display:flex; align-items:flex-end; justify-content:space-between; gap:1.5rem; margin-bottom:3.5rem; flex-wrap:wrap; }
+.itinerario-head .reveal { margin-bottom:0 !important; }
+.download-pdf-btn {
+  display:inline-flex; align-items:center; gap:.55rem;
+  background:var(--ember); color:var(--cream);
+  padding:.78rem 1.25rem; border-radius:2px;
+  text-decoration:none; font-size:.76rem; font-weight:700;
+  letter-spacing:.14em; text-transform:uppercase;
+  box-shadow:0 10px 24px rgba(212,119,42,.22);
+  transition:background .2s, transform .2s, box-shadow .2s;
 }
+.download-pdf-btn:hover { background:var(--ember-dim); transform:translateY(-1px); box-shadow:0 14px 30px rgba(212,119,42,.28); }
+.download-pdf-btn::before { content:'PDF'; font-size:.62rem; letter-spacing:.08em; border:1px solid rgba(245,240,232,.55); padding:.12rem .28rem; }
+@media(max-width:640px){ .itinerario-head { align-items:flex-start; } .download-pdf-btn { width:100%; justify-content:center; } }
+/* ITINERARIO */
+.itinerario-section {
+  padding: 5rem 4vw;
+  background: var(--cream);
+  border-top: 1px solid rgba(58,45,31,.08);
+}
+.itinerario-inner { max-width: 900px; margin: 0 auto; }
+.dia-block {
+  display: grid; grid-template-columns: 80px 1fr; gap: 0;
+  margin-bottom: 0;
+  position: relative;
+}
+.dia-block:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 39px; top: 48px; bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--ember), rgba(212,119,42,.15));
+}
+.dia-num {
+  display: flex; flex-direction: column; align-items: center; padding-top: .5rem;
+  position: relative; z-index: 1;
+}
+.dia-circle {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: var(--ember); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Serif Display', serif; font-size: 1.1rem; font-weight: 600;
+  box-shadow: 0 4px 16px rgba(212,119,42,.4);
+  flex-shrink: 0;
+}
+.dia-content {
+  padding: .3rem 0 3rem 1.8rem;
+}
+.dia-label { font-size: .65rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--ember); margin-bottom: .4rem; }
+.dia-title { font-family: 'DM Serif Display', serif; font-size: 1.4rem; font-weight: 600; color: var(--ink); margin-bottom: .8rem; line-height: 1.2; }
+.dia-title em { font-style: italic; color: var(--amber); }
+.dia-desc { font-size: .97rem; color: var(--stone); line-height: 1.85; font-weight: 300; }
+.dia-desc strong { color: var(--ink); font-weight: 600; }
+.dia-img { width: 100%; border-radius: 3px; margin-top: 1.2rem; aspect-ratio: 16/7; object-fit: cover; box-shadow: 0 8px 32px rgba(26,20,16,.12); }
+.dia-chips { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: 1rem; }
+.dia-chip { font-size: .65rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; background: rgba(58,45,31,.07); color: var(--stone); padding: .25rem .75rem; border-radius: 999px; border: 1px solid rgba(58,45,31,.12); }
+
+/* GALERIA */
+.galeria-section { padding: 5rem 4vw; background: var(--fog); }
+.galeria-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; margin-top: 3rem; }
+@media (max-width:700px) { .galeria-grid { grid-template-columns: 1fr 1fr; } }
+.galeria-grid img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 2px; transition: transform .4s, box-shadow .4s; cursor: pointer; }
+.galeria-grid img:hover { transform: scale(1.03); box-shadow: 0 16px 40px rgba(26,20,16,.18); }
+.galeria-grid img:first-child { grid-column: span 2; aspect-ratio: 16/7; }
+
+/* CTA */
+.tour-cta { background: var(--dark); padding: 5rem 4vw; text-align: center; border-top: 1px solid rgba(212,119,42,.2); }
+.tour-cta h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 600; color: var(--dust); margin-bottom: 1rem; }
+.tour-cta h2 em { font-style: italic; color: var(--sand); }
+.tour-cta p { font-size: 1.02rem; color: rgba(232,220,200,.55); max-width: 480px; margin: 0 auto 2.5rem; font-weight: 300; line-height: 1.8; }
+.cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.cta-btn-p { background: var(--ember); color: var(--cream); padding: .85rem 2.2rem; border-radius: 2px; text-decoration: none; font-size: .93rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; transition: background .2s; }
+.cta-btn-p:hover { background: var(--ember-dim); }
+.cta-btn-g { border: 1px solid rgba(245,240,232,.3); color: rgba(245,240,232,.7); padding: .85rem 2.2rem; border-radius: 2px; text-decoration: none; font-size: .93rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; transition: border-color .2s, color .2s; background: transparent; }
+.cta-btn-g:hover { border-color: var(--sand); color: var(--sand); }
 
 /* FOOTER */
-footer {
-  background: var(--dark);
-  border-top: 1px solid rgba(212,119,42,.2);
-  padding: 3rem 5vw 1.5rem;
-}
-.footer-top {
-  display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 3rem;
-  margin-bottom: 2.5rem;
-}
-@media(max-width:760px){ .footer-top { grid-template-columns: 1fr; gap: 2rem; } }
-.footer-brand-wrap { display:flex; align-items:center; gap:.8rem; margin-bottom:1rem; }
-.footer-emblem { width:48px; height:48px; flex-shrink:0; }
-@keyframes heroRingCW { to { transform: rotate(360deg); } }
-.ft-ring-anim { transform-origin:50px 50px; animation:heroRingCCW 45s linear infinite; }
-.ft-rose-anim { transform-origin:50px 50px; animation:heroRoseSpin 18s linear infinite; }
-.footer-brand { font-family:'Sora',sans-serif; font-weight:700; font-size:1.1rem; letter-spacing:.1em; text-transform:uppercase; }
-.footer-brand span { color:var(--sand); }
-.footer-brand-zoyen { color:var(--cream) !important; }
-.footer-tagline { color:var(--stone); font-size:.85rem; line-height:1.6; margin-bottom:1.2rem; }
-.socials { display:flex; gap:.6rem; }
-.social-btn { display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:2px; background:rgba(255,255,255,.06); color:var(--sand); text-decoration:none; transition:background .2s,color .2s; }
-.social-btn:hover { background:var(--ember); color:var(--cream); }
-.footer-col-title { font-size:.72rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--ember); margin-bottom:.9rem; }
-.footer-links { list-style:none; display:flex; flex-direction:column; gap:.45rem; }
-.footer-links a { color:var(--stone); text-decoration:none; font-size:.88rem; transition:color .2s; }
-.footer-links a:hover { color:var(--sand); }
-.footer-contact { color:var(--stone); font-size:.88rem; line-height:1.8; }
-.footer-bottom { border-top:1px solid rgba(201,169,110,.1); padding-top:1.2rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:.5rem; }
-.footer-bottom span, .footer-bottom a { color:var(--stone); font-size:.78rem; text-decoration:none; }
-.footer-bottom a:hover { color:var(--sand); }
+footer { background: #0a0a0a; padding: 5rem 3vw 2.5rem; }
+.footer-top { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(212,119,42,.15); margin-bottom: 2rem; }
+@media (max-width:700px){ .footer-top { grid-template-columns: 1fr; gap: 2rem; } }
+.footer-brand-wrap { display: flex; align-items: center; gap: 12px; margin-bottom: .6rem; }
+.footer-emblem { width: 48px; height: 48px; flex-shrink: 0; }
+.footer-brand { font-family: 'Sora',sans-serif; font-size: 1.5rem; font-weight: 700; letter-spacing: .1em; }
+.footer-brand span.footer-brand-zoyen { color: #fff; }
+.footer-brand span { color: var(--ember); }
+.footer-tagline { font-size: 1.05rem; color: rgba(232,220,200,.65); line-height: 1.7; margin-bottom: 1.4rem; font-weight: 300; }
+.socials { display: flex; gap: .6rem; }
+.social-btn { width: 34px; height: 34px; border-radius: 1px; border: 1px solid rgba(201,169,110,.2); color: var(--sand); text-decoration: none; display: flex; align-items: center; justify-content: center; transition: border-color .2s, background .2s; }
+.social-btn svg { display: block; }
+.social-btn:hover { border-color: var(--ember); background: rgba(212,119,42,.12); }
+.footer-col-title { font-size: 1rem; font-weight: 600; letter-spacing: .25em; text-transform: uppercase; color: var(--ember); margin-bottom: 1.1rem; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
+.footer-links a { color: rgba(232,220,200,.70); text-decoration: none; font-size: .8rem; font-weight: 300; transition: color .2s; display: flex; align-items: center; gap: 7px; }
+.footer-links a::before { content: '–'; color: var(--ember); opacity: .5; }
+.footer-links a:hover { color: var(--sand); }
+.footer-contact { font-size: .8rem; color: rgba(232,220,200,.70); line-height: 1.8; font-weight: 300; }
+.footer-contact strong { color: var(--sand); font-weight: 500; }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .5rem; font-size: .93rem; color: rgba(232,220,200,.40); letter-spacing: .08em; }
+.footer-bottom a { color: rgba(201,169,110,.55); text-decoration: none; }
 
-/* WA float */
-.wa {
-  position: fixed; bottom: 1.8rem; right: 1.8rem; z-index: 800;
-  width: 52px; height: 52px;
-  background: #25d366; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 16px rgba(0,0,0,.25);
-  transition: transform .2s;
-}
+.wa { position: fixed; bottom: 1.8rem; right: 1.8rem; z-index: 800; width: 52px; height: 52px; border-radius: 50%; background: #25d366; color: #fff; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,.35); transition: transform .25s; }
 .wa:hover { transform: scale(1.1); }
+.wa svg { width: 26px; height: 26px; }
+
+@media (max-width:760px) { .nav-links { display: none; } }
 
 /* LANGUAGE SWITCHER */
 .lang-switcher { position: relative; justify-self: start; z-index: 920; }
@@ -689,6 +659,59 @@ body > nav .nav-actions.cta-nudge::before {
   100% { opacity: 0; transform: translateY(-3px); }
 }
 </style>
+<script>
+(function(){
+  document.documentElement.classList.add('js-ready');
+  const fallbackByHint = [
+    ['capillas', 'https://images.unsplash.com/photo-1500530855697-b586d89ba3eew=1200&q=80'],
+    ['marmol', 'https://images.unsplash.com/photo-1500530855697-b586d89ba3eew=1200&q=80'],
+    ['cueva', 'https://images.unsplash.com/photo-1501785888041-af3ef285b470w=1200&q=80'],
+    ['manos', 'https://images.unsplash.com/photo-1501785888041-af3ef285b470w=1200&q=80'],
+    ['ruta', 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429w=1200&q=80'],
+    ['zeballos', 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429w=1200&q=80'],
+    ['posadas', 'https://images.unsplash.com/photo-1500530855697-b586d89ba3eew=1200&q=80'],
+    ['patagonia', 'https://images.unsplash.com/photo-1501854140801-50d01698950bw=1200&q=80'],
+    ['carretera', 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429w=1200&q=80'],
+    ['parque', 'https://images.unsplash.com/photo-1501785888041-af3ef285b470w=1200&q=80']
+  ];
+  const genericFallback = 'https://images.unsplash.com/photo-1501854140801-50d01698950bw=1200&q=80';
+  function pickFallback(text){
+    const haystack = (text || '').toLowerCase();
+    const found = fallbackByHint.find(([hint]) => haystack.includes(hint));
+    return found ? found[1] : genericFallback;
+  }
+  window.zoyenPickFallback = pickFallback;
+  document.addEventListener('error', function(event){
+    const el = event.target;
+    if (!el || el.tagName !== 'IMG' || el.dataset.fallbackApplied === '1') return;
+    el.dataset.fallbackApplied = '1';
+    el.src = pickFallback((el.getAttribute('alt') || '') + ' ' + (el.getAttribute('src') || ''));
+  }, true);
+  function repairBackgrounds(){
+    const nodes = document.querySelectorAll('.slide-bg, .page-hero-bg, [style*="background-image"]');
+    nodes.forEach(function(el){
+      const bg = getComputedStyle(el).backgroundImage || '';
+      const match = bg.match(/url\(["']([^"')]+)["']\)/);
+      if (!match) return;
+      const original = match[1];
+      const probe = new Image();
+      probe.onerror = function(){ el.style.backgroundImage = "url('" + pickFallback(original) + "')"; };
+      probe.src = original;
+    });
+  }
+  function revealSafety(){ document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); }); }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function(){ repairBackgrounds(); setTimeout(revealSafety, 700); });
+  } else {
+    repairBackgrounds(); setTimeout(revealSafety, 700);
+  }
+  setTimeout(revealSafety, 1800);
+})();
+</script>
+<style id="zoyen-recovery-patch">
+html:not(.js-ready) .reveal { opacity: 1 !important; transform: none !important; }
+img { background: #d8d0c3; }
+</style>
 <style id="zoyen-header-cta-motion">
 .nav-logo {
   animation: navHeaderWake 1.15s cubic-bezier(.16,.84,.18,1) .05s both;
@@ -747,13 +770,13 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo">
     <svg class="nav-emblem" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="0.8"/>
   <defs><linearGradient id="nv-gl" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(255,255,255,0.95)"/><stop offset="100%" stop-color="rgba(182,196,212,0.82)"/></linearGradient>
 <linearGradient id="nv-gd" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(102,116,132,0.9)"/><stop offset="100%" stop-color="rgba(62,76,92,0.93)"/></linearGradient></defs>
-  <g class="nav-ring-anim"><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="0.8"/></g>
-  <g class="nav-rose-anim">
 <circle cx="50" cy="50" r="25.31" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.43"/>
 <circle cx="50" cy="50" r="22.04" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="0.24"/>
 <polygon points="50.0,22.65 46.33,50.0 50,50" fill="url(#nv-gl)"/>
@@ -773,10 +796,17 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
 <polygon points="22.65,50.0 50.0,46.33 50,50" fill="url(#nv-gd)"/>
 <polygon points="37.01,37.01 48.27,51.73 50,50" fill="url(#nv-gl)"/>
 <polygon points="37.01,37.01 51.73,48.27 50,50" fill="url(#nv-gd)"/>
-  </g>
-  <circle cx="50" cy="50" r="3.06" fill="#d4772a"/>
-  <circle cx="50" cy="50" r="1.84" fill="#1a1410"/>
-  <circle cx="50" cy="50" r="0.9" fill="#d4772a"/>
+<line x1="50.0" y1="22.65" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
+<line x1="62.99" y1="37.01" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
+<line x1="77.35" y1="50.0" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
+<line x1="62.99" y1="62.99" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
+<line x1="50.0" y1="77.35" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
+<line x1="37.01" y1="62.99" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
+<line x1="22.65" y1="50.0" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
+<line x1="37.01" y1="37.01" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
+<circle cx="50" cy="50" r="3.06" fill="#d4772a"/>
+<circle cx="50" cy="50" r="1.84" fill="#1a1410"/>
+<circle cx="50" cy="50" r="0.9" fill="#d4772a"/>
 </svg>
     <div class="nav-logo-text">
       <div class="nav-logo-name">
@@ -800,203 +830,316 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
   <ul class="nav-links">
     <li><a href="index.html" data-i18n="nav_home">Home</a></li>
     <li><a href="index.html#excursiones" data-i18n="nav_excursiones"><span data-i18n="bread_exc">Excursiones</span></a></li>
-    <li><a href="index.html#tours" data-i18n="nav_tours"><span data-i18n="bread_tours">Tours de Autor</span></a></li>
+    <li><a href="index.html#tours" class="active" data-i18n="nav_tours"><span data-i18n="bread_tours">Tours de Autor</span></a></li>
     <li><a href="index.html#bienestar" data-i18n="nav_bienestar">Turismo de Bienestar</a></li>
     <li><a href="index.html#ubicacion" data-i18n="nav_ubicacion">Ubicación y Contacto</a></li>
     <li><a href="nosotros.html" data-i18n="nav_nosotros">Quiénes somos</a></li>
   </ul>
-  <div class="nav-actions"><a href="https://wa.me/5492974432855" class="nav-cta-btn" target="_blank" rel="noopener" data-i18n="nav_reservar">Reservar</a><a href="https://wa.me/5492974432855" class="nav-contact-btn" target="_blank" rel="noopener" aria-label="Contactarse por WhatsApp" data-i18n-aria-label="nav_contact"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span data-i18n="nav_contact">Contactarse</span></a></div>
+  <div class="nav-actions"><a href="index.html#reservar" class="nav-cta-btn" data-i18n="nav_reservar">Reservar</a><a href="https://wa.me/5492974432855" class="nav-contact-btn" target="_blank" rel="noopener" aria-label="Contactarse por WhatsApp" data-i18n-aria-label="nav_contact"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span data-i18n="nav_contact">Contactarse</span></a></div>
 </nav>
 
-<div class="exc-hero">
-  <div class="exc-hero-bg"></div>
-  <div class="exc-hero-overlay"></div>
-  <div class="exc-hero-content">
-    <div class="exc-tag"><span data-i18n="exc_tag"></div></span></div>
-    <h1 class="exc-hero-title" data-i18n="exc_title">Catedrales y Capillas de Mármol</h1>
-  </div>
-</div>
-
-<style>
-.exc-hero-bg { background-image: url('assets/capillas.jpg'); }
-</style>
-
-<nav class="breadcrumb" aria-label="Breadcrumb">
-  <a href="index.html" data-i18n="bread_inicio">Inicio</a>
-  <span>›</span>
-  <a href="index.html#excursiones"><span data-i18n="bread_exc">Excursiones</span></a>
-  <span>›</span>
-  <span style="color:var(--sand)">Catedrales y Capillas de Mármol</span>
-</nav>
-
-<div class="exc-body">
-  <main class="exc-main">
-    
-<h2>Navegación 5 estrellas por el <em>Lago General Carrera</em></h2>
-<p>Esta propuesta tiene en el paisaje de montaña, cordillera de los andes, lagos, ríos y cascadas un gran potencial y a todo eso se suma la navegación a las <strong>Catedrales y Capillas de Mármol</strong> que despierta la admiración de todo el mundo por su belleza.</p>
-<p>Desde 2023 realizamos la excursión <strong>gracias al trabajo conjunto con varios transportistas locales y al prestador turístico chileno "Carrera Tours"</strong>. La salida se hace desde Mallín Grande, una localidad más cercana, <strong>reduciendo los tiempos de viaje en un 50%</strong> aproximadamente.</p>
-
-<div class="video-wrap">
-  <iframe src="https://www.youtube.com/embed/PtcfBSVt2zw?playsinline=1" allowfullscreen loading="lazy" title="Capillas de Mármol - Zoyen Turismo"></iframe>
-</div>
-
-<h2>Precios</h2>
-<p><strong>Temporada 2025/2026</strong> (vigencia hasta el 30 de abril 2026)</p>
-<ul>
-  <li><strong>USD 230 por persona</strong></li>
-  <li>10% de descuento para 2 o más personas</li>
-</ul>
-<div class="note">Si la navegación no se realiza por viento o muelle cerrado, se devuelven USD 50 o su equivalente en pesos.</div>
-
-<h3>Itinerario</h3>
-<ul>
-  <li>Salida a las 07:00 hs desde Perito Moreno y 07:45 hs desde Los Antiguos.</li>
-  <li>Trámites aduaneros al abrir (08:00 hs). Llevar DNI o pasaporte vigente.</li>
-  <li>Pasando a Chile Chico, 80 km a orillas del lago General Carrera hasta Mallín Grande. Tiempo estimado de viaje desde la frontera: aprox. 2 horas.</li>
-  <li>Al llegar, algo caliente para beber y una colación. Luego, navegación en embarcaciones pequeñas y descubiertas por aprox. 2 horas 30 minutos.</li>
-  <li>Finalizada la navegación, almuerzo de asado con acompañamiento y bebida incluida.</li>
-  <li>Regreso por el mismo camino. Llegada al origen al atardecer, pasadas las 19:00 hs.</li>
-</ul>
-
-<div class="warn">
-  <strong>⚠ Importante: Requisitos para Paso Fronterizo</strong><br><br>
-  • DNI o Pasaporte actualizado y vigente. Sin él, no podrás cruzar.<br>
-  • Menores con DNI y autorización si viajan con un solo progenitor.<br>
-  • Prohibido transportar frutas, verduras, carnes crudas, embutidos, frutos secos sin vacío. Deberás completar la declaración jurada del SAG de Chile.<br>
-  • Podés llevar agua, mate, yerba, paquetes de galletitas cerrados.
-</div>
-
-  </main>
-  <aside class="exc-sidebar">
-    <div class="exc-card">
-      <div class="exc-card-head"><span data-i18n="sidebar_book">Reservar</span></div>
-      <div class="exc-card-body">
-        <p><span data-i18n="sidebar_book_desc">Consultanos disponibilidad y precios por WhatsApp o reservá directamente.</span></p>
-        <a href="https://wa.me/5492974432855?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20la%20excursi%C3%B3n%20Catedrales%20y%20Capillas%20de%20M%C3%A1rmol" class="btn-reservar" target="_blank" rel="noopener" data-i18n="sidebar_wa">Consultar por WhatsApp</a>
-      </div>
+<!-- HERO -->
+<section class="page-hero" style="padding-top:72px;">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-eyebrow" data-i18n="hero_eyebrow">Tour de Autor · 6 días · 5 noches</div>
+    <h1 class="page-hero-title">Patagonia <em>Inédita</em></h1>
+    <div class="hero-tags">
+      <span class="hero-tag main">6 días</span>
+      <span class="hero-tag">Bosque Petrificado</span>
+      <span class="hero-tag">Cueva de las Manos</span>
+      <span class="hero-tag">Lago Posadas</span>
+      <span class="hero-tag">Carretera Austral</span>
+      <span class="hero-tag">Capillas de Mármol</span>
     </div>
-    <div class="exc-card">
-      <div class="exc-card-head"><span data-i18n="sidebar_details">Detalles</span></div>
-      <div class="exc-card-body">
-        <ul class="exc-detail-list">
-          <li><span class="icon">✦</span> Salida desde Perito Moreno o Los Antiguos</li>
-          <li><span class="icon">✦</span> Guía especializado incluido</li>
-          <li><span class="icon">✦</span> Vehículo 4x4 o minibus</li>
-          <li><span class="icon">✦</span> Cupos limitados</li>
-        </ul>
-      </div>
-    </div>
-    <div class="exc-card">
-      <div class="exc-card-head"><span data-i18n="sidebar_other">Otras Excursiones</span></div>
-      <div class="exc-card-body">
-        <ul class="footer-links" style="gap:.6rem">
-          <li><a href="excursion-cueva-de-las-manos.html">Cueva de las Manos</a></li>
-          <li><a href="excursion-capillas-de-marmol.html">Capillas de Mármol</a></li>
-          <li><a href="excursion-ruta41-lago-posadas.html">Ruta 41 + Lago Posadas</a></li>
-          <li><a href="excursion-monte-zeballos.html">Monte Zeballos</a></li>
-          <li><a href="excursion-alero-charcamata.html">Alero Charcamata</a></li>
-          <li><a href="excursion-parque-patagonia.html">Parque Patagonia</a></li>
-        </ul>
-      </div>
-    </div>
-  </aside>
-</div>
-
-<section class="more-excursiones">
-  <h2><span data-i18n="more_title">Más Excursiones</span></h2>
-  <div class="exc-mini-grid">
-    <a href="excursion-cueva-de-las-manos.html" class="exc-mini">
-      <img src="assets/cuevas_zoyen.jpg" alt="Cueva de las Manos" loading="lazy">
-      <div class="exc-mini-overlay"><span class="exc-mini-name">Cueva de las Manos</span></div>
-    </a>
-    <a href="excursion-capillas-de-marmol.html" class="exc-mini">
-      <img src="assets/capillas.jpg" alt="Capillas de Mármol" loading="lazy">
-      <div class="exc-mini-overlay"><span class="exc-mini-name">Capillas de Mármol</span></div>
-    </a>
-    <a href="excursion-ruta41-lago-posadas.html" class="exc-mini">
-      <img src="assets/posadas_zoyen.jpg" alt="Lago Posadas" loading="lazy">
-      <div class="exc-mini-overlay"><span class="exc-mini-name">Ruta 41 + Lago Posadas</span></div>
-    </a>
-    <a href="excursion-monte-zeballos.html" class="exc-mini">
-      <img src="assets/ruta41_zoyen.jpg" alt="Monte Zeballos" loading="lazy">
-      <div class="exc-mini-overlay"><span class="exc-mini-name">Ruta 41 · Monte Zeballos</span></div>
-    </a>
-    <a href="excursion-alero-charcamata.html" class="exc-mini">
-      <img src="assets/alerocharca_zoyen.jpg" alt="Alero Charcamata" loading="lazy">
-      <div class="exc-mini-overlay"><span class="exc-mini-name">Alero Charcamata</span></div>
-    </a>
-    <a href="excursion-parque-patagonia.html" class="exc-mini">
-      <img src="assets/pps.jpg" alt="Parque Patagonia" loading="lazy">
-      <div class="exc-mini-overlay"><span class="exc-mini-name">Parque Patagonia</span></div>
-    </a>
+    <div class="breadcrumb"><a href="index.html" data-i18n="bread_inicio">Inicio</a> / <a href="index.html#tours"><span data-i18n="bread_tours">Tours de Autor</span></a> / <span>Patagonia Inédita</span></div>
   </div>
 </section>
 
-<footer id="footer">
+<!-- OVERVIEW STRIP -->
+<div class="overview-strip">
+  <div class="overview-inner">
+    <div class="ov-item"><div class="ov-num">6</div><div class="ov-lbl">Días</div></div>
+    <div class="ov-sep"></div>
+    <div class="ov-item"><div class="ov-num">5</div><div class="ov-lbl">Noches</div></div>
+    <div class="ov-sep"></div>
+    <div class="ov-item"><div class="ov-num">5</div><div class="ov-lbl">Destinos</div></div>
+    <div class="ov-sep"></div>
+    <div class="ov-item"><div class="ov-num">2</div><div class="ov-lbl">Países</div></div>
+    <div class="ov-sep"></div>
+    <div class="ov-item"><div class="ov-num">14</div><div class="ov-lbl">Plazas máx.</div></div>
+    <div class="ov-sep"></div>
+    <div class="ov-item" style="text-align:left;">
+      <a href="index.html#reservar" style="background:var(--ember);color:#fff;padding:.7rem 1.8rem;border-radius:2px;text-decoration:none;font-size:.82rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;transition:background .2s;display:inline-block;" onmouseover="this.style.background='#b8621e'" onmouseout="this.style.background='#d4772a'">Reservar lugar</a>
+    </div>
+  </div>
+</div>
+
+<!-- INTRO -->
+<section class="tour-intro">
+  <div class="tour-intro-inner">
+    <div class="tour-intro-text reveal">
+      <p class="eyebrow">Descripción del tour</p>
+      <h2 class="section-title">Una semana que <em>transforma</em></h2>
+      <p><strong>Patagonia Inédita</strong> es una experiencia de 6 días / 5 noches que comienza en el aeropuerto de Comodoro Rivadavia y conecta, en minibús privado, algunos de los paisajes más impactantes del noroeste de Santa Cruz y la Carretera Austral chilena.</p>
+      <p>El recorrido incluye Perito Moreno, Cueva de las Manos, Parque Patagonia, Los Antiguos, Ruta Escénica 41, Estancia La Ascensión, Confluencia de los ríos Baker y Neff, Lago General Carrera, Puerto Río Tranquilo y la navegación a las Capillas y Catedrales de Mármol.</p>
+      <p>La propuesta combina traslados organizados, guía especializado, alojamientos seleccionados y almuerzos incluidos según la logística de cada jornada.</p>
+
+      <div class="inc-grid">
+        <div class="inc-card yes">
+          <h4>✓ Incluye</h4>
+          <ul class="inc-list">
+            <li>Traslados en minibús privado desde y hacia el aeropuerto de Comodoro Rivadavia</li>
+            <li>4 noches de alojamiento con desayuno en Perito Moreno</li>
+            <li>1 noche de alojamiento en Puerto Río Tranquilo, Chile</li>
+            <li>Excursiones a Parque Patagonia, Cueva de las Manos, Los Antiguos, Ruta Escénica 41, Carretera Austral, Confluencia Río Baker y Capillas de Mármol</li>
+            <li>Todos los almuerzos incluidos, con viandas o restaurante según itinerario y logística</li>
+            <li>Guía especializado durante las excursiones</li>
+          </ul>
+        </div>
+        <div class="inc-card no">
+          <h4>✕ No incluye</h4>
+          <ul class="inc-list">
+            <li>Vuelos aéreos</li>
+            <li>Cenas, excepto la cena despedida indicada en el itinerario</li>
+            <li>Trámites migratorios personales</li>
+            <li>Gastos personales</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="tour-highlights reveal reveal-delay">
+      <h3>Highlights del tour</h3>
+      <ul class="hl-list">
+        <li><strong>Cueva de las Manos</strong> – excursión de día completo con guía especializado, vianda, entrada incluida y visita al sitio arqueológico.</li>
+        <li><strong>Parque Patagonia</strong> – recorrido incluido junto a Cueva de las Manos, en una jornada completa desde Perito Moreno.</li>
+        <li><strong>Los Antiguos</strong> – visita a chacras, miradores y el Lago Buenos Aires.</li>
+        <li><strong>Ruta Escénica 41</strong> – recorrido panorámico junto a Estancia La Ascensión.</li>
+        <li><strong>Carretera Austral</strong> – cruce a Chile, vistas del Lago General Carrera y Confluencia de los ríos Baker y Neff.</li>
+        <li><strong>Puerto Río Tranquilo</strong> – noche de alojamiento en Chile durante el tramo de Carretera Austral.</li>
+        <li><strong>Capillas y Catedrales de Mármol</strong> – navegación por una de las formaciones naturales más buscadas de la Patagonia chilena.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ITINERARIO -->
+<section class="itinerario-section">
+  <div class="itinerario-inner">
+    <div class="itinerario-head">
+    <div class="reveal">
+      <p class="eyebrow">Día a día</p>
+      <h2 class="section-title">El <em>itinerario</em></h2>
+    </div>
+    <a class="download-pdf-btn" href="assets/pdfs/patagonia-inedita-itinerario.pdf" download>Descargar itinerario</a>
+  </div>
+
+    <!-- DA 1 -->
+    <div class="dia-block reveal">
+      <div class="dia-num"><div class="dia-circle">1</div></div>
+      <div class="dia-content">
+        <div class="dia-label">Día 1 · Llegada</div>
+        <h3 class="dia-title">Comodoro Rivadavia → <em>Perito Moreno</em></h3>
+        <p class="dia-desc">Arribo al aeropuerto de Comodoro Rivadavia, punto de partida de la experiencia. Recepción de los pasajeros y traslado en minibús privado hacia Perito Moreno. Según el horario de llegada, tarde libre para visitar el <strong>Museo Arqueológico Carlos Gradín</strong>. Alojamiento en el hotel asignado.</p>
+        <div class="dia-chips">
+          <span class="dia-chip">Aeropuerto Comodoro Rivadavia</span>
+          <span class="dia-chip">Traslado privado</span>
+          <span class="dia-chip">Alojamiento en Perito Moreno</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DA 2 -->
+    <div class="dia-block reveal">
+      <div class="dia-num"><div class="dia-circle">2</div></div>
+      <div class="dia-content">
+        <div class="dia-label">Día 2 · Excursión día entero</div>
+        <h3 class="dia-title"><em>Cueva de las Manos</em> · Parque Patagonia</h3>
+        <p class="dia-desc">Excursión de día completo, de 9 a 17 hs, a <strong>Cueva de las Manos</strong> y <strong>Parque Patagonia</strong>. La salida incluye vianda para el almuerzo, entrada al sitio, traslado en minibús y guía especializado durante el recorrido.</p>
+        <img class="dia-img" src="assets/cuevas_zoyen.jpg" alt="Cueva de las Manos">
+        <div class="dia-chips">
+          <span class="dia-chip">Cueva de las Manos</span>
+          <span class="dia-chip">Parque Patagonia</span>
+          <span class="dia-chip">Vianda y entrada incluidas</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DA 3 -->
+    <div class="dia-block reveal">
+      <div class="dia-num"><div class="dia-circle">3</div></div>
+      <div class="dia-content">
+        <div class="dia-label">Día 3 · Los Antiguos y Ruta Escénica 41</div>
+        <h3 class="dia-title"><em>Los Antiguos</em> · Lago Buenos Aires</h3>
+        <p class="dia-desc">Excursión de día entero a <strong>Los Antiguos</strong>, visitando chacras, miradores y el <strong>Lago Buenos Aires</strong>. El recorrido continúa por la <strong>Ruta Escénica 41</strong> y la <strong>Estancia La Ascensión</strong>. Incluye almuerzo, traslado y guía. Regreso al hotel en Perito Moreno.</p>
+        <img class="dia-img" src="assets/posadas_zoyen.jpg" alt="Ruta Escénica 41 y Los Antiguos">
+        <div class="dia-chips">
+          <span class="dia-chip">Los Antiguos</span>
+          <span class="dia-chip">Ruta Escénica 41</span>
+          <span class="dia-chip">Estancia La Ascensión</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DA 4 -->
+    <div class="dia-block reveal">
+      <div class="dia-num"><div class="dia-circle">4</div></div>
+      <div class="dia-content">
+        <div class="dia-label">Día 4 · Cruce internacional</div>
+        <h3 class="dia-title">Carretera Austral · <em>Puerto Río Tranquilo</em></h3>
+        <p class="dia-desc">Luego del desayuno, salida hacia la frontera con Chile para realizar aduana y continuar hacia la <strong>Carretera Austral</strong>. Durante la jornada se recorre la <strong>Confluencia del Río Baker y Neff</strong> y las vistas del <strong>Lago General Carrera</strong>. Almuerzo en un fundo chileno y llegada al atardecer a <strong>Puerto Río Tranquilo</strong> para alojamiento.</p>
+        <div class="dia-chips">
+          <span class="dia-chip">Frontera con Chile</span>
+          <span class="dia-chip">Confluencia Baker y Neff</span>
+          <span class="dia-chip">Puerto Río Tranquilo</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DA 5 -->
+    <div class="dia-block reveal">
+      <div class="dia-num"><div class="dia-circle">5</div></div>
+      <div class="dia-content">
+        <div class="dia-label">Día 5 · Navegación</div>
+        <h3 class="dia-title"><em>Capillas y Catedrales</em> de Mármol</h3>
+        <p class="dia-desc">Por la mañana, navegación a las <strong>Capillas y Catedrales de Mármol</strong>. Luego del almuerzo, regreso hacia la frontera argentina para llegar al atardecer. Alojamiento en Perito Moreno y <strong>cena despedida</strong>.</p>
+        <img class="dia-img" src="assets/capillas.jpg" alt="Capillas de Mármol Lago General Carrera">
+        <div class="dia-chips">
+          <span class="dia-chip">Capillas de Mármol</span>
+          <span class="dia-chip">Regreso a Argentina</span>
+          <span class="dia-chip">Cena despedida</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DA 6 -->
+    <div class="dia-block reveal">
+      <div class="dia-num"><div class="dia-circle">6</div></div>
+      <div class="dia-content">
+        <div class="dia-label">Día 6 · Regreso</div>
+        <h3 class="dia-title">Perito Moreno → <em>Comodoro Rivadavia</em></h3>
+        <p class="dia-desc">Mañana libre hasta la hora del traslado hacia el aeropuerto para tomar el vuelo de regreso a Comodoro Rivadavia. Fin de nuestros servicios.</p>
+        <div class="dia-chips">
+          <span class="dia-chip">Mañana libre</span>
+          <span class="dia-chip">Traslado al aeropuerto</span>
+          <span class="dia-chip">Fin de servicios</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERA -->
+<section class="galeria-section">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="reveal">
+      <p class="eyebrow">Galería de imágenes</p>
+      <h2 class="section-title">Lo que vas a <em>ver</em></h2>
+    </div>
+    <div class="galeria-grid">
+      <img src="assets/full_inedita.jpg" alt="Patagonia Inédita panorámica" class="reveal">
+      <img src="assets/posadas_zoyen.jpg" alt="Lago Posadas" class="reveal reveal-delay">
+      <img src="assets/cuevas_zoyen.jpg" alt="Cueva de las Manos" class="reveal">
+      <img src="assets/capillas.jpg" alt="Capillas de Mármol" class="reveal reveal-delay">
+      <img src="assets/ruta41_zoyen.jpg" alt="Ruta 41 Monte Zeballos" class="reveal reveal-delay2">
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="tour-cta">
+  <div class="reveal">
+    <p class="eyebrow" style="color:var(--sand);display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:.5rem;">
+      <span style="width:22px;height:1px;background:var(--sand);display:inline-block;"></span>
+      Te sums
+      <span style="width:22px;height:1px;background:var(--sand);display:inline-block;"></span>
+    </p>
+    <h2>Reservá tu lugar en <em>Patagonia Inédita</em></h2>
+    <p>Los grupos son pequeños y los lugares se agotan rápido. Asegurá el tuyo consultando disponibilidad.</p>
+    <div class="cta-btns">
+      <a href="index.html#reservar" class="cta-btn-p">Reservar ahora</a>
+      <a href="https://wa.me/5492974432855" class="cta-btn-g" target="_blank" rel="noopener" data-i18n="sidebar_wa">Consultar por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
   <div class="footer-top">
     <div>
       <div class="footer-brand-wrap">
         <svg class="footer-emblem" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="0.8"/>
   <defs><linearGradient id="ft-gl" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(255,255,255,0.95)"/><stop offset="100%" stop-color="rgba(182,196,212,0.82)"/></linearGradient>
 <linearGradient id="ft-gd" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="rgba(102,116,132,0.9)"/><stop offset="100%" stop-color="rgba(62,76,92,0.93)"/></linearGradient></defs>
-  <g class="ft-ring-anim"><circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="0.8"/></g>
-  <g class="ft-rose-anim">
 <circle cx="50" cy="50" r="25.31" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.43"/>
+<circle cx="50" cy="50" r="22.04" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="0.24"/>
 <polygon points="50.0,22.65 46.33,50.0 50,50" fill="url(#ft-gl)"/>
 <polygon points="50.0,22.65 53.67,50.0 50,50" fill="url(#ft-gd)"/>
+<polygon points="50.0,19.79 48.57,22.65 51.43,22.65" fill="rgba(255,255,255,0.95)"/>
+<polygon points="62.99,37.01 48.27,48.27 50,50" fill="url(#ft-gl)"/>
+<polygon points="62.99,37.01 51.73,51.73 50,50" fill="url(#ft-gd)"/>
 <polygon points="77.35,50.0 50.0,46.33 50,50" fill="url(#ft-gl)"/>
 <polygon points="77.35,50.0 50.0,53.67 50,50" fill="url(#ft-gd)"/>
+<polygon points="62.99,62.99 51.73,48.27 50,50" fill="url(#ft-gl)"/>
+<polygon points="62.99,62.99 48.27,51.73 50,50" fill="url(#ft-gd)"/>
 <polygon points="50.0,77.35 53.67,50.0 50,50" fill="url(#ft-gl)"/>
 <polygon points="50.0,77.35 46.33,50.0 50,50" fill="url(#ft-gd)"/>
+<polygon points="37.01,62.99 51.73,51.73 50,50" fill="url(#ft-gl)"/>
+<polygon points="37.01,62.99 48.27,48.27 50,50" fill="url(#ft-gd)"/>
 <polygon points="22.65,50.0 50.0,53.67 50,50" fill="url(#ft-gl)"/>
 <polygon points="22.65,50.0 50.0,46.33 50,50" fill="url(#ft-gd)"/>
-  </g>
-  <circle cx="50" cy="50" r="3.06" fill="#d4772a"/>
-  <circle cx="50" cy="50" r="1.84" fill="#1a1410"/>
-  <circle cx="50" cy="50" r="0.9" fill="#d4772a"/>
+<polygon points="37.01,37.01 48.27,51.73 50,50" fill="url(#ft-gl)"/>
+<polygon points="37.01,37.01 51.73,48.27 50,50" fill="url(#ft-gd)"/>
+<line x1="50.0" y1="22.65" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
+<line x1="62.99" y1="37.01" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
+<line x1="77.35" y1="50.0" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
+<line x1="62.99" y1="62.99" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
+<line x1="50.0" y1="77.35" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
+<line x1="37.01" y1="62.99" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
+<line x1="22.65" y1="50.0" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
+<line x1="37.01" y1="37.01" x2="50" y2="50" stroke="rgba(0,0,0,0.18)" stroke-width="0.12"/>
+<circle cx="50" cy="50" r="3.06" fill="#d4772a"/>
+<circle cx="50" cy="50" r="1.84" fill="#1a1410"/>
+<circle cx="50" cy="50" r="0.9" fill="#d4772a"/>
 </svg>
         <div class="footer-brand"><span class="footer-brand-zoyen">ZOYEN</span> <span>TURISMO</span></div>
       </div>
       <p class="footer-tagline">Agencia de Turismo en la Patagonia Argentina.<br>Legajo 15.625 · Perito Moreno, Santa Cruz.</p>
       <div class="socials">
-        <a href="https://www.instagram.com/turismozoyen/" class="social-btn" title="Instagram" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        </a>
-        <a href="https://www.facebook.com/turismozoyen" class="social-btn" title="Facebook" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-        </a>
-        <a href="https://www.youtube.com/channel/UCVuldIwQ74Pha-H0stMKoPg" class="social-btn" title="YouTube" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-        </a>
-        <a href="https://wa.me/5492974432855" class="social-btn" title="WhatsApp" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        </a>
+        <a href="https://www.instagram.com/turismozoyen/" class="social-btn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        <a href="https://wa.me/5492974432855" class="social-btn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
       </div>
     </div>
     <div>
-      <div class="footer-col-title" data-i18n="ft_exc">Excursiones</div>
+      <div class="footer-col-title">Tours de Autor</div>
       <ul class="footer-links">
-        <li><a href="excursion-cueva-de-las-manos.html">Cueva de las Manos</a></li>
-        <li><a href="excursion-alero-charcamata.html">Alero Charcamata</a></li>
-        <li><a href="excursion-ruta41-lago-posadas.html">Lago Posadas · Ruta 41</a></li>
-        <li><a href="excursion-monte-zeballos.html">Monte Zeballos</a></li>
-        <li><a href="excursion-parque-patagonia.html">Portal Cañadón Pinturas / PNP</a></li>
-        <li><a href="excursion-capillas-de-marmol.html">Capillas de Mármol</a></li>
+        <li><a href="patagonia-inedita.html">Patagonia Inédita (6 días)</a></li>
+        <li><a href="carretera-austral.html">Carretera Austral (8 días)</a></li>
       </ul>
     </div>
     <div>
       <div class="footer-col-title" data-i18n="ft_contact">Contacto</div>
       <div class="footer-contact">
-        <p>✉ zoyenperitomoreno@gmail.com</p>
-        <p>☎ +54 9 297 443-2855</p>
-        <p> Perito Moreno, Santa Cruz</p>
+        <strong>Perito Moreno, Santa Cruz</strong><br>
+        Patagonia Argentina<br><br>
+        <strong>WhatsApp</strong><br>
+        <a href="https://wa.me/5492974432855" style="color:var(--amber);">+54 9 297 443-2855</a>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <span><span data-i18n="ft_copy">© Zoyen Turismo 2025 · Todos los derechos reservados</span></span>
+    <span>© 2025 Zoyen Turismo · Legajo 15.625</span>
+    <a href="index.html">Volver al inicio</a>
   </div>
 </footer>
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
 <script id="zoyen-lang-script">
 (function(){
     var pageTranslations = {
@@ -1060,11 +1203,13 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
       'detail_guia': 'Specialist guide included',
       'detail_vehiculo': '4x4 vehicle or minibus',
       'detail_cupos': 'Limited spots',
-      'exc_tag': 'Full day',
-      'exc_title': 'Marble Cathedrals & Chapels',
-      'exc_eyebrow': 'Lake General Carrera · Chile',
-      'main_h2': 'Navigation on <em>Lake General Carrera</em>',
-      'sidebar_wa_msg': 'Hello! I want information about the Marble Chapels excursion',
+      'hero_eyebrow': 'Author Tour · 6 days · 5 nights',
+      'hero_title': 'Unexplored <em>Patagonia</em>',
+      'main_h2_1': 'An <em>unique</em> journey through deep Patagonia',
+      'highlights_title': 'Tour highlights',
+      'itinerary_title': 'The <em>itinerary</em>',
+      'sidebar_wa_msg': 'Hello! I want information about the Patagonia Inédita tour',
+      'cta_btn': 'Book your spot',
     },
     pt: {
       'nav_home': 'Início',
@@ -1095,11 +1240,13 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
       'detail_guia': 'Guia especializado incluído',
       'detail_vehiculo': 'Veículo 4x4 ou minibus',
       'detail_cupos': 'Vagas limitadas',
-      'exc_tag': 'Dia completo',
-      'exc_title': 'Catedrais e Capelas de Mármore',
-      'exc_eyebrow': 'Lago General Carrera · Chile',
-      'main_h2': 'Navegação no <em>Lago General Carrera</em>',
-      'sidebar_wa_msg': 'Olá! Quero informações sobre a excursão Capelas de Mármore',
+      'hero_eyebrow': 'Tour de Autor · 6 dias · 5 noites',
+      'hero_title': 'Patagônia <em>Inédita</em>',
+      'main_h2_1': 'Uma jornada <em>única</em> pela Patagônia profunda',
+      'highlights_title': 'Destaques do tour',
+      'itinerary_title': 'O <em>itinerário</em>',
+      'sidebar_wa_msg': 'Olá! Quero informações sobre o tour Patagônia Inédita',
+      'cta_btn': 'Reserve seu lugar',
     },
     ko: {
       'nav_home': '홈',
@@ -1130,11 +1277,13 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
       'detail_guia': '전문 가드 함',
       'detail_vehiculo': '4x4 차량 는 미니버스',
       'detail_cupos': '제한 ',
-      'exc_tag': '하루 종',
-      'exc_title': '대리 성당 & 채플',
-      'exc_eyebrow': '헤네랄 카레 호수 · 칠레',
-      'main_h2': '<em>헤네랄 카레 호수</em> 항해',
-      'sidebar_wa_msg': '안녕하세요! 마블 채플 투어 정보를 합니다',
+      'hero_eyebrow': '오서 투어 · 6 · 5박',
+      'hero_title': '미지 <em>파타고니아</em>',
+      'main_h2_1': '깊 파타고니아를 통한 <em>특한</em> 여정',
+      'highlights_title': '투어 하트',
+      'itinerary_title': '<em>정</em>',
+      'sidebar_wa_msg': '안녕하세요! 파타고니아 네디타 투어 정보를 합니다',
+      'cta_btn': '리 예약하기',
     },
   };
   var currentLang = localStorage.getItem('zoyen_lang') || 'es';
@@ -1387,403 +1536,8 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
   else initCtaNudge();
 })();
 </script>
-<style id="zoyen-mobile-baseline-20260611">
-/* ZOYEN mobile baseline patch - 2026-06-11 */
-html,
-body {
-  max-width: 100%;
-  overflow-x: hidden;
-}
-*,
-*::before,
-*::after {
-  min-width: 0;
-}
-img,
-video,
-canvas,
-iframe,
-svg {
-  max-width: 100%;
-}
-img,
-video {
-  height: auto;
-}
-button,
-a,
-input,
-select,
-textarea {
-  max-width: 100%;
-}
-@media (max-width: 900px) {
-  html { font-size: 16px; }
-  body { width: 100%; }
-  body > nav:not(.breadcrumb):not(.mobile-drawer) {
-    display: flex !important;
-    grid-template-columns: none !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    gap: .6rem !important;
-    height: 60px !important;
-    padding: 0 max(14px, env(safe-area-inset-left)) 0 max(14px, env(safe-area-inset-right)) !important;
-  }
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo {
-    flex: 1 1 auto !important;
-    min-width: 0 !important;
-    max-width: calc(100vw - 126px) !important;
-    overflow: hidden !important;
-  }
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo-text,
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo-name {
-    min-width: 0 !important;
-  }
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-emblem {
-    width: 40px !important;
-    height: 40px !important;
-  }
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .z,
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .t {
-    font-size: .98rem !important;
-    letter-spacing: .075em !important;
-  }
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo sub,
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-links,
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-actions,
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-cta-btn,
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-contact-btn {
-    display: none !important;
-  }
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .lang-switcher {
-    display: block !important;
-    flex: 0 0 auto !important;
-    margin-left: auto !important;
-    justify-self: end !important;
-  }
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .lang-current {
-    min-width: 76px !important;
-    width: 76px !important;
-    height: 32px !important;
-    padding: 0 .45rem !important;
-    font-size: .57rem !important;
-    letter-spacing: .05em !important;
-  }
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .lang-menu {
-    left: auto !important;
-    right: 0 !important;
-    min-width: 150px !important;
-  }
-  .ham-btn { display: flex !important; }
-  .mobile-drawer { width: min(86vw, 340px) !important; max-width: 100vw !important; }
-  .drawer-overlay.open { display: block !important; }
-
-  .hero,
-  .page-hero,
-  .exc-hero {
-    height: auto !important;
-    min-height: min(760px, 100svh) !important;
-    padding-top: 60px !important;
-  }
-  .page-hero,
-  .exc-hero {
-    align-items: flex-end !important;
-    padding-bottom: 2.4rem !important;
-  }
-  .page-hero-content,
-  .exc-hero-content,
-  .slide-content {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-  }
-  .page-hero-title,
-  .exc-hero-title,
-  .slide-title,
-  .section-title {
-    overflow-wrap: anywhere;
-    word-break: normal;
-  }
-  .page-hero-title,
-  .exc-hero-title {
-    font-size: clamp(2rem, 11vw, 3.2rem) !important;
-    line-height: 1.02 !important;
-  }
-  .page-hero-eyebrow,
-  .exc-hero-kicker,
-  .eyebrow {
-    letter-spacing: .16em !important;
-  }
-
-  section,
-  .tour-intro,
-  .itinerario-section,
-  .galeria-section,
-  .tour-cta,
-  .nosotros-section,
-  .valores-section,
-  .equipo-section,
-  .exc-main,
-  .manifesto,
-  .tours,
-  .traslados,
-  #reservar {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-  }
-  .overview-strip,
-  .stats,
-  .banner-bar {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-  }
-  .overview-inner,
-  .stats,
-  .sbar-inner {
-    gap: 1rem !important;
-  }
-  .ov-sep,
-  .sbar-sep { display: none !important; }
-  .ov-item,
-  .sbar-item { flex: 1 1 42% !important; }
-
-  .tour-intro-inner,
-  .exc-body,
-  .nosotros-intro,
-  .equipo-content,
-  .res-grid,
-  .footer-top,
-  [style*="grid-template-columns"] {
-    grid-template-columns: 1fr !important;
-  }
-  .galeria-grid,
-  .exc-mini-grid,
-  .tours-grid,
-  .valores-grid,
-  .inc-grid,
-  .traslados,
-  [style*="repeat(3,1fr)"],
-  [style*="repeat(3, 1fr)"],
-  [style*="repeat(2,1fr)"],
-  [style*="repeat(2, 1fr)"] {
-    grid-template-columns: 1fr !important;
-  }
-  .galeria-grid img:first-child {
-    grid-column: auto !important;
-    aspect-ratio: 4 / 3 !important;
-  }
-  .dia-block {
-    grid-template-columns: 46px 1fr !important;
-  }
-  .dia-block:not(:last-child)::before {
-    left: 20px !important;
-  }
-  .dia-content {
-    padding-left: .8rem !important;
-  }
-  .dia-img { aspect-ratio: 4 / 3 !important; }
-  .cta-btns,
-  .hero-tags,
-  .footer-bottom,
-  .pago-actions,
-  .modal-actions {
-    flex-direction: column !important;
-    align-items: stretch !important;
-  }
-  .cta-btn-p,
-  .cta-btn-g,
-  .btn-reservar,
-  .download-pdf-btn,
-  .slide-btn,
-  .nav-cta,
-  .res-submit,
-  .pago-btn,
-  .modal-actions button,
-  .modal-actions a {
-    width: 100% !important;
-    justify-content: center !important;
-    text-align: center !important;
-  }
-  .exc-card,
-  .tour-highlights,
-  .inc-card,
-  .res-form-panel,
-  .res-seat-panel,
-  .admin-panel,
-  .modal-content,
-  .zoyi-panel {
-    max-width: calc(100vw - 2rem) !important;
-  }
-  .zoyi-widget {
-    right: 12px !important;
-    bottom: 12px !important;
-    max-width: calc(100vw - 24px) !important;
-  }
-  .zoyi-panel {
-    right: 0 !important;
-    width: calc(100vw - 24px) !important;
-  }
-  .wa {
-    right: 14px !important;
-    bottom: 14px !important;
-    width: 48px !important;
-    height: 48px !important;
-  }
-}
-@media (max-width: 430px) {
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo {
-    max-width: calc(100vw - 104px) !important;
-  }
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .lang-current {
-    min-width: 62px !important;
-    width: 62px !important;
-  }
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .z,
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .t {
-    font-size: .88rem !important;
-    letter-spacing: .055em !important;
-  }
-  .page-hero-title,
-  .exc-hero-title,
-  .slide-title {
-    font-size: clamp(1.75rem, 10.5vw, 2.7rem) !important;
-  }
-  .slide-emblem,
-  .emblem-3d,
-  .emblem-svg,
-  .emblem-text-path,
-  .emblem-text-inner {
-    width: min(245px, 76vw) !important;
-    height: min(245px, 76vw) !important;
-  }
-  .lent-fixed { width: min(310px, 84vw) !important; }
-  .lent-word { font-size: clamp(1.55rem, 8vw, 1.9rem) !important; }
-}
-
-/* Keep the closed mobile drawer fully outside the viewport. */
-@media (max-width: 900px) {
-  .mobile-drawer {
-    right: 0 !important;
-    left: auto !important;
-  }
-  .mobile-drawer:not(.open) {
-    transform: translate3d(110vw, 0, 0) !important;
-    visibility: hidden !important;
-    pointer-events: none !important;
-  }
-  .mobile-drawer.open {
-    transform: translate3d(0, 0, 0) !important;
-    visibility: visible !important;
-    pointer-events: auto !important;
-  }
-  .drawer-overlay:not(.open) {
-    display: none !important;
-    pointer-events: none !important;
-  }
-}
-/* Restore mobile drawer geometry after top-nav rules. */
-@media (max-width: 900px) {
-  .mobile-drawer {
-    position: fixed !important;
-    top: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    left: auto !important;
-    height: auto !important;
-    width: min(86vw, 340px) !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    justify-content: flex-start !important;
-    gap: 0 !important;
-    padding: 80px 2rem 2rem !important;
-    background: rgba(10,8,6,0.98) !important;
-  }
-  .mobile-drawer:not(.open) {
-    transform: translate3d(110vw, 0, 0) !important;
-    visibility: hidden !important;
-    pointer-events: none !important;
-  }
-  .mobile-drawer.open {
-    transform: translate3d(0, 0, 0) !important;
-    visibility: visible !important;
-    pointer-events: auto !important;
-  }
-}
-/* Hero titles must stay readable over photo backgrounds on mobile. */
-@media (max-width: 900px) {
-  .page-hero-content,
-  .exc-hero-content {
-    color: var(--cream) !important;
-    text-align: left !important;
-  }
-  .page-hero-title,
-  .exc-hero-title {
-    color: var(--cream) !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    text-align: left !important;
-    text-shadow: 0 2px 22px rgba(0,0,0,.62) !important;
-  }
-  .page-hero-title em,
-  .exc-hero-title em {
-    color: var(--sand) !important;
-  }
-  .exc-tag,
-  .hero-tag,
-  .page-hero-eyebrow {
-    max-width: 100% !important;
-  }
-}
-/* Correct mobile hero layer order: image, overlay, then readable text. */
-@media (max-width: 900px) {
-  .page-hero-bg,
-  .exc-hero-bg {
-    z-index: 0 !important;
-  }
-  .page-hero-overlay,
-  .exc-hero-overlay {
-    z-index: 1 !important;
-    pointer-events: none !important;
-  }
-  .page-hero-content,
-  .exc-hero-content,
-  .page-hero-title,
-  .exc-hero-title,
-  .hero-tags,
-  .breadcrumb {
-    position: relative !important;
-    z-index: 2 !important;
-  }
-  .exc-hero {
-    align-items: stretch !important;
-    justify-content: flex-end !important;
-  }
-  .exc-hero-title {
-    display: block !important;
-    margin: 0 1rem 2.2rem !important;
-  }
-}
-/* Full-width mobile excursion titles. */
-@media (max-width: 900px) {
-  .exc-hero > .exc-hero-title,
-  .exc-hero-title {
-    flex: 0 0 calc(100% - 2rem) !important;
-    width: calc(100% - 2rem) !important;
-    max-width: calc(100% - 2rem) !important;
-    margin: 0 1rem 2.2rem !important;
-    align-self: center !important;
-    text-align: left !important;
-    white-space: normal !important;
-  }
-}</style>
 </body>
 </html>
-
-
-
-
 
 
 
