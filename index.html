@@ -527,6 +527,178 @@ nav {
 }
 
 /* ======================================
+   HAMBURGER BUTTON
+====================================== */
+.ham-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  margin-left: auto;
+  flex-shrink: 0;
+  z-index: 950;
+  -webkit-tap-highlight-color: transparent;
+}
+.ham-btn span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--cream);
+  border-radius: 2px;
+  transition: transform .3s ease, opacity .2s ease, width .3s ease;
+  transform-origin: center;
+}
+.ham-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.ham-btn.open span:nth-child(2) { opacity: 0; width: 0; }
+.ham-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ======================================
+   MOBILE DRAWER
+====================================== */
+.mobile-drawer {
+  display: none;
+  position: fixed;
+  top: 0; right: 0; bottom: 0;
+  width: min(320px, 88vw);
+  background: rgba(10,8,6,0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 940;
+  padding: 80px 2rem 2rem;
+  flex-direction: column;
+  gap: 0;
+  border-left: 1px solid rgba(212,119,42,0.18);
+  transform: translateX(100%);
+  transition: transform .35s cubic-bezier(.4,0,.2,1);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.mobile-drawer.open {
+  transform: translateX(0);
+}
+.mobile-drawer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 2rem;
+}
+.mobile-drawer-links li {
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.mobile-drawer-links a {
+  display: block;
+  padding: .95rem .2rem;
+  color: rgba(245,240,232,.82);
+  text-decoration: none;
+  font-family: 'Sora', sans-serif;
+  font-size: .82rem;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  transition: color .2s, padding-left .2s;
+}
+.mobile-drawer-links a:hover,
+.mobile-drawer-links a:active {
+  color: var(--ember);
+  padding-left: .6rem;
+}
+.mobile-drawer-cta {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  margin-top: .5rem;
+}
+.mobile-drawer-reservar {
+  display: block;
+  background: var(--ember);
+  color: var(--cream) !important;
+  text-align: center;
+  padding: .85rem 1.5rem;
+  font-family: 'Sora', sans-serif;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  border-radius: 1px;
+  transition: background .2s;
+  width: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+.mobile-drawer-reservar:hover { background: var(--ember-dim); }
+.mobile-drawer-wa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  padding: .8rem 1.5rem;
+  background: rgba(37,211,102,0.12);
+  border: 1px solid rgba(37,211,102,0.3);
+  border-radius: 1px;
+  color: #25d366 !important;
+  text-decoration: none;
+  font-family: 'Sora', sans-serif;
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  transition: background .2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.mobile-drawer-wa:hover { background: rgba(37,211,102,0.2); }
+.mobile-drawer-wa svg { width: 18px; height: 18px; fill: #25d366; flex-shrink: 0; }
+.drawer-lang {
+  margin-top: auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+.drawer-lang-btn {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(245,240,232,.7);
+  font-family: 'Sora', sans-serif;
+  font-size: .65rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: .4rem .7rem;
+  cursor: pointer;
+  border-radius: 1px;
+  transition: background .2s, color .2s, border-color .2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.drawer-lang-btn.active,
+.drawer-lang-btn:hover {
+  background: rgba(212,119,42,0.2);
+  border-color: rgba(212,119,42,0.5);
+  color: var(--ember);
+}
+
+/* Overlay oscuro detrás del drawer */
+.drawer-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 930;
+  background: rgba(0,0,0,0.55);
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+.drawer-overlay.open { opacity: 1; }
+
+/* ======================================
    MOBILE RESPONSIVE – max 640px
 ====================================== */
 @media (max-width: 640px) {
@@ -538,13 +710,20 @@ nav {
   }
   .nav-links { display: none; }
   .nav-cta-btn { display: none; }
-  .lang-switcher {
-    margin-left: auto;
-    justify-self: end;
+  .nav-contact-btn { display: none; }
+  .ham-btn { display: flex; }
+  .mobile-drawer { display: flex; }
+  /* El lang-switcher se oculta en mobile — el drawer tiene sus propios botones */
+  .lang-switcher { display: none; }
+  /* Nav: flex en mobile, logo izq / hamburger der */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    padding: 0 1rem;
   }
-  .lang-current { min-width: 104px; height: 32px; padding: 0 .55rem; font-size: .58rem; }
-  .lang-menu { left: auto; right: 0; min-width: 150px; }
-  .lang-btn { padding: .52rem .58rem; font-size: .64rem; }
+  .nav-actions { display: none; }
   .nav-emblem { width: 40px; height: 40px; }
   .nav-logo { gap: 6px; }
   .nav-logo .z,
@@ -2478,6 +2657,39 @@ img { background: #d8d0c3; }
     <li><a href="nosotros.html" data-i18n="nav_nosotros">Quiénes somos</a></li>
   </ul>
   <div class="nav-actions"><button class="nav-cta-btn" id="btnReservarNav" onclick="abrirModalReservar()" data-i18n="nav_reservar">Reservar</button><a href="https://wa.me/5492974432855" class="nav-contact-btn" target="_blank" rel="noopener" aria-label="Contactarse por WhatsApp" data-i18n-aria-label="nav_contact"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span data-i18n="nav_contact">Contactarse</span></a></div>
+
+  <!-- Botón hamburguesa (solo mobile) -->
+  <button class="ham-btn" id="hamBtn" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Overlay oscuro -->
+<div class="drawer-overlay" id="drawerOverlay"></div>
+
+<!-- Drawer mobile -->
+<nav class="mobile-drawer" id="mobileDrawer" aria-label="Menú mobile">
+  <ul class="mobile-drawer-links">
+    <li><a href="#" data-i18n="nav_home" onclick="closeDrawer()">Home</a></li>
+    <li><a href="#excursiones" data-i18n="nav_excursiones" onclick="closeDrawer()">Excursiones</a></li>
+    <li><a href="#tours" data-i18n="nav_tours" onclick="closeDrawer()">Tours de Autor</a></li>
+    <li><a href="#bienestar" data-i18n="nav_bienestar" onclick="closeDrawer()">Turismo de Bienestar</a></li>
+    <li><a href="#ubicacion" data-i18n="nav_ubicacion" onclick="closeDrawer()">Ubicación y Contacto</a></li>
+    <li><a href="nosotros.html" data-i18n="nav_nosotros">Quiénes somos</a></li>
+  </ul>
+  <div class="mobile-drawer-cta">
+    <button class="mobile-drawer-reservar" onclick="closeDrawer(); abrirModalReservar();" data-i18n="nav_reservar">Reservar</button>
+    <a href="https://wa.me/5492974432855" class="mobile-drawer-wa" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <span>WhatsApp</span>
+    </a>
+  </div>
+  <div class="drawer-lang">
+    <button class="drawer-lang-btn active" data-lang="es" onclick="setDrawerLang(this,'es')">ES</button>
+    <button class="drawer-lang-btn" data-lang="en" onclick="setDrawerLang(this,'en')">EN</button>
+    <button class="drawer-lang-btn" data-lang="pt" onclick="setDrawerLang(this,'pt')">PT</button>
+    <button class="drawer-lang-btn" data-lang="ko" onclick="setDrawerLang(this,'ko')">KO</button>
+  </div>
 </nav>
 
 <!-- HERO SLIDER -->
@@ -4329,6 +4541,65 @@ revEls.forEach(el => obs.observe(el));
     setTimeout(() => { tip.style.opacity='0'; tip.style.transition='opacity .6s'; setTimeout(()=>tip.remove(),700); }, 4000);
   }, 2000);
 
+})();
+
+// ── HAMBURGER DRAWER ────────────────────────────────────────────
+(function() {
+  const hamBtn      = document.getElementById('hamBtn');
+  const drawer      = document.getElementById('mobileDrawer');
+  const overlay     = document.getElementById('drawerOverlay');
+  if (!hamBtn || !drawer || !overlay) return;
+
+  function openDrawer() {
+    drawer.classList.add('open');
+    overlay.classList.add('open');
+    hamBtn.classList.add('open');
+    hamBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    overlay.style.display = 'block';
+  }
+
+  window.closeDrawer = function() {
+    drawer.classList.remove('open');
+    overlay.classList.remove('open');
+    hamBtn.classList.remove('open');
+    hamBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    setTimeout(() => { overlay.style.display = 'none'; }, 350);
+  };
+
+  hamBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (drawer.classList.contains('open')) closeDrawer();
+    else openDrawer();
+  });
+
+  overlay.addEventListener('click', closeDrawer);
+
+  // Cerrar con Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && drawer.classList.contains('open')) closeDrawer();
+  });
+
+  // Sincronizar botones de idioma del drawer con el switcher principal
+  window.setDrawerLang = function(btn, lang) {
+    // Activar en drawer
+    document.querySelectorAll('.drawer-lang-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    // Disparar cambio en el switcher principal
+    const mainBtn = document.querySelector(`.lang-btn[data-lang="${lang}"]`);
+    if (mainBtn) mainBtn.click();
+  };
+
+  // Cuando el idioma principal cambia, sincronizar drawer
+  document.querySelectorAll('.lang-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      const lang = btn.dataset.lang;
+      document.querySelectorAll('.drawer-lang-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.lang === lang);
+      });
+    });
+  });
 })();
 </script>
 
