@@ -6,6 +6,29 @@
 <title>Zoyen Turismo – Agencia de viajes en Patagonia</title>
 <link href="https://fonts.googleapis.com/css2family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
+/* MOBILE CRITICAL OVERRIDE */
+@media (max-width: 900px) {
+  body > nav {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    height: 60px !important;
+    padding: 0 1rem !important;
+    grid-template-columns: unset !important;
+  }
+  body > nav .nav-links,
+  body > nav .nav-actions,
+  body > nav .lang-switcher {
+    display: none !important;
+  }
+  body > nav .ham-btn {
+    display: flex !important;
+    flex-shrink: 0 !important;
+  }
+}
+</style>
+<style>
 /* Ajuste global de tipografa */
 html { font-size: 18px; }
 
@@ -665,13 +688,6 @@ nav {
   .nav-actions { display: none !important; }
   .ham-btn { display: flex; }
   .mobile-drawer { display: flex; }
-  .lang-switcher {
-    margin-left: auto;
-    justify-self: end;
-  }
-  .lang-current { min-width: 104px; height: 32px; padding: 0 .55rem; font-size: .58rem; }
-  .lang-menu { left: auto; right: 0; min-width: 150px; }
-  .lang-btn { padding: .52rem .58rem; font-size: .64rem; }
   .nav-emblem { width: 40px; height: 40px; }
   .nav-logo { gap: 6px; }
   .nav-logo .z,
