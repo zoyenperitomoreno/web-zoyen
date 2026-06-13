@@ -2514,20 +2514,175 @@ section[id] {
 }
 </style>
 
-<style id="zoyen-nav-cta-cleanup">
-/* Limpia el globo que quedaba debajo de Contactarse */
+<style id="zoyen-nav-cta-attention">
+/* CTA visible en secciones comerciales: Excursiones y Tours */
+body > nav .nav-actions.cta-zone,
+body > nav .nav-actions.cta-nudge,
+body > nav .nav-actions.cta-nudge-strong {
+  isolation: isolate !important;
+}
+body > nav .nav-actions.cta-zone::before,
 body > nav .nav-actions.cta-nudge::before,
-body > nav .nav-actions.cta-nudge::after {
-  content: none !important;
-  display: none !important;
+body > nav .nav-actions.cta-nudge-strong::before {
+  content: 'Reservá tu lugar' !important;
+  position: absolute !important;
+  right: 0 !important;
+  bottom: calc(100% + 7px) !important;
+  top: auto !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: .32rem .62rem !important;
+  border: 1px solid rgba(212,119,42,.58) !important;
+  border-radius: 2px !important;
+  background: linear-gradient(135deg, rgba(22,15,10,.96), rgba(70,38,15,.92)) !important;
+  color: var(--cream, #f5f0e8) !important;
+  font-family: 'Sora', sans-serif !important;
+  font-size: .56rem !important;
+  font-weight: 800 !important;
+  letter-spacing: .13em !important;
+  line-height: 1 !important;
+  text-transform: uppercase !important;
+  white-space: nowrap !important;
+  box-shadow: 0 10px 24px rgba(0,0,0,.24) !important;
+  pointer-events: none !important;
+  opacity: .98 !important;
+  transform: translateY(0) !important;
+}
+body > nav .nav-actions.cta-nudge::before,
+body > nav .nav-actions.cta-nudge-strong::before {
+  animation: zoyenCtaHintPop 1.8s cubic-bezier(.2,.82,.2,1) both !important;
+}
+body > nav .nav-actions.cta-zone .nav-cta-btn,
+body > nav .nav-actions.cta-nudge .nav-cta-btn,
+body > nav .nav-actions.cta-nudge-strong .nav-cta-btn {
+  background-image: linear-gradient(110deg, var(--ember, #d4772a) 0%, var(--ember, #d4772a) 36%, rgba(255,255,255,.28) 50%, var(--ember, #d4772a) 64%, var(--ember, #d4772a) 100%) !important;
+  background-size: 240% 100% !important;
+  box-shadow: 0 0 0 1px rgba(212,119,42,.34), 0 8px 22px rgba(212,119,42,.22) !important;
+  animation: zoyenCtaReserveGlow 2.4s ease-in-out infinite, zoyenCtaShimmer 3.2s linear infinite !important;
+}
+body > nav .nav-actions.cta-zone .nav-contact-btn,
+body > nav .nav-actions.cta-nudge .nav-contact-btn,
+body > nav .nav-actions.cta-nudge-strong .nav-contact-btn {
+  background-image: linear-gradient(110deg, rgba(37,211,102,.12) 0%, rgba(37,211,102,.12) 36%, rgba(255,255,255,.22) 50%, rgba(37,211,102,.12) 64%, rgba(37,211,102,.12) 100%) !important;
+  background-size: 240% 100% !important;
+  box-shadow: 0 0 0 1px rgba(37,211,102,.35), 0 8px 22px rgba(37,211,102,.16) !important;
+  animation: zoyenCtaContactGlow 2.4s ease-in-out .22s infinite, zoyenCtaShimmer 3.2s linear .2s infinite !important;
+}
+body > nav .nav-actions.cta-nudge .nav-cta-btn,
+body > nav .nav-actions.cta-nudge-strong .nav-cta-btn {
+  animation: zoyenCtaReservePop 1.4s cubic-bezier(.2,.82,.2,1) both, zoyenCtaReserveGlow 2.4s ease-in-out 1.4s infinite, zoyenCtaShimmer 3.2s linear infinite !important;
 }
 body > nav .nav-actions.cta-nudge .nav-contact-btn,
-body > nav .nav-actions.cta-nudge .nav-cta-btn {
-  animation-name: none !important;
+body > nav .nav-actions.cta-nudge-strong .nav-contact-btn {
+  animation: zoyenCtaContactPop 1.35s cubic-bezier(.2,.82,.2,1) .08s both, zoyenCtaContactGlow 2.4s ease-in-out 1.35s infinite, zoyenCtaShimmer 3.2s linear .2s infinite !important;
+}
+@keyframes zoyenCtaHintPop {
+  0% { opacity: 0; transform: translateY(6px) scale(.96); }
+  18% { opacity: 1; transform: translateY(0) scale(1); }
+  76% { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: .98; transform: translateY(0) scale(1); }
+}
+@keyframes zoyenCtaReservePop {
+  0% { transform: scale(1); }
+  32% { transform: scale(1.055); }
+  58% { transform: scale(.985); }
+  100% { transform: scale(1); }
+}
+@keyframes zoyenCtaContactPop {
+  0% { transform: scale(1); }
+  34% { transform: scale(1.05); }
+  60% { transform: scale(.988); }
+  100% { transform: scale(1); }
+}
+@keyframes zoyenCtaReserveGlow {
+  0%, 100% { box-shadow: 0 0 0 1px rgba(212,119,42,.30), 0 8px 20px rgba(212,119,42,.16); }
+  50% { box-shadow: 0 0 0 3px rgba(212,119,42,.16), 0 12px 28px rgba(212,119,42,.34); }
+}
+@keyframes zoyenCtaContactGlow {
+  0%, 100% { box-shadow: 0 0 0 1px rgba(37,211,102,.28), 0 8px 20px rgba(37,211,102,.12); }
+  50% { box-shadow: 0 0 0 3px rgba(37,211,102,.15), 0 12px 28px rgba(37,211,102,.28); }
+}
+@keyframes zoyenCtaShimmer {
+  0% { background-position: 180% center; }
+  100% { background-position: -180% center; }
+}
+@media (max-width: 960px) {
+  body > nav .nav-actions.cta-zone::before,
+  body > nav .nav-actions.cta-nudge::before,
+  body > nav .nav-actions.cta-nudge-strong::before {
+    display: none !important;
+  }
+}
+</style>
+
+<style id="zoyen-whatsapp-sidebar-cta">
+/* Botones laterales de consulta por WhatsApp */
+a.btn-reservar[href*="wa.me"],
+a.cta-btn-g[href*="wa.me"] {
+  position: relative !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: .62rem !important;
+  width: 100% !important;
+  min-height: 54px !important;
+  padding: .85rem 1.25rem !important;
+  border: 1px solid rgba(37, 211, 102, .72) !important;
+  border-radius: 3px !important;
+  background: linear-gradient(135deg, #25d366 0%, #16a852 100%) !important;
+  color: #102116 !important;
+  font-family: 'Sora', sans-serif !important;
+  font-size: .76rem !important;
+  font-weight: 850 !important;
+  letter-spacing: .14em !important;
+  line-height: 1.35 !important;
+  text-align: center !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+  box-shadow: 0 14px 28px rgba(37, 211, 102, .22), inset 0 1px 0 rgba(255,255,255,.22) !important;
+  overflow: hidden !important;
+}
+a.btn-reservar[href*="wa.me"]::before,
+a.cta-btn-g[href*="wa.me"]::before {
+  content: '' !important;
+  width: 22px !important;
+  height: 22px !important;
+  flex: 0 0 22px !important;
+  border-radius: 50% !important;
+  background-color: rgba(255,255,255,.96) !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: 14px 14px !important;
+  box-shadow: 0 0 0 3px rgba(255,255,255,.16) !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2325d366' d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z'/%3E%3C/svg%3E") !important;
+}
+a.btn-reservar[href*="wa.me"]::after,
+a.cta-btn-g[href*="wa.me"]::after {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(110deg, transparent 0%, transparent 38%, rgba(255,255,255,.28) 50%, transparent 62%, transparent 100%) !important;
+  transform: translateX(-120%) !important;
+  animation: zoyenWhatsAppSheen 3.2s ease-in-out infinite !important;
+  pointer-events: none !important;
+}
+a.btn-reservar[href*="wa.me"]:hover,
+a.cta-btn-g[href*="wa.me"]:hover {
+  background: linear-gradient(135deg, #2ee374 0%, #1bb95d 100%) !important;
+  border-color: rgba(78, 239, 139, .95) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 18px 34px rgba(37, 211, 102, .28), inset 0 1px 0 rgba(255,255,255,.25) !important;
+}
+@keyframes zoyenWhatsAppSheen {
+  0%, 42% { transform: translateX(-120%); }
+  72%, 100% { transform: translateX(120%); }
 }
 </style>
 </body>
 </html>
+
+
 
 
 
