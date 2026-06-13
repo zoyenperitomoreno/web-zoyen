@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Parque Nacional Patagonia – Zoyen Turismo</title>
+<title>Ruta 41 · Monte Zeballos – Zoyen Turismo</title>
 <link href="https://fonts.googleapis.com/css2family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* Ajuste global de tipografa */
@@ -77,7 +77,7 @@ body > nav:not(.breadcrumb):not(.mobile-drawer) {
 }
 .exc-hero-bg {
   position: absolute; inset: 0;
-  background-image: url('assets/pps.jpg');
+  background-image: url('assets/ruta41_zoyen.jpg');
   background-size: cover; background-position: center;
 }
 .exc-hero-overlay {
@@ -813,12 +813,12 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
   <div class="exc-hero-overlay"></div>
   <div class="exc-hero-content">
     <div class="exc-tag"><span data-i18n="exc_tag"></div></span></div>
-    <h1 class="exc-hero-title" data-i18n="exc_title">Parque Nacional Patagonia</h1>
+    <h1 class="exc-hero-title" data-i18n="exc_title">Ruta 41 · Monte Zeballos</h1>
   </div>
 </div>
 
 <style>
-.exc-hero-bg { background-image: url('assets/pps.jpg'); }
+.exc-hero-bg { background-image: url('assets/ruta41_zoyen.jpg'); }
 </style>
 
 <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -826,41 +826,37 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
   <span>›</span>
   <a href="index.html#excursiones"><span data-i18n="bread_exc">Excursiones</span></a>
   <span>›</span>
-  <span style="color:var(--sand)">Parque Nacional Patagonia</span>
+  <span style="color:var(--sand)">Ruta 41 · Monte Zeballos</span>
 </nav>
 
 <div class="exc-body">
   <main class="exc-main">
     
-<h2><em>Tierra de Colores</em> + Centro de Interpretación y Planetario</h2>
-<p>En esta excursión al Parque Patagonia proponemos un recorrido por todo su camino interno visitando las Tierras de Colores, el paisaje estepario con gran cantidad de fauna autóctona y el Cañadón del Río Pinturas.</p>
-<p>Recientemente se inauguró un <strong>Planetario y observatorio</strong> que visitaremos en el camino. Recorrido ideal para realizar por la tarde.</p>
-<ul>
-  <li><strong>Salida:</strong> 14 hs desde Perito Moreno</li>
-  <li><strong>Incluye:</strong> traslado en 4x4 o minibus con guía</li>
-  <li><strong>Duración:</strong> 5/6 hs</li>
-  <li>No incluye almuerzo. Sí incluye merienda.</li>
-</ul>
+<h2>Transición de la <em>estepa al bosque andino patagónico</em></h2>
+<p>Esta excursión nos lleva desde los 400 metros en que estamos hasta los 1.500 metros s.n.m., viviendo la transición desde la Estepa Patagónica hasta el paisaje de Alta Montaña cuando llegamos a la zona del Portezuelo.</p>
+<p>Se observan gran cantidad de aves: avutardas, patos, águilas mora, cóndores y otras. Lagunas, arroyos, ríos, montañas multiformes y multicolores son el paisaje permanente y predominante durante todo el recorrido.</p>
 
 <h3>Itinerario</h3>
 <ul>
-  <li>Salida a las 14 horas desde Perito Moreno.</li>
-  <li>Recorremos la Ruta 40 hacia el sur para ingresar al <strong>PORTAL CAÑADÓN PINTURAS y PARQUE PATAGONIA</strong>, ubicado a 56 kilómetros (ex Estancia Los Toldos).</li>
-  <li>Dentro del Parque, primero el <strong>SENDERO TIERRA DE COLORES</strong> (dificultad media/baja, aprox. 1 hora 15 minutos). Las personas con mayor dificultad física pueden hacer solo la parte más sencilla.</li>
-  <li>Luego, por camino interno hasta el <strong>PLANETARIO</strong> (15 km). En el camino, guanacos, choiques y el paisaje estepario predominante.</li>
-  <li>El planetario ofrece muestras interactivas sobre Astronomía, Geología y restauración ecológica, además de un espacio para interpretar los cielos y las estrellas.</li>
-  <li>Continuamos unos kilómetros más hasta el <strong>borde del Cañadón del Río Pinturas</strong> para observar el paisaje frente a la Cueva de las Manos.</li>
-  <li>Regreso a Perito Moreno o Los Antiguos.</li>
-  <li>Desde Los Antiguos: aproximadamente 7 horas en total.</li>
+  <li>Salida desde Perito Moreno a las 08:00 hs (desde Los Antiguos, a las 09:00 hs).</li>
+  <li>Tomamos la Ruta Escénica 41, desde los 400 msnm hasta los 1.500 msnm de alta montaña.</li>
+  <li>Vistas de la actividad volcánica, la cordillera de los Andes, ríos, arroyos, aves, lagos y montañas.</li>
+  <li>Varias paradas fotográficas y pequeñas caminatas para contemplar la inmensidad del paisaje de montaña.</li>
+  <li>Almuerzo picnic a la orilla de un río.</li>
+  <li>Regreso a Los Antiguos alrededor de las 17:00 hs.</li>
 </ul>
 
-<div class="video-wrap">
-  <iframe src="https://www.youtube.com/embed/OcBxlJYSuo4playsinline=1" allowfullscreen loading="lazy" title="Parque Patagonia - Zoyen Turismo"></iframe>
-</div>
-
-<h2>Dos opciones de medio día</h2>
-<p><strong>Portal Cañadón Pinturas</strong> (5 hs, 45 km por Ruta 40): Sendero Tierra de Colores, Planetario, Museo y Sendero Los Balcones con vistas del Río Pinturas.</p>
-<p><strong>PNP / Estancia La Escensión</strong> (4 hs, 30 min al oeste): senderos con vistas del Lago Buenos Aires y casco de estancia con historia ganadera.</p>
+<h2>Precios</h2>
+<p><strong>Temporada 2025</strong> (vigencia hasta el 31 de diciembre)</p>
+<ul>
+  <li>En privado: $180.000 c/u</li>
+  <li>En salida grupal: $150.000 c/u</li>
+</ul>
+<p><strong>Temporada 2026</strong> (vigencia hasta el 30 de abril)</p>
+<ul>
+  <li>En privado: $200.000 c/u</li>
+  <li>En salida grupal: $170.000 c/u</li>
+</ul>
 
   </main>
   <aside class="exc-sidebar">
@@ -868,7 +864,7 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
       <div class="exc-card-head"><span data-i18n="sidebar_book">Reservar</span></div>
       <div class="exc-card-body">
         <p><span data-i18n="sidebar_book_desc">Consultanos disponibilidad y precios por WhatsApp o reservá directamente.</span></p>
-        <a href="https://wa.me/5492974432855?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20la%20excursi%C3%B3n%20Parque%20Nacional%20Patagonia" class="btn-reservar" target="_blank" rel="noopener" data-i18n="sidebar_wa">Consultar por WhatsApp</a>
+        <a href="https://wa.me/5492974432855?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20la%20excursi%C3%B3n%20Ruta%2041%20y%20Monte%20Zeballos" class="btn-reservar" target="_blank" rel="noopener" data-i18n="sidebar_wa">Consultar por WhatsApp</a>
       </div>
     </div>
     <div class="exc-card">
@@ -1056,11 +1052,11 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
       'detail_guia': 'Specialist guide included',
       'detail_vehiculo': '4x4 vehicle or minibus',
       'detail_cupos': 'Limited spots',
-      'exc_tag': 'Half day',
-      'exc_title': 'Patagonia National Park',
-      'exc_eyebrow': 'Patagonia National Park',
-      'main_h2': 'Two <em>half-day</em> options',
-      'sidebar_wa_msg': 'Hello! I want information about Patagonia National Park excursion',
+      'exc_tag': 'High altitude',
+      'exc_title': 'Route 41 · Mount Zeballos',
+      'exc_eyebrow': 'Scenic Route 41',
+      'main_h2': 'From steppe to <em>high mountain</em>',
+      'sidebar_wa_msg': 'Hello! I want information about the Mount Zeballos excursion',
     },
     pt: {
       'nav_home': 'Início',
@@ -1091,11 +1087,11 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
       'detail_guia': 'Guia especializado incluído',
       'detail_vehiculo': 'Veículo 4x4 ou minibus',
       'detail_cupos': 'Vagas limitadas',
-      'exc_tag': 'Meio dia',
-      'exc_title': 'Parque Nacional Patagônia',
-      'exc_eyebrow': 'Parque Nacional Patagônia',
-      'main_h2': 'Duas opções de <em>meio dia</em>',
-      'sidebar_wa_msg': 'Olá! Quero informações sobre a excursão Parque Patagônia',
+      'exc_tag': 'Alta montanha',
+      'exc_title': 'Rota 41 · Monte Zeballos',
+      'exc_eyebrow': 'Rota Cênica 41',
+      'main_h2': 'Da estepe à <em>alta montanha</em>',
+      'sidebar_wa_msg': 'Olá! Quero informações sobre a excursão Monte Zeballos',
     },
     ko: {
       'nav_home': '홈',
@@ -1126,11 +1122,11 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
       'detail_guia': '전문 가드 함',
       'detail_vehiculo': '4x4 차량 는 미니버스',
       'detail_cupos': '제한 ',
-      'exc_tag': '반나절',
-      'exc_title': '파타고니아 국립공',
-      'exc_eyebrow': '파타고니아 국립공',
-      'main_h2': ' 가지 <em>반나절</em> 옵션',
-      'sidebar_wa_msg': '안녕하세요! 파타고니아 국립공 투어 정보를 합니다',
+      'exc_tag': '고산 지대',
+      'exc_title': '41번 로 · 세바요스 산',
+      'exc_eyebrow': '경치 좋 41번 로',
+      'main_h2': '초서 <em>고산</em>으로',
+      'sidebar_wa_msg': '안녕하세요! 세바요스 산 투어 정보를 합니다',
     },
   };
   var currentLang = localStorage.getItem('zoyen_lang') || 'es';
@@ -1774,452 +1770,8 @@ textarea {
     white-space: normal !important;
   }
 }</style>
-
-<style id="zoyen-mobile-nav-fix-20260611">
-/* ZOYEN focused mobile navigation fix - 2026-06-11 */
-@media (max-width: 900px) {
-  body > nav:not(.breadcrumb):not(.mobile-drawer) {
-    display: grid !important;
-    grid-template-columns: minmax(0, 1fr) 46px !important;
-    align-items: center !important;
-    gap: 8px !important;
-    height: 58px !important;
-    padding: 0 14px !important;
-    background: rgba(10, 10, 10, .96) !important;
-    border-bottom: 1px solid rgba(212,119,42,.24) !important;
-    z-index: 1000 !important;
-  }
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo {
-    min-width: 0 !important;
-    max-width: none !important;
-    overflow: hidden !important;
-    gap: 8px !important;
-  }
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-emblem {
-    width: 38px !important;
-    height: 38px !important;
-  }
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo-name {
-    min-width: 0 !important;
-    white-space: nowrap !important;
-  }
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .z,
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .t {
-    font-size: .92rem !important;
-    letter-spacing: .065em !important;
-  }
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo sub,
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-links,
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-actions,
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-cta-btn,
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-contact-btn,
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .lang-switcher {
-    display: none !important;
-  }
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .ham-btn,
-  .ham-btn.zoyen-mobile-created {
-    display: inline-flex !important;
-    width: 44px !important;
-    height: 44px !important;
-    min-width: 44px !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    border: 1px solid rgba(245,240,232,.24) !important;
-    border-radius: 2px !important;
-    background: rgba(245,240,232,.06) !important;
-    color: var(--cream, #f5f0e8) !important;
-    align-items: center !important;
-    justify-content: center !important;
-    flex-direction: column !important;
-    gap: 5px !important;
-    justify-self: end !important;
-    z-index: 1002 !important;
-    -webkit-tap-highlight-color: transparent !important;
-  }
-  .ham-btn span {
-    display: block !important;
-    width: 21px !important;
-    height: 2px !important;
-    background: currentColor !important;
-    border-radius: 999px !important;
-    transition: transform .22s ease, opacity .18s ease !important;
-  }
-  .ham-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg) !important; }
-  .ham-btn.open span:nth-child(2) { opacity: 0 !important; }
-  .ham-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg) !important; }
-  .ham-btn.open {
-    position: fixed !important;
-    top: 7px !important;
-    right: 14px !important;
-    z-index: 1003 !important;
-    background: rgba(20,16,13,.92) !important;
-    border-color: rgba(212,119,42,.55) !important;
-  }
-  body.zoyen-mobile-nav-open .zoyi-widget,
-  body.zoyen-mobile-nav-open .wa {
-    display: none !important;
-  }
-  .drawer-overlay {
-    display: none !important;
-    position: fixed !important;
-    inset: 0 !important;
-    z-index: 990 !important;
-    background: rgba(0,0,0,.58) !important;
-    opacity: 0 !important;
-    transition: opacity .24s ease !important;
-  }
-  .drawer-overlay.open {
-    display: block !important;
-    opacity: 1 !important;
-  }
-  .mobile-drawer {
-    display: flex !important;
-    position: fixed !important;
-    top: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    left: auto !important;
-    width: min(86vw, 340px) !important;
-    max-width: 340px !important;
-    height: 100svh !important;
-    padding: 76px 22px 24px !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    justify-content: flex-start !important;
-    gap: 0 !important;
-    overflow-y: auto !important;
-    background: rgba(12, 9, 7, .985) !important;
-    border-left: 1px solid rgba(212,119,42,.22) !important;
-    box-shadow: -24px 0 60px rgba(0,0,0,.38) !important;
-    transform: translate3d(110vw,0,0) !important;
-    visibility: hidden !important;
-    pointer-events: none !important;
-    transition: transform .28s ease, visibility .28s ease !important;
-    z-index: 1001 !important;
-  }
-  .mobile-drawer.open {
-    transform: translate3d(0,0,0) !important;
-    visibility: visible !important;
-    pointer-events: auto !important;
-  }
-  .mobile-drawer-close {
-    position: absolute !important;
-    top: 10px !important;
-    right: 14px !important;
-    width: 42px !important;
-    height: 42px !important;
-    border: 1px solid rgba(245,240,232,.22) !important;
-    border-radius: 2px !important;
-    background: rgba(245,240,232,.06) !important;
-    color: var(--cream, #f5f0e8) !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    padding: 0 !important;
-    z-index: 2 !important;
-  }
-  .mobile-drawer-close::before,
-  .mobile-drawer-close::after {
-    content: '' !important;
-    position: absolute !important;
-    width: 20px !important;
-    height: 2px !important;
-    background: currentColor !important;
-    border-radius: 999px !important;
-  }
-  .mobile-drawer-close::before { transform: rotate(45deg) !important; }
-  .mobile-drawer-close::after { transform: rotate(-45deg) !important; }  .mobile-drawer-links {
-    list-style: none !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 0 !important;
-    margin: 0 0 18px !important;
-    padding: 0 !important;
-  }
-  .mobile-drawer-links li {
-    border-bottom: 1px solid rgba(245,240,232,.09) !important;
-  }
-  .mobile-drawer-links a {
-    display: flex !important;
-    align-items: center !important;
-    min-height: 48px !important;
-    padding: 13px 0 !important;
-    color: rgba(245,240,232,.88) !important;
-    text-decoration: none !important;
-    font-size: .86rem !important;
-    font-weight: 700 !important;
-    letter-spacing: .08em !important;
-    line-height: 1.25 !important;
-    text-transform: uppercase !important;
-    white-space: normal !important;
-  }
-  .mobile-drawer-cta {
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    gap: 10px !important;
-    margin: 6px 0 18px !important;
-  }
-  .mobile-drawer-reservar,
-  .mobile-drawer-wa,
-  .mobile-drawer-cta a,
-  .mobile-drawer-cta button {
-    display: flex !important;
-    width: 100% !important;
-    min-height: 44px !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 8px !important;
-    border-radius: 2px !important;
-    text-align: center !important;
-    font-size: .78rem !important;
-    font-weight: 800 !important;
-    letter-spacing: .11em !important;
-    text-transform: uppercase !important;
-    text-decoration: none !important;
-  }
-  .mobile-drawer-reservar,
-  .mobile-drawer-cta .nav-cta-btn {
-    border: 1px solid var(--ember, #d4772a) !important;
-    background: var(--ember, #d4772a) !important;
-    color: var(--cream, #f5f0e8) !important;
-  }
-  .mobile-drawer-wa,
-  .mobile-drawer-cta .nav-contact-btn {
-    border: 1px solid rgba(37,211,102,.45) !important;
-    background: rgba(37,211,102,.12) !important;
-    color: #25d366 !important;
-  }
-  .drawer-lang {
-    display: grid !important;
-    grid-template-columns: repeat(4, minmax(0,1fr)) !important;
-    gap: 8px !important;
-    margin-top: auto !important;
-    padding-top: 14px !important;
-    border-top: 1px solid rgba(245,240,232,.09) !important;
-  }
-  .drawer-lang-btn {
-    min-height: 38px !important;
-    border: 1px solid rgba(245,240,232,.18) !important;
-    background: rgba(245,240,232,.05) !important;
-    color: rgba(245,240,232,.82) !important;
-    font-size: .72rem !important;
-    font-weight: 800 !important;
-    letter-spacing: .08em !important;
-    border-radius: 2px !important;
-  }
-  .drawer-lang-btn.active {
-    border-color: var(--ember, #d4772a) !important;
-    background: rgba(212,119,42,.22) !important;
-    color: var(--ember, #d4772a) !important;
-  }
-}
-@media (max-width: 360px) {
-  body > nav:not(.breadcrumb):not(.mobile-drawer) {
-    grid-template-columns: minmax(0, 1fr) 42px !important;
-    padding-left: 10px !important;
-    padding-right: 10px !important;
-  }
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-emblem {
-    width: 34px !important;
-    height: 34px !important;
-  }
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .z,
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .t {
-    font-size: .82rem !important;
-    letter-spacing: .045em !important;
-  }
-  body > nav:not(.breadcrumb):not(.mobile-drawer) .ham-btn,
-  .ham-btn.zoyen-mobile-created {
-    width: 42px !important;
-    height: 42px !important;
-    min-width: 42px !important;
-  }
-}
-</style>
-<script id="zoyen-mobile-nav-fix-js-20260611">
-(function () {
-  if (window.__zoyenMobileNavFixReady) return;
-  window.__zoyenMobileNavFixReady = true;
-
-  function ready(fn) {
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fn, { once: true });
-    else fn();
-  }
-
-  function copyAttrs(source, target) {
-    Array.prototype.slice.call(source.attributes || []).forEach(function (attr) {
-      if (attr.name === 'class' || attr.name === 'id') return;
-      target.setAttribute(attr.name, attr.value);
-    });
-  }
-
-  ready(function () {
-    var topNav = document.querySelector('body > nav:not(.breadcrumb):not(.mobile-drawer)');
-    if (!topNav) return;
-
-    var hamBtn = topNav.querySelector('.ham-btn') || document.getElementById('hamBtn');
-    if (!hamBtn || !topNav.contains(hamBtn)) {
-      hamBtn = document.createElement('button');
-      hamBtn.type = 'button';
-      hamBtn.className = 'ham-btn zoyen-mobile-created';
-      hamBtn.id = 'hamBtn';
-      hamBtn.setAttribute('aria-label', 'Abrir menú');
-      hamBtn.setAttribute('aria-expanded', 'false');
-      hamBtn.innerHTML = '<span></span><span></span><span></span>';
-      topNav.appendChild(hamBtn);
-    }
-
-    var overlay = document.getElementById('drawerOverlay');
-    if (!overlay) {
-      overlay = document.createElement('div');
-      overlay.className = 'drawer-overlay';
-      overlay.id = 'drawerOverlay';
-      topNav.insertAdjacentElement('afterend', overlay);
-    }
-
-    var drawer = document.getElementById('mobileDrawer');
-    if (!drawer) {
-      drawer = document.createElement('nav');
-      drawer.className = 'mobile-drawer';
-      drawer.id = 'mobileDrawer';
-      drawer.setAttribute('aria-label', 'Menú mobile');
-      overlay.insertAdjacentElement('afterend', drawer);
-    }
-
-    if (!drawer.querySelector('.mobile-drawer-close')) {
-      var closeButton = document.createElement('button');
-      closeButton.type = 'button';
-      closeButton.className = 'mobile-drawer-close';
-      closeButton.setAttribute('aria-label', 'Cerrar menú');
-      drawer.insertBefore(closeButton, drawer.firstChild);
-    }
-
-    if (!drawer.querySelector('.mobile-drawer-links')) {
-      var list = document.createElement('ul');
-      list.className = 'mobile-drawer-links';
-      var navLinks = topNav.querySelectorAll('.nav-links a');
-      if (!navLinks.length) {
-        [
-          ['index.html', 'Home'],
-          ['index.html#excursiones', 'Excursiones'],
-          ['index.html#tours', 'Tours de Autor'],
-          ['index.html#bienestar', 'Turismo de Bienestar'],
-          ['index.html#ubicacion', 'Ubicación y Contacto'],
-          ['nosotros.html', 'Quiénes somos']
-        ].forEach(function (item) {
-          var li = document.createElement('li');
-          var a = document.createElement('a');
-          a.href = item[0];
-          a.textContent = item[1];
-          li.appendChild(a);
-          list.appendChild(li);
-        });
-      } else {
-        navLinks.forEach(function (link) {
-          var li = document.createElement('li');
-          var a = document.createElement('a');
-          a.href = link.getAttribute('href') || '#';
-          a.innerHTML = link.innerHTML;
-          copyAttrs(link, a);
-          li.appendChild(a);
-          list.appendChild(li);
-        });
-      }
-      drawer.appendChild(list);
-    }
-
-    if (!drawer.querySelector('.mobile-drawer-cta')) {
-      var cta = document.createElement('div');
-      cta.className = 'mobile-drawer-cta';
-      var reserve = topNav.querySelector('.nav-actions .nav-cta-btn, .nav-cta-btn');
-      if (reserve) {
-        var reserveClone = reserve.cloneNode(true);
-        reserveClone.classList.add('mobile-drawer-reservar');
-        cta.appendChild(reserveClone);
-      }
-      var contact = topNav.querySelector('.nav-actions .nav-contact-btn, .nav-contact-btn');
-      if (contact) {
-        var contactClone = contact.cloneNode(true);
-        contactClone.classList.add('mobile-drawer-wa');
-        cta.appendChild(contactClone);
-      } else {
-        var wa = document.createElement('a');
-        wa.href = 'https://wa.me/5492974432855';
-        wa.target = '_blank';
-        wa.rel = 'noopener';
-        wa.className = 'mobile-drawer-wa';
-        wa.textContent = 'WhatsApp';
-        cta.appendChild(wa);
-      }
-      if (cta.children.length) drawer.appendChild(cta);
-    }
-
-    if (!drawer.querySelector('.drawer-lang')) {
-      var lang = document.createElement('div');
-      lang.className = 'drawer-lang';
-      ['ES', 'EN', 'PT', 'KO'].forEach(function (code, index) {
-        var btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'drawer-lang-btn' + (index === 0 ? ' active' : '');
-        btn.setAttribute('data-lang', code.toLowerCase());
-        btn.textContent = code;
-        btn.addEventListener('click', function () {
-          if (typeof window.setLang === 'function') window.setLang(code.toLowerCase());
-          if (typeof window.setLanguage === 'function') window.setLanguage(code.toLowerCase());
-          drawer.querySelectorAll('.drawer-lang-btn').forEach(function (b) { b.classList.remove('active'); });
-          btn.classList.add('active');
-        });
-        lang.appendChild(btn);
-      });
-      drawer.appendChild(lang);
-    }
-
-    function openDrawer() {
-      drawer.classList.add('open');
-      overlay.classList.add('open');
-      overlay.style.display = 'block';
-      hamBtn.classList.add('open');
-      hamBtn.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-      document.body.classList.add('zoyen-mobile-nav-open');
-    }
-    function closeDrawer() {
-      drawer.classList.remove('open');
-      overlay.classList.remove('open');
-      hamBtn.classList.remove('open');
-      hamBtn.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-      document.body.classList.remove('zoyen-mobile-nav-open');
-      window.setTimeout(function () {
-        if (!overlay.classList.contains('open')) overlay.style.display = 'none';
-      }, 260);
-    }
-    window.closeDrawer = closeDrawer;
-
-    hamBtn.addEventListener('click', function (event) {
-      event.preventDefault();
-      event.stopImmediatePropagation();
-      if (drawer.classList.contains('open')) closeDrawer();
-      else openDrawer();
-    }, true);
-    overlay.addEventListener('click', closeDrawer);
-    var closeButton = drawer.querySelector('.mobile-drawer-close');
-    if (closeButton) closeButton.addEventListener('click', closeDrawer);
-    drawer.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', closeDrawer);
-    });
-    document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') closeDrawer();
-    });
-  });
-})();
-</script>
 </body>
 </html>
-
-
-
-
 
 
 
