@@ -2217,8 +2217,198 @@ textarea {
   });
 })();
 </script>
+
+<style id="zoyen-reserva-contacto-unificado">
+/* Reserva y contacto: misma familia visual */
+body > nav .nav-actions .nav-cta-btn,
+body > nav .nav-actions .nav-contact-btn {
+  width: 138px !important;
+  height: 38px !important;
+  min-height: 38px !important;
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 .82rem !important;
+  font-family: 'Sora', sans-serif !important;
+  font-size: .72rem !important;
+  font-weight: 700 !important;
+  letter-spacing: .11em !important;
+  line-height: 1 !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  border-radius: 2px !important;
+}
+body > nav .nav-actions .nav-contact-btn {
+  gap: .42rem !important;
+}
+body > nav .nav-actions .nav-contact-btn svg {
+  width: 15px !important;
+  height: 15px !important;
+  flex: 0 0 15px !important;
+}
+@media (min-width: 961px) and (max-width: 1360px) {
+  body > nav .nav-actions .nav-cta-btn,
+  body > nav .nav-actions .nav-contact-btn {
+    width: 112px !important;
+    height: 36px !important;
+    min-height: 36px !important;
+    padding: 0 .65rem !important;
+    font-size: .68rem !important;
+    letter-spacing: .09em !important;
+  }
+  body > nav .nav-actions .nav-contact-btn span {
+    display: none !important;
+  }
+}
+.mobile-drawer .mobile-drawer-cta .nav-cta-btn,
+.mobile-drawer .mobile-drawer-cta .nav-contact-btn,
+.mobile-drawer .mobile-drawer-cta button.mobile-drawer-reservar,
+.mobile-drawer .mobile-drawer-cta a.mobile-drawer-wa,
+.mobile-drawer-cta .nav-cta-btn,
+.mobile-drawer-cta .nav-contact-btn,
+.mobile-drawer-reservar,
+.mobile-drawer-wa {
+  width: 100% !important;
+  height: 44px !important;
+  min-height: 44px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: .85rem 1.2rem !important;
+  font-family: 'Sora', sans-serif !important;
+  font-size: .82rem !important;
+  font-weight: 700 !important;
+  letter-spacing: .12em !important;
+  line-height: 1 !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+}
+.mobile-drawer .mobile-drawer-cta .nav-contact-btn,
+.mobile-drawer .mobile-drawer-cta a.mobile-drawer-wa,
+.mobile-drawer-cta .nav-contact-btn,
+.mobile-drawer-wa {
+  gap: .5rem !important;
+}
+.mobile-drawer .mobile-drawer-cta .nav-contact-btn span,
+.mobile-drawer .mobile-drawer-cta a.mobile-drawer-wa span,
+.mobile-drawer-cta .nav-contact-btn span,
+.mobile-drawer-wa span {
+  display: inline !important;
+}
+.mobile-drawer .mobile-drawer-cta .nav-contact-btn svg,
+.mobile-drawer .mobile-drawer-cta a.mobile-drawer-wa svg,
+.mobile-drawer-cta .nav-contact-btn svg,
+.mobile-drawer-wa svg {
+  width: 18px !important;
+  height: 18px !important;
+  flex: 0 0 18px !important;
+}
+</style>
+
+<style id="zoyen-nav-mobile-fix">
+/* Evita que el menu mobile se vea como enlaces sueltos debajo del nav */
+nav.mobile-drawer,
+body > nav.mobile-drawer {
+  position: fixed !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: auto !important;
+  z-index: 1200 !important;
+  width: min(86vw, 340px) !important;
+  max-width: 100vw !important;
+  height: 100dvh !important;
+  max-height: 100dvh !important;
+  overflow-y: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1.2rem !important;
+  padding: 5.25rem 1.4rem 1.35rem !important;
+  background: rgba(26, 20, 16, .98) !important;
+  border-left: 1px solid rgba(212, 119, 42, .24) !important;
+  box-shadow: -22px 0 60px rgba(0, 0, 0, .38) !important;
+  transform: translateX(110%) !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transition: transform .32s ease, opacity .22s ease, visibility .22s ease !important;
+}
+nav.mobile-drawer.open,
+body > nav.mobile-drawer.open {
+  transform: translateX(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+.mobile-drawer-links {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: .18rem !important;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.mobile-drawer-links a {
+  display: flex !important;
+  align-items: center !important;
+  min-height: 44px !important;
+  padding: .76rem .2rem !important;
+  color: rgba(245, 240, 232, .82) !important;
+  text-decoration: none !important;
+  font-family: 'Sora', sans-serif !important;
+  font-size: .78rem !important;
+  font-weight: 700 !important;
+  letter-spacing: .12em !important;
+  text-transform: uppercase !important;
+  border-bottom: 1px solid rgba(255, 255, 255, .07) !important;
+}
+.drawer-lang {
+  display: flex !important;
+  gap: .5rem !important;
+  flex-wrap: wrap !important;
+  margin-top: auto !important;
+  padding-top: 1.2rem !important;
+  border-top: 1px solid rgba(255, 255, 255, .08) !important;
+}
+.drawer-lang-btn {
+  appearance: none !important;
+  border: 1px solid rgba(255, 255, 255, .16) !important;
+  background: rgba(255, 255, 255, .07) !important;
+  color: rgba(245, 240, 232, .78) !important;
+  padding: .46rem .72rem !important;
+  font-family: 'Sora', sans-serif !important;
+  font-size: .68rem !important;
+  font-weight: 700 !important;
+  letter-spacing: .09em !important;
+  line-height: 1 !important;
+  text-transform: uppercase !important;
+  border-radius: 2px !important;
+}
+.drawer-lang-btn.active {
+  background: var(--ember, #d4772a) !important;
+  border-color: var(--ember, #d4772a) !important;
+  color: var(--cream, #f5f0e8) !important;
+}
+@media (min-width: 901px) {
+  nav.mobile-drawer,
+  body > nav.mobile-drawer,
+  nav.mobile-drawer.open,
+  body > nav.mobile-drawer.open {
+    display: none !important;
+  }
+}
+</style>
 </body>
 </html>
+
+
+
+
+
+
 
 
 
