@@ -219,7 +219,7 @@ nav {
   position: absolute; inset: 0;
   opacity: 0; transition: opacity 1.4s cubic-bezier(.4,0,.2,1);
   display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
+  align-items: center; justify-content: flex-end;
   padding-top: 72px;
   gap: 0rem;
   z-index: 0;
@@ -6442,27 +6442,44 @@ a.cta-btn-g[href*="wa.me"]:hover {
 }
 </style>
 <style id="zoyen-slide-layout-fix">
-.slide { gap: 0 !important; }
+.slide {
+  justify-content: space-between !important;
+  padding-top: 100px !important;
+  padding-bottom: 60px !important;
+  gap: 0 !important;
+}
 .slide-emblem {
-  margin-top: 110px !important;
-  margin-bottom: -15px !important;
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  transform: none !important;
+  margin: 0 !important;
+  width: 280px !important;
+  height: 280px !important;
+  flex-shrink: 0 !important;
+}
+.slide-content {
+  position: relative !important;
+  bottom: auto !important;
+  left: auto !important;
+  transform: none !important;
+  margin: 0 !important;
+  gap: 0.6rem !important;
+  width: 100% !important;
 }
 .hero-logo-static {
-  width: 240px !important;
-  height: 240px !important;
-  max-width: min(240px, 65vw) !important;
-  max-height: min(240px, 65vw) !important;
+  width: 280px !important;
+  height: 280px !important;
+  max-width: min(280px, 72vw) !important;
+  max-height: min(280px, 72vw) !important;
 }
-.slide-content { gap: 0.5rem !important; }
-.hero .slide-content { padding-bottom: 0.5rem !important; }
 @media (max-width: 900px) {
-  .slide-emblem { margin-top: 70px !important; margin-bottom: 0 !important; }
-  .hero-logo-static {
-    width: 180px !important;
-    height: 180px !important;
-    max-width: min(180px, 60vw) !important;
-    max-height: min(180px, 60vw) !important;
+  .slide {
+    padding-top: 80px !important;
+    padding-bottom: 40px !important;
   }
+  .slide-emblem { width: 200px !important; height: 200px !important; }
+  .hero-logo-static { width: 200px !important; height: 200px !important; }
 }
 </style>
 </body>
