@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Admin – Zoyen Turismo</title>
+<title>Admin ? Zoyen Turismo</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ── Reset ── */
+/* â”€â”€ Reset â”€â”€ */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
   --bg:#f2f4f7; --surface:#ffffff; --sidebar:#1e1810; --topbar:#231c14;
@@ -15,7 +15,7 @@
   --sand:#c9a96e; --cream:#f5f0e8; --stone:#8a7a6a;
 }
 
-/* ── Login overlay ── */
+/* â”€â”€ Login overlay â”€â”€ */
 
 /* Login overlay */
 .adm-login-wrap {
@@ -73,7 +73,7 @@
   align-items:center; justify-content:center; }
 .adm-login-wrap.open { display:flex; }
 
-/* ── Panel layout (full page, no iframe) ── */
+/* â”€â”€ Panel layout (full page, no iframe) â”€â”€ */
 html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;font-size:15px;color:var(--text);background:var(--bg)}
 .panel{display:flex;flex-direction:column;height:100vh}
 .topbar{background:var(--topbar);color:var(--cream);display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:56px;flex-shrink:0;border-bottom:1px solid rgba(212,119,42,.18)}
@@ -144,7 +144,7 @@ tr:hover td{background:rgba(212,119,42,.03)}
 <div class="adm-login-wrap open" id="admLoginWrap">
   <div class="adm-login-box">
     <div class="adm-login-logo">
-      <img src="assets/logo-zoyen-circular.svg" alt="ZOYEN Turismo" style="width:46px;height:46px">
+      <img src="assets/logo-zoyen-circular-static.png" alt="ZOYEN Turismo" style="width:46px;height:46px">
       <div class="adm-login-logo-text">ZOYEN <span>TURISMO</span></div>
     </div>
     <div class="adm-login-eyebrow">Panel de Administración</div>
@@ -154,7 +154,7 @@ tr:hover td{background:rgba(212,119,42,.03)}
     </div>
     <div class="adm-field">
       <label>Contraseña</label>
-      <input type="password" id="admPass" placeholder="••••••••" autocomplete="current-password"/>
+      <input type="password" id="admPass" placeholder="????????" autocomplete="current-password"/>
     </div>
     <button class="adm-login-btn" id="admLoginBtn">Ingresar</button>
     <div class="adm-login-err" id="admLoginErr">Usuario o contraseña incorrectos.</div>
@@ -165,30 +165,30 @@ tr:hover td{background:rgba(212,119,42,.03)}
 <div id="panelWrap" style="display:none;height:100vh">
   <div class="panel">
     <div class="topbar">
-      <div class="topbar-brand">ZOYEN <span>TURISMO</span> · Admin</div>
+      <div class="topbar-brand">ZOYEN <span>TURISMO</span> ? Admin</div>
       <button class="btn-logout" id="btnLogout">Cerrar sesión</button>
     </div>
     <div class="layout">
       <nav class="sidebar">
-        <div class="nav-item active" data-sec="dashboard"><span class="nav-icon">📊</span>Dashboard</div>
-        <div class="nav-item" data-sec="slides"><span class="nav-icon">🖼</span>Banners</div>
-        <div class="nav-item" data-sec="excursiones"><span class="nav-icon">🗺</span>Excursiones</div>
-        <div class="nav-item" data-sec="disponibilidad"><span class="nav-icon">📅</span>Disponibilidad</div>
-        <div class="nav-item" data-sec="bloqueo"><span class="nav-icon">🔒</span>Asientos</div>
-        <div class="nav-item" data-sec="reservas"><span class="nav-icon">📋</span>Reservas</div>
+        <div class="nav-item active" data-sec="dashboard"><span class="nav-icon">ðŸ“Š</span>Dashboard</div>
+        <div class="nav-item" data-sec="slides"><span class="nav-icon">ðŸ–¼</span>Banners</div>
+        <div class="nav-item" data-sec="excursiones"><span class="nav-icon">ðŸ—º</span>Excursiones</div>
+        <div class="nav-item" data-sec="disponibilidad"><span class="nav-icon">ðŸ“…</span>Disponibilidad</div>
+        <div class="nav-item" data-sec="bloqueo"><span class="nav-icon">ðŸ”’</span>Asientos</div>
+        <div class="nav-item" data-sec="reservas"><span class="nav-icon">ðŸ“‹</span>Reservas</div>
       </nav>
       <main class="main" id="mainContent">
         <!-- Dashboard -->
         <div class="sec active" id="sec-dashboard">
           <div class="sec-title">Dashboard</div>
           <div class="stats">
-            <div class="stat"><div class="stat-val" id="d-total">–</div><div class="stat-lbl">Total reservas</div></div>
-            <div class="stat"><div class="stat-val" id="d-pend">–</div><div class="stat-lbl">Pendientes</div></div>
-            <div class="stat"><div class="stat-val" id="d-conf">–</div><div class="stat-lbl">Confirmadas</div></div>
-            <div class="stat"><div class="stat-val" id="d-abandon">–</div><div class="stat-lbl">Abandonos</div></div>
+            <div class="stat"><div class="stat-val" id="d-total">?</div><div class="stat-lbl">Total reservas</div></div>
+            <div class="stat"><div class="stat-val" id="d-pend">?</div><div class="stat-lbl">Pendientes</div></div>
+            <div class="stat"><div class="stat-val" id="d-conf">?</div><div class="stat-lbl">Confirmadas</div></div>
+            <div class="stat"><div class="stat-val" id="d-abandon">?</div><div class="stat-lbl">Abandonos</div></div>
           </div>
           <div class="card">
-            <div class="card-title">Últimas reservas</div>
+            <div class="card-title">Ãšltimas reservas</div>
             <table><thead><tr><th>#</th><th>Nombre</th><th>Excursión</th><th>Fecha</th><th>Personas</th><th>Seña</th><th>Estado</th></tr></thead>
             <tbody id="d-tbody"></tbody></table>
           </div>
@@ -217,7 +217,7 @@ tr:hover td{background:rgba(212,119,42,.03)}
           <div id="exc-list" style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:24px"></div>
           <div class="card">
             <div class="card-title">Vista previa</div>
-            <table><thead><tr><th>Excursión</th><th>Precio</th><th>Estado</th><th>Duración</th></tr></thead>
+            <table><thead><tr><th>Excursión</th><th>Precio</th><th>Estado</th><th>Duraci?n</th></tr></thead>
             <tbody id="exc-preview"></tbody></table>
           </div>
         </div>
@@ -228,7 +228,7 @@ tr:hover td{background:rgba(212,119,42,.03)}
             <div class="card-title">Tour</div>
             <div class="field"><label>Seleccionar tour</label><select id="av-tour" onchange="refreshAvailabilityAdmin()"></select></div>
             <div class="field"><label>Precio base ($)</label><input type="number" id="av-price" min="0"/></div>
-            <div class="field"><label>Capacidad máx.</label><input type="number" id="av-capacity" min="1" max="50"/></div>
+            <div class="field"><label>Capacidad m?x.</label><input type="number" id="av-capacity" min="1" max="50"/></div>
             <div class="field">
               <label>Vehículo</label>
               <select id="av-vehicle" onchange="updateVehicleAdminPreview()"></select>
@@ -252,7 +252,7 @@ tr:hover td{background:rgba(212,119,42,.03)}
             <div class="field"><label>Tour</label><select id="blk-tour" onchange="refreshBlockDateOptions()"></select></div>
             <div class="field"><label>Fecha</label><select id="blk-date" onchange="renderManualSeatGrid()"></select></div>
             <div class="manual-seat-grid" id="manual-seat-grid"></div>
-            <p style="font-size:12px;color:var(--muted);margin-top:10px;line-height:1.5">Los asientos bloqueados acá quedan ocupados para ese tour y esa fecha. Las reservas confirmadas o pendientes también ocupan asiento automáticamente.</p>
+            <p style="font-size:12px;color:var(--muted);margin-top:10px;line-height:1.5">Los asientos bloqueados ac? quedan ocupados para ese tour y esa fecha. Las reservas confirmadas o pendientes también ocupan asiento autom?ticamente.</p>
             <div style="display:flex;gap:10px;margin-top:16px">
               <button class="btn btn-p" onclick="saveManualSeats()">Guardar bloqueo</button>
               <button class="btn btn-outline" onclick="clearManualSeats()">Limpiar todo</button>
@@ -273,7 +273,7 @@ tr:hover td{background:rgba(212,119,42,.03)}
               </select>
             </div>
             <div style="overflow-x:auto">
-              <table><thead><tr><th>#</th><th>Nombre</th><th>Contacto</th><th>Excursión</th><th>Fecha</th><th>Pers.</th><th>Asientos</th><th>Seña</th><th>Estado</th><th>Último intento</th><th>Acciones</th></tr></thead>
+              <table><thead><tr><th>#</th><th>Nombre</th><th>Contacto</th><th>Excursión</th><th>Fecha</th><th>Pers.</th><th>Asientos</th><th>Seña</th><th>Estado</th><th>Ãšltimo intento</th><th>Acciones</th></tr></thead>
               <tbody id="r-tbody"></tbody></table>
             </div>
           </div>
@@ -289,7 +289,7 @@ tr:hover td{background:rgba(212,119,42,.03)}
 const CREDS = { user:'zoyen', pass:'patagonia2025' };
 let loggedIn = false;
 
-// ── Storage helpers (same as index.html) ──────────────────────
+// â”€â”€ Storage helpers (same as index.html) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function readReservas() {
   try {
     const raw = sessionStorage.getItem('zoyen_reservas') || localStorage.getItem('zoyen_reservas');
@@ -319,12 +319,12 @@ function defaultTourConfig() {
 
 function showToast(msg) {
   const t = document.getElementById('toast');
-  t.textContent = '✓ ' + (msg || 'Guardado');
+  t.textContent = '? ' + (msg || 'Guardado');
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 2800);
 }
 
-// ── Login ──────────────────────────────────────────────────────
+// â”€â”€ Login â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 document.getElementById('admLoginBtn').onclick = doLogin;
 document.getElementById('admPass').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
 document.getElementById('admUser').addEventListener('keydown', e => { if(e.key==='Enter') document.getElementById('admPass').focus(); });
@@ -352,7 +352,7 @@ document.getElementById('btnLogout').onclick = () => {
   document.getElementById('admPass').value = '';
 };
 
-// ── Nav ────────────────────────────────────────────────────────
+// â”€â”€ Nav â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 document.querySelectorAll('.nav-item').forEach(item => {
   item.addEventListener('click', () => {
     document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
@@ -362,7 +362,7 @@ document.querySelectorAll('.nav-item').forEach(item => {
   });
 });
 
-// ── Panel init ─────────────────────────────────────────────────
+// â”€â”€ Panel init â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function initPanel() {
   buildDashboard();
   buildSlides();
@@ -371,15 +371,15 @@ function initPanel() {
   buildReservas();
 }
 
-// ── Excursion data ─────────────────────────────────────────────
+// â”€â”€ Excursion data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const excData = [
   { key:'cueva',            name:'Cueva de las Manos',                                       precio:18000, estado:'activa', duracion:'Día completo',      capacidad:14 },
   { key:'capillas',         name:'Capillas y Catedrales de Mármol',                          precio:24000, estado:'activa', duracion:'Día completo',      capacidad:14 },
   { key:'posadas',          name:'Lago Posadas con Vuelta a la Meseta por Ruta Escénica 41', precio:15000, estado:'activa', duracion:'Día completo (12 hs)', capacidad:14 },
-  { key:'zeballos',         name:'Ruta 41 · Monte Zeballos',                                 precio:16000, estado:'activa', duracion:'Día completo',      capacidad:14 },
+  { key:'zeballos',         name:'Ruta 41 ? Monte Zeballos',                                 precio:16000, estado:'activa', duracion:'Día completo',      capacidad:14 },
   { key:'charcamata',       name:'Alero Charcamata',                                         precio:12000, estado:'activa', duracion:'Medio día',         capacidad:14 },
-  { key:'parque_caniadon',  name:'Portal Cañadón Pinturas (Parque Patagonia)',                precio:8000,  estado:'activa', duracion:'Medio día (5 hs)', capacidad:14 },
-  { key:'parque_escension', name:'PNP / Estancia La Escensión',                              precio:7000,  estado:'activa', duracion:'Medio día (4 hs)', capacidad:14 },
+  { key:'parque_caniadon',  name:'Portal Ca?ad?n Pinturas (Parque Patagonia)',                precio:8000,  estado:'activa', duracion:'Medio día (5 hs)', capacidad:14 },
+  { key:'parque_escension', name:'PNP / Estancia La Escensi?n',                              precio:7000,  estado:'activa', duracion:'Medio día (4 hs)', capacidad:14 },
 ];
 
 const VEHICLE_OPTIONS = {
@@ -387,7 +387,7 @@ const VEHICLE_OPTIONS = {
   mercedes_sprinter: { name:'Mercedes Sprinter', icon:'van',   capacity:20 },
   toyota_hilux:      { name:'Toyota Hilux',      icon:'4x4',   capacity:6  },
   ford_transit:      { name:'Ford Transit',      icon:'van',   capacity:15 },
-  minibus:           { name:'Minibús',           icon:'bus',   capacity:30 },
+  minibus:           { name:'Minib?s',           icon:'bus',   capacity:30 },
 };
 
 function vehicleSvg(icon) {
@@ -399,7 +399,7 @@ function vehicleSvg(icon) {
   return svgs[icon] || svgs.van;
 }
 
-// ── Dashboard ──────────────────────────────────────────────────
+// â”€â”€ Dashboard â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function buildDashboard() {
   const reservas = readReservas();
   const total = reservas.length;
@@ -429,14 +429,14 @@ function badge(e) {
   return `<span class="badge ${m[e]||'by'}">${labels[e]||e}</span>`;
 }
 
-// ── Slides ─────────────────────────────────────────────────────
+// â”€â”€ Slides â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const slideDefaults = [
-  {ey:'Patagonia Argentina', ti:'Explorá la Patagonia Inédita',   de:'De la mano de quienes la vivimos. Excursiones únicas e irrepetibles.'},
-  {ey:'Patrimonio UNESCO',   ti:'Cueva de las Manos',             de:'Uno de los sitios arqueológicos más importantes del mundo.'},
-  {ey:'Chile · Carretera Austral', ti:'Capillas de Mármol',       de:'Navegación sobre el Lago General Carrera.'},
+  {ey:'Patagonia Argentina', ti:'Explor? la Patagonia Inédita',   de:'De la mano de quienes la vivimos. Excursiones ?nicas e irrepetibles.'},
+  {ey:'Patrimonio UNESCO',   ti:'Cueva de las Manos',             de:'Uno de los sitios arqueol?gicos más importantes del mundo.'},
+  {ey:'Chile ? Carretera Austral', ti:'Capillas de Mármol',       de:'Navegación sobre el Lago General Carrera.'},
   {ey:'Ruta Escénica 41',    ti:'Monte Zeballos',                 de:'Desde los 400 hasta los 1.500 metros.'},
 ];
-const slideLabels = ['Banner 1 – Patagonia','Banner 2 – Cueva de las Manos','Banner 3 – Capillas de Mármol','Banner 4 – Monte Zeballos'];
+const slideLabels = ['Banner 1 ? Patagonia','Banner 2 ? Cueva de las Manos','Banner 3 ? Capillas de Mármol','Banner 4 ? Monte Zeballos'];
 
 function buildSlides() {
   // Lenticular toggle
@@ -454,8 +454,8 @@ function buildSlides() {
       <div class="slide-name">${lbl}</div>
       <div class="slide-fields">
         <input type="text" id="t-s${i}-ey" value="${s.ey}" placeholder="Eyebrow"/>
-        <input type="text" id="t-s${i}-ti" value="${s.ti}" placeholder="Título"/>
-        <input type="text" id="t-s${i}-de" value="${s.de}" placeholder="Descripción"/>
+        <input type="text" id="t-s${i}-ti" value="${s.ti}" placeholder="T?tulo"/>
+        <input type="text" id="t-s${i}-de" value="${s.de}" placeholder="Descripci?n"/>
         <div style="display:flex;gap:6px;margin-top:4px">
           <input type="text" id="img-${i}" placeholder="URL de imagen" style="flex:1" value="${url}"/>
           <button class="btn btn-p btn-sm" onclick="applyImg(${i},document.getElementById('img-${i}').value)">Aplicar</button>
@@ -478,7 +478,7 @@ function saveManifesto() {
   showToast('Manifiesto guardado (editar directamente en index.html).');
 }
 
-// ── Excursiones ────────────────────────────────────────────────
+// â”€â”€ Excursiones â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function buildExcursiones() {
   document.getElementById('exc-list').innerHTML = excData.map((e, i) => `<div class="card">
     <div class="card-title">${e.name}</div>
@@ -508,7 +508,7 @@ function saveExc(i) {
   showToast('Excursión actualizada.');
 }
 
-// ── Disponibilidad ─────────────────────────────────────────────
+// â”€â”€ Disponibilidad â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function getTourConfigAdmin() { return JSON.parse(JSON.stringify(getTourConfig())); }
 function tourLabel(key, t) { return (t.name || key) + ' - ' + (t.duration || ''); }
 
@@ -533,7 +533,7 @@ function refreshAvailabilityAdmin() {
     updateVehicleAdminPreview();
   }
   if(!t || !t.dates || !t.dates.length) { list.innerHTML='<span class="empty">Sin fechas cargadas.</span>'; return; }
-  list.innerHTML = t.dates.slice().sort().map(d => `<span class="date-pill">${new Date(d+'T12:00:00').toLocaleDateString('es-AR',{day:'2-digit',month:'long',year:'numeric'})}<button onclick="removeAvailabilityDate('${key}','${d}')">×</button></span>`).join('');
+  list.innerHTML = t.dates.slice().sort().map(d => `<span class="date-pill">${new Date(d+'T12:00:00').toLocaleDateString('es-AR',{day:'2-digit',month:'long',year:'numeric'})}<button onclick="removeAvailabilityDate('${key}','${d}')">?</button></span>`).join('');
 }
 function updateVehicleAdminPreview() {
   const key = document.getElementById('av-vehicle').value || 'renault_master';
@@ -548,7 +548,7 @@ function saveAvailabilityConfig() {
   cfg[key].capacity = parseInt(document.getElementById('av-capacity').value) || 16;
   cfg[key].vehicle = document.getElementById('av-vehicle').value || 'renault_master';
   saveTourConfig(cfg);
-  showToast('Configuración guardada.');
+  showToast('Configuraci?n guardada.');
 }
 function addAvailabilityDate() {
   const cfg = getTourConfigAdmin();
@@ -571,7 +571,7 @@ function removeAvailabilityDate(key, d) {
   showToast('Fecha eliminada.');
 }
 
-// ── Bloqueo de asientos ────────────────────────────────────────
+// â”€â”€ Bloqueo de asientos â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function refreshBlockDateOptions() {
   const cfg = getTourConfigAdmin();
   const key = document.getElementById('blk-tour').value || Object.keys(cfg)[0];
@@ -587,7 +587,7 @@ function renderManualSeatGrid() {
   const key = document.getElementById('blk-tour').value;
   const date = document.getElementById('blk-date').value;
   const grid = document.getElementById('manual-seat-grid');
-  if(!key || !date) { grid.innerHTML='<div class="empty">Cargá una fecha para bloquear asientos.</div>'; return; }
+  if(!key || !date) { grid.innerHTML='<div class="empty">Carg? una fecha para bloquear asientos.</div>'; return; }
   const manual = ((cfg[key].blockedSeats||{})[date]||[]).map(Number);
   const reserved = reservedSeatsForAdmin(key, date);
   grid.innerHTML = Array.from({length:16},(_,i)=>i+1).map(n => {
@@ -620,7 +620,7 @@ function clearManualSeats() {
   showToast('Asientos liberados.');
 }
 
-// ── Reservas ───────────────────────────────────────────────────
+// â”€â”€ Reservas â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function buildReservas() {
   const reservas = readReservas();
   const filter = document.getElementById('res-filter').value;
@@ -629,24 +629,24 @@ function buildReservas() {
   if(!list.length) { tb.innerHTML=`<tr><td colspan="11" class="empty">${reservas.length?'Sin resultados para ese filtro.':'Sin reservas aún.'}</td></tr>`; return; }
   tb.innerHTML = list.slice().reverse().map(r => {
     const idx = reservas.indexOf(r);
-    const waMsg = encodeURIComponent('Hola '+r.nombre+', te escribimos desde Zoyen Turismo. Vimos que iniciaste una reserva para '+r.excursion+' y quedó sin confirmar. ¿Querés que te ayudemos a completarla?');
+    const waMsg = encodeURIComponent('Hola '+r.nombre+', te escribimos desde Zoyen Turismo. Vimos que iniciaste una reserva para '+r.excursion+' y qued? sin confirmar. ?Quer?s que te ayudemos a completarla?');
     const waUrl = 'https://wa.me/'+r.tel.replace(/\D/g,'')+'?text='+waMsg;
     const puedeRetarget = (r.estado==='pendiente'||r.estado==='pago_iniciado') && r.tel;
     return `<tr>
       <td style="color:var(--stone)">#${idx+1}</td>
       <td style="font-weight:500">${r.nombre}</td>
-      <td style="font-size:12px;color:var(--stone)">${r.tel||'–'}<br>${r.email||'–'}</td>
+      <td style="font-size:12px;color:var(--stone)">${r.tel||'?'}<br>${r.email||'?'}</td>
       <td>${r.excursion}</td>
-      <td>${r.fecha?new Date(r.fecha+'T12:00:00').toLocaleDateString('es-AR',{day:'2-digit',month:'2-digit',year:'numeric'}):''}</td>
+      <td>${r.fechaúnew Date(r.fecha+'T12:00:00').toLocaleDateString('es-AR',{day:'2-digit',month:'2-digit',year:'numeric'}):''}</td>
       <td style="text-align:center">${r.personas}</td>
-      <td style="text-align:center">${r.asientos||'–'}</td>
+      <td style="text-align:center">${r.asientos||'?'}</td>
       <td style="color:var(--ember);font-weight:600">$${(r.senia||0).toLocaleString('es-AR')}</td>
       <td>${badge(r.estado)}</td>
-      <td style="font-size:11px;color:var(--muted)">${r.ultimoIntento||r.creado||'–'}</td>
+      <td style="font-size:11px;color:var(--muted)">${r.ultimoIntento||r.creado||'?'}</td>
       <td><div style="display:flex;gap:5px;flex-wrap:wrap;align-items:center">
         ${puedeRetarget?`<a href="${waUrl}" target="_blank" class="btn btn-wa btn-sm">WA</a>`:''}
-        ${r.estado!=='confirmada'?`<button class="btn btn-p btn-sm" onclick="cambiarEstado(${idx},'confirmada')">✓</button>`:''}
-        ${r.estado!=='cancelada'?`<button class="btn btn-d btn-sm" onclick="cambiarEstado(${idx},'cancelada')">✕</button>`:''}
+        ${r.estado!=='confirmada'?`<button class="btn btn-p btn-sm" onclick="cambiarEstado(${idx},'confirmada')">?</button>`:''}
+        ${r.estado!=='cancelada'?`<button class="btn btn-d btn-sm" onclick="cambiarEstado(${idx},'cancelada')">?</button>`:''}
       </div></td>
     </tr>`;
   }).join('');
