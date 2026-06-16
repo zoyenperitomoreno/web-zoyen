@@ -219,9 +219,9 @@ nav {
   position: absolute; inset: 0;
   opacity: 0; transition: opacity 1.4s cubic-bezier(.4,0,.2,1);
   display: flex; flex-direction: column;
-  align-items: center; justify-content: flex-start;
+  align-items: center; justify-content: center;
   padding-top: 72px;
-  gap: 0.5rem;
+  gap: 0rem;
   z-index: 0;
 }
 .slide.active { opacity: 1; z-index: 1; }
@@ -258,7 +258,7 @@ nav {
   width: 400px; height: auto;
   display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
   flex-shrink: 0;
-  margin-top: 90px;
+  margin-top: 0px;
   opacity: 0; transition: opacity .8s .4s;
 }
 .slide.active .slide-emblem { opacity: 1; }
@@ -4196,9 +4196,9 @@ revEls.forEach(el => obs.observe(el));
       `;
       document.body.appendChild(hint);
     }
-    hint.textContent = active  ' Brjula activa' : '';
+    hint.textContent = active ? ' Brújula activa' : '';
     hint.style.opacity = active ? '1' : '0';
-    hint.style.display = active  'block' : 'none';
+    hint.style.display = active ? 'block' : 'none';
     if (!active) setTimeout(() => { try { hint.remove(); } catch(e){} }, 500);
   }
 
@@ -4485,7 +4485,7 @@ revEls.forEach(el => obs.observe(el));
     const exc = excInfo[key];
     if (!exc) return;
     const msg = encodeURIComponent(
-      'Hola! Quisiera consultar informacin sobre la excursión *' + exc.nombre + '*' +
+      'Hola! Quisiera consultar información sobre la excursión *' + exc.nombre + '*' +
       ' (' + exc.dur + ' &middot; ' + exc.precio + ').' +
       ' Tienen disponibilidad ¿Qué incluye?'
     );
@@ -4749,7 +4749,7 @@ var translations = {
     ft_copy: '© Zoyen Turismo 2025  ëª¨ë“  ê¶Œë¦¬ ë³´ìœ ',
     zoyi_chip_dates:'ì˜ˆì•½ ê°€ëŠ¥ ë‚ ì§œ', zoyi_chip_exc:'íˆ¬ì–´', zoyi_chip_prices:'ê°€ê²©', zoyi_chip_book:'ì˜ˆì•½', zoyi_chip_loc:'ìœ„ì¹˜', zoyi_chip_human:'ê³¼ ëŒ€í™”', zoyi_placeholder:'Zoyiê²Œ ë¬¼ì–´ë³´ì„¸ìš”...',
     rmod_eyebrow: 'Zoyen Turismo  íŒŒíƒ€ê³ ë‹ˆì•„',
-    rmod_title: '  ',
+    rmod_title: '¿Qué querés hacer?',
     rmod_sub: 'ê²½í—˜ ìœ í˜• ì„ í•˜ë©´ ì—¬ê¸°ì„œë¶€í„° ì•ˆë‚´í•´ ë“œë¦½ë‹ˆë‹¤.',
     rmod_tour_name: 'ì˜¤ì„œ íˆ¬ì–´', rmod_tour_desc: 'ì—¬ëŸ¬ ë‚   ê¹Š íŒŒíƒ€ê³ ë‹ˆì•„  ì •',
     rmod_exc_name: 'íˆ¬ì–´', rmod_exc_desc: 'ë‹¹ ì—¬í–‰  ì¦‰ì‹œ ë¦¬ ì˜ˆì•½',
@@ -5068,7 +5068,7 @@ applyLang(currentLang);
     es: 'Hola! Soy Zoyi, asistente de Zoyen Turismo. Tenes alguna consulta',
     en: 'Hi! I\'m Zoyi, Zoyen Turismo assistant. Got a question',
     pt: 'Ol! Sou Zoyi, assistente da Zoyen Turismo. Tem alguma dvida',
-    ko: '!  Zoyen Turismo Zoyi.   '
+    ko: '안녕하세요! 저는 Zoyen Turismo의 Zoyi입니다. 무엇을 도와드릴까요?'
   };
 
   function showBubble() {
@@ -5149,7 +5149,7 @@ applyLang(currentLang);
 
   hamBtn.addEventListener('click', function(e) {
     e.stopPropagation();
-    drawer.classList.contains('open')  closeDrawer() : openDrawer();
+    drawer.classList.contains('open') ? closeDrawer() : openDrawer();
   });
 
   overlay.addEventListener('click', closeDrawer);
@@ -5953,7 +5953,7 @@ textarea {
       ['ES', 'EN', 'PT', 'KO'].forEach(function (code, index) {
         var btn = document.createElement('button');
         btn.type = 'button';
-        btn.className = 'drawer-lang-btn' + (index === 0  ' active' : '');
+        btn.className = 'drawer-lang-btn' + (index === 0 ? ' active' : '');
         btn.setAttribute('data-lang', code.toLowerCase());
         btn.textContent = code;
         btn.addEventListener('click', function () {
@@ -6429,7 +6429,7 @@ a.cta-btn-g[href*="wa.me"]:hover {
 }
 @media (min-width: 901px) {
   .slide-emblem {
-    margin-top: 90px !important;
+    margin-top: 0px !important;
   }
 }
 @media (max-width: 720px) {
@@ -6438,6 +6438,28 @@ a.cta-btn-g[href*="wa.me"]:hover {
     height: 220px !important;
     max-width: min(220px, 72vw) !important;
     max-height: min(220px, 72vw) !important;
+  }
+}
+</style>
+<style id="zoyen-slide-layout-fix">
+/* Separación entre logo y texto del hero */
+.slide {
+  gap: 0 !important;
+}
+.slide-emblem {
+  margin-top: 0 !important;
+  margin-bottom: -10px !important;
+}
+.slide-content {
+  margin-top: 0 !important;
+  gap: 0.6rem !important;
+}
+.hero .slide-content {
+  padding-bottom: 1rem !important;
+}
+@media (max-width: 900px) {
+  .slide-emblem {
+    margin-bottom: 0 !important;
   }
 }
 </style>
