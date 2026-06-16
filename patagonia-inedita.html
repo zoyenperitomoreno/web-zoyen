@@ -827,6 +827,81 @@ img.hero-logo-static {
   img.hero-logo-static { width: 220px !important; height: 220px !important; min-width: 220px !important; min-height: 220px !important; }
 }
 </style>
+
+<style id="zoyen-exc-hero-final">
+.exc-hero {
+  align-items: center !important;
+  justify-content: center !important;
+  padding-bottom: 0 !important;
+  padding-top: 72px !important;
+  height: 60vh !important;
+  min-height: 420px !important;
+}
+.exc-hero-overlay {
+  background: linear-gradient(to bottom,
+    rgba(26,20,16,.35) 0%,
+    rgba(26,20,16,.10) 35%,
+    rgba(26,20,16,.55) 75%,
+    rgba(26,20,16,.85) 100%) !important;
+}
+.exc-hero-content {
+  position: relative !important;
+  z-index: 2 !important;
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 0.7rem !important;
+  max-width: 860px !important;
+  padding: 0 2rem !important;
+  color: var(--cream) !important;
+  margin-top: -40px !important;
+}
+.exc-tag {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  background: rgba(26,20,16,0.55) !important;
+  color: var(--ember) !important;
+  font-family: 'Sora', sans-serif !important;
+  font-size: .85rem !important;
+  font-weight: 700 !important;
+  letter-spacing: .32em !important;
+  text-transform: uppercase !important;
+  padding: .38rem 1.2rem !important;
+  margin-bottom: 0.3rem !important;
+  border: 1px solid rgba(212,119,42,0.45) !important;
+  border-radius: 1px !important;
+  backdrop-filter: blur(6px) !important;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.6) !important;
+}
+.exc-tag::before, .exc-tag::after {
+  content: '' !important;
+  width: 22px !important;
+  height: 1px !important;
+  background: var(--ember) !important;
+  opacity: .8 !important;
+}
+.exc-hero-title {
+  font-family: 'DM Serif Display', serif !important;
+  font-size: clamp(2.4rem, 6.5vw, 5rem) !important;
+  font-weight: 600 !important;
+  line-height: 1.05 !important;
+  letter-spacing: -.01em !important;
+  color: var(--cream) !important;
+  text-shadow: 0 2px 24px rgba(26,20,16,.5) !important;
+  margin: 0 !important;
+}
+.exc-hero-title em {
+  font-style: italic !important;
+  color: var(--sand) !important;
+}
+@media (max-width: 720px) {
+  .exc-hero { padding-top: 60px !important; }
+  .exc-hero-title { font-size: clamp(1.9rem, 8vw, 2.8rem) !important; }
+}
+</style>
 </head>
 <body>
 
