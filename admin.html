@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Admin ? Zoyen Turismo</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>Admin  Zoyen Turismo</title>
+<link href="https://fonts.googleapis.com/css2family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* â”€â”€ Reset â”€â”€ */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -154,7 +154,7 @@ tr:hover td{background:rgba(212,119,42,.03)}
     </div>
     <div class="adm-field">
       <label>Contraseña</label>
-      <input type="password" id="admPass" placeholder="????????" autocomplete="current-password"/>
+      <input type="password" id="admPass" placeholder="" autocomplete="current-password"/>
     </div>
     <button class="adm-login-btn" id="admLoginBtn">Ingresar</button>
     <div class="adm-login-err" id="admLoginErr">Usuario o contraseña incorrectos.</div>
@@ -165,7 +165,7 @@ tr:hover td{background:rgba(212,119,42,.03)}
 <div id="panelWrap" style="display:none;height:100vh">
   <div class="panel">
     <div class="topbar">
-      <div class="topbar-brand">ZOYEN <span>TURISMO</span> ? Admin</div>
+      <div class="topbar-brand">ZOYEN <span>TURISMO</span>  Admin</div>
       <button class="btn-logout" id="btnLogout">Cerrar sesión</button>
     </div>
     <div class="layout">
@@ -182,13 +182,13 @@ tr:hover td{background:rgba(212,119,42,.03)}
         <div class="sec active" id="sec-dashboard">
           <div class="sec-title">Dashboard</div>
           <div class="stats">
-            <div class="stat"><div class="stat-val" id="d-total">?</div><div class="stat-lbl">Total reservas</div></div>
-            <div class="stat"><div class="stat-val" id="d-pend">?</div><div class="stat-lbl">Pendientes</div></div>
-            <div class="stat"><div class="stat-val" id="d-conf">?</div><div class="stat-lbl">Confirmadas</div></div>
-            <div class="stat"><div class="stat-val" id="d-abandon">?</div><div class="stat-lbl">Abandonos</div></div>
+            <div class="stat"><div class="stat-val" id="d-total"></div><div class="stat-lbl">Total reservas</div></div>
+            <div class="stat"><div class="stat-val" id="d-pend"></div><div class="stat-lbl">Pendientes</div></div>
+            <div class="stat"><div class="stat-val" id="d-conf"></div><div class="stat-lbl">Confirmadas</div></div>
+            <div class="stat"><div class="stat-val" id="d-abandon"></div><div class="stat-lbl">Abandonos</div></div>
           </div>
           <div class="card">
-            <div class="card-title">Ãšltimas reservas</div>
+            <div class="card-title">Últimas reservas</div>
             <table><thead><tr><th>#</th><th>Nombre</th><th>Excursión</th><th>Fecha</th><th>Personas</th><th>Seña</th><th>Estado</th></tr></thead>
             <tbody id="d-tbody"></tbody></table>
           </div>
@@ -217,7 +217,7 @@ tr:hover td{background:rgba(212,119,42,.03)}
           <div id="exc-list" style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:24px"></div>
           <div class="card">
             <div class="card-title">Vista previa</div>
-            <table><thead><tr><th>Excursión</th><th>Precio</th><th>Estado</th><th>Duraci?n</th></tr></thead>
+            <table><thead><tr><th>Excursión</th><th>Precio</th><th>Estado</th><th>Duracin</th></tr></thead>
             <tbody id="exc-preview"></tbody></table>
           </div>
         </div>
@@ -228,7 +228,7 @@ tr:hover td{background:rgba(212,119,42,.03)}
             <div class="card-title">Tour</div>
             <div class="field"><label>Seleccionar tour</label><select id="av-tour" onchange="refreshAvailabilityAdmin()"></select></div>
             <div class="field"><label>Precio base ($)</label><input type="number" id="av-price" min="0"/></div>
-            <div class="field"><label>Capacidad m?x.</label><input type="number" id="av-capacity" min="1" max="50"/></div>
+            <div class="field"><label>Capacidad mx.</label><input type="number" id="av-capacity" min="1" max="50"/></div>
             <div class="field">
               <label>Vehículo</label>
               <select id="av-vehicle" onchange="updateVehicleAdminPreview()"></select>
@@ -252,7 +252,7 @@ tr:hover td{background:rgba(212,119,42,.03)}
             <div class="field"><label>Tour</label><select id="blk-tour" onchange="refreshBlockDateOptions()"></select></div>
             <div class="field"><label>Fecha</label><select id="blk-date" onchange="renderManualSeatGrid()"></select></div>
             <div class="manual-seat-grid" id="manual-seat-grid"></div>
-            <p style="font-size:12px;color:var(--muted);margin-top:10px;line-height:1.5">Los asientos bloqueados ac? quedan ocupados para ese tour y esa fecha. Las reservas confirmadas o pendientes también ocupan asiento autom?ticamente.</p>
+            <p style="font-size:12px;color:var(--muted);margin-top:10px;line-height:1.5">Los asientos bloqueados ac quedan ocupados para ese tour y esa fecha. Las reservas confirmadas o pendientes también ocupan asiento automticamente.</p>
             <div style="display:flex;gap:10px;margin-top:16px">
               <button class="btn btn-p" onclick="saveManualSeats()">Guardar bloqueo</button>
               <button class="btn btn-outline" onclick="clearManualSeats()">Limpiar todo</button>
@@ -273,7 +273,7 @@ tr:hover td{background:rgba(212,119,42,.03)}
               </select>
             </div>
             <div style="overflow-x:auto">
-              <table><thead><tr><th>#</th><th>Nombre</th><th>Contacto</th><th>Excursión</th><th>Fecha</th><th>Pers.</th><th>Asientos</th><th>Seña</th><th>Estado</th><th>Ãšltimo intento</th><th>Acciones</th></tr></thead>
+              <table><thead><tr><th>#</th><th>Nombre</th><th>Contacto</th><th>Excursión</th><th>Fecha</th><th>Pers.</th><th>Asientos</th><th>Seña</th><th>Estado</th><th>Último intento</th><th>Acciones</th></tr></thead>
               <tbody id="r-tbody"></tbody></table>
             </div>
           </div>
@@ -293,7 +293,7 @@ let loggedIn = false;
 function readReservas() {
   try {
     const raw = sessionStorage.getItem('zoyen_reservas') || localStorage.getItem('zoyen_reservas');
-    return raw ? JSON.parse(raw) : [];
+    return raw  JSON.parse(raw) : [];
   } catch(e) { return []; }
 }
 function writeReservas(arr) {
@@ -304,7 +304,7 @@ function writeReservas(arr) {
 function getTourConfig() {
   try {
     const raw = localStorage.getItem('zoyen_tour_config');
-    return raw ? JSON.parse(raw) : defaultTourConfig();
+    return raw  JSON.parse(raw) : defaultTourConfig();
   } catch(e) { return defaultTourConfig(); }
 }
 function saveTourConfig(cfg) {
@@ -319,7 +319,7 @@ function defaultTourConfig() {
 
 function showToast(msg) {
   const t = document.getElementById('toast');
-  t.textContent = '? ' + (msg || 'Guardado');
+  t.textContent = ' ' + (msg || 'Guardado');
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 2800);
 }
@@ -376,10 +376,10 @@ const excData = [
   { key:'cueva',            name:'Cueva de las Manos',                                       precio:18000, estado:'activa', duracion:'Día completo',      capacidad:14 },
   { key:'capillas',         name:'Capillas y Catedrales de Mármol',                          precio:24000, estado:'activa', duracion:'Día completo',      capacidad:14 },
   { key:'posadas',          name:'Lago Posadas con Vuelta a la Meseta por Ruta Escénica 41', precio:15000, estado:'activa', duracion:'Día completo (12 hs)', capacidad:14 },
-  { key:'zeballos',         name:'Ruta 41 ? Monte Zeballos',                                 precio:16000, estado:'activa', duracion:'Día completo',      capacidad:14 },
+  { key:'zeballos',         name:'Ruta 41  Monte Zeballos',                                 precio:16000, estado:'activa', duracion:'Día completo',      capacidad:14 },
   { key:'charcamata',       name:'Alero Charcamata',                                         precio:12000, estado:'activa', duracion:'Medio día',         capacidad:14 },
-  { key:'parque_caniadon',  name:'Portal Ca?ad?n Pinturas (Parque Patagonia)',                precio:8000,  estado:'activa', duracion:'Medio día (5 hs)', capacidad:14 },
-  { key:'parque_escension', name:'PNP / Estancia La Escensi?n',                              precio:7000,  estado:'activa', duracion:'Medio día (4 hs)', capacidad:14 },
+  { key:'parque_caniadon',  name:'Portal Caadn Pinturas (Parque Patagonia)',                precio:8000,  estado:'activa', duracion:'Medio día (5 hs)', capacidad:14 },
+  { key:'parque_escension', name:'PNP / Estancia La Escensin',                              precio:7000,  estado:'activa', duracion:'Medio día (4 hs)', capacidad:14 },
 ];
 
 const VEHICLE_OPTIONS = {
@@ -387,7 +387,7 @@ const VEHICLE_OPTIONS = {
   mercedes_sprinter: { name:'Mercedes Sprinter', icon:'van',   capacity:20 },
   toyota_hilux:      { name:'Toyota Hilux',      icon:'4x4',   capacity:6  },
   ford_transit:      { name:'Ford Transit',      icon:'van',   capacity:15 },
-  minibus:           { name:'Minib?s',           icon:'bus',   capacity:30 },
+  minibus:           { name:'Minibs',           icon:'bus',   capacity:30 },
 };
 
 function vehicleSvg(icon) {
@@ -416,7 +416,7 @@ function buildDashboard() {
     <td style="color:var(--stone)">#${reservas.length-i}</td>
     <td style="font-weight:500">${r.nombre}</td>
     <td>${r.excursion}</td>
-    <td>${r.fecha ? new Date(r.fecha+'T12:00:00').toLocaleDateString('es-AR',{day:'numeric',month:'short'}) : ''}</td>
+    <td>${r.fecha  new Date(r.fecha+'T12:00:00').toLocaleDateString('es-AR',{day:'numeric',month:'short'}) : ''}</td>
     <td style="text-align:center">${r.personas}</td>
     <td style="color:var(--ember);font-weight:600">$${(r.senia||0).toLocaleString('es-AR')}</td>
     <td>${badge(r.estado)}</td>
@@ -431,19 +431,19 @@ function badge(e) {
 
 // â”€â”€ Slides â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const slideDefaults = [
-  {ey:'Patagonia Argentina', ti:'Explor? la Patagonia Inédita',   de:'De la mano de quienes la vivimos. Excursiones ?nicas e irrepetibles.'},
-  {ey:'Patrimonio UNESCO',   ti:'Cueva de las Manos',             de:'Uno de los sitios arqueol?gicos más importantes del mundo.'},
-  {ey:'Chile ? Carretera Austral', ti:'Capillas de Mármol',       de:'Navegación sobre el Lago General Carrera.'},
+  {ey:'Patagonia Argentina', ti:'Explor la Patagonia Inédita',   de:'De la mano de quienes la vivimos. Excursiones nicas e irrepetibles.'},
+  {ey:'Patrimonio UNESCO',   ti:'Cueva de las Manos',             de:'Uno de los sitios arqueolgicos más importantes del mundo.'},
+  {ey:'Chile  Carretera Austral', ti:'Capillas de Mármol',       de:'Navegación sobre el Lago General Carrera.'},
   {ey:'Ruta Escénica 41',    ti:'Monte Zeballos',                 de:'Desde los 400 hasta los 1.500 metros.'},
 ];
-const slideLabels = ['Banner 1 ? Patagonia','Banner 2 ? Cueva de las Manos','Banner 3 ? Capillas de Mármol','Banner 4 ? Monte Zeballos'];
+const slideLabels = ['Banner 1  Patagonia','Banner 2  Cueva de las Manos','Banner 3  Capillas de Mármol','Banner 4  Monte Zeballos'];
 
 function buildSlides() {
   // Lenticular toggle
   let enabled = true;
   try { enabled = localStorage.getItem('lentEnabled') !== 'false'; } catch(e) {}
   const cb = document.getElementById('lent-toggle');
-  if(cb) { cb.checked = enabled; cb.onchange = () => { try { localStorage.setItem('lentEnabled', cb.checked); } catch(e) {} showToast('Efecto ' + (cb.checked ? 'activado' : 'desactivado') + '.'); }; }
+  if(cb) { cb.checked = enabled; cb.onchange = () => { try { localStorage.setItem('lentEnabled', cb.checked); } catch(e) {} showToast('Efecto ' + (cb.checked  'activado' : 'desactivado') + '.'); }; }
 
   document.getElementById('slider-grid').innerHTML = slideLabels.map((lbl, i) => {
     let url = '';
@@ -454,8 +454,8 @@ function buildSlides() {
       <div class="slide-name">${lbl}</div>
       <div class="slide-fields">
         <input type="text" id="t-s${i}-ey" value="${s.ey}" placeholder="Eyebrow"/>
-        <input type="text" id="t-s${i}-ti" value="${s.ti}" placeholder="T?tulo"/>
-        <input type="text" id="t-s${i}-de" value="${s.de}" placeholder="Descripci?n"/>
+        <input type="text" id="t-s${i}-ti" value="${s.ti}" placeholder="Ttulo"/>
+        <input type="text" id="t-s${i}-de" value="${s.de}" placeholder="Descripcin"/>
         <div style="display:flex;gap:6px;margin-top:4px">
           <input type="text" id="img-${i}" placeholder="URL de imagen" style="flex:1" value="${url}"/>
           <button class="btn btn-p btn-sm" onclick="applyImg(${i},document.getElementById('img-${i}').value)">Aplicar</button>
@@ -533,7 +533,7 @@ function refreshAvailabilityAdmin() {
     updateVehicleAdminPreview();
   }
   if(!t || !t.dates || !t.dates.length) { list.innerHTML='<span class="empty">Sin fechas cargadas.</span>'; return; }
-  list.innerHTML = t.dates.slice().sort().map(d => `<span class="date-pill">${new Date(d+'T12:00:00').toLocaleDateString('es-AR',{day:'2-digit',month:'long',year:'numeric'})}<button onclick="removeAvailabilityDate('${key}','${d}')">?</button></span>`).join('');
+  list.innerHTML = t.dates.slice().sort().map(d => `<span class="date-pill">${new Date(d+'T12:00:00').toLocaleDateString('es-AR',{day:'2-digit',month:'long',year:'numeric'})}<button onclick="removeAvailabilityDate('${key}','${d}')"></button></span>`).join('');
 }
 function updateVehicleAdminPreview() {
   const key = document.getElementById('av-vehicle').value || 'renault_master';
@@ -548,7 +548,7 @@ function saveAvailabilityConfig() {
   cfg[key].capacity = parseInt(document.getElementById('av-capacity').value) || 16;
   cfg[key].vehicle = document.getElementById('av-vehicle').value || 'renault_master';
   saveTourConfig(cfg);
-  showToast('Configuraci?n guardada.');
+  showToast('Configuracin guardada.');
 }
 function addAvailabilityDate() {
   const cfg = getTourConfigAdmin();
@@ -575,7 +575,7 @@ function removeAvailabilityDate(key, d) {
 function refreshBlockDateOptions() {
   const cfg = getTourConfigAdmin();
   const key = document.getElementById('blk-tour').value || Object.keys(cfg)[0];
-  const dates = (cfg[key]?.dates||[]).slice().sort();
+  const dates = (cfg[key].dates||[]).slice().sort();
   document.getElementById('blk-date').innerHTML = dates.map(d => `<option value="${d}">${new Date(d+'T12:00:00').toLocaleDateString('es-AR',{day:'2-digit',month:'long',year:'numeric'})}</option>`).join('') || '<option value="">Sin fechas</option>';
   renderManualSeatGrid();
 }
@@ -587,13 +587,13 @@ function renderManualSeatGrid() {
   const key = document.getElementById('blk-tour').value;
   const date = document.getElementById('blk-date').value;
   const grid = document.getElementById('manual-seat-grid');
-  if(!key || !date) { grid.innerHTML='<div class="empty">Carg? una fecha para bloquear asientos.</div>'; return; }
+  if(!key || !date) { grid.innerHTML='<div class="empty">Carg una fecha para bloquear asientos.</div>'; return; }
   const manual = ((cfg[key].blockedSeats||{})[date]||[]).map(Number);
   const reserved = reservedSeatsForAdmin(key, date);
   grid.innerHTML = Array.from({length:16},(_,i)=>i+1).map(n => {
     const isReserved = reserved.includes(n);
-    return `<label class="manual-seat ${isReserved?'reserved':''}">
-      <input type="checkbox" value="${n}" ${manual.includes(n)?'checked':''} ${isReserved?'disabled':''}>
+    return `<label class="manual-seat ${isReserved'reserved':''}">
+      <input type="checkbox" value="${n}" ${manual.includes(n)'checked':''} ${isReserved'disabled':''}>
       ${n}
     </label>`;
   }).join('');
@@ -624,29 +624,29 @@ function clearManualSeats() {
 function buildReservas() {
   const reservas = readReservas();
   const filter = document.getElementById('res-filter').value;
-  const list = filter==='all' ? reservas : reservas.filter(r=>r.estado===filter);
+  const list = filter==='all'  reservas : reservas.filter(r=>r.estado===filter);
   const tb = document.getElementById('r-tbody');
-  if(!list.length) { tb.innerHTML=`<tr><td colspan="11" class="empty">${reservas.length?'Sin resultados para ese filtro.':'Sin reservas aún.'}</td></tr>`; return; }
+  if(!list.length) { tb.innerHTML=`<tr><td colspan="11" class="empty">${reservas.length'Sin resultados para ese filtro.':'Sin reservas aún.'}</td></tr>`; return; }
   tb.innerHTML = list.slice().reverse().map(r => {
     const idx = reservas.indexOf(r);
-    const waMsg = encodeURIComponent('Hola '+r.nombre+', te escribimos desde Zoyen Turismo. Vimos que iniciaste una reserva para '+r.excursion+' y qued? sin confirmar. ?Quer?s que te ayudemos a completarla?');
-    const waUrl = 'https://wa.me/'+r.tel.replace(/\D/g,'')+'?text='+waMsg;
+    const waMsg = encodeURIComponent('Hola '+r.nombre+', te escribimos desde Zoyen Turismo. Vimos que iniciaste una reserva para '+r.excursion+' y qued sin confirmar. Quers que te ayudemos a completarla');
+    const waUrl = 'https://wa.me/'+r.tel.replace(/\D/g,'')+'text='+waMsg;
     const puedeRetarget = (r.estado==='pendiente'||r.estado==='pago_iniciado') && r.tel;
     return `<tr>
       <td style="color:var(--stone)">#${idx+1}</td>
       <td style="font-weight:500">${r.nombre}</td>
-      <td style="font-size:12px;color:var(--stone)">${r.tel||'?'}<br>${r.email||'?'}</td>
+      <td style="font-size:12px;color:var(--stone)">${r.tel||''}<br>${r.email||''}</td>
       <td>${r.excursion}</td>
       <td>${r.fechaúnew Date(r.fecha+'T12:00:00').toLocaleDateString('es-AR',{day:'2-digit',month:'2-digit',year:'numeric'}):''}</td>
       <td style="text-align:center">${r.personas}</td>
-      <td style="text-align:center">${r.asientos||'?'}</td>
+      <td style="text-align:center">${r.asientos||''}</td>
       <td style="color:var(--ember);font-weight:600">$${(r.senia||0).toLocaleString('es-AR')}</td>
       <td>${badge(r.estado)}</td>
-      <td style="font-size:11px;color:var(--muted)">${r.ultimoIntento||r.creado||'?'}</td>
+      <td style="font-size:11px;color:var(--muted)">${r.ultimoIntento||r.creado||''}</td>
       <td><div style="display:flex;gap:5px;flex-wrap:wrap;align-items:center">
-        ${puedeRetarget?`<a href="${waUrl}" target="_blank" class="btn btn-wa btn-sm">WA</a>`:''}
-        ${r.estado!=='confirmada'?`<button class="btn btn-p btn-sm" onclick="cambiarEstado(${idx},'confirmada')">?</button>`:''}
-        ${r.estado!=='cancelada'?`<button class="btn btn-d btn-sm" onclick="cambiarEstado(${idx},'cancelada')">?</button>`:''}
+        ${puedeRetarget`<a href="${waUrl}" target="_blank" class="btn btn-wa btn-sm">WA</a>`:''}
+        ${r.estado!=='confirmada'`<button class="btn btn-p btn-sm" onclick="cambiarEstado(${idx},'confirmada')"></button>`:''}
+        ${r.estado!=='cancelada'`<button class="btn btn-d btn-sm" onclick="cambiarEstado(${idx},'cancelada')"></button>`:''}
       </div></td>
     </tr>`;
   }).join('');
@@ -1438,7 +1438,7 @@ textarea {
       ['ES', 'EN', 'PT', 'KO'].forEach(function (code, index) {
         var btn = document.createElement('button');
         btn.type = 'button';
-        btn.className = 'drawer-lang-btn' + (index === 0 ? ' active' : '');
+        btn.className = 'drawer-lang-btn' + (index === 0  ' active' : '');
         btn.setAttribute('data-lang', code.toLowerCase());
         btn.textContent = code;
         btn.addEventListener('click', function () {
