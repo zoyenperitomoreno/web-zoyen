@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Admin â€“ Zoyen Turismo</title>
+<title>Admin – Zoyen Turismo</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* â”€â”€ Reset â”€â”€ */
+/* ── Reset ── */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
   --bg:#f2f4f7; --surface:#ffffff; --sidebar:#1e1810; --topbar:#231c14;
@@ -15,7 +15,7 @@
   --sand:#c9a96e; --cream:#f5f0e8; --stone:#8a7a6a;
 }
 
-/* â”€â”€ Login overlay â”€â”€ */
+/* ── Login overlay ── */
 
 /* Login overlay */
 .adm-login-wrap {
@@ -32,7 +32,7 @@
   font-family:'Sora',sans-serif; color:#f5f0e8;
 }
 .adm-login-logo { display:flex; align-items:center; gap:10px; justify-content:center; margin-bottom:2rem; }
-.adm-login-logo svg { width:46px; height:46px; }
+.adm-login-logo svg, .adm-login-logo img { width:46px; height:46px; }
 .adm-login-logo-text { font-family:'Sora',sans-serif; font-size:1.25rem; font-weight:700; letter-spacing:.1em; color:#f5f0e8; }
 .adm-login-logo-text span { color:#d4772a; }
 .adm-login-eyebrow { font-family:'Sora',sans-serif; font-size:.62rem; font-weight:600; letter-spacing:.28em; text-transform:uppercase; color:#d4772a; text-align:center; margin-bottom:1.8rem; }
@@ -73,7 +73,7 @@
   align-items:center; justify-content:center; }
 .adm-login-wrap.open { display:flex; }
 
-/* â”€â”€ Panel layout (full page, no iframe) â”€â”€ */
+/* ── Panel layout (full page, no iframe) ── */
 html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;font-size:15px;color:var(--text);background:var(--bg)}
 .panel{display:flex;flex-direction:column;height:100vh}
 .topbar{background:var(--topbar);color:var(--cream);display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:56px;flex-shrink:0;border-bottom:1px solid rgba(212,119,42,.18)}
@@ -144,27 +144,20 @@ tr:hover td{background:rgba(212,119,42,.03)}
 <div class="adm-login-wrap open" id="admLoginWrap">
   <div class="adm-login-box">
     <div class="adm-login-logo">
-      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:46px;height:46px">
-        <circle cx="50" cy="50" r="46" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.2"/>
-        <polygon points="50,12 53,47 50,50 47,47" fill="white" opacity="0.92"/>
-        <polygon points="50,88 53,53 50,50 47,53" fill="rgba(200,220,240,0.7)"/>
-        <polygon points="12,50 47,47 50,50 47,53" fill="rgba(235,247,255,0.85)"/>
-        <polygon points="88,50 53,47 50,50 53,53" fill="rgba(155,185,210,0.6)"/>
-        <circle cx="50" cy="50" r="3.5" fill="#d4772a"/>
-      </svg>
+      <img src="assets/logo-zoyen-circular.svg" alt="ZOYEN Turismo" style="width:46px;height:46px">
       <div class="adm-login-logo-text">ZOYEN <span>TURISMO</span></div>
     </div>
-    <div class="adm-login-eyebrow">Panel de AdministraciÃ³n</div>
+    <div class="adm-login-eyebrow">Panel de Administración</div>
     <div class="adm-field">
       <label>Usuario</label>
       <input type="text" id="admUser" placeholder="admin" autocomplete="username"/>
     </div>
     <div class="adm-field">
-      <label>ContraseÃ±a</label>
-      <input type="password" id="admPass" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" autocomplete="current-password"/>
+      <label>Contraseña</label>
+      <input type="password" id="admPass" placeholder="••••••••" autocomplete="current-password"/>
     </div>
     <button class="adm-login-btn" id="admLoginBtn">Ingresar</button>
-    <div class="adm-login-err" id="admLoginErr">Usuario o contraseÃ±a incorrectos.</div>
+    <div class="adm-login-err" id="admLoginErr">Usuario o contraseña incorrectos.</div>
   </div>
 </div>
 
@@ -172,31 +165,31 @@ tr:hover td{background:rgba(212,119,42,.03)}
 <div id="panelWrap" style="display:none;height:100vh">
   <div class="panel">
     <div class="topbar">
-      <div class="topbar-brand">ZOYEN <span>TURISMO</span> Â· Admin</div>
-      <button class="btn-logout" id="btnLogout">Cerrar sesiÃ³n</button>
+      <div class="topbar-brand">ZOYEN <span>TURISMO</span> · Admin</div>
+      <button class="btn-logout" id="btnLogout">Cerrar sesión</button>
     </div>
     <div class="layout">
       <nav class="sidebar">
-        <div class="nav-item active" data-sec="dashboard"><span class="nav-icon">ðŸ“Š</span>Dashboard</div>
-        <div class="nav-item" data-sec="slides"><span class="nav-icon">ðŸ–¼</span>Banners</div>
-        <div class="nav-item" data-sec="excursiones"><span class="nav-icon">ðŸ—º</span>Excursiones</div>
-        <div class="nav-item" data-sec="disponibilidad"><span class="nav-icon">ðŸ“…</span>Disponibilidad</div>
-        <div class="nav-item" data-sec="bloqueo"><span class="nav-icon">ðŸ”’</span>Asientos</div>
-        <div class="nav-item" data-sec="reservas"><span class="nav-icon">ðŸ“‹</span>Reservas</div>
+        <div class="nav-item active" data-sec="dashboard"><span class="nav-icon">📊</span>Dashboard</div>
+        <div class="nav-item" data-sec="slides"><span class="nav-icon">🖼</span>Banners</div>
+        <div class="nav-item" data-sec="excursiones"><span class="nav-icon">🗺</span>Excursiones</div>
+        <div class="nav-item" data-sec="disponibilidad"><span class="nav-icon">📅</span>Disponibilidad</div>
+        <div class="nav-item" data-sec="bloqueo"><span class="nav-icon">🔒</span>Asientos</div>
+        <div class="nav-item" data-sec="reservas"><span class="nav-icon">📋</span>Reservas</div>
       </nav>
       <main class="main" id="mainContent">
         <!-- Dashboard -->
         <div class="sec active" id="sec-dashboard">
           <div class="sec-title">Dashboard</div>
           <div class="stats">
-            <div class="stat"><div class="stat-val" id="d-total">â€“</div><div class="stat-lbl">Total reservas</div></div>
-            <div class="stat"><div class="stat-val" id="d-pend">â€“</div><div class="stat-lbl">Pendientes</div></div>
-            <div class="stat"><div class="stat-val" id="d-conf">â€“</div><div class="stat-lbl">Confirmadas</div></div>
-            <div class="stat"><div class="stat-val" id="d-abandon">â€“</div><div class="stat-lbl">Abandonos</div></div>
+            <div class="stat"><div class="stat-val" id="d-total">–</div><div class="stat-lbl">Total reservas</div></div>
+            <div class="stat"><div class="stat-val" id="d-pend">–</div><div class="stat-lbl">Pendientes</div></div>
+            <div class="stat"><div class="stat-val" id="d-conf">–</div><div class="stat-lbl">Confirmadas</div></div>
+            <div class="stat"><div class="stat-val" id="d-abandon">–</div><div class="stat-lbl">Abandonos</div></div>
           </div>
           <div class="card">
-            <div class="card-title">Ãšltimas reservas</div>
-            <table><thead><tr><th>#</th><th>Nombre</th><th>ExcursiÃ³n</th><th>Fecha</th><th>Personas</th><th>SeÃ±a</th><th>Estado</th></tr></thead>
+            <div class="card-title">Últimas reservas</div>
+            <table><thead><tr><th>#</th><th>Nombre</th><th>Excursión</th><th>Fecha</th><th>Personas</th><th>Seña</th><th>Estado</th></tr></thead>
             <tbody id="d-tbody"></tbody></table>
           </div>
         </div>
@@ -224,7 +217,7 @@ tr:hover td{background:rgba(212,119,42,.03)}
           <div id="exc-list" style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:24px"></div>
           <div class="card">
             <div class="card-title">Vista previa</div>
-            <table><thead><tr><th>ExcursiÃ³n</th><th>Precio</th><th>Estado</th><th>DuraciÃ³n</th></tr></thead>
+            <table><thead><tr><th>Excursión</th><th>Precio</th><th>Estado</th><th>Duración</th></tr></thead>
             <tbody id="exc-preview"></tbody></table>
           </div>
         </div>
@@ -235,13 +228,13 @@ tr:hover td{background:rgba(212,119,42,.03)}
             <div class="card-title">Tour</div>
             <div class="field"><label>Seleccionar tour</label><select id="av-tour" onchange="refreshAvailabilityAdmin()"></select></div>
             <div class="field"><label>Precio base ($)</label><input type="number" id="av-price" min="0"/></div>
-            <div class="field"><label>Capacidad mÃ¡x.</label><input type="number" id="av-capacity" min="1" max="50"/></div>
+            <div class="field"><label>Capacidad máx.</label><input type="number" id="av-capacity" min="1" max="50"/></div>
             <div class="field">
-              <label>VehÃ­culo</label>
+              <label>Vehículo</label>
               <select id="av-vehicle" onchange="updateVehicleAdminPreview()"></select>
               <div class="vehicle-admin-preview"><span class="vehicle-icon" id="av-vehicle-icon"></span><span id="av-vehicle-name"></span></div>
             </div>
-            <button class="btn btn-p" onclick="saveAvailabilityConfig()" style="margin-top:8px">Guardar configuraciÃ³n</button>
+            <button class="btn btn-p" onclick="saveAvailabilityConfig()" style="margin-top:8px">Guardar configuración</button>
           </div>
           <div class="card">
             <div class="card-title">Fechas disponibles</div>
@@ -259,7 +252,7 @@ tr:hover td{background:rgba(212,119,42,.03)}
             <div class="field"><label>Tour</label><select id="blk-tour" onchange="refreshBlockDateOptions()"></select></div>
             <div class="field"><label>Fecha</label><select id="blk-date" onchange="renderManualSeatGrid()"></select></div>
             <div class="manual-seat-grid" id="manual-seat-grid"></div>
-            <p style="font-size:12px;color:var(--muted);margin-top:10px;line-height:1.5">Los asientos bloqueados acÃ¡ quedan ocupados para ese tour y esa fecha. Las reservas confirmadas o pendientes tambiÃ©n ocupan asiento automÃ¡ticamente.</p>
+            <p style="font-size:12px;color:var(--muted);margin-top:10px;line-height:1.5">Los asientos bloqueados acá quedan ocupados para ese tour y esa fecha. Las reservas confirmadas o pendientes también ocupan asiento automáticamente.</p>
             <div style="display:flex;gap:10px;margin-top:16px">
               <button class="btn btn-p" onclick="saveManualSeats()">Guardar bloqueo</button>
               <button class="btn btn-outline" onclick="clearManualSeats()">Limpiar todo</button>
@@ -280,7 +273,7 @@ tr:hover td{background:rgba(212,119,42,.03)}
               </select>
             </div>
             <div style="overflow-x:auto">
-              <table><thead><tr><th>#</th><th>Nombre</th><th>Contacto</th><th>ExcursiÃ³n</th><th>Fecha</th><th>Pers.</th><th>Asientos</th><th>SeÃ±a</th><th>Estado</th><th>Ãšltimo intento</th><th>Acciones</th></tr></thead>
+              <table><thead><tr><th>#</th><th>Nombre</th><th>Contacto</th><th>Excursión</th><th>Fecha</th><th>Pers.</th><th>Asientos</th><th>Seña</th><th>Estado</th><th>Último intento</th><th>Acciones</th></tr></thead>
               <tbody id="r-tbody"></tbody></table>
             </div>
           </div>
@@ -296,7 +289,7 @@ tr:hover td{background:rgba(212,119,42,.03)}
 const CREDS = { user:'zoyen', pass:'patagonia2025' };
 let loggedIn = false;
 
-// â”€â”€ Storage helpers (same as index.html) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Storage helpers (same as index.html) ──────────────────────
 function readReservas() {
   try {
     const raw = sessionStorage.getItem('zoyen_reservas') || localStorage.getItem('zoyen_reservas');
@@ -319,19 +312,19 @@ function saveTourConfig(cfg) {
 }
 function defaultTourConfig() {
   return {
-    inedita: { name:'Patagonia InÃ©dita', duration:'6 dÃ­as / 5 noches', precio:0, capacity:16, vehicle:'renault_master', dates:[], blockedSeats:{} },
-    carretera: { name:'Carretera Austral', duration:'7 dÃ­as / 6 noches', precio:0, capacity:16, vehicle:'renault_master', dates:[], blockedSeats:{} }
+    inedita: { name:'Patagonia Inédita', duration:'6 días / 5 noches', precio:0, capacity:16, vehicle:'renault_master', dates:[], blockedSeats:{} },
+    carretera: { name:'Carretera Austral', duration:'7 días / 6 noches', precio:0, capacity:16, vehicle:'renault_master', dates:[], blockedSeats:{} }
   };
 }
 
 function showToast(msg) {
   const t = document.getElementById('toast');
-  t.textContent = 'âœ“ ' + (msg || 'Guardado');
+  t.textContent = '✓ ' + (msg || 'Guardado');
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 2800);
 }
 
-// â”€â”€ Login â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Login ──────────────────────────────────────────────────────
 document.getElementById('admLoginBtn').onclick = doLogin;
 document.getElementById('admPass').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
 document.getElementById('admUser').addEventListener('keydown', e => { if(e.key==='Enter') document.getElementById('admPass').focus(); });
@@ -359,7 +352,7 @@ document.getElementById('btnLogout').onclick = () => {
   document.getElementById('admPass').value = '';
 };
 
-// â”€â”€ Nav â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Nav ────────────────────────────────────────────────────────
 document.querySelectorAll('.nav-item').forEach(item => {
   item.addEventListener('click', () => {
     document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
@@ -369,7 +362,7 @@ document.querySelectorAll('.nav-item').forEach(item => {
   });
 });
 
-// â”€â”€ Panel init â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Panel init ─────────────────────────────────────────────────
 function initPanel() {
   buildDashboard();
   buildSlides();
@@ -378,15 +371,15 @@ function initPanel() {
   buildReservas();
 }
 
-// â”€â”€ Excursion data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Excursion data ─────────────────────────────────────────────
 const excData = [
-  { key:'cueva',            name:'Cueva de las Manos',                                       precio:18000, estado:'activa', duracion:'DÃ­a completo',      capacidad:14 },
-  { key:'capillas',         name:'Capillas y Catedrales de MÃ¡rmol',                          precio:24000, estado:'activa', duracion:'DÃ­a completo',      capacidad:14 },
-  { key:'posadas',          name:'Lago Posadas con Vuelta a la Meseta por Ruta EscÃ©nica 41', precio:15000, estado:'activa', duracion:'DÃ­a completo (12 hs)', capacidad:14 },
-  { key:'zeballos',         name:'Ruta 41 Â· Monte Zeballos',                                 precio:16000, estado:'activa', duracion:'DÃ­a completo',      capacidad:14 },
-  { key:'charcamata',       name:'Alero Charcamata',                                         precio:12000, estado:'activa', duracion:'Medio dÃ­a',         capacidad:14 },
-  { key:'parque_caniadon',  name:'Portal CaÃ±adÃ³n Pinturas (Parque Patagonia)',                precio:8000,  estado:'activa', duracion:'Medio dÃ­a (5 hs)', capacidad:14 },
-  { key:'parque_escension', name:'PNP / Estancia La EscensiÃ³n',                              precio:7000,  estado:'activa', duracion:'Medio dÃ­a (4 hs)', capacidad:14 },
+  { key:'cueva',            name:'Cueva de las Manos',                                       precio:18000, estado:'activa', duracion:'Día completo',      capacidad:14 },
+  { key:'capillas',         name:'Capillas y Catedrales de Mármol',                          precio:24000, estado:'activa', duracion:'Día completo',      capacidad:14 },
+  { key:'posadas',          name:'Lago Posadas con Vuelta a la Meseta por Ruta Escénica 41', precio:15000, estado:'activa', duracion:'Día completo (12 hs)', capacidad:14 },
+  { key:'zeballos',         name:'Ruta 41 · Monte Zeballos',                                 precio:16000, estado:'activa', duracion:'Día completo',      capacidad:14 },
+  { key:'charcamata',       name:'Alero Charcamata',                                         precio:12000, estado:'activa', duracion:'Medio día',         capacidad:14 },
+  { key:'parque_caniadon',  name:'Portal Cañadón Pinturas (Parque Patagonia)',                precio:8000,  estado:'activa', duracion:'Medio día (5 hs)', capacidad:14 },
+  { key:'parque_escension', name:'PNP / Estancia La Escensión',                              precio:7000,  estado:'activa', duracion:'Medio día (4 hs)', capacidad:14 },
 ];
 
 const VEHICLE_OPTIONS = {
@@ -394,7 +387,7 @@ const VEHICLE_OPTIONS = {
   mercedes_sprinter: { name:'Mercedes Sprinter', icon:'van',   capacity:20 },
   toyota_hilux:      { name:'Toyota Hilux',      icon:'4x4',   capacity:6  },
   ford_transit:      { name:'Ford Transit',      icon:'van',   capacity:15 },
-  minibus:           { name:'MinibÃºs',           icon:'bus',   capacity:30 },
+  minibus:           { name:'Minibús',           icon:'bus',   capacity:30 },
 };
 
 function vehicleSvg(icon) {
@@ -406,7 +399,7 @@ function vehicleSvg(icon) {
   return svgs[icon] || svgs.van;
 }
 
-// â”€â”€ Dashboard â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Dashboard ──────────────────────────────────────────────────
 function buildDashboard() {
   const reservas = readReservas();
   const total = reservas.length;
@@ -418,7 +411,7 @@ function buildDashboard() {
   document.getElementById('d-conf').textContent = conf;
   document.getElementById('d-abandon').textContent = iniciados;
   const tb = document.getElementById('d-tbody');
-  if(!total) { tb.innerHTML='<tr><td colspan="7" class="empty">Sin reservas registradas aÃºn.</td></tr>'; return; }
+  if(!total) { tb.innerHTML='<tr><td colspan="7" class="empty">Sin reservas registradas aún.</td></tr>'; return; }
   tb.innerHTML = reservas.slice(-8).reverse().map((r,i) => `<tr>
     <td style="color:var(--stone)">#${reservas.length-i}</td>
     <td style="font-weight:500">${r.nombre}</td>
@@ -436,14 +429,14 @@ function badge(e) {
   return `<span class="badge ${m[e]||'by'}">${labels[e]||e}</span>`;
 }
 
-// â”€â”€ Slides â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Slides ─────────────────────────────────────────────────────
 const slideDefaults = [
-  {ey:'Patagonia Argentina', ti:'ExplorÃ¡ la Patagonia InÃ©dita',   de:'De la mano de quienes la vivimos. Excursiones Ãºnicas e irrepetibles.'},
-  {ey:'Patrimonio UNESCO',   ti:'Cueva de las Manos',             de:'Uno de los sitios arqueolÃ³gicos mÃ¡s importantes del mundo.'},
-  {ey:'Chile Â· Carretera Austral', ti:'Capillas de MÃ¡rmol',       de:'NavegaciÃ³n sobre el Lago General Carrera.'},
-  {ey:'Ruta EscÃ©nica 41',    ti:'Monte Zeballos',                 de:'Desde los 400 hasta los 1.500 metros.'},
+  {ey:'Patagonia Argentina', ti:'Explorá la Patagonia Inédita',   de:'De la mano de quienes la vivimos. Excursiones únicas e irrepetibles.'},
+  {ey:'Patrimonio UNESCO',   ti:'Cueva de las Manos',             de:'Uno de los sitios arqueológicos más importantes del mundo.'},
+  {ey:'Chile · Carretera Austral', ti:'Capillas de Mármol',       de:'Navegación sobre el Lago General Carrera.'},
+  {ey:'Ruta Escénica 41',    ti:'Monte Zeballos',                 de:'Desde los 400 hasta los 1.500 metros.'},
 ];
-const slideLabels = ['Banner 1 â€“ Patagonia','Banner 2 â€“ Cueva de las Manos','Banner 3 â€“ Capillas de MÃ¡rmol','Banner 4 â€“ Monte Zeballos'];
+const slideLabels = ['Banner 1 – Patagonia','Banner 2 – Cueva de las Manos','Banner 3 – Capillas de Mármol','Banner 4 – Monte Zeballos'];
 
 function buildSlides() {
   // Lenticular toggle
@@ -461,8 +454,8 @@ function buildSlides() {
       <div class="slide-name">${lbl}</div>
       <div class="slide-fields">
         <input type="text" id="t-s${i}-ey" value="${s.ey}" placeholder="Eyebrow"/>
-        <input type="text" id="t-s${i}-ti" value="${s.ti}" placeholder="TÃ­tulo"/>
-        <input type="text" id="t-s${i}-de" value="${s.de}" placeholder="DescripciÃ³n"/>
+        <input type="text" id="t-s${i}-ti" value="${s.ti}" placeholder="Título"/>
+        <input type="text" id="t-s${i}-de" value="${s.de}" placeholder="Descripción"/>
         <div style="display:flex;gap:6px;margin-top:4px">
           <input type="text" id="img-${i}" placeholder="URL de imagen" style="flex:1" value="${url}"/>
           <button class="btn btn-p btn-sm" onclick="applyImg(${i},document.getElementById('img-${i}').value)">Aplicar</button>
@@ -485,7 +478,7 @@ function saveManifesto() {
   showToast('Manifiesto guardado (editar directamente en index.html).');
 }
 
-// â”€â”€ Excursiones â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Excursiones ────────────────────────────────────────────────
 function buildExcursiones() {
   document.getElementById('exc-list').innerHTML = excData.map((e, i) => `<div class="card">
     <div class="card-title">${e.name}</div>
@@ -512,10 +505,10 @@ function saveExc(i) {
   excData[i].precio = parseInt(document.getElementById('exc-precio-'+i).value) || 0;
   excData[i].estado = document.getElementById('exc-estado-'+i).value;
   buildExcursiones();
-  showToast('ExcursiÃ³n actualizada.');
+  showToast('Excursión actualizada.');
 }
 
-// â”€â”€ Disponibilidad â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Disponibilidad ─────────────────────────────────────────────
 function getTourConfigAdmin() { return JSON.parse(JSON.stringify(getTourConfig())); }
 function tourLabel(key, t) { return (t.name || key) + ' - ' + (t.duration || ''); }
 
@@ -540,7 +533,7 @@ function refreshAvailabilityAdmin() {
     updateVehicleAdminPreview();
   }
   if(!t || !t.dates || !t.dates.length) { list.innerHTML='<span class="empty">Sin fechas cargadas.</span>'; return; }
-  list.innerHTML = t.dates.slice().sort().map(d => `<span class="date-pill">${new Date(d+'T12:00:00').toLocaleDateString('es-AR',{day:'2-digit',month:'long',year:'numeric'})}<button onclick="removeAvailabilityDate('${key}','${d}')">Ã—</button></span>`).join('');
+  list.innerHTML = t.dates.slice().sort().map(d => `<span class="date-pill">${new Date(d+'T12:00:00').toLocaleDateString('es-AR',{day:'2-digit',month:'long',year:'numeric'})}<button onclick="removeAvailabilityDate('${key}','${d}')">×</button></span>`).join('');
 }
 function updateVehicleAdminPreview() {
   const key = document.getElementById('av-vehicle').value || 'renault_master';
@@ -555,7 +548,7 @@ function saveAvailabilityConfig() {
   cfg[key].capacity = parseInt(document.getElementById('av-capacity').value) || 16;
   cfg[key].vehicle = document.getElementById('av-vehicle').value || 'renault_master';
   saveTourConfig(cfg);
-  showToast('ConfiguraciÃ³n guardada.');
+  showToast('Configuración guardada.');
 }
 function addAvailabilityDate() {
   const cfg = getTourConfigAdmin();
@@ -578,7 +571,7 @@ function removeAvailabilityDate(key, d) {
   showToast('Fecha eliminada.');
 }
 
-// â”€â”€ Bloqueo de asientos â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Bloqueo de asientos ────────────────────────────────────────
 function refreshBlockDateOptions() {
   const cfg = getTourConfigAdmin();
   const key = document.getElementById('blk-tour').value || Object.keys(cfg)[0];
@@ -594,7 +587,7 @@ function renderManualSeatGrid() {
   const key = document.getElementById('blk-tour').value;
   const date = document.getElementById('blk-date').value;
   const grid = document.getElementById('manual-seat-grid');
-  if(!key || !date) { grid.innerHTML='<div class="empty">CargÃ¡ una fecha para bloquear asientos.</div>'; return; }
+  if(!key || !date) { grid.innerHTML='<div class="empty">Cargá una fecha para bloquear asientos.</div>'; return; }
   const manual = ((cfg[key].blockedSeats||{})[date]||[]).map(Number);
   const reserved = reservedSeatsForAdmin(key, date);
   grid.innerHTML = Array.from({length:16},(_,i)=>i+1).map(n => {
@@ -627,33 +620,33 @@ function clearManualSeats() {
   showToast('Asientos liberados.');
 }
 
-// â”€â”€ Reservas â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Reservas ───────────────────────────────────────────────────
 function buildReservas() {
   const reservas = readReservas();
   const filter = document.getElementById('res-filter').value;
   const list = filter==='all' ? reservas : reservas.filter(r=>r.estado===filter);
   const tb = document.getElementById('r-tbody');
-  if(!list.length) { tb.innerHTML=`<tr><td colspan="11" class="empty">${reservas.length?'Sin resultados para ese filtro.':'Sin reservas aÃºn.'}</td></tr>`; return; }
+  if(!list.length) { tb.innerHTML=`<tr><td colspan="11" class="empty">${reservas.length?'Sin resultados para ese filtro.':'Sin reservas aún.'}</td></tr>`; return; }
   tb.innerHTML = list.slice().reverse().map(r => {
     const idx = reservas.indexOf(r);
-    const waMsg = encodeURIComponent('Hola '+r.nombre+', te escribimos desde Zoyen Turismo. Vimos que iniciaste una reserva para '+r.excursion+' y quedÃ³ sin confirmar. Â¿QuerÃ©s que te ayudemos a completarla?');
+    const waMsg = encodeURIComponent('Hola '+r.nombre+', te escribimos desde Zoyen Turismo. Vimos que iniciaste una reserva para '+r.excursion+' y quedó sin confirmar. ¿Querés que te ayudemos a completarla?');
     const waUrl = 'https://wa.me/'+r.tel.replace(/\D/g,'')+'?text='+waMsg;
     const puedeRetarget = (r.estado==='pendiente'||r.estado==='pago_iniciado') && r.tel;
     return `<tr>
       <td style="color:var(--stone)">#${idx+1}</td>
       <td style="font-weight:500">${r.nombre}</td>
-      <td style="font-size:12px;color:var(--stone)">${r.tel||'â€“'}<br>${r.email||'â€“'}</td>
+      <td style="font-size:12px;color:var(--stone)">${r.tel||'–'}<br>${r.email||'–'}</td>
       <td>${r.excursion}</td>
       <td>${r.fecha?new Date(r.fecha+'T12:00:00').toLocaleDateString('es-AR',{day:'2-digit',month:'2-digit',year:'numeric'}):''}</td>
       <td style="text-align:center">${r.personas}</td>
-      <td style="text-align:center">${r.asientos||'â€“'}</td>
+      <td style="text-align:center">${r.asientos||'–'}</td>
       <td style="color:var(--ember);font-weight:600">$${(r.senia||0).toLocaleString('es-AR')}</td>
       <td>${badge(r.estado)}</td>
-      <td style="font-size:11px;color:var(--muted)">${r.ultimoIntento||r.creado||'â€“'}</td>
+      <td style="font-size:11px;color:var(--muted)">${r.ultimoIntento||r.creado||'–'}</td>
       <td><div style="display:flex;gap:5px;flex-wrap:wrap;align-items:center">
         ${puedeRetarget?`<a href="${waUrl}" target="_blank" class="btn btn-wa btn-sm">WA</a>`:''}
-        ${r.estado!=='confirmada'?`<button class="btn btn-p btn-sm" onclick="cambiarEstado(${idx},'confirmada')">âœ“</button>`:''}
-        ${r.estado!=='cancelada'?`<button class="btn btn-d btn-sm" onclick="cambiarEstado(${idx},'cancelada')">âœ•</button>`:''}
+        ${r.estado!=='confirmada'?`<button class="btn btn-p btn-sm" onclick="cambiarEstado(${idx},'confirmada')">✓</button>`:''}
+        ${r.estado!=='cancelada'?`<button class="btn btn-d btn-sm" onclick="cambiarEstado(${idx},'cancelada')">✕</button>`:''}
       </div></td>
     </tr>`;
   }).join('');
@@ -1868,6 +1861,17 @@ a.cta-btn-g[href*="wa.me"]:hover {
 @keyframes zoyenWhatsAppSheen {
   0%, 42% { transform: translateX(-120%); }
   72%, 100% { transform: translateX(120%); }
+}
+</style>
+
+<style id="zoyen-logo-circular-fix-20260616">
+.nav-emblem,
+.footer-emblem,
+.adm-login-logo img {
+  background: transparent !important;
+  border-radius: 50% !important;
+  object-fit: contain !important;
+  display: block !important;
 }
 </style>
 </body>
