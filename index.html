@@ -2668,19 +2668,6 @@ img.hero-logo-static {
   fill: rgba(229,123,32,.22);
   stroke-linejoin: round;
 }
-.zoyen-motion-letter {
-  fill: #fff7e8;
-  font-family: 'Sora', Arial, sans-serif;
-  font-size: 16px;
-  font-weight: 900;
-  letter-spacing: 0;
-  opacity: 0;
-  transform-box: fill-box;
-  transform-origin: center;
-}
-.zoyen-motion-letter.orange {
-  fill: #e77b20;
-}
 .zoyen-motion-spark {
   fill: #e77b20;
   opacity: 0;
@@ -2707,18 +2694,10 @@ img.hero-logo-static {
 .emblem-3d.zoyen-hero-logo-motion.zoyen-logo-motion-on .zoyen-motion-rose {
   animation: zoyenRosePulse 2.3s cubic-bezier(.22,.85,.28,1) infinite;
 }
-.emblem-3d.zoyen-hero-logo-motion:hover .zoyen-motion-letter,
-.emblem-3d.zoyen-hero-logo-motion.zoyen-logo-motion-on .zoyen-motion-letter {
-  animation: zoyenLetterFloat 1.35s ease-in-out infinite;
-}
 .emblem-3d.zoyen-hero-logo-motion:hover .zoyen-motion-spark,
 .emblem-3d.zoyen-hero-logo-motion.zoyen-logo-motion-on .zoyen-motion-spark {
   animation: zoyenSpark 1.4s ease-in-out infinite;
 }
-.zoyen-motion-letter.l2 { animation-delay: .1s !important; }
-.zoyen-motion-letter.l3 { animation-delay: .2s !important; }
-.zoyen-motion-letter.l4 { animation-delay: .3s !important; }
-.zoyen-motion-letter.l5 { animation-delay: .4s !important; }
 .zoyen-motion-spark.s2 { animation-delay: .22s !important; }
 .zoyen-motion-spark.s3 { animation-delay: .44s !important; }
 @keyframes zoyenRingOrbit {
@@ -2732,30 +2711,42 @@ img.hero-logo-static {
   45% { transform: rotate(14deg) scale(1.08); }
   70% { transform: rotate(-8deg) scale(1.03); }
 }
-@keyframes zoyenLetterFloat {
-  0%, 100% { opacity: .72; transform: translateY(0) scale(1); }
-  50% { opacity: 1; transform: translateY(-7px) scale(1.08); }
-}
 @keyframes zoyenSpark {
   0%, 100% { opacity: 0; transform: scale(.45); }
   45% { opacity: 1; transform: scale(1); }
 }
 @media (max-width: 900px) {
-  .zoyen-motion-letter { font-size: 18px; }
+  .emblem-3d.zoyen-hero-logo-motion .zoyen-hero-logo-orbit {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+  }
+  .emblem-3d.zoyen-hero-logo-motion .zoyen-motion-ring {
+    animation: zoyenRingOrbit 5.8s linear infinite;
+  }
+  .emblem-3d.zoyen-hero-logo-motion .zoyen-motion-rose {
+    animation: zoyenRosePulse 2.8s cubic-bezier(.22,.85,.28,1) infinite;
+  }
+  .emblem-3d.zoyen-hero-logo-motion.zoyen-compass-active .zoyen-motion-rose {
+    animation: none !important;
+    transform: rotate(var(--zoyen-compass-rotation, 0deg)) scale(1.06) !important;
+    transition: transform .16s linear !important;
+  }
 }
 </style>
 
 <style id="zoyen-index-hero-spacing-fix">
 .hero .slide {
-  justify-content: center !important;
-  gap: clamp(1.55rem, 3.7vh, 3rem) !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  gap: 0 !important;
   padding-top: 96px !important;
   padding-bottom: 56px !important;
 }
 .hero .slide-emblem {
   width: 260px !important;
   height: 260px !important;
-  margin: 0 0 clamp(1rem, 2.25vh, 1.8rem) !important;
+  margin: 0 !important;
+  flex: 0 0 292px !important;
 }
 .hero .emblem-3d {
   width: 260px !important;
@@ -2771,18 +2762,43 @@ img.hero-logo-static {
   width: min(100%, 260px) !important;
 }
 .hero .slide-content {
-  gap: .85rem !important;
+  width: min(980px, 92vw) !important;
+  min-height: 360px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: .9rem !important;
+  text-align: center !important;
+  margin: 0 auto !important;
 }
 .hero .slide-eyebrow {
-  margin-top: .1rem !important;
-  margin-bottom: .65rem !important;
+  width: fit-content !important;
+  max-width: min(560px, 88vw) !important;
+  min-height: 46px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 0 .65rem !important;
 }
 .hero .slide-title {
-  margin-top: .1rem !important;
+  width: min(940px, 92vw) !important;
+  min-height: 150px !important;
+  display: block !important;
+  text-align: center !important;
+  margin: 0 !important;
+  line-height: 1.04 !important;
+}
+.hero .slide-desc {
+  min-height: 56px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
 }
 @media (max-height: 760px) and (min-width: 901px) {
   .hero .slide {
-    gap: 1rem !important;
+    gap: 0 !important;
     padding-top: 86px !important;
     padding-bottom: 44px !important;
   }
@@ -2798,7 +2814,7 @@ img.hero-logo-static {
 }
 @media (max-height: 840px) and (min-width: 901px) {
   .hero .slide {
-    gap: 1.25rem !important;
+    gap: 0 !important;
     padding-top: 92px !important;
     padding-bottom: 42px !important;
   }
@@ -2809,25 +2825,30 @@ img.hero-logo-static {
     height: 210px !important;
   }
   .hero .slide-emblem {
-    margin-bottom: 1.45rem !important;
+    flex-basis: 242px !important;
+    margin-bottom: 0 !important;
   }
   .hero .zoyen-hero-logo-orbit {
     width: min(100%, 210px) !important;
   }
   .hero .slide-content {
+    min-height: 330px !important;
     gap: .72rem !important;
   }
   .hero .slide-title {
     font-size: clamp(3.6rem, 5.7vw, 4.9rem) !important;
     line-height: 1.03 !important;
+    min-height: 132px !important;
   }
   .hero .slide-desc {
     margin-bottom: .85rem !important;
+    min-height: 50px !important;
   }
 }
 @media (max-width: 900px) {
   .hero .slide {
-    gap: 1.05rem !important;
+    justify-content: flex-start !important;
+    gap: 0 !important;
     padding-top: 78px !important;
     padding-bottom: 38px !important;
   }
@@ -2840,8 +2861,25 @@ img.hero-logo-static {
   .hero .zoyen-hero-logo-orbit {
     width: min(100%, 180px) !important;
   }
+  .hero .slide-emblem {
+    flex-basis: 218px !important;
+    margin-bottom: 0 !important;
+  }
   .hero .slide-content {
+    width: min(720px, 92vw) !important;
+    min-height: 430px !important;
     gap: .65rem !important;
+  }
+  .hero .slide-eyebrow {
+    max-width: min(450px, 86vw) !important;
+    min-height: 54px !important;
+  }
+  .hero .slide-title {
+    min-height: 150px !important;
+    width: min(720px, 92vw) !important;
+  }
+  .hero .slide-desc {
+    min-height: 84px !important;
   }
 }
 </style>
@@ -6738,16 +6776,44 @@ a.cta-btn-g[href*="wa.me"]:hover {
           '<path d="M140 54 L154 126 L226 140 L154 154 L140 226 L126 154 L54 140 L126 126 Z"></path>' +
           '<path d="M140 86 L149 131 L194 140 L149 149 L140 194 L131 149 L86 140 L131 131 Z"></path>' +
         '</g>' +
-        '<text class="zoyen-motion-letter orange l1" x="55" y="78">Z</text>' +
-        '<text class="zoyen-motion-letter l2" x="90" y="50">O</text>' +
-        '<text class="zoyen-motion-letter orange l3" x="133" y="40">Y</text>' +
-        '<text class="zoyen-motion-letter l4" x="177" y="52">E</text>' +
-        '<text class="zoyen-motion-letter orange l5" x="211" y="82">N</text>' +
         '<circle class="zoyen-motion-spark s1" cx="67" cy="204" r="4"></circle>' +
         '<circle class="zoyen-motion-spark s2" cx="218" cy="202" r="4"></circle>' +
         '<circle class="zoyen-motion-spark s3" cx="140" cy="246" r="3"></circle>' +
       '</svg>' +
     '</div>';
+  }
+
+  function getCompassHeading(event){
+    if (typeof event.webkitCompassHeading === 'number') return event.webkitCompassHeading;
+    if (typeof event.alpha === 'number') return (360 - event.alpha + 360) % 360;
+    return null;
+  }
+
+  function startCompass(box){
+    if (!window.matchMedia || !window.matchMedia('(max-width: 900px)').matches) return;
+    if (box._zoyenCompassStarted) return;
+    if (typeof DeviceOrientationEvent === 'undefined') return;
+
+    function bindCompass(){
+      if (box._zoyenCompassStarted) return;
+      box._zoyenCompassStarted = true;
+      box.classList.add('zoyen-compass-active');
+      window.addEventListener('deviceorientation', function(event){
+        var heading = getCompassHeading(event);
+        if (heading === null) return;
+        box.style.setProperty('--zoyen-compass-rotation', (-heading).toFixed(1) + 'deg');
+      }, true);
+    }
+
+    if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+      DeviceOrientationEvent.requestPermission()
+        .then(function(state){
+          if (state === 'granted') bindCompass();
+        })
+        .catch(function(){});
+    } else {
+      bindCompass();
+    }
   }
 
   function initHeroLogoMotion(){
@@ -6760,11 +6826,16 @@ a.cta-btn-g[href*="wa.me"]:hover {
       box.classList.add('zoyen-hero-logo-motion');
       box.addEventListener('click', function(){
         box.classList.add('zoyen-logo-motion-on');
+        startCompass(box);
         window.clearTimeout(box._zoyenLogoMotionTimer);
         box._zoyenLogoMotionTimer = window.setTimeout(function(){
           box.classList.remove('zoyen-logo-motion-on');
         }, 2200);
       });
+      box.addEventListener('touchstart', function(){
+        startCompass(box);
+      }, { passive: true });
+      startCompass(box);
     });
   }
 
