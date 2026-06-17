@@ -889,6 +889,195 @@ img.hero-logo-static {
   .exc-tag::before { width: 24px !important; }
 }
 </style>
+<style id="zoyen-remove-mobile-logo-phrase">
+@media (max-width: 720px) {
+  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo-text,
+  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo-name,
+  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .z,
+  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .t,
+  body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo sub {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+}
+</style>
+<style id="zoyen-logo-hover-scene-style">
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo {
+  position: relative !important;
+  isolation: isolate !important;
+  overflow: visible !important;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .nav-emblem,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .nav-logo-text {
+  transition: opacity .34s ease, transform .34s ease, filter .34s ease !important;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .zoyen-logo-scene {
+  position: absolute;
+  left: -7px;
+  top: 50%;
+  width: 188px;
+  height: 70px;
+  transform: translateY(-50%) scale(.88);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  border-radius: 999px;
+  background: #050403;
+  border: 1px solid rgba(212, 119, 42, .62);
+  box-shadow: 0 14px 34px rgba(0,0,0,.42), inset 0 0 0 1px rgba(245,240,232,.07);
+  overflow: hidden;
+  z-index: 4;
+  transition: opacity .28s ease, transform .42s cubic-bezier(.2,.8,.2,1), visibility .28s ease;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .zoyen-logo-scene::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 76% 22%, rgba(212,119,42,.28), transparent 18%),
+    linear-gradient(180deg, rgba(255,255,255,.05), transparent 45%);
+  opacity: .92;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .zoyen-logo-scene svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .zoyen-logo-scene path,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .zoyen-logo-scene line {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 220;
+  stroke-dashoffset: 220;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-mountain { stroke: #f5f0e8; stroke-width: 2.2; }
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-lake { stroke: #c9a96e; stroke-width: 1.45; }
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-route { stroke: #d4772a; stroke-width: 1.85; }
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-sun { fill: #d4772a; opacity: 0; transform-origin: 143px 22px; }
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-person {
+  fill: none;
+  stroke: #f5f0e8;
+  stroke-width: 1.65;
+  stroke-linecap: round;
+  opacity: 0;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-letter {
+  position: absolute;
+  font-family: 'Sora', sans-serif;
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1;
+  color: #f5f0e8;
+  letter-spacing: 0;
+  opacity: 0;
+  text-shadow: 0 0 12px rgba(245,240,232,.45);
+  transform: translate(var(--from-x), var(--from-y)) rotate(0deg) scale(.9);
+  transition: transform .56s cubic-bezier(.2,.8,.2,1), opacity .24s ease, color .24s ease;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-letter:nth-of-type(2),
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-letter:nth-of-type(4) {
+  color: #d4772a;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-letter.l1 { --from-x: 64px; --from-y: 16px; --to-x: 48px; --to-y: 20px; --rot: -22deg; }
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-letter.l2 { --from-x: 79px; --from-y: 16px; --to-x: 75px; --to-y: 10px; --rot: 8deg; }
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-letter.l3 { --from-x: 94px; --from-y: 16px; --to-x: 103px; --to-y: 24px; --rot: 24deg; }
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-letter.l4 { --from-x: 109px; --from-y: 16px; --to-x: 73px; --to-y: 47px; --rot: -7deg; }
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-letter.l5 { --from-x: 124px; --from-y: 16px; --to-x: 118px; --to-y: 45px; --rot: 12deg; }
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-caption {
+  position: absolute;
+  left: 64px;
+  bottom: 8px;
+  font-family: 'Sora', sans-serif;
+  font-size: 6.5px;
+  font-weight: 800;
+  letter-spacing: .22em;
+  color: rgba(212,119,42,.92);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity .24s ease .16s, transform .34s ease .16s;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:hover .nav-emblem,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:focus-visible .nav-emblem,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo.zoyen-logo-scene-on .nav-emblem {
+  opacity: 0 !important;
+  transform: scale(.72) rotate(-10deg) !important;
+  filter: blur(1px) !important;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:hover .nav-logo-text,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:focus-visible .nav-logo-text,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo.zoyen-logo-scene-on .nav-logo-text {
+  opacity: 0 !important;
+  transform: translateX(-12px) scale(.88) !important;
+  filter: blur(1px) !important;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:hover .zoyen-logo-scene,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:focus-visible .zoyen-logo-scene,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo.zoyen-logo-scene-on .zoyen-logo-scene {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) scale(1);
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:hover .zoyen-logo-scene path,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:hover .zoyen-logo-scene line,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:focus-visible .zoyen-logo-scene path,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:focus-visible .zoyen-logo-scene line,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo.zoyen-logo-scene-on .zoyen-logo-scene path,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo.zoyen-logo-scene-on .zoyen-logo-scene line {
+  animation: zoyenSceneDraw .86s ease forwards;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:hover .scene-lake,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:focus-visible .scene-lake,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo.zoyen-logo-scene-on .scene-lake { animation-delay: .12s !important; }
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:hover .scene-route,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:focus-visible .scene-route,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo.zoyen-logo-scene-on .scene-route { animation-delay: .22s !important; }
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:hover .scene-sun,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:focus-visible .scene-sun,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo.zoyen-logo-scene-on .scene-sun {
+  opacity: 1;
+  animation: zoyenSceneSun .7s ease .2s both;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:hover .scene-person,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:focus-visible .scene-person,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo.zoyen-logo-scene-on .scene-person {
+  opacity: 1;
+  transition: opacity .2s ease .34s;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:hover .scene-letter,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:focus-visible .scene-letter,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo.zoyen-logo-scene-on .scene-letter {
+  opacity: 1;
+  transform: translate(var(--to-x), var(--to-y)) rotate(var(--rot)) scale(1);
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:hover .scene-caption,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:focus-visible .scene-caption,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo.zoyen-logo-scene-on .scene-caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+@keyframes zoyenSceneDraw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes zoyenSceneSun {
+  0% { opacity: 0; transform: scale(.2); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@media (max-width: 720px) {
+  body > nav:not(.breadcrumb):not(.mobile-drawer) .zoyen-logo-scene {
+    left: -6px;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+  }
+  body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-letter,
+  body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-caption {
+    display: none;
+  }
+}
+</style>
 </head>
 <body>
 
@@ -2687,6 +2876,26 @@ a.cta-btn-g[href*="wa.me"]:hover {
   display: block !important;
 }
 </style>
+<script id="zoyen-logo-hover-scene-script">
+(function(){
+  function initZoyenLogoScene(){
+    document.querySelectorAll('body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo').forEach(function(logo){
+      if (logo.querySelector('.zoyen-logo-scene')) return;
+      logo.insertAdjacentHTML('beforeend', "<div class=\"zoyen-logo-scene\" aria-hidden=\"true\">\n  <svg viewBox=\"0 0 188 70\" focusable=\"false\" aria-hidden=\"true\">\n    <circle class=\"scene-sun\" cx=\"145\" cy=\"20\" r=\"5\"></circle>\n    <path class=\"scene-mountain\" d=\"M28 45 L58 20 L78 39 L94 18 L132 45\"></path>\n    <path class=\"scene-mountain\" d=\"M59 21 L68 36 M94 19 L105 42\"></path>\n    <path class=\"scene-lake\" d=\"M38 51 C51 47 62 55 76 51 S102 47 118 51 S145 55 160 50\"></path>\n    <path class=\"scene-lake\" d=\"M50 58 C65 54 80 60 96 56 S129 52 150 57\"></path>\n    <path class=\"scene-route\" d=\"M29 61 C48 54 59 62 75 56 C91 50 101 53 116 44 C127 37 136 36 151 29\"></path>\n    <path class=\"scene-person\" d=\"M151 33 l4 8 m-4-8 l-5 7 m5-7 l-3-5 m3 5 l6-4\"></path>\n  </svg>\n  <span class=\"scene-letter l1\">Z</span>\n  <span class=\"scene-letter l2\">O</span>\n  <span class=\"scene-letter l3\">Y</span>\n  <span class=\"scene-letter l4\">E</span>\n  <span class=\"scene-letter l5\">N</span>\n  <span class=\"scene-caption\">EXCURSION</span>\n</div>");
+      logo.addEventListener('click', function(){
+        if (!window.matchMedia || !window.matchMedia('(hover: none)').matches) return;
+        logo.classList.add('zoyen-logo-scene-on');
+        window.clearTimeout(logo._zoyenLogoSceneTimer);
+        logo._zoyenLogoSceneTimer = window.setTimeout(function(){
+          logo.classList.remove('zoyen-logo-scene-on');
+        }, 1700);
+      });
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initZoyenLogoScene);
+  else initZoyenLogoScene();
+})();
+</script>
 </body>
 </html>
 
