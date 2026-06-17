@@ -6,7 +6,7 @@
 <title>Admin  Zoyen Turismo</title>
 <link href="https://fonts.googleapis.com/css2family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* -- Reset -- */
+/* â”€â”€ Reset â”€â”€ */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
   --bg:#f2f4f7; --surface:#ffffff; --sidebar:#1e1810; --topbar:#231c14;
@@ -15,7 +15,7 @@
   --sand:#c9a96e; --cream:#f5f0e8; --stone:#8a7a6a;
 }
 
-/* -- Login overlay -- */
+/* â”€â”€ Login overlay â”€â”€ */
 
 /* Login overlay */
 .adm-login-wrap {
@@ -33,14 +33,14 @@
 }
 .adm-login-logo { display:flex; align-items:center; gap:10px; justify-content:center; margin-bottom:2rem; }
 .adm-login-logo svg, .adm-login-logo img { width:46px; height:46px; }
-.adm-login-logo-text { font-family:'Sora',sans-serif; font-size:1.25rem; font-weight:700; letter-spacing:.1em; color:#f5f0e8; }
+.adm-login-logo-text { font-family:'Sora',sans-serif; font-size:1.25rem; font-weight:700; letter-spacióng:.1em; color:#f5f0e8; }
 .adm-login-logo-text span { color:#d4772a; }
-.adm-login-eyebrow { font-family:'Sora',sans-serif; font-size:.62rem; font-weight:600; letter-spacing:.28em; text-transform:uppercase; color:#d4772a; text-align:center; margin-bottom:1.8rem; }
+.adm-login-eyebrow { font-family:'Sora',sans-serif; font-size:.62rem; font-weight:600; letter-spacióng:.28em; text-transform:uppercase; color:#d4772a; text-align:center; margin-bottom:1.8rem; }
 .adm-field { margin-bottom:1.1rem; }
-.adm-field label { display:block; font-size:.65rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:#c9a96e; margin-bottom:.45rem; }
+.adm-field label { display:block; font-size:.65rem; font-weight:600; letter-spacióng:.18em; text-transform:uppercase; color:#c9a96e; margin-bottom:.45rem; }
 .adm-field input { width:100%; background:rgba(255,255,255,.07); border:1px solid rgba(201,169,110,.22); border-radius:2px; padding:.65rem .9rem; color:#f5f0e8; font-family:'Sora',sans-serif; font-size:.9rem; outline:none; transition:border-color .2s; }
 .adm-field input:focus { border-color:#d4772a; }
-.adm-login-btn { width:100%; padding:.78rem; background:#d4772a; color:#f5f0e8; border:none; border-radius:2px; font-family:'Sora',sans-serif; font-size:.8rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; cursor:pointer; margin-top:.6rem; transition:background .2s; }
+.adm-login-btn { width:100%; padding:.78rem; background:#d4772a; color:#f5f0e8; border:none; border-radius:2px; font-family:'Sora',sans-serif; font-size:.8rem; font-weight:700; letter-spacióng:.2em; text-transform:uppercase; cursor:pointer; margin-top:.6rem; transition:background .2s; }
 .adm-login-btn:hover { background:#b8621e; }
 .adm-login-err { color:#e05050; font-size:.75rem; text-align:center; margin-top:.8rem; display:none; }
 .adm-login-close { position:absolute; top:.9rem; right:.9rem; background:none; border:none; color:#7a6a5a; font-size:1.1rem; cursor:pointer; line-height:1; padding:.25rem; }
@@ -73,34 +73,34 @@
   align-items:center; justify-content:center; }
 .adm-login-wrap.open { display:flex; }
 
-/* -- Panel layout (full page, no iframe) -- */
+/* â”€â”€ Panel layout (full page, no iframe) â”€â”€ */
 html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;font-size:15px;color:var(--text);background:var(--bg)}
 .panel{display:flex;flex-direction:column;height:100vh}
 .topbar{background:var(--topbar);color:var(--cream);display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:56px;flex-shrink:0;border-bottom:1px solid rgba(212,119,42,.18)}
-.topbar-brand{font-family:'Sora',sans-serif;font-size:18px;font-weight:700;letter-spacing:.1em;color:#f5f0e8}
+.topbar-brand{font-family:'Sora',sans-serif;font-size:18px;font-weight:700;letter-spacióng:.1em;color:#f5f0e8}
 .topbar-brand span{color:var(--ember)}
-.btn-logout{background:rgba(212,119,42,.18);border:1px solid rgba(212,119,42,.45);color:var(--ember);padding:6px 14px;border-radius:4px;font-size:12px;font-weight:600;letter-spacing:.12em;cursor:pointer;font-family:'Sora',sans-serif;text-transform:uppercase;transition:background .2s}
+.btn-logout{background:rgba(212,119,42,.18);border:1px solid rgba(212,119,42,.45);color:var(--ember);padding:6px 14px;border-radius:4px;font-size:12px;font-weight:600;letter-spacióng:.12em;cursor:pointer;font-family:'Sora',sans-serif;text-transform:uppercase;transition:background .2s}
 .btn-logout:hover{background:rgba(212,119,42,.32)}
 .layout{display:flex;flex:1;overflow:hidden}
 .sidebar{width:200px;background:var(--sidebar);display:flex;flex-direction:column;padding:16px 0;flex-shrink:0;border-right:1px solid rgba(255,255,255,.06)}
-.nav-item{display:flex;align-items:center;gap:10px;padding:11px 20px;color:rgba(245,240,232,.6);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:all .15s;border-left:2px solid transparent}
+.nav-item{display:flex;align-items:center;gap:10px;padding:11px 20px;color:rgba(245,240,232,.6);font-size:12px;font-weight:600;letter-spacióng:.14em;text-transform:uppercase;cursor:pointer;transition:all .15s;border-left:2px solid transparent}
 .nav-item:hover{color:var(--cream);background:rgba(255,255,255,.05)}
 .nav-item.active{color:var(--ember);border-left-color:var(--ember);background:rgba(212,119,42,.08)}
 .nav-icon{font-size:15px;width:18px;text-align:center}
 .main{flex:1;overflow-y:auto;padding:28px 32px}
 .sec{display:none}.sec.active{display:block}
-.sec-title{font-family:'Sora',sans-serif;font-size:26px;font-weight:700;letter-spacing:.04em;color:var(--text);margin-bottom:24px;padding-bottom:16px;border-bottom:2px solid var(--border)}
+.sec-title{font-family:'Sora',sans-serif;font-size:26px;font-weight:700;letter-spacióng:.04em;color:var(--text);margin-bottom:24px;padding-bottom:16px;border-bottom:2px solid var(--border)}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}
 .stat{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px;text-align:center}
 .stat-val{font-family:'Sora',sans-serif;font-size:32px;font-weight:700;color:var(--text);line-height:1}
-.stat-lbl{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.stat-lbl{font-size:11px;font-weight:600;letter-spacióng:.18em;text-transform:uppercase;color:var(--muted);margin-top:6px}
 .card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:24px;margin-bottom:20px}
-.card-title{font-family:'Sora',sans-serif;font-size:11px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border)}
-.field{margin-bottom:14px}.field label{display:block;font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.card-title{font-family:'Sora',sans-serif;font-size:11px;font-weight:700;letter-spacióng:.25em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.field{margin-bottom:14px}.field label{display:block;font-size:11px;font-weight:600;letter-spacióng:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
 .field input,.field textarea,.field select{width:100%;background:#fff;border:1.5px solid var(--border);border-radius:6px;padding:9px 12px;font-family:'Sora',sans-serif;font-size:13px;color:var(--text);outline:none;transition:border-color .2s}
 .field input:focus,.field textarea:focus,.field select:focus{border-color:var(--ember)}
 .field textarea{resize:vertical;min-height:70px}
-.btn{padding:9px 18px;border-radius:6px;font-family:'Sora',sans-serif;font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;border:none;transition:background .2s}
+.btn{padding:9px 18px;border-radius:6px;font-family:'Sora',sans-serif;font-size:12px;font-weight:700;letter-spacióng:.15em;text-transform:uppercase;cursor:pointer;border:none;transition:background .2s}
 .btn-p{background:var(--ember);color:#fff}.btn-p:hover{background:var(--ember-dim)}
 .btn-d{background:#e05050;color:#fff}.btn-d:hover{background:#c03030}
 .btn-s{background:#3b82f6;color:#fff}.btn-s:hover{background:#2563eb}
@@ -110,17 +110,17 @@ html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;font-size:15
 .slide-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
 .slide-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden}
 .slide-img{width:100%;height:100px;object-fit:cover;display:block;background:rgba(0,0,0,.08)}
-.slide-name{font-family:'Sora',sans-serif;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);padding:10px 14px 4px}
+.slide-name{font-family:'Sora',sans-serif;font-size:11px;font-weight:700;letter-spacióng:.15em;text-transform:uppercase;color:var(--muted);padding:10px 14px 4px}
 .slide-fields{padding:0 14px 14px;display:flex;flex-direction:column;gap:6px}
 .slide-fields input{padding:6px 9px;font-size:12px}
 .date-pill{display:inline-flex;align-items:center;gap:6px;background:var(--ember-bg);border:1px solid rgba(212,119,42,.3);border-radius:20px;padding:4px 10px 4px 12px;font-size:12px;color:var(--ember);font-weight:500;margin:3px}
 .date-pill button{background:none;border:none;color:var(--ember);cursor:pointer;font-size:14px;line-height:1;padding:0 2px;opacity:.7}.date-pill button:hover{opacity:1}
 .empty{color:var(--muted);font-style:italic;font-size:13px;padding:16px}
 table{width:100%;border-collapse:collapse;font-size:13px}
-th{background:var(--bg);padding:10px 12px;text-align:left;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);border-bottom:2px solid var(--border)}
+th{background:var(--bg);padding:10px 12px;text-align:left;font-size:10px;font-weight:700;letter-spacióng:.18em;text-transform:uppercase;color:var(--muted);border-bottom:2px solid var(--border)}
 td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:middle}
 tr:hover td{background:rgba(212,119,42,.03)}
-.badge{display:inline-block;padding:3px 8px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.badge{display:inline-block;padding:3px 8px;border-radius:20px;font-size:10px;font-weight:700;letter-spacióng:.12em;text-transform:uppercase}
 .bg{background:rgba(34,197,94,.12);color:#16a34a}
 .by{background:rgba(234,179,8,.12);color:#b45309}
 .bo{background:rgba(59,130,246,.12);color:#2563eb}
@@ -248,7 +248,7 @@ img.hero-logo-static {
             <div class="stat"><div class="stat-val" id="d-abandon"></div><div class="stat-lbl">Abandonos</div></div>
           </div>
           <div class="card">
-            <div class="card-title">Últimás reservas</div>
+            <div class="card-title">Últimas reservas</div>
             <table><thead><tr><th>#</th><th>Nombre</th><th>Excursión</th><th>Fecha</th><th>Personas</th><th>Seña</th><th>Estado</th></tr></thead>
             <tbody id="d-tbody"></tbody></table>
           </div>
@@ -349,11 +349,11 @@ img.hero-logo-static {
 const CREDS = { user:'zoyen', pass:'patagonia2025' };
 let loggedIn = false;
 
-// -- Storage helpers (same as index.html) ----------------------
+// â”€â”€ Storage helpers (same as index.html) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function readReservas() {
   try {
     const raw = sessionStorage.getItem('zoyen_reservas') || localStorage.getItem('zoyen_reservas');
-    return raw ? JSON.parse(raw) : [];
+    return raw  JSON.parse(raw) : [];
   } catch(e) { return []; }
 }
 function writeReservas(arr) {
@@ -364,7 +364,7 @@ function writeReservas(arr) {
 function getTourConfig() {
   try {
     const raw = localStorage.getItem('zoyen_tour_config');
-    return raw ? JSON.parse(raw) : defaultTourConfig();
+    return raw  JSON.parse(raw) : defaultTourConfig();
   } catch(e) { return defaultTourConfig(); }
 }
 function saveTourConfig(cfg) {
@@ -384,7 +384,7 @@ function showToast(msg) {
   setTimeout(() => t.classList.remove('show'), 2800);
 }
 
-// -- Login ------------------------------------------------------
+// â”€â”€ Login â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 document.getElementById('admLoginBtn').onclick = doLogin;
 document.getElementById('admPass').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
 document.getElementById('admUser').addEventListener('keydown', e => { if(e.key==='Enter') document.getElementById('admPass').focus(); });
@@ -412,7 +412,7 @@ document.getElementById('btnLogout').onclick = () => {
   document.getElementById('admPass').value = '';
 };
 
-// -- Nav --------------------------------------------------------
+// â”€â”€ Nav â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 document.querySelectorAll('.nav-item').forEach(item => {
   item.addEventListener('click', () => {
     document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
@@ -422,7 +422,7 @@ document.querySelectorAll('.nav-item').forEach(item => {
   });
 });
 
-// -- Panel init -------------------------------------------------
+// â”€â”€ Panel init â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function initPanel() {
   buildDashboard();
   buildSlides();
@@ -431,15 +431,15 @@ function initPanel() {
   buildReservas();
 }
 
-// -- Excursion data ---------------------------------------------
+// â”€â”€ Excursion data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const excData = [
   { key:'cueva',            name:'Cueva de las Manos',                                       precio:18000, estado:'activa', duracion:'Día completo',      capacidad:14 },
   { key:'capillas',         name:'Capillas y Catedrales de Mármol',                          precio:24000, estado:'activa', duracion:'Día completo',      capacidad:14 },
-  { key:'posadas',          name:'Lago Posadas con Vuelta a la Meseta por Ruta Escéúnica 41', precio:15000, estado:'activa', duracion:'Día completo (12 hs)', capacidad:14 },
-  { key:'zeballos',         name:'Ruta 41 + Monte Zeballos',                                 precio:16000, estado:'activa', duracion:'Día completo',      capacidad:14 },
+  { key:'posadas',          name:'Lago Posaídas con Vuelta a la Meseta por Ruta Escéúnica 41', precio:15000, estado:'activa', duracion:'Día completo (12 hs)', capacidad:14 },
+  { key:'zeballos',         name:'Ruta 41  Monte Zeballos',                                 precio:16000, estado:'activa', duracion:'Día completo',      capacidad:14 },
   { key:'charcamata',       name:'Alero Charcamata',                                         precio:12000, estado:'activa', duracion:'Medio día',         capacidad:14 },
-  { key:'parque_caniadon',  name:'Portal Cañadón Pinturas (Parque Patagonia)',                precio:8000,  estado:'activa', duracion:'Medio día (5 hs)', capacidad:14 },
-  { key:'parque_ascension', name:'PNP / Estancia La Ascensión',                              precio:7000,  estado:'activa', duracion:'Medio día (4 hs)', capacidad:14 },
+  { key:'parque_caniadon',  name:'Portal Caadn Pinturas (Parque Patagonia)',                precio:8000,  estado:'activa', duracion:'Medio día (5 hs)', capacidad:14 },
+  { key:'parque_escension', name:'PNP / Estancia La Escensin',                              precio:7000,  estado:'activa', duracion:'Medio día (4 hs)', capacidad:14 },
 ];
 
 const VEHICLE_OPTIONS = {
@@ -459,7 +459,7 @@ function vehicleSvg(icon) {
   return svgs[icon] || svgs.van;
 }
 
-// -- Dashboard --------------------------------------------------
+// â”€â”€ Dashboard â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function buildDashboard() {
   const reservas = readReservas();
   const total = reservas.length;
@@ -476,7 +476,7 @@ function buildDashboard() {
     <td style="color:var(--stone)">#${reservas.length-i}</td>
     <td style="font-weight:500">${r.nombre}</td>
     <td>${r.excursion}</td>
-    <td>${r.fecha ? new Date(r.fecha+'T12:00:00').toLocaleDateString('es-AR',{day:'numeric',month:'short'}) : ''}</td>
+    <td>${r.fecha  new Date(r.fecha+'T12:00:00').toLocaleDateString('es-AR',{day:'numeric',month:'short'}) : ''}</td>
     <td style="text-align:center">${r.personas}</td>
     <td style="color:var(--ember);font-weight:600">$${(r.senia||0).toLocaleString('es-AR')}</td>
     <td>${badge(r.estado)}</td>
@@ -489,21 +489,21 @@ function badge(e) {
   return `<span class="badge ${m[e]||'by'}">${labels[e]||e}</span>`;
 }
 
-// -- Slides -----------------------------------------------------
+// â”€â”€ Slides â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const slideDefaults = [
-  {ey:'Patagonia Argentina', ti:'Explora la Patagonia Inédita',   de:'De la mano de quienes la vivimos. Excursiones únicas e irrepetibles.'},
+  {ey:'Patagonia Argentina', ti:'Explora la Patagonia Inédita',   de:'De la mano de quienes la vivimos. Excursiones úúnicas e irrepetibles.'},
   {ey:'Patrimonio UNESCO',   ti:'Cueva de las Manos',             de:'Uno de los sitios arqueológicos más importantes del mundo.'},
   {ey:'Chile  Carretera Austral', ti:'Capillas de Mármol',       de:'Navegación sobre el Lago General Carrera.'},
   {ey:'Ruta Escéúnica 41',    ti:'Monte Zeballos',                 de:'Desde los 400 hasta los 1.500 metros.'},
 ];
-const slideLabels = ['Banner 1 · Patagonia','Banner 2 · Cueva de las Manos','Banner 3 · Capillas de Mármol','Banner 4 · Monte Zeballos'];
+const slideLabels = ['Banner 1  Patagonia','Banner 2  Cueva de las Manos','Banner 3  Capillas de Mármol','Banner 4  Monte Zeballos'];
 
 function buildSlides() {
   // Lenticular toggle
   let enabled = true;
   try { enabled = localStorage.getItem('lentEnabled') !== 'false'; } catch(e) {}
   const cb = document.getElementById('lent-toggle');
-  if(cb) { cb.checked = enabled; cb.onchange = () => { try { localStorage.setItem('lentEnabled', cb.checked); } catch(e) {} showToast('Efecto ' + (cb.checked ? 'activado' : 'desactivado') + '.'); }; }
+  if(cb) { cb.checked = enabled; cb.onchange = () => { try { localStorage.setItem('lentEnabled', cb.checked); } catch(e) {} showToast('Efecto ' + (cb.checked  'activado' : 'desactivado') + '.'); }; }
 
   document.getElementById('slider-grid').innerHTML = slideLabels.map((lbl, i) => {
     let url = '';
@@ -538,7 +538,7 @@ function saveManifesto() {
   showToast('Manifiesto guardado (editar directamente en index.html).');
 }
 
-// -- Excursiones ------------------------------------------------
+// â”€â”€ Excursiones â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function buildExcursiones() {
   document.getElementById('exc-list').innerHTML = excData.map((e, i) => `<div class="card">
     <div class="card-title">${e.name}</div>
@@ -568,7 +568,7 @@ function saveExc(i) {
   showToast('Excursión actualizada.');
 }
 
-// -- Disponibilidad ---------------------------------------------
+// â”€â”€ Disponibilidad â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function getTourConfigAdmin() { return JSON.parse(JSON.stringify(getTourConfig())); }
 function tourLabel(key, t) { return (t.name || key) + ' - ' + (t.duration || ''); }
 
@@ -631,7 +631,7 @@ function removeAvailabilityDate(key, d) {
   showToast('Fecha eliminada.');
 }
 
-// -- Bloqueo de asientos ----------------------------------------
+// â”€â”€ Bloqueo de asientos â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function refreshBlockDateOptions() {
   const cfg = getTourConfigAdmin();
   const key = document.getElementById('blk-tour').value || Object.keys(cfg)[0];
@@ -652,8 +652,8 @@ function renderManualSeatGrid() {
   const reserved = reservedSeatsForAdmin(key, date);
   grid.innerHTML = Array.from({length:16},(_,i)=>i+1).map(n => {
     const isReserved = reserved.includes(n);
-    return `<label class="manual-seat ${isReserved ? 'reserved' : ''}">
-      <input type="checkbox" value="${n}" ${manual.includes(n) ? 'checked' : ''} ${isReserved ? 'disabled' : ''}>
+    return `<label class="manual-seat ${isReserved'reserved':''}">
+      <input type="checkbox" value="${n}" ${manual.includes(n)'checked':''} ${isReserved'disabled':''}>
       ${n}
     </label>`;
   }).join('');
@@ -680,13 +680,13 @@ function clearManualSeats() {
   showToast('Asientos liberados.');
 }
 
-// -- Reservas ---------------------------------------------------
+// â”€â”€ Reservas â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function buildReservas() {
   const reservas = readReservas();
   const filter = document.getElementById('res-filter').value;
-  const list = filter==='all' ? reservas : reservas.filter(r=>r.estado===filter);
+  const list = filter==='all'  reservas : reservas.filter(r=>r.estado===filter);
   const tb = document.getElementById('r-tbody');
-  if(!list.length) { tb.innerHTML=`<tr><td colspan="11" class="empty">${reservas.length ? 'Sin resultados para ese filtro.' : 'Sin reservas aún.'}</td></tr>`; return; }
+  if(!list.length) { tb.innerHTML=`<tr><td colspan="11" class="empty">${reservas.length'Sin resultados para ese filtro.':'Sin reservas aún.'}</td></tr>`; return; }
   tb.innerHTML = list.slice().reverse().map(r => {
     const idx = reservas.indexOf(r);
     const waMsg = encodeURIComponent('Hola '+r.nombre+', te escribimos desde Zoyen Turismo. Vimos que iniciaste una reserva para '+r.excursion+' y qued sin confirmar. Quers que te ayudemos a completarla');
@@ -697,16 +697,16 @@ function buildReservas() {
       <td style="font-weight:500">${r.nombre}</td>
       <td style="font-size:12px;color:var(--stone)">${r.tel||''}<br>${r.email||''}</td>
       <td>${r.excursion}</td>
-      <td>${r.fecha ? new Date(r.fecha+'T12:00:00').toLocaleDateString('es-AR',{day:'2-digit',month:'2-digit',year:'numeric'}) : ''}</td>
+      <td>${r.fechaúnew Date(r.fecha+'T12:00:00').toLocaleDateString('es-AR',{day:'2-digit',month:'2-digit',year:'numeric'}):''}</td>
       <td style="text-align:center">${r.personas}</td>
       <td style="text-align:center">${r.asientos||''}</td>
       <td style="color:var(--ember);font-weight:600">$${(r.senia||0).toLocaleString('es-AR')}</td>
       <td>${badge(r.estado)}</td>
       <td style="font-size:11px;color:var(--muted)">${r.ultimoIntento||r.creado||''}</td>
       <td><div style="display:flex;gap:5px;flex-wrap:wrap;align-items:center">
-        ${puedeRetarget ? `<a href="${waUrl}" target="_blank" class="btn btn-wa btn-sm">WA</a>` : ''}
-        ${r.estado !== 'confirmada' ? `<button class="btn btn-p btn-sm" onclick="cambiarEstado(${idx},'confirmada')"></button>` : ''}
-        ${r.estado !== 'cancelada' ? `<button class="btn btn-d btn-sm" onclick="cambiarEstado(${idx},'cancelada')"></button>` : ''}
+        ${puedeRetarget`<a href="${waUrl}" target="_blank" class="btn btn-wa btn-sm">WA</a>`:''}
+        ${r.estado!=='confirmada'`<button class="btn btn-p btn-sm" onclick="cambiarEstado(${idx},'confirmada')"></button>`:''}
+        ${r.estado!=='cancelada'`<button class="btn btn-d btn-sm" onclick="cambiarEstado(${idx},'cancelada')"></button>`:''}
       </div></td>
     </tr>`;
   }).join('');
@@ -780,7 +780,7 @@ textarea {
   body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .z,
   body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .t {
     font-size: .98rem !important;
-    letter-spacing: .075em !important;
+    letter-spacióng: .075em !important;
   }
   body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo sub,
   body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-links,
@@ -801,7 +801,7 @@ textarea {
     height: 32px !important;
     padding: 0 .45rem !important;
     font-size: .57rem !important;
-    letter-spacing: .05em !important;
+    letter-spacióng: .05em !important;
   }
   body > nav:not(.breadcrumb):not(.mobile-drawer) .lang-menu {
     left: auto !important;
@@ -847,7 +847,7 @@ textarea {
   .page-hero-eyebrow,
   .exc-hero-kicker,
   .eyebrow {
-    letter-spacing: .16em !important;
+    letter-spacióng: .16em !important;
   }
 
   section,
@@ -976,7 +976,7 @@ textarea {
   body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .z,
   body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .t {
     font-size: .88rem !important;
-    letter-spacing: .055em !important;
+    letter-spacióng: .055em !important;
   }
   .page-hero-title,
   .exc-hero-title,
@@ -1144,7 +1144,7 @@ textarea {
   body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .z,
   body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .t {
     font-size: .92rem !important;
-    letter-spacing: .065em !important;
+    letter-spacióng: .065em !important;
   }
   body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo sub,
   body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-links,
@@ -1286,7 +1286,7 @@ textarea {
     text-decoration: none !important;
     font-size: .86rem !important;
     font-weight: 700 !important;
-    letter-spacing: .08em !important;
+    letter-spacióng: .08em !important;
     line-height: 1.25 !important;
     text-transform: uppercase !important;
     white-space: normal !important;
@@ -1311,7 +1311,7 @@ textarea {
     text-align: center !important;
     font-size: .78rem !important;
     font-weight: 800 !important;
-    letter-spacing: .11em !important;
+    letter-spacióng: .11em !important;
     text-transform: uppercase !important;
     text-decoration: none !important;
   }
@@ -1342,7 +1342,7 @@ textarea {
     color: rgba(245,240,232,.82) !important;
     font-size: .72rem !important;
     font-weight: 800 !important;
-    letter-spacing: .08em !important;
+    letter-spacióng: .08em !important;
     border-radius: 2px !important;
   }
   .drawer-lang-btn.active {
@@ -1364,7 +1364,7 @@ textarea {
   body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .z,
   body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .t {
     font-size: .82rem !important;
-    letter-spacing: .045em !important;
+    letter-spacióng: .045em !important;
   }
   body > nav:not(.breadcrumb):not(.mobile-drawer) .ham-btn,
   .ham-btn.zoyen-mobile-created {
@@ -1442,7 +1442,7 @@ textarea {
           ['index.html#excursiones', 'Excursiones'],
           ['index.html#tours', 'Tours de Autor'],
           ['index.html#bienestar', 'Turismo de Bienestar'],
-          ['index.html#ubicación', 'Ubicación y Contacto'],
+          ['index.html#ubicacion', 'Ubicación y Contacto'],
           ['nosotros.html', 'Quiénes somos']
         ].forEach(function (item) {
           var li = document.createElement('li');
@@ -1498,7 +1498,7 @@ textarea {
       ['ES', 'EN', 'PT', 'KO'].forEach(function (code, index) {
         var btn = document.createElement('button');
         btn.type = 'button';
-        btn.className = 'drawer-lang-btn' + (index === 0 ? ' active' : '');
+        btn.className = 'drawer-lang-btn' + (index === 0  ' active' : '');
         btn.setAttribute('data-lang', code.toLowerCase());
         btn.textContent = code;
         btn.addEventListener('click', function () {
@@ -1606,7 +1606,7 @@ body > nav.mobile-drawer.open {
   font-family: 'Sora', sans-serif !important;
   font-size: .78rem !important;
   font-weight: 700 !important;
-  letter-spacing: .12em !important;
+  letter-spacióng: .12em !important;
   text-transform: uppercase !important;
   border-bottom: 1px solid rgba(255, 255, 255, .07) !important;
 }
@@ -1627,7 +1627,7 @@ body > nav.mobile-drawer.open {
   font-family: 'Sora', sans-serif !important;
   font-size: .68rem !important;
   font-weight: 700 !important;
-  letter-spacing: .09em !important;
+  letter-spacióng: .09em !important;
   line-height: 1 !important;
   text-transform: uppercase !important;
   border-radius: 2px !important;
@@ -1661,7 +1661,7 @@ body > nav .nav-actions .nav-contact-btn {
   font-family: 'Sora', sans-serif !important;
   font-size: .72rem !important;
   font-weight: 700 !important;
-  letter-spacing: .105em !important;
+  letter-spacióng: .105em !important;
   line-height: 1 !important;
   text-transform: uppercase !important;
   text-decoration: none !important;
@@ -1688,7 +1688,7 @@ body > nav .nav-actions .nav-contact-btn svg {
     min-height: 36px !important;
     padding: 0 .65rem !important;
     font-size: .68rem !important;
-    letter-spacing: .09em !important;
+    letter-spacióng: .09em !important;
   }
   body > nav .nav-actions .nav-contact-btn span {
     display: none !important;
@@ -1713,7 +1713,7 @@ body > nav .nav-actions .nav-contact-btn svg {
   font-family: 'Sora', sans-serif !important;
   font-size: .82rem !important;
   font-weight: 700 !important;
-  letter-spacing: .12em !important;
+  letter-spacióng: .12em !important;
   line-height: 1 !important;
   text-transform: uppercase !important;
   text-decoration: none !important;
@@ -1747,7 +1747,7 @@ html {
 #excursiones,
 #tours,
 #bienestar,
-#ubicación,
+#ubicacion,
 #reservar,
 section[id] {
   scroll-margin-top: 104px !important;
@@ -1757,7 +1757,7 @@ section[id] {
   #excursiones,
   #tours,
   #bienestar,
-  #ubicación,
+  #ubicacion,
   #reservar,
   section[id] {
     scroll-margin-top: 76px !important;
@@ -1798,7 +1798,7 @@ body > nav .nav-actions.cta-nudge-strong::before {
   font-family: 'Montserrat', Arial, sans-serif !important;
   font-size: 10px !important;
   font-weight: 900 !important;
-  letter-spacing: 1.4px !important;
+  letter-spacióng: 1.4px !important;
   line-height: 1 !important;
   text-transform: uppercase !important;
   white-space: nowrap !important;
@@ -1879,7 +1879,7 @@ a.cta-btn-g[href*="wa.me"] {
   font-family: 'Sora', sans-serif !important;
   font-size: .76rem !important;
   font-weight: 850 !important;
-  letter-spacing: .14em !important;
+  letter-spacióng: .14em !important;
   line-height: 1.35 !important;
   text-align: center !important;
   text-transform: uppercase !important;

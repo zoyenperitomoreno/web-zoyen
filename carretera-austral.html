@@ -38,16 +38,16 @@ body > nav:not(.breadcrumb):not(.mobile-drawer) {
 .nav-emblem { width: 54px; height: 54px; flex-shrink: 0; }
 .nav-logo-text { display: flex; flex-direction: column; gap: 2px; justify-content: center; }
 .nav-logo-name { display: flex; align-items: baseline; }
-.nav-logo .z { font-family: 'Sora',sans-serif; font-weight: 700; font-size: 1.4rem; letter-spacióng: .12em; color: var(--cream); text-transform: uppercase; }
-.nav-logo .t { font-family: 'Sora',sans-serif; font-weight: 700; font-size: 1.4rem; letter-spacióng: .12em; color: var(--ember); text-transform: uppercase; }
-.nav-logo sub { font-size: .60rem; font-weight: 400; letter-spacióng: .2em; color: var(--sand); opacity: .65; text-transform: uppercase; display: block; }
+.nav-logo .z { font-family: 'Sora',sans-serif; font-weight: 700; font-size: 1.4rem; letter-spacing: .12em; color: var(--cream); text-transform: uppercase; }
+.nav-logo .t { font-family: 'Sora',sans-serif; font-weight: 700; font-size: 1.4rem; letter-spacing: .12em; color: var(--ember); text-transform: uppercase; }
+.nav-logo sub { font-size: .60rem; font-weight: 400; letter-spacing: .2em; color: var(--sand); opacity: .65; text-transform: uppercase; display: block; }
 .nav-links { display: flex; gap: 1.2rem; list-style: none; align-items: center; justify-content: center; }
-.nav-links a { color: rgba(245,240,232,.75); text-decoration: none; font-size: .78rem; font-weight: 500; letter-spacióng: .06em; text-transform: uppercase; transition: color .2s; position: relative; white-space: nowrap; }
+.nav-links a { color: rgba(245,240,232,.75); text-decoration: none; font-size: .78rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; transition: color .2s; position: relative; white-space: nowrap; }
 .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--ember); transform:scaleX(0); transform-origin:left; transition:transform .3s; }
 .nav-links a:hover { color: var(--cream); }
 .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
 .nav-links a.active { color: var(--ember); }
-.nav-cta-btn { background: var(--ember); color: var(--cream); padding: .5rem 1.3rem; border-radius: 2px; font-family: 'Sora',sans-serif; font-size: .78rem; font-weight: 600; letter-spacióng: .15em; text-transform: uppercase; text-decoration: none; white-space: nowrap; flex-shrink: 0; transition: background .2s; }
+.nav-cta-btn { background: var(--ember); color: var(--cream); padding: .5rem 1.3rem; border-radius: 2px; font-family: 'Sora',sans-serif; font-size: .78rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; text-decoration: none; white-space: nowrap; flex-shrink: 0; transition: background .2s; }
 .nav-cta-btn:hover { background: var(--ember-dim); }
 
 .page-hero { position: relative; height: 65vh; min-height: 480px; display: flex; align-items: flex-end; padding-bottom: 4rem; overflow: hidden; }
@@ -61,14 +61,14 @@ body > nav:not(.breadcrumb):not(.mobile-drawer) {
 .page-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(26,20,16,.2) 0%, rgba(26,20,16,.82) 100%); }
 .page-hero-content { position: relative; z-index: 2; padding: 0 4vw; color: var(--cream); animation: fadeUp .9s .3s both; }
 @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
-.page-hero-eyebrow { font-size: .88rem; font-weight: 700; letter-spacióng: .32em; text-transform: uppercase; color: var(--ember); margin-bottom: .8rem; display: inline-flex; align-items: center; gap: 10px; }
+.page-hero-eyebrow { font-size: .88rem; font-weight: 700; letter-spacing: .32em; text-transform: uppercase; color: var(--ember); margin-bottom: .8rem; display: inline-flex; align-items: center; gap: 10px; }
 .page-hero-eyebrow::before, .page-hero-eyebrow::after { content: ''; width: 22px; height: 1px; background: var(--ember); }
 .page-hero-title { font-family: 'DM Serif Display', serif; font-size: clamp(2.4rem, 6vw, 4.5rem); font-weight: 600; line-height: 1.05; text-shadow: 0 2px 20px rgba(26,20,16,.5); }
 .page-hero-title em { font-style: italic; color: var(--sand); }
 .hero-tags { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: 1.2rem; }
-.hero-tag { background: rgba(26,20,16,.6); border: 1px solid rgba(212,119,42,.4); color: var(--dust); padding: .3rem .9rem; border-radius: 1px; font-size: .72rem; font-weight: 600; letter-spacióng: .15em; text-transform: uppercase; backdrop-filter: blur(6px); }
+.hero-tag { background: rgba(26,20,16,.6); border: 1px solid rgba(212,119,42,.4); color: var(--dust); padding: .3rem .9rem; border-radius: 1px; font-size: .72rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; backdrop-filter: blur(6px); }
 .hero-tag.main { background: var(--ember); border-color: var(--ember-dim); }
-.breadcrumb { margin-top: .8rem; font-size: .75rem; color: rgba(245,240,232,.5); letter-spacióng: .1em; text-transform: uppercase; }
+.breadcrumb { margin-top: .8rem; font-size: .75rem; color: rgba(245,240,232,.5); letter-spacing: .1em; text-transform: uppercase; }
 .breadcrumb a { color: rgba(245,240,232,.5); text-decoration: none; }
 .breadcrumb a:hover { color: var(--sand); }
 .breadcrumb span { color: var(--ember); }
@@ -77,7 +77,7 @@ body > nav:not(.breadcrumb):not(.mobile-drawer) {
 .reveal.in { opacity: 1; transform: none; }
 .reveal-delay { transition-delay: .15s; }
 .reveal-delay2 { transition-delay: .28s; }
-.eyebrow { font-size: .92rem; font-weight: 600; letter-spacióng: .3em; text-transform: uppercase; color: var(--ember); margin-bottom: .5rem; }
+.eyebrow { font-size: .92rem; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: var(--ember); margin-bottom: .5rem; }
 .section-title { font-family: 'DM Serif Display', serif; font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 600; line-height: 1.1; color: var(--ink); }
 .section-title em { font-style: italic; color: var(--amber); }
 
@@ -85,7 +85,7 @@ body > nav:not(.breadcrumb):not(.mobile-drawer) {
 .overview-inner { display: flex; gap: 3rem; flex-wrap: wrap; align-items: center; max-width: 1100px; margin: 0 auto; justify-content: space-between; }
 .ov-item { text-align: center; }
 .ov-num { font-family: 'DM Serif Display', serif; font-size: 2.2rem; font-weight: 600; color: var(--ember); line-height: 1; }
-.ov-lbl { font-size: .65rem; font-weight: 600; letter-spacióng: .22em; text-transform: uppercase; color: rgba(201,169,110,.6); margin-top: .3rem; }
+.ov-lbl { font-size: .65rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: rgba(201,169,110,.6); margin-top: .3rem; }
 .ov-sep { width: 1px; height: 48px; background: rgba(212,119,42,.2); }
 
 .tour-intro { padding: 5rem 4vw; background: var(--fog); }
@@ -104,7 +104,7 @@ body > nav:not(.breadcrumb):not(.mobile-drawer) {
 .inc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
 @media (max-width:600px) { .inc-grid { grid-template-columns:1fr; } }
 .inc-card { background: #fff; border: 1px solid rgba(58,45,31,.1); border-radius: 3px; padding: 1.4rem 1.3rem; }
-.inc-card h4 { font-size: .75rem; font-weight: 700; letter-spacióng: .22em; text-transform: uppercase; margin-bottom: .9rem; padding-bottom: .6rem; border-bottom: 1px solid rgba(58,45,31,.08); }
+.inc-card h4 { font-size: .75rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; margin-bottom: .9rem; padding-bottom: .6rem; border-bottom: 1px solid rgba(58,45,31,.08); }
 .inc-card.yes h4 { color: var(--olive); }
 .inc-card.no h4 { color: var(--stone); }
 .inc-list { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
@@ -118,12 +118,12 @@ body > nav:not(.breadcrumb):not(.mobile-drawer) {
   background:var(--ember); color:var(--cream);
   padding:.78rem 1.25rem; border-radius:2px;
   text-decoration:none; font-size:.76rem; font-weight:700;
-  letter-spacióng:.14em; text-transform:uppercase;
+  letter-spacing:.14em; text-transform:uppercase;
   box-shadow:0 10px 24px rgba(212,119,42,.22);
   transition:background .2s, transform .2s, box-shadow .2s;
 }
 .download-pdf-btn:hover { background:var(--ember-dim); transform:translateY(-1px); box-shadow:0 14px 30px rgba(212,119,42,.28); }
-.download-pdf-btn::before { content:'PDF'; font-size:.62rem; letter-spacióng:.08em; border:1px solid rgba(245,240,232,.55); padding:.12rem .28rem; }
+.download-pdf-btn::before { content:'PDF'; font-size:.62rem; letter-spacing:.08em; border:1px solid rgba(245,240,232,.55); padding:.12rem .28rem; }
 @media(max-width:640px){ .itinerario-head { align-items:flex-start; } .download-pdf-btn { width:100%; justify-content:center; } }
 .itinerario-section { padding: 5rem 4vw; background: var(--cream); border-top: 1px solid rgba(58,45,31,.08); }
 .itinerario-inner { max-width: 900px; margin: 0 auto; }
@@ -132,14 +132,14 @@ body > nav:not(.breadcrumb):not(.mobile-drawer) {
 .dia-num { display: flex; flex-direction: column; align-items: center; padding-top: .5rem; position: relative; z-index: 1; }
 .dia-circle { width: 42px; height: 42px; border-radius: 50%; background: var(--ember); color: #fff; display: flex; align-items: center; justify-content: center; font-family: 'DM Serif Display', serif; font-size: 1.1rem; font-weight: 600; box-shadow: 0 4px 16px rgba(212,119,42,.4); flex-shrink: 0; }
 .dia-content { padding: .3rem 0 3rem 1.8rem; }
-.dia-label { font-size: .65rem; font-weight: 700; letter-spacióng: .2em; text-transform: uppercase; color: var(--ember); margin-bottom: .4rem; }
+.dia-label { font-size: .65rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--ember); margin-bottom: .4rem; }
 .dia-title { font-family: 'DM Serif Display', serif; font-size: 1.4rem; font-weight: 600; color: var(--ink); margin-bottom: .8rem; line-height: 1.2; }
 .dia-title em { font-style: italic; color: var(--amber); }
 .dia-desc { font-size: .97rem; color: var(--stone); line-height: 1.85; font-weight: 300; }
 .dia-desc strong { color: var(--ink); font-weight: 600; }
 .dia-img { width: 100%; border-radius: 3px; margin-top: 1.2rem; aspect-ratio: 16/7; object-fit: cover; box-shadow: 0 8px 32px rgba(26,20,16,.12); }
 .dia-chips { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: 1rem; }
-.dia-chip { font-size: .65rem; font-weight: 600; letter-spacióng: .12em; text-transform: uppercase; background: rgba(58,45,31,.07); color: var(--stone); padding: .25rem .75rem; border-radius: 999px; border: 1px solid rgba(58,45,31,.12); }
+.dia-chip { font-size: .65rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; background: rgba(58,45,31,.07); color: var(--stone); padding: .25rem .75rem; border-radius: 999px; border: 1px solid rgba(58,45,31,.12); }
 
 .galeria-section { padding: 5rem 4vw; background: var(--fog); }
 .galeria-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; margin-top: 3rem; }
@@ -153,9 +153,9 @@ body > nav:not(.breadcrumb):not(.mobile-drawer) {
 .tour-cta h2 em { font-style: italic; color: var(--sand); }
 .tour-cta p { font-size: 1.02rem; color: rgba(232,220,200,.55); max-width: 480px; margin: 0 auto 2.5rem; font-weight: 300; line-height: 1.8; }
 .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-.cta-btn-p { background: var(--ember); color: var(--cream); padding: .85rem 2.2rem; border-radius: 2px; text-decoration: none; font-size: .93rem; font-weight: 600; letter-spacióng: .18em; text-transform: uppercase; transition: background .2s; }
+.cta-btn-p { background: var(--ember); color: var(--cream); padding: .85rem 2.2rem; border-radius: 2px; text-decoration: none; font-size: .93rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; transition: background .2s; }
 .cta-btn-p:hover { background: var(--ember-dim); }
-.cta-btn-g { border: 1px solid rgba(245,240,232,.3); color: rgba(245,240,232,.7); padding: .85rem 2.2rem; border-radius: 2px; text-decoration: none; font-size: .93rem; font-weight: 600; letter-spacióng: .18em; text-transform: uppercase; transition: border-color .2s, color .2s; background: transparent; }
+.cta-btn-g { border: 1px solid rgba(245,240,232,.3); color: rgba(245,240,232,.7); padding: .85rem 2.2rem; border-radius: 2px; text-decoration: none; font-size: .93rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; transition: border-color .2s, color .2s; background: transparent; }
 .cta-btn-g:hover { border-color: var(--sand); color: var(--sand); }
 
 footer { background: #0a0a0a; padding: 5rem 3vw 2.5rem; }
@@ -163,7 +163,7 @@ footer { background: #0a0a0a; padding: 5rem 3vw 2.5rem; }
 @media (max-width:700px){ .footer-top { grid-template-columns: 1fr; gap: 2rem; } }
 .footer-brand-wrap { display: flex; align-items: center; gap: 12px; margin-bottom: .6rem; }
 .footer-emblem { width: 48px; height: 48px; flex-shrink: 0; }
-.footer-brand { font-family: 'Sora',sans-serif; font-size: 1.5rem; font-weight: 700; letter-spacióng: .1em; }
+.footer-brand { font-family: 'Sora',sans-serif; font-size: 1.5rem; font-weight: 700; letter-spacing: .1em; }
 .footer-brand span.footer-brand-zoyen { color: #fff; }
 .footer-brand span { color: var(--ember); }
 .footer-tagline { font-size: 1.05rem; color: rgba(232,220,200,.65); line-height: 1.7; margin-bottom: 1.4rem; font-weight: 300; }
@@ -171,14 +171,14 @@ footer { background: #0a0a0a; padding: 5rem 3vw 2.5rem; }
 .social-btn { width: 34px; height: 34px; border-radius: 1px; border: 1px solid rgba(201,169,110,.2); color: var(--sand); text-decoration: none; display: flex; align-items: center; justify-content: center; transition: border-color .2s, background .2s; }
 .social-btn svg { display: block; }
 .social-btn:hover { border-color: var(--ember); background: rgba(212,119,42,.12); }
-.footer-col-title { font-size: 1rem; font-weight: 600; letter-spacióng: .25em; text-transform: uppercase; color: var(--ember); margin-bottom: 1.1rem; }
+.footer-col-title { font-size: 1rem; font-weight: 600; letter-spacing: .25em; text-transform: uppercase; color: var(--ember); margin-bottom: 1.1rem; }
 .footer-links { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
 .footer-links a { color: rgba(232,220,200,.70); text-decoration: none; font-size: .8rem; font-weight: 300; transition: color .2s; display: flex; align-items: center; gap: 7px; }
 .footer-links a::before { content: ''; color: var(--ember); opacity: .5; }
 .footer-links a:hover { color: var(--sand); }
 .footer-contact { font-size: .8rem; color: rgba(232,220,200,.70); line-height: 1.8; font-weight: 300; }
 .footer-contact strong { color: var(--sand); font-weight: 500; }
-.footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .5rem; font-size: .93rem; color: rgba(232,220,200,.40); letter-spacióng: .08em; }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .5rem; font-size: .93rem; color: rgba(232,220,200,.40); letter-spacing: .08em; }
 .footer-bottom a { color: rgba(201,169,110,.55); text-decoration: none; }
 
 .wa { position: fixed; bottom: 1.8rem; right: 1.8rem; z-index: 800; width: 52px; height: 52px; border-radius: 50%; background: #25d366; color: #fff; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,.35); transition: transform .25s; }
@@ -196,7 +196,7 @@ footer { background: #0a0a0a; padding: 5rem 3vw 2.5rem; }
   border: 1px solid rgba(212,119,42,.34); border-radius: 2px;
   background: rgba(245,240,232,.06); color: rgba(245,240,232,.78);
   font-family: 'Sora', sans-serif; font-size: .68rem; font-weight: 700;
-  letter-spacióng: .08em; text-transform: uppercase; cursor: pointer;
+  letter-spacing: .08em; text-transform: uppercase; cursor: pointer;
   transition: border-color .2s, background .2s, color .2s;
 }
 .lang-current:hover,
@@ -222,25 +222,25 @@ footer { background: #0a0a0a; padding: 5rem 3vw 2.5rem; }
   padding: .55rem .65rem; border: 0; border-radius: 1px;
   background: transparent; color: rgba(245,240,232,.68);
   font-family: 'Sora', sans-serif; font-size: .7rem; font-weight: 600;
-  letter-spacióng: .04em; cursor: pointer; text-align: left;
+  letter-spacing: .04em; cursor: pointer; text-align: left;
   transition: background .2s, color .2s;
 }
 .lang-btn:hover { color: var(--cream); background: rgba(212,119,42,.16); }
 .lang-btn.active { background: var(--ember); color: var(--cream); }
-.lang-code { color: rgba(245,240,232,.45); font-size: .58rem; font-weight: 800; letter-spacióng: .1em; }
+.lang-code { color: rgba(245,240,232,.45); font-size: .58rem; font-weight: 800; letter-spacing: .1em; }
 .lang-btn.active .lang-code { color: rgba(255,255,255,.82); }
 @media (min-width: 961px) and (max-width: 1360px) {
   nav { column-gap: .75rem; }
   .nav-emblem { width: 46px; height: 46px; }
   .nav-logo { gap: 8px; }
-  .nav-logo .z, .nav-logo .t { font-size: 1.08rem; letter-spacióng: .09em; }
+  .nav-logo .z, .nav-logo .t { font-size: 1.08rem; letter-spacing: .09em; }
   .nav-logo sub { display: none; }
   .nav-links { gap: .72rem; }
-  .nav-links a { font-size: .64rem; letter-spacióng: .035em; }
+  .nav-links a { font-size: .64rem; letter-spacing: .035em; }
   .lang-current { min-width: 98px; height: 31px; padding: 0 .55rem; font-size: .58rem; }
   .lang-menu { min-width: 150px; }
   .lang-btn { padding: .5rem .58rem; font-size: .64rem; }
-  .nav-cta-btn { padding: .45rem .85rem; font-size: .66rem; letter-spacióng: .1em; }
+  .nav-cta-btn { padding: .45rem .85rem; font-size: .66rem; letter-spacing: .1em; }
 }
 @media (max-width: 640px) {
   .nav-cta-btn { display: none; }
@@ -250,7 +250,7 @@ footer { background: #0a0a0a; padding: 5rem 3vw 2.5rem; }
   .lang-btn { padding: .52rem .58rem; font-size: .64rem; }
   .nav-emblem { width: 40px; height: 40px; }
   .nav-logo { gap: 6px; }
-  .nav-logo .z, .nav-logo .t { font-size: .98rem; letter-spacióng: .08em; }
+  .nav-logo .z, .nav-logo .t { font-size: .98rem; letter-spacing: .08em; }
   .nav-logo sub { display: none; }
 }
 
@@ -276,7 +276,7 @@ footer { background: #0a0a0a; padding: 5rem 3vw 2.5rem; }
   font-family: 'Sora', sans-serif;
   font-size: .68rem;
   font-weight: 700;
-  letter-spacióng: .11em;
+  letter-spacing: .11em;
   line-height: 1;
   text-transform: uppercase;
   text-decoration: none;
@@ -309,7 +309,7 @@ footer { background: #0a0a0a; padding: 5rem 3vw 2.5rem; }
 }
 .zoyi-toggle:hover { transform: translateY(-2px); border-color: var(--ember); background: rgba(48,34,25,.96); }
 .zoyi-toggle svg { width: 19px; height: 19px; stroke: currentColor; fill: none; stroke-width: 1.8; }
-.zoyi-toggle strong { font-size: .82rem; letter-spacióng: .14em; text-transform: uppercase; }
+.zoyi-toggle strong { font-size: .82rem; letter-spacing: .14em; text-transform: uppercase; }
 .zoyi-panel {
   position: absolute;
   right: 0;
@@ -335,7 +335,7 @@ footer { background: #0a0a0a; padding: 5rem 3vw 2.5rem; }
   color: var(--cream);
 }
 .zoyi-title { display: flex; flex-direction: column; gap: .18rem; }
-.zoyi-title strong { font-size: .88rem; letter-spacióng: .14em; text-transform: uppercase; }
+.zoyi-title strong { font-size: .88rem; letter-spacing: .14em; text-transform: uppercase; }
 .zoyi-title span { font-family: 'Inter', sans-serif; font-size: .74rem; color: rgba(245,240,232,.68); }
 .zoyi-close {
   width: 34px;
@@ -380,7 +380,7 @@ footer { background: #0a0a0a; padding: 5rem 3vw 2.5rem; }
   font-family: 'Sora', sans-serif;
   font-size: .72rem;
   font-weight: 800;
-  letter-spacióng: .08em;
+  letter-spacing: .08em;
   text-transform: uppercase;
   color: #8a4b1c;
   margin: .1rem 0 .42rem;
@@ -443,7 +443,7 @@ footer { background: #0a0a0a; padding: 5rem 3vw 2.5rem; }
 .zoyi-send svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; }
 @media (min-width: 961px) and (max-width: 1360px) {
   .nav-actions { gap: .4rem; }
-  .nav-contact-btn { padding: .45rem .65rem; font-size: .58rem; letter-spacióng: .07em; }
+  .nav-contact-btn { padding: .45rem .65rem; font-size: .58rem; letter-spacing: .07em; }
 }
 @media (max-width: 640px) {
   .nav-actions { display: none; }
@@ -487,7 +487,7 @@ footer { background: #0a0a0a; padding: 5rem 3vw 2.5rem; }
   min-width: 124px;
 }
 .zoyi-toggle strong {
-  letter-spacióng: .12em;
+  letter-spacing: .12em;
 }
 .zoyi-title span {
   max-width: 210px;
@@ -502,7 +502,7 @@ footer { background: #0a0a0a; padding: 5rem 3vw 2.5rem; }
 /* Ajuste de menú con tipografa ampliada */
 @media (min-width: 961px) and (max-width: 1360px) {
   body > nav .nav-links { gap: .45rem; }
-  body > nav .nav-cta-btn { padding-left: .65rem !important; padding-right: .65rem !important; letter-spacióng: .09em !important; }
+  body > nav .nav-cta-btn { padding-left: .65rem !important; padding-right: .65rem !important; letter-spacing: .09em !important; }
   body > nav .nav-contact-btn { width: 38px; min-width: 38px; padding-left: 0; padding-right: 0; }
   body > nav .nav-contact-btn span { display: none; }
 }
@@ -525,7 +525,7 @@ body > nav .nav-actions .nav-contact-btn {
 body > nav .nav-actions .nav-contact-btn {
   gap: .36rem;
   font-size: .62rem;
-  letter-spacióng: .08em;
+  letter-spacing: .08em;
 }
 body > nav .nav-actions .nav-contact-btn svg {
   width: 14px;
@@ -548,7 +548,7 @@ body > nav .nav-actions .nav-contact-btn svg {
 }
 
 
-/* CTA unificado: los dos botones llaman la atencion sin agrandarse de mas */
+/* CTA unificado: los dos botónes llaman la atencion sin agrandarse de más */
 body > nav .nav-actions {
   position: relative;
 }
@@ -575,7 +575,7 @@ body > nav .nav-actions.cta-nudge::before {
   font-family: 'Sora', sans-serif;
   font-size: .56rem;
   font-weight: 800;
-  letter-spacióng: .11em;
+  letter-spacing: .11em;
   text-transform: uppercase;
   white-space: nowrap;
   box-shadow: 0 10px 24px rgba(0,0,0,.2);
@@ -619,7 +619,7 @@ body > nav .nav-actions.cta-nudge::before {
   function pickFallback(text){
     const haystack = (text || '').toLowerCase();
     const found = fallbackByHint.find(([hint]) => haystack.includes(hint));
-    return found  found[1] : genericFallback;
+    return found ? found[1] : genericFallback;
   }
   window.zoyenPickFallback = pickFallback;
   document.addEventListener('error', function(event){
@@ -688,13 +688,13 @@ body > nav .nav-actions.cta-nudge .nav-contact-btn {
   100% { opacity: 1; transform: scale(1) rotate(0); filter: blur(0); }
 }
 @keyframes navBrandLetterIn {
-  0% { opacity: 0; transform: translateY(14px) scale(.94); filter: blur(5px); letter-spacióng: .24em; }
+  0% { opacity: 0; transform: translateY(14px) scale(.94); filter: blur(5px); letter-spacing: .24em; }
   68% { opacity: 1; filter: blur(0); }
-  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); letter-spacióng: .12em; }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); letter-spacing: .12em; }
 }
 @keyframes navSubSlideIn {
-  0% { opacity: 0; transform: translateY(-8px); filter: blur(4px); letter-spacióng: .32em; }
-  100% { opacity: .78; transform: translateY(0); filter: blur(0); letter-spacióng: .2em; }
+  0% { opacity: 0; transform: translateY(-8px); filter: blur(4px); letter-spacing: .32em; }
+  100% { opacity: .78; transform: translateY(0); filter: blur(0); letter-spacing: .2em; }
 }
 @keyframes ctaReservarNudge {
   0%, 100% { transform: translateY(0) scale(1); box-shadow: none; }
@@ -863,7 +863,7 @@ img.hero-logo-static {
       <li><button class="lang-btn active" type="button" data-lang="es" data-label="Español">Español <span class="lang-code">ES</span></button></li>
       <li><button class="lang-btn" type="button" data-lang="en" data-label="English">English <span class="lang-code">EN</span></button></li>
       <li><button class="lang-btn" type="button" data-lang="pt" data-label="Português">Português <span class="lang-code">PT</span></button></li>
-      <li><button class="lang-btn" type="button" data-lang="ko" data-label="í•œêµ­ì–´">í•œêµ­ì–´ <span class="lang-code">KO</span></button></li>
+      <li><button class="lang-btn" type="button" data-lang="ko" data-label="한국어">한국어 <span class="lang-code">KO</span></button></li>
     </ul>
   </div>
   <ul class="nav-links">
@@ -871,7 +871,7 @@ img.hero-logo-static {
     <li><a href="index.html#excursiones" data-i18n="nav_excursiones"><span data-i18n="bread_exc">Excursiones</span></a></li>
     <li><a href="index.html#tours" class="active" data-i18n="nav_tours"><span data-i18n="bread_tours">Tours de Autor</span></a></li>
     <li><a href="index.html#bienestar" data-i18n="nav_bienestar">Turismo de Bienestar</a></li>
-    <li><a href="index.html#ubicacion" data-i18n="nav_ubicacion">Ubicación y Contacto</a></li>
+    <li><a href="index.html#ubicación" data-i18n="nav_ubicación">Ubicación y Contacto</a></li>
     <li><a href="nosotros.html" data-i18n="nav_nosotros">Quiénes somos</a></li>
   </ul>
   <div class="nav-actions"><a href="index.html#reservar" class="nav-cta-btn" data-i18n="nav_reservar">Reservar</a><a href="https://wa.me/5492974432855" class="nav-contact-btn" target="_blank" rel="noopener" aria-label="Contactarse por WhatsApp" data-i18n-aria-label="nav_contact"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span data-i18n="nav_contact">Contactarse</span></a></div>
@@ -887,7 +887,7 @@ img.hero-logo-static {
     <div class="hero-tags">
       <span class="hero-tag main">8 días</span>
       <span class="hero-tag">Caleta Tortel</span>
-      <span class="hero-tag">Villa OHiggins</span>
+      <span class="hero-tag">Villa O'Higgins</span>
       <span class="hero-tag">Capillas de Mármol</span>
       <span class="hero-tag">Coyhaique</span>
     </div>
@@ -909,7 +909,7 @@ img.hero-logo-static {
     <div class="ov-item"><div class="ov-num">6-22</div><div class="ov-lbl">Pasajeros</div></div>
     <div class="ov-sep"></div>
     <div class="ov-item" style="text-align:left;">
-      <a href="index.html#reservar" style="background:var(--ember);color:#fff;padding:.7rem 1.8rem;border-radius:2px;text-decoration:none;font-size:.82rem;font-weight:700;letter-spacióng:.18em;text-transform:uppercase;transition:background .2s;display:inline-block;" onmouseover="this.style.background='#b8621e'" onmouseout="this.style.background='#d4772a'">Reservar lugar</a>
+      <a href="index.html#reservar" style="background:var(--ember);color:#fff;padding:.7rem 1.8rem;border-radius:2px;text-decoration:none;font-size:.82rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;transition:background .2s;display:inline-block;" onmouseover="this.style.background='#b8621e'" onmouseout="this.style.background='#d4772a'">Reservar lugar</a>
     </div>
   </div>
 </div>
@@ -921,8 +921,8 @@ img.hero-logo-static {
       <p class="eyebrow">Descripcin del tour</p>
       <h2 class="section-title">La ruta más <em>legendaria</em> del sur</h2>
       <p><strong>Carretera Austral</strong> es una experiencia de 8 días / 7 noches de alojamiento que comienza y finaliza en Perito Moreno. El recorrido cruza a Chile por Paso Jeinimeni y conecta algunos de los paisajes más profundos de la Patagonia chilena y argentina.</p>
-      <p>El programa recorre Chile Chico, Ruta 265, Lago General Carrera, Confluencia de los ros Baker y Neff, Cochrane, Caleta Tortel, Caleta Yungay, Puerto Ro Bravo, Villa OHiggins, Puerto Ro Tranquilo, Capillas y Catedrales de Mármol, Coyhaique y el regreso por Paso Internacional Huemules.</p>
-      <p>Los traslados se realizan en minibs o vehículos pequeos segn el armado del grupo, con chofer/gua durante todo el recorrido, desayunos, almuerzos incluidos y alojamientos seleccionados en hoteles o cabaas segn disponibilidad.</p>
+      <p>El programa recorre Chile Chico, Ruta 265, Lago General Carrera, Confluencia de los ros Baker y Neff, Cochrane, Caleta Tortel, Caleta Yungay, Puerto Ro Bravo, Villa O'Higgins, Puerto Ro Tranquilo, Capillas y Catedrales de Mármol, Coyhaique y el regreso por Paso Internacional Huemules.</p>
+      <p>Los traslados se realizan en minibús o vehículos pequeños según el armado del grupo, con chofer/guía durante todo el recorrido, desayunos, almuerzos incluidos y alojamientos seleccionados en hoteles o cabañas según disponibilidad.</p>
 
       <div class="inc-grid">
         <div class="inc-card yes">
@@ -930,7 +930,7 @@ img.hero-logo-static {
           <ul class="inc-list">
             <li>Traslados durante todo el recorrido desde y hasta Perito Moreno</li>
             <li>7 noches de alojamiento con desayuno</li>
-            <li>Almuerzos incluidos, con vianda o restaurante segn logstica de cada día</li>
+            <li>Almuerzos incluidos, con vianda o restaurante según logística de cada día</li>
             <li>Chofer/gua durante todo el recorrido descripto</li>
             <li>Navegación a las Capillas y Catedrales de Mármol</li>
             <li>Cruces por Paso Jeinimeni y Paso Internacional Huemules</li>
@@ -941,7 +941,7 @@ img.hero-logo-static {
           <ul class="inc-list">
             <li>Traslado hasta Perito Moreno, salvo contratación adicional</li>
             <li>Cenas y bebidas alcohlicas o extras durante los almuerzos</li>
-            <li>Excursiones opcionales, como navegación al Glaciar OHiggins o Puerto Aysn</li>
+            <li>Excursiones opcionales, como navegación al Glaciar O'Higgins o Puerto Aysn</li>
             <li>Trmites migratorios personales y gastos personales</li>
           </ul>
         </div>
@@ -953,11 +953,11 @@ img.hero-logo-static {
         <li><strong>Chile Chico y Ruta 265</strong>  ingreso a la Patagonia chilena bordeando el Lago General Carrera.</li>
         <li><strong>Confluencia Baker y Neff</strong>  uno de los paisajes más fotogrficos de la Carretera Austral.</li>
         <li><strong>Cochrane</strong>  puerta de entrada al tramo sur de la ruta.</li>
-        <li><strong>Caleta Tortel</strong>  pueblo de pasarelas peatonales sobre fiordos y canales patagúúnicos.</li>
+        <li><strong>Caleta Tortel</strong>  pueblo de pasarelas peatonales sobre fiordos y canales patagónicos.</li>
         <li><strong>Caleta Yungay y Puerto Ro Bravo</strong>  cruce en ferry por uno de los fiordos chilenos de la regin.</li>
-        <li><strong>Villa OHiggins</strong>  extremo austral de la Carretera Austral y acceso al Lago OHiggins.</li>
+        <li><strong>Villa O'Higgins</strong>  extremo austral de la Carretera Austral y acceso al Lago O'Higgins.</li>
         <li><strong>Capillas y Catedrales de Mármol</strong>  navegación sobre el Lago General Carrera desde Puerto Ro Tranquilo.</li>
-        <li><strong>Coyhaique y Paso Huemules</strong>  cierre del recorrido por la capital regional de Aysn y regreso a Argentina.</li>
+        <li><strong>Coyhaique y Paso Huemules</strong>  cierre del recorrido por la capital regiónal de Aysn y regreso a Argentina.</li>
       </ul>
     </div>
   </div>
@@ -980,7 +980,7 @@ img.hero-logo-static {
       <div class="dia-content">
         <div class="dia-label">Día 1  Llegada</div>
         <h3 class="dia-title">Llegada a <em>Perito Moreno</em></h3>
-        <p class="dia-desc">Llegada a Perito Moreno, tiempo libre y alojamiento en hotel. El traslado hasta Perito Moreno no est incluido en la tarifa base y puede coordinarse segn el grupo: bus propio, traslado privado desde Comodoro Rivadavia, bus regular desde Comodoro o vuelo de LADE.</p>
+        <p class="dia-desc">Llegada a Perito Moreno, tiempo libre y alojamiento en hotel. El traslado hasta Perito Moreno no está incluido en la tarifa base y puede coordinarse según el grupo: bus propio, traslado privado desde Comodoro Rivadavia, bus regular desde Comodoro o vuelo de LADE.</p>
         <div class="dia-chips"><span class="dia-chip">Perito Moreno</span><span class="dia-chip">Tiempo libre</span><span class="dia-chip">Alojamiento en hotel</span></div>
       </div>
     </div>
@@ -991,7 +991,7 @@ img.hero-logo-static {
       <div class="dia-content">
         <div class="dia-label">Día 2  Paso Jeinimeni</div>
         <h3 class="dia-title">Chile Chico  <em>Cochrane</em></h3>
-        <p class="dia-desc">Desayuno y salida hacia la frontera con Chile. Cruce por <strong>Paso Jeinimeni</strong> hasta <strong>Chile Chico</strong>, donde comienza el recorrido por la Patagonia chilena. Tiempo para abastecimiento y cambio de divisas. Salida por Ruta 265, bordeando el Lago General Carrera hacia la Carretera Austral. Almuerzo en camino incluido, visita a la <strong>Confluencia del Ro Baker y Neff</strong> y llegada por la tarde a Cochrane. Alojamiento en cabaas. Cena no incluida.</p>
+        <p class="dia-desc">Desayuno y salida hacia la frontera con Chile. Cruce por <strong>Paso Jeinimeni</strong> hasta <strong>Chile Chico</strong>, donde comienza el recorrido por la Patagonia chilena. Tiempo para abastecimiento y cambio de divisas. Salida por Ruta 265, bordeando el Lago General Carrera hacia la Carretera Austral. Almuerzo en camino incluido, visita a la <strong>Confluencia del Ro Baker y Neff</strong> y llegada por la tarde a Cochrane. Alojamiento en cabañas. Cena no incluida.</p>
         <div class="dia-chips"><span class="dia-chip">Paso Jeinimeni</span><span class="dia-chip">Lago General Carrera</span><span class="dia-chip">Cochrane</span></div>
       </div>
     </div>
@@ -1001,9 +1001,9 @@ img.hero-logo-static {
       <div class="dia-num"><div class="dia-circle">3</div></div>
       <div class="dia-content">
         <div class="dia-label">Día 3  Fiordos y pasarelas</div>
-        <h3 class="dia-title">Caleta Tortel  <em>Villa OHiggins</em></h3>
-        <p class="dia-desc">Desayuno y salida por Carretera Austral hacia el sur hasta la pintoresca <strong>Caleta Tortel</strong>. Recorrido por sus calles peatonales sobre pasarelas y almuerzo en el lugar. Luego, continuación hacia el sur para cruzar en ferry desde <strong>Caleta Yungay</strong>, atravesando uno de los fiordos chilenos de la regin hasta <strong>Puerto Ro Bravo</strong>. Retomando la Carretera Austral, llegada al atardecer a <strong>Villa OHiggins</strong>. Alojamiento en cabaas.</p>
-        <div class="dia-chips"><span class="dia-chip">Caleta Tortel</span><span class="dia-chip">Ferry Caleta Yungay</span><span class="dia-chip">Villa OHiggins</span></div>
+        <h3 class="dia-title">Caleta Tortel  <em>Villa O'Higgins</em></h3>
+        <p class="dia-desc">Desayuno y salida por Carretera Austral hacia el sur hasta la pintoresca <strong>Caleta Tortel</strong>. Recorrido por sus calles peatonales sobre pasarelas y almuerzo en el lugar. Luego, continuación hacia el sur para cruzar en ferry desde <strong>Caleta Yungay</strong>, atravesando uno de los fiordos chilenos de la regin hasta <strong>Puerto Ro Bravo</strong>. Retomando la Carretera Austral, llegada al atardecer a <strong>Villa O'Higgins</strong>. Alojamiento en cabañas.</p>
+        <div class="dia-chips"><span class="dia-chip">Caleta Tortel</span><span class="dia-chip">Ferry Caleta Yungay</span><span class="dia-chip">Villa O'Higgins</span></div>
       </div>
     </div>
 
@@ -1012,9 +1012,9 @@ img.hero-logo-static {
       <div class="dia-num"><div class="dia-circle">4</div></div>
       <div class="dia-content">
         <div class="dia-label">Día 4  Día libre</div>
-        <h3 class="dia-title">Villa OHiggins  <em>Km 0 Carretera Austral</em></h3>
-        <p class="dia-desc">Desayuno y día libre para ir hasta el <strong>Lago OHiggins</strong>, donde se encuentra el km 0 o fin de la Carretera Austral, segn se interprete. Posibilidad de realizar excursiones opcionales no incluidas, como la navegación al <strong>Glaciar OHiggins</strong>, senderos de trekking en los alrededores, Glaciar El Tigre y otras opciones. Día para disfrutar del pueblo, la tranquilidad y el paisaje andino patagúnico virgen. Alojamiento. Cena no incluida.</p>
-        <div class="dia-chips"><span class="dia-chip">Lago OHiggins</span><span class="dia-chip">Excursiones opcionales</span><span class="dia-chip">Alojamiento en Villa OHiggins</span></div>
+        <h3 class="dia-title">Villa O'Higgins  <em>Km 0 Carretera Austral</em></h3>
+        <p class="dia-desc">Desayuno y día libre para ir hasta el <strong>Lago O'Higgins</strong>, donde se encuentra el km 0 o fin de la Carretera Austral, según se interprete. Posibilidad de realizar excursiones opcionales no incluidas, como la navegación al <strong>Glaciar O'Higgins</strong>, senderos de trekking en los alrededores, Glaciar El Tigre y otras opciones. Día para disfrutar del pueblo, la tranquilidad y el paisaje andino patagónico virgen. Alojamiento. Cena no incluida.</p>
+        <div class="dia-chips"><span class="dia-chip">Lago O'Higgins</span><span class="dia-chip">Excursiones opcionales</span><span class="dia-chip">Alojamiento en Villa O'Higgins</span></div>
       </div>
     </div>
 
@@ -1023,7 +1023,7 @@ img.hero-logo-static {
       <div class="dia-num"><div class="dia-circle">5</div></div>
       <div class="dia-content">
         <div class="dia-label">Día 5  Tramo norte</div>
-        <h3 class="dia-title">Villa OHiggins  <em>Puerto Ro Tranquilo</em></h3>
+        <h3 class="dia-title">Villa O'Higgins  <em>Puerto Ro Tranquilo</em></h3>
         <p class="dia-desc">Desayuno y salida temprano por Carretera Austral hacia el norte, en el día más largo en kilmetros recorridos y tiempos de viaje. Paso por Cochrane y Puerto Bertrand, bordeando el Lago General Carrera y su desage hacia el <strong>Lago Bertrand</strong>. Llegada al atardecer a <strong>Puerto Ro Tranquilo</strong>. Alojamiento en hotel. Cena no incluida.</p>
         <div class="dia-chips"><span class="dia-chip">Cochrane</span><span class="dia-chip">Puerto Bertrand</span><span class="dia-chip">Puerto Ro Tranquilo</span></div>
       </div>
@@ -1058,7 +1058,7 @@ img.hero-logo-static {
       <div class="dia-content">
         <div class="dia-label">Día 8  Regreso a Argentina</div>
         <h3 class="dia-title">Paso Huemules  <em>Perito Moreno</em></h3>
-        <p class="dia-desc">Desayuno y salida hacia la frontera con Argentina por el <strong>Paso Internacional Huemules</strong>, ubicado aproximadamente a 1 hora de Coyhaique. Luego, unas 3 horas más hasta Perito Moreno. Segn la modalidad de traslado y horarios hacia Comodoro Rivadavia o lugar de origen, se coordina la logstica del día. El traslado incluido en la tarifa es hasta Perito Moreno. Fin de nuestros servicios.</p>
+        <p class="dia-desc">Desayuno y salida hacia la frontera con Argentina por el <strong>Paso Internacional Huemules</strong>, ubicado aproximadamente a 1 hora de Coyhaique. Luego, unas 3 horas más hasta Perito Moreno. Segn la modalidad de traslado y horarios hacia Comodoro Rivadavia o lugar de origen, se coordina la logística del día. El traslado incluido en la tarifa es hasta Perito Moreno. Fin de nuestros servicios.</p>
         <div class="dia-chips"><span class="dia-chip">Paso Huemules</span><span class="dia-chip">Regreso a Perito Moreno</span><span class="dia-chip">Fin de servicios</span></div>
       </div>
     </div>
@@ -1075,7 +1075,7 @@ img.hero-logo-static {
     <div class="galeria-grid">
       <img src="assets/20221115_082320-1024x576-360x230.jpg" alt="Carretera Austral" class="reveal" onerror="this.src='https://images.unsplash.com/photo-1501854140801-50d01698950b?w=900&q=80'">
       <img src="assets/capillas.jpg" alt="Capillas de Mármol" class="reveal reveal-delay">
-      <img src="assets/posadas_zoyen.jpg" alt="Lagos Patagúúnicos" class="reveal">
+      <img src="assets/posadas_zoyen.jpg" alt="Lagos Patagúnicos" class="reveal">
       <img src="assets/ruta41_zoyen.jpg" alt="Ruta 41" class="reveal reveal-delay">
       <img src="assets/full_inedita.jpg" alt="Patagonia panormica" class="reveal reveal-delay2">
     </div>
@@ -1091,7 +1091,7 @@ img.hero-logo-static {
       <span style="width:22px;height:1px;background:var(--sand);display:inline-block;"></span>
     </p>
     <h2>Reserv tu lugar en la <em>Carretera Austral</em></h2>
-    <p>Grupos pequeos, itinerario exclusivo. Las plazas se agotan rpido en temporada alta.</p>
+    <p>Grupos pequeños, itinerario exclusivo. Las plazas se agotan rpido en temporada alta.</p>
     <div class="cta-btns">
       <a href="index.html#reservar" class="cta-btn-p">Reservar ahora</a>
       <a href="https://wa.me/5492974432855" class="cta-btn-g" target="_blank" rel="noopener" data-i18n="sidebar_wa">Consultar por WhatsApp</a>
@@ -1149,12 +1149,12 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
       'nav_excursiones': 'Excursiones',
       'nav_tours': 'Tours de Autor',
       'nav_bienestar': 'Turismo de Bienestar',
-      'nav_ubicacion': 'Ubicación y Contacto',
+      'nav_ubicación': 'Ubicación y Contacto',
       'nav_nosotros': 'Quiénes somos',
       'nav_reservar': 'Reservar',
       'nav_contact': 'Contactarse',
       'sidebar_book': 'Reservar',
-      'sidebar_book_desc': 'Consultanos disponibilidad y precios por WhatsApp o reserv directamente.',
+      'sidebar_book_desc': 'Consultanos disponibilidad y precios por WhatsApp o reservá directamente.',
       'sidebar_wa': 'Consultar por WhatsApp',
       'sidebar_details': 'Detalles',
       'sidebar_other': 'Otras Excursiones',
@@ -1170,7 +1170,7 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
       'prices_title': 'Precios',
       'prices_note': 'No incluye ingreso al Parque Provincial.',
       'detail_salida': 'Salida desde Perito Moreno o Los Antiguos',
-      'detail_guia': 'Gua especializado incluido',
+      'detail_guia': 'Guía especializado incluido',
       'detail_vehiculo': 'Vehículo 4x4 o minibus',
       'detail_cupos': 'Cupos limitados',
       'cta_btn': 'Reservar lugar',
@@ -1180,7 +1180,7 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
       'nav_excursiones': 'Excursions',
       'nav_tours': 'Author Tours',
       'nav_bienestar': 'Wellness Tourism',
-      'nav_ubicacion': 'Location & Contact',
+      'nav_ubicación': 'Location & Contact',
       'nav_nosotros': 'About Us',
       'nav_reservar': 'Book Now',
       'nav_contact': 'Contact',
@@ -1217,7 +1217,7 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
       'nav_excursiones': 'Excursões',
       'nav_tours': 'Tours de Autor',
       'nav_bienestar': 'Turismo de Bem-Estar',
-      'nav_ubicacion': 'Localização e Contato',
+      'nav_ubicación': 'Localização e Contato',
       'nav_nosotros': 'Quem somos',
       'nav_reservar': 'Reservar',
       'nav_contact': 'Contato',
@@ -1235,18 +1235,18 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
       'bread_inicio': 'Incio',
       'bread_exc': 'Excursões',
       'bread_tours': 'Tours de Autor',
-      'prices_title': 'Preos',
-      'prices_note': 'Taxa de entrada no Parque no includa.',
-      'detail_salida': 'Sada de Perito Moreno ou Los Antiguos',
-      'detail_guia': 'Guia especializado includo',
-      'detail_vehiculo': 'Veculo 4x4 ou minibus',
+      'prices_title': 'Preços',
+      'prices_note': 'Taxa de entrada no Parque no incluída.',
+      'detail_salida': 'Saída de Perito Moreno ou Los Antiguos',
+      'detail_guia': 'Guia especializado incluído',
+      'detail_vehiculo': 'Veículo 4x4 ou minibus',
       'detail_cupos': 'Vagas limitadas',
-      'hero_eyebrow': 'Tour de Autor  8 dias  7 noites',
+      'hero_eyebrow': 'Tour de Autor  8 días  7 noites',
       'hero_title': 'Carretera <em>Austral</em>',
       'main_h2_1': 'A rota mais <em>lendria</em> do sul',
       'highlights_title': 'Destaques do tour',
       'itinerary_title': 'O <em>itinerrio</em>',
-      'sidebar_wa_msg': 'Ol! Quero informaes sobre o tour Carretera Austral',
+      'sidebar_wa_msg': 'Olá! Quero informações sobre o tour Carretera Austral',
       'cta_btn': 'Reserve seu lugar',
     },
     ko: {
@@ -1254,7 +1254,7 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
       'nav_excursiones': 'íˆ¬ì–´',
       'nav_tours': 'ì˜¤ì„œ íˆ¬ì–´',
       'nav_bienestar': 'ì›°ë‹ˆìŠ¤ ê´€ê´‘',
-      'nav_ubicacion': 'ìœ„ì¹˜  ì—°ì²˜',
+      'nav_ubicación': 'ìœ„ì¹˜  ì—°ì²˜',
       'nav_nosotros': 'ìš°ë¦¬ ëŒ€í•´',
       'nav_reservar': 'ì˜ˆì•½í•˜ê¸°',
       'nav_contact': 'ì—°ì²˜',
@@ -1289,7 +1289,7 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   };
   var currentLang = localStorage.getItem('zoyen_lang') || 'es';
   var langSwitcher = document.getElementById('langSwitcher');
-  var langCurrent = langSwitcher  langSwitcher.querySelector('.lang-current') : null;
+  var langCurrent = langSwitcher ? langSwitcher.querySelector('.lang-current') : null;
   function closeLangMenu() {
     if (!langSwitcher || !langCurrent) return;
     langSwitcher.classList.remove('open');
@@ -1319,7 +1319,7 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
     langCurrent.addEventListener('click', function(e) {
       e.stopPropagation();
       var isOpen = langSwitcher.classList.toggle('open');
-      langCurrent.setAttribute('aria-expanded', isOpen  'true' : 'false');
+      langCurrent.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
   }
   document.querySelectorAll('.lang-btn').forEach(function(btn) {
@@ -1381,24 +1381,24 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   var pageTitle = (document.title || "").replace(/\s+/g," ").trim();
 
   var excursiones = [
-    {id:"cueva", name:"Cueva de las Manos", aliases:["cueva","manos","pinturas","arqueologia","rio pinturas"], price:18000, duration:"dia completo", capacity:14, type:"excursion", summary:"sitio arqueologico Patrimonio Mundial, pinturas rupestres de mas de 9.000 anos y paisaje del Can del Rio Pinturas."},
-    {id:"capillas", name:"Capillas y Catedrales de Mármol", aliases:["capillas","marmol","catedrales","general carrera"], price:24000, duration:"dia completo", capacity:14, type:"excursion", summary:"navegacion por el Lago General Carrera para ver formaciones de marmol, ideal para fotografia y paisaje."},
-    {id:"posadas", name:"Lago Posaídas y Ruta Esceúnica 41", aliases:["posadas","lago posadas","ruta 41","ruta esceúnica"], price:15000, duration:"dia completo (12 hs)", capacity:14, type:"excursion", summary:"recorrido panoramico por lagos, miradores y la Ruta Esceúnica 41 cerca de Perito Moreno."},
-    {id:"zeballos", name:"Ruta 41 y Monte Zeballos", aliases:["zeballos","monte zeballos","ruta 41"], price:16000, duration:"dia completo", capacity:14, type:"excursion", summary:"travesia de altura por estepa, bosque, cordillera y uno de los caminos mas esceúúnicos de Santa Cruz."},
-    {id:"charcamata", name:"Alero Charcamata", aliases:["charcamata","alero"], price:12000, duration:"medio dia", capacity:14, type:"excursion", summary:"experiencia vinculada al arte rupestre, patrimonio cultural y paisaje natural de la zona."},
-    {id:"parque", name:"Portal Can Pinturas - Parque Patagonia", aliases:["parque","parque patagonia","canadon","can","pinturas","portal"], price:8000, duration:"medio dia (5 hs)", capacity:14, type:"excursion", summary:"senderos, fauna, geologia y vistas amplias del noroeste de Santa Cruz."},
-    {id:"escension", name:"PNP / Estancia La Escension", aliases:["escension","estancia","la escension","pnp"], price:7000, duration:"medio dia (4 hs)", capacity:14, type:"excursion", summary:"salida corta vinculada al Parque Patagonia y la historia de estancia de la region."}
+    {id:"cueva", name:"Cueva de las Manos", aliases:["cueva","manos","pinturas","arqueología","rio pinturas"], price:18000, duration:"día completo", capacity:14, type:"excursion", summary:"sitio arqueologico Patrimonio Mundial, pinturas rupestres de más de 9.000 anos y paisaje del Cañadón del Río Pinturas."},
+    {id:"capillas", name:"Capillas y Catedrales de Mármol", aliases:["capillas","marmol","catedrales","general carrera"], price:24000, duration:"día completo", capacity:14, type:"excursion", summary:"navegación por el Lago General Carrera para ver formaciones de marmol, ideal para fotografía y paisaje."},
+    {id:"posadas", name:"Lago Posadas y Ruta Escénica 41", aliases:["posadas","lago posadas","ruta 41","ruta escénica"], price:15000, duration:"día completo (12 hs)", capacity:14, type:"excursion", summary:"recorrido panoramico por lagos, miradores y la Ruta Escénica 41 cerca de Perito Moreno."},
+    {id:"zeballos", name:"Ruta 41 y Monte Zeballos", aliases:["zeballos","monte zeballos","ruta 41"], price:16000, duration:"día completo", capacity:14, type:"excursion", summary:"travesía de altura por estepa, bosque, cordillera y uno de los caminos más escénicos de Santa Cruz."},
+    {id:"charcamata", name:"Alero Charcamata", aliases:["charcamata","alero"], price:12000, duration:"medio día", capacity:14, type:"excursion", summary:"experiencia vinculada al arte rupestre, patrimonio cultural y paisaje natural de la zona."},
+    {id:"parque", name:"Portal Cañadón Pinturas - Parque Patagonia", aliases:["parque","parque patagonia","canadon","can","pinturas","portal"], price:8000, duration:"medio día (5 hs)", capacity:14, type:"excursion", summary:"senderos, fauna, geología y vistas amplias del noroeste de Santa Cruz."},
+    {id:"ascension", name:"PNP / Estancia La Ascensión", aliases:["ascension","estancia","la ascension","pnp"], price:7000, duration:"medio día (4 hs)", capacity:14, type:"excursion", summary:"salida corta vinculada al Parque Patagonia y la historia de estancia de la región."}
   ];
 
   var tours = [
-    {id:"patagonia", name:"Patagonia Inédita", aliases:["patagonia inedita","inedita"], price:185000, duration:"6 dias / 5 noches", capacity:14, type:"tour", pdf:"assets/pdfs/patagonia-inedita-itinerario.pdf", summary:"sale desde Comodoro Rivadavia y recorre Perito Moreno, Cueva de las Manos, Parque Patagonia, Los Antiguos, Ruta Esceúnica 41, Carretera Austral, Puerto Rio Tranquilo y Capillas de Mármol."},
-    {id:"carretera", name:"Carretera Austral", aliases:["carretera austral","austral","ohiggins","villa ohiggins","tortel","cochrane"], price:210000, duration:"8 dias / 7 noches", capacity:14, type:"tour", pdf:"assets/pdfs/carretera-austral-itinerario.pdf", summary:"sale desde Perito Moreno e incluye Chile Chico, Cochrane, Caleta Tortel, Villa O'Higgins, Puerto Rio Tranquilo, Capillas de Mármol, Coyhaique y regreso por Paso Huemules."}
+    {id:"patagonia", name:"Patagonia Inédita", aliases:["patagonia inedita","inedita"], price:185000, duration:"6 días / 5 noches", capacity:14, type:"tour", pdf:"assets/pdfs/patagonia-inedita-itinerario.pdf", summary:"sale desde Comodoro Rivadavia y recorre Perito Moreno, Cueva de las Manos, Parque Patagonia, Los Antiguos, Ruta Escénica 41, Carretera Austral, Puerto Rio Tranquilo y Capillas de Mármol."},
+    {id:"carretera", name:"Carretera Austral", aliases:["carretera austral","austral","ohiggins","villa ohiggins","tortel","cochrane"], price:210000, duration:"8 días / 7 noches", capacity:14, type:"tour", pdf:"assets/pdfs/carretera-austral-itinerario.pdf", summary:"sale desde Perito Moreno e incluye Chile Chico, Cochrane, Caleta Tortel, Villa O'Higgins, Puerto Rio Tranquilo, Capillas de Mármol, Coyhaique y regreso por Paso Huemules."}
   ];
 
   var allProducts = excursiones.concat(tours);
 
   function normalize(text){
-    return (text || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/&middot;|/g," ").replace(/[^a-z0-9\s/.-]/g," ").replace(/\s+/g," ").trim();
+    return (text || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/&middot;|·/g," ").replace(/[^a-z0-9\s/.-]/g," ").replace(/\s+/g," ").trim();
   }
   function money(n){ return "$" + Number(n || 0).toLocaleString("es-AR") + " AR p/p"; }
   function todayText(){ return new Date().toLocaleDateString("es-AR", { day:"numeric", month:"long", year:"numeric" }); }
@@ -1431,62 +1431,62 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
       var local = 0;
       [p.name].concat(p.aliases || []).forEach(function(alias){
         alias = normalize(alias);
-        if (alias && q.indexOf(alias) !== -1) local += alias.length > 8  3 : 2;
+        if (alias && q.indexOf(alias) !== -1) local += alias.length > 8 ? 3 : 2;
       });
       if (local > score) { best = p; score = local; }
     });
     return best;
   }
   function isAsking(q, words){ return words.some(function(w){ return q.indexOf(normalize(w)) !== -1; }); }
-  function listExcursions(){ return "Excursiones de dia o medio dia disponibles: " + excursiones.map(productLine).join(" "); }
-  function listTours(){ return "Tours de autor disponibles: " + tours.map(productLine).join(" ") + " Ambos tienen itinerario descargable en PDF desde su pagina."; }
+  function listExcursions(){ return "Excursiones de dia o medio día disponibles: " + excursiones.map(productLine).join(" "); }
+  function listTours(){ return "Tours de autor disponibles: " + tours.map(productLine).join(" ") + " Ambos tienen itinerario descargable en PDF desde su página."; }
   function pricesAnswer(product){
     if (product) return productLine(product) + " El precio esta expresado en pesos argentinos AR por persona.";
     return "Precios en AR por persona: " + allProducts.map(function(p){ return p.name + " " + money(p.price); }).join("; ") + ".";
   }
   function datesAnswer(product){
-    var base = "Las reservas del sitio permiten elegir fecha desde hoy (" + todayText() + ") en adelante. La disponibilidad real se valida por fecha, excursion/tour y cupos.";
+    var base = "Las reservas del sitio permiten elegír fecha desde hoy (" + todayText() + ") en adelante. La disponibilidad real se valida por fecha, excursion/tour y cupos.";
     if (product) base += " Para " + product.name + " la capacidad de referencia es de hasta " + product.capacity + " personas.";
-    return base + " Si queres reservar, toca Reservar, elegi experiencia, fecha, cantidad de personas y asientos disponibles.";
+    return base + " Si queres reservar, toca Reservar, elegí experiencia, fecha, cantidad de personas y asientos disponibles.";
   }
   function reservationAnswer(){
-    return "Para reservar desde la web: 1) toca Reservar, 2) elegi Tour de autor o Excursion, 3) selecciona fecha desde hoy en adelante, 4) indica personas y datos, 5) elegi asiento. La sena se calcula como 20% del total.";
+    return "Para reservar desde la web: 1) toca Reservar, 2) elegí Tour de autor o Excursion, 3) selecciona fecha desde hoy en adelante, 4) indica personas y datos, 5) elegí asiento. La seña se calcula como 20% del total.";
   }
   function locationAnswer(){
-    return "Zoyen Turismo esta en Perito Moreno, Santa Cruz, Patagonia Argentina. Desde ahi se operan excursiones a Cueva de las Manos, Parque Patagonia, Ruta 41, Lago Posaídas y conexiones hacia Carretera Austral.";
+    return "Zoyen Turismo está en Perito Moreno, Santa Cruz, Patagonia Argentina. Desde ahí se operan excursiones a Cueva de las Manos, Parque Patagonia, Ruta 41, Lago Posadas y conexiones hacia Carretera Austral.";
   }
   function humanAnswer(){
     return "Si queres hablar con una persona del equipo, podes usar " + contactText + ". Link directo: " + waLink;
   }
   function compareAnswer(){
-    return "Si tenes poco tiempo, mira excursiones de dia: Cueva de las Manos, Capillas de Mármol, Ruta 41, Lago Posaídas o Parque Patagonia. Si buscas viaje completo, Patagonia Inédita dura 6 dias y Carretera Austral dura 8 dias. Para arqueologia: Cueva o Charcamata. Para navegacion: Capillas. Para ruta esceúnica: Ruta 41/Zeballos o Lago Posadas.";
+    return "Si tenes poco tiempo, mira excursiones de dia: Cueva de las Manos, Capillas de Mármol, Ruta 41, Lago Posadas o Parque Patagonia. Si buscas viaje completo, Patagonia Inédita dura 6 días y Carretera Austral dura 8 días. Para arqueología: Cueva o Charcamata. Para navegación: Capillas. Para ruta escénica: Ruta 41/Zeballos o Lago Posadas.";
   }
   function pdfAnswer(product){
-    if (product && product.pdf) return "El itinerario PDF de " + product.name + " se descarga desde su pagina. Ruta del archivo: " + product.pdf;
-    return "Los tours con PDF descargable son Patagonia Inédita y Carretera Austral. En cada pagina hay un boton de descarga del itinerario.";
+    if (product && product.pdf) return "El itinerario PDF de " + product.name + " se descarga desde su página. Ruta del archivo: " + product.pdf;
+    return "Los tours con PDF descargable son Patagonia Inédita y Carretera Austral. En cada página hay un botón de descarga del itinerario.";
   }
   function answer(raw){
     var q = normalize(raw);
-    if (!q || q.length < 2) return "Preguntame por fechas, disponibilidad, precios, excursiones, tours, ubicacion o reservas.";
+    if (!q || q.length < 2) return "Preguntame por fechas, disponibilidad, precios, excursiones, tours, ubicación o reservas.";
     var product = findProduct(q);
 
-    if (isAsking(q, ["persona","humano","asesor","asesora","hablar con alguien","whatsapp","telefono","email","mail","contactar","contacto directo"])) return humanAnswer();
+    if (isAsking(q, ["persona","humano","asesor","asesora","hablar con alguien","whatsapp","teléfono","email","mail","contactar","contacto directo"])) return humanAnswer();
     if (isAsking(q, ["fecha","fechas","disponible","disponibilidad","cupos","lugar","lugares","cuando","calendario"])) return datesAnswer(product);
     if (isAsking(q, ["precio","precios","tarifa","tarifas","valor","valores","cuanto","sale","costo","costos"])) return pricesAnswer(product);
-    if (isAsking(q, ["reservar","reserva","reservas","contratar","sena","seña","asiento","asientos","pago"])) return reservationAnswer();
-    if (isAsking(q, ["ubicacion","ubicación","donde estan","direccion","dirección","perito moreno","santa cruz","como llegar"])) return locationAnswer();
+    if (isAsking(q, ["reservar","reserva","reservas","contratar","seña","seña","asiento","asientos","pago"])) return reservationAnswer();
+    if (isAsking(q, ["ubicación","ubicación","donde estan","dirección","dirección","perito moreno","santa cruz","como llegar"])) return locationAnswer();
     if (isAsking(q, ["itinerario","pdf","descargar","programa","recorrido"])) return pdfAnswer(product);
-    if (isAsking(q, ["excursion","excursiones","paseos","salidas","dia completo","medio dia"])) return product  productLine(product) + " " + product.summary : listExcursions();
-    if (isAsking(q, ["tour","tours","autor","varios dias","viaje completo","paquete"])) return product  productLine(product) + " " + product.summary : listTours();
+    if (isAsking(q, ["excursion","excursiones","paseos","salidas","día completo","medio día"])) return product ? productLine(product) + " " + product.summary : listExcursions();
+    if (isAsking(q, ["tour","tours","autor","varios días","viaje completo","paquete"])) return product ? productLine(product) + " " + product.summary : listTours();
     if (isAsking(q, ["recomendas","recomendacion","conviene","diferencia","comparar","mejor","cual elijo","que hago"])) return compareAnswer();
-    if (isAsking(q, ["bienestar","wellness","yoga","masajes"])) return "Turismo de Bienestar es una linea complementaria para sumar pausa, naturaleza y cuidado al viaje. Si buscas algo tranquilo, se puede combinar con excursiones de medio dia o estadias en la zona.";
-    if (isAsking(q, ["zoyen","agencia","legajo","quienes","quienes son"])) return "Zoyen Turismo es una agencia local de Perito Moreno, Santa Cruz, legajo 15.625. Disena excursiones y tours de autor en Patagonia.";
+    if (isAsking(q, ["bienestar","wellness","yoga","masajes"])) return "Turismo de Bienestar es una linea complementaria para sumar pausa, naturaleza y cuidado al viaje. Si buscas algo tranquilo, se puede combinar con excursiones de medio día o estadías en la zona.";
+    if (isAsking(q, ["zoyen","agencia","legajo","quienes","quienes son"])) return "Zoyen Turismo es una agencia local de Perito Moreno, Santa Cruz, legajo 15.625. Diseña excursiones y tours de autor en Patagonia.";
     if (product) return productLine(product) + " " + product.summary;
 
-    return "Puedo ayudarte con informacion del sitio: fechas disponibles, precios en AR, cupos, tipos de excursiones, tours de autor, ubicación, itinerarios PDF y como reservar. Proba preguntarme, por ejemplo: 'precio de Capillas', 'fechas para Patagonia Inédita' o 'que excursion me recomendas'.";
+    return "Puedo ayudarte con información del sitio: fechas disponibles, precios en AR, cupos, tipos de excursiones, tours de autor, ubicación, itinerarios PDF y como reservar. Probá preguntarme, por ejemplo: 'precio de Capillas', 'fechas para Patagonia Inédita' o 'qué excursión me recomendas'.";
   }
   function submit(text){
-    var value = (text || (input  input.value : "") || "").trim();
+    var value = (text || (input ? input.value : "") || "").trim();
     if (!value) return;
     addMessage(value, "user");
     if (input) input.value = "";
@@ -1494,7 +1494,7 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   }
   if (toggle) toggle.addEventListener("click", function(){
     widget.classList.toggle("open");
-    toggle.setAttribute("aria-expanded", widget.classList.contains("open")  "true" : "false");
+    toggle.setAttribute("aria-expanded", widget.classList.contains("open") ? "true" : "false");
     if (widget.classList.contains("open") && input) input.focus();
   });
   if (closeBtn) closeBtn.addEventListener("click", function(){ widget.classList.remove("open"); if (toggle) toggle.setAttribute("aria-expanded","false"); });
@@ -1596,7 +1596,7 @@ textarea {
   body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .z,
   body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .t {
     font-size: .98rem !important;
-    letter-spacióng: .075em !important;
+    letter-spacing: .075em !important;
   }
   body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo sub,
   body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-links,
@@ -1617,7 +1617,7 @@ textarea {
     height: 32px !important;
     padding: 0 .45rem !important;
     font-size: .57rem !important;
-    letter-spacióng: .05em !important;
+    letter-spacing: .05em !important;
   }
   body > nav:not(.breadcrumb):not(.mobile-drawer) .lang-menu {
     left: auto !important;
@@ -1663,7 +1663,7 @@ textarea {
   .page-hero-eyebrow,
   .exc-hero-kicker,
   .eyebrow {
-    letter-spacióng: .16em !important;
+    letter-spacing: .16em !important;
   }
 
   section,
@@ -1792,7 +1792,7 @@ textarea {
   body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .z,
   body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .t {
     font-size: .88rem !important;
-    letter-spacióng: .055em !important;
+    letter-spacing: .055em !important;
   }
   .page-hero-title,
   .exc-hero-title,
@@ -1960,7 +1960,7 @@ textarea {
   body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .z,
   body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .t {
     font-size: .92rem !important;
-    letter-spacióng: .065em !important;
+    letter-spacing: .065em !important;
   }
   body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo sub,
   body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-links,
@@ -2102,7 +2102,7 @@ textarea {
     text-decoration: none !important;
     font-size: .86rem !important;
     font-weight: 700 !important;
-    letter-spacióng: .08em !important;
+    letter-spacing: .08em !important;
     line-height: 1.25 !important;
     text-transform: uppercase !important;
     white-space: normal !important;
@@ -2127,7 +2127,7 @@ textarea {
     text-align: center !important;
     font-size: .78rem !important;
     font-weight: 800 !important;
-    letter-spacióng: .11em !important;
+    letter-spacing: .11em !important;
     text-transform: uppercase !important;
     text-decoration: none !important;
   }
@@ -2158,7 +2158,7 @@ textarea {
     color: rgba(245,240,232,.82) !important;
     font-size: .72rem !important;
     font-weight: 800 !important;
-    letter-spacióng: .08em !important;
+    letter-spacing: .08em !important;
     border-radius: 2px !important;
   }
   .drawer-lang-btn.active {
@@ -2180,7 +2180,7 @@ textarea {
   body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .z,
   body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .t {
     font-size: .82rem !important;
-    letter-spacióng: .045em !important;
+    letter-spacing: .045em !important;
   }
   body > nav:not(.breadcrumb):not(.mobile-drawer) .ham-btn,
   .ham-btn.zoyen-mobile-created {
@@ -2258,7 +2258,7 @@ textarea {
           ['index.html#excursiones', 'Excursiones'],
           ['index.html#tours', 'Tours de Autor'],
           ['index.html#bienestar', 'Turismo de Bienestar'],
-          ['index.html#ubicacion', 'Ubicación y Contacto'],
+          ['index.html#ubicación', 'Ubicación y Contacto'],
           ['nosotros.html', 'Quiénes somos']
         ].forEach(function (item) {
           var li = document.createElement('li');
@@ -2314,7 +2314,7 @@ textarea {
       ['ES', 'EN', 'PT', 'KO'].forEach(function (code, index) {
         var btn = document.createElement('button');
         btn.type = 'button';
-        btn.className = 'drawer-lang-btn' + (index === 0  ' active' : '');
+        btn.className = 'drawer-lang-btn' + (index === 0 ? ' active' : '');
         btn.setAttribute('data-lang', code.toLowerCase());
         btn.textContent = code;
         btn.addEventListener('click', function () {
@@ -2422,7 +2422,7 @@ body > nav.mobile-drawer.open {
   font-family: 'Sora', sans-serif !important;
   font-size: .78rem !important;
   font-weight: 700 !important;
-  letter-spacióng: .12em !important;
+  letter-spacing: .12em !important;
   text-transform: uppercase !important;
   border-bottom: 1px solid rgba(255, 255, 255, .07) !important;
 }
@@ -2443,7 +2443,7 @@ body > nav.mobile-drawer.open {
   font-family: 'Sora', sans-serif !important;
   font-size: .68rem !important;
   font-weight: 700 !important;
-  letter-spacióng: .09em !important;
+  letter-spacing: .09em !important;
   line-height: 1 !important;
   text-transform: uppercase !important;
   border-radius: 2px !important;
@@ -2477,7 +2477,7 @@ body > nav .nav-actions .nav-contact-btn {
   font-family: 'Sora', sans-serif !important;
   font-size: .72rem !important;
   font-weight: 700 !important;
-  letter-spacióng: .105em !important;
+  letter-spacing: .105em !important;
   line-height: 1 !important;
   text-transform: uppercase !important;
   text-decoration: none !important;
@@ -2504,7 +2504,7 @@ body > nav .nav-actions .nav-contact-btn svg {
     min-height: 36px !important;
     padding: 0 .65rem !important;
     font-size: .68rem !important;
-    letter-spacióng: .09em !important;
+    letter-spacing: .09em !important;
   }
   body > nav .nav-actions .nav-contact-btn span {
     display: none !important;
@@ -2529,7 +2529,7 @@ body > nav .nav-actions .nav-contact-btn svg {
   font-family: 'Sora', sans-serif !important;
   font-size: .82rem !important;
   font-weight: 700 !important;
-  letter-spacióng: .12em !important;
+  letter-spacing: .12em !important;
   line-height: 1 !important;
   text-transform: uppercase !important;
   text-decoration: none !important;
@@ -2563,7 +2563,7 @@ html {
 #excursiones,
 #tours,
 #bienestar,
-#ubicacion,
+#ubicación,
 #reservar,
 section[id] {
   scroll-margin-top: 104px !important;
@@ -2573,7 +2573,7 @@ section[id] {
   #excursiones,
   #tours,
   #bienestar,
-  #ubicacion,
+  #ubicación,
   #reservar,
   section[id] {
     scroll-margin-top: 76px !important;
@@ -2614,7 +2614,7 @@ body > nav .nav-actions.cta-nudge-strong::before {
   font-family: 'Montserrat', Arial, sans-serif !important;
   font-size: 10px !important;
   font-weight: 900 !important;
-  letter-spacióng: 1.4px !important;
+  letter-spacing: 1.4px !important;
   line-height: 1 !important;
   text-transform: uppercase !important;
   white-space: nowrap !important;
@@ -2695,7 +2695,7 @@ a.cta-btn-g[href*="wa.me"] {
   font-family: 'Sora', sans-serif !important;
   font-size: .76rem !important;
   font-weight: 850 !important;
-  letter-spacióng: .14em !important;
+  letter-spacing: .14em !important;
   line-height: 1.35 !important;
   text-align: center !important;
   text-transform: uppercase !important;
