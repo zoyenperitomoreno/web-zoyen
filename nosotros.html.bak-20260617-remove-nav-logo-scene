@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alero Charcamata  Zoyen Turismo</title>
+<title>Quiénes Somos  Zoyen Turismo Patagonia</title>
 <link href="https://fonts.googleapis.com/css2family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* Ajuste global de tipografa */
@@ -28,8 +28,10 @@ html { font-size: 18px; }
 html { scroll-behavior: smooth; }
 body {
   font-family: 'Sora', sans-serif;
-  font-size: 16px; line-height: 1.7;
-  background: var(--fog); color: var(--ink);
+  font-size: 16px;
+  line-height: 1.7;
+  background: var(--fog);
+  color: var(--ink);
   overflow-x: hidden;
 }
 
@@ -37,8 +39,11 @@ body {
 body > nav:not(.breadcrumb):not(.mobile-drawer) {
   position: fixed; top: 0; left: 0; right: 0; z-index: 900;
   height: 72px;
-  display: grid; grid-template-columns: auto auto 1fr auto;
-  align-items: center; padding: 0 2vw; gap: 1rem;
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  align-items: center;
+  padding: 0 2vw;
+  gap: 1rem;
   background: rgba(10,10,10,0.92);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(212,119,42,0.20);
@@ -48,233 +53,324 @@ body > nav:not(.breadcrumb):not(.mobile-drawer) {
   text-decoration: none; line-height: 1; flex-shrink: 0;
 }
 .nav-emblem { width: 54px; height: 54px; flex-shrink: 0; }
-@keyframes nav-rose-spin { to { transform: rotate(360deg); } }
-@keyframes nav-ring-ccw  { to { transform: rotate(-360deg); } }
-.nav-emblem .nav-rose-anim { transform-origin: 50px 50px; animation: heroRoseSpin 18s linear infinite; animation-delay: -5s; }
-.nav-emblem .nav-ring-anim { transform-origin: 50px 50px; animation: heroRingCCW 45s linear infinite; animation-delay: -5s; }
-@keyframes heroRingCCW { to { transform: rotate(-360deg); } }
-@keyframes heroRoseSpin { to { transform: rotate(360deg); } }
 .nav-logo-text { display: flex; flex-direction: column; gap: 2px; justify-content: center; }
-.nav-logo .z { font-family: 'Sora',sans-serif; font-weight:700; font-size:1.4rem; letter-spacing:.12em; color:var(--cream); text-transform:uppercase; }
-.nav-logo .t { font-family: 'Sora',sans-serif; font-weight:700; font-size:1.4rem; letter-spacing:.12em; color:var(--ember); text-transform:uppercase; }
-.nav-logo sub { font-size:.60rem; font-weight:400; letter-spacing:.2em; color:var(--sand); opacity:.65; text-transform:uppercase; display:block; line-height:1.4; }
-.nav-links { display:flex; gap:1.2rem; list-style:none; align-items:center; justify-content:center; }
-.nav-links a { color:rgba(245,240,232,.75); text-decoration:none; font-size:.78rem; font-weight:500; letter-spacing:.06em; text-transform:uppercase; transition:color .2s; position:relative; white-space:nowrap; }
-.nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--ember); transform:scaleX(0); transform-origin:left; transition:transform .3s; }
-.nav-links a:hover { color:var(--cream); }
-.nav-links a:hover::after { transform:scaleX(1); }
-.nav-cta-btn { background:var(--ember); color:var(--cream); padding:.5rem 1.3rem; border-radius:2px; font-family:'Sora',sans-serif; font-size:.78rem; font-weight:600; letter-spacing:.15em; text-transform:uppercase; text-decoration:none; white-space:nowrap; flex-shrink:0; transition:background .2s; border:none; cursor:pointer; }
-.nav-cta-btn:hover { background:var(--ember-dim); }
-@media(max-width:960px){ .nav-links { display:none; } body > nav:not(.breadcrumb):not(.mobile-drawer) { grid-template-columns: auto auto 1fr; } }
-
-/* HERO EXCURSION */
-.exc-hero {
-  position: relative;
-  height: 60vh; min-height: 380px;
-  overflow: hidden;
-  display: flex; align-items: flex-end;
-  padding-bottom: 3rem;
+.nav-logo-name { display: flex; align-items: baseline; gap: 0; }
+.nav-logo .z { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.4rem; letter-spacing: .12em; color: var(--cream); text-transform: uppercase; }
+.nav-logo .t { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.4rem; letter-spacing: .12em; color: var(--ember); text-transform: uppercase; }
+.nav-logo sub { font-size: .60rem; font-weight: 400; letter-spacing: .2em; color: var(--sand); opacity: .65; text-transform: uppercase; display: block; }
+.nav-links {
+  display: flex; gap: 1.2rem; list-style: none; align-items: center; justify-content: center;
 }
-.exc-hero-bg {
-  position: absolute; inset: 0;
-  background-image: url('assets/alerocharca_zoyen.jpg');
-  background-size: cover; background-position: center;
+.nav-links a {
+  color: rgba(245,240,232,.75); text-decoration: none;
+  font-size: .78rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase;
+  transition: color .2s; position: relative; white-space: nowrap;
 }
-.exc-hero-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to bottom, rgba(26,20,16,.15) 0%, rgba(26,20,16,.0) 40%, rgba(26,20,16,.7) 80%, rgba(26,20,16,.9) 100%);
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px;
+  background: var(--ember); transform: scaleX(0); transform-origin: left; transition: transform .3s;
 }
-.exc-hero-content {
-  position: relative; z-index: 2;
-  padding: 0 5vw; color: var(--cream);
-  max-width: 900px;
-}
-.exc-tag {
-  display: inline-block;
+.nav-links a:hover { color: var(--cream); }
+.nav-links a:hover::after { transform: scaleX(1); }
+.nav-links a.active { color: var(--ember); }
+.nav-links a.active::after { transform: scaleX(1); }
+.nav-cta-btn {
   background: var(--ember); color: var(--cream);
-  font-size: .72rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
-  padding: .3rem .9rem; margin-bottom: 1rem;
-  border-radius: 1px;
+  padding: .5rem 1.3rem; border-radius: 2px;
+  font-family: 'Sora', sans-serif;
+  font-size: .78rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase;
+  text-decoration: none; white-space: nowrap; flex-shrink: 0;
+  transition: background .2s;
 }
-.exc-hero-title {
+.nav-cta-btn:hover { background: var(--ember-dim); }
+
+/* HERO INTERNO */
+.page-hero {
+  position: relative; height: 55vh; min-height: 420px;
+  display: flex; align-items: flex-end;
+  padding-bottom: 4rem;
+  overflow: hidden;
+}
+.page-hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('assets/full_inedita.jpg');
+  background-size: cover; background-position: center 30%;
+  transform: scale(1.04);
+  animation: heroZoom 12s ease-out forwards;
+}
+@keyframes heroZoom { to { transform: scale(1); } }
+.page-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(26,20,16,.3) 0%, rgba(26,20,16,.75) 100%);
+}
+.page-hero-content {
+  position: relative; z-index: 2;
+  padding: 0 4vw;
+  color: var(--cream);
+  animation: fadeUp .9s .3s both;
+}
+@keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
+.page-hero-eyebrow {
+  font-size: .88rem; font-weight: 700; letter-spacing: .32em; text-transform: uppercase;
+  color: var(--ember); margin-bottom: .8rem;
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.page-hero-eyebrow::before, .page-hero-eyebrow::after {
+  content: ''; width: 22px; height: 1px; background: var(--ember);
+}
+.page-hero-title {
   font-family: 'DM Serif Display', serif;
-  font-size: clamp(2rem, 5vw, 3.8rem);
-  font-weight: 600; line-height: 1.1;
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  font-weight: 600; line-height: 1.05; letter-spacing: -.01em;
   text-shadow: 0 2px 20px rgba(26,20,16,.5);
 }
-.exc-hero-title em { font-style:italic; color:var(--sand); }
-
-/* BREADCRUMB */
+.page-hero-title em { font-style: italic; color: var(--sand); }
 .breadcrumb {
-  background: var(--dark); border-bottom: 1px solid rgba(212,119,42,.15);
-  padding: .8rem 5vw;
+  margin-top: .8rem;
+  font-size: .75rem; color: rgba(245,240,232,.5); letter-spacing: .1em; text-transform: uppercase;
 }
-.breadcrumb a { color: var(--sand); text-decoration: none; font-size:.78rem; letter-spacing:.1em; }
-.breadcrumb a:hover { color: var(--ember); }
-.breadcrumb span { color: var(--stone); font-size:.78rem; margin: 0 .5rem; }
+.breadcrumb a { color: rgba(245,240,232,.5); text-decoration: none; }
+.breadcrumb a:hover { color: var(--sand); }
+.breadcrumb span { color: var(--ember); }
 
-/* CONTENT LAYOUT */
-.exc-body {
-  max-width: 1100px; margin: 0 auto;
-  padding: 4rem 5vw 5rem;
-  display: grid; grid-template-columns: 1fr 340px; gap: 4rem;
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .75s, transform .75s; }
+.reveal.in { opacity: 1; transform: none; }
+.reveal-delay { transition-delay: .15s; }
+.reveal-delay2 { transition-delay: .28s; }
+.eyebrow { font-size: .92rem; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: var(--ember); margin-bottom: .5rem; }
+.section-title { font-family: 'DM Serif Display', serif; font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 600; line-height: 1.1; color: var(--ink); }
+.section-title em { font-style: italic; color: var(--amber); }
+
+/* MANIFESTO STRIP */
+.manifesto-strip {
+  background: var(--bark);
+  padding: 3.5rem 5vw;
+  text-align: center;
+  border-top: 1px solid rgba(212,119,42,.2);
+  border-bottom: 1px solid rgba(212,119,42,.2);
 }
-@media(max-width:860px){ .exc-body { grid-template-columns: 1fr; } }
-
-.exc-main h2 {
+.manifesto-strip blockquote {
   font-family: 'DM Serif Display', serif;
-  font-size: clamp(1.5rem,3vw,2.2rem); color: var(--ink);
-  margin-bottom: 1.2rem; margin-top: 2.4rem;
+  font-size: clamp(1.3rem, 2.8vw, 2rem);
+  font-style: italic;
+  color: var(--dust);
+  line-height: 1.5;
+  max-width: 820px;
+  margin: 0 auto;
 }
-.exc-main h2:first-child { margin-top: 0; }
-.exc-main h3 {
-  font-size: 1rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
-  color: var(--ember); margin-bottom: .8rem; margin-top: 2rem;
+.manifesto-strip blockquote strong { color: var(--sand); font-style: normal; }
+
+/* NOSOTROS MAIN */
+.nosotros-section {
+  padding: 6rem 4vw 5rem;
+  background: var(--fog);
 }
-.exc-main p { color: var(--stone); line-height: 1.8; margin-bottom: 1rem; }
-.exc-main strong { color: var(--ink); }
-.exc-main ul { padding-left: 1.4rem; color: var(--stone); line-height: 1.8; margin-bottom: 1rem; }
-.exc-main ul li { margin-bottom: .4rem; }
-.exc-main .note {
-  background: rgba(212,119,42,.07); border-left: 3px solid var(--ember);
-  padding: 1rem 1.2rem; border-radius: 2px; margin: 1.5rem 0;
-  color: var(--ink); font-size: .93rem;
+.nosotros-intro {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto 5rem;
 }
-.exc-main .warn {
-  background: rgba(90,96,64,.08); border-left: 3px solid var(--olive);
-  padding: 1rem 1.2rem; border-radius: 2px; margin: 1.5rem 0;
-  color: var(--ink); font-size: .93rem;
+@media (max-width:800px) { .nosotros-intro { grid-template-columns: 1fr; gap: 2.5rem; } }
+.nosotros-text h2 { margin-bottom: 1.2rem; }
+.nosotros-text p {
+  font-size: 1.02rem; color: var(--stone); line-height: 1.85; font-weight: 300;
+  margin-bottom: 1.2rem;
+}
+.nosotros-text p strong { color: var(--ink); font-weight: 600; }
+.nosotros-img-wrap {
+  position: relative; border-radius: 3px; overflow: hidden;
+  aspect-ratio: 4/3;
+  box-shadow: 0 20px 60px rgba(26,20,16,.18);
+}
+.nosotros-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+.nosotros-img-caption {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(26,20,16,.85), transparent);
+  padding: 1.5rem 1.2rem .9rem;
+  font-size: .75rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase;
+  color: rgba(245,240,232,.7);
 }
 
-/* SIDEBAR */
-.exc-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
-.exc-card {
-  background: var(--dark); color: var(--cream);
-  border-radius: 3px; overflow: hidden;
-  border: 1px solid rgba(212,119,42,.15);
-}
-.exc-card-head {
-  padding: 1.2rem 1.4rem .6rem;
-  font-family: 'DM Serif Display',serif;
-  font-size: 1.2rem; color: var(--sand);
-}
-.exc-card-body { padding: .4rem 1.4rem 1.4rem; }
-.exc-card-body p { color: rgba(245,240,232,.7); font-size: .9rem; line-height: 1.7; margin-bottom: .6rem; }
-.exc-card-body .price {
-  font-size: 1.4rem; font-weight: 700; color: var(--ember);
-  margin: .8rem 0 .2rem;
-}
-.exc-card-body .price-label { font-size: .75rem; color: var(--stone); letter-spacing: .1em; }
-.btn-reservar {
-  display: block; width: 100%;
-  background: var(--ember); color: var(--cream);
-  text-align: center; padding: .85rem 1rem;
-  border-radius: 2px; text-decoration: none;
-  font-weight: 700; font-size: .85rem; letter-spacing: .2em; text-transform: uppercase;
-  transition: background .2s; margin-top: 1rem;
-  border: none; cursor: pointer; font-family: 'Sora',sans-serif;
-}
-.btn-reservar:hover { background: var(--ember-dim); }
-.exc-detail-list {
-  list-style: none; padding: 0;
-  display: flex; flex-direction: column; gap: .5rem;
-}
-.exc-detail-list li {
-  display: flex; align-items: flex-start; gap: .6rem;
-  font-size: .88rem; color: rgba(245,240,232,.7);
-}
-.exc-detail-list li .icon { color: var(--ember); flex-shrink: 0; font-size:1rem; }
-
-/* VIDEO */
-.video-wrap {
-  position: relative; padding-bottom: 56.25%;
-  height: 0; overflow: hidden; border-radius: 3px;
-  margin: 2rem 0;
-}
-.video-wrap iframe {
-  position: absolute; top: 0; left: 0;
-  width: 100%; height: 100%; border: 0;
-}
-
-/* OTHER EXCURSIONS */
-.more-excursiones {
+/* VALORES */
+.valores-section {
   background: var(--dark);
-  padding: 4rem 5vw;
+  padding: 5rem 4vw;
   border-top: 1px solid rgba(212,119,42,.12);
 }
-.more-excursiones h2 {
-  font-family: 'DM Serif Display',serif;
-  font-size: 1.8rem; color: var(--cream);
-  margin-bottom: 2rem;
+.valores-section .eyebrow { color: var(--sand); }
+.valores-section .section-title { color: var(--dust); }
+.valores-section .section-title em { color: var(--sand); }
+.valores-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  max-width: 1100px;
+  margin: 3rem auto 0;
+  border: 1px solid rgba(212,119,42,.15);
+  border-radius: 4px;
+  overflow: hidden;
 }
-.exc-mini-grid {
-  display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem;
+@media (max-width:760px) { .valores-grid { grid-template-columns: 1fr; } }
+.valor-card {
+  background: rgba(255,255,255,.03);
+  padding: 2.2rem 2rem;
+  border: none;
+  border-radius: 0;
+  border-top: none;
+  position: relative;
+  transition: background .3s;
 }
-@media(max-width:860px){ .exc-mini-grid { grid-template-columns: repeat(2,1fr); } }
-@media(max-width:560px){ .exc-mini-grid { grid-template-columns: 1fr; } }
-.exc-mini {
-  position: relative; border-radius: 3px; overflow: hidden;
-  aspect-ratio: 4/3; text-decoration: none;
+.valor-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 2rem; right: 2rem;
+  height: 1px;
+  background: rgba(212,119,42,.15);
+}
+.valor-card:nth-child(-n+3)::after { display: none; }
+.valor-card:hover { background: rgba(212,119,42,.07); }
+.valor-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.2rem; font-weight: 300; font-style: italic;
+  color: rgba(212,119,42,.25);
+  line-height: 1;
+  margin-bottom: .8rem;
   display: block;
 }
-.exc-mini img {
-  width: 100%; height: 100%; object-fit: cover;
-  transition: transform .5s;
+.valor-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.15rem; font-weight: 600; color: var(--dust);
+  margin-bottom: .6rem;
 }
-.exc-mini:hover img { transform: scale(1.05); }
-.exc-mini-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(26,20,16,.85) 0%, transparent 50%);
-  display: flex; align-items: flex-end;
-  padding: .9rem;
+.valor-desc { font-size: .88rem; color: rgba(201,169,110,.65); line-height: 1.75; font-weight: 300; }
+
+/* EQUIPO */
+.equipo-section {
+  padding: 5rem 4vw;
+  background: var(--fog);
 }
-.exc-mini-name {
-  color: var(--cream); font-weight: 600;
-  font-size: .82rem; letter-spacing: .04em; line-height: 1.3;
+.equipo-content {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 5rem;
+  align-items: center;
+  max-width: 1100px;
+  margin: 3rem auto 0;
 }
+@media (max-width:800px) { .equipo-content { grid-template-columns: 1fr; gap: 2.5rem; } }
+.equipo-img {
+  position: relative; border-radius: 3px; overflow: hidden;
+  aspect-ratio: 3/4;
+  box-shadow: 0 20px 60px rgba(26,20,16,.16);
+}
+.equipo-img img { width: 100%; height: 100%; object-fit: cover; }
+.equipo-text h2 { margin-bottom: 1.5rem; }
+.equipo-text p { font-size: 1.02rem; color: var(--stone); line-height: 1.85; font-weight: 300; margin-bottom: 1.2rem; }
+.equipo-text p strong { color: var(--ink); font-weight: 600; }
+.stat-row {
+  display: flex; gap: 2rem; flex-wrap: wrap; margin-top: 2.5rem;
+  padding-top: 2rem; border-top: 1px solid rgba(58,45,31,.1);
+}
+.stat-item { text-align: center; }
+.stat-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.4rem; font-weight: 600; color: var(--ember);
+  line-height: 1;
+}
+.stat-lbl { font-size: .72rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--stone); margin-top: .3rem; }
+
+/* CTA */
+.nosotros-cta {
+  background: var(--dark);
+  padding: 5rem 4vw;
+  text-align: center;
+  border-top: 1px solid rgba(212,119,42,.2);
+}
+.nosotros-cta h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 600; color: var(--dust); margin-bottom: 1rem;
+}
+.nosotros-cta h2 em { font-style: italic; color: var(--sand); }
+.nosotros-cta p { font-size: 1.02rem; color: rgba(232,220,200,.55); max-width: 480px; margin: 0 auto 2.5rem; font-weight: 300; line-height: 1.8; }
+.cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.cta-btn-p {
+  background: var(--ember); color: var(--cream);
+  padding: .85rem 2.2rem; border-radius: 2px; text-decoration: none;
+  font-size: .93rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase;
+  transition: background .2s;
+}
+.cta-btn-p:hover { background: var(--ember-dim); }
+.cta-btn-g {
+  border: 1px solid rgba(245,240,232,.3); color: rgba(245,240,232,.7);
+  padding: .85rem 2.2rem; border-radius: 2px; text-decoration: none;
+  font-size: .93rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase;
+  transition: border-color .2s, color .2s; background: transparent;
+}
+.cta-btn-g:hover { border-color: var(--sand); color: var(--sand); }
 
 /* FOOTER */
 footer {
-  background: var(--dark);
-  border-top: 1px solid rgba(212,119,42,.2);
-  padding: 3rem 5vw 1.5rem;
+  background: #0a0a0a;
+  padding: 5rem 3vw 2.5rem;
 }
 .footer-top {
-  display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 3rem;
-  margin-bottom: 2.5rem;
+  display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 3rem;
+  padding-bottom: 3rem; border-bottom: 1px solid rgba(212,119,42,.15);
+  margin-bottom: 2rem;
 }
-@media(max-width:760px){ .footer-top { grid-template-columns: 1fr; gap: 2rem; } }
-.footer-brand-wrap { display:flex; align-items:center; gap:.8rem; margin-bottom:1rem; }
-.footer-emblem { width:48px; height:48px; flex-shrink:0; }
-@keyframes heroRingCW { to { transform: rotate(360deg); } }
-.ft-ring-anim { transform-origin:50px 50px; animation:heroRingCCW 45s linear infinite; }
-.ft-rose-anim { transform-origin:50px 50px; animation:heroRoseSpin 18s linear infinite; }
-.footer-brand { font-family:'Sora',sans-serif; font-weight:700; font-size:1.1rem; letter-spacing:.1em; text-transform:uppercase; }
-.footer-brand span { color:var(--sand); }
-.footer-brand-zoyen { color:var(--cream) !important; }
-.footer-tagline { color:var(--stone); font-size:.85rem; line-height:1.6; margin-bottom:1.2rem; }
-.socials { display:flex; gap:.6rem; }
-.social-btn { display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:2px; background:rgba(255,255,255,.06); color:var(--sand); text-decoration:none; transition:background .2s,color .2s; }
-.social-btn:hover { background:var(--ember); color:var(--cream); }
-.footer-col-title { font-size:.72rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--ember); margin-bottom:.9rem; }
-.footer-links { list-style:none; display:flex; flex-direction:column; gap:.45rem; }
-.footer-links a { color:var(--stone); text-decoration:none; font-size:.88rem; transition:color .2s; }
-.footer-links a:hover { color:var(--sand); }
-.footer-contact { color:var(--stone); font-size:.88rem; line-height:1.8; }
-.footer-bottom { border-top:1px solid rgba(201,169,110,.1); padding-top:1.2rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:.5rem; }
-.footer-bottom span, .footer-bottom a { color:var(--stone); font-size:.78rem; text-decoration:none; }
-.footer-bottom a:hover { color:var(--sand); }
+@media (max-width:700px){ .footer-top { grid-template-columns: 1fr; gap: 2rem; } }
+.footer-brand-wrap { display: flex; align-items: center; gap: 12px; margin-bottom: .6rem; }
+.footer-emblem { width: 48px; height: 48px; flex-shrink: 0; }
+.footer-brand { font-family: 'Sora', sans-serif; font-size: 1.5rem; font-weight: 700; letter-spacing: .1em; }
+.footer-brand span.footer-brand-zoyen { color: #ffffff; }
+.footer-brand span { color: var(--ember); }
+.footer-tagline { font-size: 1.05rem; color: rgba(232,220,200,.65); line-height: 1.7; margin-bottom: 1.4rem; font-weight: 300; }
+.socials { display: flex; gap: .6rem; }
+.social-btn {
+  width: 34px; height: 34px; border-radius: 1px;
+  border: 1px solid rgba(201,169,110,.2); color: var(--sand); text-decoration: none;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; font-weight: 700; transition: border-color .2s, background .2s;
+}
+.social-btn svg { display: block; }
+.social-btn:hover { border-color: var(--ember); background: rgba(212,119,42,.12); }
+.footer-col-title { font-size: 1rem; font-weight: 600; letter-spacing: .25em; text-transform: uppercase; color: var(--ember); margin-bottom: 1.1rem; }
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
+.footer-links a {
+  color: rgba(232,220,200,.70); text-decoration: none;
+  font-size: .8rem; font-weight: 300; transition: color .2s;
+  display: flex; align-items: center; gap: 7px;
+}
+.footer-links a::before { content: ''; color: var(--ember); opacity: .5; font-size: .8rem; }
+.footer-links a:hover { color: var(--sand); }
+.footer-contact { font-size: .8rem; color: rgba(232,220,200,.70); line-height: 1.8; font-weight: 300; }
+.footer-contact strong { color: var(--sand); font-weight: 500; }
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .5rem;
+  font-size: .93rem; color: rgba(232,220,200,.40); letter-spacing: .08em;
+}
+.footer-bottom a { color: rgba(201,169,110,.55); text-decoration: none; }
 
-/* WA float */
+/* WA FLOAT */
 .wa {
   position: fixed; bottom: 1.8rem; right: 1.8rem; z-index: 800;
-  width: 52px; height: 52px;
-  background: #25d366; border-radius: 50%;
+  width: 52px; height: 52px; border-radius: 50%;
+  background: #25d366; color: #fff;
   display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 16px rgba(0,0,0,.25);
-  transition: transform .2s;
+  text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,.35);
+  transition: transform .25s, box-shadow .25s;
 }
-.wa:hover { transform: scale(1.1); }
+.wa:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,.5); }
+.wa svg { width: 26px; height: 26px; }
+
+@media (max-width:760px) {
+  .nav-links { display: none; }
+}
 
 /* LANGUAGE SWITCHER */
 .lang-switcher { position: relative; justify-self: start; z-index: 920; }
@@ -689,6 +785,59 @@ body > nav .nav-actions.cta-nudge::before {
   100% { opacity: 0; transform: translateY(-3px); }
 }
 </style>
+<script>
+(function(){
+  document.documentElement.classList.add('js-ready');
+  const fallbackByHint = [
+    ['capillas', 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&q=80'],
+    ['marmol', 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&q=80'],
+    ['cueva', 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&q=80'],
+    ['manos', 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&q=80'],
+    ['ruta', 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1200&q=80'],
+    ['zeballos', 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1200&q=80'],
+    ['posadas', 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&q=80'],
+    ['patagonia', 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1200&q=80'],
+    ['carretera', 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1200&q=80'],
+    ['parque', 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&q=80']
+  ];
+  const genericFallback = 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1200&q=80';
+  function pickFallback(text){
+    const haystack = (text || '').toLowerCase();
+    const found = fallbackByHint.find(([hint]) => haystack.includes(hint));
+    return found ? found[1] : genericFallback;
+  }
+  window.zoyenPickFallback = pickFallback;
+  document.addEventListener('error', function(event){
+    const el = event.target;
+    if (!el || el.tagName !== 'IMG' || el.dataset.fallbackApplied === '1') return;
+    el.dataset.fallbackApplied = '1';
+    el.src = pickFallback((el.getAttribute('alt') || '') + ' ' + (el.getAttribute('src') || ''));
+  }, true);
+  function repairBackgrounds(){
+    const nodes = document.querySelectorAll('.slide-bg, .page-hero-bg, [style*="background-image"]');
+    nodes.forEach(function(el){
+      const bg = getComputedStyle(el).backgroundImage || '';
+      const match = bg.match(/url\(["']([^"')]+)["']\)/);
+      if (!match) return;
+      const original = match[1];
+      const probe = new Image();
+      probe.onerror = function(){ el.style.backgroundImage = "url('" + pickFallback(original) + "')"; };
+      probe.src = original;
+    });
+  }
+  function revealSafety(){ document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); }); }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function(){ repairBackgrounds(); setTimeout(revealSafety, 700); });
+  } else {
+    repairBackgrounds(); setTimeout(revealSafety, 700);
+  }
+  setTimeout(revealSafety, 1800);
+})();
+</script>
+<style id="zoyen-recovery-patch">
+html:not(.js-ready) .reveal { opacity: 1 !important; transform: none !important; }
+img { background: #d8d0c3; }
+</style>
 <style id="zoyen-header-cta-motion">
 .nav-logo {
   animation: navHeaderWake 1.15s cubic-bezier(.16,.84,.18,1) .05s both;
@@ -804,91 +953,6 @@ img.hero-logo-static {
   img.hero-logo-static { width: 220px !important; height: 220px !important; min-width: 220px !important; min-height: 220px !important; }
 }
 </style>
-
-<style id="zoyen-exc-hero-final">
-.exc-hero {
-  align-items: flex-end !important;
-  justify-content: flex-start !important;
-  padding: 72px clamp(1.25rem, 5vw, 5.5rem) clamp(2.2rem, 7vh, 4.8rem) !important;
-  height: 60vh !important;
-  min-height: 420px !important;
-}
-.exc-hero-overlay {
-  background: linear-gradient(to bottom,
-    rgba(26,20,16,.18) 0%,
-    rgba(26,20,16,.08) 34%,
-    rgba(26,20,16,.42) 68%,
-    rgba(26,20,16,.88) 100%) !important;
-}
-.exc-hero-content {
-  position: relative !important;
-  z-index: 2 !important;
-  text-align: left !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: flex-start !important;
-  gap: 0.55rem !important;
-  max-width: min(920px, 92vw) !important;
-  padding: 0 !important;
-  color: var(--cream) !important;
-  margin: 0 !important;
-}
-.exc-tag {
-  order: 2 !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: flex-start !important;
-  gap: 10px !important;
-  background: transparent !important;
-  color: var(--ember) !important;
-  font-family: 'Sora', sans-serif !important;
-  font-size: .82rem !important;
-  font-weight: 800 !important;
-  letter-spacing: .28em !important;
-  text-transform: uppercase !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  border: 0 !important;
-  border-radius: 0 !important;
-  backdrop-filter: none !important;
-  text-shadow: 0 2px 12px rgba(0,0,0,0.72) !important;
-}
-.exc-tag::before {
-  content: '' !important;
-  width: 34px !important;
-  height: 1px !important;
-  background: var(--ember) !important;
-  opacity: .95 !important;
-}
-.exc-tag::after {
-  content: none !important;
-}
-.exc-hero-title {
-  order: 1 !important;
-  font-family: 'DM Serif Display', serif !important;
-  font-size: clamp(2.6rem, 6.7vw, 5.4rem) !important;
-  font-weight: 600 !important;
-  line-height: 1.02 !important;
-  letter-spacing: 0 !important;
-  color: var(--cream) !important;
-  text-shadow: 0 2px 24px rgba(26,20,16,.58) !important;
-  margin: 0 !important;
-}
-.exc-hero-title em {
-  font-style: italic !important;
-  color: var(--sand) !important;
-}
-@media (max-width: 720px) {
-  .exc-hero {
-    align-items: flex-end !important;
-    padding: 66px 1.15rem 2rem !important;
-    min-height: 390px !important;
-  }
-  .exc-hero-title { font-size: clamp(2.05rem, 10vw, 3rem) !important; }
-  .exc-tag { font-size: .68rem !important; letter-spacing: .2em !important; }
-  .exc-tag::before { width: 24px !important; }
-}
-</style>
 <style id="zoyen-remove-mobile-logo-phrase">
 @media (max-width: 720px) {
   body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo-text,
@@ -902,9 +966,186 @@ img.hero-logo-static {
   }
 }
 </style>
+<style id="zoyen-logo-hover-scene-style">
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo {
+  position: relative !important;
+  isolation: isolate !important;
+  overflow: visible !important;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .nav-emblem,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .nav-logo-text {
+  transition: opacity .34s ease, transform .34s ease, filter .34s ease !important;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .zoyen-logo-scene {
+  position: absolute;
+  left: -7px;
+  top: 50%;
+  width: 188px;
+  height: 70px;
+  transform: translateY(-50%) scale(.88);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  border-radius: 999px;
+  background: #050403;
+  border: 1px solid rgba(212, 119, 42, .62);
+  box-shadow: 0 14px 34px rgba(0,0,0,.42), inset 0 0 0 1px rgba(245,240,232,.07);
+  overflow: hidden;
+  z-index: 4;
+  transition: opacity .28s ease, transform .42s cubic-bezier(.2,.8,.2,1), visibility .28s ease;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .zoyen-logo-scene::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 76% 22%, rgba(212,119,42,.28), transparent 18%),
+    linear-gradient(180deg, rgba(255,255,255,.05), transparent 45%);
+  opacity: .92;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .zoyen-logo-scene svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .zoyen-logo-scene path,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .zoyen-logo-scene line {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 220;
+  stroke-dashoffset: 220;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-mountain { stroke: #f5f0e8; stroke-width: 2.2; }
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-lake { stroke: #c9a96e; stroke-width: 1.45; }
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-route { stroke: #d4772a; stroke-width: 1.85; }
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-sun { fill: #d4772a; opacity: 0; transform-origin: 143px 22px; }
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-person {
+  fill: none;
+  stroke: #f5f0e8;
+  stroke-width: 1.65;
+  stroke-linecap: round;
+  opacity: 0;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-letter {
+  position: absolute;
+  font-family: 'Sora', sans-serif;
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1;
+  color: #f5f0e8;
+  letter-spacing: 0;
+  opacity: 0;
+  text-shadow: 0 0 12px rgba(245,240,232,.45);
+  transform: translate(var(--from-x), var(--from-y)) rotate(0deg) scale(.9);
+  transition: transform .56s cubic-bezier(.2,.8,.2,1), opacity .24s ease, color .24s ease;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-letter:nth-of-type(2),
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-letter:nth-of-type(4) {
+  color: #d4772a;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-letter.l1 { --from-x: 64px; --from-y: 16px; --to-x: 48px; --to-y: 20px; --rot: -22deg; }
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-letter.l2 { --from-x: 79px; --from-y: 16px; --to-x: 75px; --to-y: 10px; --rot: 8deg; }
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-letter.l3 { --from-x: 94px; --from-y: 16px; --to-x: 103px; --to-y: 24px; --rot: 24deg; }
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-letter.l4 { --from-x: 109px; --from-y: 16px; --to-x: 73px; --to-y: 47px; --rot: -7deg; }
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-letter.l5 { --from-x: 124px; --from-y: 16px; --to-x: 118px; --to-y: 45px; --rot: 12deg; }
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-caption {
+  position: absolute;
+  left: 64px;
+  bottom: 8px;
+  font-family: 'Sora', sans-serif;
+  font-size: 6.5px;
+  font-weight: 800;
+  letter-spacing: .22em;
+  color: rgba(212,119,42,.92);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity .24s ease .16s, transform .34s ease .16s;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:hover .nav-emblem,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:focus-visible .nav-emblem,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo.zoyen-logo-scene-on .nav-emblem {
+  opacity: 0 !important;
+  transform: scale(.72) rotate(-10deg) !important;
+  filter: blur(1px) !important;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:hover .nav-logo-text,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:focus-visible .nav-logo-text,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo.zoyen-logo-scene-on .nav-logo-text {
+  opacity: 0 !important;
+  transform: translateX(-12px) scale(.88) !important;
+  filter: blur(1px) !important;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:hover .zoyen-logo-scene,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:focus-visible .zoyen-logo-scene,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo.zoyen-logo-scene-on .zoyen-logo-scene {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) scale(1);
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:hover .zoyen-logo-scene path,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:hover .zoyen-logo-scene line,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:focus-visible .zoyen-logo-scene path,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:focus-visible .zoyen-logo-scene line,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo.zoyen-logo-scene-on .zoyen-logo-scene path,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo.zoyen-logo-scene-on .zoyen-logo-scene line {
+  animation: zoyenSceneDraw .86s ease forwards;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:hover .scene-lake,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:focus-visible .scene-lake,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo.zoyen-logo-scene-on .scene-lake { animation-delay: .12s !important; }
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:hover .scene-route,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:focus-visible .scene-route,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo.zoyen-logo-scene-on .scene-route { animation-delay: .22s !important; }
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:hover .scene-sun,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:focus-visible .scene-sun,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo.zoyen-logo-scene-on .scene-sun {
+  opacity: 1;
+  animation: zoyenSceneSun .7s ease .2s both;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:hover .scene-person,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:focus-visible .scene-person,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo.zoyen-logo-scene-on .scene-person {
+  opacity: 1;
+  transition: opacity .2s ease .34s;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:hover .scene-letter,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:focus-visible .scene-letter,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo.zoyen-logo-scene-on .scene-letter {
+  opacity: 1;
+  transform: translate(var(--to-x), var(--to-y)) rotate(var(--rot)) scale(1);
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:hover .scene-caption,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:focus-visible .scene-caption,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo.zoyen-logo-scene-on .scene-caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+@keyframes zoyenSceneDraw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes zoyenSceneSun {
+  0% { opacity: 0; transform: scale(.2); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@media (max-width: 720px) {
+  body > nav:not(.breadcrumb):not(.mobile-drawer) .zoyen-logo-scene {
+    left: -6px;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+  }
+  body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-letter,
+  body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-caption {
+    display: none;
+  }
+}
+</style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo">
     <img class="nav-emblem" src="data:image/jpeg;base64,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" alt="ZOYEN Turismo" loading="eager" decoding="async">
@@ -929,139 +1170,249 @@ img.hero-logo-static {
   </div>
   <ul class="nav-links">
     <li><a href="index.html" data-i18n="nav_home">Home</a></li>
-    <li><a href="index.html#excursiones" data-i18n="nav_excursiones"><span data-i18n="bread_exc">Excursiones</span></a></li>
-    <li><a href="index.html#tours" data-i18n="nav_tours"><span data-i18n="bread_tours">Tours de Autor</span></a></li>
+    <li><a href="index.html#excursiones" data-i18n="nav_excursiones">Excursiones</a></li>
+    <li><a href="index.html#tours" data-i18n="nav_tours">Tours de Autor</a></li>
     <li><a href="index.html#bienestar" data-i18n="nav_bienestar">Turismo de Bienestar</a></li>
     <li><a href="index.html#ubicación" data-i18n="nav_ubicación">Ubicación y Contacto</a></li>
-    <li><a href="nosotros.html" data-i18n="nav_nosotros">Quiénes somos</a></li>
+    <li><a href="nosotros.html" class="active" data-i18n="nav_nosotros">Quiénes somos</a></li>
   </ul>
-  <div class="nav-actions"><a href="https://wa.me/5492974432855" class="nav-cta-btn" target="_blank" rel="noopener" data-i18n="nav_reservar">Reservar</a><a href="https://wa.me/5492974432855" class="nav-contact-btn" target="_blank" rel="noopener" aria-label="Contactarse por WhatsApp" data-i18n-aria-label="nav_contact"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span data-i18n="nav_contact">Contactarse</span></a></div>
+  <div class="nav-actions"><a href="index.html#reservar" class="nav-cta-btn" data-i18n="nav_reservar">Reservar</a><a href="https://wa.me/5492974432855" class="nav-contact-btn" target="_blank" rel="noopener" aria-label="Contactarse por WhatsApp" data-i18n-aria-label="nav_contact"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span data-i18n="nav_contact">Contactarse</span></a></div>
 </nav>
 
-<div class="exc-hero">
-  <div class="exc-hero-bg"></div>
-  <div class="exc-hero-overlay"></div>
-  <div class="exc-hero-content">
-    <span class="exc-tag" data-i18n="exc_tag">EXCURSIÓN</span>
-    <h1 class="exc-hero-title">Alero <em>Charcamata</em></h1>
+<!-- HERO -->
+<section class="page-hero" style="padding-top:72px;">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-eyebrow">Agencia local  Perito Moreno, Santa Cruz</div>
+    <h1 class="page-hero-title">Turismo con <em>alma</em> patagúnica</h1>
+    <div class="breadcrumb"><a href="index.html">Inicio</a> / <span>Quiénes somos</span></div>
+  </div>
+</section>
+
+
+<!-- MANIFESTO STRIP -->
+<div class="manifesto-strip">
+  <blockquote>
+    "La Patagonia no se visita: <strong>se vive, se siente, se lleva adentro</strong> para siempre."
+  </blockquote>
+</div>
+
+<!-- -- INDICADORES -- -->
+<div id="statsBar" style="background:var(--dark);padding:2.5rem 4vw;border-bottom:1px solid rgba(212,119,42,.2);">
+  <div style="display:flex;gap:0;flex-wrap:wrap;max-width:900px;margin:0 auto;justify-content:space-between;align-items:center;">
+
+    <div class="sbar-item">
+      <div class="sbar-num" data-target="22" data-suffix="+">0+</div>
+      <div class="sbar-lbl">Aos de experiencia</div>
+    </div>
+    <div class="sbar-sep"></div>
+    <div class="sbar-item">
+      <div class="sbar-num" data-target="8000" data-suffix="+">0+</div>
+      <div class="sbar-lbl">Viajeros recibidos</div>
+    </div>
+    <div class="sbar-sep"></div>
+    <div class="sbar-item">
+      <div class="sbar-num" data-target="12" data-suffix="">0</div>
+      <div class="sbar-lbl">Destinos únicos</div>
+    </div>
+    <div class="sbar-sep"></div>
+    <div class="sbar-item">
+      <div class="sbar-num" data-target="98" data-suffix="%">0%</div>
+      <div class="sbar-lbl">Nos recomiendan</div>
+    </div>
+
   </div>
 </div>
 
 <style>
-.exc-hero-bg { background-image: url('assets/alerocharca_zoyen.jpg'); }
+.sbar-item { text-align:center; padding:.5rem 1rem; }
+.sbar-num  { font-family:'DM Serif Display',serif; font-size:2.8rem; font-weight:600; color:var(--ember); line-height:1; }
+.sbar-lbl  { font-size:.68rem; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:rgba(201,169,110,.65); margin-top:.4rem; }
+.sbar-sep  { width:1px; height:52px; background:rgba(212,119,42,.2); }
+@media(max-width:600px){ .sbar-sep{display:none;} .sbar-item{flex:1 1 45%;} }
 </style>
 
-<nav class="breadcrumb" aria-label="Breadcrumb">
-  <a href="index.html" data-i18n="bread_inicio">Inicio</a>
-  <span>›</span>
-  <a href="index.html#excursiones"><span data-i18n="bread_exc">Excursiones</span></a>
-  <span>›</span>
-  <span style="color:var(--sand)">Alero Charcamata</span>
-</nav>
+<script>
+(function(){
+  function animateCounters(){
+    document.querySelectorAll('.sbar-num[data-target]').forEach(function(el){
+      var target = parseInt(el.dataset.target);
+      var suffix = el.dataset.suffix;
+      var duration = 2200;
+      var start = null;
+      function step(ts){
+        if(!start) start = ts;
+        var p = Math.min((ts-start)/duration,1);
+        var ease = 1-Math.pow(1-p,3);
+        var val = Math.floor(ease*target);
+        el.textContent = (target>=1000 ? val.toLocaleString('es-AR') : val) + suffix;
+        if(p<1) requestAnimationFrame(step);
+        else el.textContent = (target>=1000 ? target.toLocaleString('es-AR') : target) + suffix;
+      }
+      requestAnimationFrame(step);
+    });
+  }
+  var bar = document.getElementById('statsBar');
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ animateCounters(); obs.disconnect(); }});
+  },{threshold:0.3});
+  obs.observe(bar);
+})();
+</script>
 
-<div class="exc-body">
-  <main class="exc-main">
-    
-<h2>Arte Rupestre intacto y puro. <em>Monumento Histrico Nacional</em></h2>
-<p><strong>Declarado Monumento Histrico Nacional</strong> por su belleza y gran cantidad de pinturas de alrededor de 7.000 años. Esta excursión nos obliga a dejar todas nuestras preocupaciones y viajar en el tiempo, metindonos poco a poco en la vida de campo, ya que transitamos inmersos en la estepa patagúnica por caminos desolados donde los guanacos son los principales protagonistas.</p>
-<p>El marco natural de la zona, sus caadones, el vadeo del ro Pinturas, el paisaje y el arte rupestre intacto y muy alejado de la civilización hacen que el viaje en el tiempo sea inevitable.</p>
-<p><strong>Para amantes de la naturaleza virgen, un tour privado y exclusivo. Úúnicos operadores autorizados para realizar esta visita.</strong></p>
-<div class="note"><strong>Dato curioso:</strong> Un ALERO es una especie de "cueva natural" de grandes dimensiones. CHARCAMATA tiene 80 metros de boca, 40 metros de alto y más de 20 metros de profundidad. En su interior, cientos de manos, guanacos, pumas, choiques y figuras geomtricas estampadas por nuestros antepasados hace miles de años.</div>
 
-<h3>Itinerario</h3>
-<ul>
-  <li>Salida desde Perito Moreno a las 09:00 hs.</li>
-  <li>60 km hasta la Estancia "La Posta de Los Toldos" (actual Portal Cañadón Pinturas).</li>
-  <li>30 km más por camino interno de campo, atravesando las estancias vecinas Las Buitreras y La Madrugada, adentrndonos en la historia de la ganadera de la regin.</li>
-  <li>Atravesaremos sus caadones y vadearemos el ro Pinturas con el vehículo hasta llegar al caadn "Charcamata".</li>
-  <li>Caminata sencilla de aproximadamente 1 hora hasta el "Alero Charcamata" (cueva de más de 80 mts de boca y 40 mts de altura).</li>
-  <li>Lugar imponente con gran variedad de pinturas rupestres de más de 5.000 años, conservadas en el mismo estado original. Interpretación de las pinturas con gua.</li>
-  <li>Tiempo libre de descanso y almuerzo al abrigo del imponente caadn.</li>
-  <li>Regreso a Perito Moreno. Llegada aproximada: 18:00 hs.</li>
-</ul>
-
-<h2>Precios</h2>
-<p><strong>Temporada 2025</strong> (vigencia hasta el 31 de diciembre)</p>
-<ul>
-  <li>En privado: $200.000 c/u</li>
-</ul>
-<p><strong>Temporada 2026</strong> (vigencia hasta el 30 de abril)</p>
-<ul>
-  <li>En privado: $220.000 c/u</li>
-</ul>
-<p><strong>Incluye:</strong> traslado en camioneta 44 con chofer/guía durante todo el recorrido y vianda para almuerzo sin bebida (llevar botella de agua).</p>
-
-<div class="video-wrap">
-  <iframe src="https://www.youtube.com/embed/Jp2HZ-Kla_8playsinline=1" allowfullscreen loading="lazy" title="Alero Charcamata - Zoyen Turismo"></iframe>
-</div>
-
-  </main>
-  <aside class="exc-sidebar">
-    <div class="exc-card">
-      <div class="exc-card-head"><span data-i18n="sidebar_book">Reservar</span></div>
-      <div class="exc-card-body">
-        <p><span data-i18n="sidebar_book_desc">Consultanos disponibilidad y precios por WhatsApp o reservá directamente.</span></p>
-        <a href="https://wa.me/5492974432855?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20la%20excursi%C3%B3n%20Alero%20Charcamata" class="btn-reservar" target="_blank" rel="noopener" data-i18n="sidebar_wa">Consultar por WhatsApp</a>
-      </div>
+<!-- NOSOTROS INTRO -->
+<section class="nosotros-section">
+  <div class="nosotros-intro">
+    <div class="nosotros-text reveal">
+      <p class="eyebrow">Quiénes somos</p>
+      <h2 class="section-title">Una agencia nacida<br>de <em>esta tierra</em></h2>
+      <p>Zoyen Turismo naci en la ciudad de Caleta Olivia en el año 2003. Comenzamos con una computadora, un ttulo de Licenciado en Turismo y muchos deseos de aprender y progresar en el mundo del turismo. En sus comienzos nos dedicamos al pblico local y regiónal como <strong>Agencia de Turismo Emisiva</strong>.</p>
+      <p>En el año 2006 nos instalamos en la ciudad de Perito Moreno, dedicndonos a lo que más nos gusta: recibir turistas de toda Argentina y del mundo como <strong>Agencia de Turismo Receptiva</strong>. Con el tiempo nos hicimos especialistas en <strong>ecoturismo</strong> en nuestra regin, la Comarca Noroeste de Santa Cruz.</p>
+      <p>Hace varios años incluimos en nuestros recorridos la <strong>Patagonia Sur Chilena</strong>, con trayectos que unen Chile Chico con la Carretera Austral. Las <strong>capillas y catedrales de mármol</strong> sobre el Lago General Carrera se han convertido en uno de los atractivos más solicitados. Contamos con el <strong>Legajo de Agencia N 15.625</strong>.</p>
     </div>
-    <div class="exc-card">
-      <div class="exc-card-head"><span data-i18n="sidebar_details">Detalles</span></div>
-      <div class="exc-card-body">
-        <ul class="exc-detail-list">
-          <li><span class="icon">✦</span> Salida desde Perito Moreno o Los Antiguos</li>
-          <li><span class="icon">✦</span> Guía especializado incluido</li>
-          <li><span class="icon">✦</span> Vehículo 4x4 o minibus</li>
-          <li><span class="icon">✦</span> Cupos limitados</li>
-        </ul>
-      </div>
+    <div class="nosotros-img-wrap reveal reveal-delay">
+      <img src="assets/parquepatagonia_zoyenturismo.jpg" alt="Parque Patagonia - Zoyen Turismo">
+      <div class="nosotros-img-caption">Parque Nacional Patagonia  Santa Cruz, Argentina</div>
     </div>
-    <div class="exc-card">
-      <div class="exc-card-head"><span data-i18n="sidebar_other">Otras Excursiones</span></div>
-      <div class="exc-card-body">
-        <ul class="footer-links" style="gap:.6rem">
-          <li><a href="excursion-cueva-de-las-manos.html">Cueva de las Manos</a></li>
-          <li><a href="excursion-capillas-de-marmol.html">Capillas de Mármol</a></li>
-          <li><a href="excursion-ruta41-lago-posadas.html">Ruta 41 + Lago Posadas</a></li>
-          <li><a href="excursion-monte-zeballos.html">Monte Zeballos</a></li>
-          <li><a href="excursion-alero-charcamata.html">Alero Charcamata</a></li>
-          <li><a href="excursion-parque-patagonia.html">Parque Patagonia</a></li>
-        </ul>
-      </div>
-    </div>
-  </aside>
-</div>
-
-<section class="more-excursiones">
-  <h2><span data-i18n="more_title">Más Excursiones</span></h2>
-  <div class="exc-mini-grid">
-    <a href="excursion-cueva-de-las-manos.html" class="exc-mini">
-      <img src="assets/cuevas_zoyen.jpg" alt="Cueva de las Manos" loading="lazy">
-      <div class="exc-mini-overlay"><span class="exc-mini-name">Cueva de las Manos</span></div>
-    </a>
-    <a href="excursion-capillas-de-marmol.html" class="exc-mini">
-      <img src="assets/capillas.jpg" alt="Capillas de Mármol" loading="lazy">
-      <div class="exc-mini-overlay"><span class="exc-mini-name">Capillas de Mármol</span></div>
-    </a>
-    <a href="excursion-ruta41-lago-posadas.html" class="exc-mini">
-      <img src="assets/posadas_zoyen.jpg" alt="Lago Posadas" loading="lazy">
-      <div class="exc-mini-overlay"><span class="exc-mini-name">Ruta 41 + Lago Posadas</span></div>
-    </a>
-    <a href="excursion-monte-zeballos.html" class="exc-mini">
-      <img src="assets/ruta41_zoyen.jpg" alt="Monte Zeballos" loading="lazy">
-      <div class="exc-mini-overlay"><span class="exc-mini-name">Ruta 41 + Monte Zeballos</span></div>
-    </a>
-    <a href="excursion-alero-charcamata.html" class="exc-mini">
-      <img src="assets/alerocharca_zoyen.jpg" alt="Alero Charcamata" loading="lazy">
-      <div class="exc-mini-overlay"><span class="exc-mini-name">Alero Charcamata</span></div>
-    </a>
-    <a href="excursion-parque-patagonia.html" class="exc-mini">
-      <img src="assets/pps.jpg" alt="Parque Patagonia" loading="lazy">
-      <div class="exc-mini-overlay"><span class="exc-mini-name">Parque Patagonia</span></div>
-    </a>
   </div>
 </section>
 
-<footer id="footer">
+<!-- VALORES -->
+<section class="valores-section">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="reveal" style="text-align:center;">
+      <p class="eyebrow">Lo que nos mueve</p>
+      <h2 class="section-title">Nuestros <em>valores</em></h2>
+    </div>
+    <div class="valores-grid">
+      <div class="valor-card reveal">
+        <span class="valor-num">01</span>
+        <div class="valor-title">Conocimiento local</div>
+        <p class="valor-desc">Somos de ac. Conocemos cada camino, cada estación, cada atardecer. Eso es lo que te ofrecemos: la experiencia de quienes viven la Patagonia.</p>
+      </div>
+      <div class="valor-card reveal reveal-delay">
+        <span class="valor-num">02</span>
+        <div class="valor-title">Turismo responsable</div>
+        <p class="valor-desc">Cuidamos el entorno natural y cultural. Trabajamos con comunidades locales y promovemos el respeto por los ecosistemás y el patrimonio arqueolgico.</p>
+      </div>
+      <div class="valor-card reveal reveal-delay2">
+        <span class="valor-num">03</span>
+        <div class="valor-title">Experiencias únicas</div>
+        <p class="valor-desc">No hacemos turismo masivo. Cada grupo es pequeo, cada excursión es personal, cada gua conoce la historia detrs de cada lugar.</p>
+      </div>
+      <div class="valor-card reveal">
+        <span class="valor-num">04</span>
+        <div class="valor-title">Trato cercano</div>
+        <p class="valor-desc">Somos una empresa familiar. Respondemos rpido, nos importa tu experiencia antes, durante y despus del viaje.</p>
+      </div>
+      <div class="valor-card reveal reveal-delay">
+        <span class="valor-num">05</span>
+        <div class="valor-title">Destinos inditos</div>
+        <p class="valor-desc">Llevamos a nuestros viajeros a lugares que muchas agencias no conocen. La Patagonia profunda, lejos de los circuitos convencionales.</p>
+      </div>
+      <div class="valor-card reveal reveal-delay2">
+        <span class="valor-num">06</span>
+        <div class="valor-title">Pasin por la Patagonia</div>
+        <p class="valor-desc">Cada excursión es un acto de amor por esta tierra. Nos entusiasma tanto el dcimo viaje como el primero, porque la Patagonia siempre sorprende.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPO -->
+<section class="equipo-section">
+  <div class="equipo-content">
+    <div class="equipo-img reveal">
+      <img src="assets/zoyen_turismo_patagonia_losantiguos.jpg" alt="Zoyen Turismo Los Antiguos Patagonia">
+    </div>
+    <div class="equipo-text reveal reveal-delay">
+      <p class="eyebrow">Nuestra historia</p>
+      <h2 class="section-title">Guas con <em>historia</em></h2>
+      <p>Nuestro enfoque est puesto en la <strong>parte humana de la empresa</strong> y en el contenido de cada excursión. Nos ocupamos del cuidado del medioambiente, la conservación y la toma de consciencia sobre nuestro paso por la tierra.</p>
+      <p>Procuramos que nuestros choferes y guas sean <strong>nacidos en la zona</strong>, para enriquecer cada excursión con conocimiento local. Nos capacitamos constantemente para que todo el equipo hable el mismo idioma y comparta la misma visin.</p>
+      <p>Nuestro mayor anhelo es estar a la altura de lo excelente que son los atractivos que visitamos día a día, y trabajamos constantemente para lograrlo. <strong>Gracias por visitar nuestro hogar!</strong></p>
+      <div class="stat-row" id="statsRow"></div>
+      <style>
+        .stat-row { display:flex; gap:2rem; flex-wrap:wrap; margin-top:2.5rem; padding-top:2rem; border-top:1px solid rgba(58,45,31,.1); }
+        .stat-item { text-align:center; }
+        .stat-num { font-family:"DM Serif Display",serif; font-size:2.4rem; font-weight:600; color:var(--ember); line-height:1; }
+        .stat-lbl { font-size:.72rem; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--stone); margin-top:.3rem; }
+      </style>
+      <script>
+        (function(){
+          var stats = [
+            { target: 22,   suffix: "+", label: "Aos de experiencia" },
+            { target: 8000, suffix: "+", label: "Viajeros recibidos"  },
+            { target: 12,   suffix: "",  label: "Destinos únicos"     },
+            { target: 98,   suffix: "%", label: "Nos recomiendan"     },
+          ];
+          var row = document.getElementById("statsRow");
+          stats.forEach(function(s){
+            var div = document.createElement("div");
+            div.className = "stat-item";
+            div.innerHTML = '<div class="stat-num" data-target="'+s.target+'" data-suffix="'+s.suffix+'">0'+s.suffix+'</div><div class="stat-lbl">'+s.label+'</div>';
+            row.appendChild(div);
+          });
+          function animateCounters(){
+            document.querySelectorAll(".stat-num[data-target]").forEach(function(el){
+              var target = parseInt(el.dataset.target);
+              var suffix = el.dataset.suffix;
+              var duration = 2000;
+              var start = null;
+              function step(ts){
+                if(!start) start = ts;
+                var progress = Math.min((ts - start)/duration, 1);
+                var ease = 1 - Math.pow(1 - progress, 3);
+                el.textContent = Math.floor(ease * target) + suffix;
+                if(progress < 1) requestAnimationFrame(step);
+                else el.textContent = target + suffix;
+              }
+              requestAnimationFrame(step);
+            });
+          }
+          var obs = new IntersectionObserver(function(entries){
+            entries.forEach(function(e){ if(e.isIntersecting){ animateCounters(); obs.disconnect(); }});
+          }, {threshold: 0.4});
+          obs.observe(row);
+        })();
+      </script>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding:3rem 4vw; background:var(--cream); border-top:1px solid rgba(58,45,31,.08);">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;">
+      <img src="assets/parquepatagonia_zoyenturismo.jpg" 
+           alt="Parque Patagonia" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:3px;"/>
+      <img src="assets/zoyen_turismo_patagonia_losantiguos.jpg" 
+           alt="Los Antiguos Patagonia" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:3px;"/>
+      <img src="assets/zoyen_turismo_patagonia_capillasdemarmol.jpg" 
+           alt="Capillas de Mármol" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:3px;"/>
+    </div>
+  </div>
+</section>
+<section class="nosotros-cta">
+  <div class="reveal">
+    <p class="eyebrow" style="color:var(--sand); justify-content:center; display:flex; align-items:center; gap:10px; margin-bottom:.5rem;">
+      <span style="width:22px;height:1px;background:var(--sand);display:inline-block;"></span>
+      Listo para venir
+      <span style="width:22px;height:1px;background:var(--sand);display:inline-block;"></span>
+    </p>
+    <h2>Empez a planificar tu <em>aventura</em></h2>
+    <p>Eleg la excursión que más te llame y reserv tu lugar. Somos felices de asesorarte antes de tu viaje.</p>
+    <div class="cta-btns">
+      <a href="index.html#excursiones" class="cta-btn-p">Ver excursiones</a>
+      <a href="https://wa.me/5492974432855" class="cta-btn-g" target="_blank" rel="noopener">Consultarnos por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
   <div class="footer-top">
     <div>
       <div class="footer-brand-wrap">
@@ -1070,183 +1421,58 @@ img.hero-logo-static {
       </div>
       <p class="footer-tagline">Agencia de Turismo en la Patagonia Argentina.<br>Legajo 15.625  Perito Moreno, Santa Cruz.</p>
       <div class="socials">
-        <a href="https://www.instagram.com/turismozoyen/" class="social-btn" title="Instagram" target="_blank" rel="noopener">
+        <a href="https://www.instagram.com/turismozoyen/" class="social-btn" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
         </a>
-        <a href="https://www.facebook.com/turismozoyen" class="social-btn" title="Facebook" target="_blank" rel="noopener">
+        <a href="https://www.facebook.com/turismozoyen" class="social-btn" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
         </a>
-        <a href="https://www.youtube.com/channel/UCVuldIwQ74Pha-H0stMKoPg" class="social-btn" title="YouTube" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-        </a>
-        <a href="https://wa.me/5492974432855" class="social-btn" title="WhatsApp" target="_blank" rel="noopener">
+        <a href="https://wa.me/5492974432855" class="social-btn" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         </a>
       </div>
     </div>
     <div>
-      <div class="footer-col-title" data-i18n="ft_exc">Excursiones</div>
+      <div class="footer-col-title">Excursiones</div>
       <ul class="footer-links">
-        <li><a href="excursion-cueva-de-las-manos.html">Cueva de las Manos</a></li>
-        <li><a href="excursion-alero-charcamata.html">Alero Charcamata</a></li>
-        <li><a href="excursion-ruta41-lago-posadas.html">Lago Posadas + Ruta 41</a></li>
-        <li><a href="excursion-monte-zeballos.html">Monte Zeballos</a></li>
-        <li><a href="excursion-parque-patagonia.html">Portal Cañadón Pinturas / PNP</a></li>
-        <li><a href="excursion-capillas-de-marmol.html">Capillas de Mármol</a></li>
+        <li><a href="index.html#excursiones">Cueva de las Manos</a></li>
+        <li><a href="index.html#excursiones">Alero Charcamata</a></li>
+        <li><a href="index.html#excursiones">Lago Posadas + Ruta 41</a></li>
+        <li><a href="index.html#excursiones">Monte Zeballos</a></li>
+        <li><a href="index.html#excursiones">Capillas de Mármol</a></li>
       </ul>
     </div>
     <div>
-      <div class="footer-col-title" data-i18n="ft_contact">Contacto</div>
+      <div class="footer-col-title">Contacto</div>
       <div class="footer-contact">
-        <p>✉ zoyenperitomoreno@gmail.com</p>
-        <p>☎ +54 9 297 443-2855</p>
-        <p> Perito Moreno, Santa Cruz</p>
+        <strong>Perito Moreno, Santa Cruz</strong><br>
+        Patagonia Argentina<br><br>
+        <strong>WhatsApp</strong><br>
+        <a href="https://wa.me/5492974432855" style="color:var(--amber);">+54 9 297 443-2855</a><br><br>
+        <strong>Instagram</strong><br>
+        <a href="https://www.instagram.com/turismozoyen/" style="color:var(--amber);">@turismozoyen</a>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <span><span data-i18n="ft_copy">© Zoyen Turismo 2025  Todos los derechos reservados</span></span>
+    <span>© 2025 Zoyen Turismo  Legajo 15.625  Perito Moreno, Santa Cruz</span>
+    <a href="index.html">Volver al inicio</a>
   </div>
 </footer>
+<script>
+// Reveal on scroll
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
 <script id="zoyen-lang-script">
 (function(){
-    var pageTranslations = {
-    es: {
-      'nav_home': 'Home',
-      'nav_excursiones': 'Excursiones',
-      'nav_tours': 'Tours de Autor',
-      'nav_bienestar': 'Turismo de Bienestar',
-      'nav_ubicación': 'Ubicación y Contacto',
-      'nav_nosotros': 'Quiénes somos',
-      'nav_reservar': 'Reservar',
-      'nav_contact': 'Contactarse',
-      'sidebar_book': 'Reservar',
-      'sidebar_book_desc': 'Consultanos disponibilidad y precios por WhatsApp o reservá directamente.',
-      'sidebar_wa': 'Consultar por WhatsApp',
-      'sidebar_details': 'Detalles',
-      'sidebar_other': 'Otras Excursiones',
-      'more_title': 'Más Excursiones',
-      'ft_tagline': 'Agencia de Turismo en la Patagonia Argentina.<br>Legajo 15.625  Perito Moreno, Santa Cruz.',
-      'ft_copy': '© Zoyen Turismo 2025  Todos los derechos reservados',
-      'ft_exc': 'Excursiones',
-      'ft_contact': 'Contacto',
-      'ft_nav': 'Navegación',
-      'bread_inicio': 'Inicio',
-      'bread_exc': 'Excursiones',
-      'bread_tours': 'Tours de Autor',
-      'prices_title': 'Precios',
-      'prices_note': 'No incluye ingreso al Parque Provincial.',
-      'detail_salida': 'Salida desde Perito Moreno o Los Antiguos',
-      'detail_guia': 'Guía especializado incluido',
-      'detail_vehiculo': 'Vehículo 4x4 o minibus',
-      'detail_cupos': 'Cupos limitados',
-      'cta_btn': 'Reservar lugar',
-    },
-    en: {
-      'nav_home': 'Home',
-      'nav_excursiones': 'Excursions',
-      'nav_tours': 'Author Tours',
-      'nav_bienestar': 'Wellness Tourism',
-      'nav_ubicación': 'Location & Contact',
-      'nav_nosotros': 'About Us',
-      'nav_reservar': 'Book Now',
-      'nav_contact': 'Contact',
-      'sidebar_book': 'Book',
-      'sidebar_book_desc': 'Check availability and prices via WhatsApp or book directly.',
-      'sidebar_wa': 'Contact via WhatsApp',
-      'sidebar_details': 'Details',
-      'sidebar_other': 'Other Excursions',
-      'more_title': 'More Excursions',
-      'ft_tagline': 'Tourism Agency in Argentine Patagonia.<br>License 15.625  Perito Moreno, Santa Cruz.',
-      'ft_copy': '© Zoyen Turismo 2025  All rights reserved',
-      'ft_exc': 'Excursions',
-      'ft_contact': 'Contact',
-      'ft_nav': 'Navigation',
-      'bread_inicio': 'Start',
-      'bread_exc': 'Excursions',
-      'bread_tours': 'Author Tours',
-      'prices_title': 'Prices',
-      'prices_note': 'Park entrance fee not included.',
-      'detail_salida': 'Departure from Perito Moreno or Los Antiguos',
-      'detail_guia': 'Specialist guide included',
-      'detail_vehiculo': '4x4 vehicle or minibus',
-      'detail_cupos': 'Limited spots',
-      'exc_tag': 'Rock art',
-      'exc_title': 'Alero Charcamata',
-      'exc_eyebrow': 'Rock art  Cultural heritage',
-      'main_h2': 'Pristine rock art, <em>far from civilization</em>',
-      'sidebar_wa_msg': 'Hello! I want information about the Alero Charcamata excursion',
-    },
-    pt: {
-      'nav_home': 'Incio',
-      'nav_excursiones': 'Excursões',
-      'nav_tours': 'Tours de Autor',
-      'nav_bienestar': 'Turismo de Bem-Estar',
-      'nav_ubicación': 'Localização e Contato',
-      'nav_nosotros': 'Quem somos',
-      'nav_reservar': 'Reservar',
-      'nav_contact': 'Contato',
-      'sidebar_book': 'Reservar',
-      'sidebar_book_desc': 'Consulte disponibilidade e preos pelo WhatsApp ou reserve diretamente.',
-      'sidebar_wa': 'Contato pelo WhatsApp',
-      'sidebar_details': 'Detalhes',
-      'sidebar_other': 'Outras Excursões',
-      'more_title': 'Mais Excursões',
-      'ft_tagline': 'Agncia de Turismo na Patagonia Argentina.<br>Licena 15.625  Perito Moreno, Santa Cruz.',
-      'ft_copy': '© Zoyen Turismo 2025  Todos os direitos reservados',
-      'ft_exc': 'Excursões',
-      'ft_contact': 'Contato',
-      'ft_nav': 'Navegao',
-      'bread_inicio': 'Incio',
-      'bread_exc': 'Excursões',
-      'bread_tours': 'Tours de Autor',
-      'prices_title': 'Preços',
-      'prices_note': 'Taxa de entrada no Parque no incluída.',
-      'detail_salida': 'Saída de Perito Moreno ou Los Antiguos',
-      'detail_guia': 'Guia especializado incluído',
-      'detail_vehiculo': 'Veículo 4x4 ou minibus',
-      'detail_cupos': 'Vagas limitadas',
-      'exc_tag': 'Arte rupestre',
-      'exc_title': 'Alero Charcamata',
-      'exc_eyebrow': 'Arte rupestre  Patrimônio cultural',
-      'main_h2': 'Arte rupestre intacta, <em>longe da civilizao</em>',
-      'sidebar_wa_msg': 'Olá! Quero informações sobre a excursão Alero Charcamata',
-    },
-    ko: {
-      'nav_home': 'í™ˆ',
-      'nav_excursiones': 'íˆ¬ì–´',
-      'nav_tours': 'ì˜¤ì„œ íˆ¬ì–´',
-      'nav_bienestar': 'ì›°ë‹ˆìŠ¤ ê´€ê´‘',
-      'nav_ubicación': 'ìœ„ì¹˜  ì—°ì²˜',
-      'nav_nosotros': 'ìš°ë¦¬ ëŒ€í•´',
-      'nav_reservar': 'ì˜ˆì•½í•˜ê¸°',
-      'nav_contact': 'ì—°ì²˜',
-      'sidebar_book': 'ì˜ˆì•½',
-      'sidebar_book_desc': 'WhatsAppìœ¼ë¡œ ê°€ëŠ¥ ì—¬ë¶€ì™€ ê°€ê²© í™•í•˜ê±°ë‚˜ ì ‘ ì˜ˆì•½í•˜ì„¸ìš”.',
-      'sidebar_wa': 'WhatsAppìœ¼ë¡œ ë¬¸',
-      'sidebar_details': 'ì„¸ë¶€ ì •ë³´',
-      'sidebar_other': 'ë‹¤ë¥¸ íˆ¬ì–´',
-      'more_title': ' ë§Ž íˆ¬ì–´',
-      'ft_tagline': 'ì•„ë¥´í—¨í‹°ë‚˜ íŒŒíƒ€ê³ ë‹ˆì•„ ê´€ê´‘ ì „ì‹œ.<br>ì„¼ìŠ¤ 15.625  íŽ˜ë¦¬í†  ëª¨ë ˆë…¸, ì‚°íƒ€ë£¨ìŠ¤.',
-      'ft_copy': '© Zoyen Turismo 2025  ëª¨ë“  ê¶Œë¦¬ ë³´ìœ ',
-      'ft_exc': 'íˆ¬ì–´',
-      'ft_contact': 'ì—°ì²˜',
-      'ft_nav': 'ë©”ë‰´',
-      'bread_inicio': 'í™ˆ',
-      'bread_exc': 'íˆ¬ì–´',
-      'bread_tours': 'ì˜¤ì„œ íˆ¬ì–´',
-      'prices_title': 'ê°€ê²©',
-      'prices_note': 'ê³µ ìž…ìž¥ë£Œ ë¶ˆí•¨.',
-      'detail_salida': 'íŽ˜ë¦¬í†  ëª¨ë ˆë…¸ ëŠ” ë¡œìŠ¤ ì•ˆí‹°êµ¬ì˜¤ìŠ¤ ì¶œë°œ',
-      'detail_guia': 'ì „ë¬¸ ê°€ë“œ í•¨',
-      'detail_vehiculo': '4x4 ì°¨ëŸ‰ ëŠ” ë¯¸ë‹ˆë²„ìŠ¤',
-      'detail_cupos': 'ì œí•œ ',
-      'exc_tag': 'ì•”í™”',
-      'exc_title': 'ì•Œë ˆë¡œ ì°¨ë¥´ì¹´ë§ˆíƒ€',
-      'exc_eyebrow': 'ì•”í™”  ë¬¸í™”ìœ ì‚°',
-      'main_h2': 'ë¬¸ëª…ì„œ ë©€ë¦¬ ë–¨ì–´ì§„ <em>ì‹œ ì•”í™”</em>',
-      'sidebar_wa_msg': 'ì•ˆë…•í•˜ì„¸ìš”! ì•Œë ˆë¡œ ì°¨ë¥´ì¹´ë§ˆíƒ€ íˆ¬ì–´ ì •ë³´ë¥¼ í•©ë‹ˆë‹¤',
-    },
+  var navTranslations = {
+    es: { nav_home:'Home', nav_excursiones:'Excursiones', nav_tours:'Tours de Autor', nav_bienestar:'Turismo de Bienestar', nav_ubicación:'Ubicación y Contacto', nav_nosotros:'Quiénes somos', nav_reservar:'Reservar', nav_contact:'Contactarse' },
+    en: { nav_home:'Home', nav_excursiones:'Excursions', nav_tours:'Author Tours', nav_bienestar:'Wellness Tourism', nav_ubicación:'Location & Contact', nav_nosotros:'About Us', nav_reservar:'Book Now', nav_contact:'Contact' },
+    pt: { nav_home:'Incio', nav_excursiones:'Excursões', nav_tours:'Tours de Autor', nav_bienestar:'Turismo de Bem-Estar', nav_ubicación:'Localização e Contato', nav_nosotros:'Quem somos', nav_reservar:'Reservar', nav_contact:'Contato' },
+    ko: { nav_home:'í™ˆ', nav_excursiones:'íˆ¬ì–´', nav_tours:'ì˜¤ì„œ íˆ¬ì–´', nav_bienestar:'ì›°ë‹ˆìŠ¤ ê´€ê´‘', nav_ubicación:'ìœ„ì¹˜  ì—°ì²˜', nav_nosotros:'ìš°ë¦¬ ëŒ€í•´', nav_reservar:'ì˜ˆì•½í•˜ê¸°', nav_contact:'ì—°ì²˜' }
   };
   var currentLang = localStorage.getItem('zoyen_lang') || 'es';
   var langSwitcher = document.getElementById('langSwitcher');
@@ -1257,7 +1483,7 @@ img.hero-logo-static {
     langCurrent.setAttribute('aria-expanded', 'false');
   }
   function applyLang(lang) {
-    var t = pageTranslations[lang] || pageTranslations.es;
+    var t = navTranslations[lang] || navTranslations.es;
     document.querySelectorAll('[data-i18n]').forEach(function(el) {
       var key = el.getAttribute('data-i18n');
       if (t[key] !== undefined) el.innerHTML = t[key];
@@ -2701,6 +2927,86 @@ a.cta-btn-g[href*="wa.me"]:hover {
 }
 </style>
 
+<style id="zoyen-nosotros-header-align-fix">
+/* Mantiene el header de Quienes somos igual al resto del sitio */
+body > nav:not(.breadcrumb):not(.mobile-drawer) {
+  top: 0 !important;
+  height: 72px !important;
+  min-height: 72px !important;
+  align-items: center !important;
+  font-family: 'Sora', sans-serif !important;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-emblem,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo-name .z,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo-name .t,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo sub,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .lang-switcher,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-links,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-links a,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-actions,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-cta-btn,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-contact-btn {
+  animation: none !important;
+  filter: none !important;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .lang-switcher,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-links,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-actions {
+  transform: translateY(9px) !important;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-emblem,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo-name .z,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo-name .t,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo sub,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-links a,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-cta-btn,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-contact-btn {
+  transform: none !important;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .lang-switcher,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-links,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-actions {
+  align-self: center !important;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .z,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .t {
+  font-family: 'Sora', sans-serif !important;
+  font-size: 1.4rem !important;
+  font-weight: 700 !important;
+  letter-spacing: .12em !important;
+  line-height: 1 !important;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-links a {
+  font-family: 'Sora', sans-serif !important;
+  font-size: .78rem !important;
+  font-weight: 500 !important;
+  letter-spacing: .06em !important;
+  line-height: 1 !important;
+}
+.lang-switcher:not(.open) .lang-menu {
+  display: none !important;
+}
+.lang-switcher.open .lang-menu {
+  display: block !important;
+}
+.page-hero {
+  margin-top: 0 !important;
+  padding-top: 72px !important;
+}
+@media (max-width: 900px) {
+  body > nav:not(.breadcrumb):not(.mobile-drawer) {
+    height: 60px !important;
+    min-height: 60px !important;
+  }
+  .page-hero {
+    padding-top: 60px !important;
+  }
+}
+</style>
+
 <style id="zoyen-logo-circular-fix-20260616">
 .nav-emblem,
 .footer-emblem,
@@ -2711,8 +3017,31 @@ a.cta-btn-g[href*="wa.me"]:hover {
   display: block !important;
 }
 </style>
+<script id="zoyen-logo-hover-scene-script">
+(function(){
+  function initZoyenLogoScene(){
+    document.querySelectorAll('body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo').forEach(function(logo){
+      if (logo.querySelector('.zoyen-logo-scene')) return;
+      logo.insertAdjacentHTML('beforeend', "<div class=\"zoyen-logo-scene\" aria-hidden=\"true\">\n  <svg viewBox=\"0 0 188 70\" focusable=\"false\" aria-hidden=\"true\">\n    <circle class=\"scene-sun\" cx=\"145\" cy=\"20\" r=\"5\"></circle>\n    <path class=\"scene-mountain\" d=\"M28 45 L58 20 L78 39 L94 18 L132 45\"></path>\n    <path class=\"scene-mountain\" d=\"M59 21 L68 36 M94 19 L105 42\"></path>\n    <path class=\"scene-lake\" d=\"M38 51 C51 47 62 55 76 51 S102 47 118 51 S145 55 160 50\"></path>\n    <path class=\"scene-lake\" d=\"M50 58 C65 54 80 60 96 56 S129 52 150 57\"></path>\n    <path class=\"scene-route\" d=\"M29 61 C48 54 59 62 75 56 C91 50 101 53 116 44 C127 37 136 36 151 29\"></path>\n    <path class=\"scene-person\" d=\"M151 33 l4 8 m-4-8 l-5 7 m5-7 l-3-5 m3 5 l6-4\"></path>\n  </svg>\n  <span class=\"scene-letter l1\">Z</span>\n  <span class=\"scene-letter l2\">O</span>\n  <span class=\"scene-letter l3\">Y</span>\n  <span class=\"scene-letter l4\">E</span>\n  <span class=\"scene-letter l5\">N</span>\n  <span class=\"scene-caption\">EXCURSION</span>\n</div>");
+      logo.addEventListener('click', function(){
+        if (!window.matchMedia || !window.matchMedia('(hover: none)').matches) return;
+        logo.classList.add('zoyen-logo-scene-on');
+        window.clearTimeout(logo._zoyenLogoSceneTimer);
+        logo._zoyenLogoSceneTimer = window.setTimeout(function(){
+          logo.classList.remove('zoyen-logo-scene-on');
+        }, 1700);
+      });
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initZoyenLogoScene);
+  else initZoyenLogoScene();
+})();
+</script>
 </body>
 </html>
+
+
+
 
 
 

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alero Charcamata  Zoyen Turismo</title>
+<title>Catedrales y Capillas de Mármol  Zoyen Turismo</title>
 <link href="https://fonts.googleapis.com/css2family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* Ajuste global de tipografa */
@@ -77,7 +77,7 @@ body > nav:not(.breadcrumb):not(.mobile-drawer) {
 }
 .exc-hero-bg {
   position: absolute; inset: 0;
-  background-image: url('assets/alerocharca_zoyen.jpg');
+  background-image: url('assets/capillas.jpg');
   background-size: cover; background-position: center;
 }
 .exc-hero-overlay {
@@ -902,6 +902,182 @@ img.hero-logo-static {
   }
 }
 </style>
+<style id="zoyen-logo-hover-scene-style">
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo {
+  position: relative !important;
+  isolation: isolate !important;
+  overflow: visible !important;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .nav-emblem,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .nav-logo-text {
+  transition: opacity .34s ease, transform .34s ease, filter .34s ease !important;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .zoyen-logo-scene {
+  position: absolute;
+  left: -7px;
+  top: 50%;
+  width: 188px;
+  height: 70px;
+  transform: translateY(-50%) scale(.88);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  border-radius: 999px;
+  background: #050403;
+  border: 1px solid rgba(212, 119, 42, .62);
+  box-shadow: 0 14px 34px rgba(0,0,0,.42), inset 0 0 0 1px rgba(245,240,232,.07);
+  overflow: hidden;
+  z-index: 4;
+  transition: opacity .28s ease, transform .42s cubic-bezier(.2,.8,.2,1), visibility .28s ease;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .zoyen-logo-scene::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 76% 22%, rgba(212,119,42,.28), transparent 18%),
+    linear-gradient(180deg, rgba(255,255,255,.05), transparent 45%);
+  opacity: .92;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .zoyen-logo-scene svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .zoyen-logo-scene path,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .zoyen-logo-scene line {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 220;
+  stroke-dashoffset: 220;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-mountain { stroke: #f5f0e8; stroke-width: 2.2; }
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-lake { stroke: #c9a96e; stroke-width: 1.45; }
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-route { stroke: #d4772a; stroke-width: 1.85; }
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-sun { fill: #d4772a; opacity: 0; transform-origin: 143px 22px; }
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-person {
+  fill: none;
+  stroke: #f5f0e8;
+  stroke-width: 1.65;
+  stroke-linecap: round;
+  opacity: 0;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-letter {
+  position: absolute;
+  font-family: 'Sora', sans-serif;
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1;
+  color: #f5f0e8;
+  letter-spacing: 0;
+  opacity: 0;
+  text-shadow: 0 0 12px rgba(245,240,232,.45);
+  transform: translate(var(--from-x), var(--from-y)) rotate(0deg) scale(.9);
+  transition: transform .56s cubic-bezier(.2,.8,.2,1), opacity .24s ease, color .24s ease;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-letter:nth-of-type(2),
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-letter:nth-of-type(4) {
+  color: #d4772a;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-letter.l1 { --from-x: 64px; --from-y: 16px; --to-x: 48px; --to-y: 20px; --rot: -22deg; }
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-letter.l2 { --from-x: 79px; --from-y: 16px; --to-x: 75px; --to-y: 10px; --rot: 8deg; }
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-letter.l3 { --from-x: 94px; --from-y: 16px; --to-x: 103px; --to-y: 24px; --rot: 24deg; }
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-letter.l4 { --from-x: 109px; --from-y: 16px; --to-x: 73px; --to-y: 47px; --rot: -7deg; }
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-letter.l5 { --from-x: 124px; --from-y: 16px; --to-x: 118px; --to-y: 45px; --rot: 12deg; }
+body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-caption {
+  position: absolute;
+  left: 64px;
+  bottom: 8px;
+  font-family: 'Sora', sans-serif;
+  font-size: 6.5px;
+  font-weight: 800;
+  letter-spacing: .22em;
+  color: rgba(212,119,42,.92);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity .24s ease .16s, transform .34s ease .16s;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:hover .nav-emblem,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:focus-visible .nav-emblem,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo.zoyen-logo-scene-on .nav-emblem {
+  opacity: 0 !important;
+  transform: scale(.72) rotate(-10deg) !important;
+  filter: blur(1px) !important;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:hover .nav-logo-text,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:focus-visible .nav-logo-text,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo.zoyen-logo-scene-on .nav-logo-text {
+  opacity: 0 !important;
+  transform: translateX(-12px) scale(.88) !important;
+  filter: blur(1px) !important;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:hover .zoyen-logo-scene,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:focus-visible .zoyen-logo-scene,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo.zoyen-logo-scene-on .zoyen-logo-scene {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) scale(1);
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:hover .zoyen-logo-scene path,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:hover .zoyen-logo-scene line,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:focus-visible .zoyen-logo-scene path,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:focus-visible .zoyen-logo-scene line,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo.zoyen-logo-scene-on .zoyen-logo-scene path,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo.zoyen-logo-scene-on .zoyen-logo-scene line {
+  animation: zoyenSceneDraw .86s ease forwards;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:hover .scene-lake,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:focus-visible .scene-lake,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo.zoyen-logo-scene-on .scene-lake { animation-delay: .12s !important; }
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:hover .scene-route,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:focus-visible .scene-route,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo.zoyen-logo-scene-on .scene-route { animation-delay: .22s !important; }
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:hover .scene-sun,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:focus-visible .scene-sun,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo.zoyen-logo-scene-on .scene-sun {
+  opacity: 1;
+  animation: zoyenSceneSun .7s ease .2s both;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:hover .scene-person,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:focus-visible .scene-person,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo.zoyen-logo-scene-on .scene-person {
+  opacity: 1;
+  transition: opacity .2s ease .34s;
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:hover .scene-letter,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:focus-visible .scene-letter,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo.zoyen-logo-scene-on .scene-letter {
+  opacity: 1;
+  transform: translate(var(--to-x), var(--to-y)) rotate(var(--rot)) scale(1);
+}
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:hover .scene-caption,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo:focus-visible .scene-caption,
+body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo.zoyen-logo-scene-on .scene-caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+@keyframes zoyenSceneDraw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes zoyenSceneSun {
+  0% { opacity: 0; transform: scale(.2); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@media (max-width: 720px) {
+  body > nav:not(.breadcrumb):not(.mobile-drawer) .zoyen-logo-scene {
+    left: -6px;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+  }
+  body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-letter,
+  body > nav:not(.breadcrumb):not(.mobile-drawer) .scene-caption {
+    display: none;
+  }
+}
+</style>
 </head>
 <body>
 
@@ -943,12 +1119,12 @@ img.hero-logo-static {
   <div class="exc-hero-overlay"></div>
   <div class="exc-hero-content">
     <span class="exc-tag" data-i18n="exc_tag">EXCURSIÓN</span>
-    <h1 class="exc-hero-title">Alero <em>Charcamata</em></h1>
+    <h1 class="exc-hero-title">Capillas de <em>Mármol</em></h1>
   </div>
 </div>
 
 <style>
-.exc-hero-bg { background-image: url('assets/alerocharca_zoyen.jpg'); }
+.exc-hero-bg { background-image: url('assets/capillas.jpg'); }
 </style>
 
 <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -956,43 +1132,44 @@ img.hero-logo-static {
   <span>›</span>
   <a href="index.html#excursiones"><span data-i18n="bread_exc">Excursiones</span></a>
   <span>›</span>
-  <span style="color:var(--sand)">Alero Charcamata</span>
+  <span style="color:var(--sand)">Catedrales y Capillas de Mármol</span>
 </nav>
 
 <div class="exc-body">
   <main class="exc-main">
     
-<h2>Arte Rupestre intacto y puro. <em>Monumento Histrico Nacional</em></h2>
-<p><strong>Declarado Monumento Histrico Nacional</strong> por su belleza y gran cantidad de pinturas de alrededor de 7.000 años. Esta excursión nos obliga a dejar todas nuestras preocupaciones y viajar en el tiempo, metindonos poco a poco en la vida de campo, ya que transitamos inmersos en la estepa patagúnica por caminos desolados donde los guanacos son los principales protagonistas.</p>
-<p>El marco natural de la zona, sus caadones, el vadeo del ro Pinturas, el paisaje y el arte rupestre intacto y muy alejado de la civilización hacen que el viaje en el tiempo sea inevitable.</p>
-<p><strong>Para amantes de la naturaleza virgen, un tour privado y exclusivo. Úúnicos operadores autorizados para realizar esta visita.</strong></p>
-<div class="note"><strong>Dato curioso:</strong> Un ALERO es una especie de "cueva natural" de grandes dimensiones. CHARCAMATA tiene 80 metros de boca, 40 metros de alto y más de 20 metros de profundidad. En su interior, cientos de manos, guanacos, pumas, choiques y figuras geomtricas estampadas por nuestros antepasados hace miles de años.</div>
+<h2>Navegación 5 estrellas por el <em>Lago General Carrera</em></h2>
+<p>Esta propuesta tiene en el paisaje de montaa, cordillera de los andes, lagos, ros y cascadas un gran potencial y a todo eso se suma la navegación a las <strong>Catedrales y Capillas de Mármol</strong> que despierta la admiración de todo el mundo por su belleza.</p>
+<p>Desde 2023 realizamos la excursión <strong>gracias al trabajo conjunto con varios transportistas locales y al prestador turstico chileno "Carrera Tours"</strong>. La salida se hace desde Malln Grande, una localidad más cercana, <strong>reduciendo los tiempos de viaje en un 50%</strong> aproximadamente.</p>
+
+<div class="video-wrap">
+  <iframe src="https://www.youtube.com/embed/PtcfBSVt2zwplaysinline=1" allowfullscreen loading="lazy" title="Capillas de Mármol - Zoyen Turismo"></iframe>
+</div>
+
+<h2>Precios</h2>
+<p><strong>Temporada 2025/2026</strong> (vigencia hasta el 30 de abril 2026)</p>
+<ul>
+  <li><strong>USD 230 por persona</strong></li>
+  <li>10% de descuento para 2 o más personas</li>
+</ul>
+<div class="note">Si la navegación no se realiza por viento o muelle cerrado, se devuelven USD 50 o su equivalente en pesos.</div>
 
 <h3>Itinerario</h3>
 <ul>
-  <li>Salida desde Perito Moreno a las 09:00 hs.</li>
-  <li>60 km hasta la Estancia "La Posta de Los Toldos" (actual Portal Cañadón Pinturas).</li>
-  <li>30 km más por camino interno de campo, atravesando las estancias vecinas Las Buitreras y La Madrugada, adentrndonos en la historia de la ganadera de la regin.</li>
-  <li>Atravesaremos sus caadones y vadearemos el ro Pinturas con el vehículo hasta llegar al caadn "Charcamata".</li>
-  <li>Caminata sencilla de aproximadamente 1 hora hasta el "Alero Charcamata" (cueva de más de 80 mts de boca y 40 mts de altura).</li>
-  <li>Lugar imponente con gran variedad de pinturas rupestres de más de 5.000 años, conservadas en el mismo estado original. Interpretación de las pinturas con gua.</li>
-  <li>Tiempo libre de descanso y almuerzo al abrigo del imponente caadn.</li>
-  <li>Regreso a Perito Moreno. Llegada aproximada: 18:00 hs.</li>
+  <li>Salida a las 07:00 hs desde Perito Moreno y 07:45 hs desde Los Antiguos.</li>
+  <li>Trmites aduaneros al abrir (08:00 hs). Llevar DNI o pasaporte vigente.</li>
+  <li>Pasando a Chile Chico, 80 km a orillas del lago General Carrera hasta Malln Grande. Tiempo estimado de viaje desde la frontera: aprox. 2 horas.</li>
+  <li>Al llegar, algo caliente para beber y una colación. Luego, navegación en embarcaciones pequeas y descubiertas por aprox. 2 horas 30 minutos.</li>
+  <li>Finalizada la navegación, almuerzo de asado con acompaamiento y bebida incluida.</li>
+  <li>Regreso por el mismo camino. Llegada al origen al atardecer, pasaídas las 19:00 hs.</li>
 </ul>
 
-<h2>Precios</h2>
-<p><strong>Temporada 2025</strong> (vigencia hasta el 31 de diciembre)</p>
-<ul>
-  <li>En privado: $200.000 c/u</li>
-</ul>
-<p><strong>Temporada 2026</strong> (vigencia hasta el 30 de abril)</p>
-<ul>
-  <li>En privado: $220.000 c/u</li>
-</ul>
-<p><strong>Incluye:</strong> traslado en camioneta 44 con chofer/guía durante todo el recorrido y vianda para almuerzo sin bebida (llevar botella de agua).</p>
-
-<div class="video-wrap">
-  <iframe src="https://www.youtube.com/embed/Jp2HZ-Kla_8playsinline=1" allowfullscreen loading="lazy" title="Alero Charcamata - Zoyen Turismo"></iframe>
+<div class="warn">
+  <strong>⚠ Importante: Requisitos para Paso Fronterizo</strong><br><br>
+   DNI o Pasaporte actualizado y vigente. Sin l, no podrs cruzar.<br>
+   Menores con DNI y autorización si viajan con un solo progenitor.<br>
+   Prohibido transportar frutas, verduras, carnes crudas, embutidos, frutos secos sin vaco. Debers completar la declaración jurada del SAG de Chile.<br>
+   Pods llevar agua, mate, yerba, paquetes de galletitas cerrados.
 </div>
 
   </main>
@@ -1001,7 +1178,7 @@ img.hero-logo-static {
       <div class="exc-card-head"><span data-i18n="sidebar_book">Reservar</span></div>
       <div class="exc-card-body">
         <p><span data-i18n="sidebar_book_desc">Consultanos disponibilidad y precios por WhatsApp o reservá directamente.</span></p>
-        <a href="https://wa.me/5492974432855?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20la%20excursi%C3%B3n%20Alero%20Charcamata" class="btn-reservar" target="_blank" rel="noopener" data-i18n="sidebar_wa">Consultar por WhatsApp</a>
+        <a href="https://wa.me/5492974432855?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20la%20excursi%C3%B3n%20Catedrales%20y%20Capillas%20de%20M%C3%A1rmol" class="btn-reservar" target="_blank" rel="noopener" data-i18n="sidebar_wa">Consultar por WhatsApp</a>
       </div>
     </div>
     <div class="exc-card">
@@ -1171,11 +1348,11 @@ img.hero-logo-static {
       'detail_guia': 'Specialist guide included',
       'detail_vehiculo': '4x4 vehicle or minibus',
       'detail_cupos': 'Limited spots',
-      'exc_tag': 'Rock art',
-      'exc_title': 'Alero Charcamata',
-      'exc_eyebrow': 'Rock art  Cultural heritage',
-      'main_h2': 'Pristine rock art, <em>far from civilization</em>',
-      'sidebar_wa_msg': 'Hello! I want information about the Alero Charcamata excursion',
+      'exc_tag': 'Full day',
+      'exc_title': 'Marble Cathedrals & Chapels',
+      'exc_eyebrow': 'Lake General Carrera  Chile',
+      'main_h2': 'Navigation on <em>Lake General Carrera</em>',
+      'sidebar_wa_msg': 'Hello! I want information about the Capillas y Catedrales de Mármol excursion',
     },
     pt: {
       'nav_home': 'Incio',
@@ -1206,11 +1383,11 @@ img.hero-logo-static {
       'detail_guia': 'Guia especializado incluído',
       'detail_vehiculo': 'Veículo 4x4 ou minibus',
       'detail_cupos': 'Vagas limitadas',
-      'exc_tag': 'Arte rupestre',
-      'exc_title': 'Alero Charcamata',
-      'exc_eyebrow': 'Arte rupestre  Patrimônio cultural',
-      'main_h2': 'Arte rupestre intacta, <em>longe da civilizao</em>',
-      'sidebar_wa_msg': 'Olá! Quero informações sobre a excursão Alero Charcamata',
+      'exc_tag': 'Dia completo',
+      'exc_title': 'Catedrais e Capelas de Mrmore',
+      'exc_eyebrow': 'Lago General Carrera  Chile',
+      'main_h2': 'Navegao no <em>Lago General Carrera</em>',
+      'sidebar_wa_msg': 'Olá! Quero informações sobre a excursão Capelas de Mrmore',
     },
     ko: {
       'nav_home': 'í™ˆ',
@@ -1241,11 +1418,11 @@ img.hero-logo-static {
       'detail_guia': 'ì „ë¬¸ ê°€ë“œ í•¨',
       'detail_vehiculo': '4x4 ì°¨ëŸ‰ ëŠ” ë¯¸ë‹ˆë²„ìŠ¤',
       'detail_cupos': 'ì œí•œ ',
-      'exc_tag': 'ì•”í™”',
-      'exc_title': 'ì•Œë ˆë¡œ ì°¨ë¥´ì¹´ë§ˆíƒ€',
-      'exc_eyebrow': 'ì•”í™”  ë¬¸í™”ìœ ì‚°',
-      'main_h2': 'ë¬¸ëª…ì„œ ë©€ë¦¬ ë–¨ì–´ì§„ <em>ì‹œ ì•”í™”</em>',
-      'sidebar_wa_msg': 'ì•ˆë…•í•˜ì„¸ìš”! ì•Œë ˆë¡œ ì°¨ë¥´ì¹´ë§ˆíƒ€ íˆ¬ì–´ ì •ë³´ë¥¼ í•©ë‹ˆë‹¤',
+      'exc_tag': 'í•˜ë£¨ ì¢…',
+      'exc_title': 'ëŒ€ë¦¬ ì„±ë‹¹ & ì±„í”Œ',
+      'exc_eyebrow': 'í—¤ë„¤ëž„ ì¹´ë ˆ í˜¸ìˆ˜  ì¹ ë ˆ',
+      'main_h2': '<em>í—¤ë„¤ëž„ ì¹´ë ˆ í˜¸ìˆ˜</em> í•­í•´',
+      'sidebar_wa_msg': 'ì•ˆë…•í•˜ì„¸ìš”! ë§ˆë¸” ì±„í”Œ íˆ¬ì–´ ì •ë³´ë¥¼ í•©ë‹ˆë‹¤',
     },
   };
   var currentLang = localStorage.getItem('zoyen_lang') || 'es';
@@ -2711,9 +2888,28 @@ a.cta-btn-g[href*="wa.me"]:hover {
   display: block !important;
 }
 </style>
+<script id="zoyen-logo-hover-scene-script">
+(function(){
+  function initZoyenLogoScene(){
+    document.querySelectorAll('body > nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo').forEach(function(logo){
+      if (logo.querySelector('.zoyen-logo-scene')) return;
+      logo.insertAdjacentHTML('beforeend', "<div class=\"zoyen-logo-scene\" aria-hidden=\"true\">\n  <svg viewBox=\"0 0 188 70\" focusable=\"false\" aria-hidden=\"true\">\n    <circle class=\"scene-sun\" cx=\"145\" cy=\"20\" r=\"5\"></circle>\n    <path class=\"scene-mountain\" d=\"M28 45 L58 20 L78 39 L94 18 L132 45\"></path>\n    <path class=\"scene-mountain\" d=\"M59 21 L68 36 M94 19 L105 42\"></path>\n    <path class=\"scene-lake\" d=\"M38 51 C51 47 62 55 76 51 S102 47 118 51 S145 55 160 50\"></path>\n    <path class=\"scene-lake\" d=\"M50 58 C65 54 80 60 96 56 S129 52 150 57\"></path>\n    <path class=\"scene-route\" d=\"M29 61 C48 54 59 62 75 56 C91 50 101 53 116 44 C127 37 136 36 151 29\"></path>\n    <path class=\"scene-person\" d=\"M151 33 l4 8 m-4-8 l-5 7 m5-7 l-3-5 m3 5 l6-4\"></path>\n  </svg>\n  <span class=\"scene-letter l1\">Z</span>\n  <span class=\"scene-letter l2\">O</span>\n  <span class=\"scene-letter l3\">Y</span>\n  <span class=\"scene-letter l4\">E</span>\n  <span class=\"scene-letter l5\">N</span>\n  <span class=\"scene-caption\">EXCURSION</span>\n</div>");
+      logo.addEventListener('click', function(){
+        if (!window.matchMedia || !window.matchMedia('(hover: none)').matches) return;
+        logo.classList.add('zoyen-logo-scene-on');
+        window.clearTimeout(logo._zoyenLogoSceneTimer);
+        logo._zoyenLogoSceneTimer = window.setTimeout(function(){
+          logo.classList.remove('zoyen-logo-scene-on');
+        }, 1700);
+      });
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initZoyenLogoScene);
+  else initZoyenLogoScene();
+})();
+</script>
 </body>
 </html>
-
 
 
 
