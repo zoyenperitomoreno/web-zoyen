@@ -4036,6 +4036,7 @@ function vehicleSvg(icon) {
 function renderBookingVehicle(tourKey) {
   const tour = getTour(tourKey) || getTourConfig().patagonia_inedita;
   const vehicle = VEHICLE_OPTIONS[(tour && tour.vehicle) || 'renault_master'] || VEHICLE_OPTIONS.renault_master;
+  const seatCapacity = Math.max(1, Math.min(TOUR_SEAT_COUNT, parseInt((tour && tour.capacity) || vehicle.capacity, 10) || TOUR_SEAT_COUNT));
   const iconEl = document.getElementById('bookingVehicleIcon');
   const nameEl = document.getElementById('bookingVehicleName');
   const capEl = document.getElementById('bookingVehicleCapacity');
@@ -4044,6 +4045,12 @@ function renderBookingVehicle(tourKey) {
   if (nameEl) nameEl.textContent = vehicle.name;
   if (capEl) capEl.textContent = tour && tour.capacity ? tour.capacity : vehicle.capacity;
   if (labelEl) labelEl.textContent = vehicle.name;
+  for (let n=1; n<=TOUR_SEAT_COUNT; n++) {
+    const seat = document.getElementById('seat-'+n);
+    if (!seat) continue;
+    seat.style.visibility = n <= seatCapacity ? 'visible' : 'hidden';
+    seat.setAttribute('aria-hidden', n <= seatCapacity ? 'false' : 'true');
+  }
 }
 function applyTourConfigToBooking(config = getTourConfig()) {
   const sel = document.getElementById('sel-excursion');
@@ -4229,6 +4236,9 @@ function toggleSeat(el) {
   if (el.classList.contains('occupied') || el.classList.contains('driver')) return;
 
   const num = parseInt(el.dataset.num);
+  const tour = getTour(exc);
+  const capacity = Math.min(TOUR_SEAT_COUNT, parseInt((tour && tour.capacity) || TOUR_SEAT_COUNT,10));
+  if (num > capacity) return;
   if (el.classList.contains('selected')) {
     el.classList.remove('selected');
     selectedSeats = selectedSeats.filter(s => s !== num);
@@ -6848,7 +6858,6 @@ a.cta-btn-g[href*="wa.me"]:hover {
 </script>
 </body>
 </html>
-
 
 
 

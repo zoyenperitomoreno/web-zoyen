@@ -132,6 +132,20 @@ tr:hover td{background:rgba(212,119,42,.03)}
 .manual-seat input{display:none}
 .vehicle-admin-preview{display:flex;align-items:center;gap:10px;margin-top:8px;color:var(--muted);font-size:12px}
 .vehicle-icon{color:var(--ember)}
+.date-tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.weekday-row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 16px}
+.weekday-chip{display:flex;align-items:center;gap:5px;background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:6px 10px;font-size:11px;font-weight:600;cursor:pointer}
+.weekday-chip input{accent-color:var(--ember)}
+.crm-stats{display:grid;grid-template-columns:repeat(5,minmax(110px,1fr));gap:10px;margin-bottom:16px}
+.crm-stat{background:#fff;border:1px solid var(--border);border-radius:8px;padding:13px 15px}
+.crm-stat b{display:block;font-size:22px}.crm-stat span{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+.crm-toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:16px}
+.crm-toolbar input,.crm-toolbar select{padding:9px 12px;border:1.5px solid var(--border);border-radius:6px;font:13px 'Sora',sans-serif;background:#fff}
+.crm-toolbar input{flex:1;min-width:220px}
+.crm-modal{display:none;position:fixed;inset:0;z-index:1200;background:rgba(20,16,12,.72);align-items:center;justify-content:center;padding:20px}
+.crm-modal.open{display:flex}.crm-modal-box{background:#fff;width:min(720px,100%);max-height:90vh;overflow:auto;border-radius:10px;padding:24px;box-shadow:0 24px 70px rgba(0,0,0,.35)}
+.crm-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 14px}.crm-form-grid .wide{grid-column:1/-1}
+@media(max-width:900px){.crm-stats{grid-template-columns:repeat(2,1fr)}.date-tools,.crm-form-grid{grid-template-columns:1fr}.crm-form-grid .wide{grid-column:auto}}
 .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(60px);background:#1e1810;border:1px solid rgba(212,119,42,.4);color:#f5f0e8;padding:10px 24px;border-radius:6px;font-size:13px;font-weight:500;z-index:9999;transition:transform .3s;pointer-events:none;box-shadow:0 4px 20px rgba(0,0,0,.25)}
 .toast.show{transform:translateX(-50%) translateY(0)}
 .lent-toggle-row{display:flex;align-items:center;gap:10px;padding:10px 0}
@@ -291,17 +305,26 @@ img.hero-logo-static {
             <div class="field"><label>Capacidad mx.</label><input type="number" id="av-capacity" min="1" max="50"/></div>
             <div class="field">
               <label>Vehículo</label>
-              <select id="av-vehicle" onchange="updateVehicleAdminPreview()"></select>
+              <select id="av-vehicle" onchange="updateVehicleAdminPreview(true)"></select>
               <div class="vehicle-admin-preview"><span class="vehicle-icon" id="av-vehicle-icon"></span><span id="av-vehicle-name"></span></div>
             </div>
             <button class="btn btn-p" onclick="saveAvailabilityConfig()" style="margin-top:8px">Guardar configuración</button>
           </div>
           <div class="card">
             <div class="card-title">Fechas disponibles</div>
-            <div id="av-date-list" style="padding:4px 0 12px"></div>
-            <div style="display:flex;gap:10px;align-items:flex-end">
-              <div class="field" style="flex:1;margin:0"><label>Agregar fecha</label><input type="date" id="av-new-date"/></div>
-              <button class="btn btn-p btn-sm" onclick="addAvailabilityDate()" style="margin-bottom:0">Agregar</button>
+            <div id="av-date-list" style="padding:4px 0 16px"></div>
+            <div class="date-tools">
+              <div class="field"><label>Desde</label><input type="date" id="av-range-start"/></div>
+              <div class="field"><label>Hasta</label><input type="date" id="av-range-end"/></div>
+            </div>
+            <label style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Días de salida</label>
+            <div class="weekday-row" id="av-weekdays">
+              <label class="weekday-chip"><input type="checkbox" value="1" checked> Lun</label><label class="weekday-chip"><input type="checkbox" value="2" checked> Mar</label><label class="weekday-chip"><input type="checkbox" value="3" checked> Mié</label><label class="weekday-chip"><input type="checkbox" value="4" checked> Jue</label><label class="weekday-chip"><input type="checkbox" value="5" checked> Vie</label><label class="weekday-chip"><input type="checkbox" value="6" checked> Sáb</label><label class="weekday-chip"><input type="checkbox" value="0" checked> Dom</label>
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <button class="btn btn-p" onclick="addAvailabilityRange()">Agregar rango</button>
+              <button class="btn btn-outline" onclick="setNextFourWeekends()">Próximos 4 sábados</button>
+              <button class="btn btn-outline" onclick="clearFutureDates()">Quitar fechas futuras</button>
             </div>
           </div>
         </div>
@@ -321,16 +344,21 @@ img.hero-logo-static {
         </div>
         <!-- Reservas -->
         <div class="sec" id="sec-reservas">
-          <div class="sec-title">Reservas</div>
+          <div class="sec-title">Reservas · CRM</div>
+          <div class="crm-stats" id="crm-stats"></div>
           <div class="card">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
-              <select id="res-filter" onchange="buildReservas()" style="padding:7px 12px;border:1.5px solid var(--border);border-radius:6px;font-size:13px;font-family:'Sora',sans-serif">
+            <div class="crm-toolbar">
+              <input id="res-search" type="search" placeholder="Buscar por nombre, teléfono, email o excursión…" oninput="buildReservas()">
+              <select id="res-filter" onchange="buildReservas()">
                 <option value="all">Todas</option>
+                <option value="consulta">Consulta</option>
                 <option value="pendiente">Pendiente</option>
                 <option value="pago_iniciado">Pago iniciado</option>
                 <option value="confirmada">Confirmada</option>
+                <option value="completada">Completada</option>
                 <option value="cancelada">Cancelada</option>
               </select>
+              <button class="btn btn-p" onclick="openReservaEditor()">+ Nueva reserva</button>
             </div>
             <div style="overflow-x:auto">
               <table><thead><tr><th>#</th><th>Nombre</th><th>Contacto</th><th>Excursión</th><th>Fecha</th><th>Pers.</th><th>Asientos</th><th>Seña</th><th>Estado</th><th>Último intento</th><th>Acciones</th></tr></thead>
@@ -343,6 +371,23 @@ img.hero-logo-static {
   </div>
 </div>
 
+<div class="crm-modal" id="crm-modal" onclick="if(event.target===this)closeReservaEditor()">
+  <div class="crm-modal-box">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px"><div class="card-title" style="margin:0;border:0">Ficha de reserva</div><button class="btn btn-outline btn-sm" onclick="closeReservaEditor()">Cerrar</button></div>
+    <input type="hidden" id="crm-index" value="-1">
+    <div class="crm-form-grid">
+      <div class="field"><label>Nombre</label><input id="crm-nombre"></div><div class="field"><label>Estado</label><select id="crm-estado"><option value="consulta">Consulta</option><option value="pendiente">Pendiente</option><option value="pago_iniciado">Pago iniciado</option><option value="confirmada">Confirmada</option><option value="completada">Completada</option><option value="cancelada">Cancelada</option></select></div>
+      <div class="field"><label>Teléfono</label><input id="crm-tel"></div><div class="field"><label>Email</label><input id="crm-email" type="email"></div>
+      <div class="field"><label>Excursión</label><input id="crm-excursion"></div><div class="field"><label>Clave del tour</label><select id="crm-excursion-key"></select></div>
+      <div class="field"><label>Fecha</label><input id="crm-fecha" type="date"></div><div class="field"><label>Próximo seguimiento</label><input id="crm-followup" type="date"></div>
+      <div class="field"><label>Personas</label><input id="crm-personas" type="number" min="1" value="1"></div><div class="field"><label>Asientos</label><input id="crm-asientos" placeholder="Ej.: 3, 4"></div>
+      <div class="field"><label>Seña ($)</label><input id="crm-senia" type="number" min="0" value="0"></div><div class="field"><label>Último contacto</label><input id="crm-ultimo" placeholder="Ej.: WhatsApp 18/06"></div>
+      <div class="field wide"><label>Notas internas</label><textarea id="crm-notas" placeholder="Preferencias, dudas, próximos pasos…"></textarea></div>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:flex-end"><button class="btn btn-outline" onclick="closeReservaEditor()">Cancelar</button><button class="btn btn-p" onclick="saveReservaEditor()">Guardar ficha</button></div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
@@ -350,30 +395,39 @@ const CREDS = { user:'zoyen', pass:'patagonia2025' };
 let loggedIn = false;
 
 // -- Storage helpers (same as index.html) ----------------------
+const ZYT_RESERVAS_KEY = 'zyt_reservas';
+const ZYT_TOUR_CONFIG_KEY = 'zyt_tour_config';
 function readReservas() {
   try {
-    const raw = sessionStorage.getItem('zoyen_reservas') || localStorage.getItem('zoyen_reservas');
-    return raw ? JSON.parse(raw) : [];
+    const raw = localStorage.getItem(ZYT_RESERVAS_KEY) || sessionStorage.getItem(ZYT_RESERVAS_KEY) || localStorage.getItem('zoyen_reservas') || sessionStorage.getItem('zoyen_reservas');
+    const arr = raw ? JSON.parse(raw) : [];
+    if(raw && !localStorage.getItem(ZYT_RESERVAS_KEY)) writeReservas(arr);
+    return Array.isArray(arr) ? arr : [];
   } catch(e) { return []; }
 }
 function writeReservas(arr) {
   const s = JSON.stringify(arr);
-  try { sessionStorage.setItem('zoyen_reservas', s); } catch(e) {}
-  try { localStorage.setItem('zoyen_reservas', s); } catch(e) {}
+  try { sessionStorage.setItem(ZYT_RESERVAS_KEY, s); } catch(e) {}
+  try { localStorage.setItem(ZYT_RESERVAS_KEY, s); } catch(e) {}
 }
 function getTourConfig() {
   try {
-    const raw = localStorage.getItem('zoyen_tour_config');
-    return raw ? JSON.parse(raw) : defaultTourConfig();
+    const raw = localStorage.getItem(ZYT_TOUR_CONFIG_KEY) || localStorage.getItem('zoyen_tour_config');
+    const saved = raw ? JSON.parse(raw) : {};
+    const cfg = {...defaultTourConfig(), ...saved};
+    if(saved.inedita && !saved.patagonia_inedita) cfg.patagonia_inedita = saved.inedita;
+    if(saved.carretera && !saved.carretera_austral) cfg.carretera_austral = saved.carretera;
+    delete cfg.inedita; delete cfg.carretera;
+    return cfg;
   } catch(e) { return defaultTourConfig(); }
 }
 function saveTourConfig(cfg) {
-  try { localStorage.setItem('zoyen_tour_config', JSON.stringify(cfg)); } catch(e) {}
+  try { localStorage.setItem(ZYT_TOUR_CONFIG_KEY, JSON.stringify(cfg)); } catch(e) {}
 }
 function defaultTourConfig() {
   return {
-    inedita: { name:'Patagonia Inédita', duration:'6 días / 5 noches', precio:0, capacity:16, vehicle:'renault_master', dates:[], blockedSeats:{} },
-    carretera: { name:'Carretera Austral', duration:'7 días / 6 noches', precio:0, capacity:16, vehicle:'renault_master', dates:[], blockedSeats:{} }
+    patagonia_inedita: { name:'Patagonia Inédita', duration:'6 días / 5 noches', precio:185000, capacity:16, vehicle:'renault_master', dates:['2026-07-12','2026-08-16','2026-09-20'], blockedSeats:{} },
+    carretera_austral: { name:'Carretera Austral', duration:'8 días / 7 noches', precio:210000, capacity:16, vehicle:'renault_master', dates:['2026-07-26','2026-09-06','2026-10-18'], blockedSeats:{} }
   };
 }
 
@@ -444,10 +498,10 @@ const excData = [
 
 const VEHICLE_OPTIONS = {
   renault_master:    { name:'Renault Master',    icon:'van',   capacity:16 },
-  mercedes_sprinter: { name:'Mercedes Sprinter', icon:'van',   capacity:20 },
-  toyota_hilux:      { name:'Toyota Hilux',      icon:'4x4',   capacity:6  },
-  ford_transit:      { name:'Ford Transit',      icon:'van',   capacity:15 },
-  minibus:           { name:'Minibs',           icon:'bus',   capacity:30 },
+  mercedes_sprinter: { name:'Mercedes-Benz Sprinter', icon:'van', capacity:19 },
+  iveco_daily:       { name:'Iveco Daily Minibus', icon:'bus', capacity:19 },
+  toyota_hiace:      { name:'Toyota Hiace', icon:'van', capacity:12 },
+  ford_transit:      { name:'Ford Transit', icon:'van', capacity:17 },
 };
 
 function vehicleSvg(icon) {
@@ -484,8 +538,8 @@ function buildDashboard() {
 }
 
 function badge(e) {
-  const m = { pendiente:'by', pago_iniciado:'bo', confirmada:'bg', cancelada:'br' };
-  const labels = { pendiente:'pendiente', pago_iniciado:'pago iniciado', confirmada:'confirmada', cancelada:'cancelada' };
+  const m = { consulta:'bo', pendiente:'by', pago_iniciado:'bo', confirmada:'bg', completada:'bg', cancelada:'br' };
+  const labels = { consulta:'consulta', pendiente:'pendiente', pago_iniciado:'pago iniciado', confirmada:'confirmada', completada:'completada', cancelada:'cancelada' };
   return `<span class="badge ${m[e]||'by'}">${labels[e]||e}</span>`;
 }
 
@@ -595,9 +649,10 @@ function refreshAvailabilityAdmin() {
   if(!t || !t.dates || !t.dates.length) { list.innerHTML='<span class="empty">Sin fechas cargadas.</span>'; return; }
   list.innerHTML = t.dates.slice().sort().map(d => `<span class="date-pill">${new Date(d+'T12:00:00').toLocaleDateString('es-AR',{day:'2-digit',month:'long',year:'numeric'})}<button onclick="removeAvailabilityDate('${key}','${d}')"></button></span>`).join('');
 }
-function updateVehicleAdminPreview() {
+function updateVehicleAdminPreview(syncCapacity = false) {
   const key = document.getElementById('av-vehicle').value || 'renault_master';
   const v = VEHICLE_OPTIONS[key] || VEHICLE_OPTIONS.renault_master;
+  if(syncCapacity) document.getElementById('av-capacity').value = Math.min(16, v.capacity);
   document.getElementById('av-vehicle-icon').innerHTML = vehicleSvg(v.icon);
   document.getElementById('av-vehicle-name').textContent = v.name + ' - capacidad sugerida ' + v.capacity;
 }
@@ -623,11 +678,48 @@ function addAvailabilityDate() {
   refreshBlockDateOptions();
   showToast('Fecha agregada.');
 }
+function localDateValue(date) {
+  const y = date.getFullYear(), m = String(date.getMonth()+1).padStart(2,'0'), d = String(date.getDate()).padStart(2,'0');
+  return `${y}-${m}-${d}`;
+}
+function addAvailabilityRange() {
+  const cfg = getTourConfigAdmin();
+  const key = document.getElementById('av-tour').value;
+  const startValue = document.getElementById('av-range-start').value;
+  const endValue = document.getElementById('av-range-end').value || startValue;
+  const weekdays = Array.from(document.querySelectorAll('#av-weekdays input:checked')).map(x=>Number(x.value));
+  if(!key || !startValue || !endValue || !weekdays.length) { showToast('Elegí el rango y al menos un día.'); return; }
+  const start = new Date(startValue+'T12:00:00'), end = new Date(endValue+'T12:00:00');
+  if(end < start) { showToast('La fecha final debe ser posterior a la inicial.'); return; }
+  const dates = new Set(cfg[key].dates || []);
+  let added = 0;
+  for(let cur=new Date(start); cur<=end; cur.setDate(cur.getDate()+1)) {
+    if(weekdays.includes(cur.getDay())) { const val=localDateValue(cur); if(!dates.has(val)) added++; dates.add(val); }
+  }
+  cfg[key].dates = Array.from(dates).sort();
+  saveTourConfig(cfg); refreshAvailabilityAdmin(); refreshBlockDateOptions();
+  showToast(added ? `${added} fecha${added===1?'':'s'} agregada${added===1?'':'s'}.` : 'Esas fechas ya estaban cargadas.');
+}
+function setNextFourWeekends() {
+  const start = new Date(); start.setHours(12,0,0,0);
+  while(start.getDay()!==6) start.setDate(start.getDate()+1);
+  const end = new Date(start); end.setDate(end.getDate()+21);
+  document.getElementById('av-range-start').value = localDateValue(start);
+  document.getElementById('av-range-end').value = localDateValue(end);
+  document.querySelectorAll('#av-weekdays input').forEach(x=>x.checked=Number(x.value)===6);
+  addAvailabilityRange();
+}
+function clearFutureDates() {
+  const cfg = getTourConfigAdmin(), key = document.getElementById('av-tour').value, today = localDateValue(new Date());
+  cfg[key].dates = (cfg[key].dates||[]).filter(d=>d<today);
+  saveTourConfig(cfg); refreshAvailabilityAdmin(); refreshBlockDateOptions(); showToast('Fechas futuras eliminadas.');
+}
 function removeAvailabilityDate(key, d) {
   const cfg = getTourConfigAdmin();
   cfg[key].dates = (cfg[key].dates||[]).filter(x=>x!==d);
   saveTourConfig(cfg);
   refreshAvailabilityAdmin();
+  refreshBlockDateOptions();
   showToast('Fecha eliminada.');
 }
 
@@ -650,7 +742,8 @@ function renderManualSeatGrid() {
   if(!key || !date) { grid.innerHTML='<div class="empty">Carg una fecha para bloquear asientos.</div>'; return; }
   const manual = ((cfg[key].blockedSeats||{})[date]||[]).map(Number);
   const reserved = reservedSeatsForAdmin(key, date);
-  grid.innerHTML = Array.from({length:16},(_,i)=>i+1).map(n => {
+  const capacity = Math.max(1, Math.min(16, parseInt(cfg[key].capacity,10) || 16));
+  grid.innerHTML = Array.from({length:capacity},(_,i)=>i+1).map(n => {
     const isReserved = reserved.includes(n);
     return `<label class="manual-seat ${isReserved ? 'reserved' : ''}">
       <input type="checkbox" value="${n}" ${manual.includes(n) ? 'checked' : ''} ${isReserved ? 'disabled' : ''}>
@@ -684,13 +777,19 @@ function clearManualSeats() {
 function buildReservas() {
   const reservas = readReservas();
   const filter = document.getElementById('res-filter').value;
-  const list = filter==='all' ? reservas : reservas.filter(r=>r.estado===filter);
+  const q = (document.getElementById('res-search').value||'').trim().toLowerCase();
+  const list = reservas.filter(r => (filter==='all' || r.estado===filter) && (!q || [r.nombre,r.tel,r.email,r.excursion,r.notas].join(' ').toLowerCase().includes(q)));
+  const counts = {consulta:0,pendiente:0,pago_iniciado:0,confirmada:0,completada:0};
+  reservas.forEach(r=>{ if(counts[r.estado]!==undefined) counts[r.estado]++; });
+  document.getElementById('crm-stats').innerHTML = [
+    ['Consultas',counts.consulta],['Pendientes',counts.pendiente],['Pago iniciado',counts.pago_iniciado],['Confirmadas',counts.confirmada],['Completadas',counts.completada]
+  ].map(x=>`<div class="crm-stat"><b>${x[1]}</b><span>${x[0]}</span></div>`).join('');
   const tb = document.getElementById('r-tbody');
   if(!list.length) { tb.innerHTML=`<tr><td colspan="11" class="empty">${reservas.length ? 'Sin resultados para ese filtro.' : 'Sin reservas aún.'}</td></tr>`; return; }
   tb.innerHTML = list.slice().reverse().map(r => {
     const idx = reservas.indexOf(r);
     const waMsg = encodeURIComponent('Hola '+r.nombre+', te escribimos desde Zoyen Turismo. Vimos que iniciaste una reserva para '+r.excursion+' y qued sin confirmar. Quers que te ayudemos a completarla');
-    const waUrl = 'https://wa.me/'+r.tel.replace(/\D/g,'')+'text='+waMsg;
+    const waUrl = 'https://wa.me/'+String(r.tel||'').replace(/\D/g,'')+'?text='+waMsg;
     const puedeRetarget = (r.estado==='pendiente'||r.estado==='pago_iniciado') && r.tel;
     return `<tr>
       <td style="color:var(--stone)">#${idx+1}</td>
@@ -702,14 +801,42 @@ function buildReservas() {
       <td style="text-align:center">${r.asientos||''}</td>
       <td style="color:var(--ember);font-weight:600">$${(r.senia||0).toLocaleString('es-AR')}</td>
       <td>${badge(r.estado)}</td>
-      <td style="font-size:11px;color:var(--muted)">${r.ultimoIntento||r.creado||''}</td>
+      <td style="font-size:11px;color:var(--muted)">${r.followUp ? 'Seguimiento: '+r.followUp : (r.ultimoIntento||r.creado||'')}</td>
       <td><div style="display:flex;gap:5px;flex-wrap:wrap;align-items:center">
+        <button class="btn btn-outline btn-sm" onclick="openReservaEditor(${idx})">Ficha</button>
         ${puedeRetarget ? `<a href="${waUrl}" target="_blank" class="btn btn-wa btn-sm">WA</a>` : ''}
         ${r.estado !== 'confirmada' ? `<button class="btn btn-p btn-sm" onclick="cambiarEstado(${idx},'confirmada')"></button>` : ''}
         ${r.estado !== 'cancelada' ? `<button class="btn btn-d btn-sm" onclick="cambiarEstado(${idx},'cancelada')"></button>` : ''}
       </div></td>
     </tr>`;
   }).join('');
+}
+function openReservaEditor(idx=-1) {
+  const reservas = readReservas(), r = idx>=0 ? reservas[idx] : {};
+  const cfg = getTourConfigAdmin();
+  document.getElementById('crm-index').value = idx;
+  document.getElementById('crm-excursion-key').innerHTML = '<option value="">Sin asociar</option>'+Object.keys(cfg).map(k=>`<option value="${k}">${cfg[k].name||k}</option>`).join('');
+  const values = {nombre:r.nombre||'',estado:r.estado||'consulta',tel:r.tel||'',email:r.email||'',excursion:r.excursion||'',fecha:r.fecha||'',followup:r.followUp||'',personas:r.personas||1,asientos:r.asientos||'',senia:r.senia||0,ultimo:r.ultimoIntento||'',notas:r.notas||''};
+  Object.keys(values).forEach(k=>{ const el=document.getElementById('crm-'+k); if(el) el.value=values[k]; });
+  document.getElementById('crm-excursion-key').value = r.excursionKey||'';
+  document.getElementById('crm-modal').classList.add('open');
+}
+function closeReservaEditor() { document.getElementById('crm-modal').classList.remove('open'); }
+function saveReservaEditor() {
+  const reservas = readReservas(), idx = parseInt(document.getElementById('crm-index').value,10), now = new Date().toLocaleString('es-AR');
+  const prev = idx>=0 ? reservas[idx] : {};
+  const r = {...prev,
+    nombre:document.getElementById('crm-nombre').value.trim(), estado:document.getElementById('crm-estado').value,
+    tel:document.getElementById('crm-tel').value.trim(), email:document.getElementById('crm-email').value.trim(),
+    excursion:document.getElementById('crm-excursion').value.trim(), excursionKey:document.getElementById('crm-excursion-key').value,
+    fecha:document.getElementById('crm-fecha').value, followUp:document.getElementById('crm-followup').value,
+    personas:parseInt(document.getElementById('crm-personas').value,10)||1, asientos:document.getElementById('crm-asientos').value.trim(),
+    senia:parseInt(document.getElementById('crm-senia').value,10)||0, ultimoIntento:document.getElementById('crm-ultimo').value.trim()||now,
+    notas:document.getElementById('crm-notas').value.trim(), creado:prev.creado||now
+  };
+  if(!r.nombre) { showToast('Ingresá el nombre de la persona.'); return; }
+  if(idx>=0) reservas[idx]=r; else reservas.push(r);
+  writeReservas(reservas); closeReservaEditor(); buildReservas(); buildDashboard(); showToast('Ficha guardada.');
 }
 function cambiarEstado(idx, estado) {
   const reservas = readReservas();
@@ -1936,13 +2063,6 @@ a.cta-btn-g[href*="wa.me"]:hover {
 </style>
 </body>
 </html>
-
-
-
-
-
-
-
 
 
 
