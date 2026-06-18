@@ -76,9 +76,11 @@
 /* -- Panel layout (full page, no iframe) -- */
 html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;font-size:15px;color:var(--text);background:var(--bg)}
 .panel{display:flex;flex-direction:column;height:100vh}
-.topbar{background:var(--topbar);color:var(--cream);display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:56px;flex-shrink:0;border-bottom:1px solid rgba(212,119,42,.18)}
-.topbar-brand{font-family:'Sora',sans-serif;font-size:18px;font-weight:700;letter-spacing:.1em;color:#f5f0e8}
+.topbar{background:var(--topbar);color:var(--cream);display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:68px;flex-shrink:0;border-bottom:1px solid rgba(212,119,42,.18)}
+.topbar-brand{font-family:'Sora',sans-serif;font-size:18px;font-weight:700;letter-spacing:.1em;color:#f5f0e8;display:flex;align-items:center;gap:12px}
 .topbar-brand span{color:var(--ember)}
+.topbar-logo{width:46px;height:46px;object-fit:contain;display:block;border-radius:50%}
+.topbar-brand-copy{display:flex;flex-direction:column;line-height:1.05}.topbar-brand-copy small{font-size:9px;color:rgba(245,240,232,.55);letter-spacing:.22em;margin-top:5px;text-transform:uppercase}
 .btn-logout{background:rgba(212,119,42,.18);border:1px solid rgba(212,119,42,.45);color:var(--ember);padding:6px 14px;border-radius:4px;font-size:12px;font-weight:600;letter-spacing:.12em;cursor:pointer;font-family:'Sora',sans-serif;text-transform:uppercase;transition:background .2s}
 .btn-logout:hover{background:rgba(212,119,42,.32)}
 .layout{display:flex;flex:1;overflow:hidden}
@@ -86,7 +88,7 @@ html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;font-size:15
 .nav-item{display:flex;align-items:center;gap:10px;padding:11px 20px;color:rgba(245,240,232,.6);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:all .15s;border-left:2px solid transparent}
 .nav-item:hover{color:var(--cream);background:rgba(255,255,255,.05)}
 .nav-item.active{color:var(--ember);border-left-color:var(--ember);background:rgba(212,119,42,.08)}
-.nav-icon{font-size:15px;width:18px;text-align:center}
+.nav-icon{width:19px;height:19px;display:grid;place-items:center;flex:0 0 19px}.nav-icon svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .main{flex:1;overflow-y:auto;padding:28px 32px}
 .sec{display:none}.sec.active{display:block}
 .sec-title{font-family:'Sora',sans-serif;font-size:26px;font-weight:700;letter-spacing:.04em;color:var(--text);margin-bottom:24px;padding-bottom:16px;border-bottom:2px solid var(--border)}
@@ -145,7 +147,12 @@ tr:hover td{background:rgba(212,119,42,.03)}
 .crm-modal{display:none;position:fixed;inset:0;z-index:1200;background:rgba(20,16,12,.72);align-items:center;justify-content:center;padding:20px}
 .crm-modal.open{display:flex}.crm-modal-box{background:#fff;width:min(720px,100%);max-height:90vh;overflow:auto;border-radius:10px;padding:24px;box-shadow:0 24px 70px rgba(0,0,0,.35)}
 .crm-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 14px}.crm-form-grid .wide{grid-column:1/-1}
+.dashboard-hero{position:relative;overflow:hidden;background:linear-gradient(125deg,#231c14 0%,#342517 58%,#57341b 100%);color:#fff;border-radius:14px;padding:28px 30px;margin-bottom:20px;box-shadow:0 12px 35px rgba(35,28,20,.16)}
+.dashboard-hero:after{content:"";position:absolute;width:230px;height:230px;border:1px solid rgba(212,119,42,.25);border-radius:50%;right:-70px;top:-95px;box-shadow:0 0 0 34px rgba(212,119,42,.06)}
+.dashboard-kicker{font-size:10px;text-transform:uppercase;letter-spacing:.24em;color:#e69a59;font-weight:700}.dashboard-hero h1{font-size:27px;margin:8px 0 6px}.dashboard-hero p{color:rgba(255,255,255,.68);font-size:13px;max-width:620px;line-height:1.55}
+.quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:22px}.quick-card{appearance:none;text-align:left;background:#fff;border:1px solid var(--border);border-radius:10px;padding:17px 18px;cursor:pointer;transition:.18s;font-family:'Sora',sans-serif}.quick-card:hover{transform:translateY(-2px);border-color:rgba(212,119,42,.55);box-shadow:0 8px 22px rgba(30,24,16,.08)}.quick-card b{display:block;font-size:14px;margin-bottom:5px}.quick-card span{font-size:11px;color:var(--muted);line-height:1.4}
 @media(max-width:900px){.crm-stats{grid-template-columns:repeat(2,1fr)}.date-tools,.crm-form-grid{grid-template-columns:1fr}.crm-form-grid .wide{grid-column:auto}}
+@media(max-width:760px){.topbar{padding:0 14px}.topbar-brand-copy small{display:none}.sidebar{width:64px}.nav-item{padding:13px 21px;font-size:0}.main{padding:22px 16px}.quick-grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}
 .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(60px);background:#1e1810;border:1px solid rgba(212,119,42,.4);color:#f5f0e8;padding:10px 24px;border-radius:6px;font-size:13px;font-weight:500;z-index:9999;transition:transform .3s;pointer-events:none;box-shadow:0 4px 20px rgba(0,0,0,.25)}
 .toast.show{transform:translateX(-50%) translateY(0)}
 .lent-toggle-row{display:flex;align-items:center;gap:10px;padding:10px 0}
@@ -239,22 +246,27 @@ img.hero-logo-static {
 <div id="panelWrap" style="display:none;height:100vh">
   <div class="panel">
     <div class="topbar">
-      <div class="topbar-brand">ZOYEN <span>TURISMO</span>  Admin</div>
+      <div class="topbar-brand"><img class="topbar-logo" src="assets/logo-zoyen-circular-static.png" alt="Logo Zoyen"><div class="topbar-brand-copy"><div>ZOYEN <span>TURISMO</span></div><small>Panel de administración</small></div></div>
       <button class="btn-logout" id="btnLogout">Cerrar sesión</button>
     </div>
     <div class="layout">
       <nav class="sidebar">
-        <div class="nav-item active" data-sec="dashboard"><span class="nav-icon">ðŸ“Š</span>Dashboard</div>
-        <div class="nav-item" data-sec="slides"><span class="nav-icon">ðŸ–¼</span>Banners</div>
-        <div class="nav-item" data-sec="excursiones"><span class="nav-icon">ðŸ—º</span>Excursiones</div>
-        <div class="nav-item" data-sec="disponibilidad"><span class="nav-icon">ðŸ“…</span>Disponibilidad</div>
-        <div class="nav-item" data-sec="bloqueo"><span class="nav-icon">ðŸ”’</span>Asientos</div>
-        <div class="nav-item" data-sec="reservas"><span class="nav-icon">ðŸ“‹</span>Reservas</div>
+        <div class="nav-item active" data-sec="dashboard"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></span>Dashboard</div>
+        <div class="nav-item" data-sec="reservas"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M4 19V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M8 7h8M8 11h8M8 15h5"/></svg></span>Reservas CRM</div>
+        <div class="nav-item" data-sec="disponibilidad"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg></span>Fechas</div>
+        <div class="nav-item" data-sec="bloqueo"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>Asientos</div>
+        <div class="nav-item" data-sec="excursiones"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3Z"/><path d="M9 3v15M15 6v15"/></svg></span>Excursiones</div>
+        <div class="nav-item" data-sec="slides"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9" r="1.5"/><path d="m21 15-5-5L5 20"/></svg></span>Banners</div>
       </nav>
       <main class="main" id="mainContent">
         <!-- Dashboard -->
         <div class="sec active" id="sec-dashboard">
-          <div class="sec-title">Dashboard</div>
+          <div class="dashboard-hero"><div class="dashboard-kicker">Centro de operaciones</div><h1>Gestión de reservas</h1><p>Reservas, salidas, vehículos y asientos en un solo lugar. Empezá por una acción rápida o revisá el estado general.</p></div>
+          <div class="quick-grid">
+            <button class="quick-card" onclick="activateSection('reservas')"><b>Abrir CRM de reservas →</b><span>Buscar pasajeros, registrar contactos y actualizar estados.</span></button>
+            <button class="quick-card" onclick="activateSection('disponibilidad')"><b>Configurar fechas →</b><span>Crear salidas por rango y asignar el vehículo.</span></button>
+            <button class="quick-card" onclick="activateSection('bloqueo')"><b>Gestionar asientos →</b><span>Bloquear o liberar ubicaciones por cada salida.</span></button>
+          </div>
           <div class="stats">
             <div class="stat"><div class="stat-val" id="d-total"></div><div class="stat-lbl">Total reservas</div></div>
             <div class="stat"><div class="stat-val" id="d-pend"></div><div class="stat-lbl">Pendientes</div></div>
@@ -262,7 +274,7 @@ img.hero-logo-static {
             <div class="stat"><div class="stat-val" id="d-abandon"></div><div class="stat-lbl">Abandonos</div></div>
           </div>
           <div class="card">
-            <div class="card-title">Últimás reservas</div>
+            <div class="card-title">Últimas reservas</div>
             <table><thead><tr><th>#</th><th>Nombre</th><th>Excursión</th><th>Fecha</th><th>Personas</th><th>Seña</th><th>Estado</th></tr></thead>
             <tbody id="d-tbody"></tbody></table>
           </div>
@@ -467,13 +479,14 @@ document.getElementById('btnLogout').onclick = () => {
 };
 
 // -- Nav --------------------------------------------------------
+function activateSection(sec) {
+  document.querySelectorAll('.nav-item').forEach(i => i.classList.toggle('active', i.dataset.sec === sec));
+  document.querySelectorAll('.sec').forEach(s => s.classList.toggle('active', s.id === 'sec-' + sec));
+  document.getElementById('mainContent').scrollTop = 0;
+  if(sec === 'reservas') buildReservas();
+}
 document.querySelectorAll('.nav-item').forEach(item => {
-  item.addEventListener('click', () => {
-    document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
-    item.classList.add('active');
-    document.querySelectorAll('.sec').forEach(s => s.classList.remove('active'));
-    document.getElementById('sec-' + item.dataset.sec).classList.add('active');
-  });
+  item.addEventListener('click', () => activateSection(item.dataset.sec));
 });
 
 // -- Panel init -------------------------------------------------
@@ -739,7 +752,7 @@ function renderManualSeatGrid() {
   const key = document.getElementById('blk-tour').value;
   const date = document.getElementById('blk-date').value;
   const grid = document.getElementById('manual-seat-grid');
-  if(!key || !date) { grid.innerHTML='<div class="empty">Carg una fecha para bloquear asientos.</div>'; return; }
+  if(!key || !date) { grid.innerHTML='<div class="empty">Cargá una fecha para bloquear asientos.</div>'; return; }
   const manual = ((cfg[key].blockedSeats||{})[date]||[]).map(Number);
   const reserved = reservedSeatsForAdmin(key, date);
   const capacity = Math.max(1, Math.min(16, parseInt(cfg[key].capacity,10) || 16));
@@ -788,7 +801,7 @@ function buildReservas() {
   if(!list.length) { tb.innerHTML=`<tr><td colspan="11" class="empty">${reservas.length ? 'Sin resultados para ese filtro.' : 'Sin reservas aún.'}</td></tr>`; return; }
   tb.innerHTML = list.slice().reverse().map(r => {
     const idx = reservas.indexOf(r);
-    const waMsg = encodeURIComponent('Hola '+r.nombre+', te escribimos desde Zoyen Turismo. Vimos que iniciaste una reserva para '+r.excursion+' y qued sin confirmar. Quers que te ayudemos a completarla');
+    const waMsg = encodeURIComponent('Hola '+r.nombre+', te escribimos desde Zoyen Turismo. Vimos que iniciaste una reserva para '+r.excursion+' y quedó sin confirmar. ¿Querés que te ayudemos a completarla?');
     const waUrl = 'https://wa.me/'+String(r.tel||'').replace(/\D/g,'')+'?text='+waMsg;
     const puedeRetarget = (r.estado==='pendiente'||r.estado==='pago_iniciado') && r.tel;
     return `<tr>
@@ -2063,9 +2076,6 @@ a.cta-btn-g[href*="wa.me"]:hover {
 </style>
 </body>
 </html>
-
-
-
 
 
 
