@@ -422,6 +422,14 @@ function writeReservas(arr) {
   try { sessionStorage.setItem(ZYT_RESERVAS_KEY, s); } catch(e) {}
   try { localStorage.setItem(ZYT_RESERVAS_KEY, s); } catch(e) {}
 }
+function repairStoredText(value) {
+  if(typeof value !== 'string') return value;
+  let repaired = value;
+  if(/[ÃÂâ]/.test(repaired)) {
+    try { repaired = decodeURIComponent(escape(repaired)); } catch(e) {}
+  }
+  return repaired;
+}
 function getTourConfig() {
   try {
     const raw = localStorage.getItem(ZYT_TOUR_CONFIG_KEY) || localStorage.getItem('zoyen_tour_config');
@@ -430,6 +438,14 @@ function getTourConfig() {
     if(saved.inedita && !saved.patagonia_inedita) cfg.patagonia_inedita = saved.inedita;
     if(saved.carretera && !saved.carretera_austral) cfg.carretera_austral = saved.carretera;
     delete cfg.inedita; delete cfg.carretera;
+    let repairedAny = false;
+    Object.keys(cfg).forEach(function(key) {
+      ['name','duration'].forEach(function(field) {
+        const repaired = repairStoredText(cfg[key][field]);
+        if(repaired !== cfg[key][field]) { cfg[key][field] = repaired; repairedAny = true; }
+      });
+    });
+    if(repairedAny) localStorage.setItem(ZYT_TOUR_CONFIG_KEY, JSON.stringify(cfg));
     return cfg;
   } catch(e) { return defaultTourConfig(); }
 }
@@ -2076,7 +2092,6 @@ a.cta-btn-g[href*="wa.me"]:hover {
 </style>
 </body>
 </html>
-
 
 
 
