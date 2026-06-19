@@ -359,6 +359,7 @@ img.hero-logo-static {
             <div class="card-title">Prueba funcional y visual</div>
             <p style="font-size:13px;line-height:1.7;color:var(--muted);margin-bottom:16px">Comprueba páginas, imágenes, configuración de reservas, Supabase, almacenamiento, errores de texto y problemas básicos de renderización. No modifica reservas ni configuraciones.</p>
             <button class="btn btn-p" id="run-diagnostic" onclick="runGeneralDiagnostic()">Ejecutar test general</button>
+            <button class="btn btn-outline" id="auto-fix-diagnostic" onclick="autoFixDiagnostic()" style="margin-left:8px">Corregir automáticamente</button>
             <span id="diag-time" style="margin-left:12px;font-size:11px;color:var(--muted)"></span>
           </div>
           <div class="diag-summary" id="diag-summary" hidden></div>
@@ -611,8 +612,10 @@ async function runGeneralDiagnostic(){
     try{localStorage.setItem('__zoyen_diag__','ok');const value=localStorage.getItem('__zoyen_diag__');localStorage.removeItem('__zoyen_diag__');diagAdd(results,value==='ok'?'ok':'error','Almacenamiento local',value==='ok'?'Disponible para configuraciones del admin.':'No guarda ni recupera datos.');}catch(e){diagAdd(results,'error','Almacenamiento local','Bloqueado por el navegador: '+e.message);}
     const cloud=window.ZoyenCloud&&ZoyenCloud.ready;
     diagAdd(results,cloud?'ok':'warn','Conexión Supabase',cloud?'Cliente configurado y disponible.':'No está disponible; las reservas dependerán del almacenamiento local.');
-    diagAdd(results,typeof tours==='object'&&Object.keys(tours).length?'ok':'error','Configuración de tours',typeof tours==='object'?Object.keys(tours).length+' experiencias configuradas.':'No se encontró la configuración.');
-    const badAdmin=(document.documentElement.innerHTML.match(/Ã.|Â.|â€|ï¿½/g)||[]).length;
+    const tourCfg=getTourConfigAdmin(), tourCount=Object.keys(tourCfg||{}).length;
+    diagAdd(results,tourCount?'ok':'error','Configuración de tours',tourCount?tourCount+' experiencias configuradas.':'No se encontró la configuración.');
+    const visibleAdminText=(document.body&&document.body.innerText)||'';
+    const badAdmin=(visibleAdminText.match(/Ã.|Â.|â€|ï¿½|�/g)||[]).length;
     diagAdd(results,badAdmin?'warn':'ok','Codificación de textos',badAdmin?badAdmin+' posibles caracteres dañados detectados en el admin.':'No se detectaron símbolos extraños en el admin.');
     let pageErrors=0,pageEncoding=0;
     for(const page of DIAG_PAGES){
@@ -635,6 +638,32 @@ async function runGeneralDiagnostic(){
   diagRender(results);
   document.getElementById('diag-time').textContent='Última prueba: '+new Date().toLocaleString('es-AR');
   btn.classList.remove('diag-running');btn.textContent='Ejecutar test general';
+}
+function autoFixDiagnostic(){
+  const btn=document.getElementById('auto-fix-diagnostic');
+  btn.classList.add('diag-running');
+  btn.textContent='Corrigiendo…';
+  let fixes=0;
+  try{
+    const cfg=getTourConfigAdmin();
+    if(cfg&&Object.keys(cfg).length){ saveTourConfig(cfg); fixes++; }
+    const seo=readSeoDraft();
+    if(seo&&typeof seo==='object'){
+      Object.keys(seo).forEach(page=>{
+        if(!seo[page]||typeof seo[page]!=='object')return;
+        Object.keys(seo[page]).forEach(key=>{
+          if(typeof seo[page][key]==='string') seo[page][key]=repairStoredText(seo[page][key]);
+        });
+      });
+      writeSeoDraft(seo); fixes++;
+    }
+    localStorage.removeItem('__zoyen_diag__');
+    buildAvailability(); buildExcursiones(); buildSeo();
+    showToast(fixes?'Correcciones seguras aplicadas. Ejecutando un nuevo diagnóstico…':'No había correcciones automáticas pendientes.');
+  }catch(error){ showToast('No se pudo completar la corrección automática.'); }
+  btn.classList.remove('diag-running');
+  btn.textContent='Corregir automáticamente';
+  window.setTimeout(runGeneralDiagnostic,250);
 }
 
 // -- Panel init -------------------------------------------------
