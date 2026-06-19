@@ -2677,6 +2677,7 @@ img.hero-logo-static {
   filter: drop-shadow(0 0 7px rgba(229,123,32,.55));
 }
 .zoyen-motion-cardinals {
+  display: none;
   transform-origin: 50% 50%;
   transition: transform .16s linear;
 }
@@ -2746,6 +2747,9 @@ img.hero-logo-static {
   45% { opacity: 1; transform: scale(1); }
 }
 @media (max-width: 900px) {
+  .emblem-3d.zoyen-hero-logo-motion .zoyen-motion-cardinals {
+    display: block;
+  }
   .emblem-3d.zoyen-hero-logo-motion .zoyen-hero-logo-orbit {
     opacity: 1 !important;
     transform: scale(1) !important;
@@ -6967,7 +6971,6 @@ a.cta-btn-g[href*="wa.me"]:hover {
 </script>
 </body>
 </html>
-
 
 
 
