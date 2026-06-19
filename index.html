@@ -5260,6 +5260,11 @@ applyLang(currentLang);
     </form>
   </section>
 </div>
+<style id="zoyi-choice-options-style">
+  .zoyi-options{display:grid;gap:7px;margin-top:10px}
+  .zoyi-option{width:100%;padding:9px 11px;border:1px solid rgba(217,112,28,.42);border-radius:9px;background:#fff;color:#21170f;text-align:left;font:inherit;font-weight:700;cursor:pointer;transition:.18s ease}
+  .zoyi-option:hover,.zoyi-option:focus-visible{background:#fff4ea;border-color:#d9701c;transform:translateY(-1px);outline:none}
+</style>
 <script id="zoyi-assistant-script">
 (function(){
   var widget = document.getElementById("zoyiWidget");
@@ -5405,6 +5410,59 @@ applyLang(currentLang);
     messages.appendChild(d);
     messages.scrollTop=messages.scrollHeight;
   }
+  function choiceCopy(){
+    var lang=getLang();
+    return ({
+      es:{type:"¿Qué querés consultar?",exc:"Excursiones",tour:"Tours de autor",pickExc:"Elegí una excursión:",pickTour:"Elegí un tour de autor:"},
+      en:{type:"What would you like to check?",exc:"Excursions",tour:"Author tours",pickExc:"Choose an excursion:",pickTour:"Choose an author tour:"},
+      pt:{type:"O que você quer consultar?",exc:"Excursões",tour:"Tours de autor",pickExc:"Escolha uma excursão:",pickTour:"Escolha um tour de autor:"},
+      ko:{type:"무엇을 확인하시겠어요?",exc:"당일 투어",tour:"작가 투어",pickExc:"여행을 선택하세요:",pickTour:"투어를 선택하세요:"}
+    })[lang]||({type:"¿Qué querés consultar?",exc:"Excursiones",tour:"Tours de autor",pickExc:"Elegí una excursión:",pickTour:"Elegí un tour de autor:"});
+  }
+  function addChoices(prompt,options,intent){
+    if(!messages)return;
+    var d=document.createElement("div");
+    d.className="zoyi-msg bot";
+    var title=document.createElement("div");
+    title.textContent=prompt;
+    d.appendChild(title);
+    var wrap=document.createElement("div");
+    wrap.className="zoyi-options";
+    options.forEach(function(option){
+      var b=document.createElement("button");
+      b.type="button";
+      b.className="zoyi-option";
+      b.textContent=option.label;
+      b.dataset.zoyiAction=option.action;
+      b.dataset.zoyiValue=option.value;
+      b.dataset.zoyiIntent=intent;
+      wrap.appendChild(b);
+    });
+    d.appendChild(wrap);
+    messages.appendChild(d);
+    messages.scrollTop=messages.scrollHeight;
+  }
+  function showTypeChoices(intent){
+    var c=choiceCopy();
+    addChoices(c.type,[
+      {label:c.exc,action:"type",value:"excursion"},
+      {label:c.tour,action:"type",value:"tour"}
+    ],intent);
+  }
+  function showProductChoices(intent,type){
+    var c=choiceCopy(), list=type==="tour" ? tours : excursiones;
+    addChoices(type==="tour" ? c.pickTour : c.pickExc,list.map(function(p){
+      return {label:p.name,action:"product",value:p.id};
+    }),intent);
+  }
+  function selectedProductAnswer(intent,id){
+    var lang=getLang(),ui=UI[lang]||UI.es;
+    var p=allProducts.find(function(item){return item.id===id;});
+    if(!p)return ui.fallback;
+    if(intent==="prices")return productBullet(p,ui)+"\n"+ui.pricesPer.trim();
+    if(intent==="dates")return ui.datesBase+ui.datesExtra(p)+ui.datesCta;
+    return productSummary(p,ui);
+  }
   function productLine(p,ui){ return p.name+": "+p.duration+", "+money(p.price)+", "+p.capacity+(ui ? ui.capacity:" personas")+"."; }
   function productBullet(p,ui){ return "- "+p.name+"\n  "+p.duration+" - "+money(p.price)+" - "+p.capacity+(ui ? ui.capacity:" personas"); }
   function productSummary(p,ui){ return productBullet(p,ui)+"\n  "+p.summary; }
@@ -5437,7 +5495,14 @@ applyLang(currentLang);
     if(!val)return;
     addMessage(val,"user");
     if(input)input.value="";
-    window.setTimeout(function(){ addMessage(answer(val),"bot"); },160);
+    window.setTimeout(function(){
+      var lang=getLang(),ui=UI[lang]||UI.es,q=normalize(val),p=findProduct(q),k=ui.kw;
+      if(!p&&isAsking(q,k.prices)){showTypeChoices("prices");return;}
+      if(!p&&isAsking(q,k.dates)){showTypeChoices("dates");return;}
+      if(!p&&isAsking(q,k.excursion)){showProductChoices("details","excursion");return;}
+      if(!p&&isAsking(q,k.tour)){showProductChoices("details","tour");return;}
+      addMessage(answer(val),"bot");
+    },160);
   }
 
   if(toggle) toggle.addEventListener("click",function(){
@@ -5448,6 +5513,20 @@ applyLang(currentLang);
   if(closeBtn) closeBtn.addEventListener("click",function(){ widget.classList.remove("open"); if(toggle)toggle.setAttribute("aria-expanded","false"); });
   if(form) form.addEventListener("submit",function(e){ e.preventDefault(); submit(); });
   if(chips) chips.addEventListener("click",function(e){ if(e.target.matches("button"))submit(e.target.textContent); });
+  if(messages) messages.addEventListener("click",function(e){
+    var b=e.target.closest("button[data-zoyi-action]");
+    if(!b)return;
+    var action=b.dataset.zoyiAction,value=b.dataset.zoyiValue,intent=b.dataset.zoyiIntent;
+    if(action==="type"){
+      addMessage(b.textContent,"user");
+      window.setTimeout(function(){showProductChoices(intent,value);},120);
+      return;
+    }
+    if(action==="product"){
+      addMessage(b.textContent,"user");
+      window.setTimeout(function(){addMessage(selectedProductAnswer(intent,value),"bot");},120);
+    }
+  });
 
   // Saludo inicial en el idioma activo
   var lang=getLang(), ui=UI[lang]||UI.es;
@@ -6981,7 +7060,6 @@ a.cta-btn-g[href*="wa.me"]:hover {
 </script>
 </body>
 </html>
-
 
 
 
