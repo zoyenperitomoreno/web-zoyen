@@ -3,7 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/png" href="assets/logo-zoyen-circular-static.png">
+<link rel="apple-touch-icon" href="assets/logo-zoyen-circular-static.png">
+<meta name="theme-color" content="#1e1810">
 <title>Admin  Zoyen Turismo</title>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<script src="seo-config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script defer src="zoyen-reservas-api.js"></script>
 <link href="https://fonts.googleapis.com/css2family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* -- Reset -- */
@@ -109,12 +117,15 @@ html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;font-size:15
 .btn-wa{background:#25d366;color:#fff}.btn-wa:hover{background:#1aaa54}
 .btn-sm{padding:5px 10px;font-size:10px}
 .btn-outline{background:transparent;border:1.5px solid var(--border);color:var(--text)}.btn-outline:hover{border-color:var(--ember);color:var(--ember)}
-.slide-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.slide-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden}
-.slide-img{width:100%;height:100px;object-fit:cover;display:block;background:rgba(0,0,0,.08)}
-.slide-name{font-family:'Sora',sans-serif;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);padding:10px 14px 4px}
-.slide-fields{padding:0 14px 14px;display:flex;flex-direction:column;gap:6px}
-.slide-fields input{padding:6px 9px;font-size:12px}
+.slide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.slide-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 8px 24px rgba(30,24,16,.06)}
+.banner-preview{height:260px;background:#241a12 center/cover no-repeat;position:relative;display:flex;align-items:flex-end;padding:24px;color:#fff;isolation:isolate}
+.banner-preview:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,10,6,.08),rgba(15,10,6,.78));z-index:-1}
+.banner-preview-copy small{display:block;color:#e4a063;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:8px}.banner-preview-copy strong{display:block;font-size:25px;line-height:1.08}.banner-preview-copy em{color:var(--sand);font-style:italic}.banner-preview-copy p{font-size:12px;line-height:1.5;color:rgba(255,255,255,.75);margin-top:8px;max-width:520px}
+.slide-name{font-family:'Sora',sans-serif;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);padding:18px 20px 8px}
+.slide-fields{padding:0 20px 20px;display:grid;grid-template-columns:1fr 1fr;gap:12px}.slide-fields .wide{grid-column:1/-1}.slide-fields .field{margin:0}.slide-fields input{font-size:12px}
+.banner-image-row{display:flex;gap:8px;align-items:center}.banner-image-row input[type=text]{flex:1}.banner-actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;margin-top:2px}.banner-upload{display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+.banner-editor-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}.banner-editor-head p{color:var(--muted);font-size:12px;line-height:1.55;margin-top:5px}
 .date-pill{display:inline-flex;align-items:center;gap:6px;background:var(--ember-bg);border:1px solid rgba(212,119,42,.3);border-radius:20px;padding:4px 10px 4px 12px;font-size:12px;color:var(--ember);font-weight:500;margin:3px}
 .date-pill button{background:none;border:none;color:var(--ember);cursor:pointer;font-size:14px;line-height:1;padding:0 2px;opacity:.7}.date-pill button:hover{opacity:1}
 .empty{color:var(--muted);font-style:italic;font-size:13px;padding:16px}
@@ -151,6 +162,7 @@ tr:hover td{background:rgba(212,119,42,.03)}
 .dashboard-hero:after{content:"";position:absolute;width:230px;height:230px;border:1px solid rgba(212,119,42,.25);border-radius:50%;right:-70px;top:-95px;box-shadow:0 0 0 34px rgba(212,119,42,.06)}
 .dashboard-kicker{font-size:10px;text-transform:uppercase;letter-spacing:.24em;color:#e69a59;font-weight:700}.dashboard-hero h1{font-size:27px;margin:8px 0 6px}.dashboard-hero p{color:rgba(255,255,255,.68);font-size:13px;max-width:620px;line-height:1.55}
 .quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:22px}.quick-card{appearance:none;text-align:left;background:#fff;border:1px solid var(--border);border-radius:10px;padding:17px 18px;cursor:pointer;transition:.18s;font-family:'Sora',sans-serif}.quick-card:hover{transform:translateY(-2px);border-color:rgba(212,119,42,.55);box-shadow:0 8px 22px rgba(30,24,16,.08)}.quick-card b{display:block;font-size:14px;margin-bottom:5px}.quick-card span{font-size:11px;color:var(--muted);line-height:1.4}
+@media(max-width:1050px){.slide-grid{grid-template-columns:1fr}}
 @media(max-width:900px){.crm-stats{grid-template-columns:repeat(2,1fr)}.date-tools,.crm-form-grid{grid-template-columns:1fr}.crm-form-grid .wide{grid-column:auto}}
 @media(max-width:760px){.topbar{padding:0 14px}.topbar-brand-copy small{display:none}.sidebar{width:64px}.nav-item{padding:13px 21px;font-size:0}.main{padding:22px 16px}.quick-grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}
 .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(60px);background:#1e1810;border:1px solid rgba(212,119,42,.4);color:#f5f0e8;padding:10px 24px;border-radius:6px;font-size:13px;font-weight:500;z-index:9999;transition:transform .3s;pointer-events:none;box-shadow:0 4px 20px rgba(0,0,0,.25)}
@@ -257,6 +269,7 @@ img.hero-logo-static {
         <div class="nav-item" data-sec="bloqueo"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>Asientos</div>
         <div class="nav-item" data-sec="excursiones"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3Z"/><path d="M9 3v15M15 6v15"/></svg></span>Excursiones</div>
         <div class="nav-item" data-sec="slides"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9" r="1.5"/><path d="m21 15-5-5L5 20"/></svg></span>Banners</div>
+        <div class="nav-item" data-sec="seo"><span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M8 11h6M11 8v6"/></svg></span>SEO</div>
       </nav>
       <main class="main" id="mainContent">
         <!-- Dashboard -->
@@ -281,7 +294,7 @@ img.hero-logo-static {
         </div>
         <!-- Banners -->
         <div class="sec" id="sec-slides">
-          <div class="sec-title">Banners del Hero</div>
+          <div class="banner-editor-head"><div><div class="sec-title" style="margin:0;padding:0;border:0">Editor de portada</div><p>Editá las imágenes y textos del carrusel. La vista previa muestra exactamente qué contenido se guardará.</p></div><button class="btn btn-p" onclick="saveAllSlides()">Guardar todos</button></div>
           <div class="card">
             <div class="card-title">Efecto lenticular</div>
             <div class="lent-toggle-row">
@@ -290,11 +303,41 @@ img.hero-logo-static {
             </div>
           </div>
           <div class="slide-grid" id="slider-grid"></div>
-          <div class="card" style="margin-top:20px">
-            <div class="card-title">Textos del manifiesto</div>
-            <div class="field"><label>Cita</label><input type="text" id="t-mq" placeholder="Frase del manifiesto"/></div>
-            <div class="field"><label>Bajada</label><input type="text" id="t-mb" placeholder="Texto secundario"/></div>
-            <button class="btn btn-p" onclick="saveManifesto()">Guardar manifiesto</button>
+        </div>
+        <!-- SEO -->
+        <div class="sec" id="sec-seo">
+          <div class="sec-title">SEO para buscadores</div>
+          <div class="card" style="border-left:4px solid var(--ember)">
+            <div class="card-title">Cómo publicar los cambios</div>
+            <p style="font-size:13px;line-height:1.7;color:var(--muted)">Editá cada página y guardá el borrador. Cuando termines, descargá <b>seo-config.js</b> y reemplazá ese archivo en GitHub junto con el sitio. De esa forma los cambios quedan disponibles para Google y no solamente en este navegador.</p>
+          </div>
+          <div class="card">
+            <div class="card-title">Página a optimizar</div>
+            <div class="field"><label>Seleccionar página</label><select id="seo-page" onchange="loadSeoPage()"></select></div>
+            <div class="field"><label>Título SEO <span id="seo-title-count" style="float:right"></span></label><input type="text" id="seo-title" maxlength="70" oninput="updateSeoPreview()"></div>
+            <div class="field"><label>Descripción para Google <span id="seo-description-count" style="float:right"></span></label><textarea id="seo-description" maxlength="180" rows="4" oninput="updateSeoPreview()"></textarea></div>
+            <div class="field"><label>Palabras y búsquedas clave</label><textarea id="seo-keywords" rows="3" oninput="updateSeoPreview()"></textarea></div>
+            <div class="field"><label>Imagen para compartir</label><input type="text" id="seo-image" placeholder="assets/imagen.jpg o URL https://..." oninput="updateSeoPreview()"></div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+              <button class="btn btn-p" onclick="saveSeoPage()">Guardar borrador</button>
+              <button class="btn btn-outline" onclick="restoreSeoPage()">Restaurar recomendado</button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">Vista previa en Google</div>
+            <div style="max-width:680px;padding:8px 4px">
+              <div style="font-size:12px;color:#3c4043;margin-bottom:7px">zoyenperitomoreno.github.io › web-zoyen</div>
+              <div id="seo-preview-title" style="font-family:Arial,sans-serif;font-size:20px;line-height:1.3;color:#1a0dab;margin-bottom:5px"></div>
+              <div id="seo-preview-description" style="font-family:Arial,sans-serif;font-size:14px;line-height:1.5;color:#4d5156"></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">Publicar configuración</div>
+            <p style="font-size:13px;line-height:1.7;color:var(--muted);margin-bottom:14px">El archivo descargado contiene la configuración de todas las páginas. Subilo a la carpeta principal WEB y luego a GitHub Pages.</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <button class="btn btn-p" onclick="exportSeoConfig()">Descargar seo-config.js</button>
+              <label class="btn btn-outline" style="cursor:pointer">Importar configuración<input type="file" accept=".js,.json" hidden onchange="importSeoConfig(this)"></label>
+            </div>
           </div>
         </div>
         <!-- Excursiones -->
@@ -471,10 +514,17 @@ document.getElementById('admLoginBtn').onclick = doLogin;
 document.getElementById('admPass').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
 document.getElementById('admUser').addEventListener('keydown', e => { if(e.key==='Enter') document.getElementById('admPass').focus(); });
 
-function doLogin() {
+async function doLogin() {
   const u = document.getElementById('admUser').value.trim();
   const p = document.getElementById('admPass').value;
-  if(u===CREDS.user && p===CREDS.pass) {
+  let valid = u===CREDS.user && p===CREDS.pass;
+  if(window.ZoyenCloud && ZoyenCloud.ready) {
+    try {
+      const email = (window.ZOYEN_SUPABASE && ZOYEN_SUPABASE.adminEmail) || u;
+      await ZoyenCloud.signIn(email,p); valid = true;
+    } catch(error) { valid = false; }
+  }
+  if(valid) {
     loggedIn = true;
     document.getElementById('admLoginErr').style.display = 'none';
     document.getElementById('admLoginWrap').classList.remove('open');
@@ -487,6 +537,7 @@ function doLogin() {
 }
 
 document.getElementById('btnLogout').onclick = () => {
+  if(window.ZoyenCloud && ZoyenCloud.ready) ZoyenCloud.signOut().catch(function(){});
   loggedIn = false;
   document.getElementById('panelWrap').style.display = 'none';
   document.getElementById('admLoginWrap').classList.add('open');
@@ -509,9 +560,11 @@ document.querySelectorAll('.nav-item').forEach(item => {
 function initPanel() {
   buildDashboard();
   buildSlides();
+  buildSeo();
   buildExcursiones();
   buildAvailability();
   buildReservas();
+  syncCloudReservations();
 }
 
 // -- Excursion data ---------------------------------------------
@@ -573,13 +626,26 @@ function badge(e) {
 }
 
 // -- Slides -----------------------------------------------------
+const HERO_BANNERS_KEY = 'zoyen_hero_banners';
 const slideDefaults = [
-  {ey:'Patagonia Argentina', ti:'Explora la Patagonia Inédita',   de:'De la mano de quienes la vivimos. Excursiones únicas e irrepetibles.'},
-  {ey:'Patrimonio UNESCO',   ti:'Cueva de las Manos',             de:'Uno de los sitios arqueológicos más importantes del mundo.'},
-  {ey:'Chile  Carretera Austral', ti:'Capillas de Mármol',       de:'Navegación sobre el Lago General Carrera.'},
-  {ey:'Ruta Escéúnica 41',    ti:'Monte Zeballos',                 de:'Desde los 400 hasta los 1.500 metros.'},
+  {ey:'Patagonia Argentina', ti:'Explorá la Patagonia', ac:'Inédita', de:'De la mano de quienes la vivimos. Excursiones únicas en la Patagonia profunda.', img:'assets/full_inedita.jpg'},
+  {ey:'Patrimonio UNESCO', ti:'Cueva de', ac:'las Manos', de:'Uno de los sitios arqueológicos más importantes del mundo. Arte rupestre de más de 9.000 años.', img:'assets/cuevadelasmanos_zoyen.jpg'},
+  {ey:'Chile · Carretera Austral', ti:'Capillas de', ac:'Mármol', de:'Navegación sobre el Lago General Carrera. Una de las maravillas naturales del extremo sur.', img:'assets/capillas.jpg'},
+  {ey:'Ruta Escénica 41', ti:'Monte', ac:'Zeballos', de:'Desde los 400 hasta los 1.500 metros. La ruta escénica más impactante de Santa Cruz.', img:'assets/ruta41_zoyen.jpg'},
 ];
 const slideLabels = ['Banner 1 · Patagonia','Banner 2 · Cueva de las Manos','Banner 3 · Capillas de Mármol','Banner 4 · Monte Zeballos'];
+
+function getBannerConfig() {
+  let saved = [];
+  try { saved = JSON.parse(localStorage.getItem(HERO_BANNERS_KEY) || '[]'); } catch(e) {}
+  return slideDefaults.map((def,i) => {
+    let legacyImg = '';
+    try { legacyImg = localStorage.getItem('zoyen_slide_img_'+i) || ''; } catch(e) {}
+    return {...def, ...(saved[i]||{}), img:(saved[i]&&saved[i].img) || legacyImg || def.img};
+  });
+}
+function escAttr(value) { return String(value||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function escHtml(value) { return String(value||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
 function buildSlides() {
   // Lenticular toggle
@@ -588,37 +654,39 @@ function buildSlides() {
   const cb = document.getElementById('lent-toggle');
   if(cb) { cb.checked = enabled; cb.onchange = () => { try { localStorage.setItem('lentEnabled', cb.checked); } catch(e) {} showToast('Efecto ' + (cb.checked ? 'activado' : 'desactivado') + '.'); }; }
 
+  const config = getBannerConfig();
   document.getElementById('slider-grid').innerHTML = slideLabels.map((lbl, i) => {
-    let url = '';
-    try { url = localStorage.getItem('zoyen_slide_img_'+i) || ''; } catch(e) {}
-    const s = slideDefaults[i];
+    const s = config[i];
     return `<div class="slide-card">
-      <img class="slide-img" id="sp-${i}" src="${url}" onerror="this.style.background='rgba(255,255,255,.06)'"/>
+      <div class="banner-preview" id="sp-${i}" style="background-image:url(&quot;${escAttr(s.img)}&quot;)"><div class="banner-preview-copy"><small id="pv-ey-${i}">${escHtml(s.ey)}</small><strong><span id="pv-ti-${i}">${escHtml(s.ti)}</span> <em id="pv-ac-${i}">${escHtml(s.ac)}</em></strong><p id="pv-de-${i}">${escHtml(s.de)}</p></div></div>
       <div class="slide-name">${lbl}</div>
       <div class="slide-fields">
-        <input type="text" id="t-s${i}-ey" value="${s.ey}" placeholder="Eyebrow"/>
-        <input type="text" id="t-s${i}-ti" value="${s.ti}" placeholder="Ttulo"/>
-        <input type="text" id="t-s${i}-de" value="${s.de}" placeholder="Descripcin"/>
-        <div style="display:flex;gap:6px;margin-top:4px">
-          <input type="text" id="img-${i}" placeholder="URL de imagen" style="flex:1" value="${url}"/>
-          <button class="btn btn-p btn-sm" onclick="applyImg(${i},document.getElementById('img-${i}').value)">Aplicar</button>
-        </div>
-        <button class="btn btn-outline btn-sm" onclick="saveSlideText(${i})">Guardar texto</button>
+        <div class="field"><label>Etiqueta superior</label><input type="text" id="t-s${i}-ey" value="${escAttr(s.ey)}" oninput="updateBannerPreview(${i})"></div>
+        <div class="field"><label>Palabra destacada</label><input type="text" id="t-s${i}-ac" value="${escAttr(s.ac)}" oninput="updateBannerPreview(${i})"></div>
+        <div class="field wide"><label>Título</label><input type="text" id="t-s${i}-ti" value="${escAttr(s.ti)}" oninput="updateBannerPreview(${i})"></div>
+        <div class="field wide"><label>Descripción</label><textarea id="t-s${i}-de" oninput="updateBannerPreview(${i})">${escHtml(s.de)}</textarea></div>
+        <div class="field wide"><label>Imagen</label><div class="banner-image-row"><input type="text" id="img-${i}" placeholder="assets/imagen.jpg o URL https://..." value="${escAttr(s.img)}" oninput="updateBannerPreview(${i})"><label class="btn btn-outline btn-sm banner-upload">Elegir archivo<input type="file" accept="image/*" hidden onchange="handleBannerFile(${i},this)"></label></div></div>
+        <div class="banner-actions wide"><button class="btn btn-outline btn-sm" onclick="resetSlide(${i})">Restaurar original</button><button class="btn btn-p btn-sm" onclick="saveSlide(${i})">Guardar banner</button></div>
       </div>
     </div>`;
   }).join('');
 }
 
-function applyImg(i, url) {
-  try { localStorage.setItem('zoyen_slide_img_'+i, url); } catch(e) {}
-  document.getElementById('sp-'+i).src = url;
-  showToast('Banner ' + (i+1) + ' actualizado.');
+function readSlideForm(i) {
+  return {ey:document.getElementById(`t-s${i}-ey`).value.trim(),ti:document.getElementById(`t-s${i}-ti`).value.trim(),ac:document.getElementById(`t-s${i}-ac`).value.trim(),de:document.getElementById(`t-s${i}-de`).value.trim(),img:document.getElementById(`img-${i}`).value.trim()};
 }
-function saveSlideText(i) {
-  showToast('Slide ' + (i+1) + ' guardado (los textos se editan directamente en index.html).');
+function updateBannerPreview(i) {
+  const s = readSlideForm(i), preview = document.getElementById('sp-'+i);
+  preview.style.backgroundImage = s.img ? `url("${s.img.replace(/"/g,'%22')}")` : 'none';
+  document.getElementById('pv-ey-'+i).textContent=s.ey; document.getElementById('pv-ti-'+i).textContent=s.ti; document.getElementById('pv-ac-'+i).textContent=s.ac; document.getElementById('pv-de-'+i).textContent=s.de;
 }
-function saveManifesto() {
-  showToast('Manifiesto guardado (editar directamente en index.html).');
+function persistBannerConfig(config) { try { localStorage.setItem(HERO_BANNERS_KEY,JSON.stringify(config)); return true; } catch(e) { showToast('La imagen es demasiado pesada. Probá con otra más liviana.'); return false; } }
+function saveSlide(i, silent=false) { const config=getBannerConfig(); config[i]=readSlideForm(i); if(persistBannerConfig(config)&&!silent) showToast('Banner '+(i+1)+' guardado.'); }
+function saveAllSlides() { const config=slideDefaults.map((_,i)=>readSlideForm(i)); if(persistBannerConfig(config)) showToast('Los 4 banners quedaron guardados.'); }
+function resetSlide(i) { const s=slideDefaults[i]; ['ey','ti','ac','de'].forEach(k=>document.getElementById(`t-s${i}-${k}`).value=s[k]); document.getElementById('img-'+i).value=s.img; updateBannerPreview(i); saveSlide(i,true); showToast('Banner '+(i+1)+' restaurado.'); }
+function handleBannerFile(i,input) {
+  const file=input.files&&input.files[0]; if(!file) return;
+  const reader=new FileReader(); reader.onload=e=>{ const image=new Image(); image.onload=()=>{ const scale=Math.min(1,1600/image.width,900/image.height); const canvas=document.createElement('canvas'); canvas.width=Math.round(image.width*scale); canvas.height=Math.round(image.height*scale); canvas.getContext('2d').drawImage(image,0,0,canvas.width,canvas.height); document.getElementById('img-'+i).value=canvas.toDataURL('image/jpeg',.78); updateBannerPreview(i); showToast('Imagen lista. Guardá el banner para aplicarla.'); }; image.src=e.target.result; }; reader.readAsDataURL(file); input.value='';
 }
 
 // -- Excursiones ------------------------------------------------
@@ -866,6 +934,12 @@ function saveReservaEditor() {
   if(!r.nombre) { showToast('Ingresá el nombre de la persona.'); return; }
   if(idx>=0) reservas[idx]=r; else reservas.push(r);
   writeReservas(reservas); closeReservaEditor(); buildReservas(); buildDashboard(); showToast('Ficha guardada.');
+  if(r.cloudId && window.ZoyenCloud && ZoyenCloud.ready) {
+    ZoyenCloud.updateReservation(r.cloudId,{status:localToCloudStatus(r.estado),admin_notes:r.notas||'',follow_up_at:r.followUp||null}).catch(function(error){ showToast('La ficha se guardó localmente, pero no pudo sincronizarse.'); });
+  }
+}
+function localToCloudStatus(status) {
+  return ({consulta:'inquiry',pendiente:'pending_payment',pago_iniciado:'payment_started',confirmada:'confirmed',completada:'completed',cancelada:'cancelled'})[status] || 'pending_payment';
 }
 function cambiarEstado(idx, estado) {
   const reservas = readReservas();
@@ -874,8 +948,98 @@ function cambiarEstado(idx, estado) {
   buildReservas();
   buildDashboard();
   showToast('Estado actualizado.');
+  if(reservas[idx].cloudId && window.ZoyenCloud && ZoyenCloud.ready) {
+    ZoyenCloud.updateReservation(reservas[idx].cloudId,{status:localToCloudStatus(estado)}).catch(function(){ showToast('El estado quedó local, pero falta sincronizarlo.'); });
+  }
 }
 function getReservas() { return readReservas(); }
+
+function cloudToLocalReservation(r) {
+  const stateMap = {inquiry:'consulta',pending_payment:'pendiente',payment_started:'pago_iniciado',confirmed:'confirmada',completed:'completada',cancelled:'cancelada'};
+  return {
+    id:r.id, cloudId:r.id, sincronizada:true, nombre:r.customer_name||'', tel:r.customer_phone||'', email:r.customer_email||'',
+    excursionKey:r.tour_key||'', excursion:r.tour_name||'', fecha:r.departure_date||'', personas:r.people_count||1,
+    asientos:Array.isArray(r.seats)?r.seats.join(', '):'', senia:Number(r.deposit_amount)||0,
+    estado:stateMap[r.status]||'pendiente', paymentStatus:r.payment_status||'pending', paymentMethod:r.payment_method||'not_selected',
+    creado:r.created_at?new Date(r.created_at).toLocaleString('es-AR'):'', ultimoIntento:r.updated_at?new Date(r.updated_at).toLocaleString('es-AR'):'', notas:r.admin_notes||''
+  };
+}
+async function syncCloudReservations() {
+  if (!window.ZoyenCloud || !ZoyenCloud.ready) return;
+  try {
+    const result = await ZoyenCloud.listReservations();
+    if (!result.ok) return;
+    const cloud = result.data.map(cloudToLocalReservation), localOnly = readReservas().filter(r=>!r.cloudId && typeof r.id !== 'string');
+    writeReservas(cloud.concat(localOnly)); buildReservas(); buildDashboard();
+  } catch(error) { console.warn('CRM sin conexión a Supabase:', error.message || error); }
+}
+
+// -- SEO --------------------------------------------------------
+const ZOYEN_SEO_STORAGE_KEY = 'zoyen_seo_config_draft';
+const seoRecommended = JSON.parse(JSON.stringify(window.ZOYEN_SEO_CONFIG || {}));
+const seoPageLabels = {
+  'index.html':'Inicio', 'patagonia-inedita.html':'Patagonia Inédita', 'carretera-austral.html':'Carretera Austral',
+  'excursion-cueva-de-las-manos.html':'Cueva de las Manos', 'excursion-monte-zeballos.html':'Ruta 41 y Monte Zeballos',
+  'excursion-parque-patagonia.html':'Parque Patagonia', 'excursion-capillas-de-marmol.html':'Capillas de Mármol',
+  'excursion-ruta41-lago-posadas.html':'Ruta 41 y Lago Posadas', 'excursion-alero-charcamata.html':'Alero Charcamata',
+  'nosotros.html':'Quiénes somos'
+};
+function readSeoDraft() {
+  try { return {...seoRecommended, ...JSON.parse(localStorage.getItem(ZOYEN_SEO_STORAGE_KEY) || '{}')}; }
+  catch(e) { return JSON.parse(JSON.stringify(seoRecommended)); }
+}
+function writeSeoDraft(cfg) {
+  try { localStorage.setItem(ZOYEN_SEO_STORAGE_KEY, JSON.stringify(cfg)); return true; }
+  catch(e) { showToast('No se pudo guardar la configuración SEO.'); return false; }
+}
+function buildSeo() {
+  const select = document.getElementById('seo-page'); if(!select) return;
+  select.innerHTML = Object.keys(seoRecommended).map(file => `<option value="${file}">${seoPageLabels[file] || file}</option>`).join('');
+  loadSeoPage();
+}
+function loadSeoPage() {
+  const file = document.getElementById('seo-page').value, cfg = readSeoDraft()[file] || {};
+  document.getElementById('seo-title').value = cfg.title || '';
+  document.getElementById('seo-description').value = cfg.description || '';
+  document.getElementById('seo-keywords').value = cfg.keywords || '';
+  document.getElementById('seo-image').value = cfg.image || '';
+  updateSeoPreview();
+}
+function updateSeoPreview() {
+  const title = document.getElementById('seo-title').value.trim(), description = document.getElementById('seo-description').value.trim();
+  document.getElementById('seo-preview-title').textContent = title || 'Título de la página';
+  document.getElementById('seo-preview-description').textContent = description || 'Descripción que aparecerá en los resultados de búsqueda.';
+  const tc = document.getElementById('seo-title-count'), dc = document.getElementById('seo-description-count');
+  tc.textContent = title.length + '/60'; tc.style.color = title.length >= 30 && title.length <= 60 ? '#26834a' : '#b8621e';
+  dc.textContent = description.length + '/160'; dc.style.color = description.length >= 120 && description.length <= 160 ? '#26834a' : '#b8621e';
+}
+function currentSeoForm() {
+  return {title:document.getElementById('seo-title').value.trim(),description:document.getElementById('seo-description').value.trim(),keywords:document.getElementById('seo-keywords').value.trim(),image:document.getElementById('seo-image').value.trim()};
+}
+function saveSeoPage() {
+  const file = document.getElementById('seo-page').value, value = currentSeoForm();
+  if(!value.title || !value.description) { showToast('Completá el título y la descripción.'); return; }
+  const cfg = readSeoDraft(); cfg[file] = value;
+  if(writeSeoDraft(cfg)) showToast('Borrador SEO guardado. Recordá descargar el archivo para publicarlo.');
+}
+function restoreSeoPage() {
+  const file = document.getElementById('seo-page').value, cfg = readSeoDraft();
+  cfg[file] = JSON.parse(JSON.stringify(seoRecommended[file] || {})); writeSeoDraft(cfg); loadSeoPage(); showToast('Se restauró la recomendación SEO.');
+}
+function exportSeoConfig() {
+  saveSeoPage();
+  const content = '/* Configuración SEO exportada desde Zoyen Admin */\nwindow.ZOYEN_SEO_CONFIG = ' + JSON.stringify(readSeoDraft(), null, 2) + ';\n';
+  const blob = new Blob([content], {type:'application/javascript;charset=utf-8'}), url = URL.createObjectURL(blob), a = document.createElement('a');
+  a.href = url; a.download = 'seo-config.js'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+  showToast('Archivo SEO descargado. Reemplazalo en la carpeta WEB y en GitHub.');
+}
+function importSeoConfig(input) {
+  const file=input.files&&input.files[0]; if(!file) return;
+  const reader=new FileReader(); reader.onload=function(e){
+    try { const text=String(e.target.result), match=text.match(/window\.ZOYEN_SEO_CONFIG\s*=\s*([\s\S]*);\s*$/); const cfg=match?JSON.parse(match[1]):JSON.parse(text); writeSeoDraft(cfg); buildSeo(); showToast('Configuración SEO importada.'); }
+    catch(err) { showToast('El archivo SEO no tiene un formato válido.'); }
+  }; reader.readAsText(file); input.value='';
+}
 </script>
 <style id="zoyen-mobile-baseline-20260611">
 /* ZOYEN mobile baseline patch - 2026-06-11 */
@@ -2092,9 +2256,3 @@ a.cta-btn-g[href*="wa.me"]:hover {
 </style>
 </body>
 </html>
-
-
-
-
-
-
