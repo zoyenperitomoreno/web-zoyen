@@ -4376,7 +4376,7 @@ document.getElementById('btnPagar').addEventListener('click', function() {
   const senia = Math.round(precioBase * parseInt(personas) * 0.20);
 
   document.getElementById('pagoResumen').innerHTML = `
-    <strong>Excursión:</strong> ${excText.split('')[0].trim()}<br>
+    <strong>Excursión:</strong> ${excText.split(' - ')[0].trim()}<br>
     <strong>Fecha:</strong> ${new Date(fecha+'T12:00:00').toLocaleDateString('es-AR',{weekday:'long',year:'numeric',month:'long',day:'numeric'})}<br>
     <strong>Personas:</strong> ${personas}<br>
     <strong>Asientos:</strong> ${selectedSeats.sort((a,b)=>a-b).join(', ')}<br>
@@ -4384,7 +4384,7 @@ document.getElementById('btnPagar').addEventListener('click', function() {
     <strong>Seña a abonar (20%):</strong> <span style="color:var(--ember);font-weight:600">${formatPeso(senia)}</span>
   `;
   document.getElementById('pagoMontoBadge').textContent = formatPeso(senia);
-  document.getElementById('successMsg').innerHTML = `Tu lugar en el asiento ${selectedSeats.join('/')} para <strong>${excText.split('')[0].trim()}</strong> el <strong>${new Date(fecha+'T12:00:00').toLocaleDateString('es-AR',{day:'numeric',month:'long'})}</strong> est asegurado.<br><br>Te enviamos la confirmacin por email y WhatsApp. Nos vemos en la excursión! `;
+  document.getElementById('successMsg').innerHTML = `Tu lugar en el asiento ${selectedSeats.join('/')} para <strong>${excText.split(' - ')[0].trim()}</strong> el <strong>${new Date(fecha+'T12:00:00').toLocaleDateString('es-AR',{day:'numeric',month:'long'})}</strong> está asegurado.<br><br>Te enviamos la confirmación por email y WhatsApp. ¡Nos vemos en la excursión!`;
 
   document.getElementById('step2-ind').classList.remove('active');
   document.getElementById('step2-ind').classList.add('done');
@@ -7060,7 +7060,6 @@ a.cta-btn-g[href*="wa.me"]:hover {
 </script>
 </body>
 </html>
-
 
 
 
