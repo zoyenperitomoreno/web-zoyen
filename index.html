@@ -4447,7 +4447,10 @@ function guardarReserva(estado) {
   writeReservas(reservas);
   if (idx < 0 && window.ZoyenCloud && ZoyenCloud.ready) {
     ZoyenCloud.createReservation(reservaGuardada).then(function(result){
-      if (!result || !result.ok) return;
+      if (!result || !result.ok) {
+        window.alert('La reserva quedó guardada en este navegador, pero la conexión con Supabase no está disponible en la página publicada.');
+        return;
+      }
       const current = readReservas(), local = current.find(r => r.id === reservaGuardada.id);
       if (local) {
         if (result.data && result.data.id) local.cloudId = result.data.id;
@@ -4458,6 +4461,7 @@ function guardarReserva(estado) {
       console.error('No se pudo sincronizar la reserva:', error);
       const current = readReservas(), local = current.find(r => r.id === reservaGuardada.id);
       if (local) { local.sincronizada = false; local.errorSincronizacion = String(error.message || error); writeReservas(current); }
+      window.alert('La reserva quedó guardada en este navegador, pero no pudo sincronizarse con Supabase.\n\nDetalle: ' + String(error.message || error));
     });
   }
 }
@@ -7064,7 +7068,5 @@ a.cta-btn-g[href*="wa.me"]:hover {
 </script>
 </body>
 </html>
-
-
 
 
