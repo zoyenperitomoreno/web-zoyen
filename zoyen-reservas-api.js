@@ -26,9 +26,11 @@
     if (!ready) return {ok:false, local:true};
     var row = normalizeReservation(data);
     if (!row.customer_name || !row.customer_email || !row.tour_name || !row.departure_date) throw new Error('Faltan datos obligatorios de la reserva.');
-    var result = await client.from('reservations').insert(row).select('id,status,payment_status,created_at').single();
+    // El visitante puede crear una reserva, pero no debe poder leer filas de la base.
+    // Por eso no encadenamos .select(): RLS permite INSERT anónimo y reserva SELECT al personal autenticado.
+    var result = await client.from('reservations').insert(row);
     if (result.error) throw result.error;
-    return {ok:true, data:result.data};
+    return {ok:true, data:null};
   }
   async function signIn(email, password) {
     if (!ready) return {ok:false, local:true};

@@ -4449,7 +4449,11 @@ function guardarReserva(estado) {
     ZoyenCloud.createReservation(reservaGuardada).then(function(result){
       if (!result || !result.ok) return;
       const current = readReservas(), local = current.find(r => r.id === reservaGuardada.id);
-      if (local) { local.cloudId = result.data.id; local.sincronizada = true; writeReservas(current); }
+      if (local) {
+        if (result.data && result.data.id) local.cloudId = result.data.id;
+        local.sincronizada = true;
+        writeReservas(current);
+      }
     }).catch(function(error){
       console.error('No se pudo sincronizar la reserva:', error);
       const current = readReservas(), local = current.find(r => r.id === reservaGuardada.id);
@@ -7060,7 +7064,6 @@ a.cta-btn-g[href*="wa.me"]:hover {
 </script>
 </body>
 </html>
-
 
 
 
