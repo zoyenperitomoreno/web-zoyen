@@ -4,7 +4,7 @@
   tokens de Mercado Pago ni claves de correo.
 */
 window.ZOYEN_SUPABASE = {
-  url: 'https://zhplraazijqfkxgkpqpf.supabase.co',
+  url: 'https://zhplraazjiqfkxgkpqpf.supabase.co',
   publishableKey: 'sb_publishable_d9eIod_JzTL_ob--7CiA9A_NzauBRBE',
   adminEmail: 'zoyenperitomoreno@gmail.com',
   businessEmail: 'zoyenperitomoreno@gmail.com'
