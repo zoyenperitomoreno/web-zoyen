@@ -518,7 +518,7 @@ async function doLogin() {
   const u = document.getElementById('admUser').value.trim();
   const p = document.getElementById('admPass').value;
   let valid = u===CREDS.user && p===CREDS.pass;
-  if(window.ZoyenCloud && ZoyenCloud.ready) {
+  if(!valid && window.ZoyenCloud && ZoyenCloud.ready) {
     try {
       const email = (window.ZOYEN_SUPABASE && ZOYEN_SUPABASE.adminEmail) || u;
       await ZoyenCloud.signIn(email,p); valid = true;
