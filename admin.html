@@ -169,6 +169,7 @@ tr:hover td{background:rgba(212,119,42,.03)}
 .toast.show{transform:translateX(-50%) translateY(0)}
 .lent-toggle-row{display:flex;align-items:center;gap:10px;padding:10px 0}
 .lent-toggle-row input[type=checkbox]{width:16px;height:16px;accent-color:var(--ember)}
+.diag-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}.diag-summary>div{padding:16px;border:1px solid var(--border);border-radius:10px;background:#fff}.diag-summary b{display:block;font-size:25px}.diag-summary span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}.diag-list{display:grid;gap:9px}.diag-row{display:grid;grid-template-columns:24px minmax(160px,1fr) 2fr;gap:10px;align-items:start;padding:12px;border:1px solid var(--border);border-radius:8px;background:#fff;font-size:12px}.diag-dot{width:12px;height:12px;border-radius:50%;margin-top:2px}.diag-ok .diag-dot{background:#2f9e62}.diag-warn .diag-dot{background:#e49a2f}.diag-error .diag-dot{background:#d84b4b}.diag-detail{color:var(--muted);line-height:1.5}.diag-running{opacity:.6;pointer-events:none}@media(max-width:760px){.diag-summary{grid-template-columns:1fr}.diag-row{grid-template-columns:20px 1fr}.diag-detail{grid-column:2}}
 </style>
 
 <style id="zoyen-logo-text-final-fix-20260616">
@@ -270,6 +271,7 @@ img.hero-logo-static {
         <div class="nav-item" data-sec="excursiones"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3Z"/><path d="M9 3v15M15 6v15"/></svg></span>Excursiones</div>
         <div class="nav-item" data-sec="slides"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9" r="1.5"/><path d="m21 15-5-5L5 20"/></svg></span>Banners</div>
         <div class="nav-item" data-sec="seo"><span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M8 11h6M11 8v6"/></svg></span>SEO</div>
+        <div class="nav-item" data-sec="diagnostico"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M9 3h6v3h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3Z"/><path d="m8 13 2 2 5-5"/></svg></span>Diagnóstico</div>
       </nav>
       <main class="main" id="mainContent">
         <!-- Dashboard -->
@@ -349,6 +351,19 @@ img.hero-logo-static {
             <table><thead><tr><th>Excursión</th><th>Precio</th><th>Estado</th><th>Duración</th></tr></thead>
             <tbody id="exc-preview"></tbody></table>
           </div>
+        </div>
+        <!-- Diagnóstico general -->
+        <div class="sec" id="sec-diagnostico">
+          <div class="sec-title">Diagnóstico general del sitio</div>
+          <div class="card" style="border-left:4px solid var(--ember)">
+            <div class="card-title">Prueba funcional y visual</div>
+            <p style="font-size:13px;line-height:1.7;color:var(--muted);margin-bottom:16px">Comprueba páginas, imágenes, configuración de reservas, Supabase, almacenamiento, errores de texto y problemas básicos de renderización. No modifica reservas ni configuraciones.</p>
+            <button class="btn btn-p" id="run-diagnostic" onclick="runGeneralDiagnostic()">Ejecutar test general</button>
+            <span id="diag-time" style="margin-left:12px;font-size:11px;color:var(--muted)"></span>
+          </div>
+          <div class="diag-summary" id="diag-summary" hidden></div>
+          <div class="diag-list" id="diag-results"></div>
+          <iframe id="diag-frame" title="Vista de prueba" style="position:fixed;left:-10000px;top:0;width:390px;height:844px;border:0;visibility:hidden"></iframe>
         </div>
         <!-- Disponibilidad -->
         <div class="sec" id="sec-disponibilidad">
@@ -555,6 +570,72 @@ function activateSection(sec) {
 document.querySelectorAll('.nav-item').forEach(item => {
   item.addEventListener('click', () => activateSection(item.dataset.sec));
 });
+
+// -- Diagnóstico general ---------------------------------------
+const DIAG_PAGES = ['index.html','nosotros.html','patagonia-inedita.html','carretera-austral.html','excursion-cueva-de-las-manos.html','excursion-capillas-de-marmol.html','excursion-monte-zeballos.html','excursion-parque-patagonia.html','excursion-ruta41-lago-posadas.html','excursion-alero-charcamata.html'];
+function diagAdd(results,status,name,detail){ results.push({status,name,detail}); }
+function diagRender(results){
+  const counts={ok:0,warn:0,error:0}; results.forEach(r=>counts[r.status]++);
+  const summary=document.getElementById('diag-summary');
+  summary.hidden=false;
+  summary.innerHTML='<div><b style="color:#2f9e62">'+counts.ok+'</b><span>Correctos</span></div><div><b style="color:#e49a2f">'+counts.warn+'</b><span>Advertencias</span></div><div><b style="color:#d84b4b">'+counts.error+'</b><span>Errores</span></div>';
+  document.getElementById('diag-results').innerHTML=results.map(r=>'<div class="diag-row diag-'+r.status+'"><span class="diag-dot"></span><b>'+escapeHtmlAdmin(r.name)+'</b><span class="diag-detail">'+escapeHtmlAdmin(r.detail)+'</span></div>').join('');
+}
+function escapeHtmlAdmin(value){ return String(value||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function diagFetch(url,timeout){
+  const controller=new AbortController(), timer=setTimeout(()=>controller.abort(),timeout||8000);
+  return fetch(url,{cache:'no-store',signal:controller.signal}).finally(()=>clearTimeout(timer));
+}
+function diagRenderPage(url){
+  return new Promise(resolve=>{
+    const frame=document.getElementById('diag-frame'); let done=false;
+    const finish=result=>{if(done)return;done=true;clearTimeout(timer);resolve(result);};
+    const timer=setTimeout(()=>finish({ok:false,detail:'La vista móvil tardó demasiado en cargar.'}),10000);
+    frame.onload=()=>{
+      try{
+        const doc=frame.contentDocument, broken=[...doc.images].filter(img=>!img.complete||img.naturalWidth===0);
+        const overflow=doc.documentElement.scrollWidth>frame.clientWidth+8;
+        const emptyMain=!doc.body||doc.body.innerText.trim().length<100;
+        finish({ok:!broken.length&&!emptyMain,warn:overflow,detail:(broken.length?broken.length+' imagen(es) no renderizan. ':'')+(overflow?'Hay desborde horizontal en vista móvil. ':'')+(emptyMain?'El contenido principal aparece vacío. ':'')||'La portada renderiza correctamente en vista móvil.'});
+      }catch(e){finish({ok:false,detail:'No se pudo inspeccionar la vista: '+e.message});}
+    };
+    frame.src=url+'?diagnostic='+Date.now();
+  });
+}
+async function runGeneralDiagnostic(){
+  const btn=document.getElementById('run-diagnostic'),results=[];
+  btn.classList.add('diag-running'); btn.textContent='Analizando…';
+  document.getElementById('diag-results').innerHTML='<div class="card">Revisando el sitio. Puede tardar unos segundos…</div>';
+  document.getElementById('diag-summary').hidden=true;
+  try{
+    try{localStorage.setItem('__zoyen_diag__','ok');const value=localStorage.getItem('__zoyen_diag__');localStorage.removeItem('__zoyen_diag__');diagAdd(results,value==='ok'?'ok':'error','Almacenamiento local',value==='ok'?'Disponible para configuraciones del admin.':'No guarda ni recupera datos.');}catch(e){diagAdd(results,'error','Almacenamiento local','Bloqueado por el navegador: '+e.message);}
+    const cloud=window.ZoyenCloud&&ZoyenCloud.ready;
+    diagAdd(results,cloud?'ok':'warn','Conexión Supabase',cloud?'Cliente configurado y disponible.':'No está disponible; las reservas dependerán del almacenamiento local.');
+    diagAdd(results,typeof tours==='object'&&Object.keys(tours).length?'ok':'error','Configuración de tours',typeof tours==='object'?Object.keys(tours).length+' experiencias configuradas.':'No se encontró la configuración.');
+    const badAdmin=(document.documentElement.innerHTML.match(/Ã.|Â.|â€|ï¿½/g)||[]).length;
+    diagAdd(results,badAdmin?'warn':'ok','Codificación de textos',badAdmin?badAdmin+' posibles caracteres dañados detectados en el admin.':'No se detectaron símbolos extraños en el admin.');
+    let pageErrors=0,pageEncoding=0;
+    for(const page of DIAG_PAGES){
+      try{
+        const response=await diagFetch(page,7000);
+        if(!response.ok){pageErrors++;continue;}
+        const text=await response.text();
+        if(!/<meta[^>]+charset=["']?utf-8/i.test(text)||/Ã.|Â.|â€|ï¿½/.test(text))pageEncoding++;
+      }catch(e){pageErrors++;}
+    }
+    diagAdd(results,pageErrors?'error':'ok','Páginas publicadas',pageErrors?pageErrors+' de '+DIAG_PAGES.length+' páginas no pudieron cargarse.':DIAG_PAGES.length+' páginas principales responden correctamente.');
+    diagAdd(results,pageEncoding?'warn':'ok','Textos de las páginas',pageEncoding?pageEncoding+' páginas requieren revisar UTF-8 o símbolos extraños.':'Todas las páginas revisadas declaran UTF-8 sin anomalías evidentes.');
+    const rendered=await diagRenderPage('index.html');
+    diagAdd(results,rendered.ok?(rendered.warn?'warn':'ok'):'error','Renderización móvil',rendered.detail);
+    const adminOverflow=document.documentElement.scrollWidth>window.innerWidth+8;
+    diagAdd(results,adminOverflow?'warn':'ok','Renderización del admin',adminOverflow?'Se detectó desborde horizontal en este tamaño de pantalla.':'No se detectó desborde horizontal en la vista actual.');
+    const visibleBroken=[...document.images].filter(img=>img.offsetParent!==null&&(!img.complete||img.naturalWidth===0));
+    diagAdd(results,visibleBroken.length?'error':'ok','Imágenes del admin',visibleBroken.length?visibleBroken.length+' imagen(es) visibles no cargaron.':'Las imágenes visibles cargaron correctamente.');
+  }catch(error){diagAdd(results,'error','Ejecución del diagnóstico',error.message||String(error));}
+  diagRender(results);
+  document.getElementById('diag-time').textContent='Última prueba: '+new Date().toLocaleString('es-AR');
+  btn.classList.remove('diag-running');btn.textContent='Ejecutar test general';
+}
 
 // -- Panel init -------------------------------------------------
 function initPanel() {
