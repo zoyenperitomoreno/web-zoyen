@@ -996,7 +996,7 @@ img.hero-logo-static {
 <ul>
   <li>Salida desde el alojamiento o terminal de bus en Perito Moreno.</li>
   <li>Se transita por la Ruta 40 hacia el sur, recorriendo 90 km de asfalto hasta el empalme con el camino de ripio que lleva al sitio arqueológico. Duración aproximada: 2 horas desde Perito Moreno.</li>
-  <li>En el camino se pasa por los ros Pinturas y Ecker.</li>
+  <li>En el camino se pasa por los ríos Pinturas y Ecker.</li>
   <li>Se atraviesa el "Cañadón Caracoles Chico", entendiendo la geografa del lugar.</li>
   <li>Continuamos por la Ruta 97 hasta un mirador del Cañadón del Ro Pinturas y el Centro de Interpretación. La visita guiada dura aproximadamente 1 hora 30 minutos.</li>
   <li>Finalizada la visita, almuerzo y Sendero Tierras de Colores del Parque Patagonia (800 msnm). Regreso aproximado: 18 hs.</li>
@@ -1004,7 +1004,7 @@ img.hero-logo-static {
 
 <h3>Opcin 2: Con Trekking en Parque Patagonia</h3>
 <ul>
-  <li>Salidas desde Perito Moreno por la maana.</li>
+  <li>Salidas desde Perito Moreno por la mañana.</li>
   <li>60 km hasta el portal Cañadón Pinturas. Sendero "Tierra de Colores" (1 hora).</li>
   <li>20 km más hasta el borde del Cañadón del Ro Pinturas.</li>
   <li>Caminata por el sendero "Los Balcones" con vistas del Cañadón del Ro Pinturas, conectando con la "Bajada de Los Toldos" para cruzar hasta el sitio oficial.</li>
@@ -1019,7 +1019,7 @@ img.hero-logo-static {
   <li>Residentes Nacionales: $12.000</li>
   <li>Residentes de la Provincia de Santa Cruz, jubilados y pensionados nacionales: $4.000</li>
   <li>Residentes locales y jubilados provinciales: $3.000</li>
-  <li>Menores de 12 años, personas con CUD vigente y acompaante: sin cargo</li>
+  <li>Menores de 12 años, personas con CUD vigente y acompañante: sin cargo</li>
 </ul>
 <p style="font-size:.82rem;color:var(--stone)">Última actualización: abril 2025</p>
 
@@ -1218,7 +1218,7 @@ img.hero-logo-static {
       'nav_reservar': 'Reservar',
       'nav_contact': 'Contato',
       'sidebar_book': 'Reservar',
-      'sidebar_book_desc': 'Consulte disponibilidade e preos pelo WhatsApp ou reserve diretamente.',
+      'sidebar_book_desc': 'Consulte disponibilidade e preços pelo WhatsApp ou reserve diretamente.',
       'sidebar_wa': 'Contato pelo WhatsApp',
       'sidebar_details': 'Detalhes',
       'sidebar_other': 'Outras Excursões',
@@ -1379,9 +1379,9 @@ img.hero-logo-static {
   var pageTitle = (document.title || "").replace(/\s+/g," ").trim();
 
   var excursiones = [
-    {id:"cueva", name:"Cueva de las Manos", aliases:["cueva","manos","pinturas","arqueología","rio pinturas"], price:18000, duration:"día completo", capacity:14, type:"excursion", summary:"sitio arqueologico Patrimonio Mundial, pinturas rupestres de más de 9.000 anos y paisaje del Cañadón del Río Pinturas."},
-    {id:"capillas", name:"Capillas y Catedrales de Mármol", aliases:["capillas","marmol","catedrales","general carrera"], price:24000, duration:"día completo", capacity:14, type:"excursion", summary:"navegación por el Lago General Carrera para ver formaciones de marmol, ideal para fotografía y paisaje."},
-    {id:"posadas", name:"Lago Posadas y Ruta Escénica 41", aliases:["posadas","lago posadas","ruta 41","ruta escénica"], price:15000, duration:"día completo (12 hs)", capacity:14, type:"excursion", summary:"recorrido panoramico por lagos, miradores y la Ruta Escénica 41 cerca de Perito Moreno."},
+    {id:"cueva", name:"Cueva de las Manos", aliases:["cueva","manos","pinturas","arqueología","rio pinturas"], price:18000, duration:"día completo", capacity:14, type:"excursion", summary:"sitio arqueológico Patrimonio Mundial, pinturas rupestres de más de 9.000 años y paisaje del Cañadón del Río Pinturas."},
+    {id:"capillas", name:"Capillas y Catedrales de Mármol", aliases:["capillas","marmol","catedrales","general carrera"], price:24000, duration:"día completo", capacity:14, type:"excursion", summary:"navegación por el Lago General Carrera para ver formaciones de mármol, ideal para fotografía y paisaje."},
+    {id:"posadas", name:"Lago Posadas y Ruta Escénica 41", aliases:["posadas","lago posadas","ruta 41","ruta escénica"], price:15000, duration:"día completo (12 hs)", capacity:14, type:"excursion", summary:"recorrido panorámico por lagos, miradores y la Ruta Escénica 41 cerca de Perito Moreno."},
     {id:"zeballos", name:"Ruta 41 y Monte Zeballos", aliases:["zeballos","monte zeballos","ruta 41"], price:16000, duration:"día completo", capacity:14, type:"excursion", summary:"travesía de altura por estepa, bosque, cordillera y uno de los caminos más escénicos de Santa Cruz."},
     {id:"charcamata", name:"Alero Charcamata", aliases:["charcamata","alero"], price:12000, duration:"medio día", capacity:14, type:"excursion", summary:"experiencia vinculada al arte rupestre, patrimonio cultural y paisaje natural de la zona."},
     {id:"parque", name:"Portal Cañadón Pinturas - Parque Patagonia", aliases:["parque","parque patagonia","canadon","can","pinturas","portal"], price:8000, duration:"medio día (5 hs)", capacity:14, type:"excursion", summary:"senderos, fauna, geología y vistas amplias del noroeste de Santa Cruz."},
@@ -1436,19 +1436,19 @@ img.hero-logo-static {
     return best;
   }
   function isAsking(q, words){ return words.some(function(w){ return q.indexOf(normalize(w)) !== -1; }); }
-  function listExcursions(){ return "Excursiones de dia o medio día disponibles: " + excursiones.map(productLine).join(" "); }
+  function listExcursions(){ return "Excursiones de día o medio día disponibles: " + excursiones.map(productLine).join(" "); }
   function listTours(){ return "Tours de autor disponibles: " + tours.map(productLine).join(" ") + " Ambos tienen itinerario descargable en PDF desde su página."; }
   function pricesAnswer(product){
     if (product) return productLine(product) + " El precio esta expresado en pesos argentinos AR por persona.";
     return "Precios en AR por persona: " + allProducts.map(function(p){ return p.name + " " + money(p.price); }).join("; ") + ".";
   }
   function datesAnswer(product){
-    var base = "Las reservas del sitio permiten elegír fecha desde hoy (" + todayText() + ") en adelante. La disponibilidad real se valida por fecha, excursion/tour y cupos.";
+    var base = "Las reservas del sitio permiten elegir una fecha desde hoy (" + todayText() + ") en adelante. La disponibilidad real se valida por fecha, excursión o tour y cupos.";
     if (product) base += " Para " + product.name + " la capacidad de referencia es de hasta " + product.capacity + " personas.";
     return base + " Si queres reservar, toca Reservar, elegí experiencia, fecha, cantidad de personas y asientos disponibles.";
   }
   function reservationAnswer(){
-    return "Para reservar desde la web: 1) toca Reservar, 2) elegí Tour de autor o Excursion, 3) selecciona fecha desde hoy en adelante, 4) indica personas y datos, 5) elegí asiento. La seña se calcula como 20% del total.";
+    return "Para reservar desde la web: 1) tocá Reservar, 2) elegí tour de autor o excursión, 3) seleccioná una fecha desde hoy en adelante, 4) indicá la cantidad de personas y tus datos, 5) elegí asiento. La seña se calcula como 20% del total.";
   }
   function locationAnswer(){
     return "Zoyen Turismo está en Perito Moreno, Santa Cruz, Patagonia Argentina. Desde ahí se operan excursiones a Cueva de las Manos, Parque Patagonia, Ruta 41, Lago Posadas y conexiones hacia Carretera Austral.";
@@ -1457,7 +1457,7 @@ img.hero-logo-static {
     return "Si queres hablar con una persona del equipo, podes usar " + contactText + ". Link directo: " + waLink;
   }
   function compareAnswer(){
-    return "Si tenes poco tiempo, mira excursiones de dia: Cueva de las Manos, Capillas de Mármol, Ruta 41, Lago Posadas o Parque Patagonia. Si buscas viaje completo, Patagonia Inédita dura 6 días y Carretera Austral dura 8 días. Para arqueología: Cueva o Charcamata. Para navegación: Capillas. Para ruta escénica: Ruta 41/Zeballos o Lago Posadas.";
+    return "Si tenés poco tiempo, mirá las excursiones de día: Cueva de las Manos, Capillas de Mármol, Ruta 41, Lago Posadas o Parque Patagonia. Si buscás un viaje completo, Patagonia Inédita dura 6 días y Carretera Austral dura 8 días. Para arqueología: Cueva o Charcamata. Para navegación: Capillas. Para ruta escénica: Ruta 41/Zeballos o Lago Posadas.";
   }
   function pdfAnswer(product){
     if (product && product.pdf) return "El itinerario PDF de " + product.name + " se descarga desde su página. Ruta del archivo: " + product.pdf;
@@ -1477,11 +1477,11 @@ img.hero-logo-static {
     if (isAsking(q, ["excursion","excursiones","paseos","salidas","día completo","medio día"])) return product ? productLine(product) + " " + product.summary : listExcursions();
     if (isAsking(q, ["tour","tours","autor","varios días","viaje completo","paquete"])) return product ? productLine(product) + " " + product.summary : listTours();
     if (isAsking(q, ["recomendas","recomendacion","conviene","diferencia","comparar","mejor","cual elijo","que hago"])) return compareAnswer();
-    if (isAsking(q, ["bienestar","wellness","yoga","masajes"])) return "Turismo de Bienestar es una linea complementaria para sumar pausa, naturaleza y cuidado al viaje. Si buscas algo tranquilo, se puede combinar con excursiones de medio día o estadías en la zona.";
+    if (isAsking(q, ["bienestar","wellness","yoga","masajes"])) return "Turismo de Bienestar es una línea complementaria para sumar pausa, naturaleza y cuidado al viaje. Si buscás algo tranquilo, se puede combinar con excursiones de medio día o estadías en la zona.";
     if (isAsking(q, ["zoyen","agencia","legajo","quienes","quienes son"])) return "Zoyen Turismo es una agencia local de Perito Moreno, Santa Cruz, legajo 15.625. Diseña excursiones y tours de autor en Patagonia.";
     if (product) return productLine(product) + " " + product.summary;
 
-    return "Puedo ayudarte con información del sitio: fechas disponibles, precios en AR, cupos, tipos de excursiones, tours de autor, ubicación, itinerarios PDF y como reservar. Probá preguntarme, por ejemplo: 'precio de Capillas', 'fechas para Patagonia Inédita' o 'qué excursión me recomendas'.";
+    return "Puedo ayudarte con información del sitio: fechas disponibles, precios en AR, cupos, tipos de excursiones, tours de autor, ubicación, itinerarios PDF y cómo reservar. Probá preguntarme, por ejemplo: 'precio de Capillas', 'fechas para Patagonia Inédita' o '¿qué excursión me recomendás?'.";
   }
   function submit(text){
     var value = (text || (input ? input.value : "") || "").trim();
@@ -1498,7 +1498,7 @@ img.hero-logo-static {
   if (closeBtn) closeBtn.addEventListener("click", function(){ widget.classList.remove("open"); if (toggle) toggle.setAttribute("aria-expanded","false"); });
   if (form) form.addEventListener("submit", function(e){ e.preventDefault(); submit(); });
   if (chips) chips.addEventListener("click", function(e){ if (e.target.matches("button")) submit(e.target.textContent); });
-  addMessage("Hola, soy Zoyi. Puedo responder sobre excursiones, tours, precios en AR, fechas disponibles, cupos, ubicación e itinerarios. Solo te paso con una persona si me lo pedis.", "bot");
+  addMessage("Hola, soy Zoyi. Puedo responder sobre excursiones, tours, precios en AR, fechas disponibles, cupos, ubicación e itinerarios. Solo te paso con una persona si me lo pedís.", "bot");
 })();
 </script>
 
