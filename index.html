@@ -5477,11 +5477,11 @@ applyLang(currentLang);
   };
 
   var excursiones = [
-    {id:"cueva",    name:"Cueva de las Manos",                        aliases:["cueva","manos","pinturas","cave","hands","caverna"," 굴"], price:18000, duration:"día completo",      capacity:14, type:"excursion", summary:"sitio arqueológico Patrimonio Mundial, pinturas rupestres de más de 9.000 años."},
-    {id:"capillas", name:"Capillas y Catedrales de Mármol",           aliases:["capillas","marmol","catedrales","general carrera","marble","chapel","마블 채플","capelas"], price:24000, duration:"día completo", capacity:14, type:"excursion", summary:"navegación por el Lago General Carrera para ver formaciones de mármol."},
+    {id:"cueva",    name:"Cueva de las Manos",                        aliases:["cueva","manos","pinturas","cave","hands","caverna"," 굴"], price:200000, pricePrivate:200000, duration:"día completo",      capacity:14, type:"excursion", summary:"sitio arqueológico Patrimonio Mundial, pinturas rupestres de más de 9.000 años."},
+    {id:"capillas", name:"Capillas y Catedrales de Mármol",           aliases:["capillas","marmol","catedrales","general carrera","marble","chapel","마블 채플","capelas"], price:340000, priceUsd:230, duration:"día completo", capacity:14, type:"excursion", summary:"navegación por el Lago General Carrera para ver formaciones de mármol."},
     {id:"posadas",  name:"Lago Posadas y Ruta Escenica 41",           aliases:["posadas","lago posadas","ruta 41","ruta escenica","lake posadas","사다스"], price:15000, duration:"día completo (12 hs)", capacity:14, type:"excursion", summary:"recorrido panorámico por lagos y miradores de la Ruta Escenica 41."},
-    {id:"zeballos", name:"Ruta 41 y Monte Zeballos",                  aliases:["zeballos","monte zeballos","ruta 41","세바요스"], price:16000, duration:"día completo", capacity:14, type:"excursion", summary:"travesía de altura por estepa, bosque y cordillera."},
-    {id:"charcamata",name:"Alero Charcamata",                         aliases:["charcamata","alero","차르카마타"], price:12000, duration:"medio día", capacity:14, type:"excursion", summary:"arte rupestre, patrimonio cultural y paisaje natural."},
+    {id:"zeballos", name:"Ruta 41 y Monte Zeballos",                  aliases:["zeballos","monte zeballos","ruta 41","세바요스"], price:200000, pricePrivate:200000, duration:"día completo", capacity:14, type:"excursion", summary:"travesía de altura por estepa, bosque y cordillera."},
+    {id:"charcamata",name:"Alero Charcamata",                         aliases:["charcamata","alero","차르카마타"], price:220000, duration:"medio día", capacity:14, type:"excursion", summary:"arte rupestre, patrimonio cultural y paisaje natural."},
     {id:"parque",   name:"Portal Cañadón Pinturas - Parque Patagonia",  aliases:["parque","parque patagonia","canadon","can","pinturas","portal","파타고니아 공"], price:8000, duration:"medio día (5 hs)", capacity:14, type:"excursion", summary:"senderos, fauna, geología y vistas del noroeste de Santa Cruz."},
     {id:"ascension",name:"PNP / Estancia La Ascensión",               aliases:["ascension","estancia","pnp"], price:7000, duration:"medio día (4 hs)", capacity:14, type:"excursion", summary:"salida corta vinculada al Parque Patagonia y la historia de estancia."}
   ];
@@ -5567,8 +5567,11 @@ applyLang(currentLang);
     if(intent==="dates")return ui.datesBase+ui.datesExtra(p)+ui.datesCta;
     return productSummary(p,ui);
   }
-  function productLine(p,ui){ return p.name+": "+p.duration+", "+money(p.price)+", "+p.capacity+(ui ? ui.capacity:" personas")+"."; }
-  function productBullet(p,ui){ return "- "+p.name+"\n  "+p.duration+" - "+money(p.price)+" - "+p.capacity+(ui ? ui.capacity:" personas"); }
+  function priceText(p){
+    return money(p.price);
+  }
+  function productLine(p,ui){ return p.name+": "+p.duration+", "+priceText(p)+", "+p.capacity+(ui ? ui.capacity:" personas")+"."; }
+  function productBullet(p,ui){ return "- "+p.name+"\n  "+p.duration+" - "+priceText(p)+" - "+p.capacity+(ui ? ui.capacity:" personas"); }
   function productSummary(p,ui){ return productBullet(p,ui)+"\n  "+p.summary; }
   function numberedSteps(text){ return String(text||"").replace(/\s*(\d\))/g,"\n$1").trim(); }
   function findProduct(q){ var b=null,s=0; allProducts.forEach(function(p){ var l=0; [p.name].concat(p.aliases||[]).forEach(function(a){ a=normalize(a); if(a&&q.indexOf(a)!==-1)l+=a.length > 8 ? 3 : 2; }); if(l>s){b=p;s=l;} }); return b; }

@@ -1401,11 +1401,11 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   var pageTitle = (document.title || "").replace(/\s+/g," ").trim();
 
   var excursiones = [
-    {id:"cueva", name:"Cueva de las Manos", aliases:["cueva","manos","pinturas","arqueología","río Pinturas"], price:18000, duration:"día completo", capacity:14, type:"excursion", summary:"sitio arqueológico Patrimonio Mundial, pinturas rupestres de más de 9.000 años y paisaje del Cañadón del Río Pinturas."},
-    {id:"capillas", name:"Capillas y Catedrales de Mármol", aliases:["capillas","marmol","catedrales","general carrera"], price:24000, duration:"día completo", capacity:14, type:"excursion", summary:"navegación por el Lago General Carrera para ver formaciones de mármol, ideal para fotografía y paisaje."},
+    {id:"cueva", name:"Cueva de las Manos", aliases:["cueva","manos","pinturas","arqueología","río Pinturas"], price:200000, pricePrivate:200000, duration:"día completo", capacity:14, type:"excursion", summary:"sitio arqueológico Patrimonio Mundial, pinturas rupestres de más de 9.000 años y paisaje del Cañadón del Río Pinturas."},
+    {id:"capillas", name:"Capillas y Catedrales de Mármol", aliases:["capillas","marmol","catedrales","general carrera"], price:340000, priceUsd:230, duration:"día completo", capacity:14, type:"excursion", summary:"navegación por el Lago General Carrera para ver formaciones de mármol, ideal para fotografía y paisaje."},
     {id:"posadas", name:"Lago Posadas y Ruta Escénica 41", aliases:["posadas","lago posadas","ruta 41","ruta escénica"], price:15000, duration:"día completo (12 hs)", capacity:14, type:"excursion", summary:"recorrido panorámico por lagos, miradores y la Ruta Escénica 41 cerca de Perito Moreno."},
-    {id:"zeballos", name:"Ruta 41 y Monte Zeballos", aliases:["zeballos","monte zeballos","ruta 41"], price:16000, duration:"día completo", capacity:14, type:"excursion", summary:"travesía de altura por estepa, bosque, cordillera y uno de los caminos más escénicos de Santa Cruz."},
-    {id:"charcamata", name:"Alero Charcamata", aliases:["charcamata","alero"], price:12000, duration:"medio día", capacity:14, type:"excursion", summary:"experiencia vinculada al arte rupestre, patrimonio cultural y paisaje natural de la zona."},
+    {id:"zeballos", name:"Ruta 41 y Monte Zeballos", aliases:["zeballos","monte zeballos","ruta 41"], price:200000, pricePrivate:200000, duration:"día completo", capacity:14, type:"excursion", summary:"travesía de altura por estepa, bosque, cordillera y uno de los caminos más escénicos de Santa Cruz."},
+    {id:"charcamata", name:"Alero Charcamata", aliases:["charcamata","alero"], price:220000, duration:"medio día", capacity:14, type:"excursion", summary:"experiencia vinculada al arte rupestre, patrimonio cultural y paisaje natural de la zona."},
     {id:"parque", name:"Portal Cañadón Pinturas - Parque Patagonia", aliases:["parque","parque patagonia","canadon","can","pinturas","portal"], price:8000, duration:"medio día (5 hs)", capacity:14, type:"excursion", summary:"senderos, fauna, geología y vistas amplias del noroeste de Santa Cruz."},
     {id:"ascension", name:"PNP / Estancia La Ascensión", aliases:["ascension","estancia","la ascension","pnp"], price:7000, duration:"medio día (4 hs)", capacity:14, type:"excursion", summary:"salida corta vinculada al Parque Patagonia y la historia de estancia de la región."}
   ];
@@ -1444,7 +1444,10 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
     messages.appendChild(div);
     messages.scrollTop = messages.scrollHeight;
   }
-  function productLine(p){ return p.name + ": " + p.duration + ", " + money(p.price) + ", cupos hasta " + p.capacity + " personas."; }
+  function priceText(p){
+    return money(p.price);
+  }
+  function productLine(p){ return p.name + ": " + p.duration + ", " + priceText(p) + ", cupos hasta " + p.capacity + " personas."; }
   function findProduct(q){
     var best = null, score = 0;
     allProducts.forEach(function(p){
@@ -1462,7 +1465,7 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   function listTours(){ return "Tours de autor disponibles: " + tours.map(productLine).join(" ") + " Ambos tienen itinerario descargable en PDF desde su página."; }
   function pricesAnswer(product){
     if (product) return productLine(product) + " El precio está expresado en pesos argentinos AR por persona.";
-    return "Precios en AR por persona: " + allProducts.map(function(p){ return p.name + " " + money(p.price); }).join("; ") + ".";
+    return "Precios en AR por persona: " + allProducts.map(function(p){ return p.name + " " + priceText(p); }).join("; ") + ".";
   }
   function datesAnswer(product){
     var base = "Las reservas del sitio permiten elegir una fecha desde hoy (" + todayText() + ") en adelante. La disponibilidad real se valida por fecha, excursión o tour y cupos.";
