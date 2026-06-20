@@ -1,0 +1,55 @@
+.zoyen-inline-price {
+  display: inline-flex;
+  align-items: baseline;
+  gap: .28em;
+  border-bottom: 1px dashed rgba(211, 106, 27, .65);
+  border-radius: 2px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color .18s ease, background .18s ease, border-color .18s ease;
+}
+
+.zoyen-inline-price:hover,
+.zoyen-inline-price:focus-visible {
+  color: #b95313;
+  background: rgba(211, 106, 27, .08);
+  border-color: #d36a1b;
+  outline: none;
+}
+
+.zoyen-price-hint {
+  color: #d36a1b;
+  font: 700 .72em/1 sans-serif;
+  transform: translateY(-.05em);
+}
+
+.zoyen-inline-conversion {
+  display: none;
+  padding: .18em .45em;
+  border: 1px solid rgba(211, 106, 27, .3);
+  border-radius: 999px;
+  background: rgba(211, 106, 27, .1);
+  color: #b95313;
+  font: 700 .72em/1.2 'Sora', sans-serif;
+  letter-spacing: .01em;
+  white-space: nowrap;
+}
+
+.zoyen-inline-price.is-converted .zoyen-price-hint { display: none; }
+.zoyen-inline-price.is-converted .zoyen-inline-conversion { display: inline-block; }
+.zoyen-inline-price.is-collapsed .zoyen-inline-conversion { display: none; }
+
+.currency-switcher.zoyen-currency-attention {
+  animation: zoyenCurrencyAttention .7s ease 2;
+}
+
+@keyframes zoyenCurrencyAttention {
+  50% { filter: drop-shadow(0 0 7px rgba(211, 106, 27, .75)); }
+}
+
+@media (max-width: 760px) {
+  .zoyen-inline-price {
+    white-space: normal;
+    flex-wrap: wrap;
+  }
+}
