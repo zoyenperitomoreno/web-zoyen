@@ -902,7 +902,7 @@ img.hero-logo-static {
 }
 </style>
 <style id="zoyen-brand-link-split">
-.nav-emblem-link,.nav-home-link{display:flex;align-items:center;text-decoration:none;color:inherit}
+.nav-emblem-link,.nav-home-link{display:flex;align-items:center;text-decoration:none;color:inherit;outline:none}.nav-emblem-link:focus-visible,.nav-home-link:focus-visible{outline:2px solid #d4772a;outline-offset:3px;border-radius:50%}
 .nav-emblem-link{flex:0 0 auto}
 .nav-home-link{min-width:0}
 </style>
@@ -987,13 +987,13 @@ img.hero-logo-static {
 <h2>Precios</h2>
 <p><strong>Temporada 2025</strong> (vigencia hasta el 31 de diciembre)</p>
 <ul>
-  <li>En privado: $180.000 c/u</li>
-  <li>En salida grupal: $150.000 c/u</li>
+  <li class="precio-texto">En privado: $180.000 c/u</li>
+  <li class="precio-texto">En salida grupal: $150.000 c/u</li>
 </ul>
 <p><strong>Temporada 2026</strong> (vigencia hasta el 30 de abril)</p>
 <ul>
-  <li>En privado: $200.000 c/u</li>
-  <li>En salida grupal: $170.000 c/u</li>
+  <li class="precio-texto">En privado: $200.000 c/u</li>
+  <li class="precio-texto">En salida grupal: $170.000 c/u</li>
 </ul>
 
   </main>
@@ -2642,7 +2642,7 @@ a.cta-btn-g[href*="wa.me"]:hover {
   const langCurrency={es:'ARS',en:'USD',pt:'BRL',ko:'KRW'};
   let selected=localStorage.getItem('zoyen_currency')||langCurrency[(document.documentElement.lang||'es').slice(0,2)]||'ARS';
   let rates={ARS:1}, refreshing=false;
-  const priceTargets=['#montoPrev','#pagoMontoBadge','#pagoSenia','.precio-preview .monto','.monto-badge'];
+  const priceTargets=['#montoPrev','#pagoMontoBadge','#pagoSenia','.precio-preview .monto','.monto-badge','.precio-texto'];
   function money(value,code){const c=currencies[code];return c.symbol+Number(value).toLocaleString(c.locale,{maximumFractionDigits:code==='KRW'||code==='CLP'?0:2});}
   function arsFromText(text){const m=String(text||'').match(/\$\s*([\d.]+(?:,\d+)?)/);return m?Number(m[1].replace(/\./g,'').replace(',','.')):0;}
   function updateLabel(){const label=document.getElementById('currencyCurrentLabel');if(label)label.innerHTML=selected+' <span class="currency-name">· '+currencies[selected].name+'</span>';document.querySelectorAll('.currency-option').forEach(b=>b.classList.toggle('active',b.dataset.currency===selected));const r=document.getElementById('currencyRate');if(r)r.textContent=selected==='ARS'?'Los cobros y reservas se realizan siempre en pesos argentinos.':rates[selected]?'Referencia: $10.000 ARS ≈ '+money(10000*rates[selected],selected)+'. Cotización informativa.':'Consultando cotización…';}
