@@ -17,6 +17,45 @@
 /* Fix: ocultar boton hamburguesa en desktop, solo debe verse en mobile */
 .ham-btn { display: none; }
 
+/* Fix: el menu de links no entra en pantallas de notebook (901px-1850px), se superpone con moneda/idioma y botones */
+/* Se usa el mismo comportamiento que mobile (menu hamburguesa) en este rango, hasta que haya espacio suficiente */
+@media (min-width: 901px) and (max-width: 1850px) {
+  body > nav:not(.mobile-drawer) {
+    grid-template-columns: auto auto 1fr auto auto !important;
+  }
+  body > nav:not(.mobile-drawer) .nav-links,
+  body > nav:not(.mobile-drawer) .nav-actions {
+    display: none !important;
+  }
+  body > nav:not(.mobile-drawer) .ham-btn {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 5px !important;
+    width: 44px !important;
+    height: 44px !important;
+    background: none !important;
+    border: none !important;
+    cursor: pointer !important;
+    padding: 8px !important;
+    flex-shrink: 0 !important;
+    z-index: 950 !important;
+  }
+  body > nav:not(.mobile-drawer) .ham-btn span {
+    display: block !important;
+    width: 22px !important;
+    height: 2px !important;
+    background: var(--cream, #f5f0e8) !important;
+    border-radius: 2px !important;
+    flex-shrink: 0 !important;
+  }
+  body > nav:not(.mobile-drawer) .ham-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg) !important; }
+  body > nav:not(.mobile-drawer) .ham-btn.open span:nth-child(2) { opacity: 0 !important; width: 0 !important; }
+  body > nav:not(.mobile-drawer) .ham-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg) !important; }
+  .mobile-drawer { display: flex !important; }
+}
+
 /* Ajuste global de tipografa */
 html { font-size: 18px; }
 
@@ -2414,7 +2453,7 @@ body > nav.mobile-drawer.open {
   border-color: var(--ember, #d4772a) !important;
   color: var(--cream, #f5f0e8) !important;
 }
-@media (min-width: 901px) {
+@media (min-width: 1851px) {
   nav.mobile-drawer,
   body > nav.mobile-drawer,
   nav.mobile-drawer.open,
