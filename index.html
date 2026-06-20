@@ -3031,6 +3031,27 @@ img.hero-logo-static {
 .nav-emblem-link{flex:0 0 auto}
 .nav-home-link{min-width:0}
 </style>
+<style id="zoyen-currency-style">
+.nav-locale-tools{display:flex;align-items:center;gap:.45rem;justify-self:start;min-width:0}
+.currency-switcher{position:relative;z-index:921;display:flex;align-items:center;flex:0 0 auto}
+.currency-current{height:34px;min-width:64px;max-width:68px;border:1px solid rgba(211,106,27,.42);background:rgba(255,255,255,.035);color:#e8dcc8;border-radius:2px;padding:0 24px 0 10px;font:600 10px/1 'Sora',sans-serif;letter-spacing:.09em;cursor:pointer;position:relative;text-align:left}
+.currency-current::after{content:'';position:absolute;right:11px;top:14px;width:6px;height:6px;border-right:1px solid #d9c7a7;border-bottom:1px solid #d9c7a7;transform:rotate(45deg);transition:.2s}
+.currency-switcher.open .currency-current{border-color:#d36a1b;background:rgba(211,106,27,.12)}
+.currency-switcher.open .currency-current::after{top:15px;transform:rotate(225deg)}
+.currency-menu{position:absolute;top:calc(100% + 8px);left:0;width:228px;margin:0;padding:7px;list-style:none;background:#17120e;border:1px solid rgba(211,106,27,.38);box-shadow:0 18px 40px rgba(0,0,0,.4);opacity:0;visibility:hidden;transform:translateY(-6px);transition:.18s}
+.currency-switcher.open .currency-menu{opacity:1;visibility:visible;transform:none}
+.currency-option{width:100%;border:0;background:transparent;color:#d9c7a7;padding:9px 10px;display:flex;justify-content:space-between;align-items:center;font:600 11px/1.2 'Sora',sans-serif;cursor:pointer;text-align:left}
+.currency-option:hover,.currency-option.active{background:rgba(211,106,27,.13);color:#fff}
+.currency-option small{font-size:9px;color:#a99070;letter-spacing:.05em}
+.currency-rate{padding:8px 10px 5px;border-top:1px solid rgba(255,255,255,.08);color:#9f8c73;font:500 9px/1.45 'Sora',sans-serif}
+.currency-name{display:none!important}
+.currency-conversion{display:block;margin-top:4px;color:#d36a1b!important;font:600 11px/1.35 'Sora',sans-serif;letter-spacing:.03em}
+@media(max-width:1050px){.nav-locale-tools{gap:.3rem}.currency-current{min-width:58px;max-width:58px;padding-left:8px}.currency-menu{left:auto;right:0}}
+@media(max-width:900px){.nav-locale-tools{margin-left:auto;justify-self:auto}.currency-switcher{margin-right:7px}.currency-current{height:32px;min-width:58px;max-width:58px;font-size:9px}.currency-menu{position:fixed;top:64px;left:12px;right:12px;width:auto}}
+/* Placeholder de moneda con tamano fijo para evitar que el header se vea roto mientras carga el JS */
+.currency-switcher-placeholder{display:flex;align-items:center;height:34px;min-width:64px;max-width:68px;border:1px solid rgba(211,106,27,.42);background:rgba(255,255,255,.035);border-radius:2px}
+@media(max-width:1050px){.currency-switcher-placeholder{min-width:58px;max-width:58px}}
+</style>
 </head>
 <body>
 
@@ -7023,24 +7044,7 @@ a.cta-btn-g[href*="wa.me"]:hover {
   }
 })();
 </script>
-<style id="zoyen-currency-style">
-.nav-locale-tools{display:flex;align-items:center;gap:.45rem;justify-self:start;min-width:0}
-.currency-switcher{position:relative;z-index:921;display:flex;align-items:center;flex:0 0 auto}
-.currency-current{height:34px;min-width:64px;max-width:68px;border:1px solid rgba(211,106,27,.42);background:rgba(255,255,255,.035);color:#e8dcc8;border-radius:2px;padding:0 24px 0 10px;font:600 10px/1 'Sora',sans-serif;letter-spacing:.09em;cursor:pointer;position:relative;text-align:left}
-.currency-current::after{content:'';position:absolute;right:11px;top:14px;width:6px;height:6px;border-right:1px solid #d9c7a7;border-bottom:1px solid #d9c7a7;transform:rotate(45deg);transition:.2s}
-.currency-switcher.open .currency-current{border-color:#d36a1b;background:rgba(211,106,27,.12)}
-.currency-switcher.open .currency-current::after{top:15px;transform:rotate(225deg)}
-.currency-menu{position:absolute;top:calc(100% + 8px);left:0;width:228px;margin:0;padding:7px;list-style:none;background:#17120e;border:1px solid rgba(211,106,27,.38);box-shadow:0 18px 40px rgba(0,0,0,.4);opacity:0;visibility:hidden;transform:translateY(-6px);transition:.18s}
-.currency-switcher.open .currency-menu{opacity:1;visibility:visible;transform:none}
-.currency-option{width:100%;border:0;background:transparent;color:#d9c7a7;padding:9px 10px;display:flex;justify-content:space-between;align-items:center;font:600 11px/1.2 'Sora',sans-serif;cursor:pointer;text-align:left}
-.currency-option:hover,.currency-option.active{background:rgba(211,106,27,.13);color:#fff}
-.currency-option small{font-size:9px;color:#a99070;letter-spacing:.05em}
-.currency-rate{padding:8px 10px 5px;border-top:1px solid rgba(255,255,255,.08);color:#9f8c73;font:500 9px/1.45 'Sora',sans-serif}
-.currency-name{display:none!important}
-.currency-conversion{display:block;margin-top:4px;color:#d36a1b!important;font:600 11px/1.35 'Sora',sans-serif;letter-spacing:.03em}
-@media(max-width:1050px){.nav-locale-tools{gap:.3rem}.currency-current{min-width:58px;max-width:58px;padding-left:8px}.currency-menu{left:auto;right:0}}
-@media(max-width:900px){.nav-locale-tools{margin-left:auto;justify-self:auto}.currency-switcher{margin-right:7px}.currency-current{height:32px;min-width:58px;max-width:58px;font-size:9px}.currency-menu{position:fixed;top:64px;left:12px;right:12px;width:auto}}
-</style>
+
 <script id="zoyen-currency-script">
 (function(){
   const currencies={ARS:{symbol:'$',name:'Peso argentino',locale:'es-AR'},USD:{symbol:'US$',name:'Dólar',locale:'en-US'},EUR:{symbol:'€',name:'Euro',locale:'de-DE'},BRL:{symbol:'R$',name:'Real',locale:'pt-BR'},GBP:{symbol:'£',name:'Libra',locale:'en-GB'},KRW:{symbol:'₩',name:'Won',locale:'ko-KR'},CLP:{symbol:'CLP$',name:'Peso chileno',locale:'es-CL'}};
