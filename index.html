@@ -7044,91 +7044,79 @@ a.cta-btn-g[href*="wa.me"]:hover {
 
 <script id="zoyen-hero-logo-motion-script">
 (function(){
+  if(window.__zoyenUnifiedCompassReady)return;
+  window.__zoyenUnifiedCompassReady=true;
+
   function motionMarkup(){
-    return '<div class="zoyen-hero-logo-orbit" aria-hidden="true">' +
-      '<svg viewBox="0 0 280 280" focusable="false" aria-hidden="true">' +
-        '<circle class="zoyen-motion-ring" cx="140" cy="140" r="133"></circle>' +
-        '<circle class="zoyen-motion-inner-ring" cx="140" cy="140" r="82"></circle>' +
-        '<g class="zoyen-motion-cardinals">' +
-          '<text x="140" y="28">N</text>' +
-          '<text x="252" y="140">E</text>' +
-          '<text x="140" y="254">S</text>' +
-          '<text x="28" y="140">O</text>' +
-        '</g>' +
-        '<g class="zoyen-motion-rose">' +
-          '<path d="M140 54 L154 126 L226 140 L154 154 L140 226 L126 154 L54 140 L126 126 Z"></path>' +
-          '<path d="M140 86 L149 131 L194 140 L149 149 L140 194 L131 149 L86 140 L131 131 Z"></path>' +
-        '</g>' +
-        '<circle class="zoyen-motion-spark s1" cx="67" cy="204" r="4"></circle>' +
-        '<circle class="zoyen-motion-spark s2" cx="218" cy="202" r="4"></circle>' +
-        '<circle class="zoyen-motion-spark s3" cx="140" cy="246" r="3"></circle>' +
-      '</svg>' +
-    '</div>';
+    return '<div class="zoyen-hero-logo-orbit" aria-hidden="true"><svg viewBox="0 0 280 280" focusable="false" aria-hidden="true"><circle class="zoyen-motion-ring" cx="140" cy="140" r="133"></circle><circle class="zoyen-motion-inner-ring" cx="140" cy="140" r="82"></circle><g class="zoyen-motion-cardinals"><text x="140" y="28">N</text><text x="252" y="140">E</text><text x="140" y="254">S</text><text x="28" y="140">O</text></g><g class="zoyen-motion-rose"><path d="M140 54 L154 126 L226 140 L154 154 L140 226 L126 154 L54 140 L126 126 Z"></path><path d="M140 86 L149 131 L194 140 L149 149 L140 194 L131 149 L86 140 L131 131 Z"></path></g><circle class="zoyen-motion-spark s1" cx="67" cy="204" r="4"></circle><circle class="zoyen-motion-spark s2" cx="218" cy="202" r="4"></circle><circle class="zoyen-motion-spark s3" cx="140" cy="246" r="3"></circle></svg></div>';
   }
 
-  function getCompassHeading(event){
-    if (typeof event.webkitCompassHeading === 'number') return event.webkitCompassHeading;
-    if (typeof event.alpha === 'number') return (360 - event.alpha + 360) % 360;
-    return null;
+  var boxes=[];
+  var listening=false;
+  var receivedHeading=false;
+  var smoothHeading=null;
+  var statusTimer=null;
+
+  function status(message,type){
+    var el=document.getElementById('zoyen-compass-status');
+    if(!el){el=document.createElement('div');el.id='zoyen-compass-status';el.setAttribute('role','status');el.style.cssText='position:fixed;left:50%;bottom:max(24px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:1200;max-width:calc(100vw - 32px);padding:10px 15px;border-radius:999px;background:rgba(18,14,11,.94);border:1px solid rgba(212,119,42,.55);color:#f5f0e8;font:600 12px/1.35 Sora,sans-serif;letter-spacing:.03em;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.3);pointer-events:none;transition:opacity .25s';document.body.appendChild(el)}
+    el.textContent=message;el.style.borderColor=type==='error'?'rgba(220,90,70,.7)':'rgba(212,119,42,.55)';el.style.opacity='1';
+    clearTimeout(statusTimer);statusTimer=setTimeout(function(){el.style.opacity='0'},3600);
   }
 
-  function startCompass(box, fromGesture){
-    if (!window.matchMedia || !window.matchMedia('(max-width: 900px)').matches) return;
-    if (box._zoyenCompassStarted) return;
-    if (typeof DeviceOrientationEvent === 'undefined') return;
-
-    function bindCompass(){
-      if (box._zoyenCompassStarted) return;
-      box._zoyenCompassStarted = true;
-      box.classList.add('zoyen-compass-active');
-      function updateHeading(event){
-        var heading = getCompassHeading(event);
-        if (heading === null) return;
-        box.style.setProperty('--zoyen-compass-rotation', (-heading).toFixed(1) + 'deg');
-      }
-      window.addEventListener('deviceorientationabsolute', updateHeading, true);
-      window.addEventListener('deviceorientation', updateHeading, true);
-    }
-
-    if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-      if (!fromGesture) return;
-      DeviceOrientationEvent.requestPermission()
-        .then(function(state){
-          if (state === 'granted') bindCompass();
-        })
-        .catch(function(){});
-    } else {
-      bindCompass();
-    }
+  function screenAngle(){
+    if(screen.orientation&&typeof screen.orientation.angle==='number')return screen.orientation.angle;
+    return typeof window.orientation==='number'?window.orientation:0;
   }
 
-  function initHeroLogoMotion(){
-    document.querySelectorAll('.slide-emblem .emblem-3d').forEach(function(box){
-      if (!box.querySelector('.hero-logo-static')) return;
-      box.classList.remove('zoyen-hero-logo-wrap', 'zoyen-hero-logo-scene-hover', 'zoyen-hero-logo-scene-on');
-      if (!box.querySelector('.zoyen-hero-logo-orbit')) {
-        box.insertAdjacentHTML('beforeend', motionMarkup());
-      }
-      box.classList.add('zoyen-hero-logo-motion');
-      box.addEventListener('click', function(){
-        box.classList.add('zoyen-logo-motion-on');
-        startCompass(box, true);
-        window.clearTimeout(box._zoyenLogoMotionTimer);
-        box._zoyenLogoMotionTimer = window.setTimeout(function(){
-          box.classList.remove('zoyen-logo-motion-on');
-        }, 2200);
-      });
-      box.addEventListener('touchstart', function(){
-        startCompass(box, true);
-      }, { passive: true });
+  function headingFrom(event){
+    if(typeof event.webkitCompassHeading==='number'&&isFinite(event.webkitCompassHeading))return event.webkitCompassHeading;
+    if(typeof event.alpha!=='number'||!isFinite(event.alpha))return null;
+    return (360-event.alpha+screenAngle()+720)%360;
+  }
+
+  function applyHeading(event){
+    var heading=headingFrom(event);if(heading===null)return;
+    receivedHeading=true;
+    if(smoothHeading===null)smoothHeading=heading;
+    var delta=((heading-smoothHeading+540)%360)-180;
+    smoothHeading=(smoothHeading+delta*.18+360)%360;
+    boxes.forEach(function(box){box.classList.add('zoyen-compass-active');box.style.setProperty('--zoyen-compass-rotation',(-smoothHeading).toFixed(1)+'deg')});
+  }
+
+  function bindSensors(){
+    if(listening)return;listening=true;
+    window.addEventListener('deviceorientationabsolute',applyHeading,true);
+    window.addEventListener('deviceorientation',applyHeading,true);
+    boxes.forEach(function(box){box.classList.add('zoyen-compass-active')});
+    status('Brújula activada · mové el teléfono');
+    setTimeout(function(){if(!receivedHeading)status('No llegan datos del sensor. Revisá los permisos de movimiento.','error')},2200);
+  }
+
+  function requestSensors(){
+    if(listening){status('Brújula activa');return}
+    if(!window.isSecureContext&&location.hostname!=='127.0.0.1'&&location.hostname!=='localhost'){status('La brújula necesita una conexión segura HTTPS.','error');return}
+    if(typeof DeviceOrientationEvent==='undefined'){status('Este navegador no ofrece acceso al sensor de orientación.','error');return}
+    if(typeof DeviceOrientationEvent.requestPermission==='function'){
+      DeviceOrientationEvent.requestPermission().then(function(result){
+        if(result==='granted')bindSensors();else status('Activá Movimiento y orientación para usar la brújula.','error');
+      }).catch(function(){status('No se pudo habilitar la brújula. Revisá los permisos del navegador.','error')});
+    }else bindSensors();
+  }
+
+  function init(){
+    boxes=Array.prototype.slice.call(document.querySelectorAll('.slide-emblem .emblem-3d'));
+    boxes.forEach(function(box){
+      if(!box.querySelector('.hero-logo-static'))return;
+      if(!box.querySelector('.zoyen-hero-logo-orbit'))box.insertAdjacentHTML('beforeend',motionMarkup());
+      box.classList.add('zoyen-hero-logo-motion');box.setAttribute('role','button');box.setAttribute('tabindex','0');box.setAttribute('aria-label','Activar brújula con el logo de Zoyen');
+      box.addEventListener('touchstart',function(event){event.stopImmediatePropagation()},{capture:true,passive:true});
+      box.addEventListener('click',function(event){event.preventDefault();event.stopImmediatePropagation();box.classList.add('zoyen-logo-motion-on');requestSensors();clearTimeout(box._zoyenLogoMotionTimer);box._zoyenLogoMotionTimer=setTimeout(function(){box.classList.remove('zoyen-logo-motion-on')},2200)},{capture:true});
+      box.addEventListener('keydown',function(event){if(event.key==='Enter'||event.key===' '){event.preventDefault();requestSensors()}},{capture:true});
     });
   }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initHeroLogoMotion);
-  } else {
-    initHeroLogoMotion();
-  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+  window.ZoyenCompass={activate:requestSensors,isActive:function(){return listening}};
 })();
 </script>
 
@@ -7170,5 +7158,67 @@ a.cta-btn-g[href*="wa.me"]:hover {
     });
   });
 })();
-</script></body>
+</script><style id="zoyen-responsive-v2-20260622">
+/* Header compacto y estable para tablets y celulares */
+@media (max-width:1024px){
+  body{overflow-x:hidden!important}
+  body>nav:not(.breadcrumb):not(.mobile-drawer){
+    display:grid!important;grid-template-columns:minmax(0,1fr) 48px!important;
+    align-items:center!important;gap:10px!important;width:100%!important;
+    height:64px!important;min-height:64px!important;
+    padding:0 max(16px,env(safe-area-inset-right)) 0 max(16px,env(safe-area-inset-left))!important;
+    background:rgba(11,9,8,.97)!important;border-bottom:1px solid rgba(212,119,42,.28)!important;
+    box-shadow:0 8px 28px rgba(0,0,0,.2)!important;backdrop-filter:blur(16px)!important;
+    -webkit-backdrop-filter:blur(16px)!important;overflow:visible!important;z-index:1000!important
+  }
+  body>nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo{display:flex!important;align-items:center!important;gap:9px!important;min-width:0!important;max-width:none!important;overflow:hidden!important}
+  body>nav:not(.breadcrumb):not(.mobile-drawer) .nav-emblem-link{display:flex!important;flex:0 0 auto!important}
+  body>nav:not(.breadcrumb):not(.mobile-drawer) .nav-emblem{width:42px!important;height:42px!important;object-fit:contain!important}
+  body>nav:not(.breadcrumb):not(.mobile-drawer) .nav-home-link{display:flex!important;min-width:0!important;overflow:hidden!important;opacity:1!important;visibility:visible!important}
+  body>nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo-text{display:flex!important;min-width:0!important;overflow:hidden!important;opacity:1!important;visibility:visible!important}
+  body>nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo-name{display:flex!important;min-width:0!important;white-space:nowrap!important;opacity:1!important;visibility:visible!important}
+  body>nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .z,
+  body>nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .t{display:inline!important;opacity:1!important;visibility:visible!important;font-size:1rem!important;letter-spacing:.07em!important;line-height:1!important}
+  body>nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo sub{display:block!important;font-size:.5rem!important;letter-spacing:.12em!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+  body>nav:not(.breadcrumb):not(.mobile-drawer) .nav-links,
+  body>nav:not(.breadcrumb):not(.mobile-drawer) .nav-actions,
+  body>nav:not(.breadcrumb):not(.mobile-drawer)>.lang-switcher,
+  body>nav:not(.breadcrumb):not(.mobile-drawer)>.currency-switcher,
+  body>nav:not(.breadcrumb):not(.mobile-drawer)>.nav-locale-tools,
+  body>nav:not(.breadcrumb):not(.mobile-drawer) .nav-locale-tools{display:none!important}
+  body>nav:not(.breadcrumb):not(.mobile-drawer) .ham-btn,
+  .ham-btn.zoyen-mobile-created{display:inline-flex!important;grid-column:2!important;grid-row:1!important;justify-self:end!important;align-self:center!important;width:46px!important;height:46px!important;min-width:46px!important;margin:0!important;padding:0!important;border-radius:12px!important;border:1px solid rgba(245,240,232,.2)!important;background:rgba(245,240,232,.07)!important}
+  .mobile-drawer{width:min(88vw,380px)!important;max-width:380px!important;height:100dvh!important;padding-top:calc(78px + env(safe-area-inset-top))!important;padding-bottom:max(24px,env(safe-area-inset-bottom))!important}
+  .mobile-drawer-close{top:max(12px,env(safe-area-inset-top))!important;border-radius:12px!important}
+  .mobile-drawer-links a{min-height:52px!important;font-size:.9rem!important}
+  .drawer-lang-btn,.mobile-drawer-reservar,.mobile-drawer-wa{min-height:46px!important;border-radius:10px!important}
+  .hero,.slide{min-height:100svh!important}
+  .slide{padding-left:max(18px,env(safe-area-inset-left))!important;padding-right:max(18px,env(safe-area-inset-right))!important}
+  .slide h1{font-size:clamp(2.25rem,9vw,4.6rem)!important;line-height:.98!important}
+  button,a{-webkit-tap-highlight-color:transparent}
+}
+@media (max-width:600px){
+  body>nav:not(.breadcrumb):not(.mobile-drawer){grid-template-columns:minmax(0,1fr) 44px!important;height:58px!important;min-height:58px!important;gap:8px!important;padding-left:max(11px,env(safe-area-inset-left))!important;padding-right:max(11px,env(safe-area-inset-right))!important}
+  body>nav:not(.breadcrumb):not(.mobile-drawer) .nav-emblem{width:36px!important;height:36px!important}
+  body>nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo{gap:7px!important}
+  body>nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .z,
+  body>nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .t{font-size:.84rem!important;letter-spacing:.045em!important}
+  body>nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo sub{font-size:.43rem!important;letter-spacing:.08em!important}
+  body>nav:not(.breadcrumb):not(.mobile-drawer) .ham-btn,
+  .ham-btn.zoyen-mobile-created{width:42px!important;height:42px!important;min-width:42px!important;border-radius:10px!important}
+  .mobile-drawer{width:min(92vw,360px)!important;padding-left:20px!important;padding-right:20px!important}
+  .drawer-lang{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:6px!important}
+  .slide{padding-top:76px!important;padding-bottom:42px!important}
+  .slide-emblem{width:min(64vw,230px)!important;margin-top:6px!important}
+  .slide-kicker{font-size:.62rem!important;letter-spacing:.16em!important}
+  .slide h1{font-size:clamp(2.1rem,11.5vw,3.4rem)!important}
+  .slide-desc{font-size:.94rem!important;line-height:1.55!important}
+  .slide-btn{min-height:48px!important;width:min(100%,330px)!important}
+}
+@media (max-width:350px){
+  body>nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo sub{display:none!important}
+  body>nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .z,
+  body>nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .t{font-size:.76rem!important}
+}
+</style></body>
 </html>
