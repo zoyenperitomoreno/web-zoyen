@@ -1460,15 +1460,34 @@ footer {
   max-width: 520px; width: 100%;
   max-height: 90vh; overflow-y: auto;
   position: relative;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(212,119,42,.5) transparent;
 }
+.pago-modal::-webkit-scrollbar { width: 8px; }
+.pago-modal::-webkit-scrollbar-track { background: transparent; }
+.pago-modal::-webkit-scrollbar-thumb {
+  background: rgba(212,119,42,.45); border-radius: 999px;
+}
+.pago-modal::-webkit-scrollbar-thumb:hover { background: rgba(212,119,42,.7); }
 .pago-header {
-  background: var(--ink); padding: 1.4rem 1.8rem;
+  background: var(--ink); padding: 1.4rem 3.4rem 1.4rem 1.8rem;
   display: flex; align-items: center; justify-content: space-between;
   border-radius: 4px 4px 0 0;
+  gap: 1rem;
+  position: relative;
 }
 .pago-header h3 {
   font-family: 'DM Serif Display', serif;
-  font-size: 1.25rem; font-weight: 600; color: var(--cream);
+  font-size: clamp(0.95rem, 4.8vw, 1.25rem); font-weight: 600; color: var(--cream);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  min-width: 0;
+}
+.pago-header .monto-badge {
+  flex-shrink: 0;
+}
+@media (max-width: 420px) {
+  .pago-header { padding-right: 3.1rem; }
+  .pago-header .monto-badge { font-size: .92rem; padding: .26rem .6rem; }
 }
 .pago-header .monto-badge {
   background: var(--ember); color: #fff;
@@ -1567,14 +1586,15 @@ footer {
   display: flex; align-items: center; justify-content: center; gap: 4px;
 }
 .pago-x {
-  position: absolute; top: .9rem; right: 1rem;
-  background: rgba(255,255,255,.12); border: none;
-  color: var(--cream); font-size: 1.3rem; cursor: pointer;
-  width: 32px; height: 32px; border-radius: 50%;
+  position: absolute; top: 1.05rem; right: 1.1rem;
+  background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.28);
+  color: var(--cream); font-size: 1.2rem; cursor: pointer;
+  width: 34px; height: 34px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  line-height: 1; transition: background .2s, color .2s;
+  line-height: 1; transition: background .2s, color .2s, transform .2s;
+  z-index: 5;
 }
-.pago-x:hover { background: rgba(255,255,255,.22); color: var(--cream); }
+.pago-x:hover { background: rgba(255,255,255,.3); color: var(--cream); transform: scale(1.08); }
 
 /* SUCCESS */
 .pago-success {
@@ -2908,11 +2928,25 @@ img.hero-logo-static {
   }
   .emblem-3d.zoyen-hero-logo-motion.zoyen-compass-active .zoyen-motion-rose {
     animation: none !important;
-    transform: rotate(var(--zoyen-compass-rotation, 0deg)) scale(.76) !important;
+    transform: rotate(var(--zoyen-compass-rotation, 0deg)) scale(.95) !important;
     transition: transform .16s linear !important;
   }
   .emblem-3d.zoyen-hero-logo-motion.zoyen-compass-active .zoyen-motion-cardinals {
     transform: rotate(var(--zoyen-compass-rotation, 0deg)) !important;
+  }
+  .emblem-3d.zoyen-hero-logo-motion .hero-logo-static {
+    transition: opacity .3s ease, filter .3s ease !important;
+  }
+  .emblem-3d.zoyen-hero-logo-motion.zoyen-compass-active .hero-logo-static {
+    opacity: 0 !important;
+  }
+  .emblem-3d.zoyen-hero-logo-motion.zoyen-compass-active {
+    background: radial-gradient(circle, rgba(18,14,11,.55) 0%, rgba(18,14,11,.2) 70%, transparent 100%) !important;
+    border-radius: 50% !important;
+  }
+  .emblem-3d.zoyen-hero-logo-motion.zoyen-compass-active .zoyen-motion-ring,
+  .emblem-3d.zoyen-hero-logo-motion.zoyen-compass-active .zoyen-motion-inner-ring {
+    opacity: 1 !important;
   }
   .emblem-3d.zoyen-hero-logo-motion::after {
     content: 'Tocá para activar la brújula';
@@ -4612,6 +4646,23 @@ document.getElementById('btnPagar').addEventListener('click', function() {
   document.getElementById('pagoBody').style.display = '';
   document.getElementById('pagoSuccess').classList.remove('show');
 });
+
+// -- Cierre del modal de pago --------------------------------------------
+(function(){
+  var pagoWrap = document.getElementById('pagoModalWrap');
+  var pagoXBtn = document.getElementById('pagoX');
+  if (!pagoWrap) return;
+  function cerrarPagoModal() {
+    pagoWrap.classList.remove('open');
+  }
+  if (pagoXBtn) pagoXBtn.addEventListener('click', cerrarPagoModal);
+  pagoWrap.addEventListener('click', function(e){
+    if (e.target === pagoWrap) cerrarPagoModal();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && pagoWrap.classList.contains('open')) cerrarPagoModal();
+  });
+})();
 
 // =====================================================
 // REEMPLAZAR con el link real de cobro de Mercado Pago
@@ -7162,15 +7213,23 @@ a.cta-btn-g[href*="wa.me"]:hover {
     return typeof window.orientation==='number'?window.orientation:0;
   }
 
+  function isAbsoluteEvent(event,fromAbsoluteAPI){
+    if(typeof event.webkitCompassHeading==='number'&&isFinite(event.webkitCompassHeading))return true;
+    if(fromAbsoluteAPI)return true;
+    if(event.absolute===true)return true;
+    return false;
+  }
+
   function headingFrom(event){
     if(typeof event.webkitCompassHeading==='number'&&isFinite(event.webkitCompassHeading))return event.webkitCompassHeading;
     if(typeof event.alpha!=='number'||!isFinite(event.alpha))return null;
     return (360-event.alpha+screenAngle()+720)%360;
   }
 
-  function applyHeading(event){
+  function applyHeading(event,fromAbsoluteAPI){
+    if(!isAbsoluteEvent(event,fromAbsoluteAPI))return;
     var heading=headingFrom(event);if(heading===null)return;
-    receivedHeading=true;
+    if(!receivedHeading){receivedHeading=true;status('Brújula activa');}
     if(smoothHeading===null)smoothHeading=heading;
     var delta=((heading-smoothHeading+540)%360)-180;
     smoothHeading=(smoothHeading+delta*.18+360)%360;
@@ -7186,27 +7245,23 @@ a.cta-btn-g[href*="wa.me"]:hover {
     });
   }
 
-  var usingAbsolute=false;
-
   function applyHeadingAbsolute(event){
-    usingAbsolute=true;
-    window.removeEventListener('deviceorientation',applyHeadingRelative,true);
-    applyHeading(event);
+    applyHeading(event,true);
   }
 
   function applyHeadingRelative(event){
-    if(usingAbsolute)return;
-    applyHeading(event);
+    applyHeading(event,false);
   }
 
   function bindSensors(){
     if(listening)return;listening=true;
-    usingAbsolute=false;
     window.addEventListener('deviceorientationabsolute',applyHeadingAbsolute,true);
     window.addEventListener('deviceorientation',applyHeadingRelative,true);
     boxes.forEach(function(box){box.classList.add('zoyen-compass-active')});
-    status('Brújula activada · mové el teléfono');
-    setTimeout(function(){if(!receivedHeading)status('No llegan datos del sensor. Revisá los permisos de movimiento.','error')},2200);
+    status('Activando brújula · mové el teléfono en forma de 8');
+    setTimeout(function(){
+      if(!receivedHeading)status('Tu navegador no comparte el norte real. Probá con Chrome o Safari actualizado.','error');
+    },2800);
   }
 
   function stopSensors(){
