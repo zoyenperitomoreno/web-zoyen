@@ -1997,6 +1997,17 @@ footer {
   border-radius: 50%;
   background: #d4772a;
 }
+.zoyi-msg .zoyi-link {
+  display: inline-block;
+  margin-top: .3rem;
+  color: #d4772a;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: rgba(212,119,42,.45);
+  text-underline-offset: 2px;
+}
+.zoyi-msg .zoyi-link:hover { color: #b85f1c; }
+.zoyi-msg.user .zoyi-link { color: #fffaf1; text-decoration-color: rgba(255,250,241,.6); }
 .zoyi-msg .zoyi-soft-break {
   display: block;
   height: .36rem;
@@ -2048,7 +2059,7 @@ footer {
 }
 
 
-/* ZOYI HUEMUL */
+/* ZOYI ZORRITO */
 .zoyi-huemul-mark {
   width: 30px;
   height: 30px;
@@ -2108,7 +2119,7 @@ footer {
   75%       { transform: translateY(-5px); }
   90%       { transform: translateY(-1px); }
 }
-/* Wiggle del cono huemul */
+/* Wiggle de las orejas del zorrito */
 @keyframes zoyiWiggle {
   0%, 100% { transform: rotate(0deg); }
   15%       { transform: rotate(-12deg); }
@@ -3374,7 +3385,7 @@ img.hero-logo-static {
       </div>
     </div>
     <div class="ex-card reveal reveal-delay">
-      <img src="assets/capillas.jpg" data-card-href="excursion-capillas-de-marmol.html" alt="Capillas de Mármol">
+      <img src="assets/capillas.jpg" data-card-href="excursion-capillas-de-marmol.html" alt="Capillas y Catedrales de Mármol">
       <span class="ex-tag" data-i18n="ex2_tag">Día completo</span>
       <div class="ex-card-overlay">
         <h3 class="ex-name" data-i18n="ex2_name" data-name-es>Capillas y Catedrales de Mármol</h3>
@@ -3392,7 +3403,7 @@ img.hero-logo-static {
       </div>
     </div>
     <div class="ex-card reveal">
-      <img src="assets/ruta41_zoyen.jpg" data-card-href="excursion-monte-zeballos.html" alt="Monte Zeballos">
+      <img src="assets/ruta41_zoyen.jpg" data-card-href="excursion-monte-zeballos.html" alt="Monte Zeballos - Los Antiguos, Santa Cruz">
       <span class="ex-tag" data-i18n="ex4_tag">Alta montaña</span>
       <div class="ex-card-overlay">
         <h3 class="ex-name" data-i18n="ex4_name" data-name-es>Ruta 41 &middot; Monte Zeballos</h3>
@@ -5367,7 +5378,7 @@ applyLang(currentLang);
   <div class="zoyi-bubble" id="zoyiBubble">
     <button class="zoyi-bubble-close" id="zoyiBubbleClose" aria-label="Cerrar"></button>
     <div class="zoyi-bubble-avatar">
-      <span class="zoyi-huemul-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M10 8 6 3M22 8l4-5M11 9 7 7M21 9l4-2"/><path d="M9.5 13.5c.3-3.5 2.7-6 6.5-6s6.2 2.5 6.5 6"/><path d="M8.8 14.2c-1.4-.7-2.8.2-2.6 1.7.2 1.2 1.4 1.9 2.9 1.5M23.2 14.2c1.4-.7 2.8.2 2.6 1.7-.2 1.2-1.4 1.9-2.9 1.5"/><path d="M10 14.2c0 6 2.5 10.3 6 10.3s6-4.3 6-10.3"/><path d="M13 15.3h.1M19 15.3h.1"/><path d="M14.2 20.2c1.1.8 2.5.8 3.6 0"/><path d="M16 17.2v2"/></svg></span>
+      <span class="zoyi-huemul-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M9 12 3.5 2.5 12.5 8.8"/><path d="M23 12 28.5 2.5 19.5 8.8"/><path d="M9.3 13.8c0-3 1.7-5.2 4-6.3M22.7 13.8c0-3-1.7-5.2-4-6.3"/><path d="M9.3 13.8c-.6 4 .4 8.4 2.8 10.8 1.1 1.1 2.5 1.7 3.9 1.7s2.8-.6 3.9-1.7c2.4-2.4 3.4-6.8 2.8-10.8"/><path d="M13.3 7.5c.9-.5 1.8-.7 2.7-.7s1.8.2 2.7.7"/><path d="M16 17 13.2 20.4h5.6Z"/><path d="M12.5 14.5h.1M19.5 14.5h.1"/><path d="M14 21.6c1.2.9 2.8.9 4 0"/></svg></span>
     </div>
     <div class="zoyi-bubble-body">
       <p class="zoyi-bubble-name">Zoyi</p>
@@ -5376,14 +5387,14 @@ applyLang(currentLang);
   </div>
 
   <button class="zoyi-toggle" type="button" id="zoyiToggle" aria-label="Abrir asistente virtual Zoyi" aria-expanded="false">
-    <span class="zoyi-huemul-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M10 8 6 3M22 8l4-5M11 9 7 7M21 9l4-2"/><path d="M9.5 13.5c.3-3.5 2.7-6 6.5-6s6.2 2.5 6.5 6"/><path d="M8.8 14.2c-1.4-.7-2.8.2-2.6 1.7.2 1.2 1.4 1.9 2.9 1.5M23.2 14.2c1.4-.7 2.8.2 2.6 1.7-.2 1.2-1.4 1.9-2.9 1.5"/><path d="M10 14.2c0 6 2.5 10.3 6 10.3s6-4.3 6-10.3"/><path d="M13 15.3h.1M19 15.3h.1"/><path d="M14.2 20.2c1.1.8 2.5.8 3.6 0"/><path d="M16 17.2v2"/></svg></span>
+    <span class="zoyi-huemul-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M9 12 3.5 2.5 12.5 8.8"/><path d="M23 12 28.5 2.5 19.5 8.8"/><path d="M9.3 13.8c0-3 1.7-5.2 4-6.3M22.7 13.8c0-3-1.7-5.2-4-6.3"/><path d="M9.3 13.8c-.6 4 .4 8.4 2.8 10.8 1.1 1.1 2.5 1.7 3.9 1.7s2.8-.6 3.9-1.7c2.4-2.4 3.4-6.8 2.8-10.8"/><path d="M13.3 7.5c.9-.5 1.8-.7 2.7-.7s1.8.2 2.7.7"/><path d="M16 17 13.2 20.4h5.6Z"/><path d="M12.5 14.5h.1M19.5 14.5h.1"/><path d="M14 21.6c1.2.9 2.8.9 4 0"/></svg></span>
     <strong>Zoyi</strong>
   </button>
   <section class="zoyi-panel" aria-label="Asistente virtual Zoyi">
     <div class="zoyi-head">
       <div class="zoyi-head-main">
-        <span class="zoyi-huemul-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M10 8 6 3M22 8l4-5M11 9 7 7M21 9l4-2"/><path d="M9.5 13.5c.3-3.5 2.7-6 6.5-6s6.2 2.5 6.5 6"/><path d="M8.8 14.2c-1.4-.7-2.8.2-2.6 1.7.2 1.2 1.4 1.9 2.9 1.5M23.2 14.2c1.4-.7 2.8.2 2.6 1.7-.2 1.2-1.4 1.9-2.9 1.5"/><path d="M10 14.2c0 6 2.5 10.3 6 10.3s6-4.3 6-10.3"/><path d="M13 15.3h.1M19 15.3h.1"/><path d="M14.2 20.2c1.1.8 2.5.8 3.6 0"/><path d="M16 17.2v2"/></svg></span>
-        <div class="zoyi-title"><strong>Zoyi</strong><span>Huemul asistente de Zoyen Turismo</span></div>
+        <span class="zoyi-huemul-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M9 12 3.5 2.5 12.5 8.8"/><path d="M23 12 28.5 2.5 19.5 8.8"/><path d="M9.3 13.8c0-3 1.7-5.2 4-6.3M22.7 13.8c0-3-1.7-5.2-4-6.3"/><path d="M9.3 13.8c-.6 4 .4 8.4 2.8 10.8 1.1 1.1 2.5 1.7 3.9 1.7s2.8-.6 3.9-1.7c2.4-2.4 3.4-6.8 2.8-10.8"/><path d="M13.3 7.5c.9-.5 1.8-.7 2.7-.7s1.8.2 2.7.7"/><path d="M16 17 13.2 20.4h5.6Z"/><path d="M12.5 14.5h.1M19.5 14.5h.1"/><path d="M14 21.6c1.2.9 2.8.9 4 0"/></svg></span>
+        <div class="zoyi-title"><strong>Zoyi</strong><span>Zorrito asistente de Zoyen Turismo</span></div>
       </div>
       <button class="zoyi-close" type="button" id="zoyiClose" aria-label="Cerrar asistente">x</button>
     </div>
@@ -5444,6 +5455,7 @@ applyLang(currentLang);
       pdfProduct: function(p){ return "El itinerario PDF de " + p.name + " se descarga desde su página."; },
       listExc: "Excursiones de día o medio día disponibles: ",
       listTours: "Tours de autor disponibles: ", listToursSuffix: " Ambos tienen itinerario PDF descargable.",
+      verMas: "Ver más",
       capacity: " personas",
       kw: { human:["persona","humano","asesor","hablar con alguien","whatsapp","teléfono","email","mail","contactar","contacto directo"], dates:["fecha","fechas","disponible","disponibilidad","cupos","cuando","calendario"], prices:["precio","precios","tarifa","tarifas","valor","valores","cuanto","sale","costo"], book:["reservar","reserva","reservas","seña","asiento","asientos","pago"], location:["ubicación","ubicación","dónde están","dirección","perito moreno","santa cruz","cómo llegar"], pdf:["itinerario","pdf","descargar","programa","recorrido"], excursion:["excursion","excursiones","paseos","salidas","día completo","medio día"], tour:["tour","tours","autor","varios días","viaje completo","paquete"], compare:["recomendas","recomendacion","conviene","diferencia","comparar","mejor","cual elijo"], wellness:["bienestar","wellness","yoga","masajes"], agency:["zoyen","agencia","legajo","quiénes son"] }
     },
@@ -5466,6 +5478,7 @@ applyLang(currentLang);
       pdfProduct: function(p){ return "The PDF itinerary for " + p.name + " can be downloaded from its page."; },
       listExc: "Available day and half-day excursions: ",
       listTours: "Available author tours: ", listToursSuffix: " Both have downloadable PDF itineraries.",
+      verMas: "See more",
       capacity: " people",
       kw: { human:["person","human","agent","talk to someone","whatsapp","phone","email","contact"], dates:["date","dates","available","availability","spots","when","calendar"], prices:["price","prices","rate","cost","how much","fee"], book:["book","booking","reserve","reservation","seat","payment","deposit"], location:["location","where","address","perito moreno","santa cruz","how to get"], pdf:["itinerary","pdf","download","program","route"], excursion:["excursion","excursions","day trip","half day"], tour:["tour","tours","author","multi-day","full trip","package"], compare:["recommend","best","difference","compare","which","what should"], wellness:["wellness","yoga","massage"], agency:["zoyen","agency","license","about"] }
     },
@@ -5488,6 +5501,7 @@ applyLang(currentLang);
       pdfProduct: function(p){ return "O PDF de " + p.name + " pode ser baixado na sua página."; },
       listExc: "Excursões de dia e meio dia disponíveis: ",
       listTours: "Tours de autor disponíveis: ", listToursSuffix: " Ambos têm itinerários PDF para download.",
+      verMas: "Ver mais",
       capacity: " pessoas",
       kw: { human:["pessoa","humano","agente","falar com alguem","whatsapp","telefone","email","contato"], dates:["data","datas","disponivel","disponibilidade","vagas","quando","calendario"], prices:["preco","precos","tarifa","valor","quanto","custo"], book:["reservar","reserva","sinal","assento","pagamento"], location:["localizacao","onde","endereco","perito moreno","santa cruz","como chegar"], pdf:["itinerario","pdf","baixar","programa"], excursion:["excursao","excursãoes","passeio","dia inteiro","meio dia"], tour:["tour","tours","autor","varios días","pacote"], compare:["recomenda","melhor","diferenca","comparar","qual"], wellness:["bem-estar","wellness","yoga","massagem"], agency:["zoyen","agencia","licenca","quem sao"] }
     },
@@ -5510,23 +5524,24 @@ applyLang(currentLang);
       pdfProduct: function(p){ return p.name + " PDF 정 해당 페지서 다운로드 가능합니다."; },
       listExc: "용 가능한 당  반나절 투어: ",
       listTours: "용 가능한 오서 투어: ", listToursSuffix: "  투어 모 PDF 다운로드 가능.",
+      verMas: "더보기",
       capacity: "명",
       kw: { human:["사람","","담","연","whatsapp","전화","메","문"], dates:["날짜","가능","예약가능","","언제","캘린"], prices:["가격","요금","비용","얼마","금액"], book:["예약","결제","좌","보금"], location:["위치","어디","주소","페리토 모레노","산타루스","오는방법"], pdf:["정","pdf","다운로드","프로그램"], excursion:["투어","당","반나절"], tour:["오서투어","여러날","패키지"], compare:["추천","비","차","어떤","가"], wellness:["웰니스","요가","마사지"], agency:["조옌","전시","센스"] }
     }
   };
 
   var excursiones = [
-    {id:"cueva",    name:"Cueva de las Manos",                        aliases:["cueva","manos","pinturas","cave","hands","caverna"," 굴"], price:200000, pricePrivate:200000, duration:"día completo",      capacity:14, type:"excursion", summary:"sitio arqueológico Patrimonio Mundial, pinturas rupestres de más de 9.000 años."},
-    {id:"capillas", name:"Capillas y Catedrales de Mármol",           aliases:["capillas","marmol","catedrales","general carrera","marble","chapel","마블 채플","capelas"], price:340000, priceUsd:230, duration:"día completo", capacity:14, type:"excursion", summary:"navegación por el Lago General Carrera para ver formaciones de mármol."},
-    {id:"posadas",  name:"Lago Posadas y Ruta Escenica 41",           aliases:["posadas","lago posadas","ruta 41","ruta escenica","lake posadas","사다스"], price:15000, duration:"día completo (12 hs)", capacity:14, type:"excursion", summary:"recorrido panorámico por lagos y miradores de la Ruta Escenica 41."},
-    {id:"zeballos", name:"Ruta 41 y Monte Zeballos",                  aliases:["zeballos","monte zeballos","ruta 41","세바요스"], price:200000, pricePrivate:200000, duration:"día completo", capacity:14, type:"excursion", summary:"travesía de altura por estepa, bosque y cordillera."},
-    {id:"charcamata",name:"Alero Charcamata",                         aliases:["charcamata","alero","차르카마타"], price:220000, duration:"medio día", capacity:14, type:"excursion", summary:"arte rupestre, patrimonio cultural y paisaje natural."},
-    {id:"parque",   name:"Portal Cañadón Pinturas - Parque Patagonia",  aliases:["parque","parque patagonia","canadon","can","pinturas","portal","파타고니아 공"], price:8000, duration:"medio día (5 hs)", capacity:14, type:"excursion", summary:"senderos, fauna, geología y vistas del noroeste de Santa Cruz."},
-    {id:"ascension",name:"PNP / Estancia La Ascensión",               aliases:["ascension","estancia","pnp"], price:7000, duration:"medio día (4 hs)", capacity:14, type:"excursion", summary:"salida corta vinculada al Parque Patagonia y la historia de estancia."}
+    {id:"cueva",    name:"Cueva de las Manos",                        aliases:["cueva","manos","pinturas","cave","hands","caverna"," 굴"], price:200000, pricePrivate:200000, duration:"día completo",      capacity:14, type:"excursion", summary:"sitio arqueológico Patrimonio Mundial, pinturas rupestres de más de 9.000 años.", includes:"Guía especializado, vehículo 4x4/minibus y traslados desde Perito Moreno. No incluye el ingreso al Parque Provincial Cueva de las Manos.", url:"excursion-cueva-de-las-manos.html"},
+    {id:"capillas", name:"Capillas y Catedrales de Mármol",           aliases:["capillas","marmol","catedrales","general carrera","marble","chapel","마블 채플","capelas"], price:340000, priceUsd:230, duration:"día completo", capacity:14, type:"excursion", summary:"navegación por el Lago General Carrera para ver formaciones de mármol.", includes:"Guía especializado, vehículo 4x4/minibus, traslados y navegación en el Lago General Carrera. No incluye ingreso al Parque Provincial.", url:"excursion-capillas-de-marmol.html"},
+    {id:"posadas",  name:"Lago Posadas y Ruta Escenica 41",           aliases:["posadas","lago posadas","ruta 41","ruta escenica","lake posadas","사다스"], price:15000, duration:"día completo (12 hs)", capacity:14, type:"excursion", summary:"recorrido panorámico por lagos y miradores de la Ruta Escenica 41.", includes:"Guía especializado, vehículo 4x4/minibus y traslados desde Perito Moreno o Los Antiguos. No incluye ingreso al Parque Provincial.", url:"excursion-ruta41-lago-posadas.html"},
+    {id:"zeballos", name:"Ruta 41 y Monte Zeballos",                  aliases:["zeballos","monte zeballos","ruta 41","세바요스"], price:200000, pricePrivate:200000, duration:"día completo", capacity:14, type:"excursion", summary:"travesía de altura por estepa, bosque y cordillera.", includes:"Guía especializado, vehículo 4x4/minibus y traslados desde Perito Moreno o Los Antiguos. No incluye ingreso al Parque Provincial.", url:"excursion-monte-zeballos.html"},
+    {id:"charcamata",name:"Alero Charcamata",                         aliases:["charcamata","alero","차르카마타"], price:220000, duration:"medio día", capacity:14, type:"excursion", summary:"arte rupestre, patrimonio cultural y paisaje natural.", includes:"Traslado en camioneta 4x4 con chofer/guía durante todo el recorrido y vianda para el almuerzo (sin bebida; se recomienda llevar agua).", url:"excursion-alero-charcamata.html"},
+    {id:"parque",   name:"Portal Cañadón Pinturas - Parque Patagonia",  aliases:["parque","parque patagonia","canadon","can","pinturas","portal","파타고니아 공"], price:8000, duration:"medio día (5 hs)", capacity:14, type:"excursion", summary:"senderos, fauna, geología y vistas del noroeste de Santa Cruz.", includes:"Traslado en 4x4 o minibús con guía y merienda. No incluye almuerzo.", url:"excursion-parque-patagonia.html"},
+    {id:"ascension",name:"PNP / Estancia La Ascensión",               aliases:["ascension","estancia","pnp"], price:7000, duration:"medio día (4 hs)", capacity:14, type:"excursion", summary:"salida corta vinculada al Parque Patagonia y la historia de estancia.", includes:"Traslado en 4x4 o minibús con guía. Salida corta combinable con el Portal Cañadón Pinturas.", url:"excursion-parque-patagonia.html"}
   ];
   var tours = [
-    {id:"patagonia", name:"Patagonia Inédita", aliases:["patagonia inedita","inedita","unexplored patagonia","미지 파타고니아"], price:185000, duration:"6 días / 5 noches", capacity:14, type:"tour", pdf:"assets/pdfs/patagonia-inedita-itinerario.pdf", summary:"recorre Perito Moreno, Cueva de las Manos, Parque Patagonia, Los Antiguos, Ruta Escenica 41, Carretera Austral y Capillas de Mármol."},
-    {id:"carretera", name:"Carretera Austral",  aliases:["carretera austral","austral","ohiggins","tortel","cochrane","카레테 아우스트랄"], price:210000, duration:"8 días / 7 noches", capacity:14, type:"tour", pdf:"assets/pdfs/carretera-austral-itinerario.pdf", summary:"incluye Chile Chico, Cochrane, Caleta Tortel, Villa O\'Higgins, Puerto Río Tranquilo, Capillas de Mármol y Coyhaique."}
+    {id:"patagonia", name:"Patagonia Inédita", aliases:["patagonia inedita","inedita","unexplored patagonia","미지 파타고니아"], price:185000, duration:"6 días / 5 noches", capacity:14, type:"tour", pdf:"assets/pdfs/patagonia-inedita-itinerario.pdf", summary:"recorre Perito Moreno, Cueva de las Manos, Parque Patagonia, Los Antiguos, Ruta Escenica 41, Carretera Austral y Capillas de Mármol.", includes:"Traslados durante todo el recorrido, guía especializado y alojamiento según itinerario (PDF descargable con el detalle día por día).", url:"patagonia-inedita.html"},
+    {id:"carretera", name:"Carretera Austral",  aliases:["carretera austral","austral","ohiggins","tortel","cochrane","카레테 아우스트랄"], price:210000, duration:"8 días / 7 noches", capacity:14, type:"tour", pdf:"assets/pdfs/carretera-austral-itinerario.pdf", summary:"incluye Chile Chico, Cochrane, Caleta Tortel, Villa O\'Higgins, Puerto Río Tranquilo, Capillas de Mármol y Coyhaique.", includes:"Traslados durante todo el recorrido, guía especializado y alojamiento según itinerario (PDF descargable con el detalle día por día).", url:"carretera-austral.html"}
   ];
   var allProducts = excursiones.concat(tours);
 
@@ -5539,10 +5554,18 @@ applyLang(currentLang);
   }
   function formatZoyiText(text){
     return escapeHtml(text)
+      .replace(/\[\[LINK:([^|\]]*)\|([^\]]*)\]\]/g,function(_,label,url){
+        return '<a href="'+escapeHtml(url)+'" target="_blank" rel="noopener" class="zoyi-link">'+escapeHtml(label)+'</a>';
+      })
       .replace(/\n/g,"<br>")
       .replace(/(^|<br>)([^<][^:<]{2,42}:)/g,'$1<span class="zoyi-answer-title">$2</span>')
       .replace(/<br>- /g,'<br><span class="zoyi-list-line">- ')
       .replace(/(<span class="zoyi-list-line">[^<]*(:<br>|$))/g,function(m){return m.replace(/<br>$/,'</span><br>');});
+  }
+  function productLinkTag(p,ui){
+    if(!p||!p.url) return "";
+    var label=(ui&&ui.verMas)||"Ver más";
+    return "[[LINK:"+label+" - "+p.name+"|"+p.url+"]]";
   }
   function addMessage(text,who){
     if(!messages)return;
@@ -5611,7 +5634,13 @@ applyLang(currentLang);
   }
   function productLine(p,ui){ return p.name+": "+p.duration+", "+priceText(p)+", "+p.capacity+(ui ? ui.capacity:" personas")+"."; }
   function productBullet(p,ui){ return "- "+p.name+"\n  "+p.duration+" - "+priceText(p)+" - "+p.capacity+(ui ? ui.capacity:" personas"); }
-  function productSummary(p,ui){ return productBullet(p,ui)+"\n  "+p.summary; }
+  function productSummary(p,ui){
+    var out=productBullet(p,ui)+"\n  "+p.summary;
+    if(p.includes) out+="\n  Incluye: "+p.includes;
+    var link=productLinkTag(p,ui);
+    if(link) out+="\n"+link;
+    return out;
+  }
   function numberedSteps(text){ return String(text||"").replace(/\s*(\d\))/g,"\n$1").trim(); }
   function findProduct(q){ var b=null,s=0; allProducts.forEach(function(p){ var l=0; [p.name].concat(p.aliases||[]).forEach(function(a){ a=normalize(a); if(a&&q.indexOf(a)!==-1)l+=a.length > 8 ? 3 : 2; }); if(l>s){b=p;s=l;} }); return b; }
   function isAsking(q,words){ return words.some(function(w){ return q.indexOf(normalize(w))!==-1; }); }
@@ -5632,7 +5661,7 @@ applyLang(currentLang);
     if(isAsking(q,k.compare))  return ui.compareAnswer;
     if(isAsking(q,k.wellness)) return ui.wellnessAnswer;
     if(isAsking(q,k.agency))   return ui.agencyAnswer;
-    if(p) return productLine(p,ui)+" "+p.summary;
+    if(p) return productSummary(p,ui);
     return ui.helpFull;
   }
 

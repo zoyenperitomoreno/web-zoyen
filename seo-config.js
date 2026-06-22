@@ -25,9 +25,9 @@ window.ZOYEN_SEO_CONFIG = {
     image: "assets/cuevadelasmanos_zoyen.jpg"
   },
   "excursion-monte-zeballos.html": {
-    title: "Ruta 41 y Monte Zeballos | Zoyen Turismo",
-    description: "Descubrí la Ruta Escénica 41 y Monte Zeballos desde Los Antiguos: miradores, estepa, bosque andino y paisajes únicos de Santa Cruz.",
-    keywords: "Ruta 41 Santa Cruz, Monte Zeballos excursión, Ruta Escénica 41, excursiones Los Antiguos, Patagonia argentina",
+    title: "Ruta 41 y Monte Zeballos desde Los Antiguos, Santa Cruz | Zoyen Turismo",
+    description: "Descubrí la Ruta Escénica 41 y Monte Zeballos desde Los Antiguos, Santa Cruz: miradores, estepa, bosque andino y paisajes únicos de la Patagonia.",
+    keywords: "Los Antiguos Santa Cruz, Ruta 41 Santa Cruz, Monte Zeballos excursión, Ruta Escénica 41, excursiones Los Antiguos, Patagonia argentina",
     image: "assets/ruta41_zoyen.jpg"
   },
   "excursion-parque-patagonia.html": {
@@ -37,9 +37,9 @@ window.ZOYEN_SEO_CONFIG = {
     image: "assets/parquepatagonia_zoyenturismo.jpg"
   },
   "excursion-capillas-de-marmol.html": {
-    title: "Capillas de Mármol desde Patagonia | Zoyen Turismo",
-    description: "Navegá hacia las Capillas y Catedrales de Mármol en el lago General Carrera, una experiencia imperdible de la Patagonia chilena.",
-    keywords: "Capillas de Mármol excursión, Catedrales de Mármol, lago General Carrera, turismo Patagonia chilena, Puerto Río Tranquilo",
+    title: "Capillas y Catedrales de Mármol | Zoyen Turismo",
+    description: "Navegá hacia las Capillas y Catedrales de Mármol en el lago General Carrera, una de las excursiones más imperdibles de la Patagonia.",
+    keywords: "Capillas de Mármol, Catedrales de Mármol, Capillas y Catedrales de Mármol, excursión Capillas de Mármol, lago General Carrera, turismo Patagonia chilena, Puerto Río Tranquilo",
     image: "assets/capillas.jpg"
   },
   "excursion-ruta41-lago-posadas.html": {

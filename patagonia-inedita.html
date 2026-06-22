@@ -511,6 +511,28 @@ footer { background: #0a0a0a; padding: 5rem 3vw 2.5rem; }
   border-radius: 50%;
   background: #d4772a;
 }
+.zoyi-msg .zoyi-link {
+  display: inline-block;
+  margin-top: .3rem;
+  color: #d4772a;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: rgba(212,119,42,.45);
+  text-underline-offset: 2px;
+}
+.zoyi-msg .zoyi-link:hover { color: #b85f1c; }
+.zoyi-msg.user .zoyi-link { color: #fffaf1; text-decoration-color: rgba(255,250,241,.6); }
+.zoyi-msg .zoyi-link {
+  display: inline-block;
+  margin-top: .3rem;
+  color: #d4772a;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: rgba(212,119,42,.45);
+  text-underline-offset: 2px;
+}
+.zoyi-msg .zoyi-link:hover { color: #b85f1c; }
+.zoyi-msg.user .zoyi-link { color: #fffaf1; text-decoration-color: rgba(255,250,241,.6); }
 .zoyi-msg .zoyi-soft-break {
   display: block;
   height: .36rem;
@@ -562,7 +584,7 @@ footer { background: #0a0a0a; padding: 5rem 3vw 2.5rem; }
 }
 
 
-/* ZOYI HUEMUL */
+/* ZOYI ZORRITO */
 .zoyi-huemul-mark {
   width: 30px;
   height: 30px;
@@ -1462,14 +1484,14 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
 <div class="zoyi-widget" id="zoyiWidget">
   <button class="zoyi-toggle" type="button" id="zoyiToggle" aria-label="Abrir asistente virtual Zoyi" aria-expanded="false">
-    <span class="zoyi-huemul-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M10 8 6 3M22 8l4-5M11 9 7 7M21 9l4-2"/><path d="M9.5 13.5c.3-3.5 2.7-6 6.5-6s6.2 2.5 6.5 6"/><path d="M8.8 14.2c-1.4-.7-2.8.2-2.6 1.7.2 1.2 1.4 1.9 2.9 1.5M23.2 14.2c1.4-.7 2.8.2 2.6 1.7-.2 1.2-1.4 1.9-2.9 1.5"/><path d="M10 14.2c0 6 2.5 10.3 6 10.3s6-4.3 6-10.3"/><path d="M13 15.3h.1M19 15.3h.1"/><path d="M14.2 20.2c1.1.8 2.5.8 3.6 0"/><path d="M16 17.2v2"/></svg></span>
+    <span class="zoyi-huemul-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M9 12 3.5 2.5 12.5 8.8"/><path d="M23 12 28.5 2.5 19.5 8.8"/><path d="M9.3 13.8c0-3 1.7-5.2 4-6.3M22.7 13.8c0-3-1.7-5.2-4-6.3"/><path d="M9.3 13.8c-.6 4 .4 8.4 2.8 10.8 1.1 1.1 2.5 1.7 3.9 1.7s2.8-.6 3.9-1.7c2.4-2.4 3.4-6.8 2.8-10.8"/><path d="M13.3 7.5c.9-.5 1.8-.7 2.7-.7s1.8.2 2.7.7"/><path d="M16 17 13.2 20.4h5.6Z"/><path d="M12.5 14.5h.1M19.5 14.5h.1"/><path d="M14 21.6c1.2.9 2.8.9 4 0"/></svg></span>
     <strong>Zoyi</strong>
   </button>
   <section class="zoyi-panel" aria-label="Asistente virtual Zoyi">
     <div class="zoyi-head">
       <div class="zoyi-head-main">
-        <span class="zoyi-huemul-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M10 8 6 3M22 8l4-5M11 9 7 7M21 9l4-2"/><path d="M9.5 13.5c.3-3.5 2.7-6 6.5-6s6.2 2.5 6.5 6"/><path d="M8.8 14.2c-1.4-.7-2.8.2-2.6 1.7.2 1.2 1.4 1.9 2.9 1.5M23.2 14.2c1.4-.7 2.8.2 2.6 1.7-.2 1.2-1.4 1.9-2.9 1.5"/><path d="M10 14.2c0 6 2.5 10.3 6 10.3s6-4.3 6-10.3"/><path d="M13 15.3h.1M19 15.3h.1"/><path d="M14.2 20.2c1.1.8 2.5.8 3.6 0"/><path d="M16 17.2v2"/></svg></span>
-        <div class="zoyi-title"><strong>Zoyi</strong><span>Huemul asistente de Zoyen Turismo</span></div>
+        <span class="zoyi-huemul-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M9 12 3.5 2.5 12.5 8.8"/><path d="M23 12 28.5 2.5 19.5 8.8"/><path d="M9.3 13.8c0-3 1.7-5.2 4-6.3M22.7 13.8c0-3-1.7-5.2-4-6.3"/><path d="M9.3 13.8c-.6 4 .4 8.4 2.8 10.8 1.1 1.1 2.5 1.7 3.9 1.7s2.8-.6 3.9-1.7c2.4-2.4 3.4-6.8 2.8-10.8"/><path d="M13.3 7.5c.9-.5 1.8-.7 2.7-.7s1.8.2 2.7.7"/><path d="M16 17 13.2 20.4h5.6Z"/><path d="M12.5 14.5h.1M19.5 14.5h.1"/><path d="M14 21.6c1.2.9 2.8.9 4 0"/></svg></span>
+        <div class="zoyi-title"><strong>Zoyi</strong><span>Zorrito asistente de Zoyen Turismo</span></div>
       </div>
       <button class="zoyi-close" type="button" id="zoyiClose" aria-label="Cerrar asistente">x</button>
     </div>
@@ -1507,18 +1529,18 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   var pageTitle = (document.title || "").replace(/\s+/g," ").trim();
 
   var excursiones = [
-    {id:"cueva", name:"Cueva de las Manos", aliases:["cueva","manos","pinturas","arqueología","río Pinturas"], price:200000, pricePrivate:200000, duration:"día completo", capacity:14, type:"excursion", summary:"sitio arqueológico Patrimonio Mundial, pinturas rupestres de más de 9.000 años y paisaje del Cañadón del Río Pinturas."},
-    {id:"capillas", name:"Capillas y Catedrales de Mármol", aliases:["capillas","marmol","catedrales","general carrera"], price:340000, priceUsd:230, duration:"día completo", capacity:14, type:"excursion", summary:"navegación por el Lago General Carrera para ver formaciones de mármol, ideal para fotografía y paisaje."},
-    {id:"posadas", name:"Lago Posadas y Ruta Escénica 41", aliases:["posadas","lago posadas","ruta 41","ruta escénica"], price:15000, duration:"día completo (12 hs)", capacity:14, type:"excursion", summary:"recorrido panorámico por lagos, miradores y la Ruta Escénica 41 cerca de Perito Moreno."},
-    {id:"zeballos", name:"Ruta 41 y Monte Zeballos", aliases:["zeballos","monte zeballos","ruta 41"], price:200000, pricePrivate:200000, duration:"día completo", capacity:14, type:"excursion", summary:"travesía de altura por estepa, bosque, cordillera y uno de los caminos más escénicos de Santa Cruz."},
-    {id:"charcamata", name:"Alero Charcamata", aliases:["charcamata","alero"], price:220000, duration:"medio día", capacity:14, type:"excursion", summary:"experiencia vinculada al arte rupestre, patrimonio cultural y paisaje natural de la zona."},
-    {id:"parque", name:"Portal Cañadón Pinturas - Parque Patagonia", aliases:["parque","parque patagonia","canadon","can","pinturas","portal"], price:8000, duration:"medio día (5 hs)", capacity:14, type:"excursion", summary:"senderos, fauna, geología y vistas amplias del noroeste de Santa Cruz."},
-    {id:"ascension", name:"PNP / Estancia La Ascensión", aliases:["ascension","estancia","la ascension","pnp"], price:7000, duration:"medio día (4 hs)", capacity:14, type:"excursion", summary:"salida corta vinculada al Parque Patagonia y la historia de estancia de la región."}
+    {id:"cueva", name:"Cueva de las Manos", aliases:["cueva","manos","pinturas","arqueología","río Pinturas"], price:200000, pricePrivate:200000, duration:"día completo", capacity:14, type:"excursion", summary:"sitio arqueológico Patrimonio Mundial, pinturas rupestres de más de 9.000 años y paisaje del Cañadón del Río Pinturas.", includes:"Guía especializado, vehículo 4x4/minibus y traslados desde Perito Moreno. No incluye el ingreso al Parque Provincial Cueva de las Manos.", url:"excursion-cueva-de-las-manos.html"},
+    {id:"capillas", name:"Capillas y Catedrales de Mármol", aliases:["capillas","marmol","catedrales","general carrera"], price:340000, priceUsd:230, duration:"día completo", capacity:14, type:"excursion", summary:"navegación por el Lago General Carrera para ver formaciones de mármol, ideal para fotografía y paisaje.", includes:"Guía especializado, vehículo 4x4/minibus, traslados y navegación en el Lago General Carrera. No incluye ingreso al Parque Provincial.", url:"excursion-capillas-de-marmol.html"},
+    {id:"posadas", name:"Lago Posadas y Ruta Escénica 41", aliases:["posadas","lago posadas","ruta 41","ruta escénica"], price:15000, duration:"día completo (12 hs)", capacity:14, type:"excursion", summary:"recorrido panorámico por lagos, miradores y la Ruta Escénica 41 cerca de Perito Moreno.", includes:"Guía especializado, vehículo 4x4/minibus y traslados desde Perito Moreno o Los Antiguos. No incluye ingreso al Parque Provincial.", url:"excursion-ruta41-lago-posadas.html"},
+    {id:"zeballos", name:"Ruta 41 y Monte Zeballos", aliases:["zeballos","monte zeballos","ruta 41"], price:200000, pricePrivate:200000, duration:"día completo", capacity:14, type:"excursion", summary:"travesía de altura por estepa, bosque, cordillera y uno de los caminos más escénicos de Santa Cruz.", includes:"Guía especializado, vehículo 4x4/minibus y traslados desde Perito Moreno o Los Antiguos. No incluye ingreso al Parque Provincial.", url:"excursion-monte-zeballos.html"},
+    {id:"charcamata", name:"Alero Charcamata", aliases:["charcamata","alero"], price:220000, duration:"medio día", capacity:14, type:"excursion", summary:"experiencia vinculada al arte rupestre, patrimonio cultural y paisaje natural de la zona.", includes:"Traslado en camioneta 4x4 con chofer/guía durante todo el recorrido y vianda para el almuerzo (sin bebida, se recomienda llevar agua).", url:"excursion-alero-charcamata.html"},
+    {id:"parque", name:"Portal Cañadón Pinturas - Parque Patagonia", aliases:["parque","parque patagonia","canadon","can","pinturas","portal"], price:8000, duration:"medio día (5 hs)", capacity:14, type:"excursion", summary:"senderos, fauna, geología y vistas amplias del noroeste de Santa Cruz.", includes:"Traslado en 4x4 o minibús con guía y merienda. No incluye almuerzo.", url:"excursion-parque-patagonia.html"},
+    {id:"ascension", name:"PNP / Estancia La Ascensión", aliases:["ascension","estancia","la ascension","pnp"], price:7000, duration:"medio día (4 hs)", capacity:14, type:"excursion", summary:"salida corta vinculada al Parque Patagonia y la historia de estancia de la región.", includes:"Traslado en 4x4 o minibús con guía. Salida corta combinable con el Portal Cañadón Pinturas.", url:"excursion-parque-patagonia.html"}
   ];
 
   var tours = [
-    {id:"patagonia", name:"Patagonia Inédita", aliases:["patagonia inedita","inedita"], price:185000, duration:"6 días / 5 noches", capacity:14, type:"tour", pdf:"assets/pdfs/patagonia-inedita-itinerario.pdf", summary:"sale desde Comodoro Rivadavia y recorre Perito Moreno, Cueva de las Manos, Parque Patagonia, Los Antiguos, Ruta Escénica 41, Carretera Austral, Puerto Río Tranquilo y Capillas de Mármol."},
-    {id:"carretera", name:"Carretera Austral", aliases:["carretera austral","austral","ohiggins","villa ohiggins","tortel","cochrane"], price:210000, duration:"8 días / 7 noches", capacity:14, type:"tour", pdf:"assets/pdfs/carretera-austral-itinerario.pdf", summary:"sale desde Perito Moreno e incluye Chile Chico, Cochrane, Caleta Tortel, Villa O'Higgins, Puerto Río Tranquilo, Capillas de Mármol, Coyhaique y regreso por Paso Huemules."}
+    {id:"patagonia", name:"Patagonia Inédita", aliases:["patagonia inedita","inedita"], price:185000, duration:"6 días / 5 noches", capacity:14, type:"tour", pdf:"assets/pdfs/patagonia-inedita-itinerario.pdf", summary:"sale desde Comodoro Rivadavia y recorre Perito Moreno, Cueva de las Manos, Parque Patagonia, Los Antiguos, Ruta Escénica 41, Carretera Austral, Puerto Río Tranquilo y Capillas de Mármol.", includes:"Traslados durante todo el recorrido, guía especializado y alojamiento según itinerario (PDF descargable con el detalle día por día).", url:"patagonia-inedita.html"},
+    {id:"carretera", name:"Carretera Austral", aliases:["carretera austral","austral","ohiggins","villa ohiggins","tortel","cochrane"], price:210000, duration:"8 días / 7 noches", capacity:14, type:"tour", pdf:"assets/pdfs/carretera-austral-itinerario.pdf", summary:"sale desde Perito Moreno e incluye Chile Chico, Cochrane, Caleta Tortel, Villa O'Higgins, Puerto Río Tranquilo, Capillas de Mármol, Coyhaique y regreso por Paso Huemules.", includes:"Traslados durante todo el recorrido, guía especializado y alojamiento según itinerario (PDF descargable con el detalle día por día).", url:"carretera-austral.html"}
   ];
 
   var allProducts = excursiones.concat(tours);
@@ -1535,12 +1557,26 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   }
   function formatZoyiText(text){
     var out = escapeHtml(text);
+    out = out.replace(/\[\[LINK:([^|\]]*)\|([^\]]*)\]\]/g, function(_,label,url){
+      return '<a href="'+escapeHtml(url)+'" target="_blank" rel="noopener" class="zoyi-link">'+escapeHtml(label)+'</a>';
+    });
     out = out.replace(/;\s*/g, '\n- ');
     out = out.replace(/\.\s+(=[A-Z0-9])/g, '.\n');
     out = out.replace(/\n{2,}/g, '\n');
     out = out.replace(/(^|\n)([^\n:<]{3,46}:)/g, '$1<span class="zoyi-answer-title">$2</span>');
     out = out.replace(/\n-\s*([^\n]+)/g, '\n<span class="zoyi-list-line">$1</span>');
     out = out.replace(/\n/g, '<span class="zoyi-soft-break"></span>');
+    return out;
+  }
+  function productLinkTag(p){
+    if (!p || !p.url) return "";
+    return "[[LINK:Ver más - " + p.name + "|" + p.url + "]]";
+  }
+  function productDetail(p){
+    var out = productLine(p) + " " + p.summary;
+    if (p.includes) out += " Incluye: " + p.includes;
+    var link = productLinkTag(p);
+    if (link) out += " " + link;
     return out;
   }  function addMessage(text, who){
     if (!messages) return;
@@ -1605,12 +1641,12 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
     if (isAsking(q, ["reservar","reserva","reservas","contratar","seña","seña","asiento","asientos","pago"])) return reservationAnswer();
     if (isAsking(q, ["ubicación","ubicación","dónde están","dirección","dirección","perito moreno","santa cruz","cómo llegar"])) return locationAnswer();
     if (isAsking(q, ["itinerario","pdf","descargar","programa","recorrido"])) return pdfAnswer(product);
-    if (isAsking(q, ["excursion","excursiones","paseos","salidas","día completo","medio día"])) return product ? productLine(product) + " " + product.summary : listExcursions();
-    if (isAsking(q, ["tour","tours","autor","varios días","viaje completo","paquete"])) return product ? productLine(product) + " " + product.summary : listTours();
+    if (isAsking(q, ["excursion","excursiones","paseos","salidas","día completo","medio día"])) return product ? productDetail(product) : listExcursions();
+    if (isAsking(q, ["tour","tours","autor","varios días","viaje completo","paquete"])) return product ? productDetail(product) : listTours();
     if (isAsking(q, ["recomendas","recomendacion","conviene","diferencia","comparar","mejor","cual elijo","que hago"])) return compareAnswer();
     if (isAsking(q, ["bienestar","wellness","yoga","masajes"])) return "Turismo de Bienestar es una línea complementaria para sumar pausa, naturaleza y cuidado al viaje. Si buscás algo tranquilo, se puede combinar con excursiones de medio día o estadías en la zona.";
     if (isAsking(q, ["zoyen","agencia","legajo","quienes","quiénes son"])) return "Zoyen Turismo es una agencia local de Perito Moreno, Santa Cruz, legajo 15.625. Diseña excursiones y tours de autor en Patagonia.";
-    if (product) return productLine(product) + " " + product.summary;
+    if (product) return productDetail(product);
 
     return "Puedo ayudarte con información del sitio: fechas disponibles, precios en AR, cupos, tipos de excursiones, tours de autor, ubicación, itinerarios PDF y cómo reservar. Probá preguntarme, por ejemplo: 'precio de Capillas', 'fechas para Patagonia Inédita' o '¿qué excursión me recomendás?'.";
   }
