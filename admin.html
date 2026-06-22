@@ -158,6 +158,9 @@ tr:hover td{background:rgba(212,119,42,.03)}
 .crm-toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:16px}
 .crm-toolbar input,.crm-toolbar select{padding:9px 12px;border:1.5px solid var(--border);border-radius:6px;font:13px 'Sora',sans-serif;background:#fff}
 .crm-toolbar input{flex:1;min-width:220px}
+.reservation-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:0 0 16px;padding:14px 16px;background:#fff8f1;border:1px solid #f1d1b4;border-radius:8px}
+.reservation-actions-copy b{display:block;font-size:13px;margin-bottom:3px}.reservation-actions-copy span{font-size:11px;color:var(--muted)}
+.reservation-actions-buttons{display:flex;gap:8px;flex-wrap:wrap}.sheets-config{display:none;margin:-6px 0 16px;padding:14px 16px;border:1px solid var(--border);border-radius:8px;background:#fff}.sheets-config.open{display:block}.sheets-config-row{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:end}.sheets-help{font-size:11px;color:var(--muted);line-height:1.55;margin-top:8px}
 .crm-modal{display:none;position:fixed;inset:0;z-index:1200;background:rgba(20,16,12,.72);align-items:center;justify-content:center;padding:20px}
 .crm-modal.open{display:flex}.crm-modal-box{background:#fff;width:min(720px,100%);max-height:90vh;overflow:auto;border-radius:10px;padding:24px;box-shadow:0 24px 70px rgba(0,0,0,.35)}
 .crm-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 14px}.crm-form-grid .wide{grid-column:1/-1}
@@ -423,30 +426,12 @@ img.hero-logo-static {
         <div class="sec" id="sec-reservas">
           <div class="sec-title">Reservas · CRM</div>
           <div class="crm-stats" id="crm-stats"></div>
-          <div class="crm-power-grid">
-            <div class="card">
-              <div class="card-title">Centro de campañas</div>
-              <div class="crm-audience"><span id="crm-audience-count">0</span> contactos seleccionados</div>
-              <div class="crm-segment-row">
-                <div class="field"><label>Segmentar por estado</label><select id="campaign-status" onchange="refreshCampaignAudience()"><option value="all">Todos los estados</option><option value="consulta">Consultas</option><option value="pendiente">Pendientes</option><option value="pago_iniciado">Pago iniciado</option><option value="confirmada">Confirmadas</option><option value="completada">Completadas</option><option value="cancelada">Canceladas</option></select></div>
-                <div class="field"><label>Segmentar por experiencia</label><select id="campaign-tour" onchange="refreshCampaignAudience()"><option value="all">Todas las experiencias</option></select></div>
-              </div>
-              <div class="field"><label>Asunto del email</label><input id="campaign-subject" value="Novedades de Zoyen Turismo"></div>
-              <div class="field"><label>Mensaje</label><textarea id="campaign-message" rows="5" placeholder="Escribí una propuesta, recordatorio o novedad para este segmento."></textarea></div>
-              <div class="crm-campaign-actions"><button class="btn btn-p" onclick="openNextWhatsAppCampaign()">Abrir siguiente WhatsApp</button><button class="btn btn-outline" onclick="createEmailCampaign()">Preparar email</button><button class="btn btn-outline" onclick="exportCampaignCsv()">Exportar para Sheets</button><button class="btn btn-outline" onclick="syncCampaignToSheets()">Enviar a Google Sheets</button></div>
-            </div>
-            <div class="card">
-              <div class="card-title">Canales e integraciones</div>
-              <div class="connector-list">
-                <div class="connector-row"><span class="connector-icon">W</span><span><b>WhatsApp Business</b><small id="wa-connector-state">Enlaces directos disponibles</small></span><button class="btn btn-outline btn-sm" onclick="toggleCrmConnectorConfig()">Configurar</button></div>
-                <div class="connector-row"><span class="connector-icon">I</span><span><b>Instagram</b><small id="ig-connector-state">Abrir bandeja profesional</small></span><button class="btn btn-outline btn-sm" onclick="openInstagramInbox()">Abrir</button></div>
-                <div class="connector-row"><span class="connector-icon">G</span><span><b>Google Sheets</b><small id="sheets-connector-state">Exportación CSV disponible</small></span><button class="btn btn-outline btn-sm" onclick="toggleCrmConnectorConfig()">Configurar</button></div>
-                <div class="connector-row"><span class="connector-icon">DB</span><span><b>Supabase</b><small id="db-connector-state">Base central de contactos y reservas</small></span><button class="btn btn-outline btn-sm" onclick="syncCloudReservations()">Sincronizar</button></div>
-              </div>
-              <div class="crm-config-box" id="crm-connector-config"><div class="field"><label>Número de WhatsApp Business</label><input id="crm-wa-number" placeholder="5492974432855"></div><div class="field"><label>Usuario de Instagram</label><input id="crm-instagram" placeholder="zoyenturismo"></div><div class="field"><label>URL de Google Apps Script</label><input id="crm-sheets-url" placeholder="https://script.google.com/macros/s/.../exec"></div><div class="field"><label>Email comercial</label><input id="crm-business-email" type="email" placeholder="zoyenperitomoreno@gmail.com"></div><button class="btn btn-p" onclick="saveCrmConnectors()">Guardar conectores</button></div>
-            </div>
-          </div>
           <div class="card">
+            <div class="reservation-actions">
+              <div class="reservation-actions-copy"><b>Gestión central de reservas</b><span>Reservas web y cargas manuales reunidas en un solo listado.</span></div>
+              <div class="reservation-actions-buttons"><button class="btn btn-outline" onclick="exportReservationsExcel()">Exportar a Excel</button><button class="btn btn-outline" onclick="toggleSheetsConfig()">Configurar Google Sheets</button><button class="btn btn-p" id="sheets-sync-btn" onclick="syncReservationsWithSheets()">Sincronizar con Sheets</button></div>
+            </div>
+            <div class="sheets-config" id="sheets-config"><div class="sheets-config-row"><div class="field" style="margin:0"><label>URL de sincronización de Google Sheets</label><input id="crm-sheets-url" placeholder="https://script.google.com/macros/s/.../exec"></div><button class="btn btn-p" onclick="saveSheetsConfig()">Guardar conexión</button></div><div class="sheets-help">La hoja puede compartirse y editarse manualmente. Al sincronizar, el CRM incorpora sus filas y envía las reservas nuevas o modificadas desde el admin.</div></div>
             <div class="crm-toolbar">
               <input id="res-search" type="search" placeholder="Buscar por nombre, teléfono, email o excursión…" oninput="buildReservas()">
               <select id="res-filter" onchange="buildReservas()">
@@ -703,7 +688,7 @@ function initPanel() {
   buildExcursiones();
   buildAvailability();
   buildReservas();
-  loadCrmConnectors();
+  loadSheetsConfig();
   syncCloudReservations();
 }
 
@@ -1016,6 +1001,15 @@ let crmWhatsAppCursor=0;
 function readCrmConnectors(){
   try{return {...{whatsapp:'5492974432855',instagram:'',sheetsUrl:'',businessEmail:'zoyenperitomoreno@gmail.com'},...JSON.parse(localStorage.getItem(CRM_CONNECTORS_KEY)||'{}')}}catch(e){return {whatsapp:'5492974432855',instagram:'',sheetsUrl:'',businessEmail:'zoyenperitomoreno@gmail.com'}}
 }
+function toggleSheetsConfig(){const box=document.getElementById('sheets-config');if(box)box.classList.toggle('open');}
+function loadSheetsConfig(){const cfg=readCrmConnectors(),input=document.getElementById('crm-sheets-url');if(input)input.value=cfg.sheetsUrl||'';const btn=document.getElementById('sheets-sync-btn');if(btn)btn.textContent=cfg.sheetsUrl?'Sincronizar con Sheets':'Conectar Google Sheets';}
+function saveSheetsConfig(){const input=document.getElementById('crm-sheets-url'),cfg=readCrmConnectors();cfg.sheetsUrl=(input&&input.value||'').trim();localStorage.setItem(CRM_CONNECTORS_KEY,JSON.stringify(cfg));loadSheetsConfig();const box=document.getElementById('sheets-config');if(box)box.classList.remove('open');showToast(cfg.sheetsUrl?'Google Sheets quedó conectado.':'Se quitó la conexión con Google Sheets.');}
+function excelSafe(value){return String(value==null?'':value).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function exportReservationsExcel(){const reservas=readReservas();if(!reservas.length){showToast('Todavía no hay reservas para exportar.');return;}const headers=['ID','Nombre','Teléfono','Email','Excursión','Clave del tour','Fecha','Personas','Asientos','Seña','Estado','Último contacto','Seguimiento','Notas'];const rows=reservas.map((r,i)=>[r.id||('ZY-'+(i+1)),r.nombre,r.tel,r.email,r.excursion,r.excursionKey,r.fecha,r.personas,r.asientos,r.senia,r.estado,r.ultimoIntento,r.followUp,r.notas]);const table='<table><thead><tr>'+headers.map(h=>'<th>'+excelSafe(h)+'</th>').join('')+'</tr></thead><tbody>'+rows.map(row=>'<tr>'+row.map(v=>'<td>'+excelSafe(v)+'</td>').join('')+'</tr>').join('')+'</tbody></table>';const html='\ufeff<html><head><meta charset="UTF-8"></head><body>'+table+'</body></html>';const blob=new Blob([html],{type:'application/vnd.ms-excel;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='reservas-zoyen-'+new Date().toISOString().slice(0,10)+'.xls';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500);showToast('Archivo de Excel generado.');}
+function sheetReservationToLocal(row){const pick=(...keys)=>{for(const key of keys){if(row[key]!==undefined&&row[key]!==null)return row[key]}return ''};const id=String(pick('id','ID','Id')||('SHEET-'+Date.now()+'-'+Math.random().toString(36).slice(2,7)));return {id:id,nombre:String(pick('nombre','Nombre','customer_name')),tel:String(pick('tel','telefono','Teléfono','Telefono','customer_phone')),email:String(pick('email','Email','customer_email')),excursion:String(pick('excursion','Excursión','Excursion','tour_name')),excursionKey:String(pick('excursionKey','Clave del tour','tour_key')),fecha:String(pick('fecha','Fecha','departure_date')).slice(0,10),personas:parseInt(pick('personas','Personas','people_count'),10)||1,asientos:String(pick('asientos','Asientos','seats')),senia:Number(pick('senia','seña','Seña','deposit_amount'))||0,estado:String(pick('estado','Estado','status')||'consulta').toLowerCase(),ultimoIntento:String(pick('ultimoIntento','Último contacto','Ultimo contacto','updated_at')),followUp:String(pick('followUp','Seguimiento','follow_up_at')).slice(0,10),notas:String(pick('notas','Notas','admin_notes')),updatedAt:String(pick('updatedAt','Actualizado','updated_at')),origen:'google-sheets'};}
+function reservationSyncKey(r){if(r.id)return 'id:'+String(r.id);return ['data',r.email||r.tel||r.nombre||'',r.fecha||'',r.excursionKey||r.excursion||''].join('|').toLowerCase();}
+function mergeSheetReservations(local,sheetRows){const map=new Map(local.map(r=>[reservationSyncKey(r),r]));sheetRows.map(sheetReservationToLocal).forEach(r=>{const key=reservationSyncKey(r),previous=map.get(key)||{},localTime=Date.parse(previous.updatedAt||'')||0,sheetTime=Date.parse(r.updatedAt||'')||0;map.set(key,sheetTime>=localTime?{...previous,...r}:{...r,...previous});});return Array.from(map.values());}
+async function syncReservationsWithSheets(){const cfg=readCrmConnectors();if(!cfg.sheetsUrl){loadSheetsConfig();const box=document.getElementById('sheets-config');if(box)box.classList.add('open');showToast('Pegá la URL de Google Apps Script para conectar la hoja.');return;}const btn=document.getElementById('sheets-sync-btn');if(btn){btn.disabled=true;btn.textContent='Sincronizando…';}try{const getResponse=await fetch(cfg.sheetsUrl+(cfg.sheetsUrl.includes('?')?'&':'?')+'action=list&ts='+Date.now(),{cache:'no-store'});let remote=[];if(getResponse.ok){const payload=await getResponse.json();remote=Array.isArray(payload)?payload:(payload.reservations||payload.reservas||payload.data||[]);}const merged=mergeSheetReservations(readReservas(),remote);writeReservas(merged);const postResponse=await fetch(cfg.sheetsUrl,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'sync_reservations',source:'zoyen-admin',updatedAt:new Date().toISOString(),reservations:merged})});if(!postResponse.ok)throw new Error('HTTP '+postResponse.status);buildReservas();buildDashboard();showToast('Reservas sincronizadas con Google Sheets.');}catch(error){console.warn(error);showToast('No se pudo sincronizar. Revisá la URL y los permisos de la hoja.');}finally{if(btn){btn.disabled=false;btn.textContent='Sincronizar con Sheets';}}}
 function campaignAudience(){
   const status=(document.getElementById('campaign-status')||{}).value||'all';
   const tour=(document.getElementById('campaign-tour')||{}).value||'all';
@@ -1090,7 +1084,6 @@ function buildReservas() {
   document.getElementById('crm-stats').innerHTML = [
     ['Consultas',counts.consulta],['Pendientes',counts.pendiente],['Pago iniciado',counts.pago_iniciado],['Confirmadas',counts.confirmada],['Completadas',counts.completada]
   ].map(x=>`<div class="crm-stat"><b>${x[1]}</b><span>${x[0]}</span></div>`).join('');
-  refreshCampaignAudience();
   const tb = document.getElementById('r-tbody');
   if(!list.length) { tb.innerHTML=`<tr><td colspan="11" class="empty">${reservas.length ? 'Sin resultados para ese filtro.' : 'Sin reservas aún.'}</td></tr>`; return; }
   tb.innerHTML = list.slice().reverse().map(r => {
@@ -1133,13 +1126,14 @@ function saveReservaEditor() {
   const reservas = readReservas(), idx = parseInt(document.getElementById('crm-index').value,10), now = new Date().toLocaleString('es-AR');
   const prev = idx>=0 ? reservas[idx] : {};
   const r = {...prev,
+    id:prev.id||('ZY-'+Date.now()),
     nombre:document.getElementById('crm-nombre').value.trim(), estado:document.getElementById('crm-estado').value,
     tel:document.getElementById('crm-tel').value.trim(), email:document.getElementById('crm-email').value.trim(),
     excursion:document.getElementById('crm-excursion').value.trim(), excursionKey:document.getElementById('crm-excursion-key').value,
     fecha:document.getElementById('crm-fecha').value, followUp:document.getElementById('crm-followup').value,
     personas:parseInt(document.getElementById('crm-personas').value,10)||1, asientos:document.getElementById('crm-asientos').value.trim(),
     senia:parseInt(document.getElementById('crm-senia').value,10)||0, ultimoIntento:document.getElementById('crm-ultimo').value.trim()||now,
-    notas:document.getElementById('crm-notas').value.trim(), creado:prev.creado||now
+    notas:document.getElementById('crm-notas').value.trim(), creado:prev.creado||now, updatedAt:new Date().toISOString()
   };
   if(!r.nombre) { showToast('Ingresá el nombre de la persona.'); return; }
   if(idx>=0) reservas[idx]=r; else reservas.push(r);
