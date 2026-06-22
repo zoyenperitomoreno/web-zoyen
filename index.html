@@ -4501,7 +4501,17 @@ function onDateChanged() {
   const exc = document.getElementById('sel-excursion').value;
   const fecha = document.getElementById('sel-fecha').value;
   if (fecha && !isDateAvailable(exc, fecha)) {
-    document.getElementById('availableDateHint').innerHTML = 'Esa fecha no está habilitada para este tour. Elegí una de las fechas disponibles.';
+    const dates = availableDatesFor(exc);
+    const listHtml = dates.length
+      ? '<span class="available-date-list">' + dates.map(d => `<button class="available-date-chip" type="button" data-date="${d}">${formatDateHuman(d)}</button>`).join('') + '</span>'
+      : '';
+    document.getElementById('availableDateHint').innerHTML = 'Esa fecha no está habilitada para este tour. Elegí una de las fechas disponibles: ' + listHtml;
+    document.getElementById('availableDateHint').querySelectorAll('.available-date-chip').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.getElementById('sel-fecha').value = this.getAttribute('data-date');
+        onDateChanged();
+      });
+    });
     document.getElementById('sel-fecha').value = '';
     resetSeats();
   } else if (exc && fecha) {
