@@ -2779,23 +2779,45 @@ img.hero-logo-static {
 .zoyen-motion-rose {
   transform-origin: 50% 50%;
   filter: drop-shadow(0 0 7px rgba(229,123,32,.55));
+  transition: filter .12s ease-out;
+}
+.emblem-3d.zoyen-hero-logo-motion.zoyen-compass-active .zoyen-motion-rose {
+  filter: drop-shadow(0 0 14px rgba(229,123,32,.9)) drop-shadow(0 0 26px rgba(229,123,32,.5));
+}
+.emblem-3d.zoyen-hero-logo-motion.zoyen-compass-active.zoyen-compass-pulse .zoyen-motion-rose {
+  filter: drop-shadow(0 0 22px rgba(255,170,90,1)) drop-shadow(0 0 40px rgba(229,123,32,.75));
 }
 .zoyen-motion-cardinals {
   display: none;
   transform-origin: 50% 50%;
   transition: transform .16s linear;
 }
+.zoyen-motion-cardinals circle {
+  fill: rgba(15,10,7,.78);
+  stroke: rgba(229,123,32,.9);
+  stroke-width: 1.4;
+}
 .zoyen-motion-cardinals text {
   fill: #fff7e8;
-  stroke: rgba(20,12,7,.9);
-  stroke-width: 2px;
+  stroke: rgba(20,12,7,.95);
+  stroke-width: 2.4px;
   paint-order: stroke fill;
   font-family: 'Sora', sans-serif;
-  font-size: 16px;
+  font-size: 22px;
   font-weight: 800;
   text-anchor: middle;
-  dominant-baseline: middle;
-  filter: drop-shadow(0 0 5px rgba(229,123,32,.8));
+  dominant-baseline: central;
+  filter: drop-shadow(0 0 6px rgba(229,123,32,.95));
+}
+.zoyen-motion-cardinals text.cardinal-n {
+  fill: #ffb066;
+  font-size: 24px;
+}
+.emblem-3d.zoyen-hero-logo-motion.zoyen-compass-pulse .zoyen-motion-cardinals text {
+  filter: drop-shadow(0 0 10px rgba(255,170,90,1));
+}
+.emblem-3d.zoyen-hero-logo-motion.zoyen-compass-pulse .zoyen-motion-cardinals circle {
+  stroke: rgba(255,170,90,1);
 }
 .zoyen-motion-rose path {
   stroke: #fff7e8;
@@ -3190,6 +3212,16 @@ img.hero-logo-static {
     <button class="drawer-lang-btn" data-lang="en" onclick="setDrawerLang(this,'en')">EN</button>
     <button class="drawer-lang-btn" data-lang="pt" onclick="setDrawerLang(this,'pt')">PT</button>
     <button class="drawer-lang-btn" data-lang="ko" onclick="setDrawerLang(this,'ko')">KO</button>
+  </div>
+  <div class="drawer-currency" id="drawerCurrency">
+    <span class="drawer-currency-label">Moneda</span>
+    <div class="drawer-currency-options">
+      <button class="drawer-currency-btn" data-currency="ARS">ARS</button>
+      <button class="drawer-currency-btn" data-currency="USD">USD</button>
+      <button class="drawer-currency-btn" data-currency="EUR">EUR</button>
+      <button class="drawer-currency-btn" data-currency="BRL">BRL</button>
+      <button class="drawer-currency-btn" data-currency="CLP">CLP</button>
+    </div>
   </div>
 </nav>
 
@@ -6745,6 +6777,47 @@ body > nav.mobile-drawer.open {
   border-color: var(--ember, #d4772a) !important;
   color: var(--cream, #f5f0e8) !important;
 }
+.drawer-currency {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: .55rem !important;
+  margin-top: .9rem !important;
+  padding-top: .9rem !important;
+  border-top: 1px solid rgba(255, 255, 255, .08) !important;
+}
+.drawer-currency-label {
+  font-family: 'Sora', sans-serif !important;
+  font-size: .62rem !important;
+  font-weight: 700 !important;
+  letter-spacing: .14em !important;
+  text-transform: uppercase !important;
+  color: rgba(245, 240, 232, .5) !important;
+}
+.drawer-currency-options {
+  display: flex !important;
+  gap: .5rem !important;
+  flex-wrap: wrap !important;
+}
+.drawer-currency-btn {
+  appearance: none !important;
+  border: 1px solid rgba(255, 255, 255, .16) !important;
+  background: rgba(255, 255, 255, .07) !important;
+  color: rgba(245, 240, 232, .78) !important;
+  padding: .46rem .72rem !important;
+  font-family: 'Sora', sans-serif !important;
+  font-size: .68rem !important;
+  font-weight: 700 !important;
+  letter-spacing: .09em !important;
+  line-height: 1 !important;
+  text-transform: uppercase !important;
+  border-radius: 2px !important;
+  cursor: pointer !important;
+}
+.drawer-currency-btn.active {
+  background: var(--ember, #d4772a) !important;
+  border-color: var(--ember, #d4772a) !important;
+  color: var(--cream, #f5f0e8) !important;
+}
 @media (min-width: 1851px) {
   nav.mobile-drawer,
   body > nav.mobile-drawer,
@@ -7048,7 +7121,7 @@ a.cta-btn-g[href*="wa.me"]:hover {
   window.__zoyenUnifiedCompassReady=true;
 
   function motionMarkup(){
-    return '<div class="zoyen-hero-logo-orbit" aria-hidden="true"><svg viewBox="0 0 280 280" focusable="false" aria-hidden="true"><circle class="zoyen-motion-ring" cx="140" cy="140" r="133"></circle><circle class="zoyen-motion-inner-ring" cx="140" cy="140" r="82"></circle><g class="zoyen-motion-cardinals"><text x="140" y="28">N</text><text x="252" y="140">E</text><text x="140" y="254">S</text><text x="28" y="140">O</text></g><g class="zoyen-motion-rose"><path d="M140 54 L154 126 L226 140 L154 154 L140 226 L126 154 L54 140 L126 126 Z"></path><path d="M140 86 L149 131 L194 140 L149 149 L140 194 L131 149 L86 140 L131 131 Z"></path></g><circle class="zoyen-motion-spark s1" cx="67" cy="204" r="4"></circle><circle class="zoyen-motion-spark s2" cx="218" cy="202" r="4"></circle><circle class="zoyen-motion-spark s3" cx="140" cy="246" r="3"></circle></svg></div>';
+    return '<div class="zoyen-hero-logo-orbit" aria-hidden="true"><svg viewBox="0 0 280 280" focusable="false" aria-hidden="true"><circle class="zoyen-motion-ring" cx="140" cy="140" r="133"></circle><circle class="zoyen-motion-inner-ring" cx="140" cy="140" r="82"></circle><g class="zoyen-motion-cardinals"><circle cx="140" cy="26" r="15"></circle><circle cx="254" cy="140" r="14"></circle><circle cx="140" cy="254" r="14"></circle><circle cx="26" cy="140" r="14"></circle><text class="cardinal-n" x="140" y="27">N</text><text x="254" y="141">E</text><text x="140" y="255">S</text><text x="26" y="141">O</text></g><g class="zoyen-motion-rose"><path d="M140 54 L154 126 L226 140 L154 154 L140 226 L126 154 L54 140 L126 126 Z"></path><path d="M140 86 L149 131 L194 140 L149 149 L140 194 L131 149 L86 140 L131 131 Z"></path></g><circle class="zoyen-motion-spark s1" cx="67" cy="204" r="4"></circle><circle class="zoyen-motion-spark s2" cx="218" cy="202" r="4"></circle><circle class="zoyen-motion-spark s3" cx="140" cy="246" r="3"></circle></svg></div>';
   }
 
   var boxes=[];
@@ -7081,7 +7154,16 @@ a.cta-btn-g[href*="wa.me"]:hover {
     if(smoothHeading===null)smoothHeading=heading;
     var delta=((heading-smoothHeading+540)%360)-180;
     smoothHeading=(smoothHeading+delta*.18+360)%360;
-    boxes.forEach(function(box){box.classList.add('zoyen-compass-active');box.style.setProperty('--zoyen-compass-rotation',(-smoothHeading).toFixed(1)+'deg')});
+    var moving=Math.abs(delta)>0.6;
+    boxes.forEach(function(box){
+      box.classList.add('zoyen-compass-active');
+      box.style.setProperty('--zoyen-compass-rotation',(-smoothHeading).toFixed(1)+'deg');
+      if(moving){
+        box.classList.add('zoyen-compass-pulse');
+        clearTimeout(box._zoyenPulseTimer);
+        box._zoyenPulseTimer=setTimeout(function(){box.classList.remove('zoyen-compass-pulse')},220);
+      }
+    });
   }
 
   function bindSensors(){
@@ -7129,11 +7211,11 @@ a.cta-btn-g[href*="wa.me"]:hover {
   const priceTargets=['#montoPrev','#pagoMontoBadge','#pagoSenia','.precio-preview .monto','.monto-badge'];
   function money(value,code){const c=currencies[code];return c.symbol+Number(value).toLocaleString(c.locale,{maximumFractionDigits:code==='KRW'||code==='CLP'?0:2});}
   function arsFromText(text){const m=String(text||'').match(/\$\s*([\d.]+(?:,\d+)?)/);return m?Number(m[1].replace(/\./g,'').replace(',','.')):0;}
-  function updateLabel(){const label=document.getElementById('currencyCurrentLabel');if(label)label.innerHTML=selected+' <span class="currency-name">· '+currencies[selected].name+'</span>';document.querySelectorAll('.currency-option').forEach(b=>b.classList.toggle('active',b.dataset.currency===selected));const r=document.getElementById('currencyRate');if(r)r.textContent=selected==='ARS'?'Los cobros y reservas se realizan siempre en pesos argentinos.':rates[selected]?'Referencia: $10.000 ARS ≈ '+money(10000*rates[selected],selected)+'. Cotización informativa.':'Consultando cotización…';}
+  function updateLabel(){const label=document.getElementById('currencyCurrentLabel');if(label)label.innerHTML=selected+' <span class="currency-name">· '+currencies[selected].name+'</span>';document.querySelectorAll('.currency-option').forEach(b=>b.classList.toggle('active',b.dataset.currency===selected));document.querySelectorAll('.drawer-currency-btn').forEach(b=>b.classList.toggle('active',b.dataset.currency===selected));const r=document.getElementById('currencyRate');if(r)r.textContent=selected==='ARS'?'Los cobros y reservas se realizan siempre en pesos argentinos.':rates[selected]?'Referencia: $10.000 ARS ≈ '+money(10000*rates[selected],selected)+'. Cotización informativa.':'Consultando cotización…';}
   function updatePrices(){document.querySelectorAll(priceTargets.join(',')).forEach(el=>{if(el.classList.contains('currency-conversion'))return;const parsed=arsFromText(el.textContent),ars=Number(parsed||el.dataset.arsValue||0);if(!ars)return;el.dataset.arsValue=ars;let note=el.querySelector(':scope > .currency-conversion');if(selected==='ARS'){if(note)note.remove();return;}if(!rates[selected])return;if(!note){note=document.createElement('small');note.className='currency-conversion';el.appendChild(note);}note.textContent='≈ '+money(ars*rates[selected],selected)+' · referencia';});document.querySelectorAll('option[data-precio]').forEach(opt=>{const ars=Number(opt.dataset.precio||0);if(!opt.dataset.arsLabel)opt.dataset.arsLabel=opt.textContent.replace(/\s+·\s+≈.+$/,'');opt.textContent=opt.dataset.arsLabel+(selected!=='ARS'&&rates[selected]?' · ≈ '+money(ars*rates[selected],selected):'');});}
   async function loadRates(){if(refreshing)return;refreshing=true;const day=new Date().toISOString().slice(0,10),cached=JSON.parse(localStorage.getItem('zoyen_currency_rates')||'null');if(cached&&cached.day===day){rates=Object.assign(rates,cached.rates);refreshing=false;updateLabel();updatePrices();return;}try{const res=await fetch('https://open.er-api.com/v6/latest/ARS');if(!res.ok)throw new Error('rate');const data=await res.json();rates=Object.assign(rates,data.rates||{});localStorage.setItem('zoyen_currency_rates',JSON.stringify({day:day,rates:rates}));}catch(e){const old=cached&&cached.rates;if(old)rates=Object.assign(rates,old);}refreshing=false;updateLabel();updatePrices();}
   function choose(code,manual){selected=code;localStorage.setItem('zoyen_currency',code);if(manual)localStorage.setItem('zoyen_currency_manual','1');document.getElementById('currencySwitcher')?.classList.remove('open');updateLabel();updatePrices();}
-  function mount(){if(document.getElementById('currencySwitcher'))return;const anchor=document.getElementById('langSwitcher');const nav=anchor?.parentElement||document.querySelector('body > nav');if(!nav)return;const box=document.createElement('div');box.className='currency-switcher';box.id='currencySwitcher';box.innerHTML='<button class="currency-current" type="button" aria-haspopup="true" aria-expanded="false"><span id="currencyCurrentLabel"></span></button><ul class="currency-menu">'+Object.entries(currencies).map(([code,c])=>'<li><button class="currency-option" type="button" data-currency="'+code+'"><span>'+code+' · '+c.name+'</span><small>'+(code==='ARS'?'OFICIAL':'REFERENCIA')+'</small></button></li>').join('')+'<li class="currency-rate" id="currencyRate"></li></ul>';if(anchor){const group=document.createElement('div');group.className='nav-locale-tools';anchor.parentNode.insertBefore(group,anchor);group.appendChild(anchor);group.appendChild(box);}else{nav.appendChild(box);}box.querySelector('.currency-current').onclick=()=>box.classList.toggle('open');box.querySelectorAll('.currency-option').forEach(b=>b.onclick=()=>choose(b.dataset.currency,true));document.addEventListener('click',e=>{if(!box.contains(e.target))box.classList.remove('open')});updateLabel();loadRates();const obs=new MutationObserver(()=>{clearTimeout(window.__zoyenCurrencyTimer);window.__zoyenCurrencyTimer=setTimeout(updatePrices,80)});obs.observe(document.body,{subtree:true,childList:true,characterData:true});new MutationObserver(()=>{if(localStorage.getItem('zoyen_currency_manual'))return;const code=langCurrency[(document.documentElement.lang||'es').slice(0,2)]||'ARS';choose(code,false)}).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});window.ZoyenCurrency={choose:choose,convert:(ars,code)=>Number(ars)*(rates[code||selected]||1),selected:()=>selected};}
+  function mount(){if(document.getElementById('currencySwitcher'))return;const anchor=document.getElementById('langSwitcher');const nav=anchor?.parentElement||document.querySelector('body > nav');if(!nav)return;const box=document.createElement('div');box.className='currency-switcher';box.id='currencySwitcher';box.innerHTML='<button class="currency-current" type="button" aria-haspopup="true" aria-expanded="false"><span id="currencyCurrentLabel"></span></button><ul class="currency-menu">'+Object.entries(currencies).map(([code,c])=>'<li><button class="currency-option" type="button" data-currency="'+code+'"><span>'+code+' · '+c.name+'</span><small>'+(code==='ARS'?'OFICIAL':'REFERENCIA')+'</small></button></li>').join('')+'<li class="currency-rate" id="currencyRate"></li></ul>';if(anchor){const group=document.createElement('div');group.className='nav-locale-tools';anchor.parentNode.insertBefore(group,anchor);group.appendChild(anchor);group.appendChild(box);}else{nav.appendChild(box);}box.querySelector('.currency-current').onclick=()=>box.classList.toggle('open');box.querySelectorAll('.currency-option').forEach(b=>b.onclick=()=>choose(b.dataset.currency,true));document.querySelectorAll('.drawer-currency-btn').forEach(b=>b.onclick=()=>choose(b.dataset.currency,true));document.addEventListener('click',e=>{if(!box.contains(e.target))box.classList.remove('open')});updateLabel();loadRates();const obs=new MutationObserver(()=>{clearTimeout(window.__zoyenCurrencyTimer);window.__zoyenCurrencyTimer=setTimeout(updatePrices,80)});obs.observe(document.body,{subtree:true,childList:true,characterData:true});new MutationObserver(()=>{if(localStorage.getItem('zoyen_currency_manual'))return;const code=langCurrency[(document.documentElement.lang||'es').slice(0,2)]||'ARS';choose(code,false)}).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});window.ZoyenCurrency={choose:choose,convert:(ars,code)=>Number(ars)*(rates[code||selected]||1),selected:()=>selected};}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();
 })();
 </script>
