@@ -1382,6 +1382,18 @@ img.hero-logo-static {
 </script>
 
 <div class="zoyi-widget" id="zoyiWidget">
+  <!-- Bubble de presentación -->
+  <div class="zoyi-bubble" id="zoyiBubble">
+    <button class="zoyi-bubble-close" id="zoyiBubbleClose" aria-label="Cerrar"></button>
+    <div class="zoyi-bubble-avatar">
+      <span class="zoyi-huemul-mark" aria-hidden="true"><svg class="zoyi-fox" viewBox="0 0 40 40" aria-hidden="true"><path class="zoyi-fox-fur" d="M4.5 5.5 14 10.2C17.7 7.7 22.3 7.7 26 10.2l9.5-4.7-2.2 14.2C32.2 28.1 27 34.5 20 36c-7-1.5-12.2-7.9-13.3-16.3Z"/><path class="zoyi-fox-ear" d="m7.2 8.7 6.2 3.5-5 5.2Zm25.6 0-6.2 3.5 5 5.2Z"/><path class="zoyi-fox-cream" d="M8.3 20.3c4.2-.4 8 1.8 11.7 7.2 3.7-5.4 7.5-7.6 11.7-7.2-1.3 7.2-5.5 12.3-11.7 14.1-6.2-1.8-10.4-6.9-11.7-14.1Z"/><path class="zoyi-fox-blaze" d="M16.2 10.5 20 8.8l3.8 1.7L20 25.8Z"/><path class="zoyi-fox-eye" d="M11.8 19.3c1.8-1.6 3.7-1.8 5.7-.5-1.6 2.1-3.5 2.2-5.7.5Zm16.4 0c-1.8-1.6-3.7-1.8-5.7-.5 1.6 2.1 3.5 2.2 5.7.5Z"/><path class="zoyi-fox-nose" d="M16.8 27.1h6.4L20 30.4Z"/><path class="zoyi-fox-mouth" d="M20 30.2c-1.1 1.2-2.2 1.7-3.5 1.8M20 30.2c1.1 1.2 2.2 1.7 3.5 1.8"/></svg></span>
+    </div>
+    <div class="zoyi-bubble-body">
+      <p class="zoyi-bubble-name">Zoyi</p>
+      <p class="zoyi-bubble-msg" id="zoyiBubbleMsg">¡Hola! Soy Zoyi, asistente de Zoyen Turismo. ¿Tenés alguna consulta?</p>
+    </div>
+  </div>
+
   <button class="zoyi-toggle" type="button" id="zoyiToggle" aria-label="Abrir asistente virtual Zoyi" aria-expanded="false">
     <span class="zoyi-huemul-mark" aria-hidden="true"><svg class="zoyi-fox" viewBox="0 0 40 40" aria-hidden="true"><path class="zoyi-fox-fur" d="M4.5 5.5 14 10.2C17.7 7.7 22.3 7.7 26 10.2l9.5-4.7-2.2 14.2C32.2 28.1 27 34.5 20 36c-7-1.5-12.2-7.9-13.3-16.3Z"/><path class="zoyi-fox-ear" d="m7.2 8.7 6.2 3.5-5 5.2Zm25.6 0-6.2 3.5 5 5.2Z"/><path class="zoyi-fox-cream" d="M8.3 20.3c4.2-.4 8 1.8 11.7 7.2 3.7-5.4 7.5-7.6 11.7-7.2-1.3 7.2-5.5 12.3-11.7 14.1-6.2-1.8-10.4-6.9-11.7-14.1Z"/><path class="zoyi-fox-blaze" d="M16.2 10.5 20 8.8l3.8 1.7L20 25.8Z"/><path class="zoyi-fox-eye" d="M11.8 19.3c1.8-1.6 3.7-1.8 5.7-.5-1.6 2.1-3.5 2.2-5.7.5Zm16.4 0c-1.8-1.6-3.7-1.8-5.7-.5 1.6 2.1 3.5 2.2 5.7.5Z"/><path class="zoyi-fox-nose" d="M16.8 27.1h6.4L20 30.4Z"/><path class="zoyi-fox-mouth" d="M20 30.2c-1.1 1.2-2.2 1.7-3.5 1.8M20 30.2c1.1 1.2 2.2 1.7 3.5 1.8"/></svg></span>
     <strong>Zoyi</strong>
@@ -1410,6 +1422,133 @@ img.hero-logo-static {
     </form>
   </section>
 </div>
+
+<style id="zoyi-bubble-greeting-css">
+/* -- Zoyi animaciones ----------------------------------- */
+
+/* Latido del borde del botn toggle */
+@keyframes zoyiPulseRing {
+  0%   { box-shadow: 0 18px 42px rgba(0,0,0,.32), 0 0 0 0 rgba(212,119,42,.55); }
+  60%  { box-shadow: 0 18px 42px rgba(0,0,0,.32), 0 0 0 10px rgba(212,119,42,0); }
+  100% { box-shadow: 0 18px 42px rgba(0,0,0,.32), 0 0 0 0 rgba(212,119,42,0); }
+}
+/* Bounce suave peridico del botn */
+@keyframes zoyiBounce {
+  0%, 100% { transform: translateY(0); }
+  30%       { transform: translateY(-7px); }
+  55%       { transform: translateY(-3px); }
+  75%       { transform: translateY(-5px); }
+  90%       { transform: translateY(-1px); }
+}
+/* Wiggle de las orejas del zorrito */
+@keyframes zoyiWiggle {
+  0%, 100% { transform: rotate(0deg); }
+  15%       { transform: rotate(-12deg); }
+  35%       { transform: rotate(10deg); }
+  55%       { transform: rotate(-7deg); }
+  75%       { transform: rotate(5deg); }
+  90%       { transform: rotate(-2deg); }
+}
+/* Entrada de la burbuja con bounce */
+@keyframes zoyiBubbleIn {
+  0%   { opacity: 0; transform: translateY(18px) scale(.88); }
+  55%  { opacity: 1; transform: translateY(-5px) scale(1.03); }
+  75%  { transform: translateY(3px) scale(.99); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* Aplicar al toggle cuando NO est abierto */
+.zoyi-widget:not(.open) .zoyi-toggle {
+  animation: zoyiPulseRing 2.4s ease-out 1s infinite,
+             zoyiBounce    3.2s cubic-bezier(.36,.07,.19,.97) 1.5s infinite;
+}
+.zoyi-widget:not(.open) .zoyi-toggle .zoyi-huemul-mark {
+  display: inline-flex;
+  animation: zoyiWiggle 2.8s ease-in-out 2s infinite;
+  transform-origin: 50% 80%;
+}
+/* Cuando se abre, cancelar las animaciones de idle */
+.zoyi-widget.open .zoyi-toggle {
+  animation: none;
+}
+.zoyi-widget.open .zoyi-toggle .zoyi-huemul-mark {
+  animation: none;
+}
+
+/* -- Zoyi bubble de presentación ----------------------- */
+.zoyi-bubble {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  right: 0;
+  width: 260px;
+  background: #fff;
+  border-radius: 12px 12px 2px 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.18), 0 0 0 1px rgba(212,119,42,.15);
+  padding: .85rem 1rem .85rem .9rem;
+  display: flex;
+  align-items: flex-start;
+  gap: .65rem;
+  opacity: 0;
+  transform: translateY(8px) scale(.95);
+  pointer-events: none;
+  transition: opacity .35s, transform .35s;
+  z-index: 1700;
+}
+.zoyi-bubble.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+  animation: zoyiBubbleIn .55s cubic-bezier(.22,.68,0,1.4) both;
+}
+.zoyi-bubble.hiding {
+  opacity: 0;
+  transform: translateY(6px) scale(.96);
+  pointer-events: none;
+}
+.zoyi-bubble-close {
+  position: absolute;
+  top: 6px; right: 8px;
+  background: none; border: none;
+  color: rgba(58,45,31,.35);
+  font-size: 1rem; line-height: 1;
+  cursor: pointer; padding: 2px 4px;
+  transition: color .15s;
+}
+.zoyi-bubble-close:hover { color: var(--ember, #d4772a); }
+.zoyi-bubble-avatar .zoyi-huemul-mark {
+  width: 34px; height: 34px; flex-shrink: 0;
+  display: inline-flex;
+  animation: zoyiWiggle 3.5s ease-in-out 1.2s infinite;
+  transform-origin: 50% 80%;
+}
+.zoyi-bubble-body { flex: 1; min-width: 0; padding-right: .5rem; }
+.zoyi-bubble-name {
+  font-family: 'Sora', sans-serif;
+  font-size: .68rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--ember, #d4772a);
+  margin-bottom: .25rem;
+}
+.zoyi-bubble-msg {
+  font-family: 'Sora', sans-serif;
+  font-size: .8rem; color: #3a2d1f;
+  line-height: 1.45; margin: 0;
+}
+/* Triangulito apuntando al botn */
+.zoyi-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -7px; right: 18px;
+  width: 14px; height: 8px;
+  background: #fff;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,.08));
+}
+@media (max-width: 900px) {
+  .zoyi-bubble { width: 220px; font-size: .75rem; }
+}
+
+</style>
 <script id="zoyi-assistant-script">
 (function(){
   var widget = document.getElementById("zoyiWidget");
@@ -1565,6 +1704,29 @@ img.hero-logo-static {
   if (form) form.addEventListener("submit", function(e){ e.preventDefault(); submit(); });
   if (chips) chips.addEventListener("click", function(e){ if (e.target.matches("button")) submit(e.target.textContent); });
   addMessage("Hola, soy Zoyi. Puedo responder sobre excursiones, tours, precios en AR, fechas disponibles, cupos, ubicación e itinerarios. Solo te paso con una persona si me lo pedís.", "bot");
+  // -- Bubble de presentación --------------------------------------------
+  var bubble = document.getElementById('zoyiBubble');
+  var bubbleClose = document.getElementById('zoyiBubbleClose');
+  var bubbleTimer = null;
+  function showBubble() {
+    if (!bubble) return;
+    bubble.classList.remove('hiding');
+    bubble.classList.add('visible');
+    clearTimeout(bubbleTimer);
+    bubbleTimer = setTimeout(hideBubble, 10000);
+  }
+  function hideBubble() {
+    if (!bubble) return;
+    bubble.classList.add('hiding');
+    setTimeout(function(){ bubble.classList.remove('visible','hiding'); }, 350);
+    clearTimeout(bubbleTimer);
+  }
+  if (bubbleClose) bubbleClose.addEventListener('click', function(e){
+    e.stopPropagation();
+    hideBubble();
+  });
+  if (toggle) toggle.addEventListener('click', function(){ hideBubble(); });
+  setTimeout(showBubble, 2000);
 })();
 </script>
 

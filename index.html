@@ -1568,10 +1568,13 @@ footer {
 }
 .pago-x {
   position: absolute; top: .9rem; right: 1rem;
-  background: none; border: none;
-  color: rgba(245,240,232,.5); font-size: 1.2rem; cursor: pointer;
+  background: rgba(255,255,255,.12); border: none;
+  color: var(--cream); font-size: 1.3rem; cursor: pointer;
+  width: 32px; height: 32px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  line-height: 1; transition: background .2s, color .2s;
 }
-.pago-x:hover { color: var(--cream); }
+.pago-x:hover { background: rgba(255,255,255,.22); color: var(--cream); }
 
 /* SUCCESS */
 .pago-success {
@@ -1633,8 +1636,12 @@ footer {
 .apply-btn:hover { background: var(--ember-dim); }
 .modal-x {
   position: absolute; top: 1rem; right: 1.2rem;
-  background: none; border: none; font-size: 1.3rem; color: var(--stone); cursor: pointer;
+  background: rgba(0,0,0,.06); border: none; font-size: 1.3rem; color: var(--ink); cursor: pointer;
+  width: 30px; height: 30px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; line-height: 1;
+  transition: background .2s;
 }
+.modal-x:hover { background: rgba(0,0,0,.12); }
 
 /* ======================================
    ADMIN PANEL
@@ -2910,21 +2917,28 @@ img.hero-logo-static {
   .emblem-3d.zoyen-hero-logo-motion::after {
     content: 'Tocá para activar la brújula';
     position: absolute;
-    left: 50%;
-    bottom: -25px;
-    transform: translateX(-50%);
-    width: max-content;
-    color: rgba(255,247,232,.82);
+    left: 8%;
+    right: 8%;
+    bottom: 14%;
+    text-align: center;
+    color: rgba(255,247,232,.95);
+    background: rgba(18,14,11,.62);
+    padding: .3rem .4rem;
+    border-radius: 999px;
     font-family: 'Sora', sans-serif;
-    font-size: 9px;
+    font-size: 8px;
     font-weight: 700;
-    letter-spacing: .12em;
+    letter-spacing: .08em;
     text-transform: uppercase;
-    text-shadow: 0 1px 5px rgba(0,0,0,.9);
+    text-shadow: none;
+    z-index: 6;
+    pointer-events: none;
+    line-height: 1.3;
   }
   .emblem-3d.zoyen-hero-logo-motion.zoyen-compass-active::after {
-    content: 'Brújula activa';
-    color: #f19a4b;
+    content: 'Brújula activa · tocá para desactivar';
+    color: #ffd6ad;
+    background: rgba(18,14,11,.78);
   }
 }
 </style>
@@ -4296,6 +4310,7 @@ function loadTourConfig() {
       defaults[key] = {
         ...defaults[key],
         ...src,
+        precio: (src.precio && Number(src.precio) > 0) ? Number(src.precio) : defaults[key].precio,
         dates: Array.isArray(src.dates) ? Array.from(new Set(src.dates)).sort() : defaults[key].dates,
         blockedSeats: src.blockedSeats && typeof src.blockedSeats === 'object' ? src.blockedSeats : defaults[key].blockedSeats,
         vehicle: VEHICLE_OPTIONS[src.vehicle] ? src.vehicle : (defaults[key].vehicle || 'renault_master')
@@ -4311,7 +4326,8 @@ function saveTourConfig(config) {
 function getTourConfig() { return loadTourConfig(); }
 function getTour(key) { return getTourConfig()[key]; }
 function formatTourOption(key, tour) {
-  return tour.name + ' - ' + tour.duration + ' - ' + formatPeso(parseInt(tour.precio || 0)) + ' p/p';
+  const precioValido = (tour.precio && Number(tour.precio) > 0) ? Number(tour.precio) : (DEFAULT_TOUR_CONFIG[key] ? DEFAULT_TOUR_CONFIG[key].precio : 0);
+  return tour.name + ' - ' + tour.duration + ' - ' + formatPeso(precioValido) + ' p/p';
 }
 function vehicleSvg(icon) {
   const common = {
@@ -4874,10 +4890,13 @@ revEls.forEach(el => obs.observe(el));
 @keyframes rmod-in { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:none} }
 .rmod-x {
   position:absolute; top:1.1rem; right:1.15rem;
-  background:none; border:none; color:#7a6a5a;
-  font-size:1.45rem; cursor:pointer; line-height:1; padding:.25rem;
+  background:rgba(255,255,255,.08); border:none; color:#c9a96e;
+  font-size:1.3rem; cursor:pointer; line-height:1; padding:0;
+  width:34px; height:34px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  transition: background .2s, color .2s;
 }
-.rmod-x:hover { color:#f5f0e8; }
+.rmod-x:hover { background:rgba(255,255,255,.16); color:#f5f0e8; }
 .rmod-eyebrow {
   font-size:.72rem; font-weight:700; letter-spacing:.28em; text-transform:uppercase;
   color:#d4772a; text-align:center; margin-bottom:.75rem;
@@ -5775,7 +5794,7 @@ applyLang(currentLang);
     bubble.classList.remove('hiding');
     bubble.classList.add('visible');
     clearTimeout(bubbleTimer);
-    bubbleTimer = setTimeout(hideBubble, 60000);
+    bubbleTimer = setTimeout(hideBubble, 10000);
   }
 
   function hideBubble() {
@@ -7129,6 +7148,7 @@ a.cta-btn-g[href*="wa.me"]:hover {
   var receivedHeading=false;
   var smoothHeading=null;
   var statusTimer=null;
+  var permissionGranted=false;
 
   function status(message,type){
     var el=document.getElementById('zoyen-compass-status');
@@ -7166,24 +7186,51 @@ a.cta-btn-g[href*="wa.me"]:hover {
     });
   }
 
+  var usingAbsolute=false;
+
+  function applyHeadingAbsolute(event){
+    usingAbsolute=true;
+    window.removeEventListener('deviceorientation',applyHeadingRelative,true);
+    applyHeading(event);
+  }
+
+  function applyHeadingRelative(event){
+    if(usingAbsolute)return;
+    applyHeading(event);
+  }
+
   function bindSensors(){
     if(listening)return;listening=true;
-    window.addEventListener('deviceorientationabsolute',applyHeading,true);
-    window.addEventListener('deviceorientation',applyHeading,true);
+    usingAbsolute=false;
+    window.addEventListener('deviceorientationabsolute',applyHeadingAbsolute,true);
+    window.addEventListener('deviceorientation',applyHeadingRelative,true);
     boxes.forEach(function(box){box.classList.add('zoyen-compass-active')});
     status('Brújula activada · mové el teléfono');
     setTimeout(function(){if(!receivedHeading)status('No llegan datos del sensor. Revisá los permisos de movimiento.','error')},2200);
   }
 
+  function stopSensors(){
+    if(!listening)return;listening=false;
+    window.removeEventListener('deviceorientationabsolute',applyHeadingAbsolute,true);
+    window.removeEventListener('deviceorientation',applyHeadingRelative,true);
+    receivedHeading=false;smoothHeading=null;
+    boxes.forEach(function(box){
+      box.classList.remove('zoyen-compass-active','zoyen-compass-pulse');
+      box.style.removeProperty('--zoyen-compass-rotation');
+    });
+    status('Brújula desactivada');
+  }
+
   function requestSensors(){
-    if(listening){status('Brújula activa');return}
+    if(listening){stopSensors();return}
+    if(permissionGranted){bindSensors();return}
     if(!window.isSecureContext&&location.hostname!=='127.0.0.1'&&location.hostname!=='localhost'){status('La brújula necesita una conexión segura HTTPS.','error');return}
     if(typeof DeviceOrientationEvent==='undefined'){status('Este navegador no ofrece acceso al sensor de orientación.','error');return}
     if(typeof DeviceOrientationEvent.requestPermission==='function'){
       DeviceOrientationEvent.requestPermission().then(function(result){
-        if(result==='granted')bindSensors();else status('Activá Movimiento y orientación para usar la brújula.','error');
+        if(result==='granted'){permissionGranted=true;bindSensors();}else status('Activá Movimiento y orientación para usar la brújula.','error');
       }).catch(function(){status('No se pudo habilitar la brújula. Revisá los permisos del navegador.','error')});
-    }else bindSensors();
+    }else{permissionGranted=true;bindSensors();}
   }
 
   function init(){
@@ -7198,7 +7245,7 @@ a.cta-btn-g[href*="wa.me"]:hover {
     });
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
-  window.ZoyenCompass={activate:requestSensors,isActive:function(){return listening}};
+  window.ZoyenCompass={activate:requestSensors,deactivate:stopSensors,isActive:function(){return listening}};
 })();
 </script>
 

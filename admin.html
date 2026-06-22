@@ -885,7 +885,8 @@ function updateVehicleAdminPreview(syncCapacity = false) {
 function saveAvailabilityConfig() {
   const cfg = getTourConfigAdmin();
   const key = document.getElementById('av-tour').value;
-  cfg[key].precio = parseInt(document.getElementById('av-price').value) || 0;
+  const priceInput = parseInt(document.getElementById('av-price').value);
+  cfg[key].precio = (Number.isFinite(priceInput) && priceInput > 0) ? priceInput : (cfg[key].precio || 0);
   cfg[key].capacity = parseInt(document.getElementById('av-capacity').value) || 16;
   cfg[key].vehicle = document.getElementById('av-vehicle').value || 'renault_master';
   saveTourConfig(cfg);
