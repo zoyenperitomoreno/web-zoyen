@@ -1043,7 +1043,7 @@ img.hero-logo-static {
     <li><a href="index.html" data-i18n="nav_home">Home</a></li>
     <li><a href="index.html#excursiones" data-i18n="nav_excursiones"><span data-i18n="bread_exc">Excursiones</span></a></li>
     <li><a href="index.html#tours" data-i18n="nav_tours"><span data-i18n="bread_tours">Tours de Autor</span></a></li>
-    <li><a href="index.html#bienestar" data-i18n="nav_bienestar">Turismo de Bienestar</a></li>
+    <li><a href="nuevas-experiencias.html" data-i18n="nav_bienestar">Nuevas Experiencias</a></li>
     <li><a href="index.html#ubicación" data-i18n="nav_ubicación">Ubicación y Contacto</a></li>
     <li><a href="nosotros.html" data-i18n="nav_nosotros">Quiénes somos</a></li>
   </ul>
@@ -1266,7 +1266,7 @@ img.hero-logo-static {
       'nav_home': 'Home',
       'nav_excursiones': 'Excursiones',
       'nav_tours': 'Tours de Autor',
-      'nav_bienestar': 'Turismo de Bienestar',
+      'nav_bienestar': 'Nuevas Experiencias',
       'nav_ubicación': 'Ubicación y Contacto',
       'nav_nosotros': 'Quiénes somos',
       'nav_reservar': 'Reservar',
@@ -1297,7 +1297,7 @@ img.hero-logo-static {
       'nav_home': 'Home',
       'nav_excursiones': 'Excursions',
       'nav_tours': 'Author Tours',
-      'nav_bienestar': 'Wellness Tourism',
+      'nav_bienestar': 'New Experiences',
       'nav_ubicación': 'Location & Contact',
       'nav_nosotros': 'About Us',
       'nav_reservar': 'Book Now',
@@ -1332,7 +1332,7 @@ img.hero-logo-static {
       'nav_home': 'Início',
       'nav_excursiones': 'Excursões',
       'nav_tours': 'Tours de Autor',
-      'nav_bienestar': 'Turismo de Bem-Estar',
+      'nav_bienestar': 'Novas Experiências',
       'nav_ubicación': 'Localização e Contato',
       'nav_nosotros': 'Quem somos',
       'nav_reservar': 'Reservar',
@@ -1367,7 +1367,7 @@ img.hero-logo-static {
       'nav_home': '홈',
       'nav_excursiones': '투어',
       'nav_tours': '오서 투어',
-      'nav_bienestar': '웰니스 관광',
+      'nav_bienestar': '새로운 경험',
       'nav_ubicación': '위치  연처',
       'nav_nosotros': '우리 대해',
       'nav_reservar': '예약하기',
@@ -1747,7 +1747,7 @@ img.hero-logo-static {
     if (isAsking(q, ["excursion","excursiones","paseos","salidas","día completo","medio día"])) return product ? productDetail(product) : listExcursions();
     if (isAsking(q, ["tour","tours","autor","varios días","viaje completo","paquete"])) return product ? productDetail(product) : listTours();
     if (isAsking(q, ["recomendas","recomendacion","conviene","diferencia","comparar","mejor","cual elijo","que hago"])) return compareAnswer();
-    if (isAsking(q, ["bienestar","wellness","yoga","masajes"])) return "Turismo de Bienestar es una línea complementaria para sumar pausa, naturaleza y cuidado al viaje. Si buscás algo tranquilo, se puede combinar con excursiones de medio día o estadías en la zona.";
+    if (isAsking(q, ["bienestar","wellness","yoga","masajes","4x4","off road","retiro","retiros"])) return "Tenemos una línea de Nuevas Experiencias con dos propuestas: Off Road 4x4 y Viajes con Sentido (retiros introspectivos). Más info en nuevas-experiencias.html.";
     if (isAsking(q, ["zoyen","agencia","legajo","quienes","quiénes son"])) return "Zoyen Turismo es una agencia local de Perito Moreno, Santa Cruz, legajo 15.625. Diseña excursiones y tours de autor en Patagonia.";
     if (product) return productDetail(product);
 
@@ -2548,7 +2548,7 @@ textarea {
           ['index.html', 'Home'],
           ['index.html#excursiones', 'Excursiones'],
           ['index.html#tours', 'Tours de Autor'],
-          ['index.html#bienestar', 'Turismo de Bienestar'],
+          ['nuevas-experiencias.html', 'Nuevas Experiencias'],
           ['index.html#ubicación', 'Ubicación y Contacto'],
           ['nosotros.html', 'Quiénes somos']
         ].forEach(function (item) {

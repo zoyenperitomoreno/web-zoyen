@@ -1,5 +1,11 @@
 /* Configuración SEO pública de Zoyen Turismo. Se puede reemplazar desde el panel admin. */
 window.ZOYEN_SEO_CONFIG = {
+  "nuevas-experiencias.html": {
+    title: "Nuevas Experiencias | Zoyen Turismo",
+    description: "Off Road 4x4 y Viajes con Sentido: dos nuevas formas de recorrer la Patagonia profunda, entre Santa Cruz y la Región de Aysén, sin fronteras.",
+    keywords: "turismo aventura 4x4 Patagonia, off road Santa Cruz, retiros bienestar Patagonia, viajes con sentido, turismo introspectivo, Perito Moreno Los Antiguos",
+    image: "assets/full_inedita.jpg"
+  },
   "index.html": {
     title: "Zoyen Turismo | Excursiones en la Patagonia",
     description: "Excursiones y viajes desde Perito Moreno, Santa Cruz: Cueva de las Manos, Ruta 41, Monte Zeballos, Parque Patagonia y Carretera Austral.",
