@@ -3651,7 +3651,7 @@ img.hero-logo-static {
     </div>
 
     <!-- Cards -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;" class="tours-grid-2">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;" class="tours-grid-2">
 
       <!-- Tour 1 -->
       <div class="reveal tour2-card" style="position:relative;border-radius:4px;overflow:hidden;cursor:pointer;" onclick="location.href='patagonia-inedita.html'">
@@ -3685,10 +3685,29 @@ img.hero-logo-static {
         </div>
       </div>
 
+      <!-- Tour 3 -->
+      <div class="reveal reveal-delay2 tour2-card" style="position:relative;border-radius:4px;overflow:hidden;cursor:pointer;" onclick="location.href='circuito-binacional-patagonia-inexplorada.html'">
+        <img src="assets/zoyen_turismo_patagonia_capillasdemarmol.jpg" alt="Circuito Binacional Patagonia Inexplorada" onerror="this.src='assets/full_inedita.jpg'" style="width:100%;height:420px;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.25,.1,.25,1);">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,6,.95) 0%,rgba(10,8,6,.4) 50%,rgba(10,8,6,.05) 100%);transition:background .3s;" class="tour2-ov"></div>
+        <div style="position:absolute;inset:0;padding:2rem;display:flex;flex-direction:column;justify-content:flex-end;">
+          <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem;flex-wrap:wrap;">
+            <span style="font-family:'Sora',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ember);background:rgba(212,119,42,.15);border:1px solid rgba(212,119,42,.4);padding:.22rem .7rem;border-radius:1px;" data-i18n="tour3_dur">8 d&iacute;as &middot; 7 noches</span>
+            <span style="font-family:'Sora',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#f5f0e8;background:rgba(245,240,232,.12);border:1px solid rgba(245,240,232,.24);padding:.22rem .7rem;border-radius:1px;">USD 2.900 p/p</span>
+          </div>
+          <h3 style="font-family:'DM Serif Display',serif;font-size:1.65rem;font-weight:600;color:#f5f0e8;line-height:1.1;margin-bottom:.7rem;" data-i18n="tour3_name" data-name-es>Circuito Binacional <em style="color:var(--sand)">Patagonia Inexplorada</em></h3>
+          <p style="font-size:.8rem;color:rgba(245,240,232,.68);line-height:1.55;margin-bottom:1rem;font-weight:300;" data-i18n="tour3_hi">Buenos Aires &middot; Perito Moreno &middot; Los Antiguos &middot; Cochrane &middot; Puerto R&iacute;o Tranquilo &middot; Capillas y Catedrales de M&aacute;rmol</p>
+          <p style="font-size:.72rem;color:rgba(245,240,232,.58);line-height:1.45;margin-bottom:1.05rem;font-weight:300;">Incluye vuelos, traslados, alojamientos con desayuno, navegaci&oacute;n, excursiones terrestres con chofer/gu&iacute;a y almuerzos con bebida sin alcohol.</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-family:'Sora',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--sand);">Ver itinerario &rarr;</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
   <style>
+    @media(max-width:980px){ .tours-grid-2{ grid-template-columns:1fr 1fr !important; } }
     @media(max-width:680px){ .tours-grid-2{ grid-template-columns:1fr !important; } }
     .tour2-card:hover img { transform: scale(1.05); }
     .tour2-card:hover .tour2-ov { background: linear-gradient(to top,rgba(212,119,42,.7) 0%,rgba(10,8,6,.35) 55%,rgba(10,8,6,.05) 100%) !important; }
@@ -3748,6 +3767,7 @@ img.hero-logo-static {
             <option value=""> Seleccioná un tour </option>
             <option value="patagonia_inedita" data-precio="185000">Patagonia Inédita &middot; 6 días / 5 noches  $185.000 p/p</option>
             <option value="carretera_austral" data-precio="210000">Carretera Austral &middot; 8 días / 7 noches  $210.000 p/p</option>
+            <option value="circuito_binacional_patagonia_inexplorada" data-precio="2900">Circuito Binacional Patagonia Inexplorada &middot; 8 d&iacute;as / 7 noches  USD 2.900 p/p</option>
           </select>
         </div>
       </div>
@@ -4389,6 +4409,15 @@ const DEFAULT_TOUR_CONFIG = {
     vehicle: 'renault_master',
     dates: ['2026-07-26','2026-09-06','2026-10-18'],
     blockedSeats: {}
+  },
+  circuito_binacional_patagonia_inexplorada: {
+    name: 'Circuito Binacional Patagonia Inexplorada',
+    duration: '8 d\u00edas / 7 noches',
+    precio: 2900,
+    capacity: 16,
+    vehicle: 'renault_master',
+    dates: ['2026-08-10','2026-09-14','2026-10-12'],
+    blockedSeats: {}
   }
 };
 
@@ -4441,7 +4470,8 @@ function getTourConfig() { return loadTourConfig(); }
 function getTour(key) { return getTourConfig()[key]; }
 function formatTourOption(key, tour) {
   const precioValido = (tour.precio && Number(tour.precio) > 0) ? Number(tour.precio) : (DEFAULT_TOUR_CONFIG[key] ? DEFAULT_TOUR_CONFIG[key].precio : 0);
-  return tour.name + ' - ' + tour.duration + ' - ' + formatPeso(precioValido) + ' p/p';
+  const precioTexto = key === 'circuito_binacional_patagonia_inexplorada' ? 'USD ' + Number(precioValido).toLocaleString('es-AR') : formatPeso(precioValido);
+  return tour.name + ' - ' + tour.duration + ' - ' + precioTexto + ' p/p';
 }
 function vehicleSvg(icon) {
   const common = {
@@ -5309,6 +5339,8 @@ var translations = {
     tour1_hi: 'Bosque Petrificado  Cueva de las Manos  Lago Posadas  Carretera Austral  Catedrales de Mármol',
     tour2_dur: '8 días  7 noches', tour2_name: 'Carretera <em style="color:var(--sand)">Austral</em>',
     tour2_hi: 'Confluencia Nef y Baker  Lago General Carrera  Capillas de Mármol  Mirador Laguna Verde',
+    tour3_dur: '8 dias  7 noches', tour3_name: 'Circuito Binacional <em style="color:var(--sand)">Patagonia Inexplorada</em>',
+    tour3_hi: 'Buenos Aires  Perito Moreno  Los Antiguos  Cochrane  Puerto Rio Tranquilo  Capillas y Catedrales de Marmol',
     tour_ver: 'Ver itinerario →',
     bw_eye: 'Nuevas Experiencias', bw_title: 'Off Road 4x4 y Viajes con <em style="color:var(--sand)">Sentido</em>',
     bw_sub: 'Dos maneras nuevas de recorrer la Patagonia Profunda: turismo aventura 4x4 y retiros introspectivos, sin fronteras entre Santa Cruz y la Región de Aysén.',
@@ -5369,6 +5401,8 @@ var translations = {
     tour1_hi: 'Petrified Forest  Cave of Hands  Lake Posadas  Carretera Austral  Marble Cathedrals',
     tour2_dur: '8 days  7 nights', tour2_name: 'Carretera <em style="color:var(--sand)">Austral</em>',
     tour2_hi: 'Nef & Baker Confluence  Lake General Carrera  Capillas y Catedrales de Mármol  Laguna Verde Viewpoint',
+    tour3_dur: '8 days  7 nights', tour3_name: 'Binational Circuit <em style="color:var(--sand)">Unexplored Patagonia</em>',
+    tour3_hi: 'Buenos Aires  Perito Moreno  Los Antiguos  Cochrane  Puerto Rio Tranquilo  Marble Chapels and Cathedrals',
     tour_ver: 'View itinerary →',
     bw_eye: 'New Experiences', bw_title: 'Off Road 4x4 and Journeys with <em style="color:var(--sand)">Purpose</em>',
     bw_sub: 'Two new ways to explore the Deep Patagonia: 4x4 adventure tourism and introspective retreats, with no borders between Santa Cruz and the Aysén Region.',
@@ -5429,6 +5463,8 @@ var translations = {
     tour1_hi: 'Floresta Petrificada  Cueva de las Manos  Lago Posadas  Carretera Austral  Catedrais de Mármore',
     tour2_dur: '8 días  7 noites', tour2_name: 'Carretera <em style="color:var(--sand)">Austral</em>',
     tour2_hi: 'Confluência Nef e Baker  Lago General Carrera  Capelas de Mármol  Mirante Laguna Verde',
+    tour3_dur: '8 dias  7 noites', tour3_name: 'Circuito Binacional <em style="color:var(--sand)">Patagonia Inexplorada</em>',
+    tour3_hi: 'Buenos Aires  Perito Moreno  Los Antiguos  Cochrane  Puerto Rio Tranquilo  Capelas e Catedrais de Marmore',
     tour_ver: 'Ver roteiro →',
     bw_eye: 'Novas Experiências', bw_title: 'Off Road 4x4 e Viagens com <em style="color:var(--sand)">Sentido</em>',
     bw_sub: 'Duas novas formas de percorrer a Patagônia Profunda: turismo de aventura 4x4 e retiros introspectivos, sem fronteiras entre Santa Cruz e a Região de Aysén.',
@@ -5749,7 +5785,8 @@ applyLang(currentLang);
   ];
   var tours = [
     {id:"patagonia", name:"Patagonia Inédita", aliases:["patagonia inedita","inedita","unexplored patagonia","미지 파타고니아"], price:185000, duration:"6 días / 5 noches", capacity:14, type:"tour", pdf:"assets/pdfs/patagonia-inedita-itinerario.pdf", summary:"recorre Perito Moreno, Cueva de las Manos, Parque Patagonia, Los Antiguos, Ruta Escenica 41, Carretera Austral y Capillas de Mármol.", includes:"Traslados durante todo el recorrido, guía especializado y alojamiento según itinerario (PDF descargable con el detalle día por día).", url:"patagonia-inedita.html"},
-    {id:"carretera", name:"Carretera Austral",  aliases:["carretera austral","austral","ohiggins","tortel","cochrane","카레테 아우스트랄"], price:210000, duration:"8 días / 7 noches", capacity:14, type:"tour", pdf:"assets/pdfs/carretera-austral-itinerario.pdf", summary:"incluye Chile Chico, Cochrane, Caleta Tortel, Villa O\'Higgins, Puerto Río Tranquilo, Capillas de Mármol y Coyhaique.", includes:"Traslados durante todo el recorrido, guía especializado y alojamiento según itinerario (PDF descargable con el detalle día por día).", url:"carretera-austral.html"}
+    {id:"carretera", name:"Carretera Austral",  aliases:["carretera austral","austral","ohiggins","tortel","cochrane","카레테 아우스트랄"], price:210000, duration:"8 días / 7 noches", capacity:14, type:"tour", pdf:"assets/pdfs/carretera-austral-itinerario.pdf", summary:"incluye Chile Chico, Cochrane, Caleta Tortel, Villa O\'Higgins, Puerto Río Tranquilo, Capillas de Mármol y Coyhaique.", includes:"Traslados durante todo el recorrido, guía especializado y alojamiento según itinerario (PDF descargable con el detalle día por día).", url:"carretera-austral.html"},
+    {id:"circuito_binacional", name:"Circuito Binacional Patagonia Inexplorada", aliases:["circuito binacional","patagonia inexplorada","binacional","cochrane","puerto rio tranquilo","puerto río tranquilo"], price:2900, duration:"8 días / 7 noches", capacity:16, type:"tour", summary:"incluye vuelo Buenos Aires / Perito Moreno / Buenos Aires, traslados, alojamientos en Perito Moreno o Los Antiguos, Cochrane y Puerto Río Tranquilo, navegación a Capillas y Catedrales de Mármol, excursiones terrestres con chofer/guía y almuerzos.", includes:"No incluye bebidas alcohólicas ni cenas. Tarifas en dólares al cambio dólar blue venta. Seña 30% y saldo a la llegada en dólar billete o tarjeta; consultar planes de pago.", url:"circuito-binacional-patagonia-inexplorada.html"}
   ];
   var allProducts = excursiones.concat(tours);
 
