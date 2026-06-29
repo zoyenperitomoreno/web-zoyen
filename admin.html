@@ -564,7 +564,7 @@ document.querySelectorAll('.nav-item').forEach(item => {
 });
 
 // -- Diagnóstico general ---------------------------------------
-const DIAG_PAGES = ['index.html','nosotros.html','patagonia-inedita.html','carretera-austral.html','excursion-cueva-de-las-manos.html','excursion-capillas-de-marmol.html','excursion-monte-zeballos.html','excursion-parque-patagonia.html','excursion-ruta41-lago-posadas.html','excursion-alero-charcamata.html'];
+const DIAG_PAGES = ['index.html','nosotros.html','patagonia-inedita.html','carretera-austral.html','santa-cruz-inexplorada.html','excursion-cueva-de-las-manos.html','excursion-capillas-de-marmol.html','excursion-ruta41-los-antiguos.html','excursion-parque-patagonia.html','excursion-ruta41-lago-posadas.html','excursion-alero-charcamata.html'];
 function diagAdd(results,status,name,detail){ results.push({status,name,detail}); }
 function diagRender(results){
   const counts={ok:0,warn:0,error:0}; results.forEach(r=>counts[r.status]++);
@@ -671,11 +671,11 @@ function initPanel() {
 
 // -- Excursion data ---------------------------------------------
 const excData = [
-  { key:'cueva',            name:'Cueva de las Manos',                                       precio:18000, estado:'activa', duracion:'Día completo',      capacidad:14 },
-  { key:'capillas',         name:'Capillas y Catedrales de Mármol',                          precio:24000, estado:'activa', duracion:'Día completo',      capacidad:14 },
-  { key:'posadas',          name:'Lago Posadas con Vuelta a la Meseta por Ruta Escénica 41', precio:15000, estado:'activa', duracion:'Día completo (12 hs)', capacidad:14 },
-  { key:'zeballos',         name:'Ruta 41 + Monte Zeballos',                                 precio:16000, estado:'activa', duracion:'Día completo',      capacidad:14 },
-  { key:'charcamata',       name:'Alero Charcamata',                                         precio:12000, estado:'activa', duracion:'Medio día',         capacidad:14 },
+  { key:'cueva',            name:'Cueva de las Manos',                                       precio:250000, estado:'activa', duracion:'Día completo',      capacidad:14 },
+  { key:'capillas',         name:'Capillas y Catedrales de Mármol',                          precio:50000, estado:'activa', duracion:'Día completo',      capacidad:14 },
+  { key:'posadas',          name:'Lago Posadas con Vuelta a la Meseta',                      precio:320000, estado:'activa', duracion:'Día completo (12 hs)', capacidad:14 },
+  { key:'zeballos',         name:'Ruta Escénica 41 y Los Antiguos',                          precio:250000, estado:'activa', duracion:'Día completo',      capacidad:14 },
+  { key:'charcamata',       name:'Alero Charcamata',                                         precio:280000, estado:'activa', duracion:'Medio día',         capacidad:14 },
   { key:'parque_caniadon',  name:'Portal Cañadón Pinturas (Parque Patagonia)',                precio:8000,  estado:'activa', duracion:'Medio día (5 hs)', capacidad:14 },
   { key:'parque_ascension', name:'PNP / Estancia La Ascensión',                              precio:7000,  estado:'activa', duracion:'Medio día (4 hs)', capacidad:14 },
 ];
@@ -733,9 +733,9 @@ const slideDefaults = [
   {ey:'Patagonia Argentina', ti:'Explorá la Patagonia', ac:'Inédita', de:'De la mano de quienes la vivimos. Excursiones únicas en la Patagonia profunda.', img:'assets/full_inedita.jpg'},
   {ey:'Patrimonio UNESCO', ti:'Cueva de', ac:'las Manos', de:'Uno de los sitios arqueológicos más importantes del mundo. Arte rupestre de más de 9.000 anos.', img:'assets/cuevadelasmanos_zoyen.jpg'},
   {ey:'Chile · Carretera Austral', ti:'Capillas de', ac:'Mármol', de:'Navegación sobre el Lago General Carrera. Una de las maravillas naturales del extremo sur.', img:'assets/capillas.jpg'},
-  {ey:'Ruta Escénica 41', ti:'Monte', ac:'Zeballos', de:'Desde los 400 hasta los 1.500 metros. La ruta escénica más impactante de Santa Cruz.', img:'assets/ruta41_zoyen.jpg'},
+  {ey:'Ruta Escénica 41', ti:'Ruta Escénica', ac:'41', de:'Desde los 400 hasta los 1.500 metros. La ruta escénica más impactante de Santa Cruz.', img:'assets/ruta41_zoyen.jpg'},
 ];
-const slideLabels = ['Banner 1 · Patagonia','Banner 2 · Cueva de las Manos','Banner 3 · Capillas de Mármol','Banner 4 · Monte Zeballos'];
+const slideLabels = ['Banner 1 · Patagonia','Banner 2 · Cueva de las Manos','Banner 3 · Capillas de Mármol','Banner 4 · Ruta Escénica 41'];
 
 function getBannerConfig() {
   let saved = [];
@@ -1224,7 +1224,8 @@ const ZOYEN_SEO_STORAGE_KEY = 'zoyen_seo_config_draft';
 const seoRecommended = JSON.parse(JSON.stringify(window.ZOYEN_SEO_CONFIG || {}));
 const seoPageLabels = {
   'index.html':'Inicio', 'patagonia-inedita.html':'Patagonia Inédita', 'carretera-austral.html':'Carretera Austral',
-  'excursion-cueva-de-las-manos.html':'Cueva de las Manos', 'excursion-monte-zeballos.html':'Ruta 41 y Monte Zeballos',
+  'santa-cruz-inexplorada.html':'Santa Cruz Inexplorada',
+  'excursion-cueva-de-las-manos.html':'Cueva de las Manos', 'excursion-ruta41-los-antiguos.html':'Ruta Escénica 41 y Los Antiguos',
   'excursion-parque-patagonia.html':'Parque Patagonia', 'excursion-capillas-de-marmol.html':'Capillas de Mármol',
   'excursion-ruta41-lago-posadas.html':'Ruta 41 y Lago Posadas', 'excursion-alero-charcamata.html':'Alero Charcamata',
   'nosotros.html':'Quiénes somos'

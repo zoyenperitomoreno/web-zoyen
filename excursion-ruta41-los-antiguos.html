@@ -6,11 +6,11 @@
 <link rel="icon" type="image/png" href="assets/logo-zoyen-circular-v2.png">
 <link rel="apple-touch-icon" href="assets/logo-zoyen-circular-v2.png">
 <meta name="theme-color" content="#120d09">
-<title>Patagonia Inédita: tour de 6 días | Zoyen Turismo</title>
-<meta name="description" content="Tour Patagonia Inédita de 6 días y 5 noches desde Perito Moreno para descubrir paisajes, cultura y destinos únicos del noroeste de Santa Cruz.">
-<meta name="keywords" content="tour Patagonia 6 días, Patagonia Inédita, viaje Santa Cruz, excursiones desde Perito Moreno, turismo Patagonia argentina">
-<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://zoyenperitomoreno.github.io/web-zoyen/patagonia-inedita.html">
-<meta property="og:type" content="website"><meta property="og:locale" content="es_AR"><meta property="og:site_name" content="Zoyen Turismo"><meta property="og:title" content="Patagonia Inédita: tour de 6 días"><meta property="og:description" content="Descubrí el noroeste de Santa Cruz en un viaje de 6 días."><meta property="og:url" content="https://zoyenperitomoreno.github.io/web-zoyen/patagonia-inedita.html"><meta property="og:image" content="https://zoyenperitomoreno.github.io/web-zoyen/assets/full_inedita.jpg"><meta name="twitter:card" content="summary_large_image">
+<title>Ruta Escénica 41 y Los Antiguos, Santa Cruz | Zoyen Turismo</title>
+<meta name="description" content="Descubrí la Ruta Escénica 41 desde Los Antiguos, Santa Cruz: miradores, estepa, bosque andino y paisajes únicos de la Patagonia.">
+<meta name="keywords" content="Los Antiguos Santa Cruz, Ruta Escénica 41, excursiones Los Antiguos, Patagonia argentina">
+<meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://zoyenperitomoreno.github.io/web-zoyen/excursion-ruta41-los-antiguos.html">
+<meta property="og:type" content="website"><meta property="og:locale" content="es_AR"><meta property="og:site_name" content="Zoyen Turismo"><meta property="og:title" content="Ruta Escénica 41 y Los Antiguos, Santa Cruz"><meta property="og:description" content="La ruta escénica más sorprendente de Santa Cruz, con salida desde Los Antiguos."><meta property="og:url" content="https://zoyenperitomoreno.github.io/web-zoyen/excursion-ruta41-los-antiguos.html"><meta property="og:image" content="https://zoyenperitomoreno.github.io/web-zoyen/assets/ruta41_zoyen.jpg"><meta name="twitter:card" content="summary_large_image">
 <script src="seo-config.js"></script><script defer src="seo-runtime.js"></script>
 <link href="https://fonts.googleapis.com/css2family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -72,13 +72,15 @@ html { font-size: 18px; }
   --fog:       #faf7f2;
   --stone:     #7a6a5a;
   --olive:     #5a6040;
+  --sky:       #8b9ba8;
 }
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
   font-family: 'Sora', sans-serif;
   font-size: 16px; line-height: 1.7;
-  background: var(--fog); color: var(--ink); overflow-x: hidden;
+  background: var(--fog); color: var(--ink);
+  overflow-x: hidden;
 }
 
 /* NAV */
@@ -87,199 +89,223 @@ body > nav:not(.breadcrumb):not(.mobile-drawer) {
   height: 72px;
   display: grid; grid-template-columns: auto auto 1fr auto;
   align-items: center; padding: 0 2vw; gap: 1rem;
-  background: rgba(10,10,10,0.92); backdrop-filter: blur(16px);
+  background: rgba(10,10,10,0.92);
+  backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(212,119,42,0.20);
 }
-.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; line-height: 1; flex-shrink: 0; }
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none; line-height: 1; flex-shrink: 0;
+}
 .nav-emblem { width: 54px; height: 54px; flex-shrink: 0; }
+@keyframes nav-rose-spin { to { transform: rotate(360deg); } }
+@keyframes nav-ring-ccw  { to { transform: rotate(-360deg); } }
+.nav-emblem .nav-rose-anim { transform-origin: 50px 50px; animation: heroRoseSpin 18s linear infinite; animation-delay: -5s; }
+.nav-emblem .nav-ring-anim { transform-origin: 50px 50px; animation: heroRingCCW 45s linear infinite; animation-delay: -5s; }
+@keyframes heroRingCCW { to { transform: rotate(-360deg); } }
+@keyframes heroRoseSpin { to { transform: rotate(360deg); } }
 .nav-logo-text { display: flex; flex-direction: column; gap: 2px; justify-content: center; }
-.nav-logo-name { display: flex; align-items: baseline; }
-.nav-logo .z { font-family: 'Sora',sans-serif; font-weight: 700; font-size: 1.4rem; letter-spacing: .12em; color: var(--cream); text-transform: uppercase; }
-.nav-logo .t { font-family: 'Sora',sans-serif; font-weight: 700; font-size: 1.4rem; letter-spacing: .12em; color: var(--ember); text-transform: uppercase; }
-.nav-logo sub { font-size: .60rem; font-weight: 400; letter-spacing: .2em; color: var(--sand); opacity: .65; text-transform: uppercase; display: block; }
-.nav-links { display: flex; gap: 1.2rem; list-style: none; align-items: center; justify-content: center; justify-self: center; }
-.nav-links a { color: rgba(245,240,232,.75); text-decoration: none; font-size: .78rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; transition: color .2s; position: relative; white-space: nowrap; }
+.nav-logo .z { font-family: 'Sora',sans-serif; font-weight:700; font-size:1.4rem; letter-spacing:.12em; color:var(--cream); text-transform:uppercase; }
+.nav-logo .t { font-family: 'Sora',sans-serif; font-weight:700; font-size:1.4rem; letter-spacing:.12em; color:var(--ember); text-transform:uppercase; }
+.nav-logo sub { font-size:.60rem; font-weight:400; letter-spacing:.2em; color:var(--sand); opacity:.65; text-transform:uppercase; display:block; line-height:1.4; }
+.nav-links { display:flex; gap:1.2rem; list-style:none; align-items:center; justify-content:center; justify-self:center; }
+.nav-links a { color:rgba(245,240,232,.75); text-decoration:none; font-size:.78rem; font-weight:500; letter-spacing:.06em; text-transform:uppercase; transition:color .2s; position:relative; white-space:nowrap; }
 .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; right:0; height:1px; background:var(--ember); transform:scaleX(0); transform-origin:left; transition:transform .3s; }
-.nav-links a:hover { color: var(--cream); }
-.nav-links a:hover::after { transform: scaleX(1); }
-.nav-links a.active { color: var(--ember); }
-.nav-links a.active::after { transform: scaleX(1); }
-.nav-cta-btn { background: var(--ember); color: var(--cream); padding: .5rem 1.3rem; border-radius: 2px; font-family: 'Sora',sans-serif; font-size: .78rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; text-decoration: none; white-space: nowrap; flex-shrink: 0; transition: background .2s; }
-.nav-cta-btn:hover { background: var(--ember-dim); }
+.nav-links a:hover { color:var(--cream); }
+.nav-links a:hover::after { transform:scaleX(1); }
+.nav-cta-btn { background:var(--ember); color:var(--cream); padding:.5rem 1.3rem; border-radius:2px; font-family:'Sora',sans-serif; font-size:.78rem; font-weight:600; letter-spacing:.15em; text-transform:uppercase; text-decoration:none; white-space:nowrap; flex-shrink:0; transition:background .2s; border:none; cursor:pointer; }
+.nav-cta-btn:hover { background:var(--ember-dim); }
+@media(max-width:960px){ .nav-links { display:none; } body > nav:not(.breadcrumb):not(.mobile-drawer) { grid-template-columns: auto auto 1fr; } }
 
-/* HERO */
-.page-hero { position: relative; height: 65vh; min-height: 480px; display: flex; align-items: flex-end; padding-bottom: 4rem; overflow: hidden; }
-.page-hero-bg { position: absolute; inset: 0; background-image: url('assets/full_inedita.jpg'); background-size: cover; background-position: center; transform: scale(1.04); animation: heroZoom 12s ease-out forwards; }
-@keyframes heroZoom { to { transform: scale(1); } }
-.page-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(26,20,16,.2) 0%, rgba(26,20,16,.8) 100%); }
-.page-hero-content { position: relative; z-index: 2; padding: 0 4vw; color: var(--cream); animation: fadeUp .9s .3s both; }
-@keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:none; } }
-.page-hero-eyebrow { font-size: .88rem; font-weight: 700; letter-spacing: .32em; text-transform: uppercase; color: var(--ember); margin-bottom: .8rem; display: inline-flex; align-items: center; gap: 10px; }
-.page-hero-eyebrow::before, .page-hero-eyebrow::after { content: ''; width: 22px; height: 1px; background: var(--ember); }
-.page-hero-title { font-family: 'DM Serif Display', serif; font-size: clamp(2.4rem, 6vw, 4.5rem); font-weight: 600; line-height: 1.05; text-shadow: 0 2px 20px rgba(26,20,16,.5); }
-.page-hero-title em { font-style: italic; color: var(--sand); }
-.hero-tags { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: 1.2rem; }
-.hero-tag { background: rgba(26,20,16,.6); border: 1px solid rgba(212,119,42,.4); color: var(--dust); padding: .3rem .9rem; border-radius: 1px; font-size: .72rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; backdrop-filter: blur(6px); }
-.hero-tag.main { background: var(--ember); border-color: var(--ember-dim); }
-.breadcrumb { margin-top: .8rem; font-size: .75rem; color: rgba(245,240,232,.5); letter-spacing: .1em; text-transform: uppercase; }
-.breadcrumb a { color: rgba(245,240,232,.5); text-decoration: none; }
-.breadcrumb a:hover { color: var(--sand); }
-.breadcrumb span { color: var(--ember); }
-
-/* REVEAL */
-.reveal { opacity: 0; transform: translateY(22px); transition: opacity .75s, transform .75s; }
-.reveal.in { opacity: 1; transform: none; }
-.reveal-delay { transition-delay: .15s; }
-.reveal-delay2 { transition-delay: .28s; }
-.eyebrow { font-size: .92rem; font-weight: 600; letter-spacing: .3em; text-transform: uppercase; color: var(--ember); margin-bottom: .5rem; }
-.section-title { font-family: 'DM Serif Display', serif; font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 600; line-height: 1.1; color: var(--ink); }
-.section-title em { font-style: italic; color: var(--amber); }
-
-/* OVERVIEW STRIP */
-.overview-strip {
-  background: var(--dark);
-  padding: 2.5rem 4vw;
-  border-bottom: 1px solid rgba(212,119,42,.2);
-}
-.overview-inner {
-  display: flex; gap: 3rem; flex-wrap: wrap; align-items: center;
-  max-width: 1100px; margin: 0 auto;
-  justify-content: space-between;
-}
-.ov-item { text-align: center; }
-.ov-num { font-family: 'DM Serif Display', serif; font-size: 2.2rem; font-weight: 600; color: var(--ember); line-height: 1; }
-.ov-lbl { font-size: .65rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: rgba(201,169,110,.6); margin-top: .3rem; }
-.ov-sep { width: 1px; height: 48px; background: rgba(212,119,42,.2); }
-
-/* INTRO SECTION */
-.tour-intro {
-  padding: 5rem 4vw;
-  background: var(--fog);
-}
-.tour-intro-inner {
-  display: grid; grid-template-columns: 1.1fr 1fr; gap: 5rem;
-  align-items: start; max-width: 1200px; margin: 0 auto;
-}
-@media (max-width:800px) { .tour-intro-inner { grid-template-columns:1fr; gap:2.5rem; } }
-.tour-intro-text p { font-size: 1.02rem; color: var(--stone); line-height: 1.85; font-weight: 300; margin-bottom: 1.2rem; }
-.tour-intro-text p strong { color: var(--ink); font-weight: 600; }
-.tour-intro-text h2 { margin-bottom: 1.4rem; }
-.tour-highlights {
-  background: var(--cream);
-  border: 1px solid rgba(58,45,31,.1);
-  border-top: 3px solid var(--ember);
-  border-radius: 3px; padding: 1.8rem;
-}
-.tour-highlights h3 { font-family: 'DM Serif Display', serif; font-size: 1.2rem; font-weight: 600; color: var(--ink); margin-bottom: 1.2rem; padding-bottom: .8rem; border-bottom: 1px solid rgba(58,45,31,.1); }
-.hl-list { list-style: none; display: flex; flex-direction: column; gap: .7rem; }
-.hl-list li { display: flex; align-items: flex-start; gap: .8rem; font-size: .96rem; color: var(--stone); line-height: 1.5; }
-.hl-list li::before { content: '\2192'; color: var(--ember); font-weight: 700; flex-shrink: 0; margin-top: .1rem; }
-.hl-list li strong { color: var(--ink); font-weight: 600; }
-
-/* INCLUYE / NO INCLUYE */
-.inc-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
-  margin-top: 1.5rem;
-}
-@media (max-width:600px) { .inc-grid { grid-template-columns:1fr; } }
-.inc-card { background: #fff; border: 1px solid rgba(58,45,31,.1); border-radius: 3px; padding: 1.4rem 1.3rem; }
-.inc-card h4 { font-size: .75rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; margin-bottom: .9rem; padding-bottom: .6rem; border-bottom: 1px solid rgba(58,45,31,.08); }
-.inc-card.yes h4 { color: var(--olive); }
-.inc-card.no h4 { color: var(--stone); }
-.inc-list { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
-.inc-list li { font-size: .88rem; color: var(--stone); display: flex; gap: .6rem; align-items: flex-start; }
-.inc-list li span.ico { flex-shrink: 0; }
-
-.itinerario-head { display:flex; align-items:flex-end; justify-content:space-between; gap:1.5rem; margin-bottom:3.5rem; flex-wrap:wrap; }
-.itinerario-head .reveal { margin-bottom:0 !important; }
-.download-pdf-btn {
-  display:inline-flex; align-items:center; gap:.55rem;
-  background:var(--ember); color:var(--cream);
-  padding:.78rem 1.25rem; border-radius:2px;
-  text-decoration:none; font-size:.76rem; font-weight:700;
-  letter-spacing:.14em; text-transform:uppercase;
-  box-shadow:0 10px 24px rgba(212,119,42,.22);
-  transition:background .2s, transform .2s, box-shadow .2s;
-}
-.download-pdf-btn:hover { background:var(--ember-dim); transform:translateY(-1px); box-shadow:0 14px 30px rgba(212,119,42,.28); }
-.download-pdf-btn::before { content:'PDF'; font-size:.62rem; letter-spacing:.08em; border:1px solid rgba(245,240,232,.55); padding:.12rem .28rem; }
-@media(max-width:640px){ .itinerario-head { align-items:flex-start; } .download-pdf-btn { width:100%; justify-content:center; } }
-/* ITINERARIO */
-.itinerario-section {
-  padding: 5rem 4vw;
-  background: var(--cream);
-  border-top: 1px solid rgba(58,45,31,.08);
-}
-.itinerario-inner { max-width: 900px; margin: 0 auto; }
-.dia-block {
-  display: grid; grid-template-columns: 80px 1fr; gap: 0;
-  margin-bottom: 0;
+/* HERO EXCURSION */
+.exc-hero {
   position: relative;
+  height: 60vh; min-height: 380px;
+  overflow: hidden;
+  display: flex; align-items: flex-end;
+  padding-bottom: 3rem;
 }
-.dia-block:not(:last-child)::before {
-  content: '';
-  position: absolute;
-  left: 39px; top: 48px; bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom, var(--ember), rgba(212,119,42,.15));
+.exc-hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('assets/ruta41_zoyen.jpg');
+  background-size: cover; background-position: center;
 }
-.dia-num {
-  display: flex; flex-direction: column; align-items: center; padding-top: .5rem;
-  position: relative; z-index: 1;
+.exc-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(26,20,16,.15) 0%, rgba(26,20,16,.0) 40%, rgba(26,20,16,.7) 80%, rgba(26,20,16,.9) 100%);
 }
-.dia-circle {
-  width: 42px; height: 42px; border-radius: 50%;
-  background: var(--ember); color: #fff;
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'DM Serif Display', serif; font-size: 1.1rem; font-weight: 600;
-  box-shadow: 0 4px 16px rgba(212,119,42,.4);
-  flex-shrink: 0;
+.exc-hero-content {
+  position: relative; z-index: 2;
+  padding: 0 5vw; color: var(--cream);
+  max-width: 900px;
 }
-.dia-content {
-  padding: .3rem 0 3rem 1.8rem;
+.exc-tag {
+  display: inline-block;
+  background: var(--ember); color: var(--cream);
+  font-size: .72rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase;
+  padding: .3rem .9rem; margin-bottom: 1rem;
+  border-radius: 1px;
 }
-.dia-label { font-size: .65rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--ember); margin-bottom: .4rem; }
-.dia-title { font-family: 'DM Serif Display', serif; font-size: 1.4rem; font-weight: 600; color: var(--ink); margin-bottom: .8rem; line-height: 1.2; }
-.dia-title em { font-style: italic; color: var(--amber); }
-.dia-desc { font-size: .97rem; color: var(--stone); line-height: 1.85; font-weight: 300; }
-.dia-desc strong { color: var(--ink); font-weight: 600; }
-.dia-img { width: 100%; border-radius: 3px; margin-top: 1.2rem; aspect-ratio: 16/7; object-fit: cover; box-shadow: 0 8px 32px rgba(26,20,16,.12); }
-.dia-chips { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: 1rem; }
-.dia-chip { font-size: .65rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; background: rgba(58,45,31,.07); color: var(--stone); padding: .25rem .75rem; border-radius: 999px; border: 1px solid rgba(58,45,31,.12); }
+.exc-hero-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  font-weight: 600; line-height: 1.1;
+  text-shadow: 0 2px 20px rgba(26,20,16,.5);
+}
+.exc-hero-title em { font-style:italic; color:var(--sand); }
 
-/* GALERIA */
-.galeria-section { padding: 5rem 4vw; background: var(--fog); }
-.galeria-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; margin-top: 3rem; }
-@media (max-width:700px) { .galeria-grid { grid-template-columns: 1fr 1fr; } }
-.galeria-grid img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 2px; transition: transform .4s, box-shadow .4s; cursor: pointer; }
-.galeria-grid img:hover { transform: scale(1.03); box-shadow: 0 16px 40px rgba(26,20,16,.18); }
-.galeria-grid img:first-child { grid-column: span 2; aspect-ratio: 16/7; }
+/* BREADCRUMB */
+.breadcrumb {
+  background: var(--dark); border-bottom: 1px solid rgba(212,119,42,.15);
+  padding: .8rem 5vw;
+}
+.breadcrumb a { color: var(--sand); text-decoration: none; font-size:.78rem; letter-spacing:.1em; }
+.breadcrumb a:hover { color: var(--ember); }
+.breadcrumb span { color: var(--stone); font-size:.78rem; margin: 0 .5rem; }
 
-/* CTA */
-.tour-cta { background: var(--dark); padding: 5rem 4vw; text-align: center; border-top: 1px solid rgba(212,119,42,.2); }
-.tour-cta h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 600; color: var(--dust); margin-bottom: 1rem; }
-.tour-cta h2 em { font-style: italic; color: var(--sand); }
-.tour-cta p { font-size: 1.02rem; color: rgba(232,220,200,.55); max-width: 480px; margin: 0 auto 2.5rem; font-weight: 300; line-height: 1.8; }
-.cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-.cta-btn-p { background: var(--ember); color: var(--cream); padding: .85rem 2.2rem; border-radius: 2px; text-decoration: none; font-size: .93rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; transition: background .2s; }
-.cta-btn-p:hover { background: var(--ember-dim); }
-.cta-btn-g { border: 1px solid rgba(245,240,232,.3); color: rgba(245,240,232,.7); padding: .85rem 2.2rem; border-radius: 2px; text-decoration: none; font-size: .93rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; transition: border-color .2s, color .2s; background: transparent; }
-.cta-btn-g:hover { border-color: var(--sand); color: var(--sand); }
+/* CONTENT LAYOUT */
+.exc-body {
+  max-width: 1100px; margin: 0 auto;
+  padding: 4rem 5vw 5rem;
+  display: grid; grid-template-columns: 1fr 340px; gap: 4rem;
+}
+@media(max-width:860px){ .exc-body { grid-template-columns: 1fr; } }
+
+.exc-main h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(1.5rem,3vw,2.2rem); color: var(--ink);
+  margin-bottom: 1.2rem; margin-top: 2.4rem;
+}
+.exc-main h2:first-child { margin-top: 0; }
+.exc-main h3 {
+  font-size: 1rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
+  color: var(--ember); margin-bottom: .8rem; margin-top: 2rem;
+}
+.exc-main p { color: var(--stone); line-height: 1.8; margin-bottom: 1rem; }
+.exc-main strong { color: var(--ink); }
+.exc-main ul { padding-left: 1.4rem; color: var(--stone); line-height: 1.8; margin-bottom: 1rem; }
+.exc-main ul li { margin-bottom: .4rem; }
+.exc-main .note {
+  background: rgba(212,119,42,.07); border-left: 3px solid var(--ember);
+  padding: 1rem 1.2rem; border-radius: 2px; margin: 1.5rem 0;
+  color: var(--ink); font-size: .93rem;
+}
+.exc-main .warn {
+  background: rgba(90,96,64,.08); border-left: 3px solid var(--olive);
+  padding: 1rem 1.2rem; border-radius: 2px; margin: 1.5rem 0;
+  color: var(--ink); font-size: .93rem;
+}
+
+/* SIDEBAR */
+.exc-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+.exc-card {
+  background: var(--dark); color: var(--cream);
+  border-radius: 3px; overflow: hidden;
+  border: 1px solid rgba(212,119,42,.15);
+}
+.exc-card-head {
+  padding: 1.2rem 1.4rem .6rem;
+  font-family: 'DM Serif Display',serif;
+  font-size: 1.2rem; color: var(--sand);
+}
+.exc-card-body { padding: .4rem 1.4rem 1.4rem; }
+.exc-card-body p { color: rgba(245,240,232,.7); font-size: .9rem; line-height: 1.7; margin-bottom: .6rem; }
+.exc-card-body .price {
+  font-size: 1.4rem; font-weight: 700; color: var(--ember);
+  margin: .8rem 0 .2rem;
+}
+.exc-card-body .price-label { font-size: .75rem; color: var(--stone); letter-spacing: .1em; }
+.btn-reservar {
+  display: block; width: 100%;
+  background: var(--ember); color: var(--cream);
+  text-align: center; padding: .85rem 1rem;
+  border-radius: 2px; text-decoration: none;
+  font-weight: 700; font-size: .85rem; letter-spacing: .2em; text-transform: uppercase;
+  transition: background .2s; margin-top: 1rem;
+  border: none; cursor: pointer; font-family: 'Sora',sans-serif;
+}
+.btn-reservar:hover { background: var(--ember-dim); }
+.exc-detail-list {
+  list-style: none; padding: 0;
+  display: flex; flex-direction: column; gap: .5rem;
+}
+.exc-detail-list li {
+  display: flex; align-items: flex-start; gap: .6rem;
+  font-size: .88rem; color: rgba(245,240,232,.7);
+}
+.exc-detail-list li .icon { color: var(--ember); flex-shrink: 0; font-size:1rem; }
+
+/* VIDEO */
+.video-wrap {
+  position: relative; padding-bottom: 56.25%;
+  height: 0; overflow: hidden; border-radius: 3px;
+  margin: 2rem 0;
+}
+.video-wrap iframe {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%; border: 0;
+}
+
+/* OTHER EXCURSIONS */
+.more-excursiones {
+  background: var(--dark);
+  padding: 4rem 5vw;
+  border-top: 1px solid rgba(212,119,42,.12);
+}
+.more-excursiones h2 {
+  font-family: 'DM Serif Display',serif;
+  font-size: 1.8rem; color: var(--cream);
+  margin-bottom: 2rem;
+}
+.exc-mini-grid {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem;
+}
+@media(max-width:860px){ .exc-mini-grid { grid-template-columns: repeat(2,1fr); } }
+@media(max-width:560px){ .exc-mini-grid { grid-template-columns: 1fr; } }
+.exc-mini {
+  position: relative; border-radius: 3px; overflow: hidden;
+  aspect-ratio: 4/3; text-decoration: none;
+  display: block;
+}
+.exc-mini img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .5s;
+}
+.exc-mini:hover img { transform: scale(1.05); }
+.exc-mini-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(26,20,16,.85) 0%, transparent 50%);
+  display: flex; align-items: flex-end;
+  padding: .9rem;
+}
+.exc-mini-name {
+  color: var(--cream); font-weight: 600;
+  font-size: .82rem; letter-spacing: .04em; line-height: 1.3;
+}
 
 /* FOOTER */
-footer { background: #0a0a0a; padding: 5rem 3vw 2.5rem; }
-.footer-top { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(212,119,42,.15); margin-bottom: 2rem; }
-@media (max-width:700px){ .footer-top { grid-template-columns: 1fr; gap: 2rem; } }
-.footer-brand-wrap { display: flex; align-items: center; gap: 12px; margin-bottom: .6rem; }
-.footer-emblem { width: 48px; height: 48px; flex-shrink: 0; }
-.footer-brand { font-family: 'Sora',sans-serif; font-size: 1.5rem; font-weight: 700; letter-spacing: .1em; }
-.footer-brand span.footer-brand-zoyen { color: #fff; }
-.footer-brand span { color: var(--ember); }
-.footer-tagline { font-size: 1.05rem; color: rgba(232,220,200,.65); line-height: 1.7; margin-bottom: 1.4rem; font-weight: 300; }
-.socials { display: flex; gap: .6rem; }
-.social-btn { width: 34px; height: 34px; border-radius: 1px; border: 1px solid rgba(201,169,110,.2); color: var(--sand); text-decoration: none; display: flex; align-items: center; justify-content: center; transition: border-color .2s, background .2s; }
-.social-btn svg { display: block; }
-.social-btn:hover { border-color: var(--ember); background: rgba(212,119,42,.12); }
+footer {
+  background: var(--dark);
+  border-top: 1px solid rgba(212,119,42,.2);
+  padding: 3rem 5vw 1.5rem;
+}
+.footer-top {
+  display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 3rem;
+  margin-bottom: 2.5rem;
+}
+@media(max-width:760px){ .footer-top { grid-template-columns: 1fr; gap: 2rem; } }
+.footer-brand-wrap { display:flex; align-items:center; gap:.8rem; margin-bottom:1rem; }
+.footer-emblem { width:48px; height:48px; flex-shrink:0; }
+@keyframes heroRingCW { to { transform: rotate(360deg); } }
+.ft-ring-anim { transform-origin:50px 50px; animation:heroRingCCW 45s linear infinite; }
+.ft-rose-anim { transform-origin:50px 50px; animation:heroRoseSpin 18s linear infinite; }
+.footer-brand { font-family:'Sora',sans-serif; font-weight:700; font-size:1.1rem; letter-spacing:.1em; text-transform:uppercase; }
+.footer-brand span { color:var(--sand); }
+.footer-brand-zoyen { color:var(--cream) !important; }
+.footer-tagline { color:var(--stone); font-size:.85rem; line-height:1.6; margin-bottom:1.2rem; }
+.socials { display:flex; gap:.6rem; }
+.social-btn { display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:2px; background:rgba(255,255,255,.06); color:var(--sand); text-decoration:none; transition:background .2s,color .2s; }
+.social-btn:hover { background:var(--ember); color:var(--cream); }
 .footer-region-info {
   margin-top: 1rem; padding-top: .9rem;
   border-top: 1px solid rgba(201,169,110,.15);
@@ -307,21 +333,25 @@ footer { background: #0a0a0a; padding: 5rem 3vw 2.5rem; }
 .footer-region-icons a svg { width: 11px; height: 11px; display: block; }
 .footer-region-icons a:hover { border-color: var(--ember); background: rgba(212,119,42,.12); color: var(--ember); }
 
-.footer-col-title { font-size: 1rem; font-weight: 600; letter-spacing: .25em; text-transform: uppercase; color: var(--ember); margin-bottom: 1.1rem; }
-.footer-links { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
-.footer-links a { color: rgba(232,220,200,.70); text-decoration: none; font-size: .8rem; font-weight: 300; transition: color .2s; display: flex; align-items: center; gap: 7px; }
-.footer-links a::before { content: ''; color: var(--ember); opacity: .5; }
-.footer-links a:hover { color: var(--sand); }
-.footer-contact { font-size: .8rem; color: rgba(232,220,200,.70); line-height: 1.8; font-weight: 300; }
-.footer-contact strong { color: var(--sand); font-weight: 500; }
-.footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .5rem; font-size: .93rem; color: rgba(232,220,200,.40); letter-spacing: .08em; }
-.footer-bottom a { color: rgba(201,169,110,.55); text-decoration: none; }
+.footer-col-title { font-size:.72rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; color:var(--ember); margin-bottom:.9rem; }
+.footer-links { list-style:none; display:flex; flex-direction:column; gap:.45rem; }
+.footer-links a { color:var(--stone); text-decoration:none; font-size:.88rem; transition:color .2s; }
+.footer-links a:hover { color:var(--sand); }
+.footer-contact { color:var(--stone); font-size:.88rem; line-height:1.8; }
+.footer-bottom { border-top:1px solid rgba(201,169,110,.1); padding-top:1.2rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:.5rem; }
+.footer-bottom span, .footer-bottom a { color:var(--stone); font-size:.78rem; text-decoration:none; }
+.footer-bottom a:hover { color:var(--sand); }
 
-.wa { position: fixed; bottom: 1.8rem; right: 1.8rem; z-index: 800; width: 52px; height: 52px; border-radius: 50%; background: #25d366; color: #fff; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,.35); transition: transform .25s; }
+/* WA float */
+.wa {
+  position: fixed; bottom: 1.8rem; right: 1.8rem; z-index: 800;
+  width: 52px; height: 52px;
+  background: #25d366; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,.25);
+  transition: transform .2s;
+}
 .wa:hover { transform: scale(1.1); }
-.wa svg { width: 26px; height: 26px; }
-
-@media (max-width:760px) { .nav-links { display: none; } }
 
 /* LANGUAGE SWITCHER */
 .lang-switcher { position: relative; justify-self: start; z-index: 920; }
@@ -762,59 +792,6 @@ body > nav .nav-actions.cta-nudge .nav-cta-btn::before {
   100% { opacity: 0; transform: translateY(-3px); }
 }
 </style>
-<script>
-(function(){
-  document.documentElement.classList.add('js-ready');
-  const fallbackByHint = [
-    ['capillas', 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&q=80'],
-    ['marmol', 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&q=80'],
-    ['cueva', 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&q=80'],
-    ['manos', 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&q=80'],
-    ['ruta', 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1200&q=80'],
-    ['zeballos', 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1200&q=80'],
-    ['posadas', 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&q=80'],
-    ['patagonia', 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1200&q=80'],
-    ['carretera', 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1200&q=80'],
-    ['parque', 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&q=80']
-  ];
-  const genericFallback = 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1200&q=80';
-  function pickFallback(text){
-    const haystack = (text || '').toLowerCase();
-    const found = fallbackByHint.find(([hint]) => haystack.includes(hint));
-    return found ? found[1] : genericFallback;
-  }
-  window.zoyenPickFallback = pickFallback;
-  document.addEventListener('error', function(event){
-    const el = event.target;
-    if (!el || el.tagName !== 'IMG' || el.dataset.fallbackApplied === '1') return;
-    el.dataset.fallbackApplied = '1';
-    el.src = pickFallback((el.getAttribute('alt') || '') + ' ' + (el.getAttribute('src') || ''));
-  }, true);
-  function repairBackgrounds(){
-    const nodes = document.querySelectorAll('.slide-bg, .page-hero-bg, [style*="background-image"]');
-    nodes.forEach(function(el){
-      const bg = getComputedStyle(el).backgroundImage || '';
-      const match = bg.match(/url\(["']([^"')]+)["']\)/);
-      if (!match) return;
-      const original = match[1];
-      const probe = new Image();
-      probe.onerror = function(){ el.style.backgroundImage = "url('" + pickFallback(original) + "')"; };
-      probe.src = original;
-    });
-  }
-  function revealSafety(){ document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); }); }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function(){ repairBackgrounds(); setTimeout(revealSafety, 700); });
-  } else {
-    repairBackgrounds(); setTimeout(revealSafety, 700);
-  }
-  setTimeout(revealSafety, 1800);
-})();
-</script>
-<style id="zoyen-recovery-patch">
-html:not(.js-ready) .reveal { opacity: 1 !important; transform: none !important; }
-img { background: #d8d0c3; }
-</style>
 <style id="zoyen-header-cta-motion">
 body > nav .nav-actions.cta-nudge .nav-cta-btn {
   animation: ctaReservarNudge 1.15s ease both;
@@ -897,67 +874,71 @@ img.hero-logo-static {
 
 <style id="zoyen-exc-hero-final">
 .exc-hero {
-  align-items: center !important;
-  justify-content: center !important;
-  padding-bottom: 0 !important;
-  padding-top: 72px !important;
+  align-items: flex-end !important;
+  justify-content: flex-start !important;
+  padding: 72px clamp(1.25rem, 5vw, 5.5rem) clamp(2.2rem, 7vh, 4.8rem) !important;
   height: 60vh !important;
   min-height: 420px !important;
 }
 .exc-hero-overlay {
   background: linear-gradient(to bottom,
-    rgba(26,20,16,.35) 0%,
-    rgba(26,20,16,.10) 35%,
-    rgba(26,20,16,.55) 75%,
-    rgba(26,20,16,.85) 100%) !important;
+    rgba(26,20,16,.18) 0%,
+    rgba(26,20,16,.08) 34%,
+    rgba(26,20,16,.42) 68%,
+    rgba(26,20,16,.88) 100%) !important;
 }
 .exc-hero-content {
   position: relative !important;
   z-index: 2 !important;
-  text-align: center !important;
+  text-align: left !important;
   display: flex !important;
   flex-direction: column !important;
-  align-items: center !important;
-  gap: 0.7rem !important;
-  max-width: 860px !important;
-  padding: 0 2rem !important;
+  align-items: flex-start !important;
+  gap: 0.55rem !important;
+  max-width: min(920px, 92vw) !important;
+  padding: 0 !important;
   color: var(--cream) !important;
-  margin-top: -40px !important;
+  margin: 0 !important;
 }
 .exc-tag {
+  order: 2 !important;
   display: inline-flex !important;
   align-items: center !important;
-  justify-content: center !important;
-  gap: 12px !important;
-  background: rgba(26,20,16,0.55) !important;
+  justify-content: flex-start !important;
+  gap: 10px !important;
+  background: transparent !important;
   color: var(--ember) !important;
   font-family: 'Sora', sans-serif !important;
-  font-size: .85rem !important;
-  font-weight: 700 !important;
-  letter-spacing: .32em !important;
+  font-size: .82rem !important;
+  font-weight: 800 !important;
+  letter-spacing: .28em !important;
   text-transform: uppercase !important;
-  padding: .38rem 1.2rem !important;
-  margin-bottom: 0.3rem !important;
-  border: 1px solid rgba(212,119,42,0.45) !important;
-  border-radius: 1px !important;
-  backdrop-filter: blur(6px) !important;
-  text-shadow: 0 1px 8px rgba(0,0,0,0.6) !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  backdrop-filter: none !important;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.72) !important;
 }
-.exc-tag::before, .exc-tag::after {
+.exc-tag::before {
   content: '' !important;
-  width: 22px !important;
+  width: 34px !important;
   height: 1px !important;
   background: var(--ember) !important;
-  opacity: .8 !important;
+  opacity: .95 !important;
+}
+.exc-tag::after {
+  content: none !important;
 }
 .exc-hero-title {
+  order: 1 !important;
   font-family: 'DM Serif Display', serif !important;
-  font-size: clamp(2.4rem, 6.5vw, 5rem) !important;
+  font-size: clamp(2.6rem, 6.7vw, 5.4rem) !important;
   font-weight: 600 !important;
-  line-height: 1.05 !important;
-  letter-spacing: -.01em !important;
+  line-height: 1.02 !important;
+  letter-spacing: 0 !important;
   color: var(--cream) !important;
-  text-shadow: 0 2px 24px rgba(26,20,16,.5) !important;
+  text-shadow: 0 2px 24px rgba(26,20,16,.58) !important;
   margin: 0 !important;
 }
 .exc-hero-title em {
@@ -965,8 +946,14 @@ img.hero-logo-static {
   color: var(--sand) !important;
 }
 @media (max-width: 720px) {
-  .exc-hero { padding-top: 60px !important; }
-  .exc-hero-title { font-size: clamp(1.9rem, 8vw, 2.8rem) !important; }
+  .exc-hero {
+    align-items: flex-end !important;
+    padding: 66px 1.15rem 2rem !important;
+    min-height: 390px !important;
+  }
+  .exc-hero-title { font-size: clamp(2.6rem, 13vw, 3.4rem) !important; }
+  .exc-tag { font-size: .68rem !important; letter-spacing: .2em !important; }
+  .exc-tag::before { width: 24px !important; }
 }
 </style>
 <style id="zoyen-remove-mobile-logo-phrase">
@@ -1026,7 +1013,6 @@ img.hero-logo-static {
 </style></head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo">
     <a href="#" class="nav-emblem-link" aria-label="Logo de ZOYEN Turismo">
@@ -1056,242 +1042,127 @@ img.hero-logo-static {
   <ul class="nav-links">
     <li><a href="index.html" data-i18n="nav_home">Home</a></li>
     <li><a href="index.html#excursiones" data-i18n="nav_excursiones"><span data-i18n="bread_exc">Excursiones</span></a></li>
-    <li><a href="index.html#tours" class="active" data-i18n="nav_tours"><span data-i18n="bread_tours">Tours de Autor</span></a></li>
+    <li><a href="index.html#tours" data-i18n="nav_tours"><span data-i18n="bread_tours">Tours de Autor</span></a></li>
     <li><a href="nuevas-experiencias.html" data-i18n="nav_bienestar">Nuevas Experiencias</a></li>
     <li><a href="index.html#ubicación" data-i18n="nav_ubicación">Ubicación y Contacto</a></li>
     <li><a href="nosotros.html" data-i18n="nav_nosotros">Quiénes somos</a></li>
   </ul>
-  <div class="nav-actions"><a href="index.html#reservar" class="nav-cta-btn" data-i18n="nav_reservar">Reservar</a><a href="https://wa.me/5492974432855" class="nav-contact-btn" target="_blank" rel="noopener" aria-label="Contactarse por WhatsApp" data-i18n-aria-label="nav_contact"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span data-i18n="nav_contact">Contactarse</span></a></div>
+  <div class="nav-actions"><a href="https://wa.me/5492974432855" class="nav-cta-btn" target="_blank" rel="noopener" data-i18n="nav_reservar">Reservar</a><a href="https://wa.me/5492974432855" class="nav-contact-btn" target="_blank" rel="noopener" aria-label="Contactarse por WhatsApp" data-i18n-aria-label="nav_contact"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span data-i18n="nav_contact">Contactarse</span></a></div>
 </nav>
 
-<!-- HERO -->
-<section class="page-hero" style="padding-top:72px;">
-  <div class="page-hero-bg"></div>
-  <div class="page-hero-overlay"></div>
-  <div class="page-hero-content">
-    <div class="page-hero-eyebrow" data-i18n="hero_eyebrow">Tour de Autor · 6 días / 5 noches</div>
-    <h1 class="page-hero-title">Patagonia <em>Inédita</em></h1>
-    <div class="hero-tags">
-      <span class="hero-tag main">6 días</span>
-      <span class="hero-tag">Bosque Petrificado</span>
-      <span class="hero-tag">Cueva de las Manos</span>
-      <span class="hero-tag">Lago Posadas</span>
-      <span class="hero-tag">Carretera Austral</span>
-      <span class="hero-tag">Capillas de Mármol</span>
-    </div>
-    <div class="breadcrumb"><a href="index.html" data-i18n="bread_inicio">Inicio</a> / <a href="index.html#tours"><span data-i18n="bread_tours">Tours de Autor</span></a> / <span>Patagonia Inédita</span></div>
-  </div>
-</section>
-
-<!-- OVERVIEW STRIP -->
-<div class="overview-strip">
-  <div class="overview-inner">
-    <div class="ov-item"><div class="ov-num">6</div><div class="ov-lbl" data-i18n="ov_days">Días</div></div>
-    <div class="ov-sep"></div>
-    <div class="ov-item"><div class="ov-num">5</div><div class="ov-lbl" data-i18n="ov_nights">Noches</div></div>
-    <div class="ov-sep"></div>
-    <div class="ov-item"><div class="ov-num">5</div><div class="ov-lbl" data-i18n="ov_destinations">Destinos</div></div>
-    <div class="ov-sep"></div>
-    <div class="ov-item"><div class="ov-num">2</div><div class="ov-lbl" data-i18n="ov_passes">Pases</div></div>
-    <div class="ov-sep"></div>
-    <div class="ov-item"><div class="ov-num">14</div><div class="ov-lbl" data-i18n="ov_maxplaces">Plazas máx.</div></div>
-    <div class="ov-sep"></div>
-    <div class="ov-item" style="text-align:left;">
-      <a href="index.html#reservar" style="background:var(--ember);color:#fff;padding:.7rem 1.8rem;border-radius:2px;text-decoration:none;font-size:.82rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;transition:background .2s;display:inline-block;" onmouseover="this.style.background='#b8621e'" onmouseout="this.style.background='#d4772a'" data-i18n="ov_book_btn">Reservar lugar</a>
-    </div>
+<div class="exc-hero">
+  <div class="exc-hero-bg"></div>
+  <div class="exc-hero-overlay"></div>
+  <div class="exc-hero-content">
+    <span class="exc-tag" data-i18n="exc_tag">EXCURSIÓN</span>
+    <h1 class="exc-hero-title">Ruta Escénica <em>41</em></h1>
+    <p style="order:3; margin:0; font-size:clamp(.95rem,2vw,1.15rem); color:var(--cream); opacity:.9;">y Los Antiguos, en <strong>Santa Cruz</strong></p>
   </div>
 </div>
 
-<!-- INTRO -->
-<section class="tour-intro">
-  <div class="tour-intro-inner">
-    <div class="tour-intro-text reveal">
-      <p class="eyebrow" data-i18n="intro_eyebrow">Descripción del tour</p>
-      <h2 class="section-title" data-i18n="intro_title">Una semana que <em>transforma</em></h2>
-      <p data-i18n="intro_p1"><strong>Patagonia Inédita</strong> es una experiencia de 6 días / 5 noches que comienza en el aeropuerto de Comodoro Rivadavia y conecta, en minibús privado, algunos de los paisajes más impactantes del noroeste de Santa Cruz y la Carretera Austral chilena.</p>
-      <p data-i18n="intro_p2">El recorrido incluye Perito Moreno, Cueva de las Manos, Parque Patagonia, Los Antiguos, Ruta Escénica 41, Estancia La Ascensión, Confluencia de los ríos Baker y Neff, Lago General Carrera, Puerto Río Tranquilo y la navegación a las Capillas y Catedrales de Mármol.</p>
-      <p data-i18n="intro_p3">La propuesta combina traslados organizados, guía especializado, alojamientos seleccionados y almuerzos incluidos según la logística de cada jornada.</p>
+<style>
+.exc-hero-bg { background-image: url('assets/ruta41_zoyen.jpg'); }
+</style>
 
-      <div class="inc-grid">
-        <div class="inc-card yes">
-          <h4 data-i18n="inc_yes_title"> Incluye</h4>
-          <ul class="inc-list">
-            <li data-i18n="inc_yes_1">Traslados en minibús privado desde y hacia el aeropuerto de Comodoro Rivadavia</li>
-            <li data-i18n="inc_yes_2">4 noches de alojamiento con desayuno en Perito Moreno</li>
-            <li data-i18n="inc_yes_3">1 noche de alojamiento en Puerto Río Tranquilo, Chile</li>
-            <li data-i18n="inc_yes_4">Excursiones a Parque Patagonia, Cueva de las Manos, Los Antiguos, Ruta Escénica 41, Carretera Austral, Confluencia del río Baker y Capillas de Mármol</li>
-            <li data-i18n="inc_yes_5">Todos los almuerzos incluidos, con viandas o restaurante según itinerario y logística</li>
-            <li data-i18n="inc_yes_6">Guía especializado durante las excursiones</li>
-          </ul>
-        </div>
-        <div class="inc-card no">
-          <h4 data-i18n="inc_no_title"> No incluye</h4>
-          <ul class="inc-list">
-            <li data-i18n="inc_no_1">Vuelos aéreos</li>
-            <li data-i18n="inc_no_2">Cenas, excepto la cena despedida indicada en el itinerario</li>
-            <li data-i18n="inc_no_3">Trámites migratorios personales</li>
-            <li data-i18n="inc_no_4">Gastos personales</li>
-          </ul>
-        </div>
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="index.html" data-i18n="bread_inicio">Inicio</a>
+  <span>›</span>
+  <a href="index.html#excursiones"><span data-i18n="bread_exc">Excursiones</span></a>
+  <span>›</span>
+  <span style="color:var(--sand)">Ruta Escénica 41 y Los Antiguos</span>
+</nav>
+
+<div class="exc-body">
+  <main class="exc-main">
+    
+<h2>Transición de la <em>estepa al bosque andino patagónico</em></h2>
+<p>Esta excursión nos lleva desde los 400 metros en que estamos hasta los 1.500 metros s.n.m., viviendo la transición desde la estepa patagónica hasta el paisaje de Alta Montaña cuando llegamos a la zona del Portezuelo.</p>
+<p>Se observan gran cantidad de aves: avutardas, patos, águilas mora, cóndores y otras. Lagunas, arroyos, ríos, montañas multiformes y multicolores son el paisaje permanente y predominante durante todo el recorrido.</p>
+
+<h3>Itinerario</h3>
+<ul>
+  <li>Salida desde Perito Moreno a las 08:00 hs (desde Los Antiguos, a las 09:00 hs).</li>
+  <li>Tomamos la Ruta Escénica 41, desde los 400 msnm hasta los 1.500 msnm de alta montaña.</li>
+  <li>Vistas de la actividad volcánica, la cordillera de los Andes, ríos, arroyos, aves, lagos y montañas.</li>
+  <li>Varias paradas fotográficas y pequeñas caminatas para contemplar la inmensidad del paisaje de montaña.</li>
+  <li>Almuerzo picnic a la orilla de un río.</li>
+  <li>Regreso a Los Antiguos alrededor de las 17:00 hs.</li>
+</ul>
+
+<h2>Precios</h2>
+<p><strong>Tarifa vigente</strong> (octubre 2026 a abril 2027, sujeta a cambios sin previo aviso)</p>
+<ul>
+  <li class="precio-texto">Traslado en servicio privado: $250.000 c/u</li>
+  <li class="precio-texto">En salida grupal: consultar precio</li>
+</ul>
+
+  </main>
+  <aside class="exc-sidebar">
+    <div class="exc-card">
+      <div class="exc-card-head"><span data-i18n="sidebar_book">Reservar</span></div>
+      <div class="exc-card-body">
+        <p><span data-i18n="sidebar_book_desc">Consultanos disponibilidad y precios por WhatsApp o reservá directamente.</span></p>
+        <a href="https://wa.me/5492974432855?text=Hola%21%20Quiero%20informaci%C3%B3n%20sobre%20la%20excursi%C3%B3n%20Ruta%20Esc%C3%A9nica%2041%20y%20Los%20Antiguos" class="btn-reservar" target="_blank" rel="noopener" data-i18n="sidebar_wa">Consultar por WhatsApp</a>
       </div>
     </div>
-    <div class="tour-highlights reveal reveal-delay">
-      <h3 data-i18n="hl_title">Highlights del tour</h3>
-      <ul class="hl-list">
-        <li data-i18n="hl_1"><strong>Cueva de las Manos</strong> · excursión de día completo con guía especializado, vianda, entrada incluida y visita al sitio arqueológico.</li>
-        <li data-i18n="hl_2"><strong>Parque Patagonia</strong> · recorrido incluido junto a Cueva de las Manos, en una jornada completa desde Perito Moreno.</li>
-        <li data-i18n="hl_3"><strong>Los Antiguos</strong> · visita a chacras, miradores y el Lago Buenos Aires.</li>
-        <li data-i18n="hl_4"><strong>Ruta Escénica 41</strong> · recorrido panorámico junto a Estancia La Ascensión.</li>
-        <li data-i18n="hl_5"><strong>Carretera Austral</strong> · cruce a Chile, vistas del Lago General Carrera y Confluencia de los ríos Baker y Neff.</li>
-        <li data-i18n="hl_6"><strong>Puerto Río Tranquilo</strong> · noche de alojamiento en Chile durante el tramo de Carretera Austral.</li>
-        <li data-i18n="hl_7"><strong>Capillas y Catedrales de Mármol</strong> · navegación por una de las formaciones naturales más buscadas de la Patagonia chilena.</li>
-      </ul>
+    <div class="exc-card">
+      <div class="exc-card-head"><span data-i18n="sidebar_details">Detalles</span></div>
+      <div class="exc-card-body">
+        <ul class="exc-detail-list">
+          <li><span class="icon">✦</span> Salida desde Perito Moreno o Los Antiguos</li>
+          <li><span class="icon">✦</span> Guía especializado incluido</li>
+          <li><span class="icon">✦</span> Vehículo 4x4 o minibus</li>
+          <li><span class="icon">✦</span> Cupos limitados</li>
+        </ul>
+      </div>
     </div>
+    <div class="exc-card">
+      <div class="exc-card-head"><span data-i18n="sidebar_other">Otras Excursiones</span></div>
+      <div class="exc-card-body">
+        <ul class="footer-links" style="gap:.6rem">
+          <li><a href="excursion-cueva-de-las-manos.html">Cueva de las Manos</a></li>
+          <li><a href="excursion-capillas-de-marmol.html">Capillas de Mármol</a></li>
+          <li><a href="excursion-ruta41-lago-posadas.html">Ruta 41 + Lago Posadas</a></li>
+          <li><a href="excursion-ruta41-los-antiguos.html">Ruta Escénica 41 y Los Antiguos</a></li>
+          <li><a href="excursion-alero-charcamata.html">Alero Charcamata</a></li>
+          <li><a href="excursion-parque-patagonia.html">Parque Patagonia</a></li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<section class="more-excursiones">
+  <h2><span data-i18n="more_title">Más Excursiones</span></h2>
+  <div class="exc-mini-grid">
+    <a href="excursion-cueva-de-las-manos.html" class="exc-mini">
+      <img src="assets/cuevas_zoyen.jpg" alt="Cueva de las Manos" loading="lazy">
+      <div class="exc-mini-overlay"><span class="exc-mini-name">Cueva de las Manos</span></div>
+    </a>
+    <a href="excursion-capillas-de-marmol.html" class="exc-mini">
+      <img src="assets/capillas.jpg" alt="Capillas de Mármol" loading="lazy">
+      <div class="exc-mini-overlay"><span class="exc-mini-name">Capillas de Mármol</span></div>
+    </a>
+    <a href="excursion-ruta41-lago-posadas.html" class="exc-mini">
+      <img src="assets/posadas_zoyen.jpg" alt="Lago Posadas" loading="lazy">
+      <div class="exc-mini-overlay"><span class="exc-mini-name">Ruta 41 + Lago Posadas</span></div>
+    </a>
+    <a href="excursion-ruta41-los-antiguos.html" class="exc-mini">
+      <img src="assets/ruta41_zoyen.jpg" alt="Ruta Escénica 41 y Los Antiguos" loading="lazy">
+      <div class="exc-mini-overlay"><span class="exc-mini-name">Ruta Escénica 41 y Los Antiguos</span></div>
+    </a>
+    <a href="excursion-alero-charcamata.html" class="exc-mini">
+      <img src="assets/alerocharca_zoyen.jpg" alt="Alero Charcamata" loading="lazy">
+      <div class="exc-mini-overlay"><span class="exc-mini-name">Alero Charcamata</span></div>
+    </a>
+    <a href="excursion-parque-patagonia.html" class="exc-mini">
+      <img src="assets/pps.jpg" alt="Parque Patagonia" loading="lazy">
+      <div class="exc-mini-overlay"><span class="exc-mini-name">Parque Patagonia</span></div>
+    </a>
   </div>
 </section>
 
-<!-- ITINERARIO -->
-<section class="itinerario-section">
-  <div class="itinerario-inner">
-    <div class="itinerario-head">
-    <div class="reveal">
-      <p class="eyebrow" data-i18n="itin_eyebrow">Día a día</p>
-      <h2 class="section-title" data-i18n="itin_title">El <em>itinerario</em></h2>
-    </div>
-    <a class="download-pdf-btn" href="assets/pdfs/patagonia-inedita-itinerario.pdf" download="patagonia-inedita-itinerario.pdf" type="application/pdf" aria-label="Descargar itinerario PDF de Patagonia Inédita" data-i18n="itin_download">Descargar itinerario</a>
-  </div>
-
-    <!-- DÍA 1 -->
-    <div class="dia-block reveal">
-      <div class="dia-num"><div class="dia-circle">1</div></div>
-      <div class="dia-content">
-        <div class="dia-label" data-i18n="d1_label">Día 1 · Llegada</div>
-        <h3 class="dia-title" data-i18n="d1_title">Comodoro Rivadavia → <em>Perito Moreno</em></h3>
-        <p class="dia-desc" data-i18n="d1_desc">Arribo al aeropuerto de Comodoro Rivadavia, punto de partida de la experiencia. Recepción de los pasajeros y traslado en minibús privado hacia Perito Moreno. Según el horario de llegada, tarde libre para visitar el <strong>Museo Arqueológico Carlos Gradín</strong>. Alojamiento en el hotel asignado.</p>
-        <div class="dia-chips">
-          <span class="dia-chip" data-i18n="d1_chip1">Aeropuerto Comodoro Rivadavia</span>
-          <span class="dia-chip" data-i18n="d1_chip2">Traslado privado</span>
-          <span class="dia-chip" data-i18n="d1_chip3">Alojamiento en Perito Moreno</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- DÍA 2 -->
-    <div class="dia-block reveal">
-      <div class="dia-num"><div class="dia-circle">2</div></div>
-      <div class="dia-content">
-        <div class="dia-label" data-i18n="d2_label">Día 2 · Excursión de día completo</div>
-        <h3 class="dia-title" data-i18n="d2_title"><em>Cueva de las Manos</em> · Parque Patagonia</h3>
-        <p class="dia-desc" data-i18n="d2_desc">Excursión de día completo, de 9 a 17 hs, a <strong>Cueva de las Manos</strong> y <strong>Parque Patagonia</strong>. La salida incluye vianda para el almuerzo, entrada al sitio, traslado en minibús y guía especializado durante el recorrido.</p>
-        <img class="dia-img" src="assets/cuevas_zoyen.jpg" alt="Cueva de las Manos">
-        <div class="dia-chips">
-          <span class="dia-chip" data-i18n="d2_chip1">Cueva de las Manos</span>
-          <span class="dia-chip" data-i18n="d2_chip2">Parque Patagonia</span>
-          <span class="dia-chip" data-i18n="d2_chip3">Vianda y entrada incluidas</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- DÍA 3 -->
-    <div class="dia-block reveal">
-      <div class="dia-num"><div class="dia-circle">3</div></div>
-      <div class="dia-content">
-        <div class="dia-label" data-i18n="d3_label">Día 3 · Los Antiguos y Ruta Escénica 41</div>
-        <h3 class="dia-title" data-i18n="d3_title"><em>Los Antiguos</em> · Lago Buenos Aires</h3>
-        <p class="dia-desc" data-i18n="d3_desc">Excursión de día entero a <strong>Los Antiguos</strong>, visitando chacras, miradores y el <strong>Lago Buenos Aires</strong>. El recorrido continúa por la <strong>Ruta Escénica 41</strong> y la <strong>Estancia La Ascensión</strong>. Incluye almuerzo, traslado y guía. Regreso al hotel en Perito Moreno.</p>
-        <img class="dia-img" src="assets/posadas_zoyen.jpg" alt="Ruta Escénica 41 y Los Antiguos">
-        <div class="dia-chips">
-          <span class="dia-chip" data-i18n="d3_chip1">Los Antiguos</span>
-          <span class="dia-chip" data-i18n="d3_chip2">Ruta Escénica 41</span>
-          <span class="dia-chip" data-i18n="d3_chip3">Estancia La Ascensión</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- DÍA 4 -->
-    <div class="dia-block reveal">
-      <div class="dia-num"><div class="dia-circle">4</div></div>
-      <div class="dia-content">
-        <div class="dia-label" data-i18n="d4_label">Día 4 · Cruce internacional</div>
-        <h3 class="dia-title" data-i18n="d4_title">Carretera Austral · <em>Puerto Río Tranquilo</em></h3>
-        <p class="dia-desc" data-i18n="d4_desc">Luego del desayuno, salida hacia la frontera con Chile para realizar aduana y continuar hacia la <strong>Carretera Austral</strong>. Durante la jornada se recorre la <strong>Confluencia del Río Baker y Neff</strong> y las vistas del <strong>Lago General Carrera</strong>. Almuerzo en un fundo chileno y llegada al atardecer a <strong>Puerto Río Tranquilo</strong> para alojamiento.</p>
-        <div class="dia-chips">
-          <span class="dia-chip" data-i18n="d4_chip1">Frontera con Chile</span>
-          <span class="dia-chip" data-i18n="d4_chip2">Confluencia Baker y Neff</span>
-          <span class="dia-chip" data-i18n="d4_chip3">Puerto Río Tranquilo</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- DÍA 5 -->
-    <div class="dia-block reveal">
-      <div class="dia-num"><div class="dia-circle">5</div></div>
-      <div class="dia-content">
-        <div class="dia-label" data-i18n="d5_label">Día 5 · Navegación</div>
-        <h3 class="dia-title" data-i18n="d5_title"><em>Capillas y Catedrales</em> de Mármol</h3>
-        <p class="dia-desc" data-i18n="d5_desc">Por la mañana, navegación a las <strong>Capillas y Catedrales de Mármol</strong>. Luego del almuerzo, regreso hacia la frontera argentina para llegar al atardecer. Alojamiento en Perito Moreno y <strong>cena de despedida</strong>.</p>
-        <img class="dia-img" src="assets/capillas.jpg" alt="Capillas de Mármol Lago General Carrera">
-        <div class="dia-chips">
-          <span class="dia-chip" data-i18n="d5_chip1">Capillas de Mármol</span>
-          <span class="dia-chip" data-i18n="d5_chip2">Regreso a Argentina</span>
-          <span class="dia-chip" data-i18n="d5_chip3">Cena de despedida</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- DÍA 6 -->
-    <div class="dia-block reveal">
-      <div class="dia-num"><div class="dia-circle">6</div></div>
-      <div class="dia-content">
-        <div class="dia-label" data-i18n="d6_label">Día 6 · Regreso</div>
-        <h3 class="dia-title" data-i18n="d6_title">Perito Moreno → <em>Comodoro Rivadavia</em></h3>
-        <p class="dia-desc" data-i18n="d6_desc">Mañana libre hasta la hora del traslado hacia el aeropuerto para tomar el vuelo de regreso a Comodoro Rivadavia. Fin de nuestros servicios.</p>
-        <div class="dia-chips">
-          <span class="dia-chip" data-i18n="d6_chip1">Mañana libre</span>
-          <span class="dia-chip" data-i18n="d6_chip2">Traslado al aeropuerto</span>
-          <span class="dia-chip" data-i18n="d6_chip3">Fin de servicios</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- GALERÍA -->
-<section class="galeria-section">
-  <div style="max-width:1100px; margin:0 auto;">
-    <div class="reveal">
-      <p class="eyebrow" data-i18n="gal_eyebrow">Galería de imágenes</p>
-      <h2 class="section-title" data-i18n="gal_title">Lo que vas a <em>ver</em></h2>
-    </div>
-    <div class="galeria-grid">
-      <img src="assets/full_inedita.jpg" alt="Patagonia Inédita panorámica" class="reveal">
-      <img src="assets/posadas_zoyen.jpg" alt="Lago Posadas" class="reveal reveal-delay">
-      <img src="assets/cuevas_zoyen.jpg" alt="Cueva de las Manos" class="reveal">
-      <img src="assets/capillas.jpg" alt="Capillas de Mármol" class="reveal reveal-delay">
-      <img src="assets/ruta41_zoyen.jpg" alt="Ruta 41 Monte Zeballos" class="reveal reveal-delay2">
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="tour-cta">
-  <div class="reveal">
-    <p class="eyebrow" style="color:var(--sand);display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:.5rem;">
-      <span style="width:22px;height:1px;background:var(--sand);display:inline-block;"></span>
-      <span data-i18n="cta_eyebrow">¿Te sumás?</span>
-      <span style="width:22px;height:1px;background:var(--sand);display:inline-block;"></span>
-    </p>
-    <h2 data-i18n="cta_title">Reservá tu lugar en <em>Patagonia Inédita</em></h2>
-    <p data-i18n="cta_sub">Los grupos son pequeños y los lugares se agotan rápido. Asegurá el tuyo consultando disponibilidad.</p>
-    <div class="cta-btns">
-      <a href="index.html#reservar" class="cta-btn-p" data-i18n="cta_btn_book">Reservar ahora</a>
-      <a href="https://wa.me/5492974432855" class="cta-btn-g" target="_blank" rel="noopener" data-i18n="sidebar_wa">Consultar por WhatsApp</a>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
+<footer id="footer">
   <div class="footer-top">
     <div>
       <div class="footer-brand-wrap">
@@ -1300,8 +1171,18 @@ img.hero-logo-static {
       </div>
       <p class="footer-tagline">Agencia de Turismo en la Patagonia Argentina.<br>Legajo 15.625 · Perito Moreno, Santa Cruz.</p>
       <div class="socials">
-        <a href="https://www.instagram.com/turismozoyen/" class="social-btn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
-        <a href="https://wa.me/5492974432855" class="social-btn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+        <a href="https://www.instagram.com/turismozoyen/" class="social-btn" title="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/turismozoyen" class="social-btn" title="Facebook" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="https://www.youtube.com/channel/UCVuldIwQ74Pha-H0stMKoPg" class="social-btn" title="YouTube" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+        <a href="https://wa.me/5492974432855" class="social-btn" title="WhatsApp" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
       </div>
 
       <div class="footer-region-info">
@@ -1344,33 +1225,29 @@ img.hero-logo-static {
       </div>
     </div>
     <div>
-      <div class="footer-col-title">Tours de Autor</div>
+      <div class="footer-col-title" data-i18n="ft_exc">Excursiones</div>
       <ul class="footer-links">
-        <li><a href="carretera-austral.html">Carretera Austral</a></li>
-        <li><a href="santa-cruz-inexplorada.html">Santa Cruz Inexplorada (8 días)</a></li>
+        <li><a href="excursion-cueva-de-las-manos.html">Cueva de las Manos</a></li>
+        <li><a href="excursion-alero-charcamata.html">Alero Charcamata</a></li>
+        <li><a href="excursion-ruta41-lago-posadas.html">Lago Posadas + Ruta 41</a></li>
+        <li><a href="excursion-ruta41-los-antiguos.html">Ruta Escénica 41 y Los Antiguos</a></li>
+        <li><a href="excursion-parque-patagonia.html">Portal Cañadón Pinturas / PNP</a></li>
+        <li><a href="excursion-capillas-de-marmol.html">Capillas de Mármol</a></li>
       </ul>
     </div>
     <div>
       <div class="footer-col-title" data-i18n="ft_contact">Contacto</div>
       <div class="footer-contact">
-        <strong>Perito Moreno, Santa Cruz</strong><br>
-        Patagonia Argentina<br><br>
-        <strong>WhatsApp</strong><br>
-        <a href="https://wa.me/5492974432855" style="color:var(--amber);">+54 9 297 443-2855</a>
+        <p>✉ zoyenperitomoreno@gmail.com</p>
+        <p>☎ +54 9 297 443-2855</p>
+        <p> Perito Moreno, Santa Cruz</p>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <span data-i18n="footer_copy">© 2025 Zoyen Turismo · Legajo 15.625</span>
-    <a href="index.html" data-i18n="footer_back">Volver al inicio</a>
+    <span><span data-i18n="ft_copy">© Zoyen Turismo 2025  Todos los derechos reservados</span></span>
   </div>
 </footer>
-<script>
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-</script>
 <script id="zoyen-lang-script">
 (function(){
     var pageTranslations = {
@@ -1390,7 +1267,7 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
       'sidebar_other': 'Otras Excursiones',
       'more_title': 'Más Excursiones',
       'ft_tagline': 'Agencia de Turismo en la Patagonia Argentina.<br>Legajo 15.625 · Perito Moreno, Santa Cruz.',
-      'ft_copy': '© Zoyen Turismo 2025 · Todos los derechos reservados',
+      'ft_copy': '© Zoyen Turismo 2025  Todos los derechos reservados',
       'ft_exc': 'Excursiones',
       'ft_contact': 'Contacto',
       'ft_nav': 'Navegación',
@@ -1404,90 +1281,6 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
       'detail_vehiculo': 'Vehículo 4x4 o minibus',
       'detail_cupos': 'Cupos limitados',
       'cta_btn': 'Reservar lugar',
-      'footer_copy': '© 2025 Zoyen Turismo · Legajo 15.625',
-      'footer_back': 'Volver al inicio',
-      'hero_eyebrow': 'Tour de Autor · 6 días / 5 noches',
-      'hero_title': 'Patagonia <em>Inédita</em>',
-      'main_h2_1': 'Una semana que <em>transforma</em>',
-      'highlights_title': 'Highlights del tour',
-      'itinerary_title': 'El <em>itinerario</em>',
-      'sidebar_wa_msg': '¡Hola! Quiero información sobre el tour Patagonia Inédita',
-      'ov_days': 'Días',
-      'ov_nights': 'Noches',
-      'ov_destinations': 'Destinos',
-      'ov_passes': 'Pases',
-      'ov_maxplaces': 'Plazas máx.',
-      'ov_book_btn': 'Reservar lugar',
-      'intro_eyebrow': 'Descripción del tour',
-      'intro_title': 'Una semana que <em>transforma</em>',
-      'intro_p1': '<strong>Patagonia Inédita</strong> es una experiencia de 6 días / 5 noches que comienza en el aeropuerto de Comodoro Rivadavia y conecta, en minibús privado, algunos de los paisajes más impactantes del noroeste de Santa Cruz y la Carretera Austral chilena.',
-      'intro_p2': 'El recorrido incluye Perito Moreno, Cueva de las Manos, Parque Patagonia, Los Antiguos, Ruta Escénica 41, Estancia La Ascensión, Confluencia de los ríos Baker y Neff, Lago General Carrera, Puerto Río Tranquilo y la navegación a las Capillas y Catedrales de Mármol.',
-      'intro_p3': 'La propuesta combina traslados organizados, guía especializado, alojamientos seleccionados y almuerzos incluidos según la logística de cada jornada.',
-      'inc_yes_title': ' Incluye',
-      'inc_yes_1': 'Traslados en minibús privado desde y hacia el aeropuerto de Comodoro Rivadavia',
-      'inc_yes_2': '4 noches de alojamiento con desayuno en Perito Moreno',
-      'inc_yes_3': '1 noche de alojamiento en Puerto Río Tranquilo, Chile',
-      'inc_yes_4': 'Excursiones a Parque Patagonia, Cueva de las Manos, Los Antiguos, Ruta Escénica 41, Carretera Austral, Confluencia del río Baker y Capillas de Mármol',
-      'inc_yes_5': 'Todos los almuerzos incluidos, con viandas o restaurante según itinerario y logística',
-      'inc_yes_6': 'Guía especializado durante las excursiones',
-      'inc_no_title': ' No incluye',
-      'inc_no_1': 'Vuelos aéreos',
-      'inc_no_2': 'Cenas, excepto la cena despedida indicada en el itinerario',
-      'inc_no_3': 'Trámites migratorios personales',
-      'inc_no_4': 'Gastos personales',
-      'hl_title': 'Highlights del tour',
-      'hl_1': '<strong>Cueva de las Manos</strong> · excursión de día completo con guía especializado, vianda, entrada incluida y visita al sitio arqueológico.',
-      'hl_2': '<strong>Parque Patagonia</strong> · recorrido incluido junto a Cueva de las Manos, en una jornada completa desde Perito Moreno.',
-      'hl_3': '<strong>Los Antiguos</strong> · visita a chacras, miradores y el Lago Buenos Aires.',
-      'hl_4': '<strong>Ruta Escénica 41</strong> · recorrido panorámico junto a Estancia La Ascensión.',
-      'hl_5': '<strong>Carretera Austral</strong> · cruce a Chile, vistas del Lago General Carrera y Confluencia de los ríos Baker y Neff.',
-      'hl_6': '<strong>Puerto Río Tranquilo</strong> · noche de alojamiento en Chile durante el tramo de Carretera Austral.',
-      'hl_7': '<strong>Capillas y Catedrales de Mármol</strong> · navegación por una de las formaciones naturales más buscadas de la Patagonia chilena.',
-      'itin_eyebrow': 'Día a día',
-      'itin_title': 'El <em>itinerario</em>',
-      'itin_download': 'Descargar itinerario',
-      'd1_label': 'Día 1 · Llegada',
-      'd1_title': 'Comodoro Rivadavia → <em>Perito Moreno</em>',
-      'd1_desc': 'Arribo al aeropuerto de Comodoro Rivadavia, punto de partida de la experiencia. Recepción de los pasajeros y traslado en minibús privado hacia Perito Moreno. Según el horario de llegada, tarde libre para visitar el <strong>Museo Arqueológico Carlos Gradín</strong>. Alojamiento en el hotel asignado.',
-      'd1_chip1': 'Aeropuerto Comodoro Rivadavia',
-      'd1_chip2': 'Traslado privado',
-      'd1_chip3': 'Alojamiento en Perito Moreno',
-      'd2_label': 'Día 2 · Excursión de día completo',
-      'd2_title': '<em>Cueva de las Manos</em> · Parque Patagonia',
-      'd2_desc': 'Excursión de día completo, de 9 a 17 hs, a <strong>Cueva de las Manos</strong> y <strong>Parque Patagonia</strong>. La salida incluye vianda para el almuerzo, entrada al sitio, traslado en minibús y guía especializado durante el recorrido.',
-      'd2_chip1': 'Cueva de las Manos',
-      'd2_chip2': 'Parque Patagonia',
-      'd2_chip3': 'Vianda y entrada incluidas',
-      'd3_label': 'Día 3 · Los Antiguos y Ruta Escénica 41',
-      'd3_title': '<em>Los Antiguos</em> · Lago Buenos Aires',
-      'd3_desc': 'Excursión de día entero a <strong>Los Antiguos</strong>, visitando chacras, miradores y el <strong>Lago Buenos Aires</strong>. El recorrido continúa por la <strong>Ruta Escénica 41</strong> y la <strong>Estancia La Ascensión</strong>. Incluye almuerzo, traslado y guía. Regreso al hotel en Perito Moreno.',
-      'd3_chip1': 'Los Antiguos',
-      'd3_chip2': 'Ruta Escénica 41',
-      'd3_chip3': 'Estancia La Ascensión',
-      'd4_label': 'Día 4 · Cruce internacional',
-      'd4_title': 'Carretera Austral · <em>Puerto Río Tranquilo</em>',
-      'd4_desc': 'Luego del desayuno, salida hacia la frontera con Chile para realizar aduana y continuar hacia la <strong>Carretera Austral</strong>. Durante la jornada se recorre la <strong>Confluencia del Río Baker y Neff</strong> y las vistas del <strong>Lago General Carrera</strong>. Almuerzo en un fundo chileno y llegada al atardecer a <strong>Puerto Río Tranquilo</strong> para alojamiento.',
-      'd4_chip1': 'Frontera con Chile',
-      'd4_chip2': 'Confluencia Baker y Neff',
-      'd4_chip3': 'Puerto Río Tranquilo',
-      'd5_label': 'Día 5 · Navegación',
-      'd5_title': '<em>Capillas y Catedrales</em> de Mármol',
-      'd5_desc': 'Por la mañana, navegación a las <strong>Capillas y Catedrales de Mármol</strong>. Luego del almuerzo, regreso hacia la frontera argentina para llegar al atardecer. Alojamiento en Perito Moreno y <strong>cena de despedida</strong>.',
-      'd5_chip1': 'Capillas de Mármol',
-      'd5_chip2': 'Regreso a Argentina',
-      'd5_chip3': 'Cena de despedida',
-      'd6_label': 'Día 6 · Regreso',
-      'd6_title': 'Perito Moreno → <em>Comodoro Rivadavia</em>',
-      'd6_desc': 'Mañana libre hasta la hora del traslado hacia el aeropuerto para tomar el vuelo de regreso a Comodoro Rivadavia. Fin de nuestros servicios.',
-      'd6_chip1': 'Mañana libre',
-      'd6_chip2': 'Traslado al aeropuerto',
-      'd6_chip3': 'Fin de servicios',
-      'gal_eyebrow': 'Galería de imágenes',
-      'gal_title': 'Lo que vas a <em>ver</em>',
-      'cta_eyebrow': '¿Te sumás?',
-      'cta_title': 'Reservá tu lugar en <em>Patagonia Inédita</em>',
-      'cta_sub': 'Los grupos son pequeños y los lugares se agotan rápido. Asegurá el tuyo consultando disponibilidad.',
-      'cta_btn_book': 'Reservar ahora',
     },
     en: {
       'nav_home': 'Home',
@@ -1504,8 +1297,8 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
       'sidebar_details': 'Details',
       'sidebar_other': 'Other Excursions',
       'more_title': 'More Excursions',
-      'ft_tagline': 'Tourism Agency in Argentine Patagonia.<br>License 15.625 · Perito Moreno, Santa Cruz.',
-      'ft_copy': '© Zoyen Turismo 2025 · All rights reserved',
+      'ft_tagline': 'Tourism Agency in Argentine Patagonia.<br>License 15.625  Perito Moreno, Santa Cruz.',
+      'ft_copy': '© Zoyen Turismo 2025  All rights reserved',
       'ft_exc': 'Excursions',
       'ft_contact': 'Contact',
       'ft_nav': 'Navigation',
@@ -1518,91 +1311,11 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
       'detail_guia': 'Specialist guide included',
       'detail_vehiculo': '4x4 vehicle or minibus',
       'detail_cupos': 'Limited spots',
-      'cta_btn': 'Book your spot',
-      'footer_copy': '© 2025 Zoyen Turismo · License 15.625',
-      'footer_back': 'Back to home',
-      'hero_eyebrow': 'Author Tour · 6 days / 5 nights',
-      'hero_title': 'Unexplored <em>Patagonia</em>',
-      'main_h2_1': 'A week that <em>transforms</em>',
-      'highlights_title': 'Tour highlights',
-      'itinerary_title': 'The <em>itinerary</em>',
-      'sidebar_wa_msg': 'Hello! I want information about the Patagonia Inédita tour',
-      'ov_days': 'Days',
-      'ov_nights': 'Nights',
-      'ov_destinations': 'Destinations',
-      'ov_passes': 'Border crossings',
-      'ov_maxplaces': 'Max. spots',
-      'ov_book_btn': 'Book your spot',
-      'intro_eyebrow': 'Tour description',
-      'intro_title': 'A week that <em>transforms</em>',
-      'intro_p1': '<strong>Patagonia Inédita</strong> is a 6-day / 5-night experience that begins at Comodoro Rivadavia airport and connects, by private minibus, some of the most striking landscapes of northwestern Santa Cruz and the Chilean Carretera Austral.',
-      'intro_p2': 'The route includes Perito Moreno, Cueva de las Manos, Parque Patagonia, Los Antiguos, Ruta Escénica 41, Estancia La Ascensión, the confluence of the Baker and Neff rivers, Lake General Carrera, Puerto Río Tranquilo and the navigation to the Marble Chapels and Cathedrals.',
-      'intro_p3': 'The trip combines organized transfers, a specialist guide, selected accommodations and lunches included according to each day\'s logistics.',
-      'inc_yes_title': ' Included',
-      'inc_yes_1': 'Private minibus transfers to and from Comodoro Rivadavia airport',
-      'inc_yes_2': '4 nights of accommodation with breakfast in Perito Moreno',
-      'inc_yes_3': '1 night of accommodation in Puerto Río Tranquilo, Chile',
-      'inc_yes_4': 'Excursions to Parque Patagonia, Cueva de las Manos, Los Antiguos, Ruta Escénica 41, Carretera Austral, confluence of the Baker River and the Marble Chapels',
-      'inc_yes_5': 'All lunches included, with packed lunch or restaurant according to itinerary and logistics',
-      'inc_yes_6': 'Specialist guide during the excursions',
-      'inc_no_title': ' Not included',
-      'inc_no_1': 'Flights',
-      'inc_no_2': 'Dinners, except the farewell dinner indicated in the itinerary',
-      'inc_no_3': 'Personal immigration procedures',
-      'inc_no_4': 'Personal expenses',
-      'hl_title': 'Tour highlights',
-      'hl_1': '<strong>Cueva de las Manos</strong> · full-day excursion with specialist guide, packed lunch, entrance fee included and visit to the archaeological site.',
-      'hl_2': '<strong>Parque Patagonia</strong> · included as part of a full day from Perito Moreno together with Cueva de las Manos.',
-      'hl_3': '<strong>Los Antiguos</strong> · visit to farms, viewpoints and Lake Buenos Aires.',
-      'hl_4': '<strong>Ruta Escénica 41</strong> · scenic route together with Estancia La Ascensión.',
-      'hl_5': '<strong>Carretera Austral</strong> · crossing into Chile, views of Lake General Carrera and the confluence of the Baker and Neff rivers.',
-      'hl_6': '<strong>Puerto Río Tranquilo</strong> · overnight stay in Chile during the Carretera Austral leg.',
-      'hl_7': '<strong>Marble Chapels and Cathedrals</strong> · navigation past one of the most sought-after natural formations in Chilean Patagonia.',
-      'itin_eyebrow': 'Day by day',
-      'itin_title': 'The <em>itinerary</em>',
-      'itin_download': 'Download itinerary',
-      'd1_label': 'Day 1 · Arrival',
-      'd1_title': 'Comodoro Rivadavia → <em>Perito Moreno</em>',
-      'd1_desc': 'Arrival at Comodoro Rivadavia airport, the starting point of the experience. Passenger pickup and private minibus transfer to Perito Moreno. Depending on arrival time, free afternoon to visit the <strong>Carlos Gradín Archaeological Museum</strong>. Overnight at the assigned hotel.',
-      'd1_chip1': 'Comodoro Rivadavia Airport',
-      'd1_chip2': 'Private transfer',
-      'd1_chip3': 'Accommodation in Perito Moreno',
-      'd2_label': 'Day 2 · Full-day excursion',
-      'd2_title': '<em>Cueva de las Manos</em> · Parque Patagonia',
-      'd2_desc': 'Full-day excursion, from 9 am to 5 pm, to <strong>Cueva de las Manos</strong> and <strong>Parque Patagonia</strong>. The trip includes a packed lunch, site entrance fee, minibus transfer and specialist guide throughout.',
-      'd2_chip1': 'Cueva de las Manos',
-      'd2_chip2': 'Parque Patagonia',
-      'd2_chip3': 'Packed lunch and entrance included',
-      'd3_label': 'Day 3 · Los Antiguos and Ruta Escénica 41',
-      'd3_title': '<em>Los Antiguos</em> · Lake Buenos Aires',
-      'd3_desc': 'Full-day excursion to <strong>Los Antiguos</strong>, visiting farms, viewpoints and <strong>Lake Buenos Aires</strong>. The route continues along <strong>Ruta Escénica 41</strong> and <strong>Estancia La Ascensión</strong>. Includes lunch, transfer and guide. Return to the hotel in Perito Moreno.',
-      'd3_chip1': 'Los Antiguos',
-      'd3_chip2': 'Ruta Escénica 41',
-      'd3_chip3': 'Estancia La Ascensión',
-      'd4_label': 'Day 4 · International border crossing',
-      'd4_title': 'Carretera Austral · <em>Puerto Río Tranquilo</em>',
-      'd4_desc': 'After breakfast, departure to the border with Chile for customs and onward to the <strong>Carretera Austral</strong>. The day includes the <strong>confluence of the Baker and Neff rivers</strong> and views of <strong>Lake General Carrera</strong>. Lunch at a Chilean farm and arrival at dusk in <strong>Puerto Río Tranquilo</strong> for overnight stay.',
-      'd4_chip1': 'Border with Chile',
-      'd4_chip2': 'Baker and Neff Confluence',
-      'd4_chip3': 'Puerto Río Tranquilo',
-      'd5_label': 'Day 5 · Navigation',
-      'd5_title': '<em>Marble Chapels</em> and Cathedrals',
-      'd5_desc': 'In the morning, navigation to the <strong>Marble Chapels and Cathedrals</strong>. After lunch, return to the Argentine border, arriving at dusk. Overnight in Perito Moreno with a <strong>farewell dinner</strong>.',
-      'd5_chip1': 'Marble Chapels',
-      'd5_chip2': 'Return to Argentina',
-      'd5_chip3': 'Farewell dinner',
-      'd6_label': 'Day 6 · Return',
-      'd6_title': 'Perito Moreno → <em>Comodoro Rivadavia</em>',
-      'd6_desc': 'Free morning until transfer time to the airport to catch the return flight to Comodoro Rivadavia. End of our services.',
-      'd6_chip1': 'Free morning',
-      'd6_chip2': 'Airport transfer',
-      'd6_chip3': 'End of services',
-      'gal_eyebrow': 'Photo gallery',
-      'gal_title': 'What you\'ll <em>see</em>',
-      'cta_eyebrow': 'Ready to join?',
-      'cta_title': 'Book your spot on <em>Patagonia Inédita</em>',
-      'cta_sub': 'Groups are small and spots fill up fast. Secure yours by checking availability.',
-      'cta_btn_book': 'Book now',
+      'exc_tag': 'High altitude',
+      'exc_title': 'Scenic Ruta 41 and Los Antiguos',
+      'exc_eyebrow': 'Scenic Ruta 41',
+      'main_h2': 'From steppe to <em>high mountain</em>',
+      'sidebar_wa_msg': 'Hello! I want information about the Scenic Ruta 41 and Los Antiguos excursion',
     },
     pt: {
       'nav_home': 'Início',
@@ -1619,8 +1332,8 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
       'sidebar_details': 'Detalhes',
       'sidebar_other': 'Outras Excursões',
       'more_title': 'Mais Excursões',
-      'ft_tagline': 'Agência de Turismo na Patagônia Argentina.<br>Licença 15.625 · Perito Moreno, Santa Cruz.',
-      'ft_copy': '© Zoyen Turismo 2025 · Todos os direitos reservados',
+      'ft_tagline': 'Agncia de Turismo na Patagonia Argentina.<br>Licença 15.625  Perito Moreno, Santa Cruz.',
+      'ft_copy': '© Zoyen Turismo 2025  Todos os direitos reservados',
       'ft_exc': 'Excursões',
       'ft_contact': 'Contato',
       'ft_nav': 'Navegação',
@@ -1628,211 +1341,51 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
       'bread_exc': 'Excursões',
       'bread_tours': 'Tours de Autor',
       'prices_title': 'Preços',
-      'prices_note': 'Taxa de entrada no Parque não incluída.',
+      'prices_note': 'Taxa de entrada no Parque no incluída.',
       'detail_salida': 'Saída de Perito Moreno ou Los Antiguos',
       'detail_guia': 'Guia especializado incluído',
       'detail_vehiculo': 'Veículo 4x4 ou minibus',
       'detail_cupos': 'Vagas limitadas',
-      'cta_btn': 'Reserve seu lugar',
-      'footer_copy': '© 2025 Zoyen Turismo · Licença 15.625',
-      'footer_back': 'Voltar ao início',
-      'hero_eyebrow': 'Tour de Autor · 6 dias / 5 noites',
-      'hero_title': 'Patagônia <em>Inédita</em>',
-      'main_h2_1': 'Uma semana que <em>transforma</em>',
-      'highlights_title': 'Destaques do tour',
-      'itinerary_title': 'O <em>itinerário</em>',
-      'sidebar_wa_msg': 'Olá! Quero informações sobre o tour Patagônia Inédita',
-      'ov_days': 'Dias',
-      'ov_nights': 'Noites',
-      'ov_destinations': 'Destinos',
-      'ov_passes': 'Travessias',
-      'ov_maxplaces': 'Vagas máx.',
-      'ov_book_btn': 'Reservar lugar',
-      'intro_eyebrow': 'Descrição do tour',
-      'intro_title': 'Uma semana que <em>transforma</em>',
-      'intro_p1': '<strong>Patagônia Inédita</strong> é uma experiência de 6 dias / 5 noites que começa no aeroporto de Comodoro Rivadavia e conecta, em micro-ônibus privado, algumas das paisagens mais marcantes do noroeste de Santa Cruz e da Carretera Austral chilena.',
-      'intro_p2': 'O roteiro inclui Perito Moreno, Cueva de las Manos, Parque Patagônia, Los Antiguos, Rota Cênica 41, Estancia La Ascensión, a confluência dos rios Baker e Neff, Lago General Carrera, Puerto Río Tranquilo e a navegação até as Capelas e Catedrais de Mármore.',
-      'intro_p3': 'A proposta combina traslados organizados, guia especializado, hospedagens selecionadas e almoços incluídos conforme a logística de cada dia.',
-      'inc_yes_title': ' Inclui',
-      'inc_yes_1': 'Traslados em micro-ônibus privado de ida e volta ao aeroporto de Comodoro Rivadavia',
-      'inc_yes_2': '4 noites de hospedagem com café da manhã em Perito Moreno',
-      'inc_yes_3': '1 noite de hospedagem em Puerto Río Tranquilo, Chile',
-      'inc_yes_4': 'Excursões a Parque Patagônia, Cueva de las Manos, Los Antiguos, Rota Cênica 41, Carretera Austral, confluência do rio Baker e Capelas de Mármore',
-      'inc_yes_5': 'Todos os almoços incluídos, com marmita ou restaurante conforme itinerário e logística',
-      'inc_yes_6': 'Guia especializado durante as excursões',
-      'inc_no_title': ' Não inclui',
-      'inc_no_1': 'Voos aéreos',
-      'inc_no_2': 'Jantares, exceto o jantar de despedida indicado no itinerário',
-      'inc_no_3': 'Trâmites migratórios pessoais',
-      'inc_no_4': 'Gastos pessoais',
-      'hl_title': 'Destaques do tour',
-      'hl_1': '<strong>Cueva de las Manos</strong> · excursão de dia completo com guia especializado, marmita, entrada incluída e visita ao sítio arqueológico.',
-      'hl_2': '<strong>Parque Patagônia</strong> · incluído em uma jornada completa a partir de Perito Moreno, junto com Cueva de las Manos.',
-      'hl_3': '<strong>Los Antiguos</strong> · visita a chácaras, mirantes e o Lago Buenos Aires.',
-      'hl_4': '<strong>Rota Cênica 41</strong> · roteiro panorâmico junto à Estancia La Ascensión.',
-      'hl_5': '<strong>Carretera Austral</strong> · travessia ao Chile, vistas do Lago General Carrera e confluência dos rios Baker e Neff.',
-      'hl_6': '<strong>Puerto Río Tranquilo</strong> · noite de hospedagem no Chile durante o trecho da Carretera Austral.',
-      'hl_7': '<strong>Capelas e Catedrais de Mármore</strong> · navegação por uma das formações naturais mais procuradas da Patagônia chilena.',
-      'itin_eyebrow': 'Dia a dia',
-      'itin_title': 'O <em>itinerário</em>',
-      'itin_download': 'Baixar itinerário',
-      'd1_label': 'Dia 1 · Chegada',
-      'd1_title': 'Comodoro Rivadavia → <em>Perito Moreno</em>',
-      'd1_desc': 'Chegada ao aeroporto de Comodoro Rivadavia, ponto de partida da experiência. Recepção dos passageiros e traslado em micro-ônibus privado até Perito Moreno. Conforme o horário de chegada, tarde livre para visitar o <strong>Museu Arqueológico Carlos Gradín</strong>. Hospedagem no hotel designado.',
-      'd1_chip1': 'Aeroporto de Comodoro Rivadavia',
-      'd1_chip2': 'Traslado privado',
-      'd1_chip3': 'Hospedagem em Perito Moreno',
-      'd2_label': 'Dia 2 · Excursão de dia completo',
-      'd2_title': '<em>Cueva de las Manos</em> · Parque Patagônia',
-      'd2_desc': 'Excursão de dia completo, das 9h às 17h, a <strong>Cueva de las Manos</strong> e <strong>Parque Patagônia</strong>. A saída inclui marmita para o almoço, entrada no sítio, traslado em micro-ônibus e guia especializado durante o passeio.',
-      'd2_chip1': 'Cueva de las Manos',
-      'd2_chip2': 'Parque Patagônia',
-      'd2_chip3': 'Marmita e entrada incluídas',
-      'd3_label': 'Dia 3 · Los Antiguos e Rota Cênica 41',
-      'd3_title': '<em>Los Antiguos</em> · Lago Buenos Aires',
-      'd3_desc': 'Excursão de dia inteiro a <strong>Los Antiguos</strong>, visitando chácaras, mirantes e o <strong>Lago Buenos Aires</strong>. O roteiro continua pela <strong>Rota Cênica 41</strong> e pela <strong>Estancia La Ascensión</strong>. Inclui almoço, traslado e guia. Retorno ao hotel em Perito Moreno.',
-      'd3_chip1': 'Los Antiguos',
-      'd3_chip2': 'Rota Cênica 41',
-      'd3_chip3': 'Estancia La Ascensión',
-      'd4_label': 'Dia 4 · Travessia internacional',
-      'd4_title': 'Carretera Austral · <em>Puerto Río Tranquilo</em>',
-      'd4_desc': 'Após o café da manhã, saída até a fronteira com o Chile para a alfândega e seguir até a <strong>Carretera Austral</strong>. Durante o dia, passagem pela <strong>confluência do Rio Baker e Neff</strong> e vistas do <strong>Lago General Carrera</strong>. Almoço em uma fazenda chilena e chegada ao entardecer em <strong>Puerto Río Tranquilo</strong> para hospedagem.',
-      'd4_chip1': 'Fronteira com o Chile',
-      'd4_chip2': 'Confluência Baker e Neff',
-      'd4_chip3': 'Puerto Río Tranquilo',
-      'd5_label': 'Dia 5 · Navegação',
-      'd5_title': '<em>Capelas e Catedrais</em> de Mármore',
-      'd5_desc': 'Pela manhã, navegação até as <strong>Capelas e Catedrais de Mármore</strong>. Depois do almoço, retorno até a fronteira argentina, chegando ao entardecer. Hospedagem em Perito Moreno com <strong>jantar de despedida</strong>.',
-      'd5_chip1': 'Capelas de Mármore',
-      'd5_chip2': 'Retorno à Argentina',
-      'd5_chip3': 'Jantar de despedida',
-      'd6_label': 'Dia 6 · Retorno',
-      'd6_title': 'Perito Moreno → <em>Comodoro Rivadavia</em>',
-      'd6_desc': 'Manhã livre até o horário do traslado até o aeroporto para o voo de retorno a Comodoro Rivadavia. Fim de nossos serviços.',
-      'd6_chip1': 'Manhã livre',
-      'd6_chip2': 'Traslado ao aeroporto',
-      'd6_chip3': 'Fim de serviços',
-      'gal_eyebrow': 'Galeria de imagens',
-      'gal_title': 'O que você vai <em>ver</em>',
-      'cta_eyebrow': 'Vamos juntos?',
-      'cta_title': 'Reserve seu lugar na <em>Patagônia Inédita</em>',
-      'cta_sub': 'Os grupos são pequenos e as vagas se esgotam rápido. Garanta a sua consultando a disponibilidade.',
-      'cta_btn_book': 'Reservar agora',
+      'exc_tag': 'Alta montanha',
+      'exc_title': 'Rota Cênica 41 e Los Antiguos',
+      'exc_eyebrow': 'Rota Cênica 41',
+      'main_h2': 'Da estepe à <em>alta montanha</em>',
+      'sidebar_wa_msg': 'Olá! Quero informações sobre a excursão Rota Cênica 41 e Los Antiguos',
     },
     ko: {
       'nav_home': '홈',
       'nav_excursiones': '투어',
       'nav_tours': '오서 투어',
       'nav_bienestar': '새로운 경험',
-      'nav_ubicación': '위치 및 연락처',
-      'nav_nosotros': '우리에 대해',
+      'nav_ubicación': '위치  연처',
+      'nav_nosotros': '우리 대해',
       'nav_reservar': '예약하기',
-      'nav_contact': '연락처',
+      'nav_contact': '연처',
       'sidebar_book': '예약',
-      'sidebar_book_desc': 'WhatsApp으로 가능 여부와 가격을 확인하거나 직접 예약하세요.',
-      'sidebar_wa': 'WhatsApp으로 문의',
+      'sidebar_book_desc': 'WhatsApp으로 가능 여부와 가격 확하거나 접 예약하세요.',
+      'sidebar_wa': 'WhatsApp으로 문',
       'sidebar_details': '세부 정보',
       'sidebar_other': '다른 투어',
-      'more_title': '더 많은 투어',
-      'ft_tagline': '아르헨티나 파타고니아 관광 에이전시.<br>면허 15.625 · 페리토 모레노, 산타크루스.',
-      'ft_copy': '© Zoyen Turismo 2025 · 모든 권리 보유',
+      'more_title': ' 많 투어',
+      'ft_tagline': '아르헨티나 파타고니아 관광 전시.<br>센스 15.625  페리토 모레노, 산타루스.',
+      'ft_copy': '© Zoyen Turismo 2025  모든 권리 보유',
       'ft_exc': '투어',
-      'ft_contact': '연락처',
+      'ft_contact': '연처',
       'ft_nav': '메뉴',
       'bread_inicio': '홈',
       'bread_exc': '투어',
       'bread_tours': '오서 투어',
       'prices_title': '가격',
-      'prices_note': '주립공원 입장료는 불포함입니다.',
-      'detail_salida': '페리토 모레노 또는 로스 안티구오스 출발',
-      'detail_guia': '전문 가이드 포함',
-      'detail_vehiculo': '4x4 차량 또는 미니버스',
-      'detail_cupos': '인원 제한',
-      'cta_btn': '자리 예약하기',
-      'footer_copy': '© 2025 Zoyen Turismo · 면허 15.625',
-      'footer_back': '홈으로 돌아가기',
-      'hero_eyebrow': '오서 투어 · 6일 / 5박',
-      'hero_title': '미지의 <em>파타고니아</em>',
-      'main_h2_1': '당신을 변화시키는 일주일',
-      'highlights_title': '투어 하이라이트',
-      'itinerary_title': '<em>일정</em>',
-      'sidebar_wa_msg': '안녕하세요! 파타고니아 인에디타 투어 정보를 원합니다',
-      'ov_days': '일수',
-      'ov_nights': '박수',
-      'ov_destinations': '목적지',
-      'ov_passes': '국경 통과',
-      'ov_maxplaces': '최대 인원',
-      'ov_book_btn': '자리 예약하기',
-      'intro_eyebrow': '투어 설명',
-      'intro_title': '당신을 변화시키는 일주일',
-      'intro_p1': '<strong>파타고니아 인에디타</strong>는 코모도로 리바다비아 공항에서 시작해 전용 미니버스로 산타크루스 북서부와 칠레 카레테라 아우스트랄의 가장 인상적인 풍경들을 잇는 6일 / 5박 일정입니다.',
-      'intro_p2': '여정에는 페리토 모레노, 쿠에바 데 라스 마노스, 파타고니아 국립공원, 로스 안티구오스, 41번 경치 도로, 라 아센시온 농장, 베이커강과 네프강의 합류점, 헤네랄 카레라 호수, 푸에르토 리오 트란킬로, 그리고 마블 채플 및 대성당으로의 항해가 포함됩니다.',
-      'intro_p3': '이 투어는 체계적인 이동, 전문 가이드, 선별된 숙소, 그리고 일자별 일정에 따른 점심 식사를 결합합니다.',
-      'inc_yes_title': ' 포함',
-      'inc_yes_1': '코모도로 리바다비아 공항 왕복 전용 미니버스 이동',
-      'inc_yes_2': '페리토 모레노에서 조식 포함 4박',
-      'inc_yes_3': '칠레 푸에르토 리오 트란킬로에서 1박',
-      'inc_yes_4': '파타고니아 국립공원, 쿠에바 데 라스 마노스, 로스 안티구오스, 41번 경치 도로, 카레테라 아우스트랄, 베이커강 합류점, 마블 채플 투어',
-      'inc_yes_5': '일정과 로지스틱에 따라 도시락 또는 레스토랑으로 제공되는 모든 점심 식사 포함',
-      'inc_yes_6': '투어 중 전문 가이드 동행',
-      'inc_no_title': ' 불포함',
-      'inc_no_1': '항공편',
-      'inc_no_2': '일정에 표시된 송별 저녁 식사를 제외한 저녁 식사',
-      'inc_no_3': '개인 출입국 수속',
-      'inc_no_4': '개인 경비',
-      'hl_title': '투어 하이라이트',
-      'hl_1': '<strong>쿠에바 데 라스 마노스</strong> · 전문 가이드, 도시락, 입장료가 포함된 당일 투어 및 고고학 유적지 방문.',
-      'hl_2': '<strong>파타고니아 국립공원</strong> · 페리토 모레노에서 출발해 쿠에바 데 라스 마노스와 함께하는 하루 일정에 포함.',
-      'hl_3': '<strong>로스 안티구오스</strong> · 농장, 전망대, 부에노스아이레스 호수 방문.',
-      'hl_4': '<strong>41번 경치 도로</strong> · 라 아센시온 농장과 함께하는 파노라마 경치 여정.',
-      'hl_5': '<strong>카레테라 아우스트랄</strong> · 칠레 국경 통과, 헤네랄 카레라 호수 전망 및 베이커강과 네프강 합류점.',
-      'hl_6': '<strong>푸에르토 리오 트란킬로</strong> · 카레테라 아우스트랄 구간 중 칠레에서의 숙박.',
-      'hl_7': '<strong>마블 채플 및 대성당</strong> · 칠레령 파타고니아에서 가장 인기 있는 자연 지형 중 하나를 항해.',
-      'itin_eyebrow': '일자별 일정',
-      'itin_title': '<em>일정</em>',
-      'itin_download': '일정표 다운로드',
-      'd1_label': '1일차 · 도착',
-      'd1_title': '코모도로 리바다비아 → <em>페리토 모레노</em>',
-      'd1_desc': '여정의 출발점인 코모도로 리바다비아 공항 도착. 승객 마중 및 전용 미니버스로 페리토 모레노까지 이동. 도착 시간에 따라 <strong>카를로스 그라딘 고고학 박물관</strong>을 방문할 수 있는 자유 오후. 지정된 호텔에서 숙박.',
-      'd1_chip1': '코모도로 리바다비아 공항',
-      'd1_chip2': '전용 이동',
-      'd1_chip3': '페리토 모레노 숙박',
-      'd2_label': '2일차 · 종일 투어',
-      'd2_title': '<em>쿠에바 데 라스 마노스</em> · 파타고니아 국립공원',
-      'd2_desc': '오전 9시부터 오후 5시까지 <strong>쿠에바 데 라스 마노스</strong>와 <strong>파타고니아 국립공원</strong>으로 가는 종일 투어. 점심 도시락, 입장료, 미니버스 이동, 전문 가이드가 전 일정에 포함됩니다.',
-      'd2_chip1': '쿠에바 데 라스 마노스',
-      'd2_chip2': '파타고니아 국립공원',
-      'd2_chip3': '도시락 및 입장료 포함',
-      'd3_label': '3일차 · 로스 안티구오스와 41번 경치 도로',
-      'd3_title': '<em>로스 안티구오스</em> · 부에노스아이레스 호수',
-      'd3_desc': '<strong>로스 안티구오스</strong>로 가는 종일 투어로 농장, 전망대, <strong>부에노스아이레스 호수</strong>를 방문합니다. 여정은 <strong>41번 경치 도로</strong>와 <strong>라 아센시온 농장</strong>으로 이어집니다. 점심, 이동, 가이드 포함. 페리토 모레노 호텔로 복귀.',
-      'd3_chip1': '로스 안티구오스',
-      'd3_chip2': '41번 경치 도로',
-      'd3_chip3': '라 아센시온 농장',
-      'd4_label': '4일차 · 국경 통과',
-      'd4_title': '카레테라 아우스트랄 · <em>푸에르토 리오 트란킬로</em>',
-      'd4_desc': '조식 후 칠레 국경으로 출발해 세관을 통과하고 <strong>카레테라 아우스트랄</strong>로 이동합니다. 이날에는 <strong>베이커강과 네프강 합류점</strong>과 <strong>헤네랄 카레라 호수</strong> 전망을 둘러봅니다. 칠레 농장에서 점심 식사 후 해질 무렵 <strong>푸에르토 리오 트란킬로</strong>에 도착해 숙박합니다.',
-      'd4_chip1': '칠레 국경',
-      'd4_chip2': '베이커-네프 합류점',
-      'd4_chip3': '푸에르토 리오 트란킬로',
-      'd5_label': '5일차 · 항해',
-      'd5_title': '<em>마블 채플</em> 및 대성당',
-      'd5_desc': '오전에는 <strong>마블 채플 및 대성당</strong>으로의 항해. 점심 식사 후 아르헨티나 국경으로 돌아가 해질 무렵 도착합니다. 페리토 모레노에서 <strong>송별 저녁 식사</strong>와 함께 숙박합니다.',
-      'd5_chip1': '마블 채플',
-      'd5_chip2': '아르헨티나 복귀',
-      'd5_chip3': '송별 저녁 식사',
-      'd6_label': '6일차 · 귀환',
-      'd6_title': '페리토 모레노 → <em>코모도로 리바다비아</em>',
-      'd6_desc': '코모도로 리바다비아로 돌아가는 항공편을 타기 위해 공항으로 이동하기 전까지 자유로운 오전. 모든 서비스 종료.',
-      'd6_chip1': '자유 오전',
-      'd6_chip2': '공항 이동',
-      'd6_chip3': '서비스 종료',
-      'gal_eyebrow': '사진 갤러리',
-      'gal_title': '보게 될 <em>풍경</em>',
-      'cta_eyebrow': '함께하시겠어요?',
-      'cta_title': '<em>파타고니아 인에디타</em>에 자리를 예약하세요',
-      'cta_sub': '그룹 규모가 작아 자리가 빨리 마감됩니다. 가능 여부를 확인하고 자리를 확보하세요.',
-      'cta_btn_book': '지금 예약하기',
+      'prices_note': '공 입장료 불함.',
+      'detail_salida': '페리토 모레노 는 로스 안티구오스 출발',
+      'detail_guia': '전문 가드 함',
+      'detail_vehiculo': '4x4 차량 는 미니버스',
+      'detail_cupos': '제한 ',
+      'exc_tag': '고산 지대',
+      'exc_title': '경치 좋은 41번 도로와 로스 안티구오스',
+      'exc_eyebrow': '경치 좋은 41번 도로',
+      'main_h2': '초서 <em>고산</em>으로',
+      'sidebar_wa_msg': '안녕하세요! 경치 좋은 41번 도로와 로스 안티구오스 투어 정보를 원합니다',
     },
   };
   var currentLang = localStorage.getItem('zoyen_lang') || 'es';
@@ -2163,7 +1716,7 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
     return "Si querés hablar con una persona del equipo, podés usar " + contactText + ". Link directo: " + waLink;
   }
   function compareAnswer(){
-    return "Si tenés poco tiempo, mirá las excursiones de día: Cueva de las Manos, Capillas de Mármol, Ruta 41, Lago Posadas o Parque Patagonia. Si buscás un viaje completo, Patagonia Inédita dura 6 días y Carretera Austral dura 8 días. Para arqueología: Cueva o Charcamata. Para navegación: Capillas. Para ruta escénica: Ruta 41/Zeballos o Lago Posadas.";
+    return "Si tenés poco tiempo, mirá las excursiones de día: Cueva de las Manos, Capillas de Mármol, Ruta Escénica 41, Lago Posadas o Parque Patagonia. Si buscás un viaje completo: Patagonia Inédita (5 días), Santa Cruz Inexplorada (8 días, con vuelo incluido) o Carretera Austral (salida grupal). Para arqueología: Cueva o Charcamata. Para navegación: Capillas. Para ruta escénica: Ruta Escénica 41 o Lago Posadas.";
   }
   function pdfAnswer(product){
     if (product && product.pdf) return "El itinerario PDF de " + product.name + " se descarga desde su página. Ruta del archivo: " + product.pdf;
@@ -2524,7 +2077,7 @@ textarea {
   .page-hero-title,
   .exc-hero-title,
   .slide-title {
-    font-size: clamp(1.75rem, 10.5vw, 2.7rem) !important;
+    font-size: clamp(2.6rem, 13vw, 3.6rem) !important;
   }
   .slide-emblem,
   .emblem-3d,
@@ -3360,50 +2913,6 @@ a.cta-btn-g[href*="wa.me"]:hover::before {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23122118' d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z'/%3E%3C/svg%3E") !important;
 }
 </style>
-<script id="zoyen-pdf-download-fix">
-(function(){
-  function downloadPdf(event){
-    var link = event.currentTarget;
-    var href = link.getAttribute('href');
-    if (!href) return;
-    event.preventDefault();
-
-    var url = new URL(href, window.location.href);
-    var filename = link.getAttribute('download') || url.pathname.split('/').pop() || 'itinerario-zoyen.pdf';
-    link.setAttribute('aria-busy', 'true');
-
-    fetch(url.href, { cache: 'no-store' })
-      .then(function(response){
-        if (!response.ok) throw new Error('No se pudo encontrar el PDF');
-        return response.blob();
-      })
-      .then(function(blob){
-        var objectUrl = URL.createObjectURL(blob);
-        var tempLink = document.createElement('a');
-        tempLink.href = objectUrl;
-        tempLink.download = filename;
-        tempLink.style.display = 'none';
-        document.body.appendChild(tempLink);
-        tempLink.click();
-        setTimeout(function(){
-          URL.revokeObjectURL(objectUrl);
-          tempLink.remove();
-          link.removeAttribute('aria-busy');
-        }, 400);
-      })
-      .catch(function(){
-        link.removeAttribute('aria-busy');
-        window.open(url.href, '_blank', 'noopener');
-      });
-  }
-
-  document.querySelectorAll('a.download-pdf-btn[href$=".pdf"]').forEach(function(link){
-    if (link.dataset.downloadReady === 'true') return;
-    link.dataset.downloadReady = 'true';
-    link.addEventListener('click', downloadPdf);
-  });
-})();
-</script>
 
 <style id="zoyen-logo-circular-fix-20260616">
 .nav-emblem,
@@ -3439,7 +2948,7 @@ a.cta-btn-g[href*="wa.me"]:hover::before {
   const langCurrency={es:'ARS',en:'USD',pt:'BRL',ko:'KRW'};
   let selected=localStorage.getItem('zoyen_currency')||langCurrency[(document.documentElement.lang||'es').slice(0,2)]||'ARS';
   let rates={ARS:1}, refreshing=false;
-  const priceTargets=['#montoPrev','#pagoMontoBadge','#pagoSenia','.precio-preview .monto','.monto-badge'];
+  const priceTargets=['#montoPrev','#pagoMontoBadge','#pagoSenia','.precio-preview .monto','.monto-badge','.precio-texto'];
   function money(value,code){const c=currencies[code];return c.symbol+Number(value).toLocaleString(c.locale,{maximumFractionDigits:code==='KRW'||code==='CLP'?0:2});}
   function arsFromText(text){const m=String(text||'').match(/\$\s*([\d.]+(?:,\d+)?)/);return m?Number(m[1].replace(/\./g,'').replace(',','.')):0;}
   function updateLabel(){const label=document.getElementById('currencyCurrentLabel');if(label)label.innerHTML=selected+' <span class="currency-name">· '+currencies[selected].name+'</span>';document.querySelectorAll('.currency-option').forEach(b=>b.classList.toggle('active',b.dataset.currency===selected));const r=document.getElementById('currencyRate');if(r)r.textContent=selected==='ARS'?'Los cobros y reservas se realizan siempre en pesos argentinos.':rates[selected]?'Referencia: $10.000 ARS ≈ '+money(10000*rates[selected],selected)+'. Cotización informativa.':'Consultando cotización…';}
@@ -3533,7 +3042,49 @@ a.cta-btn-g[href*="wa.me"]:hover::before {
   body>nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .z,
   body>nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .t{font-size:.76rem!important}
 }
-</style></body>
+</style>
+<style id="zoyen-exc-content-compact-20260622">
+/* Ajuste de layout: bloque principal más ancho en desktop, texto más compacto y legible */
+@media (min-width: 861px) {
+  .exc-body {
+    grid-template-columns: 1fr 320px !important;
+    max-width: 1300px !important;
+    gap: 3rem !important;
+  }
+}
+.exc-main h2 {
+  font-size: clamp(1.5rem, 2.6vw, 2rem) !important;
+  margin-top: 1.8rem !important;
+  margin-bottom: .9rem !important;
+}
+.exc-main h3 {
+  margin-top: 1.5rem !important;
+  margin-bottom: .6rem !important;
+}
+.exc-main p {
+  font-size: 1.05rem !important;
+  line-height: 1.55 !important;
+  margin-bottom: .8rem !important;
+  text-align: left !important;
+}
+.exc-main ul {
+  font-size: 1.02rem !important;
+  line-height: 1.55 !important;
+  margin-bottom: .8rem !important;
+  text-align: left !important;
+}
+.exc-main ul li {
+  margin-bottom: .3rem !important;
+}
+.exc-main .note,
+.exc-main .warn {
+  font-size: 1rem !important;
+  line-height: 1.5 !important;
+  padding: .9rem 1.1rem !important;
+  margin: 1.1rem 0 !important;
+}
+</style>
+</body>
 </html>
 
 

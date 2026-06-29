@@ -8,21 +8,27 @@ window.ZOYEN_SEO_CONFIG = {
   },
   "index.html": {
     title: "Zoyen Turismo | Excursiones en la Patagonia",
-    description: "Excursiones y viajes desde Perito Moreno, Santa Cruz: Cueva de las Manos, Ruta 41, Monte Zeballos, Parque Patagonia y Carretera Austral.",
-    keywords: "excursiones Patagonia, turismo Perito Moreno Santa Cruz, Cueva de las Manos, Ruta 41, Parque Patagonia, Zoyen Turismo",
+    description: "Excursiones y viajes desde Perito Moreno, Santa Cruz: Cueva de las Manos, Ruta Escénica 41, Parque Patagonia y Carretera Austral.",
+    keywords: "excursiones Patagonia, turismo Perito Moreno Santa Cruz, Cueva de las Manos, Ruta Escénica 41, Parque Patagonia, Zoyen Turismo",
     image: "assets/full_inedita.jpg"
   },
   "patagonia-inedita.html": {
-    title: "Patagonia Inédita: tour de 6 días | Zoyen Turismo",
-    description: "Tour Patagonia Inédita de 6 días y 5 noches desde Perito Moreno para descubrir paisajes, cultura y destinos únicos del noroeste de Santa Cruz.",
-    keywords: "tour Patagonia 6 días, Patagonia Inédita, viaje Santa Cruz, excursiones desde Perito Moreno, turismo Patagonia argentina",
+    title: "Patagonia Inédita: tour de 5 días | Zoyen Turismo",
+    description: "Tour Patagonia Inédita de 5 días y 4 noches desde Comodoro Rivadavia para descubrir paisajes, cultura y destinos únicos del noroeste de Santa Cruz.",
+    keywords: "tour Patagonia 5 días, Patagonia Inédita, viaje Santa Cruz, excursiones desde Perito Moreno, turismo Patagonia argentina",
     image: "assets/full_inedita.jpg"
   },
   "carretera-austral.html": {
-    title: "Carretera Austral: tour de 7 días | Zoyen Turismo",
-    description: "Recorré la Carretera Austral y la Patagonia chilena en un viaje de 7 días y 6 noches con salidas desde la región de Perito Moreno.",
-    keywords: "tour Carretera Austral, viaje Patagonia chilena, Carretera Austral 7 días, excursiones Chile Patagonia, Zoyen Turismo",
+    title: "Carretera Austral: tour de 7 noches | Zoyen Turismo",
+    description: "Recorré la Carretera Austral y la Patagonia chilena en un viaje de 7 noches con salidas grupales desde la región de Perito Moreno.",
+    keywords: "tour Carretera Austral, viaje Patagonia chilena, Carretera Austral salida grupal, excursiones Chile Patagonia, Zoyen Turismo",
     image: "assets/full_inedita.jpg"
+  },
+  "santa-cruz-inexplorada.html": {
+    title: "Perito Moreno, Los Antiguos y Cueva de las Manos | Zoyen Turismo",
+    description: "Excursiones desde Perito Moreno y Los Antiguos: Cueva de las Manos, Ruta Escénica 41 y Capillas de Mármol. Tour Santa Cruz Inexplorada con vuelo incluido desde Buenos Aires.",
+    keywords: "Perito Moreno Santa Cruz, Los Antiguos, Cueva de las Manos, Ruta Escénica 41, Capillas de Mármol, Santa Cruz Inexplorada, Patagonia Chile Argentina",
+    image: "assets/zoyen_turismo_patagonia_capillasdemarmol.jpg"
   },
   "excursion-cueva-de-las-manos.html": {
     title: "Excursión Cueva de las Manos | Zoyen Turismo",
@@ -30,10 +36,10 @@ window.ZOYEN_SEO_CONFIG = {
     keywords: "excursión Cueva de las Manos, Cueva de las Manos desde Perito Moreno, río Pinturas, patrimonio UNESCO Patagonia",
     image: "assets/cuevadelasmanos_zoyen.jpg"
   },
-  "excursion-monte-zeballos.html": {
-    title: "Ruta 41 y Monte Zeballos desde Los Antiguos, Santa Cruz | Zoyen Turismo",
-    description: "Descubrí la Ruta Escénica 41 y Monte Zeballos desde Los Antiguos, Santa Cruz: miradores, estepa, bosque andino y paisajes únicos de la Patagonia.",
-    keywords: "Los Antiguos Santa Cruz, Ruta 41 Santa Cruz, Monte Zeballos excursión, Ruta Escénica 41, excursiones Los Antiguos, Patagonia argentina",
+  "excursion-ruta41-los-antiguos.html": {
+    title: "Ruta Escénica 41 y Los Antiguos, Santa Cruz | Zoyen Turismo",
+    description: "Descubrí la Ruta Escénica 41 desde Los Antiguos, Santa Cruz: miradores, estepa, bosque andino y paisajes únicos de la Patagonia.",
+    keywords: "Los Antiguos Santa Cruz, Ruta Escénica 41, excursiones Los Antiguos, Patagonia argentina",
     image: "assets/ruta41_zoyen.jpg"
   },
   "excursion-parque-patagonia.html": {
