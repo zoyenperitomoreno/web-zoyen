@@ -142,11 +142,6 @@ tr:hover td{background:rgba(212,119,42,.03)}
 .by{background:rgba(234,179,8,.12);color:#b45309}
 .bo{background:rgba(59,130,246,.12);color:#2563eb}
 .br{background:rgba(239,68,68,.12);color:#dc2626}
-.manual-seat-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;padding:16px 0}
-.manual-seat{display:flex;align-items:center;justify-content:center;background:var(--bg);border:1.5px solid var(--border);border-radius:6px;padding:8px 4px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;user-select:none}
-.manual-seat:has(input:checked){background:var(--ember-bg);border-color:var(--ember);color:var(--ember)}
-.manual-seat.reserved{background:rgba(239,68,68,.08);border-color:#dc2626;color:#dc2626;cursor:not-allowed}
-.manual-seat input{display:none}
 .vehicle-admin-preview{display:flex;align-items:center;gap:10px;margin-top:8px;color:var(--muted);font-size:12px}
 .vehicle-icon{color:var(--ember)}
 .date-tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
@@ -274,7 +269,6 @@ img.hero-logo-static {
         <div class="nav-item active" data-sec="dashboard"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></span>Dashboard</div>
         <div class="nav-item" data-sec="reservas"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M4 19V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M8 7h8M8 11h8M8 15h5"/></svg></span>Reservas CRM</div>
         <div class="nav-item" data-sec="disponibilidad"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg></span>Tours</div>
-        <div class="nav-item" data-sec="bloqueo"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>Asientos</div>
         <div class="nav-item" data-sec="excursiones"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3Z"/><path d="M9 3v15M15 6v15"/></svg></span>Excursiones</div>
         <div class="nav-item" data-sec="slides"><span class="nav-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9" r="1.5"/><path d="m21 15-5-5L5 20"/></svg></span>Banners</div>
         <div class="nav-item" data-sec="seo"><span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4M8 11h6M11 8v6"/></svg></span>SEO</div>
@@ -283,11 +277,10 @@ img.hero-logo-static {
       <main class="main" id="mainContent">
         <!-- Dashboard -->
         <div class="sec active" id="sec-dashboard">
-          <div class="dashboard-hero"><div class="dashboard-kicker">Centro de operaciones</div><h1>Gestión de reservas</h1><p>Reservas, salidas, vehículos y asientos en un solo lugar. Empezá por una acción rápida o revisá el estado general.</p></div>
+          <div class="dashboard-hero"><div class="dashboard-kicker">Centro de operaciones</div><h1>Gestión de reservas</h1><p>Reservas, salidas y vehículos en un solo lugar. Empezá por una acción rápida o revisá el estado general.</p></div>
           <div class="quick-grid">
             <button class="quick-card" onclick="activateSection('reservas')"><b>Abrir CRM de reservas →</b><span>Buscar pasajeros, registrar contactos y actualizar estados.</span></button>
             <button class="quick-card" onclick="activateSection('disponibilidad')"><b>Configurar fechas →</b><span>Crear salidas por rango y asignar el vehículo.</span></button>
-            <button class="quick-card" onclick="activateSection('bloqueo')"><b>Gestionar asientos →</b><span>Bloquear o liberar ubicaciones por cada salida.</span></button>
           </div>
           <div class="stats">
             <div class="stat"><div class="stat-val" id="d-total"></div><div class="stat-lbl">Total reservas</div></div>
@@ -378,20 +371,6 @@ img.hero-logo-static {
           <div class="sec-title">Tours</div>
           <div id="av-tours-container"></div>
         </div>
-        <!-- Bloqueo de asientos -->
-        <div class="sec" id="sec-bloqueo">
-          <div class="sec-title">Bloqueo de Asientos</div>
-          <div class="card">
-            <div class="field"><label>Tour</label><select id="blk-tour" onchange="refreshBlockDateOptions()"></select></div>
-            <div class="field"><label>Fecha</label><select id="blk-date" onchange="renderManualSeatGrid()"></select></div>
-            <div class="manual-seat-grid" id="manual-seat-grid"></div>
-            <p style="font-size:12px;color:var(--muted);margin-top:10px;line-height:1.5">Los asientos que bloquees aquí quedarán ocupados para el tour y la fecha seleccionados. Las reservas confirmadas o pendientes también ocuparán esos asientos automáticamente.</p>
-            <div style="display:flex;gap:10px;margin-top:16px">
-              <button class="btn btn-p" onclick="saveManualSeats()">Guardar bloqueo</button>
-              <button class="btn btn-outline" onclick="clearManualSeats()">Limpiar todo</button>
-            </div>
-          </div>
-        </div>
         <!-- Reservas -->
         <div class="sec" id="sec-reservas">
           <div class="sec-title">Reservas · CRM</div>
@@ -423,7 +402,7 @@ img.hero-logo-static {
               <button class="btn btn-outline" style="color:#c0392b;border-color:#c0392b" onclick="borrarReservasCanceladas()">Borrar canceladas</button>
             </div>
             <div style="overflow-x:auto">
-              <table><thead><tr><th>#</th><th>Nombre</th><th>Contacto</th><th>Excursión</th><th>Fecha</th><th>Pers.</th><th>Asientos</th><th>Seña</th><th>Estado</th><th>Último intento</th><th>Acciones</th></tr></thead>
+              <table><thead><tr><th>#</th><th>Nombre</th><th>Contacto</th><th>Excursión</th><th>Fecha</th><th>Pers.</th><th>Seña</th><th>Estado</th><th>Último intento</th><th>Acciones</th></tr></thead>
               <tbody id="r-tbody"></tbody></table>
             </div>
           </div>
@@ -442,7 +421,7 @@ img.hero-logo-static {
       <div class="field"><label>Teléfono</label><input id="crm-tel"></div><div class="field"><label>Email</label><input id="crm-email" type="email"></div>
       <div class="field"><label>Excursión</label><input id="crm-excursion"></div><div class="field"><label>Clave del tour</label><select id="crm-excursion-key"></select></div>
       <div class="field"><label>Fecha</label><input id="crm-fecha" type="date"></div><div class="field"><label>Próximo seguimiento</label><input id="crm-followup" type="date"></div>
-      <div class="field"><label>Personas</label><input id="crm-personas" type="number" min="1" value="1"></div><div class="field"><label>Asientos</label><input id="crm-asientos" placeholder="Ej.: 3, 4"></div>
+      <div class="field"><label>Personas</label><input id="crm-personas" type="number" min="1" value="1"></div>
       <div class="field"><label>Seña ($)</label><input id="crm-senia" type="number" min="0" value="0"></div><div class="field"><label>Último contacto</label><input id="crm-ultimo" placeholder="Ej.: WhatsApp 18/06"></div>
       <div class="field wide"><label>Notas internas</label><textarea id="crm-notas" placeholder="Preferencias, dudas, próximos pasos…"></textarea></div>
     </div>
@@ -504,8 +483,9 @@ function saveTourConfig(cfg) {
 }
 function defaultTourConfig() {
   return {
-    patagonia_inedita: { name:'Patagonia Inédita', duration:'6 días / 5 noches', precio:185000, capacity:16, vehicle:'renault_master', dates:['2026-07-12','2026-08-16','2026-09-20'], blockedSeats:{} },
-    carretera_austral: { name:'Carretera Austral', duration:'8 días / 7 noches', precio:210000, capacity:16, vehicle:'renault_master', dates:['2026-07-26','2026-09-06','2026-10-18'], blockedSeats:{} }
+    patagonia_inedita: { name:'Patagonia Inédita', duration:'5 días / 4 noches', precio:2290000, capacity:16, vehicle:'renault_master', dates:['2026-07-12','2026-08-16','2026-09-20'] },
+    carretera_austral: { name:'Carretera Austral', duration:'7 noches', precio:0, capacity:16, vehicle:'renault_master', dates:['2026-07-26','2026-09-06','2026-10-18'] },
+    circuito_binacional_patagonia_inexplorada: { name:'Santa Cruz Inexplorada', duration:'8 días / 7 noches', precio:3350000, capacity:16, vehicle:'renault_master', dates:['2026-08-10','2026-09-14','2026-10-12'] }
   };
 }
 
@@ -865,7 +845,6 @@ function buildAvailability() {
     updateVehicleAdminPreview(key);
     renderAvailabilityDateList(key);
   });
-  refreshBlockDateOptions();
 }
 function renderAvailabilityDateList(key) {
   const cfg = getTourConfigAdmin();
@@ -910,7 +889,7 @@ function addAvailabilityRange(key) {
     if(weekdays.includes(cur.getDay())) { const val=localDateValue(cur); if(!dates.has(val)) added++; dates.add(val); }
   }
   cfg[key].dates = Array.from(dates).sort();
-  saveTourConfig(cfg); renderAvailabilityDateList(key); refreshBlockDateOptions();
+  saveTourConfig(cfg); renderAvailabilityDateList(key);
   showToast(added ? `${added} fecha${added===1?'':'s'} agregada${added===1?'':'s'}.` : 'Esas fechas ya estaban cargadas.');
 }
 function setNextFourWeekends(key) {
@@ -925,65 +904,14 @@ function setNextFourWeekends(key) {
 function clearFutureDates(key) {
   const cfg = getTourConfigAdmin(), today = localDateValue(new Date());
   cfg[key].dates = (cfg[key].dates||[]).filter(d=>d<today);
-  saveTourConfig(cfg); renderAvailabilityDateList(key); refreshBlockDateOptions(); showToast('Fechas futuras eliminadas.');
+  saveTourConfig(cfg); renderAvailabilityDateList(key); showToast('Fechas futuras eliminadas.');
 }
 function removeAvailabilityDate(key, d) {
   const cfg = getTourConfigAdmin();
   cfg[key].dates = (cfg[key].dates||[]).filter(x=>x!==d);
   saveTourConfig(cfg);
   renderAvailabilityDateList(key);
-  refreshBlockDateOptions();
   showToast('Fecha eliminada.');
-}
-
-// -- Bloqueo de asientos ----------------------------------------
-function refreshBlockDateOptions() {
-  const cfg = getTourConfigAdmin();
-  const key = document.getElementById('blk-tour').value || Object.keys(cfg)[0];
-  const dates = (cfg[key].dates||[]).slice().sort();
-  document.getElementById('blk-date').innerHTML = dates.map(d => `<option value="${d}">${new Date(d+'T12:00:00').toLocaleDateString('es-AR',{day:'2-digit',month:'long',year:'numeric'})}</option>`).join('') || '<option value="">Sin fechas</option>';
-  renderManualSeatGrid();
-}
-function reservedSeatsForAdmin(key, date) {
-  return readReservas().filter(r => (r.excursionKey||'')===key && r.fecha===date && r.estado!=='cancelada').flatMap(r => String(r.asientos||'').split(/[^0-9]+/).map(Number).filter(Boolean));
-}
-function renderManualSeatGrid() {
-  const cfg = getTourConfigAdmin();
-  const key = document.getElementById('blk-tour').value;
-  const date = document.getElementById('blk-date').value;
-  const grid = document.getElementById('manual-seat-grid');
-  if(!key || !date) { grid.innerHTML='<div class="empty">Cargá una fecha para bloquear asientos.</div>'; return; }
-  const manual = ((cfg[key].blockedSeats||{})[date]||[]).map(Number);
-  const reserved = reservedSeatsForAdmin(key, date);
-  const capacity = Math.max(1, Math.min(16, parseInt(cfg[key].capacity,10) || 16));
-  grid.innerHTML = Array.from({length:capacity},(_,i)=>i+1).map(n => {
-    const isReserved = reserved.includes(n);
-    return `<label class="manual-seat ${isReserved ? 'reserved' : ''}">
-      <input type="checkbox" value="${n}" ${manual.includes(n) ? 'checked' : ''} ${isReserved ? 'disabled' : ''}>
-      ${n}
-    </label>`;
-  }).join('');
-}
-function saveManualSeats() {
-  const cfg = getTourConfigAdmin();
-  const key = document.getElementById('blk-tour').value;
-  const date = document.getElementById('blk-date').value;
-  if(!key || !date) return;
-  cfg[key].blockedSeats = cfg[key].blockedSeats || {};
-  cfg[key].blockedSeats[date] = Array.from(document.querySelectorAll('#manual-seat-grid input:checked')).map(i=>parseInt(i.value,10)).sort((a,b)=>a-b);
-  saveTourConfig(cfg);
-  showToast('Asientos bloqueados actualizados.');
-}
-function clearManualSeats() {
-  const cfg = getTourConfigAdmin();
-  const key = document.getElementById('blk-tour').value;
-  const date = document.getElementById('blk-date').value;
-  if(!key || !date) return;
-  cfg[key].blockedSeats = cfg[key].blockedSeats || {};
-  cfg[key].blockedSeats[date] = [];
-  saveTourConfig(cfg);
-  renderManualSeatGrid();
-  showToast('Asientos liberados.');
 }
 
 // -- Reservas: exportar Excel y sincronizar con Google Sheets ---
@@ -994,7 +922,7 @@ function reservaRows(){
   const reservas=readReservas();
   return reservas.map((r,i)=>({
     numero:i+1, nombre:r.nombre||'', telefono:r.tel||'', email:r.email||'', excursion:r.excursion||'',
-    excursionKey:r.excursionKey||'', fecha:r.fecha||'', personas:r.personas||'', asientos:r.asientos||'',
+    excursionKey:r.excursionKey||'', fecha:r.fecha||'', personas:r.personas||'',
     senia:r.senia||0, estado:r.estado||'', ultimoContacto:r.ultimo||'', followUp:r.followup||'', notas:r.notas||''
   }));
 }
@@ -1002,10 +930,10 @@ function exportReservasExcel(){
   const rows=reservaRows();
   if(!rows.length){showToast('No hay reservas para exportar.');return;}
   if(!window.XLSX){showToast('No se pudo cargar la librería de Excel. Revisá tu conexión.');return;}
-  const headers=['#','Nombre','Teléfono','Email','Excursión','Clave tour','Fecha','Personas','Asientos','Seña','Estado','Último contacto','Próximo seguimiento','Notas'];
-  const data=[headers].concat(rows.map(r=>[r.numero,r.nombre,r.telefono,r.email,r.excursion,r.excursionKey,r.fecha,r.personas,r.asientos,r.senia,r.estado,r.ultimoContacto,r.followUp,r.notas]));
+  const headers=['#','Nombre','Teléfono','Email','Excursión','Clave tour','Fecha','Personas','Seña','Estado','Último contacto','Próximo seguimiento','Notas'];
+  const data=[headers].concat(rows.map(r=>[r.numero,r.nombre,r.telefono,r.email,r.excursion,r.excursionKey,r.fecha,r.personas,r.senia,r.estado,r.ultimoContacto,r.followUp,r.notas]));
   const ws=XLSX.utils.aoa_to_sheet(data);
-  ws['!cols']=[{wch:4},{wch:22},{wch:16},{wch:24},{wch:24},{wch:14},{wch:12},{wch:9},{wch:10},{wch:10},{wch:14},{wch:18},{wch:18},{wch:30}];
+  ws['!cols']=[{wch:4},{wch:22},{wch:16},{wch:24},{wch:24},{wch:14},{wch:12},{wch:9},{wch:10},{wch:14},{wch:18},{wch:18},{wch:30}];
   const wb=XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(wb,ws,'Reservas');
   XLSX.writeFile(wb,'zoyen-reservas-'+new Date().toISOString().slice(0,10)+'.xlsx');
@@ -1054,7 +982,7 @@ async function pullReservasFromSheets(){
       const candidate={
         nombre:row.nombre||row.Nombre||'', tel:row.telefono||row.Teléfono||row.tel||'', email:row.email||row.Email||'',
         excursion:row.excursion||row['Excursión']||'', excursionKey:row.excursionKey||row['Clave tour']||'',
-        fecha:row.fecha||row.Fecha||'', personas:row.personas||row.Personas||1, asientos:row.asientos||row.Asientos||'',
+        fecha:row.fecha||row.Fecha||'', personas:row.personas||row.Personas||1,
         senia:row.senia||row['Seña']||0, estado:row.estado||row.Estado||'consulta',
         ultimo:row.ultimoContacto||row['Último contacto']||'', followup:row.followUp||row['Próximo seguimiento']||'',
         notas:row.notas||row.Notas||''
@@ -1100,7 +1028,6 @@ function buildReservas() {
       <td>${r.excursion}</td>
       <td>${r.fecha ? new Date(r.fecha+'T12:00:00').toLocaleDateString('es-AR',{day:'2-digit',month:'2-digit',year:'numeric'}) : ''}</td>
       <td style="text-align:center">${r.personas}</td>
-      <td style="text-align:center">${r.asientos||''}</td>
       <td style="color:var(--ember);font-weight:600">$${(r.senia||0).toLocaleString('es-AR')}</td>
       <td>${badge(r.estado)}</td>
       <td style="font-size:11px;color:var(--muted)">${r.followUp ? 'Seguimiento: '+r.followUp : (r.ultimoIntento||r.creado||'')}</td>
@@ -1119,7 +1046,7 @@ function openReservaEditor(idx=-1) {
   const cfg = getTourConfigAdmin();
   document.getElementById('crm-index').value = idx;
   document.getElementById('crm-excursion-key').innerHTML = '<option value="">Sin asociar</option>'+Object.keys(cfg).map(k=>`<option value="${k}">${cfg[k].name||k}</option>`).join('');
-  const values = {nombre:r.nombre||'',estado:r.estado||'consulta',tel:r.tel||'',email:r.email||'',excursion:r.excursion||'',fecha:r.fecha||'',followup:r.followUp||'',personas:r.personas||1,asientos:r.asientos||'',senia:r.senia||0,ultimo:r.ultimoIntento||'',notas:r.notas||''};
+  const values = {nombre:r.nombre||'',estado:r.estado||'consulta',tel:r.tel||'',email:r.email||'',excursion:r.excursion||'',fecha:r.fecha||'',followup:r.followUp||'',personas:r.personas||1,senia:r.senia||0,ultimo:r.ultimoIntento||'',notas:r.notas||''};
   Object.keys(values).forEach(k=>{ const el=document.getElementById('crm-'+k); if(el) el.value=values[k]; });
   document.getElementById('crm-excursion-key').value = r.excursionKey||'';
   document.getElementById('crm-modal').classList.add('open');
@@ -1133,7 +1060,7 @@ function saveReservaEditor() {
     tel:document.getElementById('crm-tel').value.trim(), email:document.getElementById('crm-email').value.trim(),
     excursion:document.getElementById('crm-excursion').value.trim(), excursionKey:document.getElementById('crm-excursion-key').value,
     fecha:document.getElementById('crm-fecha').value, followUp:document.getElementById('crm-followup').value,
-    personas:parseInt(document.getElementById('crm-personas').value,10)||1, asientos:document.getElementById('crm-asientos').value.trim(),
+    personas:parseInt(document.getElementById('crm-personas').value,10)||1,
     senia:parseInt(document.getElementById('crm-senia').value,10)||0, ultimoIntento:document.getElementById('crm-ultimo').value.trim()||now,
     notas:document.getElementById('crm-notas').value.trim(), creado:prev.creado||now
   };
@@ -1204,7 +1131,7 @@ function cloudToLocalReservation(r) {
   return {
     id:r.id, cloudId:r.id, sincronizada:true, nombre:r.customer_name||'', tel:r.customer_phone||'', email:r.customer_email||'',
     excursionKey:r.tour_key||'', excursion:r.tour_name||'', fecha:r.departure_date||'', personas:r.people_count||1,
-    asientos:Array.isArray(r.seats)?r.seats.join(', '):'', senia:Number(r.deposit_amount)||0,
+    senia:Number(r.deposit_amount)||0,
     estado:stateMap[r.status]||'pendiente', paymentStatus:r.payment_status||'pending', paymentMethod:r.payment_method||'not_selected',
     creado:r.created_at?new Date(r.created_at).toLocaleString('es-AR'):'', ultimoIntento:r.updated_at?new Date(r.updated_at).toLocaleString('es-AR'):'', notas:r.admin_notes||''
   };
@@ -1508,8 +1435,6 @@ textarea {
   .exc-card,
   .tour-highlights,
   .inc-card,
-  .res-form-panel,
-  .res-seat-panel,
   .admin-panel,
   .modal-content,
   .zoyi-panel {
