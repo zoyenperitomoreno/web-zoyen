@@ -1095,7 +1095,7 @@ function buildReservas() {
     const puedeRetarget = (r.estado==='pendiente'||r.estado==='pago_iniciado') && r.tel;
     return `<tr>
       <td style="color:var(--stone)">#${idx+1}</td>
-      <td style="font-weight:500">${r.nombre}</td>
+      <td style="font-weight:500">${r.nombre}${r.origen==='zoyi' ? ` <span title="Consulta vía Zoyi" style="display:inline-block;font-size:10px;font-weight:700;color:var(--ember);background:rgba(212,119,42,.15);border:1px solid rgba(212,119,42,.4);border-radius:3px;padding:1px 5px;vertical-align:middle;">ZOYI</span>` : ''}</td>
       <td style="font-size:12px;color:var(--stone)">${r.tel||''}<br>${r.email||''}</td>
       <td>${r.excursion}</td>
       <td>${r.fecha ? new Date(r.fecha+'T12:00:00').toLocaleDateString('es-AR',{day:'2-digit',month:'2-digit',year:'numeric'}) : ''}</td>

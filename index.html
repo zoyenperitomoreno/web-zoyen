@@ -5680,6 +5680,10 @@ applyLang(currentLang);
   var chips    = document.getElementById("zoyiChips");
   var waLink   = "https://wa.me/5492974432855";
 
+  // -- Flujo guiado de consulta (lead) -------------------------------
+  var leadDraft = null; // {producto, personas, fecha, nombre, telefono, step}
+  var LEAD_STEP = { PERSONAS:"personas", FECHA:"fecha", CONTACTO:"contacto", CONFIRMAR:"confirmar" };
+
   function getLang(){ return typeof currentLang !== 'undefined' ? currentLang : 'es'; }
 
   var UI = {
@@ -5693,7 +5697,7 @@ applyLang(currentLang);
       datesCta: " Si querés reservar, tocá Reservar, elegí experiencia, fecha y asientos.",
       pricesPer: " Precio en pesos argentinos AR por persona.",
       pricesAll: "Precios AR por persona: ",
-      resAnswer: "Para reservar: 1) tocá Reservar, 2) elegí Tour o Excursión, 3) seleccioná fecha, 4) ingresá tus datos, 5) elegí asiento. La seña es el 20% del total.",
+      resAnswer: "Decime qué tour o excursión te interesa y te voy preguntando cantidad de personas y fecha tentativa. Al final armamos un resumen y seguimos por WhatsApp para confirmar precio, fecha y cupo.",
       locAnswer: "Zoyen Turismo está en Perito Moreno, Santa Cruz, Patagonia Argentina. Salen excursiones a Cueva de las Manos, Parque Patagonia, Ruta 41, Lago Posadas y Carretera Austral.",
       compareAnswer: "Para poco tiempo: excursiones de día — Cueva de las Manos, Capillas de Mármol, Ruta 41, Lago Posadas o Parque Patagonia. Para viaje completo: Patagonia Inédita (5 días), Santa Cruz Inexplorada (8 días, con vuelo incluido) o Carretera Austral (salida grupal). Arqueología: Cueva o Charcamata. Navegación: Capillas. Ruta escénica: Ruta 41 o Lago Posadas.",
       wellnessAnswer: "Tenemos una línea de Nuevas Experiencias con dos propuestas: Off Road 4x4 (salidas con tu propia camioneta por caminos alternativos) y Viajes con Sentido (retiros introspectivos de fin de semana o una semana, con terapias como Reiki, Grounding y Biodescodificación). Más info en nuevas-experiencias.html.",
@@ -5716,7 +5720,7 @@ applyLang(currentLang);
       datesCta: " To book, tap Book, choose your experience, date and seats.",
       pricesPer: " Price in Argentine pesos (ARS) per person.",
       pricesAll: "Prices ARS per person: ",
-      resAnswer: "To book: 1) tap Book, 2) choose Tour or Excursion, 3) select a date, 4) enter your details, 5) choose your seat. Deposit is 20% of total.",
+      resAnswer: "Tell me which tour or excursion you're interested in and I'll ask for the number of people and a tentative date. We'll wrap up with a summary and continue on WhatsApp to confirm price, date and availability.",
       locAnswer: "Zoyen Turismo is based in Perito Moreno, Santa Cruz, Argentine Patagonia. Excursions depart to Cave of Hands, Parque Nacional Patagonia, Ruta 41, Lake Posadas and Carretera Austral.",
       compareAnswer: "Short on time? Day excursions: Cave of Hands, Marble Chapels and Cathedrals, Ruta 41, Lake Posadas or Parque Nacional Patagonia. Full trip: Unexplored Patagonia (5 days), Unexplored Santa Cruz (8 days, flight included) or Carretera Austral (group departure). Archaeology: Cave of Hands or Charcamata. Navigation: Marble Chapels and Cathedrals. Scenic: Ruta 41 or Lake Posadas.",
       wellnessAnswer: "We have a New Experiences line with two proposals: Off Road 4x4 (guided outings with your own vehicle on alternative routes) and Journeys with Purpose (weekend or week-long introspective retreats, with therapies like Reiki, Grounding and Biodecoding). More info at nuevas-experiencias.html.",
@@ -5739,7 +5743,7 @@ applyLang(currentLang);
       datesCta: " Para reservar, toque em Reservar, escolha experiência, data e assentos.",
       pricesPer: " Preço em pesos argentinos (ARS) por pessoa.",
       pricesAll: "Preços ARS por pessoa: ",
-      resAnswer: "Para reservar: 1) toque em Reservar, 2) escolha um tour ou uma excursão, 3) selecione data, 4) insira seus dados, 5) escolha assento. Sinal = 20% do total.",
+      resAnswer: "Me diga qual tour ou excursão te interessa e vou perguntar a quantidade de pessoas e uma data tentativa. No final, fazemos um resumo e seguimos pelo WhatsApp para confirmar preço, data e disponibilidade.",
       locAnswer: "Zoyen Turismo fica em Perito Moreno, Santa Cruz, Patagônia Argentina. Excursões partem para Cueva de las Manos, Parque Patagônia, Rota 41, Lago Posadas e Carretera Austral.",
       compareAnswer: "Com pouco tempo, excursões de dia: Cueva de las Manos, Capelas de Mármore, Rota 41, Lago Posadas ou Parque Patagônia. Viagem completa: Patagônia Inédita (5 dias), Santa Cruz Inexplorada (8 dias, com voo incluído) ou Carretera Austral (saída em grupo).",
       wellnessAnswer: "Temos uma linha de Novas Experiências com duas propostas: Off Road 4x4 (saídas com sua própria caminhonete por caminhos alternativos) e Viagens com Sentido (retiros introspectivos de fim de semana ou de uma semana, com terapias como Reiki, Grounding e Biodescodificação). Mais informações em nuevas-experiencias.html.",
@@ -5762,7 +5766,7 @@ applyLang(currentLang);
       datesCta: " 예약하려면 예약 버튼을 누르고 투어, 날짜, 좌석을 선택하세요.",
       pricesPer: " 1인당 아르헨티나 페소(ARS) 가격.",
       pricesAll: "1인당 ARS 가격: ",
-      resAnswer: "예약 방법: 1) 예약 클릭, 2) 투어 또는 투어 선택, 3) 날짜 선택, 4) 정보 입력, 5) 좌석 선택. 예약금은 총액의 20%입니다.",
+      resAnswer: "관심 있는 투어나 투어를 알려주시면 인원수와 예상 날짜를 물어보겠습니다. 마지막에 요약을 정리하고 왓츠앱으로 가격, 날짜, 예약 가능 여부를 확인합니다.",
       locAnswer: "Zoyen Turismo는 아르헨티나 파타고니아 산타크루스주 페리토 모레노에 있습니다. 쿠에바 데 라스 마노스, 파타고니아 국립공원, 41번 도로, 포사다스 호수, 카레테라 아우스트랄로 투어가 출발합니다.",
       compareAnswer: "시간이 부족할 때 당일 투어: 쿠에바 데 라스 마노스, 마블 채플, 41번 도로, 포사다스 호수 또는 파타고니아 국립공원. 전체 여행: 미지의 파타고니아(5일), 미지의 산타크루스(8일, 항공편 포함) 또는 카레테라 아우스트랄(단체 출발). 고고학: 쿠에바 데 라스 마노스 또는 차르카마타. 항해: 마블 채플. 경치 도로: 41번 도로 또는 포사다스 호수.",
       wellnessAnswer: "두 가지 새로운 경험이 있습니다: 오프로드 4x4(자신의 차량으로 대체 경로를 달리는 가이드 투어)와 의미 있는 여행(레이키, 그라운딩, 바이오디코딩 같은 치료법이 포함된 주말 또는 일주일간의 내면 여행 리트릿). 자세한 내용은 nuevas-experiencias.html에서 확인하세요.",
@@ -5833,6 +5837,63 @@ applyLang(currentLang);
       ko:{type:"무엇을 확인하시겠어요?",exc:"당일 투어",tour:"작가 투어",pickExc:"여행을 선택하세요:",pickTour:"투어를 선택하세요:"}
     })[lang]||({type:"¿Qué querés consultar?",exc:"Excursiones",tour:"Tours de autor",pickExc:"Elegí una excursión:",pickTour:"Elegí un tour de autor:"});
   }
+  function leadCopy(){
+    var lang=getLang();
+    return ({
+      es:{
+        askPersonas:"¿Para cuántas personas?", personasOptions:["1","2","3","4","5+"],
+        askFecha:"¿Tenés una fecha tentativa?", fechaSkip:"Todavía no sé",
+        fechaPlaceholder:"Escribí una fecha o mes aproximado y enviá",
+        askContacto:"Para que podamos contactarte, dejanos tu nombre y WhatsApp (ej: Juan Pérez, 1122334455)",
+        contactoPlaceholder:"Nombre y WhatsApp",
+        resumenTitle:"Así quedaría tu consulta:",
+        resumenProducto:"Experiencia: ", resumenPersonas:"Personas: ", resumenFecha:"Fecha tentativa: ",
+        resumenNombre:"Nombre: ", resumenTelefono:"WhatsApp: ",
+        confirmarBtn:"Continuar por WhatsApp →", editarBtn:"Volver a empezar",
+        waMensaje:function(d){ return "Hola! Soy "+d.nombre+". Quiero consultar por "+d.producto+" para "+d.personas+" persona(s)."+(d.fecha?" Fecha tentativa: "+d.fecha+".":"")+" Mi WhatsApp: "+d.telefono; },
+        despuesWa:"Quedó tu consulta registrada. En breve te respondemos por WhatsApp para coordinar precio, fecha y cupo."
+      },
+      en:{
+        askPersonas:"How many people?", personasOptions:["1","2","3","4","5+"],
+        askFecha:"Do you have a tentative date?", fechaSkip:"Not sure yet",
+        fechaPlaceholder:"Type an approximate date or month and send",
+        askContacto:"So we can contact you, please share your name and WhatsApp number (e.g. John Smith, 1122334455)",
+        contactoPlaceholder:"Name and WhatsApp",
+        resumenTitle:"Here's your inquiry:",
+        resumenProducto:"Experience: ", resumenPersonas:"People: ", resumenFecha:"Tentative date: ",
+        resumenNombre:"Name: ", resumenTelefono:"WhatsApp: ",
+        confirmarBtn:"Continue on WhatsApp →", editarBtn:"Start over",
+        waMensaje:function(d){ return "Hello! I'm "+d.nombre+". I'd like to ask about "+d.producto+" for "+d.personas+" people."+(d.fecha?" Tentative date: "+d.fecha+".":"")+" My WhatsApp: "+d.telefono; },
+        despuesWa:"Your inquiry was saved. We'll reply on WhatsApp shortly to confirm price, date and availability."
+      },
+      pt:{
+        askPersonas:"Para quantas pessoas?", personasOptions:["1","2","3","4","5+"],
+        askFecha:"Você tem uma data tentativa?", fechaSkip:"Ainda não sei",
+        fechaPlaceholder:"Digite uma data ou mês aproximado e envie",
+        askContacto:"Para que possamos contatar você, deixe seu nome e WhatsApp (ex: João Silva, 1122334455)",
+        contactoPlaceholder:"Nome e WhatsApp",
+        resumenTitle:"Assim ficaria sua consulta:",
+        resumenProducto:"Experiência: ", resumenPersonas:"Pessoas: ", resumenFecha:"Data tentativa: ",
+        resumenNombre:"Nome: ", resumenTelefono:"WhatsApp: ",
+        confirmarBtn:"Continuar pelo WhatsApp →", editarBtn:"Começar de novo",
+        waMensaje:function(d){ return "Olá! Sou "+d.nombre+". Quero consultar sobre "+d.producto+" para "+d.personas+" pessoa(s)."+(d.fecha?" Data tentativa: "+d.fecha+".":"")+" Meu WhatsApp: "+d.telefono; },
+        despuesWa:"Sua consulta foi registrada. Em breve responderemos pelo WhatsApp para confirmar preço, data e disponibilidade."
+      },
+      ko:{
+        askPersonas:"몇 명이신가요?", personasOptions:["1","2","3","4","5+"],
+        askFecha:"예상 날짜가 있으신가요?", fechaSkip:"아직 모르겠어요",
+        fechaPlaceholder:"대략적인 날짜나 월을 입력하고 전송하세요",
+        askContacto:"연락을 위해 이름과 왓츠앱 번호를 알려주세요 (예: 홍길동, 1122334455)",
+        contactoPlaceholder:"이름과 왓츠앱",
+        resumenTitle:"문의 내용은 다음과 같습니다:",
+        resumenProducto:"투어: ", resumenPersonas:"인원: ", resumenFecha:"예상 날짜: ",
+        resumenNombre:"이름: ", resumenTelefono:"왓츠앱: ",
+        confirmarBtn:"왓츠앱으로 계속하기 →", editarBtn:"다시 시작",
+        waMensaje:function(d){ return "안녕하세요! "+d.nombre+"입니다. "+d.producto+"에 대해 "+d.personas+"명 기준으로 문의하고 싶습니다."+(d.fecha?" 예상 날짜: "+d.fecha+".":"")+" 제 왓츠앱: "+d.telefono; },
+        despuesWa:"문의가 등록되었습니다. 곧 왓츠앱으로 가격, 날짜, 예약 가능 여부를 안내드리겠습니다."
+      }
+    })[lang]||null;
+  }
   function addChoices(prompt,options,intent){
     if(!messages)return;
     var d=document.createElement("div");
@@ -5877,6 +5938,95 @@ applyLang(currentLang);
     if(intent==="dates")return ui.datesBase+ui.datesExtra(p)+ui.datesCta;
     return productSummary(p,ui);
   }
+
+  // -- Flujo guiado de consulta (lead) -------------------------------
+  function startLeadFlow(productId){
+    var p=allProducts.find(function(item){return item.id===productId;});
+    if(!p)return;
+    leadDraft={ producto:p.name, productoKey:p.id, personas:"", fecha:"", nombre:"", telefono:"", step:LEAD_STEP.PERSONAS };
+    showLeadPersonas();
+  }
+  function showLeadPersonas(){
+    var lc=leadCopy(); if(!lc)return;
+    addChoices(lc.askPersonas, lc.personasOptions.map(function(n){
+      return {label:n, action:"lead-personas", value:n};
+    }), "lead");
+  }
+  function showLeadFecha(){
+    var lc=leadCopy(); if(!lc)return;
+    addChoices(lc.askFecha, [{label:lc.fechaSkip, action:"lead-fecha-skip", value:""}], "lead");
+    if(input){ input.placeholder=lc.fechaPlaceholder; input.dataset.zoyiLeadField="fecha"; input.focus(); }
+  }
+  function showLeadContacto(){
+    var lc=leadCopy(); if(!lc)return;
+    addMessage(lc.askContacto,"bot");
+    if(input){ input.placeholder=lc.contactoPlaceholder; input.dataset.zoyiLeadField="contacto"; input.focus(); }
+  }
+  function showLeadResumen(){
+    var lc=leadCopy(); if(!lc||!leadDraft)return;
+    var lines=[lc.resumenTitle,
+      lc.resumenProducto+leadDraft.producto,
+      lc.resumenPersonas+leadDraft.personas
+    ];
+    if(leadDraft.fecha) lines.push(lc.resumenFecha+leadDraft.fecha);
+    lines.push(lc.resumenNombre+leadDraft.nombre);
+    lines.push(lc.resumenTelefono+leadDraft.telefono);
+    addMessage(lines.join("\n"),"bot");
+    addChoices("", [
+      {label:lc.confirmarBtn, action:"lead-confirmar", value:"go"},
+      {label:lc.editarBtn, action:"lead-reset", value:"reset"}
+    ], "lead");
+    leadDraft.step=LEAD_STEP.CONFIRMAR;
+  }
+  function parseContacto(raw){
+    var parts=String(raw||"").split(",");
+    if(parts.length>=2){
+      return { nombre:parts[0].trim(), telefono:parts.slice(1).join(",").trim() };
+    }
+    var m=String(raw||"").match(/(\+?[\d\s\-()]{6,})/);
+    if(m){
+      return { nombre:String(raw||"").replace(m[0],"").trim() || "-", telefono:m[0].trim() };
+    }
+    return { nombre:String(raw||"").trim() || "-", telefono:"" };
+  }
+  function confirmarLead(){
+    if(!leadDraft)return;
+    var lc=leadCopy();
+    var ahora=new Date().toLocaleString('es-AR');
+    var reservas=readReservas();
+    var nueva={
+      id: Date.now(), nombre: leadDraft.nombre, tel: leadDraft.telefono, email:'',
+      excursionKey: leadDraft.productoKey, excursion: leadDraft.producto,
+      fecha: leadDraft.fecha||'', personas: leadDraft.personas,
+      asientos:'', senia:0, estado:'consulta',
+      origen:'zoyi', notas:'Consulta vía Zoyi: '+leadDraft.personas+' persona(s)'+(leadDraft.fecha?', fecha tentativa '+leadDraft.fecha:'')+'.',
+      creado: ahora, ultimoIntento: ahora
+    };
+    reservas.push(nueva);
+    writeReservas(reservas);
+    if (window.ZoyenCloud && ZoyenCloud.ready) {
+      ZoyenCloud.createReservation(nueva).then(function(result){
+        if(result && result.ok){
+          var current=readReservas(), local=current.find(function(r){return r.id===nueva.id;});
+          if(local){ if(result.data&&result.data.id) local.cloudId=result.data.id; local.sincronizada=true; writeReservas(current); }
+        }
+      }).catch(function(error){
+        console.error('No se pudo sincronizar la consulta de Zoyi:', error);
+      });
+    }
+    var msg=lc.waMensaje(leadDraft);
+    window.open(waLink+"?text="+encodeURIComponent(msg),"_blank","noopener");
+    addMessage(lc.despuesWa,"bot");
+    leadDraft=null;
+    if(input){ input.placeholder=""; delete input.dataset.zoyiLeadField; }
+  }
+  function resetLeadFlow(){
+    leadDraft=null;
+    if(input){ input.placeholder=""; delete input.dataset.zoyiLeadField; }
+    var lang=getLang(),ui=UI[lang]||UI.es;
+    addMessage(ui.fallback,"bot");
+  }
+
   function priceText(p){
     return money(p.price);
   }
@@ -5901,7 +6051,7 @@ applyLang(currentLang);
     if(isAsking(q,k.human))    return ui.humanAns();
     if(isAsking(q,k.dates))    return ui.datesBase+(p ? ui.datesExtra(p) : "")+ui.datesCta;
     if(isAsking(q,k.prices))   return p ? productBullet(p,ui)+"\n"+ui.pricesPer.trim() : ui.pricesAll.trim()+"\n"+allProducts.map(function(x){return productBullet(x,ui);}).join("\n");
-    if(isAsking(q,k.book))     return numberedSteps(ui.resAnswer);
+    if(isAsking(q,k.book))     return ui.resAnswer;
     if(isAsking(q,k.location)) return ui.locAnswer;
     if(isAsking(q,k.pdf))      return p&&p.pdf ? ui.pdfProduct(p) : ui.pdfBase;
     if(isAsking(q,k.excursion))return p ? productSummary(p,ui) : ui.listExc.trim()+"\n"+excursiones.map(function(x){return productBullet(x,ui);}).join("\n");
@@ -5918,8 +6068,32 @@ applyLang(currentLang);
     if(!val)return;
     addMessage(val,"user");
     if(input)input.value="";
+    // Si estamos en medio del flujo guiado, el texto libre responde ese paso puntual
+    var leadField = input && input.dataset.zoyiLeadField;
+    if(leadField && leadDraft){
+      if(leadField==="fecha"){
+        leadDraft.fecha=val; leadDraft.step=LEAD_STEP.CONTACTO;
+        if(input){ input.placeholder=""; delete input.dataset.zoyiLeadField; }
+        window.setTimeout(showLeadContacto,160);
+        return;
+      }
+      if(leadField==="contacto"){
+        var c=parseContacto(val);
+        leadDraft.nombre=c.nombre; leadDraft.telefono=c.telefono;
+        if(input){ input.placeholder=""; delete input.dataset.zoyiLeadField; }
+        window.setTimeout(showLeadResumen,160);
+        return;
+      }
+    }
     window.setTimeout(function(){
       var lang=getLang(),ui=UI[lang]||UI.es,q=normalize(val),p=findProduct(q),k=ui.kw;
+      if(isAsking(q,k.book)){
+        if(p){ startLeadFlow(p.id); return; }
+        if(isAsking(q,k.excursion)){ showProductChoices("book","excursion"); return; }
+        if(isAsking(q,k.tour)){ showProductChoices("book","tour"); return; }
+        showTypeChoices("book");
+        return;
+      }
       if(!p&&isAsking(q,k.prices)){showTypeChoices("prices");return;}
       if(!p&&isAsking(q,k.dates)){showTypeChoices("dates");return;}
       if(!p&&isAsking(q,k.excursion)){showProductChoices("details","excursion");return;}
@@ -5947,7 +6121,35 @@ applyLang(currentLang);
     }
     if(action==="product"){
       addMessage(b.textContent,"user");
+      if(intent==="book"){
+        window.setTimeout(function(){startLeadFlow(value);},120);
+        return;
+      }
       window.setTimeout(function(){addMessage(selectedProductAnswer(intent,value),"bot");},120);
+      return;
+    }
+    if(action==="lead-personas"){
+      addMessage(b.textContent,"user");
+      if(leadDraft){ leadDraft.personas=value; leadDraft.step=LEAD_STEP.FECHA; }
+      window.setTimeout(showLeadFecha,120);
+      return;
+    }
+    if(action==="lead-fecha-skip"){
+      addMessage(b.textContent,"user");
+      if(leadDraft){ leadDraft.fecha=""; leadDraft.step=LEAD_STEP.CONTACTO; }
+      if(input){ input.placeholder=""; delete input.dataset.zoyiLeadField; }
+      window.setTimeout(showLeadContacto,120);
+      return;
+    }
+    if(action==="lead-confirmar"){
+      addMessage(b.textContent,"user");
+      window.setTimeout(confirmarLead,120);
+      return;
+    }
+    if(action==="lead-reset"){
+      addMessage(b.textContent,"user");
+      window.setTimeout(resetLeadFlow,120);
+      return;
     }
   });
 
