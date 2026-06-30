@@ -3654,6 +3654,23 @@ function applyTourCardsConfig() {
 }
 applyTourCardsConfig();
 window.addEventListener('storage', e => { if(e.key==='zyt_tour_config') applyTourCardsConfig(); });
+async function syncTourConfigFromCloud() {
+  if (!window.ZoyenCloud || !ZoyenCloud.ready || typeof ZoyenCloud.getTourConfig !== 'function') return;
+  try {
+    const result = await ZoyenCloud.getTourConfig();
+    if(result && result.ok && result.data && Object.keys(result.data).length) {
+      localStorage.setItem('zyt_tour_config', JSON.stringify(result.data));
+      applyTourCardsConfig();
+      if(typeof applyEditableTourConfigToZoyi === 'function') applyEditableTourConfigToZoyi();
+      if(window.ZoyenCurrency && typeof window.ZoyenCurrency.convert === 'function') {
+        setTimeout(function(){ document.dispatchEvent(new Event('zoyen:prices-updated')); }, 50);
+      }
+    }
+  } catch(error) {
+    console.warn('No se pudo leer la configuracion de tours en Supabase:', error);
+  }
+}
+window.addEventListener('load', function(){ setTimeout(syncTourConfigFromCloud, 250); });
 
 // -- MODAL --------------------------------
 const modalWrap = document.getElementById('modalWrap');
@@ -4438,6 +4455,25 @@ applyLang(currentLang);
     {id:"carretera", name:"Carretera Austral",  aliases:["carretera austral","austral","ohiggins","tortel","cochrane","카레테 아우스트랄"], duration:"7 noches", capacity:14, type:"tour", pdf:"assets/pdfs/carretera-austral-itinerario.pdf", summary:"incluye Chile Chico, Cochrane, Caleta Tortel, Villa O\'Higgins, Puerto Río Tranquilo, Capillas de Mármol y Coyhaique. Por el momento, solo en salidas grupales, mínimo 10 personas.", includes:"Traslados durante todo el recorrido, guía especializado y alojamiento según itinerario. Seña del 40%. Consultar precio y disponibilidad.", url:"carretera-austral.html"},
     {id:"circuito_binacional", name:"Santa Cruz Inexplorada", aliases:["santa cruz inexplorada","santa cruz inexplorado","circuito binacional","patagonia inexplorada","binacional","los antiguos","cueva de las manos"], price:3350000, duration:"8 días / 7 noches", capacity:16, type:"tour", summary:"incluye vuelo Buenos Aires / Perito Moreno / Buenos Aires con American Jet, 4 noches en Los Antiguos y 3 en Perito Moreno, excursiones full day a Cueva de las Manos, Ruta Escénica 41 y Capillas y Catedrales de Mármol (Chile).", includes:"No incluye bebidas alcohólicas, cenas ni actividades opcionales. Tarifas en pesos argentinos. Seña $1.500.000 por persona. Confirmar por disponibilidad aérea.", url:"santa-cruz-inexplorada.html"}
   ];
+  function applyEditableTourConfigToZoyi() {
+    var cfg = {};
+    try { cfg = getTourConfig(); } catch(e) { cfg = {}; }
+    var map = {
+      patagonia: 'patagonia_inedita',
+      carretera: 'carretera_austral',
+      circuito_binacional: 'circuito_binacional_patagonia_inexplorada'
+    };
+    tours.forEach(function(t){
+      var src = cfg[map[t.id]];
+      if(!src) return;
+      if(src.name) t.name = src.name;
+      if(src.duration) t.duration = src.duration;
+      if(Number(src.precio) > 0) t.price = Number(src.precio);
+      if(Number(src.capacity) > 0) t.capacity = Number(src.capacity);
+      if(Array.isArray(src.dates)) t.dates = src.dates.slice();
+    });
+  }
+  applyEditableTourConfigToZoyi();
   var allProducts = excursiones.concat(tours);
 
   function normalize(t){ return (t||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/&middot;|·/g," ").replace(/[^a-z0-9\s/.-]/g," ").replace(/\s+/g," ").trim(); }
@@ -4578,7 +4614,7 @@ applyLang(currentLang);
     var p=allProducts.find(function(item){return item.id===id;});
     if(!p)return ui.fallback;
     if(intent==="prices")return productBullet(p,ui)+"\n"+ui.pricesPer.trim();
-    if(intent==="dates")return ui.datesBase+ui.datesExtra(p)+ui.datesCta;
+    if(intent==="dates")return ui.datesBase+ui.datesExtra(p)+dateListText(p)+ui.datesCta;
     return productSummary(p,ui);
   }
 
@@ -4642,6 +4678,7 @@ applyLang(currentLang);
       excursionKey: leadDraft.productoKey, excursion: leadDraft.producto,
       fecha: leadDraft.fecha||'', personas: leadDraft.personas,
       asientos:'', senia:0, estado:'consulta',
+      tipoConsulta:'zoyi_chat', leadType:'zoyi_chat', inquiryType:'zoyi_chat',
       origen:'zoyi', notas:'Consulta vía Zoyi: '+leadDraft.personas+' persona(s)'+(leadDraft.fecha?', fecha tentativa '+leadDraft.fecha:'')+'.',
       creado: ahora, ultimoIntento: ahora
     };
@@ -4673,6 +4710,14 @@ applyLang(currentLang);
   function priceText(p){
     return money(p.price);
   }
+  function dateListText(p) {
+    if(!p || !Array.isArray(p.dates) || !p.dates.length) return "";
+    var dates = p.dates.slice().sort().slice(0, 6).map(function(d){
+      try { return new Date(d + "T12:00:00").toLocaleDateString("es-AR",{day:"2-digit",month:"long",year:"numeric"}); }
+      catch(e) { return d; }
+    });
+    return " Fechas cargadas: " + dates.join(", ") + ".";
+  }
   function productLine(p,ui){ return p.name+": "+p.duration+", "+priceText(p)+", "+p.capacity+(ui ? ui.capacity:" personas")+"."; }
   function productBullet(p,ui){ return "- "+p.name+"\n  "+p.duration+" - "+priceText(p)+" - "+p.capacity+(ui ? ui.capacity:" personas"); }
   function productSummary(p,ui){
@@ -4692,7 +4737,7 @@ applyLang(currentLang);
     if(!q||q.length<2) return ui.fallback;
     var p=findProduct(q);
     if(isAsking(q,k.human))    return ui.humanAns();
-    if(isAsking(q,k.dates))    return ui.datesBase+(p ? ui.datesExtra(p) : "")+ui.datesCta;
+    if(isAsking(q,k.dates))    return ui.datesBase+(p ? ui.datesExtra(p)+dateListText(p) : "")+ui.datesCta;
     if(isAsking(q,k.prices))   return p ? productBullet(p,ui)+"\n"+ui.pricesPer.trim() : ui.pricesAll.trim()+"\n"+allProducts.map(function(x){return productBullet(x,ui);}).join("\n");
     if(isAsking(q,k.book))     return ui.resAnswer;
     if(isAsking(q,k.location)) return ui.locAnswer;

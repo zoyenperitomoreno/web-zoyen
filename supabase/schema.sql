@@ -6,10 +6,10 @@ create table if not exists public.reservations (
   updated_at timestamptz not null default now(),
   customer_name text not null,
   customer_phone text,
-  customer_email text not null,
+  customer_email text,
   tour_key text,
   tour_name text not null,
-  departure_date date not null,
+  departure_date date,
   people_count integer not null check (people_count between 1 and 30),
   seats integer[] not null default '{}',
   deposit_amount numeric(12,2) not null default 0,
@@ -19,9 +19,32 @@ create table if not exists public.reservations (
   payment_reference text,
   transfer_receipt_url text,
   admin_notes text,
+  lead_type text not null default 'reservation',
+  inquiry_type text,
   follow_up_at timestamptz,
-  source text not null default 'website'
+  source text not null default 'website',
+  check (
+    status = 'inquiry'
+    or (customer_email is not null and departure_date is not null)
+  )
 );
+
+alter table public.reservations alter column customer_email drop not null;
+alter table public.reservations alter column departure_date drop not null;
+alter table public.reservations add column if not exists lead_type text not null default 'reservation';
+alter table public.reservations add column if not exists inquiry_type text;
+do $$
+begin
+  if not exists (
+    select 1 from pg_constraint
+    where conname = 'reservations_inquiry_or_booking_required_fields'
+      and conrelid = 'public.reservations'::regclass
+  ) then
+    alter table public.reservations
+    add constraint reservations_inquiry_or_booking_required_fields
+    check (status = 'inquiry' or (customer_email is not null and departure_date is not null));
+  end if;
+end $$;
 
 create index if not exists reservations_departure_idx on public.reservations (tour_key, departure_date);
 create index if not exists reservations_status_idx on public.reservations (status, payment_status);
@@ -31,7 +54,7 @@ alter table public.reservations enable row level security;
 drop policy if exists "public can create reservations" on public.reservations;
 create policy "public can create reservations" on public.reservations
 for insert to anon with check (
-  status = 'pending_payment' and payment_status = 'pending' and source = 'website'
+  status in ('inquiry','pending_payment') and payment_status = 'pending' and source in ('website','zoyi')
 );
 
 drop policy if exists "authenticated staff can read reservations" on public.reservations;
@@ -68,3 +91,19 @@ $$;
 drop trigger if exists reservations_prevent_double_booking on public.reservations;
 create trigger reservations_prevent_double_booking before insert or update of seats, status on public.reservations
 for each row execute function public.prevent_double_booking();
+
+create table if not exists public.tour_config (
+  id text primary key default 'main',
+  config jsonb not null default '{}'::jsonb,
+  updated_at timestamptz not null default now()
+);
+
+alter table public.tour_config enable row level security;
+
+drop policy if exists "public can read tour config" on public.tour_config;
+create policy "public can read tour config" on public.tour_config
+for select to anon, authenticated using (true);
+
+drop policy if exists "authenticated staff can manage tour config" on public.tour_config;
+create policy "authenticated staff can manage tour config" on public.tour_config
+for all to authenticated using (true) with check (true);

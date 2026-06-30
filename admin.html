@@ -402,7 +402,7 @@ img.hero-logo-static {
               <button class="btn btn-outline" style="color:#c0392b;border-color:#c0392b" onclick="borrarReservasCanceladas()">Borrar canceladas</button>
             </div>
             <div style="overflow-x:auto">
-              <table><thead><tr><th>#</th><th>Nombre</th><th>Contacto</th><th>Excursión</th><th>Fecha</th><th>Pers.</th><th>Seña</th><th>Estado</th><th>Último intento</th><th>Acciones</th></tr></thead>
+              <table><thead><tr><th>#</th><th>Nombre</th><th>Contacto</th><th>Excursión</th><th>Fecha</th><th>Pers.</th><th>Seña</th><th>Tipo</th><th>Estado</th><th>Último intento</th><th>Acciones</th></tr></thead>
               <tbody id="r-tbody"></tbody></table>
             </div>
           </div>
@@ -482,7 +482,16 @@ function getTourConfig() {
   } catch(e) { return defaultTourConfig(); }
 }
 function saveTourConfig(cfg) {
-  try { localStorage.setItem(ZYT_TOUR_CONFIG_KEY, JSON.stringify(cfg)); return true; } catch(e) { return false; }
+  try {
+    localStorage.setItem(ZYT_TOUR_CONFIG_KEY, JSON.stringify(cfg));
+    if(window.ZoyenCloud && ZoyenCloud.ready && loggedIn && typeof ZoyenCloud.saveTourConfig === 'function') {
+      ZoyenCloud.saveTourConfig(cfg).catch(function(error){
+        console.warn('No se pudo guardar la configuracion de tours en Supabase:', error);
+        showToast('Se guardo en este equipo, pero falta sincronizar tours en la nube.');
+      });
+    }
+    return true;
+  } catch(e) { return false; }
 }
 function defaultTourConfig() {
   return {
@@ -649,7 +658,21 @@ function initPanel() {
   buildAvailability();
   buildReservas();
   loadSheetsUrlField();
+  syncCloudTourConfig();
   syncCloudReservations();
+}
+async function syncCloudTourConfig() {
+  if (!window.ZoyenCloud || !ZoyenCloud.ready || typeof ZoyenCloud.getTourConfig !== 'function') return;
+  try {
+    const result = await ZoyenCloud.getTourConfig();
+    if(result && result.ok && result.data && Object.keys(result.data).length) {
+      localStorage.setItem(ZYT_TOUR_CONFIG_KEY, JSON.stringify(result.data));
+      buildAvailability();
+      showToast('Tours sincronizados con la nube.');
+    }
+  } catch(error) {
+    console.warn('Tours sin conexion a Supabase:', error.message || error);
+  }
 }
 
 // -- Excursion data ---------------------------------------------
@@ -1070,6 +1093,7 @@ function buildReservas() {
       <td>${r.fecha ? new Date(r.fecha+'T12:00:00').toLocaleDateString('es-AR',{day:'2-digit',month:'2-digit',year:'numeric'}) : ''}</td>
       <td style="text-align:center">${r.personas}</td>
       <td style="color:var(--ember);font-weight:600">$${(r.senia||0).toLocaleString('es-AR')}</td>
+      <td style="font-size:11px;color:var(--stone)">${leadTypeLabel(r)}</td>
       <td>${badge(r.estado)}</td>
       <td style="font-size:11px;color:var(--muted)">${r.followUp ? 'Seguimiento: '+r.followUp : (r.ultimoIntento||r.creado||'')}</td>
       <td><div style="display:flex;gap:5px;flex-wrap:wrap;align-items:center">
@@ -1081,6 +1105,10 @@ function buildReservas() {
       </div></td>
     </tr>`;
   }).join('');
+}
+function leadTypeLabel(r) {
+  const value = r.inquiryType || r.leadType || (r.origen === 'zoyi' ? 'zoyi_chat' : (r.estado === 'consulta' ? 'tour_inquiry' : 'reservation'));
+  return ({reservation:'Reserva',zoyi_chat:'Zoyi',tour_inquiry:'Consulta tour',general_inquiry:'Consulta gral.'})[value] || value;
 }
 function openReservaEditor(idx=-1) {
   const reservas = readReservas(), r = idx>=0 ? reservas[idx] : {};
@@ -1103,13 +1131,15 @@ function saveReservaEditor() {
     fecha:document.getElementById('crm-fecha').value, followUp:document.getElementById('crm-followup').value,
     personas:parseInt(document.getElementById('crm-personas').value,10)||1,
     senia:parseInt(document.getElementById('crm-senia').value,10)||0, ultimoIntento:document.getElementById('crm-ultimo').value.trim()||now,
-    notas:document.getElementById('crm-notas').value.trim(), creado:prev.creado||now
+    notas:document.getElementById('crm-notas').value.trim(), creado:prev.creado||now,
+    leadType:prev.leadType || (document.getElementById('crm-estado').value === 'consulta' ? 'tour_inquiry' : 'reservation'),
+    inquiryType:prev.inquiryType || (document.getElementById('crm-estado').value === 'consulta' ? 'tour_inquiry' : 'reservation')
   };
   if(!r.nombre) { showToast('Ingresá el nombre de la persona.'); return; }
   if(idx>=0) reservas[idx]=r; else reservas.push(r);
   writeReservas(reservas); closeReservaEditor(); buildReservas(); buildDashboard(); showToast('Ficha guardada.');
   if(r.cloudId && window.ZoyenCloud && ZoyenCloud.ready) {
-    ZoyenCloud.updateReservation(r.cloudId,{status:localToCloudStatus(r.estado),admin_notes:r.notas||'',follow_up_at:r.followUp||null}).catch(function(error){ showToast('La ficha se guardó localmente, pero no pudo sincronizarse.'); });
+    ZoyenCloud.updateReservation(r.cloudId,{status:localToCloudStatus(r.estado),admin_notes:r.notas||'',follow_up_at:r.followUp||null,lead_type:r.leadType||'',inquiry_type:r.inquiryType||''}).catch(function(error){ showToast('La ficha se guardó localmente, pero no pudo sincronizarse.'); });
   }
 }
 function localToCloudStatus(status) {
@@ -1174,6 +1204,7 @@ function cloudToLocalReservation(r) {
     excursionKey:r.tour_key||'', excursion:r.tour_name||'', fecha:r.departure_date||'', personas:r.people_count||1,
     senia:Number(r.deposit_amount)||0,
     estado:stateMap[r.status]||'pendiente', paymentStatus:r.payment_status||'pending', paymentMethod:r.payment_method||'not_selected',
+    leadType:r.lead_type||'', inquiryType:r.inquiry_type||'',
     creado:r.created_at?new Date(r.created_at).toLocaleString('es-AR'):'', ultimoIntento:r.updated_at?new Date(r.updated_at).toLocaleString('es-AR'):'', notas:r.admin_notes||''
   };
 }
