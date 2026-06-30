@@ -3255,7 +3255,7 @@ img.hero-logo-static {
         <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,6,.95) 0%,rgba(10,8,6,.4) 50%,rgba(10,8,6,.05) 100%);transition:background .3s;" class="tour2-ov"></div>
         <div style="position:absolute;inset:0;padding:2rem;display:flex;flex-direction:column;justify-content:flex-end;">
           <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem;">
-            <span style="font-family:'Sora',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ember);background:rgba(212,119,42,.15);border:1px solid rgba(212,119,42,.4);padding:.22rem .7rem;border-radius:1px;" data-i18n="tour1_dur">5 días / 4 noches</span>
+            <span style="font-family:'Sora',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ember);background:rgba(212,119,42,.15);border:1px solid rgba(212,119,42,.4);padding:.22rem .7rem;border-radius:1px;" class="tour-dur-badge" data-i18n="tour1_dur">5 días / 4 noches</span>
           </div>
           <h3 style="font-family:'DM Serif Display',serif;font-size:1.9rem;font-weight:600;color:#f5f0e8;line-height:1.1;margin-bottom:.7rem;" data-i18n="tour1_name" data-name-es>Patagonia <em style="color:var(--sand)">Inédita</em></h3>
           <p style="font-size:.82rem;color:rgba(245,240,232,.65);line-height:1.6;margin-bottom:1.1rem;font-weight:300;" data-i18n="tour1_hi">Bosque Petrificado &middot; Cueva de las Manos &middot; Lago Posadas &middot; Carretera Austral &middot; Catedrales de Mármol</p>
@@ -3271,7 +3271,7 @@ img.hero-logo-static {
         <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,6,.95) 0%,rgba(10,8,6,.4) 50%,rgba(10,8,6,.05) 100%);transition:background .3s;" class="tour2-ov"></div>
         <div style="position:absolute;inset:0;padding:2rem;display:flex;flex-direction:column;justify-content:flex-end;">
           <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem;">
-            <span style="font-family:'Sora',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ember);background:rgba(212,119,42,.15);border:1px solid rgba(212,119,42,.4);padding:.22rem .7rem;border-radius:1px;" data-i18n="tour2_dur">8 días / 7 noches</span>
+            <span style="font-family:'Sora',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ember);background:rgba(212,119,42,.15);border:1px solid rgba(212,119,42,.4);padding:.22rem .7rem;border-radius:1px;" class="tour-dur-badge" data-i18n="tour2_dur">8 días / 7 noches</span>
           </div>
           <h3 style="font-family:'DM Serif Display',serif;font-size:1.9rem;font-weight:600;color:#f5f0e8;line-height:1.1;margin-bottom:.7rem;" data-i18n="tour2_name" data-name-es>Carretera <em style="color:var(--sand)">Austral</em></h3>
           <p style="font-size:.82rem;color:rgba(245,240,232,.65);line-height:1.6;margin-bottom:1.1rem;font-weight:300;" data-i18n="tour2_hi">Confluencia Nef y Baker &middot; Lago General Carrera &middot; Capillas de Mármol &middot; Mirador Laguna Verde</p>
@@ -3287,7 +3287,7 @@ img.hero-logo-static {
         <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,6,.95) 0%,rgba(10,8,6,.4) 50%,rgba(10,8,6,.05) 100%);transition:background .3s;" class="tour2-ov"></div>
         <div style="position:absolute;inset:0;padding:2rem;display:flex;flex-direction:column;justify-content:flex-end;">
           <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem;">
-            <span style="font-family:'Sora',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ember);background:rgba(212,119,42,.15);border:1px solid rgba(212,119,42,.4);padding:.22rem .7rem;border-radius:1px;" data-i18n="tour3_dur">8 días / 7 noches</span>
+            <span style="font-family:'Sora',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ember);background:rgba(212,119,42,.15);border:1px solid rgba(212,119,42,.4);padding:.22rem .7rem;border-radius:1px;" class="tour-dur-badge" data-i18n="tour3_dur">8 días / 7 noches</span>
           </div>
           <h3 style="font-family:'DM Serif Display',serif;font-size:1.9rem;font-weight:600;color:#f5f0e8;line-height:1.1;margin-bottom:.7rem;" data-i18n="tour3_name" data-name-es>Santa Cruz <em style="color:var(--sand)">Inexplorada</em></h3>
           <p style="font-size:.82rem;color:rgba(245,240,232,.65);line-height:1.6;margin-bottom:1.1rem;font-weight:300;" data-i18n="tour3_hi">Buenos Aires &middot; Perito Moreno &middot; Los Antiguos &middot; Cueva de las Manos &middot; Ruta Escénica 41 &middot; Capillas y Catedrales de M&aacute;rmol</p>
@@ -6051,6 +6051,7 @@ section[id] {
   backface-visibility: hidden !important;
   transform: translateZ(0) !important;
 }
+#tours .tour2-card span.tour-dur-badge,
 #tours .tour2-card span[data-i18n$="_dur"] {
   color: #ffd08a !important;
   background: linear-gradient(135deg, rgba(18, 12, 8, .92), rgba(44, 25, 12, .86)) !important;
