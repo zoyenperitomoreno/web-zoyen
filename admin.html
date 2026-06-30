@@ -807,8 +807,6 @@ function tourLabel(key, t) { return (t.name || key) + ' - ' + (t.duration || '')
 
 function buildAvailability() {
   const cfg = getTourConfigAdmin();
-  const opts = Object.keys(cfg).map(k => `<option value="${k}">${tourLabel(k,cfg[k])}</option>`).join('');
-  document.getElementById('blk-tour').innerHTML = opts;
   const vehicleOptsHtml = Object.keys(VEHICLE_OPTIONS).map(k => `<option value="${k}">${VEHICLE_OPTIONS[k].name}</option>`).join('');
   const container = document.getElementById('av-tours-container');
   container.innerHTML = Object.keys(cfg).map(key => {
