@@ -1089,7 +1089,7 @@ img.hero-logo-static {
         <span class="tour-side-flag grupal" data-i18n="side_flag_grupal">Salida grupal</span>
         <span class="tour-side-flag sena" data-i18n="side_flag_sena">Seña 40%</span>
       </div>
-      <div class="price"><span data-i18n="side_price_label">A confirmar</span><small data-i18n="side_price_note">por persona, salida grupal mínimo 10 pasajeros</small></div>
+      <div class="price"><span id="sidePriceMain" data-i18n="side_price_label">A confirmar</span><small data-i18n="side_price_note">por persona, salida grupal mínimo 10 pasajeros</small></div>
       <p class="tour-side-note" data-i18n="side_note1">Tarifa y fechas sujetas a confirmación de cupo mínimo. Seña del 40% para reservar el lugar y saldo a coordinar antes de la salida.</p>
       <p class="tour-side-note" data-i18n="side_note2">Por el momento, este tour se realiza solo en salidas grupales.</p>
     </aside>
@@ -3569,7 +3569,24 @@ a.cta-btn-g[href*="wa.me"]:hover::before {
   body>nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .z,
   body>nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .t{font-size:.76rem!important}
 }
-</style></body>
+</style>
+<script>
+// Precio base editable desde el panel de administración
+(function(){
+  try {
+    var cfg = JSON.parse(localStorage.getItem('zyt_tour_config') || '{}');
+    var t = cfg['carretera_austral'];
+    if (t && t.precio && Number(t.precio) > 0) {
+      var el = document.getElementById('sidePriceMain');
+      if (el) {
+        el.textContent = '$' + Number(t.precio).toLocaleString('es-AR');
+        el.removeAttribute('data-i18n');
+      }
+    }
+  } catch(e) {}
+})();
+</script>
+</body>
 </html>
 
 

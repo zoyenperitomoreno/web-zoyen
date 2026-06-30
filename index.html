@@ -3250,7 +3250,7 @@ img.hero-logo-static {
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;" class="tours-grid-2">
 
       <!-- Tour 1 -->
-      <div class="reveal tour2-card" style="position:relative;border-radius:4px;overflow:hidden;cursor:pointer;" onclick="location.href='patagonia-inedita.html'">
+      <div class="reveal tour2-card" id="tourcard-patagonia_inedita" style="position:relative;border-radius:4px;overflow:hidden;cursor:pointer;" onclick="location.href='patagonia-inedita.html'">
         <img src="assets/full_inedita.jpg" alt="Patagonia Inédita" style="width:100%;height:420px;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.25,.1,.25,1);">
         <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,6,.95) 0%,rgba(10,8,6,.4) 50%,rgba(10,8,6,.05) 100%);transition:background .3s;" class="tour2-ov"></div>
         <div style="position:absolute;inset:0;padding:2rem;display:flex;flex-direction:column;justify-content:flex-end;">
@@ -3266,7 +3266,7 @@ img.hero-logo-static {
       </div>
 
       <!-- Tour 2 -->
-      <div class="reveal reveal-delay tour2-card" style="position:relative;border-radius:4px;overflow:hidden;cursor:pointer;" onclick="location.href='carretera-austral.html'">
+      <div class="reveal reveal-delay tour2-card" id="tourcard-carretera_austral" style="position:relative;border-radius:4px;overflow:hidden;cursor:pointer;" onclick="location.href='carretera-austral.html'">
         <img src="assets/capillas.jpg" alt="Carretera Austral" onerror="this.src='assets/zoyen_turismo_patagonia_capillasdemarmol.jpg'" style="width:100%;height:420px;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.25,.1,.25,1);">
         <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,6,.95) 0%,rgba(10,8,6,.4) 50%,rgba(10,8,6,.05) 100%);transition:background .3s;" class="tour2-ov"></div>
         <div style="position:absolute;inset:0;padding:2rem;display:flex;flex-direction:column;justify-content:flex-end;">
@@ -3282,7 +3282,7 @@ img.hero-logo-static {
       </div>
 
       <!-- Tour 3 -->
-      <div class="reveal reveal-delay2 tour2-card" style="position:relative;border-radius:4px;overflow:hidden;cursor:pointer;" onclick="location.href='santa-cruz-inexplorada.html'">
+      <div class="reveal reveal-delay2 tour2-card" id="tourcard-circuito_binacional_patagonia_inexplorada" style="position:relative;border-radius:4px;overflow:hidden;cursor:pointer;" onclick="location.href='santa-cruz-inexplorada.html'">
         <img src="assets/zoyen_turismo_patagonia_capillasdemarmol.jpg" alt="Santa Cruz Inexplorada" onerror="this.src='assets/full_inedita.jpg'" style="width:100%;height:420px;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.25,.1,.25,1);">
         <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,6,.95) 0%,rgba(10,8,6,.4) 50%,rgba(10,8,6,.05) 100%);transition:background .3s;" class="tour2-ov"></div>
         <div style="position:absolute;inset:0;padding:2rem;display:flex;flex-direction:column;justify-content:flex-end;">
@@ -3629,6 +3629,31 @@ function applyHeroBannerConfig() {
 }
 applyHeroBannerConfig();
 window.addEventListener('storage', e => { if(e.key===HERO_BANNERS_KEY) applyHeroBannerConfig(); });
+
+// Tarjetas de tour del home: nombre, precio, duración e imagen editables desde el admin
+function applyTourCardsConfig() {
+  let cfg = {};
+  try { cfg = JSON.parse(localStorage.getItem('zyt_tour_config') || '{}'); } catch(e) { return; }
+  Object.keys(cfg).forEach(function(key) {
+    const card = document.getElementById('tourcard-' + key);
+    if (!card) return;
+    const t = cfg[key];
+    if (t.cardImage) {
+      const img = card.querySelector('img');
+      if (img) img.src = t.cardImage;
+    }
+    if (t.name) {
+      const h3 = card.querySelector('h3[data-name-es]');
+      if (h3) { h3.textContent = t.name; h3.removeAttribute('data-i18n'); }
+    }
+    if (t.duration) {
+      const durSpan = card.querySelector('span[data-i18n$="_dur"]');
+      if (durSpan) { durSpan.textContent = t.duration; durSpan.removeAttribute('data-i18n'); }
+    }
+  });
+}
+applyTourCardsConfig();
+window.addEventListener('storage', e => { if(e.key==='zyt_tour_config') applyTourCardsConfig(); });
 
 // -- MODAL --------------------------------
 const modalWrap = document.getElementById('modalWrap');

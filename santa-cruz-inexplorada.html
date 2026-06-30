@@ -1824,7 +1824,7 @@ body > nav .nav-actions.cta-nudge .nav-cta-btn::before {
         </div>
       </div>
       <aside class="side-card">
-        <div class="price">$3.350.000<small data-i18n="price1_note">por persona en base habitación doble</small></div>
+        <div class="price" id="sidePriceMain">$3.350.000<small data-i18n="price1_note">por persona en base habitación doble</small></div>
         <div class="price" style="margin-top:1.2rem;">$3.700.000<small data-i18n="price2_note">base habitación single</small></div>
         <p class="side-note" data-i18n="side_note1">Tarifas en pesos argentinos. Confirmar disponibilidad por WhatsApp debido a la disponibilidad aérea.</p>
         <span class="side-sena-flag" data-i18n="side_sena_flag">Seña $1.500.000 p/p</span>
@@ -2879,6 +2879,21 @@ body > nav .nav-actions.cta-nudge .nav-cta-btn::before {
   });
   if (toggle) toggle.addEventListener('click', function(){ hideBubble(); });
   setTimeout(showBubble, 2000);
+})();
+</script>
+<script>
+// Precio base doble editable desde el panel de administración
+(function(){
+  try {
+    var cfg = JSON.parse(localStorage.getItem('zyt_tour_config') || '{}');
+    var t = cfg['circuito_binacional_patagonia_inexplorada'];
+    if (t && t.precio && Number(t.precio) > 0) {
+      var el = document.getElementById('sidePriceMain');
+      if (el && el.firstChild && el.firstChild.nodeType === 3) {
+        el.firstChild.nodeValue = '$' + Number(t.precio).toLocaleString('es-AR');
+      }
+    }
+  } catch(e) {}
 })();
 </script>
 </body>

@@ -463,10 +463,13 @@ function getTourConfig() {
   try {
     const raw = localStorage.getItem(ZYT_TOUR_CONFIG_KEY) || localStorage.getItem('zoyen_tour_config');
     const saved = raw ? JSON.parse(raw) : {};
-    const cfg = {...defaultTourConfig(), ...saved};
-    if(saved.inedita && !saved.patagonia_inedita) cfg.patagonia_inedita = saved.inedita;
-    if(saved.carretera && !saved.carretera_austral) cfg.carretera_austral = saved.carretera;
-    delete cfg.inedita; delete cfg.carretera;
+    const defaults = defaultTourConfig();
+    const cfg = {};
+    Object.keys(defaults).forEach(function(key) {
+      cfg[key] = {...defaults[key], ...(saved[key] || {})};
+    });
+    if(saved.inedita && !saved.patagonia_inedita) cfg.patagonia_inedita = {...defaults.patagonia_inedita, ...saved.inedita};
+    if(saved.carretera && !saved.carretera_austral) cfg.carretera_austral = {...defaults.carretera_austral, ...saved.carretera};
     let repairedAny = false;
     Object.keys(cfg).forEach(function(key) {
       ['name','duration'].forEach(function(field) {
@@ -479,13 +482,13 @@ function getTourConfig() {
   } catch(e) { return defaultTourConfig(); }
 }
 function saveTourConfig(cfg) {
-  try { localStorage.setItem(ZYT_TOUR_CONFIG_KEY, JSON.stringify(cfg)); } catch(e) {}
+  try { localStorage.setItem(ZYT_TOUR_CONFIG_KEY, JSON.stringify(cfg)); return true; } catch(e) { return false; }
 }
 function defaultTourConfig() {
   return {
-    patagonia_inedita: { name:'Patagonia Inédita', duration:'5 días / 4 noches', precio:2290000, capacity:16, vehicle:'renault_master', dates:['2026-07-12','2026-08-16','2026-09-20'] },
-    carretera_austral: { name:'Carretera Austral', duration:'7 noches', precio:0, capacity:16, vehicle:'renault_master', dates:['2026-07-26','2026-09-06','2026-10-18'] },
-    circuito_binacional_patagonia_inexplorada: { name:'Santa Cruz Inexplorada', duration:'8 días / 7 noches', precio:3350000, capacity:16, vehicle:'renault_master', dates:['2026-08-10','2026-09-14','2026-10-12'] }
+    patagonia_inedita: { name:'Patagonia Inédita', duration:'5 días / 4 noches', precio:2290000, capacity:16, vehicle:'renault_master', dates:['2026-07-12','2026-08-16','2026-09-20'], cardImage:'assets/full_inedita.jpg' },
+    carretera_austral: { name:'Carretera Austral', duration:'7 noches', precio:0, capacity:16, vehicle:'renault_master', dates:['2026-07-26','2026-09-06','2026-10-18'], cardImage:'assets/capillas.jpg' },
+    circuito_binacional_patagonia_inexplorada: { name:'Santa Cruz Inexplorada', duration:'8 días / 7 noches', precio:3350000, capacity:16, vehicle:'renault_master', dates:['2026-08-10','2026-09-14','2026-10-12'], cardImage:'assets/zoyen_turismo_patagonia_capillasdemarmol.jpg' }
   };
 }
 
@@ -813,6 +816,15 @@ function buildAvailability() {
     const t = cfg[key];
     return `<div class="card" data-tour-key="${key}">
       <div class="card-title">${t.name || key}</div>
+      <div class="field"><label>Foto de portada (tarjeta del home)</label>
+        <div class="banner-image-row">
+          <input type="text" id="av-image-${key}" placeholder="assets/imagen.jpg o URL https://..." value="${escAttr(t.cardImage||'')}" oninput="updateTourImagePreview('${key}')">
+          <label class="btn btn-outline btn-sm banner-upload">Elegir archivo<input type="file" accept="image/*" hidden onchange="handleTourImageFile('${key}',this)"></label>
+        </div>
+        <div class="tour-image-preview" id="av-image-preview-${key}" style="margin-top:8px;height:90px;border-radius:4px;background-size:cover;background-position:center;background-image:url('${escAttr(t.cardImage||'')}')"></div>
+      </div>
+      <div class="field"><label>Nombre del tour</label><input type="text" id="av-name-${key}" value="${escAttr(t.name||'')}"/></div>
+      <div class="field"><label>Duración</label><input type="text" id="av-duration-${key}" value="${escAttr(t.duration||'')}"/></div>
       <div class="field"><label>Precio base ($)</label><input type="number" id="av-price-${key}" min="0" value="${t.precio||0}"/></div>
       <div class="field"><label>Capacidad mx.</label><input type="number" id="av-capacity-${key}" min="1" max="50" value="${t.capacity||16}"/></div>
       <div class="field">
@@ -821,6 +833,7 @@ function buildAvailability() {
         <div class="vehicle-admin-preview"><span class="vehicle-icon" id="av-vehicle-icon-${key}"></span><span id="av-vehicle-name-${key}"></span></div>
       </div>
       <button class="btn btn-p" onclick="saveAvailabilityConfig('${key}')" style="margin-top:8px">Guardar configuración</button>
+      <p style="font-size:11px;color:var(--muted);margin-top:8px">El nombre, duración, precio y foto se aplican en la web pública (tarjeta del home y página del tour) apenas guardás.</p>
       <div class="card-title" style="margin-top:24px">Fechas disponibles de este tour</div>
       <div id="av-date-list-${key}" style="padding:4px 0 16px"></div>
       <div class="date-tools">
@@ -844,6 +857,29 @@ function buildAvailability() {
     renderAvailabilityDateList(key);
   });
 }
+function updateTourImagePreview(key) {
+  const val = document.getElementById('av-image-'+key).value.trim();
+  const prev = document.getElementById('av-image-preview-'+key);
+  if (prev) prev.style.backgroundImage = val ? `url("${val.replace(/"/g,'%22')}")` : 'none';
+}
+function handleTourImageFile(key, input) {
+  const file = input.files && input.files[0]; if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const image = new Image();
+    image.onload = () => {
+      const scale = Math.min(1, 900/image.width, 700/image.height);
+      const canvas = document.createElement('canvas');
+      canvas.width = Math.round(image.width*scale); canvas.height = Math.round(image.height*scale);
+      canvas.getContext('2d').drawImage(image, 0, 0, canvas.width, canvas.height);
+      document.getElementById('av-image-'+key).value = canvas.toDataURL('image/jpeg', .78);
+      updateTourImagePreview(key);
+      showToast('Imagen lista. Guardá la configuración para aplicarla.');
+    };
+    image.src = e.target.result;
+  };
+  reader.readAsDataURL(file); input.value = '';
+}
 function renderAvailabilityDateList(key) {
   const cfg = getTourConfigAdmin();
   const t = cfg[key];
@@ -866,7 +902,14 @@ function saveAvailabilityConfig(key) {
   cfg[key].precio = (Number.isFinite(priceInput) && priceInput > 0) ? priceInput : (cfg[key].precio || 0);
   cfg[key].capacity = parseInt(document.getElementById(`av-capacity-${key}`).value) || 16;
   cfg[key].vehicle = document.getElementById(`av-vehicle-${key}`).value || 'renault_master';
-  saveTourConfig(cfg);
+  const nameInput = document.getElementById(`av-name-${key}`).value.trim();
+  if (nameInput) cfg[key].name = nameInput;
+  const durationInput = document.getElementById(`av-duration-${key}`).value.trim();
+  if (durationInput) cfg[key].duration = durationInput;
+  const imageInput = document.getElementById(`av-image-${key}`).value.trim();
+  if (imageInput) cfg[key].cardImage = imageInput;
+  if (!saveTourConfig(cfg)) { showToast('La imagen es demasiado pesada. Probá con otra más liviana.'); return; }
+  buildAvailability();
   showToast('Configuración guardada.');
 }
 function localDateValue(date) {
