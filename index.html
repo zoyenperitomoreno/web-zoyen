@@ -3755,7 +3755,7 @@ const DEFAULT_TOUR_CONFIG = {
     precio: 2290000,
     capacity: 16,
     vehicle: 'renault_master',
-    dates: ['2026-07-12','2026-08-16','2026-09-20'],
+    dates: ['2026-10-06','2026-10-20','2026-11-04','2026-12-09','2027-02-11','2027-03-25','2027-04-10'],
     blockedSeats: {}
   },
   carretera_austral: {
@@ -3992,7 +3992,7 @@ var translations = {
     tour3_dur: '8 días / 7 noches', tour3_name: 'Santa Cruz <em style="color:var(--sand)">Inexplorada</em>',
     tour3_hi: 'Buenos Aires · Perito Moreno · Los Antiguos · Cueva de las Manos · Ruta Escénica 41 · Capillas y Catedrales de Mármol',
     tour_ver: 'Ver itinerario →',
-    tour3_cta: '$3.350.000 p/p · Reservar →',
+    tour3_cta: '$3.350.000 p/p · Consultar →',
     bw_eye: 'Nuevas Experiencias', bw_title: 'Off Road 4x4 y Viajes con <em style="color:var(--sand)">Sentido</em>',
     bw_sub: 'Dos maneras nuevas de recorrer la Patagonia Profunda: turismo aventura 4x4 y retiros introspectivos, sin fronteras entre Santa Cruz y la Región de Aysén.',
     bw_btn: 'Ver más',
@@ -4118,7 +4118,7 @@ var translations = {
     tour3_dur: '8 dias / 7 noites', tour3_name: 'Santa Cruz <em style="color:var(--sand)">Inexplorada</em>',
     tour3_hi: 'Buenos Aires · Perito Moreno · Los Antiguos · Cueva de las Manos · Rota Cênica 41 · Capelas e Catedrais de Mármore',
     tour_ver: 'Ver roteiro →',
-    tour3_cta: '$3.350.000 ARS p/p · Reservar →',
+    tour3_cta: '$3.350.000 ARS p/p · Consultar →',
     bw_eye: 'Novas Experiências', bw_title: 'Off Road 4x4 e Viagens com <em style="color:var(--sand)">Sentido</em>',
     bw_sub: 'Duas novas formas de percorrer a Patagônia Profunda: turismo de aventura 4x4 e retiros introspectivos, sem fronteiras entre Santa Cruz e a Região de Aysén.',
     bw_btn: 'Saiba mais',
@@ -4347,7 +4347,7 @@ applyLang(currentLang);
       humanAns: function(){ return "Si querés hablar con alguien del equipo, podés usar WhatsApp +54 9 297 443-2855 o email zoyenperitomoreno@gmail.com. cerrar la consulta al final del formulario."; },
       datesBase: "Las reservas permiten elegir una fecha desde hoy en adelante. La disponibilidad real se valida por fecha, excursión y cupos.",
       datesExtra: function(p){ return " Para " + p.name + " la capacidad es de hasta " + p.capacity + " personas."; },
-      datesCta: " Si querés reservar, tocá Reservar, elegí experiencia, fecha y asientos.",
+      datesCta: " Si querés consultar, tocá Consultar, elegí experiencia, fecha y asientos.",
       pricesPer: " Precio en pesos argentinos AR por persona.",
       pricesAll: "Precios AR por persona: ",
       resAnswer: "Decime qué tour o excursión te interesa y te voy preguntando cantidad de personas y fecha tentativa. Al final armamos un resumen y seguimos por WhatsApp para confirmar precio, fecha y cupo.",
@@ -4435,17 +4435,17 @@ applyLang(currentLang);
   };
 
   var excursiones = [
-    {id:"cueva",    name:"Cueva de las Manos",                        aliases:["cueva","manos","pinturas","cave","hands","caverna"," 굴"], price:250000, pricePrivate:250000, duration:"día completo",      capacity:14, type:"excursion", summary:"sitio arqueológico Patrimonio Mundial, pinturas rupestres de más de 9.000 años.", includes:"Traslado en servicio privado, chofer/guía, vianda completa para almuerzo y entrada al Parque Provincial Cueva de las Manos y al Parque Patagonia. Consultar precio en salida grupal.", url:"excursion-cueva-de-las-manos.html"},
-    {id:"capillas", name:"Capillas y Catedrales de Mármol",           aliases:["capillas","marmol","catedrales","general carrera","marble","chapel","마블 채플","capelas"], price:50000, priceUsd:200, duration:"día completo", capacity:14, type:"excursion", summary:"navegación por el Lago General Carrera para ver formaciones de mármol. Solo salidas grupales ida y vuelta en el día.", includes:"Traslados ida y vuelta, guía, coffee break, navegación y almuerzo con bebida. Seña de $50.000 en pesos, saldo de USD 200 en dólar billete a la llegada.", url:"excursion-capillas-de-marmol.html"},
-    {id:"posadas",  name:"Lago Posadas con vuelta a la Meseta",       aliases:["posadas","lago posadas","ruta 41","ruta escenica","lake posadas","사다스","meseta"], price:320000, pricePrivate:270000, duration:"día completo (12 hs)", capacity:14, type:"excursion", summary:"recorrido panorámico por lagos, miradores y vuelta a la Meseta en camioneta 4x4.", includes:"Traslado en 4x4 con chofer/guía, vianda para almuerzo con bebida sin alcohol. $320.000 por persona si son 2; de 3 a 4 pasajeros, $270.000 cada uno.", url:"excursion-ruta41-lago-posadas.html"},
-    {id:"zeballos", name:"Los Antiguos y Ruta Escénica 41",           aliases:["zeballos","monte zeballos","ruta 41","세바요스","los antiguos"], price:250000, pricePrivate:250000, duration:"día completo", capacity:14, type:"excursion", summary:"travesía por Los Antiguos y la Ruta Escénica 41, con visita a chacra.", includes:"Traslados con chofer/guía ida y vuelta, almuerzo con bebida sin alcohol y visita a chacra en Los Antiguos. Consultar precio en salida grupal.", url:"excursion-ruta41-los-antiguos.html"},
-    {id:"charcamata",name:"Alero Charcamata",                         aliases:["charcamata","alero","차르카마타"], price:280000, duration:"medio día", capacity:14, type:"excursion", summary:"arte rupestre prístino, exclusiva en privado.", includes:"Traslado en 4x4, guía especializado y vianda para almuerzo. $280.000 cada uno si son 2 personas; consultar precio por 3 o 4 pasajeros.", url:"excursion-alero-charcamata.html"},
+    {id:"cueva", name:"Cueva de las Manos", aliases:["cueva","manos","pinturas","arqueología","río Pinturas"], price:250000, pricePrivate:250000, duration:"día completo", capacity:14, type:"excursion", summary:"sitio arqueológico Patrimonio Mundial, pinturas rupestres de más de 9.000 años.", includes:"Traslado en servicio privado, chofer/guía, vianda completa para almuerzo y entrada al Parque Provincial Cueva de las Manos y al Parque Patagonia. Consultar precio en salida grupal.", url:"excursion-cueva-de-las-manos.html"},
+    {id:"capillas", name:"Capillas y Catedrales de Mármol", aliases:["capillas","marmol","catedrales","general carrera"], price:50000, priceUsd:200, duration:"día completo", capacity:14, type:"excursion", summary:"navegación por el Lago General Carrera para ver formaciones de mármol. Solo salidas grupales ida y vuelta en el día.", includes:"Traslados ida y vuelta, guía, coffee break, navegación y almuerzo con bebida. Seña de $50.000 en pesos y saldo de USD 200 en dólar billete a la llegada.", url:"excursion-capillas-de-marmol.html"},
+    {id:"posadas", name:"Lago Posadas y Ruta Escénica 41", aliases:["posadas","lago posadas","ruta 41","ruta escénica"], price:320000, pricePrivate:270000, duration:"día completo (12 hs)", capacity:14, type:"excursion", summary:"recorrido panorámico por lagos, miradores y vuelta a la Meseta en camioneta 4x4.", includes:"Traslado en 4x4 con chofer/guía y vianda para almuerzo con bebida sin alcohol. $320.000 por persona si son 2; de 3 a 4 pasajeros, $270.000 cada uno.", url:"excursion-ruta41-lago-posadas.html"},
+    {id:"zeballos", name:"Los Antiguos y Ruta Escénica 41", aliases:["zeballos","monte zeballos","ruta 41","ruta escénica 41","los antiguos"], price:250000, pricePrivate:250000, duration:"día completo", capacity:14, type:"excursion", summary:"travesía por Los Antiguos y la Ruta Escénica 41, con visita a chacra.", includes:"Traslados con chofer/guía ida y vuelta, almuerzo con bebida sin alcohol y visita a chacra en Los Antiguos. Consultar precio en salida grupal.", url:"excursion-ruta41-los-antiguos.html"},
+    {id:"charcamata", name:"Alero Charcamata", aliases:["charcamata","alero"], price:280000, duration:"medio día", capacity:14, type:"excursion", summary:"arte rupestre prístino, exclusiva en privado.", includes:"Traslado en 4x4, guía especializado y vianda para almuerzo. $280.000 cada uno si son 2 personas; consultar precio por 3 o 4 pasajeros.", url:"excursion-alero-charcamata.html"},
     {id:"parque",   name:"Portal Cañadón Pinturas - Parque Patagonia",  aliases:["parque","parque patagonia","canadon","can","pinturas","portal","파타고니아 공"], price:8000, duration:"medio día (5 hs)", capacity:14, type:"excursion", summary:"senderos, fauna, geología y vistas del noroeste de Santa Cruz.", includes:"Traslado en 4x4 o minibús con guía y merienda. No incluye almuerzo.", url:"excursion-parque-patagonia.html"},
     {id:"ascension",name:"PNP / Estancia La Ascensión",               aliases:["ascension","estancia","pnp"], price:7000, duration:"medio día (4 hs)", capacity:14, type:"excursion", summary:"salida corta vinculada al Parque Patagonia y la historia de estancia.", includes:"Traslado en 4x4 o minibús con guía. Salida corta combinable con el Portal Cañadón Pinturas.", url:"excursion-parque-patagonia.html"}
   ];
   var tours = [
-    {id:"patagonia", name:"Patagonia Inédita", aliases:["patagonia inedita","inedita","unexplored patagonia","미지 파타고니아"], price:2290000, duration:"5 días / 4 noches", capacity:14, type:"tour", pdf:"assets/pdfs/patagonia-inedita-itinerario.pdf", summary:"sale desde Comodoro Rivadavia y recorre Perito Moreno, Cueva de las Manos, Parque Patagonia, Los Antiguos, Ruta Escénica 41 y Capillas y Catedrales de Mármol.", includes:"Traslados desde y hacia el aeropuerto de Comodoro Rivadavia, 4 noches de hotel con desayuno y excursiones full day con todo incluido. No incluye bebidas alcohólicas ni cenas. Precio base doble $2.290.000, base single $2.590.000. Seña $1.000.000 por persona.", url:"patagonia-inedita.html"},
-    {id:"carretera", name:"Carretera Austral",  aliases:["carretera austral","austral","ohiggins","tortel","cochrane","카레테 아우스트랄"], duration:"7 noches", capacity:14, type:"tour", pdf:"assets/pdfs/carretera-austral-itinerario.pdf", summary:"incluye Chile Chico, Cochrane, Caleta Tortel, Villa O\'Higgins, Puerto Río Tranquilo, Capillas de Mármol y Coyhaique. Por el momento, solo en salidas grupales, mínimo 10 personas.", includes:"Traslados durante todo el recorrido, guía especializado y alojamiento según itinerario. Seña del 40%. Consultar precio y disponibilidad.", url:"carretera-austral.html"},
+    {id:"patagonia", name:"Patagonia Inédita", aliases:["patagonia inedita","inedita"], price:2290000, duration:"5 días / 4 noches", capacity:14, type:"tour", pdf:"assets/pdfs/patagonia-inedita-itinerario.pdf", summary:"sale desde Comodoro Rivadavia y recorre Perito Moreno, Cueva de las Manos, Parque Patagonia, Los Antiguos, Ruta Escénica 41 y Capillas y Catedrales de Mármol.", includes:"Traslados desde y hacia el aeropuerto de Comodoro Rivadavia, 4 noches de hotel con desayuno y excursiones full day con todo incluido. No incluye bebidas alcohólicas ni cenas. Base doble $2.290.000, base single $2.590.000. Seña $1.000.000 por persona.", url:"patagonia-inedita.html"},
+    {id:"carretera", name:"Carretera Austral", aliases:["carretera austral","austral","ohiggins","villa ohiggins","tortel","cochrane"], price:0, duration:"7 noches", capacity:14, type:"tour", pdf:"assets/pdfs/carretera-austral-itinerario.pdf", summary:"incluye Chile Chico, Cochrane, Caleta Tortel, Villa O'Higgins, Puerto Río Tranquilo, Capillas de Mármol y Coyhaique. Solo salidas grupales, mínimo 10 personas.", includes:"Traslados desde Perito Moreno ida y vuelta en minibús, alojamiento según itinerario, excursiones terrestres con chofer/guía, almuerzos con bebida sin alcohol y navegación a Capillas y Catedrales de Mármol. No incluye bebidas alcohólicas ni cenas. Consultar precio y disponibilidad.", url:"carretera-austral.html"},
     {id:"circuito_binacional", name:"Santa Cruz Inexplorada", aliases:["santa cruz inexplorada","santa cruz inexplorado","circuito binacional","patagonia inexplorada","binacional","los antiguos","cueva de las manos"], price:3350000, duration:"8 días / 7 noches", capacity:16, type:"tour", summary:"incluye vuelo Buenos Aires / Perito Moreno / Buenos Aires con American Jet, 4 noches en Los Antiguos y 3 en Perito Moreno, excursiones full day a Cueva de las Manos, Ruta Escénica 41 y Capillas y Catedrales de Mármol (Chile).", includes:"No incluye bebidas alcohólicas, cenas ni actividades opcionales. Tarifas en pesos argentinos. Seña $1.500.000 por persona. Confirmar por disponibilidad aérea.", url:"santa-cruz-inexplorada.html"}
   ];
   function applyEditableTourConfigToZoyi() {
@@ -4473,7 +4473,7 @@ applyLang(currentLang);
   function money(n){ return "$"+Number(n||0).toLocaleString("es-AR")+" AR p/p"; }
   function escapeHtml(s){
     return String(s||"").replace(/[&<>"']/g,function(c){
-      return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]||c;
+      return {"&":"&amp;","<":"&lt;",">":"&gt;",""":"&quot;","'":"&#39;"}[c]||c;
     });
   }
   function formatZoyiText(text){
@@ -4700,9 +4700,7 @@ applyLang(currentLang);
     addMessage(ui.fallback,"bot");
   }
 
-  function priceText(p){
-    return money(p.price);
-  }
+  function priceText(p){ if (!p.price) return "Consultar"; if (p.id === "capillas" && p.priceUsd) return "Seña $50.000 + USD " + p.priceUsd; return money(p.price); }
   function dateListText(p) {
     if(!p || !Array.isArray(p.dates) || !p.dates.length) return "";
     var dates = p.dates.slice().sort().slice(0, 6).map(function(d){
@@ -6408,6 +6406,15 @@ a.cta-btn-g[href*="wa.me"]:hover::before {
 }
 </style></body>
 </html>
+
+
+
+
+
+
+
+
+
 
 
 
