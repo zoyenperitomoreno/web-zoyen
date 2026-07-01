@@ -164,17 +164,28 @@ body > nav:not(.breadcrumb):not(.mobile-drawer) {
 .tour-intro-text p { font-size: 1.02rem; color: var(--stone); line-height: 1.85; font-weight: 300; margin-bottom: 1.2rem; }
 .tour-intro-text p strong { color: var(--ink); font-weight: 600; }
 .tour-intro-text h2 { margin-bottom: 1.4rem; }
-.tour-highlights {
+.tour-side-stack { display: flex; flex-direction: column; gap: 1.2rem; }
+.tour-highlights,
+.tour-schedule-card {
   background: var(--cream);
   border: 1px solid rgba(58,45,31,.1);
   border-top: 3px solid var(--ember);
-  border-radius: 3px; padding: 1.8rem;
+  border-radius: 3px;
+  padding: 1.65rem;
 }
-.tour-highlights h3 { font-family: 'DM Serif Display', serif; font-size: 1.2rem; font-weight: 600; color: var(--ink); margin-bottom: 1.2rem; padding-bottom: .8rem; border-bottom: 1px solid rgba(58,45,31,.1); }
-.hl-list { list-style: none; display: flex; flex-direction: column; gap: .7rem; }
-.hl-list li { display: flex; align-items: flex-start; gap: .8rem; font-size: .96rem; color: var(--stone); line-height: 1.5; }
-.hl-list li::before { content: '\2192'; color: var(--ember); font-weight: 700; flex-shrink: 0; margin-top: .1rem; }
-.hl-list li strong { color: var(--ink); font-weight: 600; }
+.tour-highlights h3,
+.tour-schedule-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.25rem; font-weight: 600; color: var(--ink); margin-bottom: 1.15rem; padding-bottom: .8rem; border-bottom: 1px solid rgba(58,45,31,.1); }
+.hl-list { list-style: none; display: grid; gap: .75rem; }
+.hl-list li { position: relative; padding: .75rem .8rem .75rem 1.8rem; background: rgba(255,255,255,.52); border: 1px solid rgba(58,45,31,.07); border-radius: 4px; font-size: .95rem; color: var(--stone); line-height: 1.55; }
+.hl-list li::before { content: '\2192'; position: absolute; left: .7rem; top: .72rem; color: var(--ember); font-weight: 700; }
+.hl-list li strong { display: block; color: var(--ink); font-weight: 700; margin-bottom: .15rem; }
+.hl-list li strong::after { content: ''; }
+.schedule-list { list-style: none; display: grid; gap: .55rem; }
+.schedule-list li { display: grid; grid-template-columns: 5.7rem 1fr; gap: .55rem; color: var(--stone); font-size: .94rem; line-height: 1.45; padding-bottom: .5rem; border-bottom: 1px solid rgba(58,45,31,.07); }
+.schedule-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+.schedule-list strong { color: var(--ink); font-weight: 700; }
+.tariff-list { margin-top: 1rem; }
+@media (max-width:600px) { .schedule-list li { grid-template-columns: 1fr; gap: .1rem; } }
 
 /* INCLUYE / NO INCLUYE */
 .inc-grid {
@@ -1136,17 +1147,38 @@ img.hero-logo-static {
         </div>
       </div>
     </div>
-    <div class="tour-highlights reveal reveal-delay">
-      <h3 data-i18n="hl_title">Highlights del tour</h3>
-      <ul class="hl-list">
-        <li data-i18n="hl_1"><strong>Cueva de las Manos</strong> · excursión de día completo con guía especializado, vianda, entrada incluida y visita al sitio arqueológico.</li>
-        <li data-i18n="hl_2"><strong>Parque Patagonia</strong> · recorrido incluido junto a Cueva de las Manos, en una jornada completa desde Perito Moreno.</li>
-        <li data-i18n="hl_3"><strong>Los Antiguos</strong> · visita a chacras, miradores y el Lago Buenos Aires.</li>
-        <li data-i18n="hl_4"><strong>Ruta Escénica 41</strong> · recorrido panorámico junto a Estancia La Ascensión.</li>
-        <li data-i18n="hl_5"><strong>Capillas de Mármol</strong> · excursión de día completo a Chile con traslados, guía, almuerzo y navegación incluidos.</li>
-        <li data-i18n="hl_6"><strong>Hotel en Perito Moreno</strong> · 4 noches con desayuno, según disponibilidad en Hotel Cueva de las Manos u Hotel Americano.</li>
-        <li data-i18n="hl_7"><strong>Almuerzos incluidos</strong> · viandas o restaurante según itinerario y logística.</li>
-      </ul>
+    <div class="tour-side-stack reveal reveal-delay">
+      <div class="tour-highlights">
+        <h3 data-i18n="hl_title">Highlights del tour</h3>
+        <ul class="hl-list">
+          <li><strong>Cueva de las Manos</strong> excursión de día completo con guía especializado, vianda, entrada incluida y visita al sitio arqueológico.</li>
+          <li><strong>Parque Patagonia</strong> recorrido incluido junto a Cueva de las Manos, en una jornada completa desde Perito Moreno.</li>
+          <li><strong>Los Antiguos</strong> visita a chacras, miradores y el Lago Buenos Aires.</li>
+          <li><strong>Ruta Escénica 41</strong> recorrido panorámico junto a Estancia La Ascensión.</li>
+          <li><strong>Capillas de Mármol</strong> excursión de día completo a Chile con traslados, guía, almuerzo y navegación incluidos.</li>
+          <li><strong>Hotel en Perito Moreno</strong> 4 noches con desayuno, según disponibilidad en Hotel Cueva de las Manos u Hotel Americano.</li>
+          <li><strong>Almuerzos incluidos</strong> viandas o restaurante según itinerario y logística.</li>
+        </ul>
+      </div>
+      <div class="tour-schedule-card">
+        <p class="eyebrow">Salidas y tarifas vigentes</p>
+        <h3>Salidas 2026 / 2027</h3>
+        <ul class="schedule-list">
+          <li><strong>Octubre</strong><span>llegada 6 octubre / salida 10 octubre.</span></li>
+          <li><strong>Octubre</strong><span>llegada 20 octubre / salida 24 octubre.</span></li>
+          <li><strong>Noviembre</strong><span>llegada 4 noviembre / salida 8 noviembre.</span></li>
+          <li><strong>Diciembre</strong><span>llegada 9 diciembre / salida 13 diciembre.</span></li>
+          <li><strong>Febrero</strong><span>llegada 11 febrero / salida 15 febrero.</span></li>
+          <li><strong>Marzo</strong><span>llegada 25 marzo / salida 29 marzo.</span></li>
+          <li><strong>Abril</strong><span>llegada 10 abril / salida 14 abril.</span></li>
+        </ul>
+        <ul class="hl-list tariff-list">
+          <li><strong>Base habitación doble</strong>$2.290.000 por persona.</li>
+          <li><strong>Base habitación single</strong>$2.590.000 por persona.</li>
+          <li><strong>Seña</strong>$1.000.000 por persona.</li>
+          <li><strong>Saldo</strong>a la llegada mediante transferencia, tarjeta o efectivo. Consultar planes de pago.</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -1242,33 +1274,7 @@ img.hero-logo-static {
   </div>
 </section>
 
-<!-- FECHAS Y TARIFAS -->
-<section class="tour-intro" style="padding-top:0;">
-  <div class="tour-intro-inner">
-    <div class="tour-intro-text reveal">
-      <p class="eyebrow">Fechas de salida</p>
-      <h2 class="section-title">Salidas <em>2026 / 2027</em></h2>
-      <ul class="inc-list">
-        <li><strong>Octubre:</strong> llegada 6 octubre / salida 10 octubre.</li>
-        <li><strong>Octubre:</strong> llegada 20 octubre / salida 24 octubre.</li>
-        <li><strong>Noviembre:</strong> llegada 4 noviembre / salida 8 noviembre.</li>
-        <li><strong>Diciembre:</strong> llegada 9 diciembre / salida 13 diciembre.</li>
-        <li><strong>Febrero:</strong> llegada 11 febrero / salida 15 febrero.</li>
-        <li><strong>Marzo:</strong> llegada 25 marzo / salida 29 marzo.</li>
-        <li><strong>Abril:</strong> llegada 10 abril / salida 14 abril.</li>
-      </ul>
-    </div>
-    <div class="tour-highlights reveal reveal-delay">
-      <h3>Tarifas vigentes</h3>
-      <ul class="hl-list">
-        <li><strong>Base habitación doble:</strong> $2.290.000 por persona.</li>
-        <li><strong>Base habitación single:</strong> $2.590.000 por persona.</li>
-        <li><strong>Seña:</strong> $1.000.000 por persona.</li>
-        <li><strong>Saldo:</strong> a la llegada mediante transferencia, tarjeta o efectivo. Consultar planes de pago.</li>
-      </ul>
-    </div>
-  </div>
-</section>
+
 <!-- GALERÍA -->
 <section class="galeria-section">
   <div style="max-width:1100px; margin:0 auto;">
@@ -3544,6 +3550,8 @@ a.cta-btn-g[href*="wa.me"]:hover::before {
 }
 </style></body>
 </html>
+
+
 
 
 
