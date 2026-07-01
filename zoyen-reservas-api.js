@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
   var cfg = window.ZOYEN_SUPABASE || {};
   var publicKey = cfg.publishableKey || cfg.anonKey || '';
   var ready = Boolean(cfg.url && publicKey && window.supabase && window.supabase.createClient);
@@ -11,9 +11,17 @@
     if (data.excursionKey || data.excursion) return 'tour_inquiry';
     return 'general_inquiry';
   }
+  function wasWhatsappClicked(data) {
+    return Boolean(data.whatsappClicked || data.canalCierre === 'whatsapp' || data.tipoConsulta === 'whatsapp_click' || data.inquiryType === 'whatsapp_click');
+  }
   function normalizeReservation(data) {
     var isInquiry = data.estado === 'consulta' || data.status === 'inquiry' || !data.fecha;
     var email = cleanText(data.email, 180).toLowerCase();
+    var whatsappClicked = wasWhatsappClicked(data);
+    var notes = cleanText(data.notas, 900);
+    if (whatsappClicked && notes.indexOf('WhatsApp') === -1) {
+      notes = cleanText((notes ? notes + ' ' : '') + '[WhatsApp] El visitante presionó Continuar por WhatsApp' + (data.whatsappClickedAt ? ' el ' + data.whatsappClickedAt : '') + '.', 1000);
+    }
     return {
       customer_name: cleanText(data.nombre, 120),
       customer_phone: cleanText(data.tel, 60),
@@ -29,8 +37,8 @@
       payment_status: 'pending',
       source: cleanText(data.origen || 'website', 40),
       lead_type: inferLeadType(data, isInquiry),
-      inquiry_type: cleanText(data.tipoConsulta || data.inquiryType || inferLeadType(data, isInquiry), 80),
-      admin_notes: cleanText(data.notas, 1000)
+      inquiry_type: cleanText(whatsappClicked ? 'whatsapp_click' : (data.tipoConsulta || data.inquiryType || inferLeadType(data, isInquiry)), 80),
+      admin_notes: notes
     };
   }
   async function createReservation(data) {
@@ -39,7 +47,7 @@
     if (!row.customer_name || !row.tour_name) throw new Error('Faltan datos obligatorios de la consulta.');
     if (row.status !== 'inquiry' && (!row.customer_email || !row.departure_date)) throw new Error('Faltan datos obligatorios de la reserva.');
     // El visitante puede crear una reserva, pero no debe poder leer filas de la base.
-    // Por eso no encadenamos .select(): RLS permite INSERT anónimo y reserva SELECT al personal autenticado.
+    // Por eso no encadenamos .select(): RLS permite INSERT anÃ³nimo y reserva SELECT al personal autenticado.
     var result = await client.from('reservations').insert(row);
     if (result.error) throw result.error;
     return {ok:true, data:null};
@@ -79,3 +87,4 @@
   }
   window.ZoyenCloud = {ready:ready,client:client,createReservation:createReservation,signIn:signIn,signOut:signOut,listReservations:listReservations,updateReservation:updateReservation,getTourConfig:getTourConfig,saveTourConfig:saveTourConfig};
 })();
+

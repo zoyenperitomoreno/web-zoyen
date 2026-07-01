@@ -1078,9 +1078,9 @@ nav {
 }
 .bw-bg {
   position: absolute; inset: 0;
-  background-image: url('assets/canadonpinturas_cuevadelasmanos.jpg');
-  background-size: cover; background-position: center;
-  opacity: .12;
+  background-image: linear-gradient(90deg, rgba(18,13,9,.86) 0%, rgba(18,13,9,.52) 43%, rgba(18,13,9,.18) 100%), url('assets/banner-nuevas-experiencias-santa-cruz.png');
+  background-size: cover; background-position: center right;
+  opacity: .82;
 }
 .bw-content { position: relative; z-index: 1; max-width: 560px; }
 .bw-content .section-title { color: var(--dust); }
@@ -4671,8 +4671,8 @@ applyLang(currentLang);
       excursionKey: leadDraft.productoKey, excursion: leadDraft.producto,
       fecha: leadDraft.fecha||'', personas: leadDraft.personas,
       asientos:'', senia:0, estado:'consulta',
-      tipoConsulta:'zoyi_chat', leadType:'zoyi_chat', inquiryType:'zoyi_chat',
-      origen:'zoyi', notas:'Consulta vía Zoyi: '+leadDraft.personas+' persona(s)'+(leadDraft.fecha?', fecha tentativa '+leadDraft.fecha:'')+'.',
+      tipoConsulta:'whatsapp_click', leadType:'zoyi_chat', inquiryType:'whatsapp_click',
+      origen:'zoyi', canalCierre:'whatsapp', whatsappClicked:true, whatsappClickedAt:ahora, notas:'Consulta vía Zoyi: '+leadDraft.personas+' persona(s)'+(leadDraft.fecha?', fecha tentativa '+leadDraft.fecha:'')+'.'+' WhatsApp abierto por el visitante.',
       creado: ahora, ultimoIntento: ahora
     };
     reservas.push(nueva);
@@ -6406,6 +6406,8 @@ a.cta-btn-g[href*="wa.me"]:hover::before {
 }
 </style></body>
 </html>
+
+
 
 
 

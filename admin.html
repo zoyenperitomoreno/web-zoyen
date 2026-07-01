@@ -153,6 +153,8 @@ tr:hover td{background:rgba(212,119,42,.03)}
 .crm-toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:16px}
 .crm-toolbar input,.crm-toolbar select{padding:9px 12px;border:1.5px solid var(--border);border-radius:6px;font:13px 'Sora',sans-serif;background:#fff}
 .crm-toolbar input{flex:1;min-width:220px}
+.wa-indicator{display:inline-flex;align-items:center;justify-content:center;width:19px;height:19px;border-radius:50%;background:#25D366;color:#fff;margin-left:6px;vertical-align:middle;box-shadow:0 0 0 1px rgba(37,211,102,.25)}
+.wa-indicator svg{width:13px;height:13px;fill:currentColor}
 .crm-modal{display:none;position:fixed;inset:0;z-index:1200;background:rgba(20,16,12,.72);align-items:center;justify-content:center;padding:20px}
 .crm-modal.open{display:flex}.crm-modal-box{background:#fff;width:min(720px,100%);max-height:90vh;overflow:auto;border-radius:10px;padding:24px;box-shadow:0 24px 70px rgba(0,0,0,.35)}
 .crm-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 14px}.crm-form-grid .wide{grid-column:1/-1}
@@ -717,7 +719,7 @@ function buildDashboard() {
   if(!total) { tb.innerHTML='<tr><td colspan="7" class="empty">Sin reservas registradas aún.</td></tr>'; return; }
   tb.innerHTML = reservas.slice(-8).reverse().map((r,i) => `<tr>
     <td style="color:var(--stone)">#${reservas.length-i}</td>
-    <td style="font-weight:500">${r.nombre}</td>
+    <td style="font-weight:500">${r.nombre}${whatsappIndicator(r)}</td>
     <td>${r.excursion}</td>
     <td>${r.fecha ? new Date(r.fecha+'T12:00:00').toLocaleDateString('es-AR',{day:'numeric',month:'short'}) : ''}</td>
     <td style="text-align:center">${r.personas}</td>
@@ -981,22 +983,29 @@ function removeAvailabilityDate(key, d) {
 const SHEETS_URL_KEY='zoyen_sheets_url';
 function readSheetsUrl(){ try{return localStorage.getItem(SHEETS_URL_KEY)||'';}catch(e){return '';} }
 function csvCell(value){return '"'+String(value==null?'':value).replace(/"/g,'""')+'"';}
+function hasWhatsappClick(r){
+  return Boolean(r && (r.whatsappClicked || r.canalCierre === 'whatsapp' || r.inquiryType === 'whatsapp_click' || r.tipoConsulta === 'whatsapp_click' || /WhatsApp abierto|Continuar por WhatsApp|\[WhatsApp\]/i.test(r.notas||'')));
+}
+function whatsappIndicator(r){
+  if(!hasWhatsappClick(r)) return '';
+  return `<span class="wa-indicator" title="La persona apretó Continuar por WhatsApp" aria-label="WhatsApp presionado"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M19.11 17.2c-.28-.14-1.65-.81-1.9-.9-.26-.1-.45-.14-.64.14-.19.28-.73.9-.9 1.08-.17.19-.33.21-.61.07-.28-.14-1.18-.44-2.25-1.39-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.13-.13.28-.33.42-.49.14-.16.19-.28.28-.47.09-.19.05-.35-.02-.49-.07-.14-.64-1.54-.88-2.11-.23-.55-.47-.48-.64-.49h-.55c-.19 0-.49.07-.75.35-.26.28-.98.96-.98 2.35s1.01 2.72 1.15 2.91c.14.19 1.99 3.04 4.82 4.26.67.29 1.2.46 1.61.59.68.22 1.29.19 1.78.12.54-.08 1.65-.67 1.88-1.32.23-.65.23-1.2.16-1.32-.07-.12-.26-.19-.54-.33z"/><path d="M16.02 3C8.85 3 3.02 8.82 3.02 15.98c0 2.29.6 4.53 1.74 6.5L3 29l6.68-1.75a12.96 12.96 0 0 0 6.33 1.62h.01c7.16 0 12.99-5.82 12.99-12.98C29.01 8.82 23.18 3 16.02 3zm0 23.67h-.01c-2.01 0-3.98-.54-5.7-1.56l-.41-.24-3.96 1.04 1.06-3.86-.27-.43a10.72 10.72 0 0 1-1.64-5.64c0-5.95 4.86-10.79 10.83-10.79 2.89 0 5.61 1.12 7.65 3.16a10.72 10.72 0 0 1 3.17 7.64c0 5.95-4.86 10.78-10.82 10.78z"/></svg></span>`;
+}
 function reservaRows(){
   const reservas=readReservas();
   return reservas.map((r,i)=>({
     numero:i+1, nombre:r.nombre||'', telefono:r.tel||'', email:r.email||'', excursion:r.excursion||'',
     excursionKey:r.excursionKey||'', fecha:r.fecha||'', personas:r.personas||'',
-    senia:r.senia||0, estado:r.estado||'', ultimoContacto:r.ultimo||'', followUp:r.followup||'', notas:r.notas||''
+    senia:r.senia||0, estado:r.estado||'', whatsapp:hasWhatsappClick(r)?'Sí':'', ultimoContacto:r.ultimo||r.ultimoIntento||'', followUp:r.followup||r.followUp||'', notas:r.notas||''
   }));
 }
 function exportReservasExcel(){
   const rows=reservaRows();
   if(!rows.length){showToast('No hay reservas para exportar.');return;}
   if(!window.XLSX){showToast('No se pudo cargar la librería de Excel. Revisá tu conexión.');return;}
-  const headers=['#','Nombre','Teléfono','Email','Excursión','Clave tour','Fecha','Personas','Seña','Estado','Último contacto','Próximo seguimiento','Notas'];
-  const data=[headers].concat(rows.map(r=>[r.numero,r.nombre,r.telefono,r.email,r.excursion,r.excursionKey,r.fecha,r.personas,r.senia,r.estado,r.ultimoContacto,r.followUp,r.notas]));
+  const headers=['#','Nombre','Teléfono','Email','Excursión','Clave tour','Fecha','Personas','Seña','Estado','WhatsApp','Último contacto','Próximo seguimiento','Notas'];
+  const data=[headers].concat(rows.map(r=>[r.numero,r.nombre,r.telefono,r.email,r.excursion,r.excursionKey,r.fecha,r.personas,r.senia,r.estado,r.whatsapp,r.ultimoContacto,r.followUp,r.notas]));
   const ws=XLSX.utils.aoa_to_sheet(data);
-  ws['!cols']=[{wch:4},{wch:22},{wch:16},{wch:24},{wch:24},{wch:14},{wch:12},{wch:9},{wch:10},{wch:14},{wch:18},{wch:18},{wch:30}];
+  ws['!cols']=[{wch:4},{wch:22},{wch:16},{wch:24},{wch:24},{wch:14},{wch:12},{wch:9},{wch:10},{wch:14},{wch:10},{wch:18},{wch:18},{wch:30}];
   const wb=XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(wb,ws,'Reservas');
   XLSX.writeFile(wb,'zoyen-reservas-'+new Date().toISOString().slice(0,10)+'.xlsx');
@@ -1048,7 +1057,7 @@ async function pullReservasFromSheets(){
         fecha:row.fecha||row.Fecha||'', personas:row.personas||row.Personas||1,
         senia:row.senia||row['Seña']||0, estado:row.estado||row.Estado||'consulta',
         ultimo:row.ultimoContacto||row['Último contacto']||'', followup:row.followUp||row['Próximo seguimiento']||'',
-        notas:row.notas||row.Notas||''
+        notas:row.notas||row.Notas||'', whatsappClicked:/si|sí|whatsapp/i.test(row.whatsapp||row.WhatsApp||'')
       };
       const k=keyOf(candidate);
       if(localKeys.has(k)){
@@ -1083,7 +1092,7 @@ function buildReservas() {
     const idx = reservas.indexOf(r);
     return `<tr>
       <td style="color:var(--stone)">#${idx+1}</td>
-      <td style="font-weight:500">${r.nombre}${r.origen==='zoyi' ? ` <span title="Consulta vía Zoyi" style="display:inline-block;font-size:10px;font-weight:700;color:var(--ember);background:rgba(212,119,42,.15);border:1px solid rgba(212,119,42,.4);border-radius:3px;padding:1px 5px;vertical-align:middle;">ZOYI</span>` : ''}</td>
+      <td style="font-weight:500">${r.nombre}${r.origen==='zoyi' ? ` <span title="Consulta vía Zoyi" style="display:inline-block;font-size:10px;font-weight:700;color:var(--ember);background:rgba(212,119,42,.15);border:1px solid rgba(212,119,42,.4);border-radius:3px;padding:1px 5px;vertical-align:middle;">ZOYI</span>` : ''}${whatsappIndicator(r)}</td>
       <td style="font-size:12px;color:var(--stone)">${r.tel||''}<br>${r.email||''}</td>
       <td>${r.excursion}</td>
       <td>${r.fecha ? new Date(r.fecha+'T12:00:00').toLocaleDateString('es-AR',{day:'2-digit',month:'2-digit',year:'numeric'}) : ''}</td>
@@ -1102,8 +1111,9 @@ function buildReservas() {
   }).join('');
 }
 function leadTypeLabel(r) {
+  if(hasWhatsappClick(r)) return 'WhatsApp';
   const value = r.inquiryType || r.leadType || (r.origen === 'zoyi' ? 'zoyi_chat' : (r.estado === 'consulta' ? 'tour_inquiry' : 'reservation'));
-  return ({reservation:'Reserva',zoyi_chat:'Zoyi',tour_inquiry:'Consulta tour',general_inquiry:'Consulta gral.'})[value] || value;
+  return ({reservation:'Reserva',zoyi_chat:'Zoyi',tour_inquiry:'Consulta tour',general_inquiry:'Consulta gral.',whatsapp_click:'WhatsApp'})[value] || value;
 }
 function openReservaEditor(idx=-1) {
   const reservas = readReservas(), r = idx>=0 ? reservas[idx] : {};
@@ -1194,13 +1204,15 @@ function getReservas() { return readReservas(); }
 
 function cloudToLocalReservation(r) {
   const stateMap = {inquiry:'consulta',pending_payment:'pendiente',payment_started:'pago_iniciado',confirmed:'confirmada',completed:'completada',cancelled:'cancelada'};
+  const notes = r.admin_notes || '';
+  const clickedWhatsapp = r.inquiry_type === 'whatsapp_click' || /WhatsApp abierto|Continuar por WhatsApp|\[WhatsApp\]/i.test(notes);
   return {
     id:r.id, cloudId:r.id, sincronizada:true, nombre:r.customer_name||'', tel:r.customer_phone||'', email:r.customer_email||'',
     excursionKey:r.tour_key||'', excursion:r.tour_name||'', fecha:r.departure_date||'', personas:r.people_count||1,
     senia:Number(r.deposit_amount)||0,
     estado:stateMap[r.status]||'pendiente', paymentStatus:r.payment_status||'pending', paymentMethod:r.payment_method||'not_selected',
-    leadType:r.lead_type||'', inquiryType:r.inquiry_type||'',
-    creado:r.created_at?new Date(r.created_at).toLocaleString('es-AR'):'', ultimoIntento:r.updated_at?new Date(r.updated_at).toLocaleString('es-AR'):'', notas:r.admin_notes||''
+    leadType:r.lead_type||'', inquiryType:r.inquiry_type||'', whatsappClicked:clickedWhatsapp, canalCierre:clickedWhatsapp?'whatsapp':'',
+    creado:r.created_at?new Date(r.created_at).toLocaleString('es-AR'):'', ultimoIntento:r.updated_at?new Date(r.updated_at).toLocaleString('es-AR'):'', notas:notes
   };
 }
 async function syncCloudReservations() {
@@ -2393,6 +2405,10 @@ a.cta-btn-g[href*="wa.me"]:hover {
 </style>
 </body>
 </html>
+
+
+
+
 
 
 
