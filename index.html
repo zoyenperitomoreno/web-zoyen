@@ -2995,12 +2995,12 @@ img.hero-logo-static {
   </div>
   <div style="display:flex;flex-wrap:wrap;max-width:960px;margin:0 auto;justify-content:space-between;align-items:center;">
     <div class="sbar-item">
-      <div class="sbar-num" data-target="22" data-suffix="+">0+</div>
+      <div class="sbar-num" data-target="20" data-prefix="+" data-suffix="">+0</div>
       <div class="sbar-lbl" data-i18n="stat1_lbl">Años de experiencia</div>
     </div>
     <div class="sbar-sep"></div>
     <div class="sbar-item">
-      <div class="sbar-num" data-target="8000" data-suffix="+">0+</div>
+      <div class="sbar-num" data-target="8000" data-prefix="+" data-suffix="">+0</div>
       <div class="sbar-lbl" data-i18n="stat2_lbl">Viajeros recibidos</div>
     </div>
     <div class="sbar-sep"></div>
@@ -3051,9 +3051,9 @@ img.hero-logo-static {
         var p = Math.min((ts-start)/duration,1);
         var ease = 1-Math.pow(1-p,3);
         var val = Math.floor(ease*target);
-        el.textContent = (target>=1000 ? val.toLocaleString('es-AR') : val) + suffix;
+        var prefix = el.dataset.prefix || ""; el.textContent = prefix + (target>=1000 ? val.toLocaleString('es-AR') : val) + suffix;
         if(p<1) requestAnimationFrame(step);
-        else el.textContent = (target>=1000 ? target.toLocaleString('es-AR') : target) + suffix;
+        else el.textContent = prefix + (target>=1000 ? target.toLocaleString('es-AR') : target) + suffix;
       }
       requestAnimationFrame(step);
     });
@@ -6428,6 +6428,7 @@ a.cta-btn-g[href*="wa.me"]:hover::before {
 </style>
 </body>
 </html>
+
 
 
 
