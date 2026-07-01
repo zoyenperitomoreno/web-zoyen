@@ -110,24 +110,59 @@ h2 {
 .mini h3 { color:var(--sand); font-size:.92rem; letter-spacing:.14em; text-transform:uppercase; margin-bottom:.7rem; }
 .mini ul { padding-left:1.1rem; color:rgba(232,220,200,.74); }
 .mini li { margin:.35rem 0; }
-.timeline { max-width:900px; margin:2.5rem auto 0; }
-.day {
-  display:grid; grid-template-columns:84px 1fr; gap:0; position:relative;
+.itinerario-section {
+  padding: 5rem 4vw;
+  background: var(--cream);
+  border-top: 1px solid rgba(58,45,31,.08);
 }
-.day:not(:last-child)::before {
-  content:""; position:absolute; left:40px; top:50px; bottom:0; width:2px;
-  background:linear-gradient(to bottom, var(--ember), rgba(212,119,42,.12));
+.itinerario-inner { max-width: 900px; margin: 0 auto; }
+.itinerario-head { display:flex; align-items:flex-end; justify-content:space-between; gap:1.5rem; margin-bottom:3.5rem; flex-wrap:wrap; }
+.itinerario-head .reveal { margin-bottom:0 !important; }
+.download-pdf-btn {
+  display:inline-flex; align-items:center; gap:.55rem;
+  background:var(--ember); color:var(--cream);
+  padding:.78rem 1.25rem; border-radius:2px;
+  text-decoration:none; font-size:.76rem; font-weight:700;
+  letter-spacing:.14em; text-transform:uppercase;
+  box-shadow:0 10px 24px rgba(212,119,42,.22);
+  transition:background .2s, transform .2s, box-shadow .2s;
 }
-.num {
-  width:80px; height:80px; display:flex; align-items:center; justify-content:center;
-  color:var(--cream); background:var(--ember); border-radius:50%;
-  font-family:'DM Serif Display', serif; font-size:1.7rem; z-index:1;
+.download-pdf-btn:hover { background:var(--ember-dim); transform:translateY(-1px); box-shadow:0 14px 30px rgba(212,119,42,.28); }
+.download-pdf-btn::before { content:'PDF'; font-size:.62rem; letter-spacing:.08em; border:1px solid rgba(245,240,232,.55); padding:.12rem .28rem; }
+.dia-block {
+  display: grid; grid-template-columns: 80px 1fr; gap: 0;
+  margin-bottom: 0;
+  position: relative;
 }
-.day-body {
-  padding:0 0 2rem 1.2rem;
+.dia-block:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 39px; top: 48px; bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--ember), rgba(212,119,42,.15));
 }
-.day-body h3 { font-size:1.05rem; margin-bottom:.35rem; }
-.day-body p { color:var(--stone); }
+.dia-num {
+  display: flex; flex-direction: column; align-items: center; padding-top: .5rem;
+  position: relative; z-index: 1;
+}
+.dia-circle {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: var(--ember); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Serif Display', serif; font-size: 1.1rem; font-weight: 600;
+  box-shadow: 0 4px 16px rgba(212,119,42,.4);
+  flex-shrink: 0;
+}
+.dia-content { padding: .3rem 0 3rem 1.8rem; }
+.dia-label { font-size: .65rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--ember); margin-bottom: .4rem; }
+.dia-title { font-family: 'DM Serif Display', serif; font-size: 1.4rem; font-weight: 600; color: var(--ink); margin-bottom: .8rem; line-height: 1.2; }
+.dia-title em { font-style: italic; color: var(--sand); }
+.dia-desc { font-size: .97rem; color: var(--stone); line-height: 1.85; font-weight: 300; }
+.dia-desc strong { color: var(--ink); font-weight: 600; }
+.dia-img { width: 100%; border-radius: 3px; margin-top: 1.2rem; aspect-ratio: 16/7; object-fit: cover; box-shadow: 0 8px 32px rgba(26,20,16,.12); }
+.dia-chips { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: 1rem; }
+.dia-chip { font-size: .65rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; background: rgba(58,45,31,.07); color: var(--stone); padding: .25rem .75rem; border-radius: 999px; border: 1px solid rgba(58,45,31,.12); }
+@media(max-width:640px){ .itinerario-head { align-items:flex-start; } .download-pdf-btn { width:100%; justify-content:center; } }
 .gallery { display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem; margin-top:2rem; }
 .gallery img { width:100%; height:250px; object-fit:cover; border-radius:4px; }
 @media(max-width:860px) {
@@ -1863,66 +1898,100 @@ body > nav .nav-actions.cta-nudge .nav-cta-btn::before {
     </div>
   </section>
 
-  <section class="section">
-    <div class="wrap">
-      <p class="eyebrow" data-i18n="itin_eyebrow">Recorrido sugerido</p>
-      <h2 data-i18n="itin_title">Itinerario sujeto a modificación por clima o logística</h2>
-      <div class="timeline">
-        <div class="day">
-          <div class="num">1</div>
-          <div class="day-body">
-            <h3 data-i18n="day1_title">Llegada y Los Antiguos</h3>
-            <p data-i18n="day1_desc">Llegada a las 09:30 hs. Recepción en el aeropuerto de Perito Moreno, desayuno y traslado hacia Los Antiguos para el almuerzo. Tarde libre para caminar junto al Lago Buenos Aires. Cena libre.</p>
-          </div>
+  <section class="itinerario-section">
+    <div class="itinerario-inner">
+      <div class="itinerario-head">
+        <div class="reveal">
+          <p class="eyebrow" data-i18n="itin_eyebrow">Día a día</p>
+          <h2 class="section-title" data-i18n="itin_title">El <em>itinerario</em></h2>
         </div>
-        <div class="day">
-          <div class="num">2</div>
-          <div class="day-body">
-            <h3 data-i18n="day2_title">Los Antiguos y Ruta Escénica 41</h3>
-            <p data-i18n="day2_desc">Excursión full day por Los Antiguos y la Ruta Escénica 41, con visita y degustación en chacra productiva de cerezas. Alojamiento en Los Antiguos.</p>
-          </div>
+        <a class="download-pdf-btn" href="assets/pdfs/santa-cruz-inexplorada-itinerario.pdf" download="santa-cruz-inexplorada-itinerario.pdf" type="application/pdf" aria-label="Descargar itinerario PDF de Santa Cruz Inexplorada" data-i18n="itin_download">Descargar itinerario</a>
+      </div>
+
+      <div class="dia-block reveal">
+        <div class="dia-num"><div class="dia-circle">1</div></div>
+        <div class="dia-content">
+          <div class="dia-label" data-i18n="day1_label">Día 1 · Llegada</div>
+          <h3 class="dia-title" data-i18n="day1_title">Llegada y <em>Los Antiguos</em></h3>
+          <p class="dia-desc" data-i18n="day1_desc">Llegada a las 09:30 hs. Recepción en el aeropuerto de Perito Moreno, desayuno y traslado hacia Los Antiguos para el almuerzo. Tarde libre para caminar junto al Lago Buenos Aires. Cena libre.</p>
+          <img class="dia-img" src="assets/zoyen_turismo_patagonia_losantiguos.jpg" alt="Los Antiguos y Lago Buenos Aires">
+          <div class="dia-chips"><span class="dia-chip">Aeropuerto Perito Moreno</span><span class="dia-chip">Los Antiguos</span><span class="dia-chip">Lago Buenos Aires</span></div>
         </div>
-        <div class="day">
-          <div class="num">3</div>
-          <div class="day-body">
-            <h3 data-i18n="day3_title">Día libre en Los Antiguos</h3>
-            <p data-i18n="day3_desc">Día libre para descansar o sumar alguna actividad opcional. Alojamiento en Los Antiguos.</p>
-          </div>
+      </div>
+
+      <div class="dia-block reveal">
+        <div class="dia-num"><div class="dia-circle">2</div></div>
+        <div class="dia-content">
+          <div class="dia-label" data-i18n="day2_label">Día 2 · Excursión de día completo</div>
+          <h3 class="dia-title" data-i18n="day2_title"><em>Los Antiguos</em> y Ruta Escénica 41</h3>
+          <p class="dia-desc" data-i18n="day2_desc">Excursión full day por Los Antiguos y la Ruta Escénica 41, con visita y degustación en chacra productiva de cerezas. Alojamiento en Los Antiguos.</p>
+          <img class="dia-img" src="assets/ruta41_zoyen.jpg" alt="Ruta Escénica 41">
+          <div class="dia-chips"><span class="dia-chip">Ruta Escénica 41</span><span class="dia-chip">Chacras</span><span class="dia-chip">Alojamiento en Los Antiguos</span></div>
         </div>
-        <div class="day">
-          <div class="num">4</div>
-          <div class="day-body">
-            <h3 data-i18n="day4_title">Capillas y Catedrales de Mármol</h3>
-            <p data-i18n="day4_desc">Excursión full day a las Capillas y Catedrales de Mármol, en Chile. Alojamiento en Los Antiguos.</p>
-          </div>
+      </div>
+
+      <div class="dia-block reveal">
+        <div class="dia-num"><div class="dia-circle">3</div></div>
+        <div class="dia-content">
+          <div class="dia-label" data-i18n="day3_label">Día 3 · Jornada libre</div>
+          <h3 class="dia-title" data-i18n="day3_title">Día libre en <em>Los Antiguos</em></h3>
+          <p class="dia-desc" data-i18n="day3_desc">Día libre para descansar o sumar alguna actividad opcional. Alojamiento en Los Antiguos.</p>
+          <img class="dia-img" src="assets/zoyen_turismo_patagonia_losantiguos.jpg" alt="Paisajes de Los Antiguos">
+          <div class="dia-chips"><span class="dia-chip">Día libre</span><span class="dia-chip">Actividades opcionales</span><span class="dia-chip">Los Antiguos</span></div>
         </div>
-        <div class="day">
-          <div class="num">5</div>
-          <div class="day-body">
-            <h3 data-i18n="day5_title">Cueva de las Manos</h3>
-            <p data-i18n="day5_desc">Excursión full day a Cueva de las Manos, con opción trekking o tradicional. Alojamiento en hotel en Perito Moreno.</p>
-          </div>
+      </div>
+
+      <div class="dia-block reveal">
+        <div class="dia-num"><div class="dia-circle">4</div></div>
+        <div class="dia-content">
+          <div class="dia-label" data-i18n="day4_label">Día 4 · Chile</div>
+          <h3 class="dia-title" data-i18n="day4_title"><em>Capillas y Catedrales</em> de Mármol</h3>
+          <p class="dia-desc" data-i18n="day4_desc">Excursión full day a las Capillas y Catedrales de Mármol, en Chile. Alojamiento en Los Antiguos.</p>
+          <img class="dia-img" src="assets/capillas.jpg" alt="Capillas y Catedrales de Mármol">
+          <div class="dia-chips"><span class="dia-chip">Chile</span><span class="dia-chip">Navegación</span><span class="dia-chip">Capillas de Mármol</span></div>
         </div>
-        <div class="day">
-          <div class="num">6</div>
-          <div class="day-body">
-            <h3 data-i18n="day6_title">Día libre en Perito Moreno</h3>
-            <p data-i18n="day6_desc">Día libre para sumar actividades opcionales. Alojamiento en Perito Moreno.</p>
-          </div>
+      </div>
+
+      <div class="dia-block reveal">
+        <div class="dia-num"><div class="dia-circle">5</div></div>
+        <div class="dia-content">
+          <div class="dia-label" data-i18n="day5_label">Día 5 · Arte rupestre</div>
+          <h3 class="dia-title" data-i18n="day5_title"><em>Cueva de las Manos</em></h3>
+          <p class="dia-desc" data-i18n="day5_desc">Excursión full day a Cueva de las Manos, con opción trekking o tradicional. Alojamiento en hotel en Perito Moreno.</p>
+          <img class="dia-img" src="assets/cuevas_zoyen.jpg" alt="Cueva de las Manos">
+          <div class="dia-chips"><span class="dia-chip">Cueva de las Manos</span><span class="dia-chip">Trekking opcional</span><span class="dia-chip">Perito Moreno</span></div>
         </div>
-        <div class="day">
-          <div class="num">7</div>
-          <div class="day-body">
-            <h3 data-i18n="day7_title">Día libre · Museo Carlos Gradín</h3>
-            <p data-i18n="day7_desc">Día libre para actividades opcionales o visita al Museo Arqueológico Carlos Gradín. Alojamiento en Perito Moreno.</p>
-          </div>
+      </div>
+
+      <div class="dia-block reveal">
+        <div class="dia-num"><div class="dia-circle">6</div></div>
+        <div class="dia-content">
+          <div class="dia-label" data-i18n="day6_label">Día 6 · Jornada libre</div>
+          <h3 class="dia-title" data-i18n="day6_title">Día libre en <em>Perito Moreno</em></h3>
+          <p class="dia-desc" data-i18n="day6_desc">Día libre para sumar actividades opcionales. Alojamiento en Perito Moreno.</p>
+          <img class="dia-img" src="assets/parquepatagonia_zoyenturismo.jpg" alt="Parque Patagonia">
+          <div class="dia-chips"><span class="dia-chip">Día libre</span><span class="dia-chip">Actividades opcionales</span><span class="dia-chip">Perito Moreno</span></div>
         </div>
-        <div class="day">
-          <div class="num">8</div>
-          <div class="day-body">
-            <h3 data-i18n="day8_title">Regreso a Buenos Aires</h3>
-            <p data-i18n="day8_desc">Traslado al aeropuerto a las 08:30 hs para tomar el vuelo de regreso a Buenos Aires (llegada aproximada 14:30 hs). Fin de nuestros servicios.</p>
-          </div>
+      </div>
+
+      <div class="dia-block reveal">
+        <div class="dia-num"><div class="dia-circle">7</div></div>
+        <div class="dia-content">
+          <div class="dia-label" data-i18n="day7_label">Día 7 · Cultura local</div>
+          <h3 class="dia-title" data-i18n="day7_title">Día libre · <em>Museo Carlos Gradín</em></h3>
+          <p class="dia-desc" data-i18n="day7_desc">Día libre para actividades opcionales o visita al Museo Arqueológico Carlos Gradín. Alojamiento en Perito Moreno.</p>
+          <img class="dia-img" src="assets/canadonpinturas_cuevadelasmanos.jpg" alt="Cañadón del Río Pinturas">
+          <div class="dia-chips"><span class="dia-chip">Museo Carlos Gradín</span><span class="dia-chip">Opcionales</span><span class="dia-chip">Perito Moreno</span></div>
+        </div>
+      </div>
+
+      <div class="dia-block reveal">
+        <div class="dia-num"><div class="dia-circle">8</div></div>
+        <div class="dia-content">
+          <div class="dia-label" data-i18n="day8_label">Día 8 · Regreso</div>
+          <h3 class="dia-title" data-i18n="day8_title">Regreso a <em>Buenos Aires</em></h3>
+          <p class="dia-desc" data-i18n="day8_desc">Traslado al aeropuerto a las 08:30 hs para tomar el vuelo de regreso a Buenos Aires (llegada aproximada 14:30 hs). Fin de nuestros servicios.</p>
+          <div class="dia-chips"><span class="dia-chip">Traslado al aeropuerto</span><span class="dia-chip">Buenos Aires</span><span class="dia-chip">Fin de servicios</span></div>
         </div>
       </div>
     </div>
@@ -2027,7 +2096,7 @@ body > nav .nav-actions.cta-nudge .nav-cta-btn::before {
         <strong>Perito Moreno, Santa Cruz</strong><br>
         Patagonia Argentina<br><br>
         <strong>WhatsApp</strong><br>
-        <span style="color:var(--amber);">+54 9 297 443-2855</span>
+        <span style="color:var(--sand);">+54 9 297 443-2855</span>
       </div>
     </div>
   </div>
@@ -2099,7 +2168,8 @@ body > nav .nav-actions.cta-nudge .nav-cta-btn::before {
       'incl_no_2': 'Cenas.',
       'incl_no_3': 'Actividades opcionales (se cotizan por separado).',
       'itin_eyebrow': 'Recorrido sugerido',
-      'itin_title': 'Itinerario sujeto a modificación por clima o logística',
+      'itin_title': 'El <em>itinerario</em>',
+      'itin_download': 'Descargar itinerario',
       'day1_title': 'Llegada y Los Antiguos',
       'day1_desc': 'Llegada a las 09:30 hs. Recepción en el aeropuerto de Perito Moreno, desayuno y traslado hacia Los Antiguos para el almuerzo. Tarde libre para caminar junto al Lago Buenos Aires. Cena libre.',
       'day2_title': 'Los Antiguos y Ruta Escénica 41',
@@ -2722,7 +2792,7 @@ body > nav .nav-actions.cta-nudge .nav-cta-btn::before {
   var tours = [
     {id:"patagonia", name:"Patagonia Inédita", aliases:["patagonia inedita","inedita"], price:2290000, duration:"5 días / 4 noches", capacity:14, type:"tour", pdf:"assets/pdfs/patagonia-inedita-itinerario.pdf", summary:"sale desde Comodoro Rivadavia y recorre Perito Moreno, Cueva de las Manos, Parque Patagonia, Los Antiguos, Ruta Escénica 41 y Capillas y Catedrales de Mármol.", includes:"Traslados desde y hacia el aeropuerto de Comodoro Rivadavia, 4 noches de hotel con desayuno y excursiones full day con todo incluido. No incluye bebidas alcohólicas ni cenas. Base doble $2.290.000, base single $2.590.000. Seña $1.000.000 por persona.", url:"patagonia-inedita.html"},
     {id:"carretera", name:"Carretera Austral", aliases:["carretera austral","austral","ohiggins","villa ohiggins","tortel","cochrane"], price:0, duration:"7 noches", capacity:14, type:"tour", pdf:"assets/pdfs/carretera-austral-itinerario.pdf", summary:"incluye Chile Chico, Cochrane, Caleta Tortel, Villa O'Higgins, Puerto Río Tranquilo, Capillas de Mármol y Coyhaique. Solo salidas grupales, mínimo 10 personas.", includes:"Traslados desde Perito Moreno ida y vuelta en minibús, alojamiento según itinerario, excursiones terrestres con chofer/guía, almuerzos con bebida sin alcohol y navegación a Capillas y Catedrales de Mármol. No incluye bebidas alcohólicas ni cenas. Consultar precio y disponibilidad.", url:"carretera-austral.html"},
-    {id:"circuito_binacional", name:"Santa Cruz Inexplorada", aliases:["santa cruz inexplorada","santa cruz inexplorado","circuito binacional","patagonia inexplorada","binacional","los antiguos","cueva de las manos"], price:3350000, duration:"8 días / 7 noches", capacity:16, type:"tour", summary:"incluye vuelo Buenos Aires / Perito Moreno / Buenos Aires con American Jet, 4 noches en Los Antiguos y 3 en Perito Moreno, excursiones full day a Cueva de las Manos, Ruta Escénica 41 y Capillas y Catedrales de Mármol (Chile), con días libres para actividades opcionales.", includes:"No incluye bebidas alcohólicas ni cenas ni actividades opcionales. Tarifas en pesos argentinos. Seña $1.500.000 por persona y saldo a la llegada por transferencia, tarjeta o efectivo; consultar planes de pago.", url:"santa-cruz-inexplorada.html"}
+    {id:"circuito_binacional", name:"Santa Cruz Inexplorada", aliases:["santa cruz inexplorada","santa cruz inexplorado","circuito binacional","patagonia inexplorada","binacional","los antiguos","cueva de las manos"], price:3350000, duration:"8 días / 7 noches", capacity:16, type:"tour", pdf:"assets/pdfs/santa-cruz-inexplorada-itinerario.pdf", summary:"incluye vuelo Buenos Aires / Perito Moreno / Buenos Aires con American Jet, 4 noches en Los Antiguos y 3 en Perito Moreno, excursiones full day a Cueva de las Manos, Ruta Escénica 41 y Capillas y Catedrales de Mármol (Chile), con días libres para actividades opcionales.", includes:"No incluye bebidas alcohólicas ni cenas ni actividades opcionales. Tarifas en pesos argentinos. Seña $1.500.000 por persona y saldo a la llegada por transferencia, tarjeta o efectivo; consultar planes de pago.", url:"santa-cruz-inexplorada.html"}
   ];
 
   var allProducts = excursiones.concat(tours);
@@ -2888,6 +2958,8 @@ body > nav .nav-actions.cta-nudge .nav-cta-btn::before {
 </script>
 </body>
 </html>
+
+
 
 
 
