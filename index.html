@@ -3027,12 +3027,12 @@ img.hero-logo-static {
 .home-stats-marquee::after { content:""; position:absolute; top:0; bottom:0; width:92px; z-index:2; pointer-events:none; }
 .home-stats-marquee::before { left:0; background:linear-gradient(90deg,var(--dark),rgba(35,28,20,0)); }
 .home-stats-marquee::after { right:0; background:linear-gradient(270deg,var(--dark),rgba(35,28,20,0)); }
-.home-stats-track { display:flex; width:max-content; gap:2rem; align-items:center; animation:zoyenStatsMarquee 34s linear infinite; }
+.home-stats-track { display:flex; width:max-content; gap:2rem; align-items:center; animation:zoyenStatsMarquee 26s linear infinite !important; will-change:transform; }
 .home-stats-track span { white-space:nowrap; font-family:'Sora',sans-serif; font-size:.78rem; font-weight:700; letter-spacing:.24em; text-transform:uppercase; color:rgba(245,240,232,.78); }
 .home-stats-track span:first-child,
 .home-stats-track span:nth-child(6) { font-family:'DM Serif Display',serif; font-size:clamp(1.45rem,2.5vw,2.25rem); font-weight:500; letter-spacing:.02em; text-transform:none; color:var(--dust); }
 .home-stats-track span:not(:last-child)::after { content:""; display:inline-block; width:5px; height:5px; margin-left:2rem; border-radius:50%; background:var(--ember); vertical-align:middle; opacity:.75; }
-@keyframes zoyenStatsMarquee { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+@keyframes zoyenStatsMarquee { 0% { transform:translate3d(0,0,0); } 100% { transform:translate3d(-50%,0,0); } }
 @media (prefers-reduced-motion: reduce) { .home-stats-track { animation:none; transform:none; } }
 @media(max-width:650px){ .home-stats-marquee{margin-bottom:1rem;} .home-stats-marquee::before,.home-stats-marquee::after{width:42px;} .home-stats-track{animation-duration:28s;} }
 @media(max-width:650px){ .sbar-sep{display:none;} .sbar-item{flex:1 1 45%;margin-bottom:1rem;} }
@@ -6422,8 +6422,13 @@ a.cta-btn-g[href*="wa.me"]:hover::before {
   body>nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .z,
   body>nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .t{font-size:.76rem!important}
 }
-</style></body>
+</style><style id="zoyen-marquee-force">
+.home-stats-track { animation: zoyenStatsMarquee 26s linear infinite !important; transform: translate3d(0,0,0); }
+@keyframes zoyenStatsMarquee { 0% { transform: translate3d(0,0,0); } 100% { transform: translate3d(-50%,0,0); } }
+</style>
+</body>
 </html>
+
 
 
 
