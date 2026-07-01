@@ -4491,7 +4491,7 @@ applyLang(currentLang);
   function money(n){ return "$"+Number(n||0).toLocaleString("es-AR")+" AR p/p"; }
   function escapeHtml(s){
     return String(s||"").replace(/[&<>"']/g,function(c){
-      return {"&":"&amp;","<":"&lt;",">":"&gt;",""":"&quot;","'":"&#39;"}[c]||c;
+      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]||c;
     });
   }
   function formatZoyiText(text){
@@ -4690,7 +4690,7 @@ applyLang(currentLang);
       fecha: leadDraft.fecha||'', personas: leadDraft.personas,
       asientos:'', senia:0, estado:'consulta',
       tipoConsulta:'whatsapp_click', leadType:'zoyi_chat', inquiryType:'whatsapp_click',
-      origen:'zoyi', canalCierre:'whatsapp', whatsappClicked:true, whatsappClickedAt:ahora, notas:'Consulta vía Zoyi: '+leadDraft.personas+' persona(s)'+(leadDraft.fecha?', fecha tentativa '+leadDraft.fecha:'')+'.'+' WhatsApp abierto por el visitante.',
+      origen:'zoyi', canalCierre:'whatsapp', whatsappClicked:true, whatsappClickedAt:ahora, notas:'Consulta vía Zoyi: '+leadDraft.personas+' persona(s)'+(leadDraft.fecha ? ', fecha tentativa '+leadDraft.fecha : '')+'. WhatsApp abierto por el visitante.',
       creado: ahora, ultimoIntento: ahora
     };
     reservas.push(nueva);
@@ -6428,6 +6428,8 @@ a.cta-btn-g[href*="wa.me"]:hover::before {
 </style>
 </body>
 </html>
+
+
 
 
 
