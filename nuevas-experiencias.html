@@ -1068,7 +1068,16 @@ img.hero-logo-static {
 .ne-hero-bg::after {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(90deg, rgba(18,13,9,.78) 0%, rgba(18,13,9,.44) 46%, rgba(18,13,9,.16) 100%);
+  background:
+    linear-gradient(90deg, rgba(18,13,9,.72) 0%, rgba(18,13,9,.42) 31%, rgba(18,13,9,.10) 54%, rgba(18,13,9,0) 72%),
+    linear-gradient(to bottom, rgba(18,13,9,.10) 0%, rgba(18,13,9,0) 38%, rgba(18,13,9,.26) 100%);
+}
+.ne-hero-bg + .exc-hero-overlay {
+  background: linear-gradient(to bottom,
+    rgba(26,20,16,.10) 0%,
+    rgba(26,20,16,0) 38%,
+    rgba(26,20,16,.18) 76%,
+    rgba(26,20,16,.44) 100%) !important;
 }
 </style>
 
@@ -3190,6 +3199,8 @@ a.cta-btn-g[href*="wa.me"]:hover::before {
 </style>
 </body>
 </html>
+
+
 
 
 
