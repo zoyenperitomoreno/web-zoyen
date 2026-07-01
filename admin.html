@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -118,7 +118,6 @@ html,body{height:100%;overflow:hidden;font-family:'Sora',sans-serif;font-size:15
 .btn-p{background:var(--ember);color:#fff}.btn-p:hover{background:var(--ember-dim)}
 .btn-d{background:#e05050;color:#fff}.btn-d:hover{background:#c03030}
 .btn-s{background:#3b82f6;color:#fff}.btn-s:hover{background:#2563eb}
-.btn-wa{background:#25d366;color:#fff}.btn-wa:hover{background:#1aaa54}
 .btn-sm{padding:5px 10px;font-size:10px}
 .btn-outline{background:transparent;border:1.5px solid var(--border);color:var(--text)}.btn-outline:hover{border-color:var(--ember);color:var(--ember)}
 .slide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
@@ -1082,9 +1081,6 @@ function buildReservas() {
   if(!list.length) { tb.innerHTML=`<tr><td colspan="11" class="empty">${reservas.length ? 'Sin resultados para ese filtro.' : 'Sin reservas aún.'}</td></tr>`; return; }
   tb.innerHTML = list.slice().reverse().map(r => {
     const idx = reservas.indexOf(r);
-    const waMsg = encodeURIComponent('Hola '+r.nombre+', te escribimos desde Zoyen Turismo. Vimos que iniciaste una reserva para '+r.excursion+' y quedó sin confirmar. ¿Querés que te ayudemos a completarla?');
-    const waUrl = 'https://wa.me/'+String(r.tel||'').replace(/\D/g,'')+'?text='+waMsg;
-    const puedeRetarget = (r.estado==='pendiente'||r.estado==='pago_iniciado') && r.tel;
     return `<tr>
       <td style="color:var(--stone)">#${idx+1}</td>
       <td style="font-weight:500">${r.nombre}${r.origen==='zoyi' ? ` <span title="Consulta vía Zoyi" style="display:inline-block;font-size:10px;font-weight:700;color:var(--ember);background:rgba(212,119,42,.15);border:1px solid rgba(212,119,42,.4);border-radius:3px;padding:1px 5px;vertical-align:middle;">ZOYI</span>` : ''}</td>
@@ -1098,7 +1094,6 @@ function buildReservas() {
       <td style="font-size:11px;color:var(--muted)">${r.followUp ? 'Seguimiento: '+r.followUp : (r.ultimoIntento||r.creado||'')}</td>
       <td><div style="display:flex;gap:5px;flex-wrap:wrap;align-items:center">
         <button class="btn btn-outline btn-sm" onclick="openReservaEditor(${idx})">Ficha</button>
-        ${puedeRetarget ? `<a href="${waUrl}" target="_blank" class="btn btn-wa btn-sm">WA</a>` : ''}
         ${r.estado !== 'confirmada' ? `<button class="btn btn-p btn-sm" title="Confirmar reserva" onclick="cambiarEstado(${idx},'confirmada')">✓</button>` : ''}
         ${r.estado !== 'cancelada' ? `<button class="btn btn-d btn-sm" title="Cancelar reserva" onclick="cambiarEstado(${idx},'cancelada')">×</button>` : ''}
         <button class="btn btn-d btn-sm" title="Borrar reserva definitivamente" onclick="borrarReserva(${idx})" style="background:#fff;color:#c0392b;border:1px solid #c0392b">🗑</button>
@@ -2044,13 +2039,6 @@ textarea {
         contactClone.classList.add('mobile-drawer-wa');
         cta.appendChild(contactClone);
       } else {
-        var wa = document.createElement('a');
-        wa.href = 'https://wa.me/5492974432855';
-        wa.target = '_blank';
-        wa.rel = 'noopener';
-        wa.className = 'mobile-drawer-wa';
-        wa.textContent = 'WhatsApp';
-        cta.appendChild(wa);
       }
       if (cta.children.length) drawer.appendChild(cta);
     }
@@ -2405,3 +2393,6 @@ a.cta-btn-g[href*="wa.me"]:hover {
 </style>
 </body>
 </html>
+
+
+
