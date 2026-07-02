@@ -3,16 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <link rel="icon" type="image/png" href="assets/logo-zoyen-circular-static.png">
 <link rel="apple-touch-icon" href="assets/logo-zoyen-circular-static.png">
 <meta name="theme-color" content="#1e1810">
 <title>Admin  Zoyen Turismo</title>
 <meta name="robots" content="noindex,nofollow,noarchive">
-<script src="seo-config.js"></script>
+<script src="seo-config.js?v=20260702-1"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-<script src="supabase-config.js?v=20260619-2"></script>
-<script defer src="zoyen-reservas-api.js?v=20260619-2"></script>
+<script src="supabase-config.js?v=20260702-1"></script>
+<script defer src="zoyen-reservas-api.js?v=20260702-1"></script>
 <link href="https://fonts.googleapis.com/css2family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* Fix: ocultar boton hamburguesa en desktop, solo debe verse en mobile */
@@ -472,6 +475,10 @@ function getTourConfig() {
     if(saved.inedita && !saved.patagonia_inedita) cfg.patagonia_inedita = {...defaults.patagonia_inedita, ...saved.inedita};
     if(saved.carretera && !saved.carretera_austral) cfg.carretera_austral = {...defaults.carretera_austral, ...saved.carretera};
     let repairedAny = false;
+    if(cfg.patagonia_inedita && cfg.patagonia_inedita.duration !== '5 días / 4 noches') {
+      cfg.patagonia_inedita.duration = '5 días / 4 noches';
+      repairedAny = true;
+    }
     Object.keys(cfg).forEach(function(key) {
       ['name','duration'].forEach(function(field) {
         const repaired = repairStoredText(cfg[key][field]);
@@ -930,6 +937,7 @@ function saveAvailabilityConfig(key) {
   if (nameInput) cfg[key].name = nameInput;
   const durationInput = document.getElementById(`av-duration-${key}`).value.trim();
   if (durationInput) cfg[key].duration = durationInput;
+  if (key === 'patagonia_inedita') cfg[key].duration = '5 días / 4 noches';
   const imageInput = document.getElementById(`av-image-${key}`).value.trim();
   if (imageInput) cfg[key].cardImage = imageInput;
   if (!saveTourConfig(cfg)) { showToast('La imagen es demasiado pesada. Probá con otra más liviana.'); return; }
