@@ -4412,7 +4412,7 @@ applyLang(currentLang);
       fallback: "Preguntame por fechas, disponibilidad, precios, excursiones, tours, ubicación o reservas.",
       helpFull: "Puedo ayudarte con: fechas disponibles, precios en ARS, cupos, excursiones, tours de autor, ubicación, itinerarios PDF y cómo reservar. Probá: 'precio de Capillas', 'fechas para Patagonia Inédita' o '?qué excursión me recomendás'.",
       humanAns: function(){ return "Si querés hablar con alguien del equipo, podés usar WhatsApp +54 9 297 443-2855 o email zoyenperitomoreno@gmail.com. También podés cerrar la consulta al final del formulario."; },
-      datesAsk: "?Sobre qué excursión o tour querés consultar fechas disponibles?",
+      datesAsk: "¿Sobre qué excursión o tour querés consultar fechas disponibles?",
       datesBase: "La disponibilidad se consulta según la experiencia elegida. En la página de cada experiencia encontrás duración, recorrido, precio o seña e inclusiones.",
       datesExtra: function(p){ return " Para " + p.name + ": " + p.duration + ". " + p.summary; },
       datesCta: " Si querés consultar, tocá Consultar, elegí experiencia, cantidad de personas y fecha tentativa.",
@@ -4785,7 +4785,7 @@ applyLang(currentLang);
   }
   function dateAvailabilityAnswer(p,ui){
     if(p) return availabilityProductAnswer(p,ui);
-    return (ui.datesAsk||"?Sobre qué excursión o tour querés consultar fechas disponibles?");
+    return (ui.datesAsk||"¿Sobre qué excursión o tour querés consultar fechas disponibles?");
   }
   function productLine(p,ui){ return p.name+": "+p.duration+", "+priceText(p)+", "+p.capacity+(ui ? ui.capacity:" personas")+"."; }
   function productBullet(p,ui){ return "- "+p.name+"\n  "+p.duration+" - "+priceText(p)+" - "+p.capacity+(ui ? ui.capacity:" personas"); }
