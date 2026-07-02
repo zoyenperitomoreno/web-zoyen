@@ -2194,7 +2194,7 @@ body > nav .nav-actions.cta-nudge .nav-cta-btn::before {
   function pickFallback(text){
     const haystack = (text || '').toLowerCase();
     const found = fallbackByHint.find(([hint]) => haystack.includes(hint));
-    return found  found[1] : genericFallback;
+    return found ? found[1] : genericFallback;
   }
   window.zoyenPickFallback = pickFallback;
   document.addEventListener('error', function(event){
@@ -2244,7 +2244,7 @@ body > nav .nav-actions.cta-nudge .nav-cta-btn::before {
       if (strong) navActions.classList.add('cta-nudge-strong');
       navActions.classList.add('cta-nudge');
       clearTimeout(pulseTimer);
-      pulseTimer = setTimeout(function(){ navActions.classList.remove('cta-nudge', 'cta-nudge-strong'); }, strong  2250 : 1550);
+      pulseTimer = setTimeout(function(){ navActions.classList.remove('cta-nudge', 'cta-nudge-strong'); }, strong ? 2250 : 1550);
     }
     window.addEventListener('load', function(){ setTimeout(function(){ pulseActions(false); }, 1200); }, { once: true });
     const sections = document.querySelectorAll('section[id], footer[id], .hero');
@@ -2274,7 +2274,7 @@ body > nav .nav-actions.cta-nudge .nav-cta-btn::before {
         const r = el.getBoundingClientRect();
         activeStrong = r.top <= probeY && r.bottom >= probeY;
       });
-      const markerId = activeStrong  'strong-' + Math.round(window.scrollY / 160) : '';
+      const markerId = activeStrong ? 'strong-' + Math.round(window.scrollY / 160) : '';
       if (activeStrong && (!strongCtaActive || markerId !== lastSection)) {
         strongCtaActive = true;
         setCtaZone(true);
@@ -3062,9 +3062,9 @@ img.hero-logo-static {
         var p = Math.min((ts-start)/duration,1);
         var ease = 1-Math.pow(1-p,3);
         var val = Math.floor(ease*target);
-        var prefix = el.dataset.prefix || ""; el.textContent = prefix + (target>=1000  val.toLocaleString('es-AR') : val) + suffix;
+        var prefix = el.dataset.prefix || ""; el.textContent = prefix + (target>=1000 ? val.toLocaleString('es-AR') : val) + suffix;
         if(p<1) requestAnimationFrame(step);
-        else el.textContent = prefix + (target>=1000  target.toLocaleString('es-AR') : target) + suffix;
+        else el.textContent = prefix + (target>=1000 ? target.toLocaleString('es-AR') : target) + suffix;
       }
       requestAnimationFrame(step);
     });
@@ -3113,7 +3113,7 @@ img.hero-logo-static {
 
   function getActiveLent(){
     const active = document.querySelector('.slide.active');
-    return active  active.querySelector('.lent-fixed') : null;
+    return active ? active.querySelector('.lent-fixed') : null;
   }
 
   function showActive(){
@@ -3129,8 +3129,8 @@ img.hero-logo-static {
     const lent = getActiveLent();
     if(!lent) return;
     t = Math.max(0, Math.min(1, t));
-    lent.querySelectorAll('[data-w="a"]').forEach((el,i) => el.style.opacity = i/(N-1) < t  0 : 1);
-    lent.querySelectorAll('[data-w="b"]').forEach((el,i) => el.style.opacity = i/(N-1) < t  1 : 0);
+    lent.querySelectorAll('[data-w="a"]').forEach((el,i) => el.style.opacity = i/(N-1) < t ? 0 : 1);
+    lent.querySelectorAll('[data-w="b"]').forEach((el,i) => el.style.opacity = i/(N-1) < t ? 1 : 0);
   }
 
   const hero = document.querySelector('.hero');
@@ -3169,7 +3169,7 @@ img.hero-logo-static {
   })();
 
   window.setLentEnabled = function(val){
-    try{ localStorage.setItem('lentEnabled', val  'true' : 'false'); }catch(e){}
+    try{ localStorage.setItem('lentEnabled', val ? 'true' : 'false'); }catch(e){}
     if(!val) hideAll();
   };
   window.getLentEnabled = function(){ return isEnabled(); };
@@ -3656,7 +3656,7 @@ function applyHeroBannerConfig() {
     if(banner.img) applyImg(banner.img, idx);
     const eyebrow=slide.querySelector('.slide-eyebrow'), title=slide.querySelector('.slide-title'), desc=slide.querySelector('.slide-desc');
     if(eyebrow && banner.ey) { eyebrow.textContent=banner.ey; eyebrow.removeAttribute('data-i18n'); }
-    if(title && (banner.ti || banner.ac)) { title.innerHTML=heroText(banner.ti)+(banner.ac' <em>'+heroText(banner.ac)+'</em>':''); title.removeAttribute('data-i18n'); }
+    if(title && (banner.ti || banner.ac)) { title.innerHTML=heroText(banner.ti)+(banner.ac ? ' <em>'+heroText(banner.ac)+'</em>':''); title.removeAttribute('data-i18n'); }
     if(desc && banner.de) { desc.textContent=banner.de; desc.removeAttribute('data-i18n'); }
   });
 }
@@ -3841,7 +3841,7 @@ function readReservas() {
     if (sessionStorage.getItem(ZYT_RESERVAS_KEY) && !localStorage.getItem(ZYT_RESERVAS_KEY)) {
       localStorage.setItem(ZYT_RESERVAS_KEY, JSON.stringify(arr));
     }
-    return Array.isArray(arr)  arr : [];
+    return Array.isArray(arr) ? arr : [];
   } catch(e) { return []; }
 }
 function writeReservas(arr) {
@@ -3858,7 +3858,7 @@ function loadTourConfig() {
       defaults[key] = {
         ...defaults[key],
         ...src,
-        precio: (src.precio && Number(src.precio) > 0)  Number(src.precio) : defaults[key].precio
+        precio: (src.precio && Number(src.precio) > 0) ? Number(src.precio) : defaults[key].precio
       };
     });
   } catch(e) {}
@@ -3904,8 +3904,7 @@ revEls.forEach(el => obs.observe(el));
     if (!compassActive) return;
     // alpha = rotacin del dispositivo respecto al Norte (0 = Norte)
     // Necesitamos rotar la rosa al revs para que apunte al Norte
-    let alpha = e.webkitCompassHeading != null
-         e.webkitCompassHeading          // iOS: ya es heading real (0=Norte)
+    let alpha = e.webkitCompassHeading != null ? e.webkitCompassHeading          // iOS: ya es heading real (0=Norte)
       : (360 - (e.alpha || 0)) % 360;   // Android: alpha inverso
 
     // Suavizado para evitar saltos bruscos
@@ -3936,9 +3935,9 @@ revEls.forEach(el => obs.observe(el));
       `;
       document.body.appendChild(hint);
     }
-    hint.textContent = active  ' Br?jula activa' : '';
-    hint.style.opacity = active  '1' : '0';
-    hint.style.display = active  'block' : 'none';
+    hint.textContent = active ? ' Br?jula activa' : '';
+    hint.style.opacity = active ? '1' : '0';
+    hint.style.display = active ? 'block' : 'none';
     if (!active) setTimeout(() => { try { hint.remove(); } catch(e){} }, 500);
   }
 
@@ -4305,7 +4304,7 @@ function applyLang(lang) {
 }
 
 var langSwitcher = document.getElementById('langSwitcher');
-var langCurrent = langSwitcher  langSwitcher.querySelector('.lang-current') : null;
+var langCurrent = langSwitcher ? langSwitcher.querySelector('.lang-current') : null;
 
 function closeLangMenu() {
   if (!langSwitcher || !langCurrent) return;
@@ -4317,7 +4316,7 @@ if (langCurrent) {
   langCurrent.addEventListener('click', function(e) {
     e.stopPropagation();
     var isOpen = langSwitcher.classList.toggle('open');
-    langCurrent.setAttribute('aria-expanded', isOpen  'true' : 'false');
+    langCurrent.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   });
 }
 
@@ -4405,7 +4404,7 @@ applyLang(currentLang);
   var leadDraft = null; // {producto, personas, fecha, nombre, telefono, step}
   var LEAD_STEP = { PERSONAS:"personas", FECHA:"fecha", CONTACTO:"contacto", CONFIRMAR:"confirmar" };
 
-  function getLang(){ return typeof currentLang !== 'undefined'  currentLang : 'es'; }
+  function getLang(){ return typeof currentLang !== 'undefined' ? currentLang : 'es'; }
 
   var UI = {
     es: {
@@ -4541,7 +4540,7 @@ applyLang(currentLang);
   applyEditableTourConfigToZoyi();
   var allProducts = excursiones.concat(tours);
 
-  function normalize(t){ return (t||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/&middot;|?/g," ").replace(/[^a-z0-9\s/.-]/g," ").replace(/\s+/g," ").trim(); }
+  function normalize(t){ return (t||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/&middot;|\?/g," ").replace(/[^a-z0-9\s/.-]/g," ").replace(/\s+/g," ").trim(); }
   function money(n){ return "$"+Number(n||0).toLocaleString("es-AR")+" AR p/p"; }
   function escapeHtml(s){
     return String(s||"").replace(/[&<>"']/g,function(c){
@@ -4594,7 +4593,7 @@ applyLang(currentLang);
         resumenProducto:"Experiencia: ", resumenPersonas:"Personas: ", resumenFecha:"Fecha tentativa: ",
         resumenNombre:"Nombre: ", resumenTelefono:"Tel?fono: ",
         confirmarBtn:"Continuar por WhatsApp â†’", editarBtn:"Volver a empezar",
-        waMensaje:function(d){ return "Hola! Soy "+d.nombre+". Quiero consultar por "+d.producto+" para "+d.personas+" persona(s)."+(d.fecha" Fecha tentativa: "+d.fecha+".":"")+" Mi WhatsApp: "+d.telefono; },
+        waMensaje:function(d){ return "Hola! Soy "+d.nombre+". Quiero consultar por "+d.producto+" para "+d.personas+" persona(s)."+(d.fecha ? " Fecha tentativa: "+d.fecha+".":"")+" Mi WhatsApp: "+d.telefono; },
         despuesWa:"Qued? tu consulta registrada. Te abrimos WhatsApp para cerrar la venta y coordinar precio, fecha y cupo."
       },
       en:{
@@ -4607,7 +4606,7 @@ applyLang(currentLang);
         resumenProducto:"Experience: ", resumenPersonas:"People: ", resumenFecha:"Tentative date: ",
         resumenNombre:"Name: ", resumenTelefono:"Tel?fono: ",
         confirmarBtn:"Continue on WhatsApp â†’", editarBtn:"Start over",
-        waMensaje:function(d){ return "Hello! I'm "+d.nombre+". I'd like to ask about "+d.producto+" for "+d.personas+" people."+(d.fecha" Tentative date: "+d.fecha+".":"")+" My WhatsApp: "+d.telefono; },
+        waMensaje:function(d){ return "Hello! I'm "+d.nombre+". I'd like to ask about "+d.producto+" for "+d.personas+" people."+(d.fecha ? " Tentative date: "+d.fecha+".":"")+" My WhatsApp: "+d.telefono; },
         despuesWa:"Your inquiry was saved. WhatsApp will open so we can close the sale and confirm price, date and availability."
       },
       pt:{
@@ -4620,7 +4619,7 @@ applyLang(currentLang);
         resumenProducto:"ExperiÃªncia: ", resumenPersonas:"Pessoas: ", resumenFecha:"Data tentativa: ",
         resumenNombre:"Nome: ", resumenTelefono:"Tel?fono: ",
         confirmarBtn:"Continuar por WhatsApp â†’", editarBtn:"ComeÃ§ar de novo",
-        waMensaje:function(d){ return "Ol?! Sou "+d.nombre+". Quero consultar sobre "+d.producto+" para "+d.personas+" pessoa(s)."+(d.fecha" Data tentativa: "+d.fecha+".":"")+" Meu WhatsApp: "+d.telefono; },
+        waMensaje:function(d){ return "Ol?! Sou "+d.nombre+". Quero consultar sobre "+d.producto+" para "+d.personas+" pessoa(s)."+(d.fecha ? " Data tentativa: "+d.fecha+".":"")+" Meu WhatsApp: "+d.telefono; },
         despuesWa:"Sua consulta foi registrada. Vamos abrir o WhatsApp para fechar a venda e confirmar preÃ§o, data e disponibilidade."
       },
       ko:{
@@ -4633,7 +4632,7 @@ applyLang(currentLang);
         resumenProducto:"íˆ¬ì–´: ", resumenPersonas:"ì¸ì›: ", resumenFecha:"ì˜ˆìƒ ë‚ ì§œ: ",
         resumenNombre:"ì´ë¦„: ", resumenTelefono:"ì „í™”ë²ˆí˜¸: ",
         confirmarBtn:"ì™“ì¸ ì•±ìœ¼ë¡œ ê³„ì†í•˜ê¸° â†’", editarBtn:"ë‹¤ì‹œ ì‹œìž‘",
-        waMensaje:function(d){ return "ì•ˆë…•í•˜ì„¸ìš”! "+d.nombre+"ìž…ë‹ˆë‹¤. "+d.producto+"ì— ëŒ€í•´ "+d.personas+"ëª… ê¸°ì¤€ìœ¼ë¡œ ë¬¸ì˜í•˜ê³  ì‹¶ìŠµë‹ˆë‹¤."+(d.fecha" ì˜ˆìƒ ë‚ ì§œ: "+d.fecha+".":"")+" ì œ ì™“ì¸ ì•±: "+d.telefono; },
+        waMensaje:function(d){ return "ì•ˆë…•í•˜ì„¸ìš”! "+d.nombre+"ìž…ë‹ˆë‹¤. "+d.producto+"ì— ëŒ€í•´ "+d.personas+"ëª… ê¸°ì¤€ìœ¼ë¡œ ë¬¸ì˜í•˜ê³  ì‹¶ìŠµë‹ˆë‹¤."+(d.fecha ? " ì˜ˆìƒ ë‚ ì§œ: "+d.fecha+".":"")+" ì œ ì™“ì¸ ì•±: "+d.telefono; },
         despuesWa:"ë¬¸ì˜ê°€ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤. íŒë§¤ í™•ì •ê³¼ ê°€ê²©, ë‚ ì§œ, ê°€ëŠ¥ ì—¬ë¶€ í™•ì¸ì„ ìœ„í•´ WhatsAppì„ ì—´ì–´ë“œë¦½ë‹ˆë‹¤."
       }
     })[lang]||null;
@@ -4663,14 +4662,14 @@ applyLang(currentLang);
   }
   function showTypeChoices(intent){
     var c=choiceCopy(), lang=getLang(), ui=UI[lang]||UI.es;
-    addChoices(intent==="dates"  (ui.datesAsk||c.type) : c.type,[
+    addChoices(intent==="dates" ? (ui.datesAsk||c.type) : c.type,[
       {label:c.exc,action:"type",value:"excursion"},
       {label:c.tour,action:"type",value:"tour"}
     ],intent);
   }
   function showProductChoices(intent,type){
-    var c=choiceCopy(), list=type==="tour"  tours : excursiones;
-    addChoices(type==="tour"  c.pickTour : c.pickExc,list.map(function(p){
+    var c=choiceCopy(), list=type==="tour" ? tours : excursiones;
+    addChoices(type==="tour" ? c.pickTour : c.pickExc,list.map(function(p){
       return {label:p.name,action:"product",value:p.id};
     }),intent);
   }
@@ -4744,7 +4743,7 @@ applyLang(currentLang);
       fecha: leadDraft.fecha||'', personas: leadDraft.personas,
       asientos:'', senia:0, estado:'consulta',
       tipoConsulta:'whatsapp_click', leadType:'zoyi_chat', inquiryType:'whatsapp_click',
-      origen:'zoyi', canalCierre:'whatsapp', whatsappClicked:true, whatsappClickedAt:ahora, notas:'Consulta v?a Zoyi: '+leadDraft.personas+' persona(s)'+(leadDraft.fecha  ', fecha tentativa '+leadDraft.fecha : '')+'. WhatsApp abierto por el visitante.',
+      origen:'zoyi', canalCierre:'whatsapp', whatsappClicked:true, whatsappClickedAt:ahora, notas:'Consulta v?a Zoyi: '+leadDraft.personas+' persona(s)'+(leadDraft.fecha ? ', fecha tentativa '+leadDraft.fecha : '')+'. WhatsApp abierto por el visitante.',
       creado: ahora, ultimoIntento: ahora
     };
     reservas.push(nueva);
@@ -4788,8 +4787,8 @@ applyLang(currentLang);
     if(p) return availabilityProductAnswer(p,ui);
     return (ui.datesAsk||"?Sobre qu? excursi?n o tour quer?s consultar fechas disponibles");
   }
-  function productLine(p,ui){ return p.name+": "+p.duration+", "+priceText(p)+", "+p.capacity+(ui  ui.capacity:" personas")+"."; }
-  function productBullet(p,ui){ return "- "+p.name+"\n  "+p.duration+" - "+priceText(p)+" - "+p.capacity+(ui  ui.capacity:" personas"); }
+  function productLine(p,ui){ return p.name+": "+p.duration+", "+priceText(p)+", "+p.capacity+(ui ? ui.capacity:" personas")+"."; }
+  function productBullet(p,ui){ return "- "+p.name+"\n  "+p.duration+" - "+priceText(p)+" - "+p.capacity+(ui ? ui.capacity:" personas"); }
   function productSummary(p,ui){
     var out=productBullet(p,ui)+"\n  "+p.summary;
     if(p.includes) out+="\n  Incluye: "+p.includes;
@@ -4813,7 +4812,7 @@ applyLang(currentLang);
     for(i=1;i<=m;i++){
       cur=[i];
       for(j=1;j<=n;j++){
-        cur[j]=Math.min(prev[j]+1,cur[j-1]+1,prev[j-1]+(a.charAt(i-1)===b.charAt(j-1)0:1));
+        cur[j]=Math.min(prev[j]+1,cur[j-1]+1,prev[j-1]+(a.charAt(i-1)===b.charAt(j-1)?0:1));
       }
       prev=cur;
     }
@@ -4827,7 +4826,7 @@ applyLang(currentLang);
         var a=normalize(alias);
         if(!a)return;
         if(q===a) score+=20;
-        else if(q.indexOf(a)!==-1) score+=a.length>8  12 : 7;
+        else if(q.indexOf(a)!==-1) score+=a.length>8 ? 12 : 7;
         else if(a.indexOf(q)!==-1 && q.length>3) score+=5;
       });
       qTokens.forEach(function(t){
@@ -4836,7 +4835,7 @@ applyLang(currentLang);
       });
       if(score>bestScore){ best=p; bestScore=score; }
     });
-    return bestScore>=3  best : null;
+    return bestScore>=3 ? best : null;
   }
   function isAsking(q,words){ return words.some(function(w){ var nw=normalize(w); return q.indexOf(nw)!==-1 || searchTokens(q).some(function(t){return closeToken(t,nw);}); }); }
 
@@ -4847,12 +4846,12 @@ applyLang(currentLang);
     var p=findProduct(q);
     if(isAsking(q,k.human))    return ui.humanAns();
     if(isAsking(q,k.dates))    return dateAvailabilityAnswer(p,ui);
-    if(isAsking(q,k.prices))   return p  productBullet(p,ui)+"\n"+ui.pricesPer.trim() : ui.pricesAll.trim()+"\n"+allProducts.map(function(x){return productBullet(x,ui);}).join("\n");
+    if(isAsking(q,k.prices))   return p ? productBullet(p,ui)+"\n"+ui.pricesPer.trim() : ui.pricesAll.trim()+"\n"+allProducts.map(function(x){return productBullet(x,ui);}).join("\n");
     if(isAsking(q,k.book))     return ui.resAnswer;
     if(isAsking(q,k.location)) return ui.locAnswer;
-    if(isAsking(q,k.pdf))      return p&&p.pdf  ui.pdfProduct(p) : ui.pdfBase;
-    if(isAsking(q,k.excursion))return p  productSummary(p,ui) : ui.listExc.trim()+"\n"+excursiones.map(function(x){return productBullet(x,ui);}).join("\n");
-    if(isAsking(q,k.tour))     return p  productSummary(p,ui) : ui.listTours.trim()+"\n"+tours.map(function(x){return productBullet(x,ui);}).join("\n")+"\n"+ui.listToursSuffix;
+    if(isAsking(q,k.pdf))      return p&&p.pdf ? ui.pdfProduct(p) : ui.pdfBase;
+    if(isAsking(q,k.excursion))return p ? productSummary(p,ui) : ui.listExc.trim()+"\n"+excursiones.map(function(x){return productBullet(x,ui);}).join("\n");
+    if(isAsking(q,k.tour))     return p ? productSummary(p,ui) : ui.listTours.trim()+"\n"+tours.map(function(x){return productBullet(x,ui);}).join("\n")+"\n"+ui.listToursSuffix;
     if(isAsking(q,k.compare))  return ui.compareAnswer;
     if(isAsking(q,k.wellness)) return ui.wellnessAnswer;
     if(isAsking(q,k.agency))   return ui.agencyAnswer;
@@ -4861,7 +4860,7 @@ applyLang(currentLang);
   }
 
   function submit(text){
-    var val=(text||(input  input.value:"")||"").trim();
+    var val=(text||(input ? input.value :"")||"").trim();
     if(!val)return;
     addMessage(val,"user");
     if(input)input.value="";
@@ -4901,7 +4900,7 @@ applyLang(currentLang);
 
   if(toggle) toggle.addEventListener("click",function(){
     widget.classList.toggle("open");
-    toggle.setAttribute("aria-expanded",widget.classList.contains("open")  "true" : "false");
+    toggle.setAttribute("aria-expanded",widget.classList.contains("open") ? "true" : "false");
     if(widget.classList.contains("open")&&input)input.focus();
   });
   window.abrirZoyi = function(){
@@ -5065,7 +5064,7 @@ applyLang(currentLang);
 
   hamBtn.addEventListener('click', function(e) {
     e.stopPropagation();
-    drawer.classList.contains('open')  closeDrawer() : openDrawer();
+    drawer.classList.contains('open') ? closeDrawer() : openDrawer();
   });
 
   overlay.addEventListener('click', closeDrawer);
@@ -5859,7 +5858,7 @@ textarea {
       ['ES', 'EN', 'PT', 'KO'].forEach(function (code, index) {
         var btn = document.createElement('button');
         btn.type = 'button';
-        btn.className = 'drawer-lang-btn' + (index === 0  ' active' : '');
+        btn.className = 'drawer-lang-btn' + (index === 0 ? ' active' : '');
         btn.setAttribute('data-lang', code.toLowerCase());
         btn.textContent = code;
         btn.addEventListener('click', function () {
@@ -6344,13 +6343,13 @@ a.cta-btn-g[href*="wa.me"]:hover::before {
   function status(message,type){
     var el=document.getElementById('zoyen-compass-status');
     if(!el){el=document.createElement('div');el.id='zoyen-compass-status';el.setAttribute('role','status');el.style.cssText='position:fixed;left:50%;bottom:max(24px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:1200;max-width:calc(100vw - 32px);padding:10px 15px;border-radius:999px;background:rgba(18,14,11,.94);border:1px solid rgba(212,119,42,.55);color:#f5f0e8;font:600 12px/1.35 Sora,sans-serif;letter-spacing:.03em;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.3);pointer-events:none;transition:opacity .25s';document.body.appendChild(el)}
-    el.textContent=message;el.style.borderColor=type==='error''rgba(220,90,70,.7)':'rgba(212,119,42,.55)';el.style.opacity='1';
+    el.textContent=message;el.style.borderColor=type==='error'?'rgba(220,90,70,.7)':'rgba(212,119,42,.55)';el.style.opacity='1';
     clearTimeout(statusTimer);statusTimer=setTimeout(function(){el.style.opacity='0'},3600);
   }
 
   function screenAngle(){
     if(screen.orientation&&typeof screen.orientation.angle==='number')return screen.orientation.angle;
-    return typeof window.orientation==='number'window.orientation:0;
+    return typeof window.orientation==='number'?window.orientation:0;
   }
 
   function isAbsoluteEvent(event,fromAbsoluteAPI){
@@ -6451,13 +6450,13 @@ a.cta-btn-g[href*="wa.me"]:hover::before {
   let selected=localStorage.getItem('zoyen_currency')||langCurrency[(document.documentElement.lang||'es').slice(0,2)]||'ARS';
   let rates={ARS:1}, refreshing=false;
   const priceTargets=['#montoPrev','#pagoMontoBadge','#pagoSenia','.precio-preview .monto','.monto-badge'];
-  function money(value,code){const c=currencies[code];return c.symbol+Number(value).toLocaleString(c.locale,{maximumFractionDigits:code==='KRW'||code==='CLP'0:2});}
-  function arsFromText(text){const m=String(text||'').match(/\$\s*([\d.]+(:,\d+))/);return mNumber(m[1].replace(/\./g,'').replace(',','.')):0;}
-  function updateLabel(){const label=document.getElementById('currencyCurrentLabel');if(label)label.innerHTML=selected+' <span class="currency-name">? '+currencies[selected].name+'</span>';document.querySelectorAll('.currency-option').forEach(b=>b.classList.toggle('active',b.dataset.currency===selected));document.querySelectorAll('.drawer-currency-btn').forEach(b=>b.classList.toggle('active',b.dataset.currency===selected));const r=document.getElementById('currencyRate');if(r)r.textContent=selected==='ARS''Los cobros y reservas se realizan siempre en pesos argentinos.':rates[selected]'Referencia: $10.000 ARS â‰ˆ '+money(10000*rates[selected],selected)+'. Cotizaci?n informativa.':'Consultando cotizaci?nâ€¦';}
-  function updatePrices(){document.querySelectorAll(priceTargets.join(',')).forEach(el=>{if(el.classList.contains('currency-conversion'))return;const parsed=arsFromText(el.textContent),ars=Number(parsed||el.dataset.arsValue||0);if(!ars)return;el.dataset.arsValue=ars;let note=el.querySelector(':scope > .currency-conversion');if(selected==='ARS'){if(note)note.remove();return;}if(!rates[selected])return;if(!note){note=document.createElement('small');note.className='currency-conversion';el.appendChild(note);}note.textContent='â‰ˆ '+money(ars*rates[selected],selected)+' ? referencia';});document.querySelectorAll('option[data-precio]').forEach(opt=>{const ars=Number(opt.dataset.precio||0);if(!opt.dataset.arsLabel)opt.dataset.arsLabel=opt.textContent.replace(/\s+?\s+â‰ˆ.+$/,'');opt.textContent=opt.dataset.arsLabel+(selected!=='ARS'&&rates[selected]' ? â‰ˆ '+money(ars*rates[selected],selected):'');});}
+  function money(value,code){const c=currencies[code];return c.symbol+Number(value).toLocaleString(c.locale,{maximumFractionDigits:code==='KRW'||code==='CLP'?0:2});}
+  function arsFromText(text){const m=String(text||'').match(/\$\s*([\d.]+(:,\d+))/);return m?Number(m[1].replace(/\./g,'').replace(',','.')):0;}
+  function updateLabel(){const label=document.getElementById('currencyCurrentLabel');if(label)label.innerHTML=selected+' <span class="currency-name">? '+currencies[selected].name+'</span>';document.querySelectorAll('.currency-option').forEach(b=>b.classList.toggle('active',b.dataset.currency===selected));document.querySelectorAll('.drawer-currency-btn').forEach(b=>b.classList.toggle('active',b.dataset.currency===selected));const r=document.getElementById('currencyRate');if(r)r.textContent=selected==='ARS'?'Los cobros y reservas se realizan siempre en pesos argentinos.':rates[selected]?'Referencia: $10.000 ARS â‰ˆ '+money(10000*rates[selected],selected)+'. Cotizaci?n informativa.':'Consultando cotizaci?nâ€¦';}
+  function updatePrices(){document.querySelectorAll(priceTargets.join(',')).forEach(el=>{if(el.classList.contains('currency-conversion'))return;const parsed=arsFromText(el.textContent),ars=Number(parsed||el.dataset.arsValue||0);if(!ars)return;el.dataset.arsValue=ars;let note=el.querySelector(':scope > .currency-conversion');if(selected==='ARS'){if(note)note.remove();return;}if(!rates[selected])return;if(!note){note=document.createElement('small');note.className='currency-conversion';el.appendChild(note);}note.textContent='â‰ˆ '+money(ars*rates[selected],selected)+' ? referencia';});document.querySelectorAll('option[data-precio]').forEach(opt=>{const ars=Number(opt.dataset.precio||0);if(!opt.dataset.arsLabel)opt.dataset.arsLabel=opt.textContent.replace(/\s+\?\s+â‰ˆ.+$/,'');opt.textContent=opt.dataset.arsLabel+(selected!=='ARS'&&rates[selected] ? 'â‰ˆ '+money(ars*rates[selected],selected):'');});}
   async function loadRates(){if(refreshing)return;refreshing=true;const day=new Date().toISOString().slice(0,10),cached=JSON.parse(localStorage.getItem('zoyen_currency_rates')||'null');if(cached&&cached.day===day){rates=Object.assign(rates,cached.rates);refreshing=false;updateLabel();updatePrices();return;}try{const res=await fetch('https://open.er-api.com/v6/latest/ARS');if(!res.ok)throw new Error('rate');const data=await res.json();rates=Object.assign(rates,data.rates||{});localStorage.setItem('zoyen_currency_rates',JSON.stringify({day:day,rates:rates}));}catch(e){const old=cached&&cached.rates;if(old)rates=Object.assign(rates,old);}refreshing=false;updateLabel();updatePrices();}
   function choose(code,manual){selected=code;localStorage.setItem('zoyen_currency',code);if(manual)localStorage.setItem('zoyen_currency_manual','1');document.getElementById('currencySwitcher').classList.remove('open');updateLabel();updatePrices();}
-  function mount(){if(document.getElementById('currencySwitcher'))return;const anchor=document.getElementById('langSwitcher');const nav=anchor.parentElement||document.querySelector('body > nav');if(!nav)return;const box=document.createElement('div');box.className='currency-switcher';box.id='currencySwitcher';box.innerHTML='<button class="currency-current" type="button" aria-haspopup="true" aria-expanded="false"><span id="currencyCurrentLabel"></span></button><ul class="currency-menu">'+Object.entries(currencies).map(([code,c])=>'<li><button class="currency-option" type="button" data-currency="'+code+'"><span>'+code+' ? '+c.name+'</span><small>'+(code==='ARS''OFICIAL':'REFERENCIA')+'</small></button></li>').join('')+'<li class="currency-rate" id="currencyRate"></li></ul>';if(anchor){const group=document.createElement('div');group.className='nav-locale-tools';anchor.parentNode.insertBefore(group,anchor);group.appendChild(anchor);group.appendChild(box);}else{nav.appendChild(box);}box.querySelector('.currency-current').onclick=()=>box.classList.toggle('open');box.querySelectorAll('.currency-option').forEach(b=>b.onclick=()=>choose(b.dataset.currency,true));document.querySelectorAll('.drawer-currency-btn').forEach(b=>b.onclick=()=>choose(b.dataset.currency,true));document.addEventListener('click',e=>{if(!box.contains(e.target))box.classList.remove('open')});updateLabel();loadRates();const obs=new MutationObserver(()=>{clearTimeout(window.__zoyenCurrencyTimer);window.__zoyenCurrencyTimer=setTimeout(updatePrices,80)});obs.observe(document.body,{subtree:true,childList:true,characterData:true});new MutationObserver(()=>{if(localStorage.getItem('zoyen_currency_manual'))return;const code=langCurrency[(document.documentElement.lang||'es').slice(0,2)]||'ARS';choose(code,false)}).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});window.ZoyenCurrency={choose:choose,convert:(ars,code)=>Number(ars)*(rates[code||selected]||1),selected:()=>selected};}
+  function mount(){if(document.getElementById('currencySwitcher'))return;const anchor=document.getElementById('langSwitcher');const nav=anchor.parentElement||document.querySelector('body > nav');if(!nav)return;const box=document.createElement('div');box.className='currency-switcher';box.id='currencySwitcher';box.innerHTML='<button class="currency-current" type="button" aria-haspopup="true" aria-expanded="false"><span id="currencyCurrentLabel"></span></button><ul class="currency-menu">'+Object.entries(currencies).map(([code,c])=>'<li><button class="currency-option" type="button" data-currency="'+code+'"><span>'+code+' ? '+c.name+'</span><small>'+(code==='ARS'?'OFICIAL':'REFERENCIA')+'</small></button></li>').join('')+'<li class="currency-rate" id="currencyRate"></li></ul>';if(anchor){const group=document.createElement('div');group.className='nav-locale-tools';anchor.parentNode.insertBefore(group,anchor);group.appendChild(anchor);group.appendChild(box);}else{nav.appendChild(box);}box.querySelector('.currency-current').onclick=()=>box.classList.toggle('open');box.querySelectorAll('.currency-option').forEach(b=>b.onclick=()=>choose(b.dataset.currency,true));document.querySelectorAll('.drawer-currency-btn').forEach(b=>b.onclick=()=>choose(b.dataset.currency,true));document.addEventListener('click',e=>{if(!box.contains(e.target))box.classList.remove('open')});updateLabel();loadRates();const obs=new MutationObserver(()=>{clearTimeout(window.__zoyenCurrencyTimer);window.__zoyenCurrencyTimer=setTimeout(updatePrices,80)});obs.observe(document.body,{subtree:true,childList:true,characterData:true});new MutationObserver(()=>{if(localStorage.getItem('zoyen_currency_manual'))return;const code=langCurrency[(document.documentElement.lang||'es').slice(0,2)]||'ARS';choose(code,false)}).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});window.ZoyenCurrency={choose:choose,convert:(ars,code)=>Number(ars)*(rates[code||selected]||1),selected:()=>selected};}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();
 })();
 </script>

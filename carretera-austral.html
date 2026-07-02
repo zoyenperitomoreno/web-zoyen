@@ -736,7 +736,7 @@ body > nav .nav-actions.cta-nudge .nav-cta-btn::before {
   function pickFallback(text){
     const haystack = (text || '').toLowerCase();
     const found = fallbackByHint.find(([hint]) => haystack.includes(hint));
-    return found  found[1] : genericFallback;
+    return found ? found[1] : genericFallback;
   }
   window.zoyenPickFallback = pickFallback;
   document.addEventListener('error', function(event){
@@ -1876,7 +1876,7 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   };
   var currentLang = localStorage.getItem('zoyen_lang') || 'es';
   var langSwitcher = document.getElementById('langSwitcher');
-  var langCurrent = langSwitcher  langSwitcher.querySelector('.lang-current') : null;
+  var langCurrent = langSwitcher ? langSwitcher.querySelector('.lang-current') : null;
   function closeLangMenu() {
     if (!langSwitcher || !langCurrent) return;
     langSwitcher.classList.remove('open');
@@ -1906,7 +1906,7 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
     langCurrent.addEventListener('click', function(e) {
       e.stopPropagation();
       var isOpen = langSwitcher.classList.toggle('open');
-      langCurrent.setAttribute('aria-expanded', isOpen  'true' : 'false');
+      langCurrent.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
   }
   document.querySelectorAll('.lang-btn').forEach(function(btn) {
@@ -2185,7 +2185,7 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
     for(j=0;j<=n;j++) prev[j]=j;
     for(i=1;i<=m;i++){
       cur=[i];
-      for(j=1;j<=n;j++) cur[j]=Math.min(prev[j]+1,cur[j-1]+1,prev[j-1]+(a.charAt(i-1)===b.charAt(j-1)0:1));
+      for(j=1;j<=n;j++) cur[j]=Math.min(prev[j]+1,cur[j-1]+1,prev[j-1]+(a.charAt(i-1)===b.charAt(j-1)?0:1));
       prev=cur;
     }
     return prev[n] <= 2;
@@ -2198,7 +2198,7 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
         var a=normalize(alias);
         if(!a) return;
         if(query === a) score += 20;
-        else if(query.indexOf(a) !== -1) score += a.length > 8  12 : 7;
+        else if(query.indexOf(a) !== -1) score += a.length > 8 ? 12 : 7;
         else if(a.indexOf(query) !== -1 && query.length > 3) score += 5;
       });
       qTokens.forEach(function(t){
@@ -2207,7 +2207,7 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
       });
       if(score > bestScore){ best=p; bestScore=score; }
     });
-    return bestScore >= 3  best : null;
+    return bestScore >= 3 ? best : null;
   }
   function isAsking(q, words){ return words.some(function(w){ var nw=normalize(w); return q.indexOf(nw) !== -1 || searchTokens(q).some(function(t){ return closeToken(t,nw); }); }); }
   function listExcursions(){ return "Excursiones de día o medio día disponibles: " + excursiones.map(productLine).join(" "); }
@@ -2249,8 +2249,8 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
     if (isAsking(q, ["reservar","reserva","reservas","contratar","seña","seña","pago"])) return reservationAnswer();
     if (isAsking(q, ["ubicación","ubicación","dónde están","dirección","dirección","perito moreno","santa cruz","cómo llegar"])) return locationAnswer();
     if (isAsking(q, ["itinerario","pdf","descargar","programa","recorrido"])) return pdfAnswer(product);
-    if (isAsking(q, ["excursion","excursiones","paseos","salidas","día completo","medio día"])) return product  productDetail(product) : listExcursions();
-    if (isAsking(q, ["tour","tours","autor","varios días","viaje completo","paquete"])) return product  productDetail(product) : listTours();
+    if (isAsking(q, ["excursion","excursiones","paseos","salidas","día completo","medio día"])) return product ? productDetail(product) : listExcursions();
+    if (isAsking(q, ["tour","tours","autor","varios días","viaje completo","paquete"])) return product ? productDetail(product) : listTours();
     if (isAsking(q, ["recomendas","recomendacion","conviene","diferencia","comparar","mejor","cual elijo","que hago"])) return compareAnswer();
     if (isAsking(q, ["bienestar","wellness","yoga","masajes","4x4","off road","retiro","retiros"])) return "Tenemos una línea de Nuevas Experiencias con dos propuestas: Off Road 4x4 y Viajes con Sentido (retiros introspectivos). Más info en nuevas-experiencias.html.";
     if (isAsking(q, ["zoyen","agencia","legajo","quienes","quiénes son"])) return "Zoyen Turismo es una agencia local de Perito Moreno, Santa Cruz, legajo 15.625. Diseña excursiones y tours de autor en Patagonia.";
@@ -2259,7 +2259,7 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
     return "Puedo ayudarte con información del sitio: fechas disponibles, precios en AR, cupos, tipos de excursiones, tours de autor, ubicación, itinerarios PDF y cómo reservar. Probá preguntarme, por ejemplo: 'precio de Capillas', 'fechas para Patagonia Inédita' o '¿qué excursión me recomendás'.";
   }
   function submit(text){
-    var value = (text || (input  input.value : "") || "").trim();
+    var value = (text || (input ? input.value : "") || "").trim();
     if (!value) return;
     addMessage(value, "user");
     if (input) input.value = "";
@@ -2267,7 +2267,7 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   }
   if (toggle) toggle.addEventListener("click", function(){
     widget.classList.toggle("open");
-    toggle.setAttribute("aria-expanded", widget.classList.contains("open")  "true" : "false");
+    toggle.setAttribute("aria-expanded", widget.classList.contains("open") ? "true" : "false");
     if (widget.classList.contains("open") && input) input.focus();
   });
   window.abrirZoyi = function(){
@@ -3125,7 +3125,7 @@ textarea {
       ['ES', 'EN', 'PT', 'KO'].forEach(function (code, index) {
         var btn = document.createElement('button');
         btn.type = 'button';
-        btn.className = 'drawer-lang-btn' + (index === 0  ' active' : '');
+        btn.className = 'drawer-lang-btn' + (index === 0 ? ' active' : '');
         btn.setAttribute('data-lang', code.toLowerCase());
         btn.textContent = code;
         btn.addEventListener('click', function () {
@@ -3524,13 +3524,13 @@ a.cta-btn-g[href*="wa.me"]:hover::before {
   let selected=localStorage.getItem('zoyen_currency')||langCurrency[(document.documentElement.lang||'es').slice(0,2)]||'ARS';
   let rates={ARS:1}, refreshing=false;
   const priceTargets=['#montoPrev','#pagoMontoBadge','#pagoSenia','.precio-preview .monto','.monto-badge'];
-  function money(value,code){const c=currencies[code];return c.symbol+Number(value).toLocaleString(c.locale,{maximumFractionDigits:code==='KRW'||code==='CLP'0:2});}
-  function arsFromText(text){const m=String(text||'').match(/\$\s*([\d.]+(:,\d+))/);return mNumber(m[1].replace(/\./g,'').replace(',','.')):0;}
-  function updateLabel(){const label=document.getElementById('currencyCurrentLabel');if(label)label.innerHTML=selected+' <span class="currency-name">· '+currencies[selected].name+'</span>';document.querySelectorAll('.currency-option').forEach(b=>b.classList.toggle('active',b.dataset.currency===selected));const r=document.getElementById('currencyRate');if(r)r.textContent=selected==='ARS''Los cobros y reservas se realizan siempre en pesos argentinos.':rates[selected]'Referencia: $10.000 ARS ≈ '+money(10000*rates[selected],selected)+'. Cotización informativa.':'Consultando cotización…';}
-  function updatePrices(){document.querySelectorAll(priceTargets.join(',')).forEach(el=>{if(el.classList.contains('currency-conversion'))return;const parsed=arsFromText(el.textContent),ars=Number(parsed||el.dataset.arsValue||0);if(!ars)return;el.dataset.arsValue=ars;let note=el.querySelector(':scope > .currency-conversion');if(selected==='ARS'){if(note)note.remove();return;}if(!rates[selected])return;if(!note){note=document.createElement('small');note.className='currency-conversion';el.appendChild(note);}note.textContent='≈ '+money(ars*rates[selected],selected)+' · referencia';});document.querySelectorAll('option[data-precio]').forEach(opt=>{const ars=Number(opt.dataset.precio||0);if(!opt.dataset.arsLabel)opt.dataset.arsLabel=opt.textContent.replace(/\s+·\s+≈.+$/,'');opt.textContent=opt.dataset.arsLabel+(selected!=='ARS'&&rates[selected]' · ≈ '+money(ars*rates[selected],selected):'');});}
+  function money(value,code){const c=currencies[code];return c.symbol+Number(value).toLocaleString(c.locale,{maximumFractionDigits:code==='KRW'||code==='CLP'?0:2});}
+  function arsFromText(text){const m=String(text||'').match(/\$\s*([\d.]+(:,\d+))/);return m?Number(m[1].replace(/\./g,'').replace(',','.')):0;}
+  function updateLabel(){const label=document.getElementById('currencyCurrentLabel');if(label)label.innerHTML=selected+' <span class="currency-name">· '+currencies[selected].name+'</span>';document.querySelectorAll('.currency-option').forEach(b=>b.classList.toggle('active',b.dataset.currency===selected));const r=document.getElementById('currencyRate');if(r)r.textContent=selected==='ARS'?'Los cobros y reservas se realizan siempre en pesos argentinos.':rates[selected]?'Referencia: $10.000 ARS ≈ '+money(10000*rates[selected],selected)+'. Cotización informativa.':'Consultando cotización…';}
+  function updatePrices(){document.querySelectorAll(priceTargets.join(',')).forEach(el=>{if(el.classList.contains('currency-conversion'))return;const parsed=arsFromText(el.textContent),ars=Number(parsed||el.dataset.arsValue||0);if(!ars)return;el.dataset.arsValue=ars;let note=el.querySelector(':scope > .currency-conversion');if(selected==='ARS'){if(note)note.remove();return;}if(!rates[selected])return;if(!note){note=document.createElement('small');note.className='currency-conversion';el.appendChild(note);}note.textContent='≈ '+money(ars*rates[selected],selected)+' · referencia';});document.querySelectorAll('option[data-precio]').forEach(opt=>{const ars=Number(opt.dataset.precio||0);if(!opt.dataset.arsLabel)opt.dataset.arsLabel=opt.textContent.replace(/\s+·\s+≈.+$/,'');opt.textContent=opt.dataset.arsLabel+(selected!=='ARS'&&rates[selected]?' \u00b7 ≈ '+money(ars*rates[selected],selected):'');});}
   async function loadRates(){if(refreshing)return;refreshing=true;const day=new Date().toISOString().slice(0,10),cached=JSON.parse(localStorage.getItem('zoyen_currency_rates')||'null');if(cached&&cached.day===day){rates=Object.assign(rates,cached.rates);refreshing=false;updateLabel();updatePrices();return;}try{const res=await fetch('https://open.er-api.com/v6/latest/ARS');if(!res.ok)throw new Error('rate');const data=await res.json();rates=Object.assign(rates,data.rates||{});localStorage.setItem('zoyen_currency_rates',JSON.stringify({day:day,rates:rates}));}catch(e){const old=cached&&cached.rates;if(old)rates=Object.assign(rates,old);}refreshing=false;updateLabel();updatePrices();}
   function choose(code,manual){selected=code;localStorage.setItem('zoyen_currency',code);if(manual)localStorage.setItem('zoyen_currency_manual','1');document.getElementById('currencySwitcher').classList.remove('open');updateLabel();updatePrices();}
-  function mount(){if(document.getElementById('currencySwitcher'))return;const anchor=document.getElementById('langSwitcher');const nav=anchor.parentElement||document.querySelector('body > nav');if(!nav)return;const box=document.createElement('div');box.className='currency-switcher';box.id='currencySwitcher';box.innerHTML='<button class="currency-current" type="button" aria-haspopup="true" aria-expanded="false"><span id="currencyCurrentLabel"></span></button><ul class="currency-menu">'+Object.entries(currencies).map(([code,c])=>'<li><button class="currency-option" type="button" data-currency="'+code+'"><span>'+code+' · '+c.name+'</span><small>'+(code==='ARS''OFICIAL':'REFERENCIA')+'</small></button></li>').join('')+'<li class="currency-rate" id="currencyRate"></li></ul>';if(anchor){const group=document.createElement('div');group.className='nav-locale-tools';anchor.parentNode.insertBefore(group,anchor);group.appendChild(anchor);group.appendChild(box);}else{nav.appendChild(box);}box.querySelector('.currency-current').onclick=()=>box.classList.toggle('open');box.querySelectorAll('.currency-option').forEach(b=>b.onclick=()=>choose(b.dataset.currency,true));document.addEventListener('click',e=>{if(!box.contains(e.target))box.classList.remove('open')});updateLabel();loadRates();const obs=new MutationObserver(()=>{clearTimeout(window.__zoyenCurrencyTimer);window.__zoyenCurrencyTimer=setTimeout(updatePrices,80)});obs.observe(document.body,{subtree:true,childList:true,characterData:true});new MutationObserver(()=>{if(localStorage.getItem('zoyen_currency_manual'))return;const code=langCurrency[(document.documentElement.lang||'es').slice(0,2)]||'ARS';choose(code,false)}).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});window.ZoyenCurrency={choose:choose,convert:(ars,code)=>Number(ars)*(rates[code||selected]||1),selected:()=>selected};}
+  function mount(){if(document.getElementById('currencySwitcher'))return;const anchor=document.getElementById('langSwitcher');const nav=anchor.parentElement||document.querySelector('body > nav');if(!nav)return;const box=document.createElement('div');box.className='currency-switcher';box.id='currencySwitcher';box.innerHTML='<button class="currency-current" type="button" aria-haspopup="true" aria-expanded="false"><span id="currencyCurrentLabel"></span></button><ul class="currency-menu">'+Object.entries(currencies).map(([code,c])=>'<li><button class="currency-option" type="button" data-currency="'+code+'"><span>'+code+' · '+c.name+'</span><small>'+(code==='ARS'?'OFICIAL':'REFERENCIA')+'</small></button></li>').join('')+'<li class="currency-rate" id="currencyRate"></li></ul>';if(anchor){const group=document.createElement('div');group.className='nav-locale-tools';anchor.parentNode.insertBefore(group,anchor);group.appendChild(anchor);group.appendChild(box);}else{nav.appendChild(box);}box.querySelector('.currency-current').onclick=()=>box.classList.toggle('open');box.querySelectorAll('.currency-option').forEach(b=>b.onclick=()=>choose(b.dataset.currency,true));document.addEventListener('click',e=>{if(!box.contains(e.target))box.classList.remove('open')});updateLabel();loadRates();const obs=new MutationObserver(()=>{clearTimeout(window.__zoyenCurrencyTimer);window.__zoyenCurrencyTimer=setTimeout(updatePrices,80)});obs.observe(document.body,{subtree:true,childList:true,characterData:true});new MutationObserver(()=>{if(localStorage.getItem('zoyen_currency_manual'))return;const code=langCurrency[(document.documentElement.lang||'es').slice(0,2)]||'ARS';choose(code,false)}).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});window.ZoyenCurrency={choose:choose,convert:(ars,code)=>Number(ars)*(rates[code||selected]||1),selected:()=>selected};}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();
 })();
 </script>

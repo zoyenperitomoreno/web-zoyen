@@ -445,9 +445,9 @@ const ZYT_TOUR_CONFIG_KEY = 'zyt_tour_config';
 function readReservas() {
   try {
     const raw = localStorage.getItem(ZYT_RESERVAS_KEY) || sessionStorage.getItem(ZYT_RESERVAS_KEY) || localStorage.getItem('zoyen_reservas') || sessionStorage.getItem('zoyen_reservas');
-    const arr = raw  JSON.parse(raw) : [];
+    const arr = raw ? JSON.parse(raw) : [];
     if(raw && !localStorage.getItem(ZYT_RESERVAS_KEY)) writeReservas(arr);
-    return Array.isArray(arr)  arr : [];
+    return Array.isArray(arr) ? arr : [];
   } catch(e) { return []; }
 }
 function writeReservas(arr) {
@@ -466,7 +466,7 @@ function repairStoredText(value) {
 function getTourConfig() {
   try {
     const raw = localStorage.getItem(ZYT_TOUR_CONFIG_KEY) || localStorage.getItem('zoyen_tour_config');
-    const saved = raw  JSON.parse(raw) : {};
+    const saved = raw ? JSON.parse(raw) : {};
     const defaults = defaultTourConfig();
     const cfg = {};
     Object.keys(defaults).forEach(function(key) {
@@ -588,7 +588,7 @@ function diagRenderPage(url){
         const doc=frame.contentDocument, broken=[...doc.images].filter(img=>!img.complete||img.naturalWidth===0);
         const overflow=doc.documentElement.scrollWidth>frame.clientWidth+8;
         const emptyMain=!doc.body||doc.body.innerText.trim().length<100;
-        finish({ok:!broken.length&&!emptyMain,warn:overflow,detail:(broken.lengthbroken.length+' imagen(es) no renderizan. ':'')+(overflow'Hay desborde horizontal en vista móvil. ':'')+(emptyMain'El contenido principal aparece vacío. ':'')||'La portada renderiza correctamente en vista móvil.'});
+        finish({ok:!broken.length&&!emptyMain,warn:overflow,detail:(broken.length ? broken.length+' imagen(es) no renderizan. ':'')+(overflow ? 'Hay desborde horizontal en vista móvil. ':'')+(emptyMain ? 'El contenido principal aparece vacío. ':'')||'La portada renderiza correctamente en vista móvil.'});
       }catch(e){finish({ok:false,detail:'No se pudo inspeccionar la vista: '+e.message});}
     };
     frame.src=url+'diagnostic='+Date.now();
@@ -600,14 +600,14 @@ async function runGeneralDiagnostic(){
   document.getElementById('diag-results').innerHTML='<div class="card">Revisando el sitio. Puede tardar unos segundos…</div>';
   document.getElementById('diag-summary').hidden=true;
   try{
-    try{localStorage.setItem('__zoyen_diag__','ok');const value=localStorage.getItem('__zoyen_diag__');localStorage.removeItem('__zoyen_diag__');diagAdd(results,value==='ok''ok':'error','Almacenamiento local',value==='ok''Disponible para configuraciones del admin.':'No guarda ni recupera datos.');}catch(e){diagAdd(results,'error','Almacenamiento local','Bloqueado por el navegador: '+e.message);}
+    try{localStorage.setItem('__zoyen_diag__','ok');const value=localStorage.getItem('__zoyen_diag__');localStorage.removeItem('__zoyen_diag__');diagAdd(results,value==='ok'?'ok':'error','Almacenamiento local',value==='ok'?'Disponible para configuraciones del admin.':'No guarda ni recupera datos.');}catch(e){diagAdd(results,'error','Almacenamiento local','Bloqueado por el navegador: '+e.message);}
     const cloud=window.ZoyenCloud&&ZoyenCloud.ready;
-    diagAdd(results,cloud'ok':'warn','Conexión Supabase',cloud'Cliente configurado y disponible.':'No está disponible; las reservas dependerán del almacenamiento local.');
+    diagAdd(results,cloud?'ok':'warn','Conexión Supabase',cloud?'Cliente configurado y disponible.':'No está disponible; las reservas dependerán del almacenamiento local.');
     const tourCfg=getTourConfigAdmin(), tourCount=Object.keys(tourCfg||{}).length;
-    diagAdd(results,tourCount'ok':'error','Configuración de tours',tourCounttourCount+' experiencias configuradas.':'No se encontró la configuración.');
+    diagAdd(results,tourCount?'ok':'error','Configuración de tours',tourCount?tourCount+' experiencias configuradas.':'No se encontró la configuración.');
     const visibleAdminText=(document.body&&document.body.innerText)||'';
     const badAdmin=(visibleAdminText.match(/Ã.|.|â€|ï¿½|�/g)||[]).length;
-    diagAdd(results,badAdmin'warn':'ok','Codificación de textos',badAdminbadAdmin+' posibles caracteres dañados detectados en el admin.':'No se detectaron símbolos extraños en el admin.');
+    diagAdd(results,badAdmin?'warn':'ok','Codificación de textos',badAdmin?badAdmin+' posibles caracteres dañados detectados en el admin.':'No se detectaron símbolos extraños en el admin.');
     let pageErrors=0,pageEncoding=0;
     for(const page of DIAG_PAGES){
       try{
@@ -617,14 +617,14 @@ async function runGeneralDiagnostic(){
         if(!/<meta[^>]+charset=["']utf-8/i.test(text)||/Ã.|.|â€|ï¿½/.test(text))pageEncoding++;
       }catch(e){pageErrors++;}
     }
-    diagAdd(results,pageErrors'error':'ok','Páginas publicadas',pageErrorspageErrors+' de '+DIAG_PAGES.length+' páginas no pudieron cargarse.':DIAG_PAGES.length+' páginas principales responden correctamente.');
-    diagAdd(results,pageEncoding'warn':'ok','Textos de las páginas',pageEncodingpageEncoding+' páginas requieren revisar UTF-8 o símbolos extraños.':'Todas las páginas revisadas declaran UTF-8 sin anomalías evidentes.');
+    diagAdd(results,pageErrors?'error':'ok','Páginas publicadas',pageErrors?pageErrors+' de '+DIAG_PAGES.length+' páginas no pudieron cargarse.':DIAG_PAGES.length+' páginas principales responden correctamente.');
+    diagAdd(results,pageEncoding?'warn':'ok','Textos de las páginas',pageEncoding?pageEncoding+' páginas requieren revisar UTF-8 o símbolos extraños.':'Todas las páginas revisadas declaran UTF-8 sin anomalías evidentes.');
     const rendered=await diagRenderPage('index.html');
-    diagAdd(results,rendered.ok(rendered.warn'warn':'ok'):'error','Renderización móvil',rendered.detail);
+    diagAdd(results,rendered.ok?(rendered.warn?'warn':'ok'):'error','Renderización móvil',rendered.detail);
     const adminOverflow=document.documentElement.scrollWidth>window.innerWidth+8;
-    diagAdd(results,adminOverflow'warn':'ok','Renderización del admin',adminOverflow'Se detectó desborde horizontal en este tamaño de pantalla.':'No se detectó desborde horizontal en la vista actual.');
+    diagAdd(results,adminOverflow?'warn':'ok','Renderización del admin',adminOverflow?'Se detectó desborde horizontal en este tamaño de pantalla.':'No se detectó desborde horizontal en la vista actual.');
     const visibleBroken=[...document.images].filter(img=>img.offsetParent!==null&&(!img.complete||img.naturalWidth===0));
-    diagAdd(results,visibleBroken.length'error':'ok','Imágenes del admin',visibleBroken.lengthvisibleBroken.length+' imagen(es) visibles no cargaron.':'Las imágenes visibles cargaron correctamente.');
+    diagAdd(results,visibleBroken.length ? 'error':'ok','Imágenes del admin',visibleBroken.length ? visibleBroken.length+' imagen(es) visibles no cargaron.':'Las imágenes visibles cargaron correctamente.');
   }catch(error){diagAdd(results,'error','Ejecución del diagnóstico',error.message||String(error));}
   diagRender(results);
   document.getElementById('diag-time').textContent='Última prueba: '+new Date().toLocaleString('es-AR');
@@ -650,7 +650,7 @@ function autoFixDiagnostic(){
     }
     localStorage.removeItem('__zoyen_diag__');
     buildAvailability(); buildExcursiones(); buildSeo();
-    showToast(fixes'Correcciones seguras aplicadas. Ejecutando un nuevo diagnóstico…':'No había correcciones automáticas pendientes.');
+    showToast(fixes?'Correcciones seguras aplicadas. Ejecutando un nuevo diagnóstico…':'No había correcciones automáticas pendientes.');
   }catch(error){ showToast('No se pudo completar la corrección automática.'); }
   btn.classList.remove('diag-running');
   btn.textContent='Corregir automáticamente';
@@ -728,7 +728,7 @@ function buildDashboard() {
     <td style="color:var(--stone)">#${reservas.length-i}</td>
     <td style="font-weight:500">${r.nombre}${whatsappIndicator(r)}</td>
     <td>${r.excursion}</td>
-    <td>${r.fecha  new Date(r.fecha+'T12:00:00').toLocaleDateString('es-AR',{day:'numeric',month:'short'}) : ''}</td>
+    <td>${r.fecha ? new Date(r.fecha+'T12:00:00').toLocaleDateString('es-AR',{day:'numeric',month:'short'}) : ''}</td>
     <td style="text-align:center">${r.personas}</td>
     <td style="color:var(--ember);font-weight:600">$${(r.senia||0).toLocaleString('es-AR')}</td>
     <td>${badge(r.estado)}</td>
@@ -768,7 +768,7 @@ function buildSlides() {
   let enabled = true;
   try { enabled = localStorage.getItem('lentEnabled') !== 'false'; } catch(e) {}
   const cb = document.getElementById('lent-toggle');
-  if(cb) { cb.checked = enabled; cb.onchange = () => { try { localStorage.setItem('lentEnabled', cb.checked); } catch(e) {} showToast('Efecto ' + (cb.checked  'activado' : 'desactivado') + '.'); }; }
+  if(cb) { cb.checked = enabled; cb.onchange = () => { try { localStorage.setItem('lentEnabled', cb.checked); } catch(e) {} showToast('Efecto ' + (cb.checked ? 'activado' : 'desactivado') + '.'); }; }
 
   const config = getBannerConfig();
   document.getElementById('slider-grid').innerHTML = slideLabels.map((lbl, i) => {
@@ -793,7 +793,7 @@ function readSlideForm(i) {
 }
 function updateBannerPreview(i) {
   const s = readSlideForm(i), preview = document.getElementById('sp-'+i);
-  preview.style.backgroundImage = s.img  `url("${s.img.replace(/"/g,'%22')}")` : 'none';
+  preview.style.backgroundImage = s.img ? `url("${s.img.replace(/"/g,'%22')}")` : 'none';
   document.getElementById('pv-ey-'+i).textContent=s.ey; document.getElementById('pv-ti-'+i).textContent=s.ti; document.getElementById('pv-ac-'+i).textContent=s.ac; document.getElementById('pv-de-'+i).textContent=s.de;
 }
 function persistBannerConfig(config) { try { localStorage.setItem(HERO_BANNERS_KEY,JSON.stringify(config)); return true; } catch(e) { showToast('La imagen es demasiado pesada. Probá con otra más liviana.'); return false; } }
@@ -812,9 +812,9 @@ function buildExcursiones() {
     <div class="field"><label>Precio ($)</label><input type="number" id="exc-precio-${i}" value="${e.precio}" min="0"/></div>
     <div class="field"><label>Estado</label>
       <select id="exc-estado-${i}">
-        <option value="activa" ${e.estado==='activa''selected':''}>Activa</option>
-        <option value="pausada" ${e.estado==='pausada''selected':''}>Pausada</option>
-        <option value="completa" ${e.estado==='completa''selected':''}>Completa</option>
+        <option value="activa" ${e.estado==='activa'?'selected':''}>Activa</option>
+        <option value="pausada" ${e.estado==='pausada'?'selected':''}>Pausada</option>
+        <option value="completa" ${e.estado==='completa'?'selected':''}>Completa</option>
       </select>
     </div>
     <button class="btn btn-p btn-sm" onclick="saveExc(${i})">Guardar</button>
@@ -891,7 +891,7 @@ function buildAvailability() {
 function updateTourImagePreview(key) {
   const val = document.getElementById('av-image-'+key).value.trim();
   const prev = document.getElementById('av-image-preview-'+key);
-  if (prev) prev.style.backgroundImage = val  `url("${val.replace(/"/g,'%22')}")` : 'none';
+  if (prev) prev.style.backgroundImage = val ? `url("${val.replace(/"/g,'%22')}")` : 'none';
 }
 function handleTourImageFile(key, input) {
   const file = input.files && input.files[0]; if (!file) return;
@@ -930,7 +930,7 @@ function updateVehicleAdminPreview(key,syncCapacity = false) {
 function saveAvailabilityConfig(key) {
   const cfg = getTourConfigAdmin();
   const priceInput = parseInt(document.getElementById(`av-price-${key}`).value);
-  cfg[key].precio = (Number.isFinite(priceInput) && priceInput > 0)  priceInput : (cfg[key].precio || 0);
+  cfg[key].precio = (Number.isFinite(priceInput) && priceInput > 0) ? priceInput : (cfg[key].precio || 0);
   cfg[key].capacity = parseInt(document.getElementById(`av-capacity-${key}`).value) || 16;
   cfg[key].vehicle = document.getElementById(`av-vehicle-${key}`).value || 'renault_master';
   const nameInput = document.getElementById(`av-name-${key}`).value.trim();
@@ -963,7 +963,7 @@ function addAvailabilityRange(key) {
   }
   cfg[key].dates = Array.from(dates).sort();
   saveTourConfig(cfg); renderAvailabilityDateList(key);
-  showToast(added  `${added} fecha${added===1'':'s'} agregada${added===1'':'s'}.` : 'Esas fechas ya estaban cargadas.');
+  showToast(added ? `${added} fecha${added===1 ? '':'s'} agregada${added===1 ? '':'s'}.` : 'Esas fechas ya estaban cargadas.');
 }
 function setNextFourWeekends(key) {
   const start = new Date(); start.setHours(12,0,0,0);
@@ -1052,7 +1052,7 @@ async function pullReservasFromSheets(){
     const response=await fetch(url+(url.includes('')'&':'')+'action=pull');
     if(!response.ok)throw new Error('HTTP '+response.status);
     const data=await response.json();
-    const incoming=Array.isArray(data)  data : (Array.isArray(data.reservas)data.reservas:null);
+    const incoming=Array.isArray(data) ? data : (Array.isArray(data.reservas) ? data.reservas : null);
     if(!incoming){throw new Error('Formato inesperado');}
     const local=readReservas();
     const keyOf=r=>(r.nombre||'')+'|'+String(r.tel||'').replace(/\D/g,'')+'|'+(r.fecha||'')+'|'+(r.excursion||r.excursionKey||'');
@@ -1095,24 +1095,24 @@ function buildReservas() {
     ['Consultas',counts.consulta],['Pendientes',counts.pendiente],['Pago iniciado',counts.pago_iniciado],['Confirmadas',counts.confirmada],['Completadas',counts.completada]
   ].map(x=>`<div class="crm-stat"><b>${x[1]}</b><span>${x[0]}</span></div>`).join('');
   const tb = document.getElementById('r-tbody');
-  if(!list.length) { tb.innerHTML=`<tr><td colspan="11" class="empty">${reservas.length  'Sin resultados para ese filtro.' : 'Sin reservas aún.'}</td></tr>`; return; }
+  if(!list.length) { tb.innerHTML=`<tr><td colspan="11" class="empty">${reservas.length ? 'Sin resultados para ese filtro.' : 'Sin reservas aún.'}</td></tr>`; return; }
   tb.innerHTML = list.slice().reverse().map(r => {
     const idx = reservas.indexOf(r);
     return `<tr>
       <td style="color:var(--stone)">#${idx+1}</td>
-      <td style="font-weight:500">${r.nombre}${r.origen==='zoyi'  ` <span title="Consulta vía Zoyi" style="display:inline-block;font-size:10px;font-weight:700;color:var(--ember);background:rgba(212,119,42,.15);border:1px solid rgba(212,119,42,.4);border-radius:3px;padding:1px 5px;vertical-align:middle;">ZOYI</span>` : ''}${whatsappIndicator(r)}</td>
+      <td style="font-weight:500">${r.nombre}${r.origen==='zoyi' ? ` <span title="Consulta vía Zoyi" style="display:inline-block;font-size:10px;font-weight:700;color:var(--ember);background:rgba(212,119,42,.15);border:1px solid rgba(212,119,42,.4);border-radius:3px;padding:1px 5px;vertical-align:middle;">ZOYI</span>` : ''}${whatsappIndicator(r)}</td>
       <td style="font-size:12px;color:var(--stone)">${r.tel||''}<br>${r.email||''}</td>
       <td>${r.excursion}</td>
-      <td>${r.fecha  new Date(r.fecha+'T12:00:00').toLocaleDateString('es-AR',{day:'2-digit',month:'2-digit',year:'numeric'}) : ''}</td>
+      <td>${r.fecha ? new Date(r.fecha+'T12:00:00').toLocaleDateString('es-AR',{day:'2-digit',month:'2-digit',year:'numeric'}) : ''}</td>
       <td style="text-align:center">${r.personas}</td>
       <td style="color:var(--ember);font-weight:600">$${(r.senia||0).toLocaleString('es-AR')}</td>
       <td style="font-size:11px;color:var(--stone)">${leadTypeLabel(r)}</td>
       <td>${badge(r.estado)}</td>
-      <td style="font-size:11px;color:var(--muted)">${r.followUp  'Seguimiento: '+r.followUp : (r.ultimoIntento||r.creado||'')}</td>
+      <td style="font-size:11px;color:var(--muted)">${r.followUp ? 'Seguimiento: '+r.followUp : (r.ultimoIntento||r.creado||'')}</td>
       <td><div style="display:flex;gap:5px;flex-wrap:wrap;align-items:center">
         <button class="btn btn-outline btn-sm" onclick="openReservaEditor(${idx})">Ficha</button>
-        ${r.estado !== 'confirmada'  `<button class="btn btn-p btn-sm" title="Confirmar reserva" onclick="cambiarEstado(${idx},'confirmada')">✓</button>` : ''}
-        ${r.estado !== 'cancelada'  `<button class="btn btn-d btn-sm" title="Cancelar reserva" onclick="cambiarEstado(${idx},'cancelada')">×</button>` : ''}
+        ${r.estado !== 'confirmada' ? `<button class="btn btn-p btn-sm" title="Confirmar reserva" onclick="cambiarEstado(${idx},'confirmada')">✓</button>` : ''}
+        ${r.estado !== 'cancelada' ? `<button class="btn btn-d btn-sm" title="Cancelar reserva" onclick="cambiarEstado(${idx},'cancelada')">×</button>` : ''}
         <button class="btn btn-d btn-sm" title="Borrar reserva definitivamente" onclick="borrarReserva(${idx})" style="background:#fff;color:#c0392b;border:1px solid #c0392b">🗑</button>
       </div></td>
     </tr>`;
@@ -1120,11 +1120,11 @@ function buildReservas() {
 }
 function leadTypeLabel(r) {
   if(hasWhatsappClick(r)) return 'WhatsApp';
-  const value = r.inquiryType || r.leadType || (r.origen === 'zoyi'  'zoyi_chat' : (r.estado === 'consulta'  'tour_inquiry' : 'reservation'));
+  const value = r.inquiryType || r.leadType || (r.origen === 'zoyi' ? 'zoyi_chat' : (r.estado === 'consulta' ? 'tour_inquiry' : 'reservation'));
   return ({reservation:'Reserva',zoyi_chat:'Zoyi',tour_inquiry:'Consulta tour',general_inquiry:'Consulta gral.',whatsapp_click:'WhatsApp'})[value] || value;
 }
 function openReservaEditor(idx=-1) {
-  const reservas = readReservas(), r = idx>=0  reservas[idx] : {};
+  const reservas = readReservas(), r = idx>=0 ? reservas[idx] : {};
   const cfg = getTourConfigAdmin();
   document.getElementById('crm-index').value = idx;
   document.getElementById('crm-excursion-key').innerHTML = '<option value="">Sin asociar</option>'+Object.keys(cfg).map(k=>`<option value="${k}">${cfg[k].name||k}</option>`).join('');
@@ -1136,7 +1136,7 @@ function openReservaEditor(idx=-1) {
 function closeReservaEditor() { document.getElementById('crm-modal').classList.remove('open'); }
 function saveReservaEditor() {
   const reservas = readReservas(), idx = parseInt(document.getElementById('crm-index').value,10), now = new Date().toLocaleString('es-AR');
-  const prev = idx>=0  reservas[idx] : {};
+  const prev = idx>=0 ? reservas[idx] : {};
   const r = {...prev,
     nombre:document.getElementById('crm-nombre').value.trim(), estado:document.getElementById('crm-estado').value,
     tel:document.getElementById('crm-tel').value.trim(), email:document.getElementById('crm-email').value.trim(),
@@ -1145,8 +1145,8 @@ function saveReservaEditor() {
     personas:parseInt(document.getElementById('crm-personas').value,10)||1,
     senia:parseInt(document.getElementById('crm-senia').value,10)||0, ultimoIntento:document.getElementById('crm-ultimo').value.trim()||now,
     notas:document.getElementById('crm-notas').value.trim(), creado:prev.creado||now,
-    leadType:prev.leadType || (document.getElementById('crm-estado').value === 'consulta'  'tour_inquiry' : 'reservation'),
-    inquiryType:prev.inquiryType || (document.getElementById('crm-estado').value === 'consulta'  'tour_inquiry' : 'reservation')
+    leadType:prev.leadType || (document.getElementById('crm-estado').value === 'consulta' ? 'tour_inquiry' : 'reservation'),
+    inquiryType:prev.inquiryType || (document.getElementById('crm-estado').value === 'consulta' ? 'tour_inquiry' : 'reservation')
   };
   if(!r.nombre) { showToast('Ingresá el nombre de la persona.'); return; }
   if(idx>=0) reservas[idx]=r; else reservas.push(r);
@@ -1270,8 +1270,8 @@ function updateSeoPreview() {
   document.getElementById('seo-preview-title').textContent = title || 'Título de la página';
   document.getElementById('seo-preview-description').textContent = description || 'Descripción que aparecerá en los resultados de búsqueda.';
   const tc = document.getElementById('seo-title-count'), dc = document.getElementById('seo-description-count');
-  tc.textContent = title.length + '/60'; tc.style.color = title.length >= 30 && title.length <= 60  '#26834a' : '#b8621e';
-  dc.textContent = description.length + '/160'; dc.style.color = description.length >= 120 && description.length <= 160  '#26834a' : '#b8621e';
+  tc.textContent = title.length + '/60'; tc.style.color = title.length >= 30 && title.length <= 60 ? '#26834a' : '#b8621e';
+  dc.textContent = description.length + '/160'; dc.style.color = description.length >= 120 && description.length <= 160 ? '#26834a' : '#b8621e';
 }
 function currentSeoForm() {
   return {title:document.getElementById('seo-title').value.trim(),description:document.getElementById('seo-description').value.trim(),keywords:document.getElementById('seo-keywords').value.trim(),image:document.getElementById('seo-image').value.trim()};
@@ -2069,7 +2069,7 @@ textarea {
       ['ES', 'EN', 'PT', 'KO'].forEach(function (code, index) {
         var btn = document.createElement('button');
         btn.type = 'button';
-        btn.className = 'drawer-lang-btn' + (index === 0  ' active' : '');
+        btn.className = 'drawer-lang-btn' + (index === 0 ? ' active' : '');
         btn.setAttribute('data-lang', code.toLowerCase());
         btn.textContent = code;
         btn.addEventListener('click', function () {
