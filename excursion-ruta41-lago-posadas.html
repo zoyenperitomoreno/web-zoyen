@@ -1711,10 +1711,10 @@ img.hero-logo-static {
   function datesAnswer(product){
     var base = "Las reservas del sitio permiten elegir una fecha desde hoy (" + todayText() + ") en adelante. La disponibilidad real se valida por fecha, excursión o tour y cupos.";
     if (product) base += " Para " + product.name + " la capacidad de referencia es de hasta " + product.capacity + " personas.";
-    return base + " Si querés consultar, tocá Consultar, elegí experiencia, fecha, cantidad de personas y asientos disponibles.";
+    return base + " Si querés consultar, tocá Consultar, elegí experiencia, cantidad de personas y fecha tentativa.";
   }
   function reservationAnswer(){
-    return "Para consultar desde la web: 1) tocá Consultar, 2) elegí tour de autor o excursión, 3) seleccioná una fecha desde hoy en adelante, 4) indicá la cantidad de personas y tus datos, 5) elegí asiento. En tours, la reserva se realiza con el 40% de seña; en excursiones, la seña se informa según la salida.";
+    return "Para consultar desde la web: 1) tocá Consultar, 2) elegí tour de autor o excursión, 3) indicá la cantidad de personas, una fecha tentativa y tus datos. En tours, la reserva se realiza con seña; en excursiones, la seña se informa según la salida.";
   }
   function locationAnswer(){
     return "Zoyen Turismo está en Perito Moreno, Santa Cruz, Patagonia Argentina. Desde ahí se operan excursiones a Cueva de las Manos, Parque Patagonia, Ruta 41, Lago Posadas y conexiones hacia Carretera Austral.";
@@ -1737,7 +1737,7 @@ img.hero-logo-static {
     if (isAsking(q, ["persona","humano","asesor","asesora","hablar con alguien","whatsapp","teléfono","email","mail","contactar","contacto directo"])) return humanAnswer();
     if (isAsking(q, ["fecha","fechas","disponible","disponibilidad","cupos","lugar","lugares","cuando","calendario"])) return datesAnswer(product);
     if (isAsking(q, ["precio","precios","tarifa","tarifas","valor","valores","cuanto","sale","costo","costos"])) return pricesAnswer(product);
-    if (isAsking(q, ["reservar","reserva","reservas","contratar","seña","seña","asiento","asientos","pago"])) return reservationAnswer();
+    if (isAsking(q, ["reservar","reserva","reservas","contratar","seña","seña","pago"])) return reservationAnswer();
     if (isAsking(q, ["ubicación","ubicación","dónde están","dirección","dirección","perito moreno","santa cruz","cómo llegar"])) return locationAnswer();
     if (isAsking(q, ["itinerario","pdf","descargar","programa","recorrido"])) return pdfAnswer(product);
     if (isAsking(q, ["excursion","excursiones","paseos","salidas","día completo","medio día"])) return product ? productDetail(product) : listExcursions();

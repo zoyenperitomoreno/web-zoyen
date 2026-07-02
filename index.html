@@ -4015,7 +4015,7 @@ var translations = {
     bw_sub: 'Dos maneras nuevas de recorrer la Patagonia Profunda: turismo aventura 4x4 y retiros introspectivos, sin fronteras entre Santa Cruz y la Región de Aysén.',
     bw_btn: 'Ver más',
     res_eye: 'Asegurá tu lugar', res_title: 'Reservá tu <em>Tour</em>',
-    res_sub: 'Elegí el destino, la fecha y seleccioná tu asiento en la camioneta — igual que reservar una butaca en el cine, pero para la Renault Master que te lleva a la Patagonia.',
+    res_sub: 'Elegí el destino, indicá la cantidad de personas y una fecha tentativa para que podamos confirmar disponibilidad.',
     ub_eye: 'Encontranos', ub_title: 'Ubicación y <em>Contacto</em>',
     ub_sub: 'Estamos en Perito Moreno, Santa Cruz, en el corazón de la Patagonia profunda.',
     ub_contact_eye: 'Contacto directo', ub_wa_btn: 'Consultar',
@@ -4078,7 +4078,7 @@ var translations = {
     bw_sub: 'Two new ways to explore the Deep Patagonia: 4x4 adventure tourism and introspective retreats, with no borders between Santa Cruz and the Aysén Region.',
     bw_btn: 'Learn more',
     res_eye: 'Check availability', res_title: 'Consult your <em>Tour</em>',
-    res_sub: 'Choose your destination, date and select your seat — just like choosing a cinema seat, but for the van taking you to Patagonia.',
+    res_sub: 'Choose your destination, group size and a tentative date so we can confirm availability.',
     ub_eye: 'Find us', ub_title: 'Location & <em>Contact</em>',
     ub_sub: 'We are in Perito Moreno, Santa Cruz, in the heart of deep Patagonia.',
     ub_contact_eye: 'Direct contact', ub_wa_btn: 'Message us on WhatsApp',
@@ -4141,7 +4141,7 @@ var translations = {
     bw_sub: 'Duas novas formas de percorrer a Patagônia Profunda: turismo de aventura 4x4 e retiros introspectivos, sem fronteiras entre Santa Cruz e a Região de Aysén.',
     bw_btn: 'Saiba mais',
     res_eye: 'Consulte disponibilidad', res_title: 'Consulte seu <em>Tour</em>',
-    res_sub: 'Escolha o destino, a data e selecione seu assento na van — como reservar uma poltrona no cinema, mas para a Patagônia.',
+    res_sub: 'Escolha o destino, a quantidade de pessoas e uma data tentativa para confirmar disponibilidade.',
     ub_eye: 'Nos encontre', ub_title: 'Localização e <em>Contato</em>',
     ub_sub: 'Estamos em Perito Moreno, Santa Cruz, no coração da Patagônia profunda.',
     ub_contact_eye: 'Contato direto', ub_wa_btn: 'Fale conosco pelo WhatsApp',
@@ -4204,7 +4204,7 @@ var translations = {
     bw_sub: '파타고니아 깊은 곳을 탐험하는 두 가지 새로운 방법: 4x4 어드벤처 투어와, 산타크루스와 아이센 지역 사이 국경 없는 내면 여행 리트릿.',
     bw_btn: '자세히 보기',
     res_eye: '가능 여부 문의', res_title: '<em>투어</em> 문의하기',
-    res_sub: '목적지와 날짜를 선택하고 밴 좌석을 고르세요 — 영화관 좌석을 예약하는 것처럼 간단하게, 파타고니아로 떠나는 여정을 위해.',
+    res_sub: '목적지, 인원, 예상 날짜를 선택하면 가능 여부를 확인해 드립니다.',
     ub_eye: '찾아오기', ub_title: '위치 및 <em>연락처</em>',
     ub_sub: '저희는 깊은 파타고니아의 중심지인 산타크루스주 페리토 모레노에 있습니다.',
     ub_contact_eye: '직접 연락', ub_wa_btn: 'Zoyi로 문의하기',
@@ -4363,9 +4363,9 @@ applyLang(currentLang);
       fallback: "Preguntame por fechas, disponibilidad, precios, excursiones, tours, ubicación o reservas.",
       helpFull: "Puedo ayudarte con: fechas disponibles, precios en ARS, cupos, excursiones, tours de autor, ubicación, itinerarios PDF y cómo reservar. Probá: 'precio de Capillas', 'fechas para Patagonia Inédita' o '¿qué excursión me recomendás?'.",
       humanAns: function(){ return "Si querés hablar con alguien del equipo, podés usar WhatsApp +54 9 297 443-2855 o email zoyenperitomoreno@gmail.com. cerrar la consulta al final del formulario."; },
-      datesBase: "Las reservas permiten elegir una fecha desde hoy en adelante. La disponibilidad real se valida por fecha, excursión y cupos.",
-      datesExtra: function(p){ return " Para " + p.name + " la capacidad es de hasta " + p.capacity + " personas."; },
-      datesCta: " Si querés consultar, tocá Consultar, elegí experiencia, fecha y asientos.",
+      datesBase: "La disponibilidad se consulta según la experiencia elegida. En la página de cada experiencia encontrás duración, recorrido, precio o seña e inclusiones.",
+      datesExtra: function(p){ return " Para " + p.name + ": " + p.duration + ". " + p.summary; },
+      datesCta: " Si querés consultar, tocá Consultar, elegí experiencia, cantidad de personas y fecha tentativa.",
       pricesPer: " Precio en pesos argentinos AR por persona.",
       pricesAll: "Precios AR por persona: ",
       resAnswer: "Decime qué tour o excursión te interesa y te voy preguntando cantidad de personas y fecha tentativa. Al final armamos un resumen y seguimos por WhatsApp para confirmar precio, fecha y cupo.",
@@ -4379,7 +4379,7 @@ applyLang(currentLang);
       listTours: "Tours de autor disponibles: ", listToursSuffix: " Ambos tienen itinerario PDF descargable.",
       verMas: "Ver más",
       capacity: " personas",
-      kw: { human:["persona","humano","asesor","hablar con alguien","whatsapp","teléfono","email","mail","contactar","contacto directo"], dates:["fecha","fechas","disponible","disponibilidad","cupos","cuando","calendario"], prices:["precio","precios","tarifa","tarifas","valor","valores","cuanto","sale","costo"], book:["reservar","reserva","reservas","seña","asiento","asientos","pago"], location:["ubicación","ubicación","dónde están","dirección","perito moreno","santa cruz","cómo llegar"], pdf:["itinerario","pdf","descargar","programa","recorrido"], excursion:["excursion","excursiones","paseos","salidas","día completo","medio día"], tour:["tour","tours","autor","varios días","viaje completo","paquete"], compare:["recomendas","recomendacion","conviene","diferencia","comparar","mejor","cual elijo"], wellness:["bienestar","wellness","yoga","masajes"], agency:["zoyen","agencia","legajo","quiénes son"] }
+      kw: { human:["persona","humano","asesor","hablar con alguien","whatsapp","teléfono","email","mail","contactar","contacto directo"], dates:["fecha","fechas","disponible","disponibilidad","cupos","cuando","calendario"], prices:["precio","precios","tarifa","tarifas","valor","valores","cuanto","sale","costo"], book:["reservar","reserva","reservas","seña","pago"], location:["ubicación","ubicación","dónde están","dirección","perito moreno","santa cruz","cómo llegar"], pdf:["itinerario","pdf","descargar","programa","recorrido"], excursion:["excursion","excursiones","paseos","salidas","día completo","medio día"], tour:["tour","tours","autor","varios días","viaje completo","paquete"], compare:["recomendas","recomendacion","conviene","diferencia","comparar","mejor","cual elijo"], wellness:["bienestar","wellness","yoga","masajes"], agency:["zoyen","agencia","legajo","quiénes son"] }
     },
     en: {
       greeting: "Hi, I\'m Zoyi. I can answer questions about excursions, tours, availability, prices in ARS and itineraries. Just ask!",
@@ -4388,7 +4388,7 @@ applyLang(currentLang);
       humanAns: function(){ return "To speak with a team member: WhatsApp +54 9 297 443-2855 or email zoyenperitomoreno@gmail.com. finish the inquiry at the end of the form."; },
       datesBase: "Bookings allow you to choose any date from today onwards. Real availability is confirmed by date, excursion and group size.",
       datesExtra: function(p){ return " For " + p.name + " capacity is up to " + p.capacity + " people."; },
-      datesCta: " To book, tap Book, choose your experience, date and seats.",
+      datesCta: " To inquire, tap Book, choose your experience, group size and tentative date.",
       pricesPer: " Price in Argentine pesos (ARS) per person.",
       pricesAll: "Prices ARS per person: ",
       resAnswer: "Tell me which tour or excursion you're interested in and I'll ask for the number of people and a tentative date. We'll wrap up with a summary and continue with Zoyi to confirm price, date and availability.",
@@ -4402,7 +4402,7 @@ applyLang(currentLang);
       listTours: "Available author tours: ", listToursSuffix: " Both have downloadable PDF itineraries.",
       verMas: "See more",
       capacity: " people",
-      kw: { human:["person","human","agent","talk to someone","whatsapp","phone","email","contact"], dates:["date","dates","available","availability","spots","when","calendar"], prices:["price","prices","rate","cost","how much","fee"], book:["book","booking","reserve","reservation","seat","payment","deposit"], location:["location","where","address","perito moreno","santa cruz","how to get"], pdf:["itinerary","pdf","download","program","route"], excursion:["excursion","excursions","day trip","half day"], tour:["tour","tours","author","multi-day","full trip","package"], compare:["recommend","best","difference","compare","which","what should"], wellness:["wellness","yoga","massage"], agency:["zoyen","agency","license","about"] }
+      kw: { human:["person","human","agent","talk to someone","whatsapp","phone","email","contact"], dates:["date","dates","available","availability","spots","when","calendar"], prices:["price","prices","rate","cost","how much","fee"], book:["book","booking","reserve","reservation","payment","deposit"], location:["location","where","address","perito moreno","santa cruz","how to get"], pdf:["itinerary","pdf","download","program","route"], excursion:["excursion","excursions","day trip","half day"], tour:["tour","tours","author","multi-day","full trip","package"], compare:["recommend","best","difference","compare","which","what should"], wellness:["wellness","yoga","massage"], agency:["zoyen","agency","license","about"] }
     },
     pt: {
       greeting: "Olá, sou Zoyi. Posso responder sobre excursões, tours, disponibilidade, preços em ARS e itinerários. Só me pergunte!",
@@ -4411,7 +4411,7 @@ applyLang(currentLang);
       humanAns: function(){ return "Para falar com a equipe: WhatsApp +54 9 297 443-2855 ou email zoyenperitomoreno@gmail.com. finalizar a consulta no fim do formulário."; },
       datesBase: "As reservas permitem escolher qualquer data a partir de hoje. Disponibilidade confirmada por data, excursão e vagas.",
       datesExtra: function(p){ return " Para " + p.name + " a capacidade é de até " + p.capacity + " pessoas."; },
-      datesCta: " Para reservar, toque em Reservar, escolha experiência, data e assentos.",
+      datesCta: " Para consultar, toque em Reservar, escolha experiência, quantidade de pessoas e data tentativa.",
       pricesPer: " Preço em pesos argentinos (ARS) por pessoa.",
       pricesAll: "Preços ARS por pessoa: ",
       resAnswer: "Me diga qual tour ou excursão te interessa e vou perguntar a quantidade de pessoas e uma data tentativa. No final, fazemos um resumo e seguimos pelo WhatsApp para confirmar preço, data e disponibilidade.",
@@ -4425,7 +4425,7 @@ applyLang(currentLang);
       listTours: "Tours de autor disponíveis: ", listToursSuffix: " Ambos têm itinerários PDF para download.",
       verMas: "Ver mais",
       capacity: " pessoas",
-      kw: { human:["pessoa","humano","agente","falar com alguem","whatsapp","telefone","email","contato"], dates:["data","datas","disponivel","disponibilidade","vagas","quando","calendario"], prices:["preco","precos","tarifa","valor","quanto","custo"], book:["reservar","reserva","sinal","assento","pagamento"], location:["localizacao","onde","endereco","perito moreno","santa cruz","como chegar"], pdf:["itinerario","pdf","baixar","programa"], excursion:["excursao","excursãoes","passeio","dia inteiro","meio dia"], tour:["tour","tours","autor","varios días","pacote"], compare:["recomenda","melhor","diferenca","comparar","qual"], wellness:["bem-estar","wellness","yoga","massagem"], agency:["zoyen","agencia","licenca","quem sao"] }
+      kw: { human:["pessoa","humano","agente","falar com alguem","whatsapp","telefone","email","contato"], dates:["data","datas","disponivel","disponibilidade","vagas","quando","calendario"], prices:["preco","precos","tarifa","valor","quanto","custo"], book:["reservar","reserva","sinal","pagamento"], location:["localizacao","onde","endereco","perito moreno","santa cruz","como chegar"], pdf:["itinerario","pdf","baixar","programa"], excursion:["excursao","excursãoes","passeio","dia inteiro","meio dia"], tour:["tour","tours","autor","varios días","pacote"], compare:["recomenda","melhor","diferenca","comparar","qual"], wellness:["bem-estar","wellness","yoga","massagem"], agency:["zoyen","agencia","licenca","quem sao"] }
     },
     ko: {
       greeting: "안녕하세요, 저는 Zoyi입니다. 투어, 예약 가능 여부, 가격(ARS), 일정에 대해 답변드릴 수 있습니다. 무엇이든 물어보세요!",
@@ -4434,7 +4434,7 @@ applyLang(currentLang);
       humanAns: function(){ return "팀과 직접 연락: WhatsApp +54 9 297 443-2855 또는 이메일 zoyenperitomoreno@gmail.com. 마지막 단계에서 문의를 완료하세요."; },
       datesBase: "오늘부터 원하는 날짜를 선택할 수 있습니다. 실제 가능 여부는 날짜, 투어, 인원에 따라 확인됩니다.",
       datesExtra: function(p){ return " " + p.name + " 정원: 최대 " + p.capacity + "명."; },
-      datesCta: " 예약하려면 예약 버튼을 누르고 투어, 날짜, 좌석을 선택하세요.",
+      datesCta: " 문의하려면 예약 버튼을 누르고 투어, 인원, 예상 날짜를 선택하세요.",
       pricesPer: " 1인당 아르헨티나 페소(ARS) 가격.",
       pricesAll: "1인당 ARS 가격: ",
       resAnswer: "관심 있는 투어나 투어를 알려주시면 인원수와 예상 날짜를 물어보겠습니다. 마지막에 요약을 정리하고 왓츠앱으로 가격, 날짜, 예약 가능 여부를 확인합니다.",
@@ -4448,7 +4448,7 @@ applyLang(currentLang);
       listTours: "이용 가능한 오서 투어: ", listToursSuffix: " 두 투어 모두 PDF 일정 다운로드가 가능합니다.",
       verMas: "더 보기",
       capacity: "명",
-      kw: { human:["사람","상담원","대화","연락","whatsapp","전화","메일","문의"], dates:["날짜","가능","예약가능","일정","언제","캘린더"], prices:["가격","요금","비용","얼마","금액"], book:["예약","결제","좌석","보증금"], location:["위치","어디","주소","페리토 모레노","산타크루스","오는 방법"], pdf:["일정","pdf","다운로드","프로그램"], excursion:["투어","당일","반나절"], tour:["오서투어","여러날","패키지"], compare:["추천","비교","차이","어떤","가"], wellness:["웰니스","요가","마사지"], agency:["조옌","에이전시","면허"] }
+      kw: { human:["사람","상담원","대화","연락","whatsapp","전화","메일","문의"], dates:["날짜","가능","예약가능","일정","언제","캘린더"], prices:["가격","요금","비용","얼마","금액"], book:["예약","결제","보증금"], location:["위치","어디","주소","페리토 모레노","산타크루스","오는 방법"], pdf:["일정","pdf","다운로드","프로그램"], excursion:["투어","당일","반나절"], tour:["오서투어","여러날","패키지"], compare:["추천","비교","차이","어떤","가"], wellness:["웰니스","요가","마사지"], agency:["조옌","에이전시","면허"] }
     }
   };
 
@@ -4625,7 +4625,7 @@ applyLang(currentLang);
     var p=allProducts.find(function(item){return item.id===id;});
     if(!p)return ui.fallback;
     if(intent==="prices")return productBullet(p,ui)+"\n"+ui.pricesPer.trim();
-    if(intent==="dates")return ui.datesBase+ui.datesExtra(p)+dateListText(p)+ui.datesCta;
+    if(intent==="dates")return ui.datesBase+ui.datesExtra(p)+"\n"+productLinkTag(p,ui)+"\n"+ui.datesCta.trim();
     return productSummary(p,ui);
   }
 
@@ -4719,13 +4719,9 @@ applyLang(currentLang);
   }
 
   function priceText(p){ if (!p.price) return "Consultar"; if (p.id === "capillas" && p.priceUsd) return "Seña $50.000 + USD " + p.priceUsd; return money(p.price); }
-  function dateListText(p) {
-    if(!p || !Array.isArray(p.dates) || !p.dates.length) return "";
-    var dates = p.dates.slice().sort().slice(0, 6).map(function(d){
-      try { return new Date(d + "T12:00:00").toLocaleDateString("es-AR",{day:"2-digit",month:"long",year:"numeric"}); }
-      catch(e) { return d; }
-    });
-    return " Fechas cargadas: " + dates.join(", ") + ".";
+  function dateAvailabilityAnswer(p,ui){
+    if(p) return ui.datesBase+ui.datesExtra(p)+"\n"+productLinkTag(p,ui)+"\n"+ui.datesCta.trim();
+    return ui.datesBase+"\n"+ui.listTours.trim()+"\n"+tours.map(function(x){return productBullet(x,ui);}).join("\n")+"\n"+ui.datesCta.trim();
   }
   function productLine(p,ui){ return p.name+": "+p.duration+", "+priceText(p)+", "+p.capacity+(ui ? ui.capacity:" personas")+"."; }
   function productBullet(p,ui){ return "- "+p.name+"\n  "+p.duration+" - "+priceText(p)+" - "+p.capacity+(ui ? ui.capacity:" personas"); }
@@ -4746,7 +4742,7 @@ applyLang(currentLang);
     if(!q||q.length<2) return ui.fallback;
     var p=findProduct(q);
     if(isAsking(q,k.human))    return ui.humanAns();
-    if(isAsking(q,k.dates))    return ui.datesBase+(p ? ui.datesExtra(p)+dateListText(p) : "")+ui.datesCta;
+    if(isAsking(q,k.dates))    return dateAvailabilityAnswer(p,ui);
     if(isAsking(q,k.prices))   return p ? productBullet(p,ui)+"\n"+ui.pricesPer.trim() : ui.pricesAll.trim()+"\n"+allProducts.map(function(x){return productBullet(x,ui);}).join("\n");
     if(isAsking(q,k.book))     return ui.resAnswer;
     if(isAsking(q,k.location)) return ui.locAnswer;
