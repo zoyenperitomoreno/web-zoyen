@@ -14,7 +14,7 @@
 <meta name="keywords" content="Capillas de Mármol, Catedrales de Mármol, Capillas y Catedrales de Mármol, excursión Capillas de Mármol, lago General Carrera, turismo Patagonia chilena, Puerto Río Tranquilo">
 <meta name="robots" content="index,follow,max-image-preview:large"><link rel="canonical" href="https://zoyenperitomoreno.github.io/web-zoyen/excursion-capillas-de-marmol.html">
 <meta property="og:type" content="website"><meta property="og:locale" content="es_AR"><meta property="og:site_name" content="Zoyen Turismo"><meta property="og:title" content="Capillas y Catedrales de Mármol"><meta property="og:description" content="Navegación por el lago General Carrera hacia las Capillas y Catedrales de Mármol."><meta property="og:url" content="https://zoyenperitomoreno.github.io/web-zoyen/excursion-capillas-de-marmol.html"><meta property="og:image" content="https://zoyenperitomoreno.github.io/web-zoyen/assets/capillas.jpg"><meta name="twitter:card" content="summary_large_image">
-<script src="seo-config.js?v=20260702-1"></script><script defer src="seo-runtime.js?v=20260702-1"></script>
+<script src="seo-config.jsv=20260702-1"></script><script defer src="seo-runtime.jsv=20260702-1"></script>
 <link href="https://fonts.googleapis.com/css2family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* Fix: ocultar boton hamburguesa en desktop, solo debe verse en mobile */
@@ -1082,7 +1082,7 @@ img.hero-logo-static {
 <p>Desde 2023 realizamos la excursión <strong>gracias al trabajo conjunto con varios transportistas locales y al prestador turístico chileno "Carrera Tours"</strong>. La salida se hace desde Mallín Grande, una localidad más cercana, <strong>reduciendo los tiempos de viaje en un 50%</strong> aproximadamente.</p>
 
 <div class="video-wrap">
-  <iframe src="https://www.youtube.com/embed/PtcfBSVt2zw?playsinline=1" allowfullscreen loading="lazy" title="Capillas de Mármol - Zoyen Turismo"></iframe>
+  <iframe src="https://www.youtube.com/embed/PtcfBSVt2zwplaysinline=1" allowfullscreen loading="lazy" title="Capillas de Mármol - Zoyen Turismo"></iframe>
 </div>
 
 <h2>Precios</h2>
@@ -1404,7 +1404,7 @@ img.hero-logo-static {
   };
   var currentLang = localStorage.getItem('zoyen_lang') || 'es';
   var langSwitcher = document.getElementById('langSwitcher');
-  var langCurrent = langSwitcher ? langSwitcher.querySelector('.lang-current') : null;
+  var langCurrent = langSwitcher  langSwitcher.querySelector('.lang-current') : null;
   function closeLangMenu() {
     if (!langSwitcher || !langCurrent) return;
     langSwitcher.classList.remove('open');
@@ -1434,7 +1434,7 @@ img.hero-logo-static {
     langCurrent.addEventListener('click', function(e) {
       e.stopPropagation();
       var isOpen = langSwitcher.classList.toggle('open');
-      langCurrent.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      langCurrent.setAttribute('aria-expanded', isOpen  'true' : 'false');
     });
   }
   document.querySelectorAll('.lang-btn').forEach(function(btn) {
@@ -1458,7 +1458,7 @@ img.hero-logo-static {
     </div>
     <div class="zoyi-bubble-body">
       <p class="zoyi-bubble-name">Zoyi</p>
-      <p class="zoyi-bubble-msg" id="zoyiBubbleMsg">¡Hola! Soy Zoyi, asistente de Zoyen Turismo. ¿Tenés alguna consulta?</p>
+      <p class="zoyi-bubble-msg" id="zoyiBubbleMsg">¡Hola! Soy Zoyi, asistente de Zoyen Turismo. ¿Tenés alguna consulta</p>
     </div>
   </div>
 
@@ -1713,7 +1713,7 @@ img.hero-logo-static {
     for(j=0;j<=n;j++) prev[j]=j;
     for(i=1;i<=m;i++){
       cur=[i];
-      for(j=1;j<=n;j++) cur[j]=Math.min(prev[j]+1,cur[j-1]+1,prev[j-1]+(a.charAt(i-1)===b.charAt(j-1)?0:1));
+      for(j=1;j<=n;j++) cur[j]=Math.min(prev[j]+1,cur[j-1]+1,prev[j-1]+(a.charAt(i-1)===b.charAt(j-1)0:1));
       prev=cur;
     }
     return prev[n] <= 2;
@@ -1726,7 +1726,7 @@ img.hero-logo-static {
         var a=normalize(alias);
         if(!a) return;
         if(query === a) score += 20;
-        else if(query.indexOf(a) !== -1) score += a.length > 8 ? 12 : 7;
+        else if(query.indexOf(a) !== -1) score += a.length > 8  12 : 7;
         else if(a.indexOf(query) !== -1 && query.length > 3) score += 5;
       });
       qTokens.forEach(function(t){
@@ -1735,7 +1735,7 @@ img.hero-logo-static {
       });
       if(score > bestScore){ best=p; bestScore=score; }
     });
-    return bestScore >= 3 ? best : null;
+    return bestScore >= 3  best : null;
   }
   function isAsking(q, words){ return words.some(function(w){ var nw=normalize(w); return q.indexOf(nw) !== -1 || searchTokens(q).some(function(t){ return closeToken(t,nw); }); }); }
   function listExcursions(){ return "Excursiones de día o medio día disponibles: " + excursiones.map(productLine).join(" "); }
@@ -1745,7 +1745,7 @@ img.hero-logo-static {
     return "Precios en AR por persona: " + allProducts.map(function(p){ return p.name + " " + priceText(p); }).join("; ") + ".";
   }
   function datesAnswer(product){
-    if (!product) return "¿Sobre qué excursión o tour querés consultar fechas disponibles?";
+    if (!product) return "¿Sobre qué excursión o tour querés consultar fechas disponibles";
     var base = "Disponibilidad de " + product.name + ": " + product.duration + ". " + product.summary;
     if (product.includes) base += " Incluye: " + product.includes;
     return base + " Si querés consultar, tocá Consultar, elegí experiencia, cantidad de personas y fecha tentativa.";
@@ -1777,17 +1777,17 @@ img.hero-logo-static {
     if (isAsking(q, ["reservar","reserva","reservas","contratar","seña","seña","pago"])) return reservationAnswer();
     if (isAsking(q, ["ubicación","ubicación","dónde están","dirección","dirección","perito moreno","santa cruz","cómo llegar"])) return locationAnswer();
     if (isAsking(q, ["itinerario","pdf","descargar","programa","recorrido"])) return pdfAnswer(product);
-    if (isAsking(q, ["excursion","excursiones","paseos","salidas","día completo","medio día"])) return product ? productDetail(product) : listExcursions();
-    if (isAsking(q, ["tour","tours","autor","varios días","viaje completo","paquete"])) return product ? productDetail(product) : listTours();
+    if (isAsking(q, ["excursion","excursiones","paseos","salidas","día completo","medio día"])) return product  productDetail(product) : listExcursions();
+    if (isAsking(q, ["tour","tours","autor","varios días","viaje completo","paquete"])) return product  productDetail(product) : listTours();
     if (isAsking(q, ["recomendas","recomendacion","conviene","diferencia","comparar","mejor","cual elijo","que hago"])) return compareAnswer();
     if (isAsking(q, ["bienestar","wellness","yoga","masajes","4x4","off road","retiro","retiros"])) return "Tenemos una línea de Nuevas Experiencias con dos propuestas: Off Road 4x4 y Viajes con Sentido (retiros introspectivos). Más info en nuevas-experiencias.html.";
     if (isAsking(q, ["zoyen","agencia","legajo","quienes","quiénes son"])) return "Zoyen Turismo es una agencia local de Perito Moreno, Santa Cruz, legajo 15.625. Diseña excursiones y tours de autor en Patagonia.";
     if (product) return productDetail(product);
 
-    return "Puedo ayudarte con información del sitio: fechas disponibles, precios en AR, cupos, tipos de excursiones, tours de autor, ubicación, itinerarios PDF y cómo reservar. Probá preguntarme, por ejemplo: 'precio de Capillas', 'fechas para Patagonia Inédita' o '¿qué excursión me recomendás?'.";
+    return "Puedo ayudarte con información del sitio: fechas disponibles, precios en AR, cupos, tipos de excursiones, tours de autor, ubicación, itinerarios PDF y cómo reservar. Probá preguntarme, por ejemplo: 'precio de Capillas', 'fechas para Patagonia Inédita' o '¿qué excursión me recomendás'.";
   }
   function submit(text){
-    var value = (text || (input ? input.value : "") || "").trim();
+    var value = (text || (input  input.value : "") || "").trim();
     if (!value) return;
     addMessage(value, "user");
     if (input) input.value = "";
@@ -1795,7 +1795,7 @@ img.hero-logo-static {
   }
   if (toggle) toggle.addEventListener("click", function(){
     widget.classList.toggle("open");
-    toggle.setAttribute("aria-expanded", widget.classList.contains("open") ? "true" : "false");
+    toggle.setAttribute("aria-expanded", widget.classList.contains("open")  "true" : "false");
     if (widget.classList.contains("open") && input) input.focus();
   });
   window.abrirZoyi = function(){
@@ -2653,7 +2653,7 @@ textarea {
       ['ES', 'EN', 'PT', 'KO'].forEach(function (code, index) {
         var btn = document.createElement('button');
         btn.type = 'button';
-        btn.className = 'drawer-lang-btn' + (index === 0 ? ' active' : '');
+        btn.className = 'drawer-lang-btn' + (index === 0  ' active' : '');
         btn.setAttribute('data-lang', code.toLowerCase());
         btn.textContent = code;
         btn.addEventListener('click', function () {
@@ -3008,13 +3008,13 @@ a.cta-btn-g[href*="wa.me"]:hover::before {
   let selected=localStorage.getItem('zoyen_currency')||langCurrency[(document.documentElement.lang||'es').slice(0,2)]||'ARS';
   let rates={ARS:1}, refreshing=false;
   const priceTargets=['#montoPrev','#pagoMontoBadge','#pagoSenia','.precio-preview .monto','.monto-badge'];
-  function money(value,code){const c=currencies[code];return c.symbol+Number(value).toLocaleString(c.locale,{maximumFractionDigits:code==='KRW'||code==='CLP'?0:2});}
-  function arsFromText(text){const m=String(text||'').match(/\$\s*([\d.]+(?:,\d+)?)/);return m?Number(m[1].replace(/\./g,'').replace(',','.')):0;}
-  function updateLabel(){const label=document.getElementById('currencyCurrentLabel');if(label)label.innerHTML=selected+' <span class="currency-name">· '+currencies[selected].name+'</span>';document.querySelectorAll('.currency-option').forEach(b=>b.classList.toggle('active',b.dataset.currency===selected));const r=document.getElementById('currencyRate');if(r)r.textContent=selected==='ARS'?'Los cobros y reservas se realizan siempre en pesos argentinos.':rates[selected]?'Referencia: $10.000 ARS ≈ '+money(10000*rates[selected],selected)+'. Cotización informativa.':'Consultando cotización…';}
-  function updatePrices(){document.querySelectorAll(priceTargets.join(',')).forEach(el=>{if(el.classList.contains('currency-conversion'))return;const parsed=arsFromText(el.textContent),ars=Number(parsed||el.dataset.arsValue||0);if(!ars)return;el.dataset.arsValue=ars;let note=el.querySelector(':scope > .currency-conversion');if(selected==='ARS'){if(note)note.remove();return;}if(!rates[selected])return;if(!note){note=document.createElement('small');note.className='currency-conversion';el.appendChild(note);}note.textContent='≈ '+money(ars*rates[selected],selected)+' · referencia';});document.querySelectorAll('option[data-precio]').forEach(opt=>{const ars=Number(opt.dataset.precio||0);if(!opt.dataset.arsLabel)opt.dataset.arsLabel=opt.textContent.replace(/\s+·\s+≈.+$/,'');opt.textContent=opt.dataset.arsLabel+(selected!=='ARS'&&rates[selected]?' · ≈ '+money(ars*rates[selected],selected):'');});}
+  function money(value,code){const c=currencies[code];return c.symbol+Number(value).toLocaleString(c.locale,{maximumFractionDigits:code==='KRW'||code==='CLP'0:2});}
+  function arsFromText(text){const m=String(text||'').match(/\$\s*([\d.]+(:,\d+))/);return mNumber(m[1].replace(/\./g,'').replace(',','.')):0;}
+  function updateLabel(){const label=document.getElementById('currencyCurrentLabel');if(label)label.innerHTML=selected+' <span class="currency-name">· '+currencies[selected].name+'</span>';document.querySelectorAll('.currency-option').forEach(b=>b.classList.toggle('active',b.dataset.currency===selected));const r=document.getElementById('currencyRate');if(r)r.textContent=selected==='ARS''Los cobros y reservas se realizan siempre en pesos argentinos.':rates[selected]'Referencia: $10.000 ARS ≈ '+money(10000*rates[selected],selected)+'. Cotización informativa.':'Consultando cotización…';}
+  function updatePrices(){document.querySelectorAll(priceTargets.join(',')).forEach(el=>{if(el.classList.contains('currency-conversion'))return;const parsed=arsFromText(el.textContent),ars=Number(parsed||el.dataset.arsValue||0);if(!ars)return;el.dataset.arsValue=ars;let note=el.querySelector(':scope > .currency-conversion');if(selected==='ARS'){if(note)note.remove();return;}if(!rates[selected])return;if(!note){note=document.createElement('small');note.className='currency-conversion';el.appendChild(note);}note.textContent='≈ '+money(ars*rates[selected],selected)+' · referencia';});document.querySelectorAll('option[data-precio]').forEach(opt=>{const ars=Number(opt.dataset.precio||0);if(!opt.dataset.arsLabel)opt.dataset.arsLabel=opt.textContent.replace(/\s+·\s+≈.+$/,'');opt.textContent=opt.dataset.arsLabel+(selected!=='ARS'&&rates[selected]' · ≈ '+money(ars*rates[selected],selected):'');});}
   async function loadRates(){if(refreshing)return;refreshing=true;const day=new Date().toISOString().slice(0,10),cached=JSON.parse(localStorage.getItem('zoyen_currency_rates')||'null');if(cached&&cached.day===day){rates=Object.assign(rates,cached.rates);refreshing=false;updateLabel();updatePrices();return;}try{const res=await fetch('https://open.er-api.com/v6/latest/ARS');if(!res.ok)throw new Error('rate');const data=await res.json();rates=Object.assign(rates,data.rates||{});localStorage.setItem('zoyen_currency_rates',JSON.stringify({day:day,rates:rates}));}catch(e){const old=cached&&cached.rates;if(old)rates=Object.assign(rates,old);}refreshing=false;updateLabel();updatePrices();}
-  function choose(code,manual){selected=code;localStorage.setItem('zoyen_currency',code);if(manual)localStorage.setItem('zoyen_currency_manual','1');document.getElementById('currencySwitcher')?.classList.remove('open');updateLabel();updatePrices();}
-  function mount(){if(document.getElementById('currencySwitcher'))return;const anchor=document.getElementById('langSwitcher');const nav=anchor?.parentElement||document.querySelector('body > nav');if(!nav)return;const box=document.createElement('div');box.className='currency-switcher';box.id='currencySwitcher';box.innerHTML='<button class="currency-current" type="button" aria-haspopup="true" aria-expanded="false"><span id="currencyCurrentLabel"></span></button><ul class="currency-menu">'+Object.entries(currencies).map(([code,c])=>'<li><button class="currency-option" type="button" data-currency="'+code+'"><span>'+code+' · '+c.name+'</span><small>'+(code==='ARS'?'OFICIAL':'REFERENCIA')+'</small></button></li>').join('')+'<li class="currency-rate" id="currencyRate"></li></ul>';if(anchor){const group=document.createElement('div');group.className='nav-locale-tools';anchor.parentNode.insertBefore(group,anchor);group.appendChild(anchor);group.appendChild(box);}else{nav.appendChild(box);}box.querySelector('.currency-current').onclick=()=>box.classList.toggle('open');box.querySelectorAll('.currency-option').forEach(b=>b.onclick=()=>choose(b.dataset.currency,true));document.addEventListener('click',e=>{if(!box.contains(e.target))box.classList.remove('open')});updateLabel();loadRates();const obs=new MutationObserver(()=>{clearTimeout(window.__zoyenCurrencyTimer);window.__zoyenCurrencyTimer=setTimeout(updatePrices,80)});obs.observe(document.body,{subtree:true,childList:true,characterData:true});new MutationObserver(()=>{if(localStorage.getItem('zoyen_currency_manual'))return;const code=langCurrency[(document.documentElement.lang||'es').slice(0,2)]||'ARS';choose(code,false)}).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});window.ZoyenCurrency={choose:choose,convert:(ars,code)=>Number(ars)*(rates[code||selected]||1),selected:()=>selected};}
+  function choose(code,manual){selected=code;localStorage.setItem('zoyen_currency',code);if(manual)localStorage.setItem('zoyen_currency_manual','1');document.getElementById('currencySwitcher').classList.remove('open');updateLabel();updatePrices();}
+  function mount(){if(document.getElementById('currencySwitcher'))return;const anchor=document.getElementById('langSwitcher');const nav=anchor.parentElement||document.querySelector('body > nav');if(!nav)return;const box=document.createElement('div');box.className='currency-switcher';box.id='currencySwitcher';box.innerHTML='<button class="currency-current" type="button" aria-haspopup="true" aria-expanded="false"><span id="currencyCurrentLabel"></span></button><ul class="currency-menu">'+Object.entries(currencies).map(([code,c])=>'<li><button class="currency-option" type="button" data-currency="'+code+'"><span>'+code+' · '+c.name+'</span><small>'+(code==='ARS''OFICIAL':'REFERENCIA')+'</small></button></li>').join('')+'<li class="currency-rate" id="currencyRate"></li></ul>';if(anchor){const group=document.createElement('div');group.className='nav-locale-tools';anchor.parentNode.insertBefore(group,anchor);group.appendChild(anchor);group.appendChild(box);}else{nav.appendChild(box);}box.querySelector('.currency-current').onclick=()=>box.classList.toggle('open');box.querySelectorAll('.currency-option').forEach(b=>b.onclick=()=>choose(b.dataset.currency,true));document.addEventListener('click',e=>{if(!box.contains(e.target))box.classList.remove('open')});updateLabel();loadRates();const obs=new MutationObserver(()=>{clearTimeout(window.__zoyenCurrencyTimer);window.__zoyenCurrencyTimer=setTimeout(updatePrices,80)});obs.observe(document.body,{subtree:true,childList:true,characterData:true});new MutationObserver(()=>{if(localStorage.getItem('zoyen_currency_manual'))return;const code=langCurrency[(document.documentElement.lang||'es').slice(0,2)]||'ARS';choose(code,false)}).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});window.ZoyenCurrency={choose:choose,convert:(ars,code)=>Number(ars)*(rates[code||selected]||1),selected:()=>selected};}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();
 })();
 </script>
@@ -3034,7 +3034,7 @@ a.cta-btn-g[href*="wa.me"]:hover::before {
       if (clicks >= 3) {
         clicks = 0;
         window.clearTimeout(timer);
-        window.open('admin.html?v=20260619-3', '_blank', 'noopener');
+        window.open('admin.htmlv=20260619-3', '_blank', 'noopener');
       }
     });
   });

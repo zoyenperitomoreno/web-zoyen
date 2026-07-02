@@ -3,8 +3,8 @@
   var cfg = window.ZOYEN_SEO_CONFIG && window.ZOYEN_SEO_CONFIG[file];
   if (!cfg) return;
   var base = 'https://zoyenperitomoreno.github.io/web-zoyen/';
-  var canonical = base + (file === 'index.html' ? '' : file);
-  var image = /^https?:/i.test(cfg.image || '') ? cfg.image : base + String(cfg.image || '').replace(/^\//, '');
+  var canonical = base + (file === 'index.html'  '' : file);
+  var image = /^https:/i.test(cfg.image || '')  cfg.image : base + String(cfg.image || '').replace(/^\//, '');
   function meta(selector, attr, value) {
     var node = document.head.querySelector(selector);
     if (!node) { node = document.createElement('meta'); document.head.appendChild(node); }
@@ -26,7 +26,7 @@
   link.href = canonical;
   var data = {
     '@context':'https://schema.org',
-    '@type': file === 'index.html' || file === 'nosotros.html' ? 'TravelAgency' : 'TouristTrip',
+    '@type': file === 'index.html' || file === 'nosotros.html'  'TravelAgency' : 'TouristTrip',
     name: cfg.title.replace(/ \| Zoyen Turismo.*$/, ''),
     description: cfg.description,
     url: canonical,

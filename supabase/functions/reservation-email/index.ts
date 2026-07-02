@@ -5,7 +5,7 @@ const SITE_URL = (Deno.env.get('SITE_URL') || 'https://zoyenperitomoreno.github.
 const WEBHOOK_SECRET = Deno.env.get('WEBHOOK_SECRET') || '';
 
 function esc(value: unknown) {
-  return String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c] || c));
+  return String(value  '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c] || c));
 }
 function money(value: unknown) {
   return new Intl.NumberFormat('es-AR',{style:'currency',currency:'ARS',maximumFractionDigits:0}).format(Number(value)||0);
@@ -39,8 +39,8 @@ Deno.serve(async request => {
     const code = String(record.id || '').slice(0,8).toUpperCase();
     const details = detail(record);
     await Promise.all([
-      send(String(record.customer_email), `${isNew?'Recibimos tu reserva':'Actualización de tu reserva'} · Zoyen Turismo`, emailShell(`Hola ${esc(record.customer_name)}`,`<p style="line-height:1.6">${isNew?'Recibimos tu solicitud. La reserva quedará confirmada cuando se acredite la seña.':'El estado de tu reserva fue actualizado.'}</p>${details}<p><b>Código:</b> ${code}</p>`)),
-      send(BUSINESS_EMAIL, `${isNew?'Nueva reserva':'Reserva actualizada'} · ${esc(record.tour_name)}`, emailShell(`${isNew?'Nueva reserva':'Cambio de estado'} #${code}`,`<p><b>Pasajero:</b> ${esc(record.customer_name)}<br><b>Email:</b> ${esc(record.customer_email)}<br><b>Teléfono:</b> ${esc(record.customer_phone)}</p>${details}`))
+      send(String(record.customer_email), `${isNew'Recibimos tu reserva':'Actualización de tu reserva'} · Zoyen Turismo`, emailShell(`Hola ${esc(record.customer_name)}`,`<p style="line-height:1.6">${isNew'Recibimos tu solicitud. La reserva quedará confirmada cuando se acredite la seña.':'El estado de tu reserva fue actualizado.'}</p>${details}<p><b>Código:</b> ${code}</p>`)),
+      send(BUSINESS_EMAIL, `${isNew'Nueva reserva':'Reserva actualizada'} · ${esc(record.tour_name)}`, emailShell(`${isNew'Nueva reserva':'Cambio de estado'} #${code}`,`<p><b>Pasajero:</b> ${esc(record.customer_name)}<br><b>Email:</b> ${esc(record.customer_email)}<br><b>Teléfono:</b> ${esc(record.customer_phone)}</p>${details}`))
     ]);
     return Response.json({ok:true});
   } catch(error) { return Response.json({ok:false,error:String(error)},{status:500}); }

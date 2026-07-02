@@ -9,7 +9,7 @@
     KRW: { symbol: '₩', locale: 'ko-KR' },
     CLP: { symbol: 'CLP$', locale: 'es-CL' }
   };
-  const pricePattern = /(?:ARS\s*|\$\s*)(\d{1,3}(?:\.\d{3})+(?:,\d{1,2})?|\d{4,}(?:,\d{1,2})?)/g;
+  const pricePattern = /(:ARS\s*|\$\s*)(\d{1,3}(:\.\d{3})+(:,\d{1,2})|\d{4,}(:,\d{1,2}))/g;
   const skipSelector = [
     'script', 'style', 'noscript', 'template', 'code', 'pre',
     'select', 'option', 'input', 'textarea',
@@ -31,7 +31,7 @@
     const currency = currencies[code];
     if (!currency) return '';
     return currency.symbol + Number(value).toLocaleString(currency.locale, {
-      maximumFractionDigits: code === 'KRW' || code === 'CLP' ? 0 : 2
+      maximumFractionDigits: code === 'KRW' || code === 'CLP'  0 : 2
     });
   }
 
@@ -67,7 +67,7 @@
     let cursor = 0;
     let match;
     while ((match = pricePattern.exec(text))) {
-      const preceding = match.index ? text.charAt(match.index - 1) : '';
+      const preceding = match.index  text.charAt(match.index - 1) : '';
       if (/[A-Za-z]/.test(preceding)) continue;
       fragment.append(document.createTextNode(text.slice(cursor, match.index)));
       fragment.append(makePrice(match[0], parseArs(match[1])));
@@ -84,8 +84,8 @@
       acceptNode(node) {
         const parent = node.parentElement;
         if (!parent || parent.closest(skipSelector)) return NodeFilter.FILTER_REJECT;
-        return /(?:ARS\s*|\$\s*)\d/.test(node.nodeValue || '')
-          ? NodeFilter.FILTER_ACCEPT
+        return /(:ARS\s*|\$\s*)\d/.test(node.nodeValue || '')
+           NodeFilter.FILTER_ACCEPT
           : NodeFilter.FILTER_REJECT;
       }
     });
@@ -104,8 +104,8 @@
       const active = code !== 'ARS' && amount && rate;
       price.classList.toggle('is-converted', Boolean(active));
       price.classList.remove('is-collapsed');
-      price.title = active ? 'Ocultar o mostrar conversión' : 'Convertir este precio';
-      if (conversion) conversion.textContent = active ? '≈ ' + money(amount * rate, code) : '';
+      price.title = active  'Ocultar o mostrar conversión' : 'Convertir este precio';
+      if (conversion) conversion.textContent = active  '≈ ' + money(amount * rate, code) : '';
     });
   }
 

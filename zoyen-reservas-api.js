@@ -2,7 +2,7 @@
   var cfg = window.ZOYEN_SUPABASE || {};
   var publicKey = cfg.publishableKey || cfg.anonKey || '';
   var ready = Boolean(cfg.url && publicKey && window.supabase && window.supabase.createClient);
-  var client = ready ? window.supabase.createClient(cfg.url, publicKey) : null;
+  var client = ready  window.supabase.createClient(cfg.url, publicKey) : null;
 
   function cleanText(value, max) { return String(value || '').trim().slice(0, max || 500); }
   function inferLeadType(data, isInquiry) {
@@ -20,7 +20,7 @@
     var whatsappClicked = wasWhatsappClicked(data);
     var notes = cleanText(data.notas, 900);
     if (whatsappClicked && notes.indexOf('WhatsApp') === -1) {
-      notes = cleanText((notes ? notes + ' ' : '') + '[WhatsApp] El visitante presionó Continuar por WhatsApp' + (data.whatsappClickedAt ? ' el ' + data.whatsappClickedAt : '') + '.', 1000);
+      notes = cleanText((notes  notes + ' ' : '') + '[WhatsApp] El visitante presionó Continuar por WhatsApp' + (data.whatsappClickedAt  ' el ' + data.whatsappClickedAt : '') + '.', 1000);
     }
     return {
       customer_name: cleanText(data.nombre, 120),
@@ -32,12 +32,12 @@
       people_count: Math.max(1, Math.min(30, parseInt(data.personas, 10) || 1)),
       seats: String(data.asientos || '').split(/[^0-9]+/).map(Number).filter(Boolean),
       deposit_amount: Math.max(0, Number(data.senia) || 0),
-      status: isInquiry ? 'inquiry' : 'pending_payment',
+      status: isInquiry  'inquiry' : 'pending_payment',
       payment_method: 'not_selected',
       payment_status: 'pending',
       source: cleanText(data.origen || 'website', 40),
       lead_type: inferLeadType(data, isInquiry),
-      inquiry_type: cleanText(whatsappClicked ? 'whatsapp_click' : (data.tipoConsulta || data.inquiryType || inferLeadType(data, isInquiry)), 80),
+      inquiry_type: cleanText(whatsappClicked  'whatsapp_click' : (data.tipoConsulta || data.inquiryType || inferLeadType(data, isInquiry)), 80),
       admin_notes: notes
     };
   }
@@ -47,7 +47,7 @@
     if (!row.customer_name || !row.tour_name) throw new Error('Faltan datos obligatorios de la consulta.');
     if (row.status !== 'inquiry' && (!row.customer_email || !row.departure_date)) throw new Error('Faltan datos obligatorios de la reserva.');
     // El visitante puede crear una reserva, pero no debe poder leer filas de la base.
-    // Por eso no encadenamos .select(): RLS permite INSERT anÃ³nimo y reserva SELECT al personal autenticado.
+    // Por eso no encadenamos .select(): RLS permite INSERT an?nimo y reserva SELECT al personal autenticado.
     var result = await client.from('reservations').insert(row);
     if (result.error) throw result.error;
     return {ok:true, data:null};
@@ -77,7 +77,7 @@
     if (!ready) return {ok:false,local:true,data:null};
     var result = await client.from('tour_config').select('config').eq('id','main').maybeSingle();
     if (result.error) throw result.error;
-    return {ok:true,data:result.data && result.data.config ? result.data.config : null};
+    return {ok:true,data:result.data && result.data.config  result.data.config : null};
   }
   async function saveTourConfig(config) {
     if (!ready) return {ok:false,local:true};
