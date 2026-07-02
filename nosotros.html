@@ -1113,7 +1113,7 @@ img.hero-logo-static {
     <li><a href="index.html#ubicación" data-i18n="nav_ubicación">Ubicación y Contacto</a></li>
     <li><a href="nosotros.html" data-i18n="nav_nosotros">Quiénes somos</a></li>
   </ul>
-  <div class="nav-actions"><a href="index.html#abrir-zoyi" class="nav-cta-btn" data-i18n="nav_reservar">Consultar</a></div>
+  <div class="nav-actions"><a href="#abrir-zoyi" class="nav-cta-btn" data-i18n="nav_reservar">Consultar</a></div>
 </nav>
 
 <!-- HERO -->
@@ -1538,7 +1538,7 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   var chips = document.getElementById("zoyiChips");
 
   var contactText = "Contacto +54 9 297 443-2855 y email zoyenperitomoreno@gmail.com";
-  var waLink = "index.html#abrir-zoyi";
+  var waLink = "#abrir-zoyi";
   var pageTitle = (document.title || "").replace(/\s+/g," ").trim();
 
   var excursiones = [
@@ -1605,19 +1605,45 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
     return money(p.price);
   }
   function productLine(p){ return p.name + ": " + p.duration + ", " + priceText(p) + ", cupos hasta " + p.capacity + " personas."; }
-  function findProduct(q){
-    var best = null, score = 0;
-    allProducts.forEach(function(p){
-      var local = 0;
-      [p.name].concat(p.aliases || []).forEach(function(alias){
-        alias = normalize(alias);
-        if (alias && q.indexOf(alias) !== -1) local += alias.length > 8 ? 3 : 2;
-      });
-      if (local > score) { best = p; score = local; }
+  function productSearchText(p){ return normalize([p.name,p.summary,p.includes].concat(p.aliases || []).join(" ")); }
+  function searchTokens(t){
+    return normalize(t).split(" ").filter(function(w){
+      return w.length > 2 && ["que","del","los","las","una","uno","por","para","con","sobre","quiero","consultar","fecha","fechas","disponible","disponibilidad","tour","tours","excursion","excursiones"].indexOf(w) === -1;
     });
-    return best;
   }
-  function isAsking(q, words){ return words.some(function(w){ return q.indexOf(normalize(w)) !== -1; }); }
+  function closeToken(a,b){
+    if(!a || !b) return false;
+    if(a === b || a.indexOf(b) === 0 || b.indexOf(a) === 0) return true;
+    if(Math.abs(a.length-b.length) > 2 || a.length < 5 || b.length < 5) return false;
+    var m=a.length,n=b.length,prev=[],cur=[],i,j;
+    for(j=0;j<=n;j++) prev[j]=j;
+    for(i=1;i<=m;i++){
+      cur=[i];
+      for(j=1;j<=n;j++) cur[j]=Math.min(prev[j]+1,cur[j-1]+1,prev[j-1]+(a.charAt(i-1)===b.charAt(j-1)?0:1));
+      prev=cur;
+    }
+    return prev[n] <= 2;
+  }
+  function findProduct(q){
+    var query=normalize(q), qTokens=searchTokens(query), best=null, bestScore=0;
+    allProducts.forEach(function(p){
+      var score=0, fields=[p.name].concat(p.aliases || []), hay=productSearchText(p), hayTokens=searchTokens(hay);
+      fields.forEach(function(alias){
+        var a=normalize(alias);
+        if(!a) return;
+        if(query === a) score += 20;
+        else if(query.indexOf(a) !== -1) score += a.length > 8 ? 12 : 7;
+        else if(a.indexOf(query) !== -1 && query.length > 3) score += 5;
+      });
+      qTokens.forEach(function(t){
+        if(hay.indexOf(t) !== -1) score += 2;
+        else if(hayTokens.some(function(ht){ return closeToken(t,ht); })) score += 1;
+      });
+      if(score > bestScore){ best=p; bestScore=score; }
+    });
+    return bestScore >= 3 ? best : null;
+  }
+  function isAsking(q, words){ return words.some(function(w){ var nw=normalize(w); return q.indexOf(nw) !== -1 || searchTokens(q).some(function(t){ return closeToken(t,nw); }); }); }
   function listExcursions(){ return "Excursiones de día o medio día disponibles: " + excursiones.map(productLine).join(" "); }
   function listTours(){ return "Tours de autor disponibles: " + tours.map(productLine).join(" ") + " Ambos tienen itinerario descargable en PDF desde su página."; }
   function pricesAnswer(product){
@@ -1625,8 +1651,9 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
     return "Precios en AR por persona: " + allProducts.map(function(p){ return p.name + " " + priceText(p); }).join("; ") + ".";
   }
   function datesAnswer(product){
-    var base = "Las reservas del sitio permiten elegir una fecha desde hoy (" + todayText() + ") en adelante. La disponibilidad real se valida por fecha, excursión o tour y cupos.";
-    if (product) base += " Para " + product.name + " la capacidad de referencia es de hasta " + product.capacity + " personas.";
+    if (!product) return "¿Sobre qué excursión o tour querés consultar fechas disponibles?";
+    var base = "Disponibilidad de " + product.name + ": " + product.duration + ". " + product.summary;
+    if (product.includes) base += " Incluye: " + product.includes;
     return base + " Si querés consultar, tocá Consultar, elegí experiencia, cantidad de personas y fecha tentativa.";
   }
   function reservationAnswer(){
@@ -1677,10 +1704,32 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
     toggle.setAttribute("aria-expanded", widget.classList.contains("open") ? "true" : "false");
     if (widget.classList.contains("open") && input) input.focus();
   });
+  window.abrirZoyi = function(){
+    widget.classList.add("open");
+    if (toggle) toggle.setAttribute("aria-expanded", "true");
+    if (input) input.focus();
+  };
+  function openZoyiFromLocalLink(){
+    if (window.history && window.history.pushState) window.history.pushState(null, "", "#abrir-zoyi");
+    else window.location.hash = "abrir-zoyi";
+    window.abrirZoyi();
+  }
+  document.addEventListener("click", function(e){
+    var link = e.target.closest && e.target.closest('a[href="#abrir-zoyi"]');
+    if (!link) return;
+    e.preventDefault();
+    openZoyiFromLocalLink();
+  });
+  window.addEventListener("hashchange", function(){
+    if (window.location.hash === "#abrir-zoyi") window.abrirZoyi();
+  });
   if (closeBtn) closeBtn.addEventListener("click", function(){ widget.classList.remove("open"); if (toggle) toggle.setAttribute("aria-expanded","false"); });
   if (form) form.addEventListener("submit", function(e){ e.preventDefault(); submit(); });
   if (chips) chips.addEventListener("click", function(e){ if (e.target.matches("button")) submit(e.target.textContent); });
   addMessage("Hola, soy Zoyi. Puedo responder sobre excursiones, tours, precios en AR, fechas disponibles, cupos, ubicación e itinerarios. Solo te paso con una persona si me lo pedís.", "bot");
+  if (window.location.hash === "#abrir-zoyi") {
+    window.setTimeout(function(){ window.abrirZoyi(); }, 250);
+  }
 })();
 </script>
 

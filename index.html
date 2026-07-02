@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -569,7 +569,8 @@ nav {
 /* Fila 3: Parque Patagonia full ancho */
 .ex-grid .ex-card:nth-child(4),
 .ex-grid .ex-card:nth-child(5) { grid-column: span 3; aspect-ratio: unset; height: 360px; }
-.ex-grid .ex-card:nth-child(6) { grid-column: span 6 !important; aspect-ratio: unset; height: 380px; }
+.ex-grid .ex-card:nth-child(6),
+.ex-grid .ex-card:nth-child(7) { grid-column: span 3; aspect-ratio: unset; height: 380px; }
 
 @media (max-width:960px){
   .ex-grid { grid-template-columns: repeat(2,1fr); }
@@ -577,8 +578,9 @@ nav {
   .ex-grid .ex-card:nth-child(2),
   .ex-grid .ex-card:nth-child(3),
   .ex-grid .ex-card:nth-child(4),
-  .ex-grid .ex-card:nth-child(5) { grid-column: span 1; }
-  .ex-grid .ex-card:nth-child(6) { grid-column: span 2 !important; }
+  .ex-grid .ex-card:nth-child(5),
+  .ex-grid .ex-card:nth-child(6),
+  .ex-grid .ex-card:nth-child(7) { grid-column: span 1; }
 }
 @media (max-width:520px){
   .ex-grid { grid-template-columns: 1fr; }
@@ -939,23 +941,28 @@ nav {
   font-size: .72rem;
   padding: .48rem 1rem;
 }
-.ex-grid .ex-card:nth-child(6) {
+.ex-grid .ex-card:nth-child(6),
+.ex-grid .ex-card:nth-child(7) {
   height: 500px;
 }
-.ex-grid .ex-card:nth-child(6) img {
+.ex-grid .ex-card:nth-child(6) img,
+.ex-grid .ex-card:nth-child(7) img {
   object-position: center center !important;
 }
-.ex-grid .ex-card:nth-child(6):hover img {
+.ex-grid .ex-card:nth-child(6):hover img,
+.ex-grid .ex-card:nth-child(7):hover img {
   transform: scale(1.025);
 }
 @media (max-width:960px) {
-  .ex-grid .ex-card:nth-child(6) { height: 430px; }
+  .ex-grid .ex-card:nth-child(6),
+  .ex-grid .ex-card:nth-child(7) { height: 430px; }
   .ex-name { font-size: 1.18rem; }
   .ex-desc { font-size: .9rem; }
 }
 @media (max-width:520px) {
   .ex-card-overlay { padding: 1.1rem; }
-  .ex-grid .ex-card:nth-child(6) { height: 390px; }
+  .ex-grid .ex-card:nth-child(6),
+  .ex-grid .ex-card:nth-child(7) { height: 390px; }
   .ex-tag { top: 10px; left: 10px; font-size: .6rem; }
   .ex-name { font-size: 1.1rem; }
   .ex-desc { font-size: .84rem; -webkit-line-clamp: 3; }
@@ -2527,7 +2534,7 @@ img.hero-logo-static {
 }
 @media (max-width: 900px) {
   .emblem-3d.zoyen-hero-logo-motion .zoyen-motion-cardinals {
-    display: block;
+    display: none !important;
   }
   .emblem-3d.zoyen-hero-logo-motion .zoyen-hero-logo-orbit {
     opacity: 1 !important;
@@ -2558,6 +2565,7 @@ img.hero-logo-static {
     transition: transform .16s linear !important;
   }
   .emblem-3d.zoyen-hero-logo-motion.zoyen-compass-active .zoyen-motion-cardinals {
+    display: block !important;
     transform: rotate(var(--zoyen-compass-rotation, 0deg)) !important;
   }
   .emblem-3d.zoyen-hero-logo-motion .hero-logo-static {
@@ -3225,7 +3233,16 @@ img.hero-logo-static {
       <span class="ex-tag" data-i18n="ex6_tag">Medio día</span>
       <div class="ex-card-overlay" style="padding-bottom:1.8rem;">
         <h3 class="ex-name" data-i18n="ex6_name" data-name-es>Parque Nacional Patagonia / Portal Cañadón Pinturas</h3>
-        <p class="ex-desc" style="-webkit-line-clamp:4;">Dos opciones de medio día para quienes llegan a mitad del día o tienen una mañana libre. <strong style="color:var(--sand);">Portal Cañadón Pinturas</strong> (5 hs, 45 km por Ruta 40): Sendero Tierra de Colores, Planetario, Museo y Sendero Los Balcones con vistas del Río Pinturas. <strong style="color:var(--sand);">PNP / Estancia La Ascensión</strong> (4 hs, 30 min al oeste): senderos con vistas del Lago Buenos Aires y casco de estancia con historia ganadera.</p>
+        <p class="ex-desc" data-i18n="ex6_desc" style="-webkit-line-clamp:4;">Sendero Tierra de Colores, Planetario, Museo y Sendero Los Balcones con vistas del Río Pinturas. Medio día, 5 hs, 45 km por Ruta 40.</p>
+        <a href="excursion-parque-patagonia.html" class="ex-link"><span data-i18n="vermás">Ver más</span></a>
+      </div>
+    </div>
+    <div class="ex-card reveal reveal-delay">
+      <img src="assets/parquepatagonia_zoyenturismo.jpg" data-card-href="excursion-parque-patagonia.html" alt="PNP / Estancia La Ascensión" style="height:100%; object-fit:cover; object-position:center center;">
+      <span class="ex-tag" data-i18n="ex7_tag">Medio día</span>
+      <div class="ex-card-overlay" style="padding-bottom:1.8rem;">
+        <h3 class="ex-name" data-i18n="ex7_name" data-name-es>PNP / Estancia La Ascensión</h3>
+        <p class="ex-desc" data-i18n="ex7_desc" style="-webkit-line-clamp:4;">Salida corta hacia el oeste para conocer senderos con vistas del Lago Buenos Aires y el casco de estancia con historia ganadera. 4 hs, ideal para una mañana o tarde libre.</p>
         <a href="excursion-parque-patagonia.html" class="ex-link"><span data-i18n="vermás">Ver más</span></a>
       </div>
     </div>
@@ -3995,6 +4012,9 @@ var translations = {
     ex5_tag: 'Arte rupestre', ex5_name: 'Alero Charcamata',
     ex5_desc: 'Arte rupestre intacto y alejado de la civilización. Un viaje en el tiempo inevitable.',
     ex6_tag: 'Medio día', ex6_name: 'Parque Nacional Patagonia / Portal Cañadón Pinturas',
+    ex6_desc: 'Sendero Tierra de Colores, Planetario, Museo y Sendero Los Balcones con vistas del Río Pinturas. Medio día, 5 hs, 45 km por Ruta 40.',
+    ex7_tag: 'Medio día', ex7_name: 'PNP / Estancia La Ascensión',
+    ex7_desc: 'Salida corta hacia el oeste para conocer senderos con vistas del Lago Buenos Aires y el casco de estancia con historia ganadera. 4 hs, ideal para una mañana o tarde libre.',
     'vermás': 'Ver más', slide_verexc: 'Ver excursión', slide_vertour: 'Ver tours',
     man_quote: '"La Patagonia no se visita: <strong>se vive, se siente, se lleva adentro</strong> para siempre."',
     man_eye: 'Quiénes somos', man_title: 'Turismo con <em style="color:var(--sand)">alma</em> patagónica',
@@ -4057,6 +4077,9 @@ var translations = {
     ex5_tag: 'Rock art', ex5_name: 'Alero Charcamata',
     ex5_desc: 'Pristine rock art far from civilization. An inevitable journey through time.',
     ex6_tag: 'Half day', ex6_name: 'Patagonia National Park / Portal Cañadón Pinturas',
+    ex6_desc: 'Tierra de Colores trail, Planetarium, Museum and Los Balcones trail with views of the Río Pinturas. Half day, 5 hs, 45 km on Ruta 40.',
+    ex7_tag: 'Half day', ex7_name: 'PNP / Estancia La Ascensión',
+    ex7_desc: 'Short westbound outing to trails overlooking Lake Buenos Aires and the historic estancia buildings. 4 hs, ideal for a free morning or afternoon.',
     'vermás': 'See more', slide_verexc: 'View excursion', slide_vertour: 'View tours',
     man_quote: '"Patagonia is not visited: <strong>it is lived, felt, carried within</strong> forever."',
     man_eye: 'About us', man_title: 'Tourism with <em style="color:var(--sand)">soul</em>',
@@ -4120,6 +4143,9 @@ var translations = {
     ex5_tag: 'Arte rupestre', ex5_name: 'Alero Charcamata',
     ex5_desc: 'Arte rupestre intacta e distante da civilização. Uma viagem inevitável no tempo.',
     ex6_tag: 'Meio dia', ex6_name: 'Parque Nacional Patagônia / Portal Cañadón Pinturas',
+    ex6_desc: 'Trilha Tierra de Colores, Planetário, Museu e trilha Los Balcones com vistas do Rio Pinturas. Meio dia, 5 h, 45 km pela Ruta 40.',
+    ex7_tag: 'Meio dia', ex7_name: 'PNP / Estancia La Ascensión',
+    ex7_desc: 'Saída curta rumo ao oeste para conhecer trilhas com vistas do Lago Buenos Aires e o casco da antiga estância. 4 h, ideal para uma manhã ou tarde livre.',
     'vermás': 'Ver mais', slide_verexc: 'Ver excursão', slide_vertour: 'Ver tours',
     man_quote: '"A Patagônia não se visita: <strong>se vive, se sente, se leva dentro</strong> para sempre."',
     man_eye: 'Quem somos', man_title: 'Turismo com <em style="color:var(--sand)">alma</em> patagônica',
@@ -4183,6 +4209,9 @@ var translations = {
     ex5_tag: '암벽화', ex5_name: '알레로 차르카마타',
     ex5_desc: '문명에서 멀리 떨어진 그대로의 암벽화. 시간을 거슬러 올라가는 피할 수 없는 여행.',
     ex6_tag: '반나절', ex6_name: '파타고니아 국립공원 / 포르탈 카냐돈 핀투라스',
+    ex6_desc: '티에라 데 콜로레스 트레일, 플라네타륨, 박물관, 리오 핀투라스 전망의 로스 발코네스 트레일. 반나절, 5시간, 루타 40 기준 45km.',
+    ex7_tag: '반나절', ex7_name: 'PNP / 에스탄시아 라 아센시온',
+    ex7_desc: '부에노스아이레스 호수 전망 산책로와 목장 역사를 만나는 서쪽 짧은 코스. 4시간, 자유로운 오전이나 오후에 적합합니다.',
     'vermás': '더 보기', slide_verexc: '투어 보기', slide_vertour: '투어 보기',
     man_quote: '"파타고니아는 방문하는 곳이 아닙니다: <strong>살고, 느끼고, 마음속에 영원히 담아가는</strong> 곳입니다."',
     man_eye: '우리에 대해', man_title: '영혼이 있는 <em style="color:var(--sand)">파타고니아 관광</em>',
@@ -4363,6 +4392,7 @@ applyLang(currentLang);
       fallback: "Preguntame por fechas, disponibilidad, precios, excursiones, tours, ubicación o reservas.",
       helpFull: "Puedo ayudarte con: fechas disponibles, precios en ARS, cupos, excursiones, tours de autor, ubicación, itinerarios PDF y cómo reservar. Probá: 'precio de Capillas', 'fechas para Patagonia Inédita' o '¿qué excursión me recomendás?'.",
       humanAns: function(){ return "Si querés hablar con alguien del equipo, podés usar WhatsApp +54 9 297 443-2855 o email zoyenperitomoreno@gmail.com. cerrar la consulta al final del formulario."; },
+      datesAsk: "¿Sobre qué excursión o tour querés consultar fechas disponibles?",
       datesBase: "La disponibilidad se consulta según la experiencia elegida. En la página de cada experiencia encontrás duración, recorrido, precio o seña e inclusiones.",
       datesExtra: function(p){ return " Para " + p.name + ": " + p.duration + ". " + p.summary; },
       datesCta: " Si querés consultar, tocá Consultar, elegí experiencia, cantidad de personas y fecha tentativa.",
@@ -4386,6 +4416,7 @@ applyLang(currentLang);
       fallback: "Ask me about dates, availability, prices, excursions, tours or bookings.",
       helpFull: "I can help with: available dates, ARS prices, group sizes, excursions, author tours, location, PDF itineraries and how to book. Try: \'price of Capillas y Catedrales de Mármol\', \'dates for Patagonia Inédita\' or \'which excursion do you recommend\'.",
       humanAns: function(){ return "To speak with a team member: WhatsApp +54 9 297 443-2855 or email zoyenperitomoreno@gmail.com. finish the inquiry at the end of the form."; },
+      datesAsk: "Which excursion or tour would you like to check availability for?",
       datesBase: "Bookings allow you to choose any date from today onwards. Real availability is confirmed by date, excursion and group size.",
       datesExtra: function(p){ return " For " + p.name + " capacity is up to " + p.capacity + " people."; },
       datesCta: " To inquire, tap Book, choose your experience, group size and tentative date.",
@@ -4409,6 +4440,7 @@ applyLang(currentLang);
       fallback: "Me pergunte sobre datas, disponibilidade, preços, excursões, tours ou reservas.",
       helpFull: "Posso ajudar com: datas disponíveis, preços em ARS, vagas, excursões, tours de autor, localização, itinerários PDF e como reservar.",
       humanAns: function(){ return "Para falar com a equipe: WhatsApp +54 9 297 443-2855 ou email zoyenperitomoreno@gmail.com. finalizar a consulta no fim do formulário."; },
+      datesAsk: "Sobre qual excursão ou tour você quer consultar disponibilidade?",
       datesBase: "As reservas permitem escolher qualquer data a partir de hoje. Disponibilidade confirmada por data, excursão e vagas.",
       datesExtra: function(p){ return " Para " + p.name + " a capacidade é de até " + p.capacity + " pessoas."; },
       datesCta: " Para consultar, toque em Reservar, escolha experiência, quantidade de pessoas e data tentativa.",
@@ -4432,6 +4464,7 @@ applyLang(currentLang);
       fallback: "날짜, 가능 여부, 가격, 투어 또는 예약에 대해 질문하세요.",
       helpFull: "도와드릴 수 있는 내용: 예약 가능 날짜, ARS 가격, 인원, 투어, 위치, PDF 일정 및 예약 방법.",
       humanAns: function(){ return "팀과 직접 연락: WhatsApp +54 9 297 443-2855 또는 이메일 zoyenperitomoreno@gmail.com. 마지막 단계에서 문의를 완료하세요."; },
+      datesAsk: "어떤 투어의 가능 날짜를 확인하시겠어요?",
       datesBase: "오늘부터 원하는 날짜를 선택할 수 있습니다. 실제 가능 여부는 날짜, 투어, 인원에 따라 확인됩니다.",
       datesExtra: function(p){ return " " + p.name + " 정원: 최대 " + p.capacity + "명."; },
       datesCta: " 문의하려면 예약 버튼을 누르고 투어, 인원, 예상 날짜를 선택하세요.",
@@ -4453,18 +4486,18 @@ applyLang(currentLang);
   };
 
   var excursiones = [
-    {id:"cueva", name:"Cueva de las Manos", aliases:["cueva","manos","pinturas","arqueología","río Pinturas"], price:250000, pricePrivate:250000, duration:"día completo", capacity:14, type:"excursion", summary:"sitio arqueológico Patrimonio Mundial, pinturas rupestres de más de 9.000 años.", includes:"Traslado en servicio privado, chofer/guía, vianda completa para almuerzo y entrada al Parque Provincial Cueva de las Manos y al Parque Patagonia. Consultar precio en salida grupal.", url:"excursion-cueva-de-las-manos.html"},
-    {id:"capillas", name:"Capillas y Catedrales de Mármol", aliases:["capillas","marmol","catedrales","general carrera"], price:50000, priceUsd:200, duration:"día completo", capacity:14, type:"excursion", summary:"navegación por el Lago General Carrera para ver formaciones de mármol. Solo salidas grupales ida y vuelta en el día.", includes:"Traslados ida y vuelta, guía, coffee break, navegación y almuerzo con bebida. Seña de $50.000 en pesos y saldo de USD 200 en dólar billete a la llegada.", url:"excursion-capillas-de-marmol.html"},
-    {id:"posadas", name:"Lago Posadas y Ruta Escénica 41", aliases:["posadas","lago posadas","ruta 41","ruta escénica"], price:320000, pricePrivate:270000, duration:"día completo (12 hs)", capacity:14, type:"excursion", summary:"recorrido panorámico por lagos, miradores y vuelta a la Meseta en camioneta 4x4.", includes:"Traslado en 4x4 con chofer/guía y vianda para almuerzo con bebida sin alcohol. $320.000 por persona si son 2; de 3 a 4 pasajeros, $270.000 cada uno.", url:"excursion-ruta41-lago-posadas.html"},
-    {id:"zeballos", name:"Los Antiguos y Ruta Escénica 41", aliases:["zeballos","monte zeballos","ruta 41","ruta escénica 41","los antiguos"], price:250000, pricePrivate:250000, duration:"día completo", capacity:14, type:"excursion", summary:"travesía por Los Antiguos y la Ruta Escénica 41, con visita a chacra.", includes:"Traslados con chofer/guía ida y vuelta, almuerzo con bebida sin alcohol y visita a chacra en Los Antiguos. Consultar precio en salida grupal.", url:"excursion-ruta41-los-antiguos.html"},
-    {id:"charcamata", name:"Alero Charcamata", aliases:["charcamata","alero"], price:280000, duration:"medio día", capacity:14, type:"excursion", summary:"arte rupestre prístino, exclusiva en privado.", includes:"Traslado en 4x4, guía especializado y vianda para almuerzo. $280.000 cada uno si son 2 personas; consultar precio por 3 o 4 pasajeros.", url:"excursion-alero-charcamata.html"},
-    {id:"parque",   name:"Portal Cañadón Pinturas - Parque Patagonia",  aliases:["parque","parque patagonia","canadon","can","pinturas","portal","파타고니아 공"], price:8000, duration:"medio día (5 hs)", capacity:14, type:"excursion", summary:"senderos, fauna, geología y vistas del noroeste de Santa Cruz.", includes:"Traslado en 4x4 o minibús con guía y merienda. No incluye almuerzo.", url:"excursion-parque-patagonia.html"},
-    {id:"ascension",name:"PNP / Estancia La Ascensión",               aliases:["ascension","estancia","pnp"], price:7000, duration:"medio día (4 hs)", capacity:14, type:"excursion", summary:"salida corta vinculada al Parque Patagonia y la historia de estancia.", includes:"Traslado en 4x4 o minibús con guía. Salida corta combinable con el Portal Cañadón Pinturas.", url:"excursion-parque-patagonia.html"}
+    {id:"cueva", name:"Cueva de las Manos", aliases:["cueva","cuevas","manos","cueva manos","cueva de manos","pinturas","pinturas rupestres","arqueologia","arqueología","río Pinturas","rio pinturas"], price:250000, pricePrivate:250000, duration:"día completo", capacity:14, type:"excursion", summary:"sitio arqueológico Patrimonio Mundial, pinturas rupestres de más de 9.000 años.", includes:"Traslado en servicio privado, chofer/guía, vianda completa para almuerzo y entrada al Parque Provincial Cueva de las Manos y al Parque Patagonia. Consultar precio en salida grupal.", url:"excursion-cueva-de-las-manos.html"},
+    {id:"capillas", name:"Capillas y Catedrales de Mármol", aliases:["capillas","capilla","marmol","mármol","catedrales","catedrales de marmol","capillas de marmol","capillas y catedrales","general carrera","lago general carrera","chile"], price:50000, priceUsd:200, duration:"día completo", capacity:14, type:"excursion", summary:"navegación por el Lago General Carrera para ver formaciones de mármol. Solo salidas grupales ida y vuelta en el día.", includes:"Traslados ida y vuelta, guía, coffee break, navegación y almuerzo con bebida. Seña de $50.000 en pesos y saldo de USD 200 en dólar billete a la llegada.", url:"excursion-capillas-de-marmol.html"},
+    {id:"posadas", name:"Lago Posadas y Ruta Escénica 41", aliases:["posadas","lago posadas","ruta 41","ruta escénica","ruta escenica","lago","meseta","4x4","lago posada"], price:320000, pricePrivate:270000, duration:"día completo (12 hs)", capacity:14, type:"excursion", summary:"recorrido panorámico por lagos, miradores y vuelta a la Meseta en camioneta 4x4.", includes:"Traslado en 4x4 con chofer/guía y vianda para almuerzo con bebida sin alcohol. $320.000 por persona si son 2; de 3 a 4 pasajeros, $270.000 cada uno.", url:"excursion-ruta41-lago-posadas.html"},
+    {id:"zeballos", name:"Los Antiguos y Ruta Escénica 41", aliases:["zeballos","monte zeballos","ruta 41","ruta escénica 41","ruta escenica 41","los antiguos","antiguos","chacra","chacras"], price:250000, pricePrivate:250000, duration:"día completo", capacity:14, type:"excursion", summary:"travesía por Los Antiguos y la Ruta Escénica 41, con visita a chacra.", includes:"Traslados con chofer/guía ida y vuelta, almuerzo con bebida sin alcohol y visita a chacra en Los Antiguos. Consultar precio en salida grupal.", url:"excursion-ruta41-los-antiguos.html"},
+    {id:"charcamata", name:"Alero Charcamata", aliases:["charcamata","charca","alero","arte rupestre","pinturas charcamata"], price:280000, duration:"medio día", capacity:14, type:"excursion", summary:"arte rupestre prístino, exclusiva en privado.", includes:"Traslado en 4x4, guía especializado y vianda para almuerzo. $280.000 cada uno si son 2 personas; consultar precio por 3 o 4 pasajeros.", url:"excursion-alero-charcamata.html"},
+    {id:"parque",   name:"Portal Cañadón Pinturas - Parque Patagonia",  aliases:["parque","parque patagonia","portal canadon","cañadon pinturas","canadon pinturas","canadon","cañadon","can","pinturas","portal","senderos","파타고니아 공"], price:8000, duration:"medio día (5 hs)", capacity:14, type:"excursion", summary:"senderos, fauna, geología y vistas del noroeste de Santa Cruz.", includes:"Traslado en 4x4 o minibús con guía y merienda. No incluye almuerzo.", url:"excursion-parque-patagonia.html"},
+    {id:"ascension",name:"PNP / Estancia La Ascensión",               aliases:["ascension","ascensión","estancia","la ascension","la ascensión","pnp","estancia la ascension"], price:7000, duration:"medio día (4 hs)", capacity:14, type:"excursion", summary:"salida corta vinculada al Parque Patagonia y la historia de estancia.", includes:"Traslado en 4x4 o minibús con guía. Salida corta combinable con el Portal Cañadón Pinturas.", url:"excursion-parque-patagonia.html"}
   ];
   var tours = [
-    {id:"patagonia", name:"Patagonia Inédita", aliases:["patagonia inedita","inedita"], price:2290000, duration:"5 días / 4 noches", capacity:14, type:"tour", pdf:"assets/pdfs/patagonia-inedita-itinerario.pdf", summary:"sale desde Comodoro Rivadavia y recorre Perito Moreno, Cueva de las Manos, Parque Patagonia, Los Antiguos, Ruta Escénica 41 y Capillas y Catedrales de Mármol.", includes:"Traslados desde y hacia el aeropuerto de Comodoro Rivadavia, 4 noches de hotel con desayuno y excursiones full day con todo incluido. No incluye bebidas alcohólicas ni cenas. Base doble $2.290.000, base single $2.590.000. Seña $1.000.000 por persona.", url:"patagonia-inedita.html"},
-    {id:"carretera", name:"Carretera Austral", aliases:["carretera austral","austral","ohiggins","villa ohiggins","tortel","cochrane"], price:0, duration:"7 noches", capacity:14, type:"tour", pdf:"assets/pdfs/carretera-austral-itinerario.pdf", summary:"incluye Chile Chico, Cochrane, Caleta Tortel, Villa O'Higgins, Puerto Río Tranquilo, Capillas de Mármol y Coyhaique. Solo salidas grupales, mínimo 10 personas.", includes:"Traslados desde Perito Moreno ida y vuelta en minibús, alojamiento según itinerario, excursiones terrestres con chofer/guía, almuerzos con bebida sin alcohol y navegación a Capillas y Catedrales de Mármol. No incluye bebidas alcohólicas ni cenas. Consultar precio y disponibilidad.", url:"carretera-austral.html"},
-    {id:"circuito_binacional", name:"Santa Cruz Inexplorada", aliases:["santa cruz inexplorada","santa cruz inexplorado","circuito binacional","patagonia inexplorada","binacional","los antiguos","cueva de las manos"], price:3350000, duration:"8 días / 7 noches", capacity:16, type:"tour", summary:"incluye vuelo Buenos Aires / Perito Moreno / Buenos Aires con American Jet, 4 noches en Los Antiguos y 3 en Perito Moreno, excursiones full day a Cueva de las Manos, Ruta Escénica 41 y Capillas y Catedrales de Mármol (Chile).", includes:"No incluye bebidas alcohólicas, cenas ni actividades opcionales. Tarifas en pesos argentinos. Seña $1.500.000 por persona. Confirmar por disponibilidad aérea.", url:"santa-cruz-inexplorada.html"}
+    {id:"patagonia", name:"Patagonia Inédita", aliases:["patagonia inedita","patagonia inédita","inedita","inédita","tour patagonia","patagonia profunda"], price:2290000, duration:"5 días / 4 noches", capacity:14, type:"tour", pdf:"assets/pdfs/patagonia-inedita-itinerario.pdf", summary:"sale desde Comodoro Rivadavia y recorre Perito Moreno, Cueva de las Manos, Parque Patagonia, Los Antiguos, Ruta Escénica 41 y Capillas y Catedrales de Mármol.", includes:"Traslados desde y hacia el aeropuerto de Comodoro Rivadavia, 4 noches de hotel con desayuno y excursiones full day con todo incluido. No incluye bebidas alcohólicas ni cenas. Base doble $2.290.000, base single $2.590.000. Seña $1.000.000 por persona.", url:"patagonia-inedita.html"},
+    {id:"carretera", name:"Carretera Austral", aliases:["carretera austral","carretera","austral","ohiggins","o higgins","villa ohiggins","villa o higgins","tortel","cochrane","chile chico","coyhaique"], price:0, duration:"7 noches", capacity:14, type:"tour", pdf:"assets/pdfs/carretera-austral-itinerario.pdf", summary:"incluye Chile Chico, Cochrane, Caleta Tortel, Villa O'Higgins, Puerto Río Tranquilo, Capillas de Mármol y Coyhaique. Solo salidas grupales, mínimo 10 personas.", includes:"Traslados desde Perito Moreno ida y vuelta en minibús, alojamiento según itinerario, excursiones terrestres con chofer/guía, almuerzos con bebida sin alcohol y navegación a Capillas y Catedrales de Mármol. No incluye bebidas alcohólicas ni cenas. Consultar precio y disponibilidad.", url:"carretera-austral.html"},
+    {id:"circuito_binacional", name:"Santa Cruz Inexplorada", aliases:["santa cruz inexplorada","santa cruz inexplorado","inexplorada","inexplorado","circuito binacional","patagonia inexplorada","binacional","tour binacional","los antiguos","cueva de las manos","american jet"], price:3350000, duration:"8 días / 7 noches", capacity:16, type:"tour", summary:"incluye vuelo Buenos Aires / Perito Moreno / Buenos Aires con American Jet, 4 noches en Los Antiguos y 3 en Perito Moreno, excursiones full day a Cueva de las Manos, Ruta Escénica 41 y Capillas y Catedrales de Mármol (Chile).", includes:"No incluye bebidas alcohólicas, cenas ni actividades opcionales. Tarifas en pesos argentinos. Seña $1.500.000 por persona. Confirmar por disponibilidad aérea.", url:"santa-cruz-inexplorada.html"}
   ];
   function applyEditableTourConfigToZoyi() {
     var cfg = {};
@@ -4608,8 +4641,8 @@ applyLang(currentLang);
     messages.scrollTop=messages.scrollHeight;
   }
   function showTypeChoices(intent){
-    var c=choiceCopy();
-    addChoices(c.type,[
+    var c=choiceCopy(), lang=getLang(), ui=UI[lang]||UI.es;
+    addChoices(intent==="dates" ? (ui.datesAsk||c.type) : c.type,[
       {label:c.exc,action:"type",value:"excursion"},
       {label:c.tour,action:"type",value:"tour"}
     ],intent);
@@ -4625,7 +4658,7 @@ applyLang(currentLang);
     var p=allProducts.find(function(item){return item.id===id;});
     if(!p)return ui.fallback;
     if(intent==="prices")return productBullet(p,ui)+"\n"+ui.pricesPer.trim();
-    if(intent==="dates")return ui.datesBase+ui.datesExtra(p)+"\n"+productLinkTag(p,ui)+"\n"+ui.datesCta.trim();
+    if(intent==="dates")return availabilityProductAnswer(p,ui);
     return productSummary(p,ui);
   }
 
@@ -4719,9 +4752,20 @@ applyLang(currentLang);
   }
 
   function priceText(p){ if (!p.price) return "Consultar"; if (p.id === "capillas" && p.priceUsd) return "Seña $50.000 + USD " + p.priceUsd; return money(p.price); }
+  function availabilityProductAnswer(p,ui){
+    var out = "Disponibilidad de " + p.name + ":\n";
+    out += "- Duración: " + p.duration + "\n";
+    out += "- Precio/seña: " + priceText(p) + "\n";
+    out += "- Recorrido: " + p.summary + "\n";
+    if(p.includes) out += "- Incluye: " + p.includes + "\n";
+    out += ui.datesCta.trim();
+    var link=productLinkTag(p,ui);
+    if(link) out+="\n"+link;
+    return out;
+  }
   function dateAvailabilityAnswer(p,ui){
-    if(p) return ui.datesBase+ui.datesExtra(p)+"\n"+productLinkTag(p,ui)+"\n"+ui.datesCta.trim();
-    return ui.datesBase+"\n"+ui.listTours.trim()+"\n"+tours.map(function(x){return productBullet(x,ui);}).join("\n")+"\n"+ui.datesCta.trim();
+    if(p) return availabilityProductAnswer(p,ui);
+    return (ui.datesAsk||"¿Sobre qué excursión o tour querés consultar fechas disponibles?");
   }
   function productLine(p,ui){ return p.name+": "+p.duration+", "+priceText(p)+", "+p.capacity+(ui ? ui.capacity:" personas")+"."; }
   function productBullet(p,ui){ return "- "+p.name+"\n  "+p.duration+" - "+priceText(p)+" - "+p.capacity+(ui ? ui.capacity:" personas"); }
@@ -4733,8 +4777,47 @@ applyLang(currentLang);
     return out;
   }
   function numberedSteps(text){ return String(text||"").replace(/\s*(\d\))/g,"\n$1").trim(); }
-  function findProduct(q){ var b=null,s=0; allProducts.forEach(function(p){ var l=0; [p.name].concat(p.aliases||[]).forEach(function(a){ a=normalize(a); if(a&&q.indexOf(a)!==-1)l+=a.length > 8 ? 3 : 2; }); if(l>s){b=p;s=l;} }); return b; }
-  function isAsking(q,words){ return words.some(function(w){ return q.indexOf(normalize(w))!==-1; }); }
+  function productSearchText(p){ return normalize([p.name,p.summary,p.includes].concat(p.aliases||[]).join(" ")); }
+  function searchTokens(t){
+    return normalize(t).split(" ").filter(function(w){
+      return w.length>2 && ["que","del","los","las","una","uno","por","para","con","sobre","quiero","consultar","fecha","fechas","disponible","disponibilidad","tour","tours","excursion","excursiones"].indexOf(w)===-1;
+    });
+  }
+  function closeToken(a,b){
+    if(!a||!b)return false;
+    if(a===b||a.indexOf(b)===0||b.indexOf(a)===0)return true;
+    if(Math.abs(a.length-b.length)>2||a.length<5||b.length<5)return false;
+    var m=a.length,n=b.length,prev=[],cur=[],i,j;
+    for(j=0;j<=n;j++)prev[j]=j;
+    for(i=1;i<=m;i++){
+      cur=[i];
+      for(j=1;j<=n;j++){
+        cur[j]=Math.min(prev[j]+1,cur[j-1]+1,prev[j-1]+(a.charAt(i-1)===b.charAt(j-1)?0:1));
+      }
+      prev=cur;
+    }
+    return prev[n]<=2;
+  }
+  function findProduct(raw){
+    var q=normalize(raw), qTokens=searchTokens(q), best=null, bestScore=0;
+    allProducts.forEach(function(p){
+      var score=0, fields=[p.name].concat(p.aliases||[]), hay=productSearchText(p), hayTokens=searchTokens(hay);
+      fields.forEach(function(alias){
+        var a=normalize(alias);
+        if(!a)return;
+        if(q===a) score+=20;
+        else if(q.indexOf(a)!==-1) score+=a.length>8 ? 12 : 7;
+        else if(a.indexOf(q)!==-1 && q.length>3) score+=5;
+      });
+      qTokens.forEach(function(t){
+        if(hay.indexOf(t)!==-1) score+=2;
+        else if(hayTokens.some(function(ht){return closeToken(t,ht);})) score+=1;
+      });
+      if(score>bestScore){ best=p; bestScore=score; }
+    });
+    return bestScore>=3 ? best : null;
+  }
+  function isAsking(q,words){ return words.some(function(w){ var nw=normalize(w); return q.indexOf(nw)!==-1 || searchTokens(q).some(function(t){return closeToken(t,nw);}); }); }
 
   function answer(raw){
     var lang=getLang(), ui=UI[lang]||UI.es, k=ui.kw;
@@ -4805,6 +4888,20 @@ applyLang(currentLang);
     if(toggle) toggle.setAttribute("aria-expanded","true");
     if(input) input.focus();
   };
+  function openZoyiFromLocalLink(){
+    if (window.history && window.history.pushState) window.history.pushState(null, "", "#abrir-zoyi");
+    else window.location.hash = "abrir-zoyi";
+    window.abrirZoyi();
+  }
+  document.addEventListener("click", function(e){
+    var link = e.target.closest && e.target.closest('a[href="#abrir-zoyi"]');
+    if (!link) return;
+    e.preventDefault();
+    openZoyiFromLocalLink();
+  });
+  window.addEventListener("hashchange", function(){
+    if (window.location.hash === "#abrir-zoyi") window.abrirZoyi();
+  });
   if(closeBtn) closeBtn.addEventListener("click",function(){ widget.classList.remove("open"); if(toggle)toggle.setAttribute("aria-expanded","false"); });
   if(form) form.addEventListener("submit",function(e){ e.preventDefault(); submit(); });
   if(chips) chips.addEventListener("click",function(e){ if(e.target.matches("button"))submit(e.target.textContent); });
@@ -6417,6 +6514,25 @@ a.cta-btn-g[href*="wa.me"]:hover::before {
   body>nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo sub{display:none!important}
   body>nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .z,
   body>nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .t{font-size:.76rem!important}
+}
+</style><style id="zoyen-mobile-complete-20260702">
+@media (max-width:900px){
+  .emblem-3d.zoyen-hero-logo-motion .zoyen-motion-cardinals{display:none!important}
+  .emblem-3d.zoyen-hero-logo-motion.zoyen-compass-active .zoyen-motion-cardinals{display:block!important}
+  #excursiones .ex-grid{display:grid!important;grid-template-columns:1fr!important;gap:1rem!important}
+  #excursiones .ex-card{display:block!important;grid-column:span 1!important;min-height:360px!important;height:360px!important;aspect-ratio:auto!important;overflow:hidden!important}
+  #excursiones .ex-card img{display:block!important;width:100%!important;height:100%!important;min-height:360px!important;object-fit:cover!important}
+  #excursiones .ex-card-overlay{min-height:360px!important;padding:1.1rem!important}
+  #excursiones .ex-name{font-size:1.08rem!important;line-height:1.12!important}
+  #excursiones .ex-desc{font-size:.86rem!important;line-height:1.45!important;-webkit-line-clamp:4!important}
+  #tours .tours-grid-2{display:grid!important;grid-template-columns:1fr!important;gap:1rem!important}
+  #tours .tour2-card{min-height:380px!important}
+  #tours .tour2-card img{display:block!important;width:100%!important;height:380px!important;min-height:380px!important;object-fit:cover!important}
+}
+@media (max-width:480px){
+  #excursiones .ex-card{height:390px!important;min-height:390px!important}
+  #excursiones .ex-card img,#excursiones .ex-card-overlay{min-height:390px!important}
+  #tours .tour2-card,#tours .tour2-card img{height:400px!important;min-height:400px!important}
 }
 </style><style id="zoyen-marquee-force">
 .home-stats-track { animation: zoyenStatsMarquee 26s linear infinite !important; transform: translate3d(0,0,0); }
