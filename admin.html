@@ -990,7 +990,7 @@ function removeAvailabilityDate(key, d) {
 // -- Reservas: exportar Excel y sincronizar con Google Sheets ---
 const SHEETS_URL_KEY='zoyen_sheets_url';
 function readSheetsUrl(){ try{return localStorage.getItem(SHEETS_URL_KEY)||'';}catch(e){return '';} }
-function csvCell(value){return '"'+String(value==null'':value).replace(/"/g,'""')+'"';}
+function csvCell(value){return '"'+String(value==null?'':value).replace(/"/g,'""')+'"';}
 function hasWhatsappClick(r){
   return Boolean(r && (r.whatsappClicked || r.canalCierre === 'whatsapp' || r.inquiryType === 'whatsapp_click' || r.tipoConsulta === 'whatsapp_click' || /WhatsApp abierto|Continuar por WhatsApp|\[WhatsApp\]/i.test(r.notas||'')));
 }
@@ -1003,7 +1003,7 @@ function reservaRows(){
   return reservas.map((r,i)=>({
     numero:i+1, nombre:r.nombre||'', telefono:r.tel||'', email:r.email||'', excursion:r.excursion||'',
     excursionKey:r.excursionKey||'', fecha:r.fecha||'', personas:r.personas||'',
-    senia:r.senia||0, estado:r.estado||'', whatsapp:hasWhatsappClick(r)'Sí':'', ultimoContacto:r.ultimo||r.ultimoIntento||'', followUp:r.followup||r.followUp||'', notas:r.notas||''
+    senia:r.senia||0, estado:r.estado||'', whatsapp:hasWhatsappClick(r)?'Sí':'', ultimoContacto:r.ultimo||r.ultimoIntento||'', followUp:r.followup||r.followUp||'', notas:r.notas||''
   }));
 }
 function exportReservasExcel(){
@@ -1022,8 +1022,8 @@ function exportReservasExcel(){
 function saveSheetsUrl(){
   const url=(document.getElementById('crm-sheets-url').value||'').trim();
   localStorage.setItem(SHEETS_URL_KEY,url);
-  document.getElementById('sheets-sync-state').textContent=url'URL guardada en este navegador.':'';
-  showToast(url'URL de Google Sheets guardada.':'URL borrada.');
+  document.getElementById('sheets-sync-state').textContent=url?'URL guardada en este navegador.':'';
+  showToast(url?'URL de Google Sheets guardada.':'URL borrada.');
 }
 function loadSheetsUrlField(){
   const el=document.getElementById('crm-sheets-url'); if(!el)return;
@@ -1049,7 +1049,7 @@ async function pullReservasFromSheets(){
   if(!url){showToast('Pegá primero la URL de Google Apps Script y guardala.');return;}
   document.getElementById('sheets-sync-state').textContent='Trayendo cambios...';
   try{
-    const response=await fetch(url+(url.includes('')'&':'')+'action=pull');
+    const response=await fetch(url+(url.includes('?')?'&':'?')+'action=pull');
     if(!response.ok)throw new Error('HTTP '+response.status);
     const data=await response.json();
     const incoming=Array.isArray(data) ? data : (Array.isArray(data.reservas) ? data.reservas : null);
@@ -1219,8 +1219,8 @@ function cloudToLocalReservation(r) {
     excursionKey:r.tour_key||'', excursion:r.tour_name||'', fecha:r.departure_date||'', personas:r.people_count||1,
     senia:Number(r.deposit_amount)||0,
     estado:stateMap[r.status]||'pendiente', paymentStatus:r.payment_status||'pending', paymentMethod:r.payment_method||'not_selected',
-    leadType:r.lead_type||'', inquiryType:r.inquiry_type||'', whatsappClicked:clickedWhatsapp, canalCierre:clickedWhatsapp'whatsapp':'',
-    creado:r.created_atnew Date(r.created_at).toLocaleString('es-AR'):'', ultimoIntento:r.updated_atnew Date(r.updated_at).toLocaleString('es-AR'):'', notas:notes
+    leadType:r.lead_type||'', inquiryType:r.inquiry_type||'', whatsappClicked:clickedWhatsapp, canalCierre:clickedWhatsapp?'whatsapp':'',
+    creado:r.created_at?new Date(r.created_at).toLocaleString('es-AR'):'', ultimoIntento:r.updated_at?new Date(r.updated_at).toLocaleString('es-AR'):'', notas:notes
   };
 }
 async function syncCloudReservations() {
@@ -1296,7 +1296,7 @@ function exportSeoConfig() {
 function importSeoConfig(input) {
   const file=input.files&&input.files[0]; if(!file) return;
   const reader=new FileReader(); reader.onload=function(e){
-    try { const text=String(e.target.result), match=text.match(/window\.ZOYEN_SEO_CONFIG\s*=\s*([\s\S]*);\s*$/); const cfg=matchJSON.parse(match[1]):JSON.parse(text); writeSeoDraft(cfg); buildSeo(); showToast('Configuración SEO importada.'); }
+    try { const text=String(e.target.result), match=text.match(/window\.ZOYEN_SEO_CONFIG\s*=\s*([\s\S]*);\s*$/); const cfg=match?JSON.parse(match[1]):JSON.parse(text); writeSeoDraft(cfg); buildSeo(); showToast('Configuración SEO importada.'); }
     catch(err) { showToast('El archivo SEO no tiene un formato válido.'); }
   }; reader.readAsText(file); input.value='';
 }
