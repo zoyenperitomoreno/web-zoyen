@@ -1048,7 +1048,7 @@ img.hero-logo-static {
     <div class="ov-item"><div class="ov-num">6-22</div><div class="ov-lbl" data-i18n="ov_passengers">Pasajeros</div></div>
     <div class="ov-sep"></div>
     <div class="ov-item" style="text-align:left;">
-      <a href="#abrir-zoyi" style="background:var(--ember);color:#fff;padding:.7rem 1.8rem;border-radius:2px;text-decoration:none;font-size:.82rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;transition:background .2s;display:inline-block;" onmouseover="this.style.background='#b8621e'" onmouseout="this.style.background='#d4772a'" data-i18n="ov_book_btn">Consultar</a>
+      <a href="#abrir-zoyi" onclick="abrirZoyi(); return false;" style="background:var(--ember);color:#fff;padding:.7rem 1.8rem;border-radius:2px;text-decoration:none;font-size:.82rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;transition:background .2s;display:inline-block;" onmouseover="this.style.background='#b8621e'" onmouseout="this.style.background='#d4772a'" data-i18n="ov_book_btn">Consultar</a>
     </div>
   </div>
 </div>
@@ -1243,7 +1243,7 @@ img.hero-logo-static {
     <h2 data-i18n="cta_title">Reservá tu lugar en la <em>Carretera Austral</em></h2>
     <p data-i18n="cta_sub">Grupos pequeños, itinerario exclusivo. Las plazas se agotan rápido en temporada alta.</p>
     <div class="cta-btns">
-      <a href="#abrir-zoyi" class="cta-btn-p" data-i18n="cta_btn_book">Consultar</a>
+      <a href="#abrir-zoyi" class="cta-btn-p" onclick="abrirZoyi(); return false;" data-i18n="cta_btn_book">Consultar</a>
       
     </div>
   </div>
@@ -3636,7 +3636,6 @@ a.cta-btn-g[href*="wa.me"]:hover::before {
 </script>
 </body>
 </html>
-
 
 
 
