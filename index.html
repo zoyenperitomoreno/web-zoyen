@@ -3312,6 +3312,7 @@ img.hero-logo-static {
           <p style="font-size:.82rem;color:rgba(245,240,232,.65);line-height:1.6;margin-bottom:1.1rem;font-weight:300;" data-i18n="tour2_hi">Confluencia Nef y Baker &middot; Lago General Carrera &middot; Capillas de Mármol &middot; Mirador Laguna Verde</p>
           <div style="display:flex;align-items:center;justify-content:space-between;">
             <span style="font-family:'Sora',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--sand);" data-i18n="tour_ver">Ver itinerario →</span>
+            <a href="#abrir-zoyi" class="tour-card-consult" onclick="event.stopPropagation(); abrirZoyi(); return false;">Consultar</a>
           </div>
         </div>
       </div>
@@ -3328,6 +3329,7 @@ img.hero-logo-static {
           <p style="font-size:.82rem;color:rgba(245,240,232,.65);line-height:1.6;margin-bottom:1.1rem;font-weight:300;" data-i18n="tour3_hi">Buenos Aires &middot; Perito Moreno &middot; Los Antiguos &middot; Cueva de las Manos &middot; Ruta Escénica 41 &middot; Capillas y Catedrales de M&aacute;rmol</p>
           <div style="display:flex;align-items:center;justify-content:space-between;">
             <span style="font-family:'Sora',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--sand);" data-i18n="tour_ver">Ver itinerario →</span>
+            <a href="#abrir-zoyi" class="tour-card-consult" onclick="event.stopPropagation(); abrirZoyi(); return false;">Consultar</a>
           </div>
         </div>
       </div>
@@ -3340,6 +3342,22 @@ img.hero-logo-static {
     @media(max-width:680px){ .tours-grid-2{ grid-template-columns:1fr !important; } }
     .tour2-card:hover img { transform: scale(1.05); }
     .tour2-card:hover .tour2-ov { background: linear-gradient(to top,rgba(212,119,42,.7) 0%,rgba(10,8,6,.35) 55%,rgba(10,8,6,.05) 100%) !important; }
+    .tour-card-consult {
+      background: var(--ember);
+      color: #fff;
+      border-radius: 2px;
+      padding: .62rem 1.15rem;
+      text-decoration: none;
+      font-family: 'Sora', sans-serif;
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .18em;
+      line-height: 1;
+      text-transform: uppercase;
+      transition: background .2s, transform .2s;
+      white-space: nowrap;
+    }
+    .tour-card-consult:hover { background: #b8621e; transform: translateY(-1px); }
   </style>
 
 </section>
@@ -6605,7 +6623,6 @@ a.cta-btn-g[href*="wa.me"]:hover::before {
 </style>
 </body>
 </html>
-
 
 
 

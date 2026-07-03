@@ -74,6 +74,41 @@ h1 em, h2 em { color:var(--sand); font-style:italic; }
   letter-spacing:.14em; text-transform:uppercase;
 }
 .tag.main { background:var(--ember); border-color:var(--ember); color:#fff; }
+.overview-strip {
+  background: var(--dark);
+  padding: 2.5rem 4vw;
+  border-bottom: 1px solid rgba(212,119,42,.2);
+}
+.overview-inner {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+.ov-item { text-align: center; }
+.ov-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--ember);
+  line-height: 1;
+}
+.ov-lbl {
+  font-size: .65rem;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(201,169,110,.6);
+  margin-top: .3rem;
+}
+.ov-sep {
+  width: 1px;
+  height: 48px;
+  background: rgba(212,119,42,.2);
+}
 .section { padding:4.8rem 4vw; }
 .wrap { max-width:1100px; margin:0 auto; }
 .grid { display:grid; grid-template-columns:1.35fr .85fr; gap:2rem; align-items:start; }
@@ -1847,6 +1882,24 @@ body > nav .nav-actions.cta-nudge .nav-cta-btn::before {
   </div>
 </header>
 
+<div class="overview-strip">
+  <div class="overview-inner">
+    <div class="ov-item"><div class="ov-num">8</div><div class="ov-lbl">Días</div></div>
+    <div class="ov-sep"></div>
+    <div class="ov-item"><div class="ov-num">7</div><div class="ov-lbl">Noches</div></div>
+    <div class="ov-sep"></div>
+    <div class="ov-item"><div class="ov-num">4</div><div class="ov-lbl">Destinos</div></div>
+    <div class="ov-sep"></div>
+    <div class="ov-item"><div class="ov-num">2</div><div class="ov-lbl">Países</div></div>
+    <div class="ov-sep"></div>
+    <div class="ov-item"><div class="ov-num">16</div><div class="ov-lbl">Plazas máx.</div></div>
+    <div class="ov-sep"></div>
+    <div class="ov-item" style="text-align:left;">
+      <a href="#abrir-zoyi" style="background:var(--ember);color:#fff;padding:.7rem 1.8rem;border-radius:2px;text-decoration:none;font-size:.82rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;transition:background .2s;display:inline-block;" onmouseover="this.style.background='#b8621e'" onmouseout="this.style.background='#d4772a'">Consultar</a>
+    </div>
+  </div>
+</div>
+
 <main>
   <section class="section">
     <div class="wrap grid">
@@ -3011,8 +3064,6 @@ body > nav .nav-actions.cta-nudge .nav-cta-btn::before {
 </script>
 </body>
 </html>
-
-
 
 
 
