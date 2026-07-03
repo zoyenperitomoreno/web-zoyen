@@ -4860,6 +4860,15 @@ applyLang(currentLang);
     return bestScore>=3 ? best : null;
   }
   function isAsking(q,words){ return words.some(function(w){ var nw=normalize(w); return q.indexOf(nw)!==-1 || searchTokens(q).some(function(t){return closeToken(t,nw);}); }); }
+  function hasSpecificProductMention(raw){
+    var q=normalize(raw);
+    return allProducts.some(function(p){
+      return [p.name].concat(p.aliases||[]).some(function(alias){
+        var a=normalize(alias);
+        return a && a.length>4 && q.indexOf(a)!==-1;
+      });
+    });
+  }
 
   function answer(raw){
     var lang=getLang(), ui=UI[lang]||UI.es, k=ui.kw;
@@ -4905,6 +4914,12 @@ applyLang(currentLang);
     }
     window.setTimeout(function(){
       var lang=getLang(),ui=UI[lang]||UI.es,q=normalize(val),p=findProduct(q),k=ui.kw;
+      if(isAsking(q,k.dates) && !hasSpecificProductMention(val)){
+        if(isAsking(q,k.excursion)){ showProductChoices("dates","excursion"); return; }
+        if(isAsking(q,k.tour)){ showProductChoices("dates","tour"); return; }
+        showTypeChoices("dates");
+        return;
+      }
       if(isAsking(q,k.book)){
         if(p){ startLeadFlow(p.id); return; }
         if(isAsking(q,k.excursion)){ showProductChoices("book","excursion"); return; }
@@ -6590,7 +6605,6 @@ a.cta-btn-g[href*="wa.me"]:hover::before {
 </style>
 </body>
 </html>
-
 
 
 
