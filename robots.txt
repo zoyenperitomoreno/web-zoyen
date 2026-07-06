@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin.html
 
-Sitemap: https://zoyenperitomoreno.github.io/web-zoyen/sitemap.xml
+Sitemap: https://www.zoyenturismo.com.ar/sitemap.xml

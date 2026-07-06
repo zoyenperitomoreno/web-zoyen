@@ -1,7 +1,7 @@
 const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY') || '';
 const BUSINESS_EMAIL = Deno.env.get('BUSINESS_EMAIL') || 'zoyenperitomoreno@gmail.com';
 const RESEND_FROM = Deno.env.get('RESEND_FROM') || 'Zoyen Turismo <reservas@zoyenturismo.com>';
-const SITE_URL = (Deno.env.get('SITE_URL') || 'https://zoyenperitomoreno.github.io/web-zoyen').replace(/\/$/, '');
+const SITE_URL = (Deno.env.get('SITE_URL') || 'https://www.zoyenturismo.com.ar').replace(/\/$/, '');
 const WEBHOOK_SECRET = Deno.env.get('WEBHOOK_SECRET') || '';
 
 function esc(value: unknown) {

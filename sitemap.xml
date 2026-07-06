@@ -1,14 +1,14 @@
-<xml version="1.0" encoding="UTF-8">
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://zoyenperitomoreno.github.io/web-zoyen/</loc><priority>1.0</priority></url>
-  <url><loc>https://zoyenperitomoreno.github.io/web-zoyen/patagonia-inedita.html</loc><priority>0.9</priority></url>
-  <url><loc>https://zoyenperitomoreno.github.io/web-zoyen/carretera-austral.html</loc><priority>0.9</priority></url>
-  <url><loc>https://zoyenperitomoreno.github.io/web-zoyen/circuito-binacional-patagonia-inexplorada.html</loc><priority>0.9</priority></url>
-  <url><loc>https://zoyenperitomoreno.github.io/web-zoyen/excursion-cueva-de-las-manos.html</loc><priority>0.8</priority></url>
-  <url><loc>https://zoyenperitomoreno.github.io/web-zoyen/excursion-monte-zeballos.html</loc><priority>0.8</priority></url>
-  <url><loc>https://zoyenperitomoreno.github.io/web-zoyen/excursion-parque-patagonia.html</loc><priority>0.8</priority></url>
-  <url><loc>https://zoyenperitomoreno.github.io/web-zoyen/excursion-capillas-de-marmol.html</loc><priority>0.8</priority></url>
-  <url><loc>https://zoyenperitomoreno.github.io/web-zoyen/excursion-ruta41-lago-posadas.html</loc><priority>0.8</priority></url>
-  <url><loc>https://zoyenperitomoreno.github.io/web-zoyen/excursion-alero-charcamata.html</loc><priority>0.8</priority></url>
-  <url><loc>https://zoyenperitomoreno.github.io/web-zoyen/nosotros.html</loc><priority>0.6</priority></url>
+  <url><loc>https://www.zoyenturismo.com.ar/</loc><priority>1.0</priority></url>
+  <url><loc>https://www.zoyenturismo.com.ar/patagonia-inedita.html</loc><priority>0.9</priority></url>
+  <url><loc>https://www.zoyenturismo.com.ar/carretera-austral.html</loc><priority>0.9</priority></url>
+  <url><loc>https://www.zoyenturismo.com.ar/circuito-binacional-patagonia-inexplorada.html</loc><priority>0.9</priority></url>
+  <url><loc>https://www.zoyenturismo.com.ar/excursion-cueva-de-las-manos.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.zoyenturismo.com.ar/excursion-monte-zeballos.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.zoyenturismo.com.ar/excursion-parque-patagonia.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.zoyenturismo.com.ar/excursion-capillas-de-marmol.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.zoyenturismo.com.ar/excursion-ruta41-lago-posadas.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.zoyenturismo.com.ar/excursion-alero-charcamata.html</loc><priority>0.8</priority></url>
+  <url><loc>https://www.zoyenturismo.com.ar/nosotros.html</loc><priority>0.6</priority></url>
 </urlset>
