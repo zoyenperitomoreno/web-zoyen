@@ -572,8 +572,7 @@ nav {
 /* Fila 3: Parque Patagonia full ancho */
 .ex-grid .ex-card:nth-child(4),
 .ex-grid .ex-card:nth-child(5) { grid-column: span 3; aspect-ratio: unset; height: 360px; }
-.ex-grid .ex-card:nth-child(6),
-.ex-grid .ex-card:nth-child(7) { grid-column: span 3; aspect-ratio: unset; height: 380px; }
+.ex-grid .ex-card:nth-child(6) { grid-column: span 6; aspect-ratio: unset; height: 430px; }
 
 @media (max-width:960px){
   .ex-grid { grid-template-columns: repeat(2,1fr); }
@@ -582,8 +581,7 @@ nav {
   .ex-grid .ex-card:nth-child(3),
   .ex-grid .ex-card:nth-child(4),
   .ex-grid .ex-card:nth-child(5),
-  .ex-grid .ex-card:nth-child(6),
-  .ex-grid .ex-card:nth-child(7) { grid-column: span 1; }
+  .ex-grid .ex-card:nth-child(6) { grid-column: span 2; }
 }
 @media (max-width:520px){
   .ex-grid { grid-template-columns: 1fr; }
@@ -944,28 +942,23 @@ nav {
   font-size: .72rem;
   padding: .48rem 1rem;
 }
-.ex-grid .ex-card:nth-child(6),
-.ex-grid .ex-card:nth-child(7) {
+.ex-grid .ex-card:nth-child(6) {
   height: 500px;
 }
-.ex-grid .ex-card:nth-child(6) img,
-.ex-grid .ex-card:nth-child(7) img {
+.ex-grid .ex-card:nth-child(6) img {
   object-position: center center !important;
 }
-.ex-grid .ex-card:nth-child(6):hover img,
-.ex-grid .ex-card:nth-child(7):hover img {
+.ex-grid .ex-card:nth-child(6):hover img {
   transform: scale(1.025);
 }
 @media (max-width:960px) {
-  .ex-grid .ex-card:nth-child(6),
-  .ex-grid .ex-card:nth-child(7) { height: 430px; }
+  .ex-grid .ex-card:nth-child(6) { height: 430px; }
   .ex-name { font-size: 1.18rem; }
   .ex-desc { font-size: .9rem; }
 }
 @media (max-width:520px) {
   .ex-card-overlay { padding: 1.1rem; }
-  .ex-grid .ex-card:nth-child(6),
-  .ex-grid .ex-card:nth-child(7) { height: 390px; }
+  .ex-grid .ex-card:nth-child(6) { height: 390px; }
   .ex-tag { top: 10px; left: 10px; font-size: .6rem; }
   .ex-name { font-size: 1.1rem; }
   .ex-desc { font-size: .84rem; -webkit-line-clamp: 3; }
@@ -3240,15 +3233,6 @@ img.hero-logo-static {
         <a href="excursion-parque-patagonia.html" class="ex-link"><span data-i18n="vermais">Ver más</span></a>
       </div>
     </div>
-    <div class="ex-card reveal reveal-delay">
-      <img src="assets/parquepatagonia_zoyenturismo.jpg" data-card-href="excursion-parque-patagonia.html" alt="PNP / Estancia La Ascensión" style="height:100%; object-fit:cover; object-position:center center;">
-      <span class="ex-tag" data-i18n="ex7_tag">Medio día</span>
-      <div class="ex-card-overlay" style="padding-bottom:1.8rem;">
-        <h3 class="ex-name" data-i18n="ex7_name" data-name-es>PNP / Estancia La Ascensión</h3>
-        <p class="ex-desc" data-i18n="ex7_desc" style="-webkit-line-clamp:4;">Salida corta hacia el oeste para conocer senderos con vistas del Lago Buenos Aires y el casco de estancia con historia ganadera. 4 hs, ideal para una mañana o tarde libre.</p>
-        <a href="excursion-parque-patagonia.html" class="ex-link"><span data-i18n="vermais">Ver más</span></a>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -4051,8 +4035,6 @@ var translations = {
     ex5_desc: 'Arte rupestre intacto y alejado de la civilización. Un viaje en el tiempo inevitable.',
     ex6_tag: 'Medio día', ex6_name: 'Parque Nacional Patagonia / Portal Cañadón Pinturas',
     ex6_desc: 'Sendero Tierra de Colores, Planetario, Museo y Sendero Los Balcones con vistas del Río Pinturas. Medio día, 5 hs, 45 km por Ruta 40.',
-    ex7_tag: 'Medio día', ex7_name: 'PNP / Estancia La Ascensión',
-    ex7_desc: 'Salida corta hacia el oeste para conocer senderos con vistas del Lago Buenos Aires y el casco de estancia con historia ganadera. 4 hs, ideal para una mañana o tarde libre.',
     'vermais': 'Ver más', slide_verexc: 'Ver excursión', slide_vertour: 'Ver tours',
     man_quote: '"La Patagonia no se visita: <strong>se vive, se siente, se lleva adentro</strong> para siempre."',
     man_eye: 'Quiénes somos', man_title: 'Turismo con <em style="color:var(--sand)">alma</em> patagónica',
@@ -4116,8 +4098,6 @@ var translations = {
     ex5_desc: 'Pristine rock art far from civilization. An inevitable journey through time.',
     ex6_tag: 'Half day', ex6_name: 'Patagonia National Park / Portal Cañadón Pinturas',
     ex6_desc: 'Tierra de Colores trail, Planetarium, Museum and Los Balcones trail with views of the Río Pinturas. Half day, 5 hs, 45 km on Ruta 40.',
-    ex7_tag: 'Half day', ex7_name: 'PNP / Estancia La Ascensión',
-    ex7_desc: 'Short westbound outing to trails overlooking Lake Buenos Aires and the historic estancia buildings. 4 hs, ideal for a free morning or afternoon.',
     'vermais': 'See more', slide_verexc: 'View excursion', slide_vertour: 'View tours',
     man_quote: '"Patagonia is not visited: <strong>it is lived, felt, carried within</strong> forever."',
     man_eye: 'About us', man_title: 'Tourism with <em style="color:var(--sand)">soul</em>',
@@ -4182,8 +4162,6 @@ var translations = {
     ex5_desc: 'Arte rupestre intacta e distante da civilização. Uma viagem inevitável no tempo.',
     ex6_tag: 'Meio dia', ex6_name: 'Parque Nacional Patagônia / Portal Cañadón Pinturas',
     ex6_desc: 'Trilha Tierra de Colores, Planetário, Museu e trilha Los Balcones com vistas do Rio Pinturas. Meio dia, 5 h, 45 km pela Ruta 40.',
-    ex7_tag: 'Meio dia', ex7_name: 'PNP / Estancia La Ascensión',
-    ex7_desc: 'Saída curta rumo ao oeste para conhecer trilhas com vistas do Lago Buenos Aires e o casco da antiga estáncia. 4 h, ideal para uma manhã ou tarde livre.',
     'vermais': 'Ver mais', slide_verexc: 'Ver excursão', slide_vertour: 'Ver tours',
     man_quote: '"A Patagônia não se visita: <strong>se vive, se sente, se leva dentro</strong> para sempre."',
     man_eye: 'Quem somos', man_title: 'Turismo com <em style="color:var(--sand)">alma</em> patagónica',
@@ -4248,8 +4226,6 @@ var translations = {
     ex5_desc: 'ë¬¸ëª…ì—ì„œ ë©€ë¦¬ ë–¨ì–´ì§„ ê·¸ëŒ€ë¡œì˜ ì•”ë²½í™”. ì‹œê°„ì„ ê±°ìŠ¬ëŸ¬ ì˜¬ë¼ê°€ëŠ” í”¼í•  ìˆ˜ ì—†ëŠ” ì—¬í–‰.',
     ex6_tag: 'ë°˜ë‚˜ì ˆ', ex6_name: 'íŒŒíƒ€ê³ ë‹ˆì•„ êµ­ë¦½ê³µì› / í¬ë¥´íƒˆ ì¹´ëƒëˆ í•€íˆ¬ë¼ìŠ¤',
     ex6_desc: 'í‹°ì—ë¼ ë° ì½œë¡œë ˆìŠ¤ íŠ¸ë ˆì¼, í”Œë¼ë„¤íƒ€ë¥¨, ë°•ë¬¼ê´€, ë¦¬ì˜¤ í•€íˆ¬ë¼ìŠ¤ ì „ë§ì˜ ë¡œìŠ¤ ë°œì½”ë„¤ìŠ¤ íŠ¸ë ˆì¼. ë°˜ë‚˜ì ˆ, 5ì‹œê°„, ë£¨íƒ€ 40 ê¸°ì¤€ 45km.',
-    ex7_tag: 'ë°˜ë‚˜ì ˆ', ex7_name: 'PNP / ì—ìŠ¤íƒ„ì‹œì•„ ë¼ ì•„ì„¼ì‹œì˜¨',
-    ex7_desc: 'ë¶€ì—ë…¸ìŠ¤ì•„ì´ë ˆìŠ¤ í˜¸ìˆ˜ ì „ë§ ì‚°ì±…ë¡œì™€ ëª©ìž¥ ì—­ì‚¬ë¥¼ ë§Œë‚˜ëŠ” ì„œìª½ ì§§ì€ ì½”ìŠ¤. 4ì‹œê°„, ìžìœ ë¡œìš´ ì˜¤ì „ì´ë‚˜ ì˜¤í›„ì— ì í•©í•©ë‹ˆë‹¤.',
     'vermais': 'ë” ë³´ê¸°', slide_verexc: 'íˆ¬ì–´ ë³´ê¸°', slide_vertour: 'íˆ¬ì–´ ë³´ê¸°',
     man_quote: '"íŒŒíƒ€ê³ ë‹ˆì•„ëŠ” ë°©ë¬¸í•˜ëŠ” ê³³ì´ ì•„ë‹™ë‹ˆë‹¤: <strong>ì‚´ê³ , ëŠë¼ê³ , ë§ˆìŒì†ì— ì˜ì›ížˆ ë‹´ì•„ê°€ëŠ”</strong> ê³³ìž…ë‹ˆë‹¤."',
     man_eye: 'ìš°ë¦¬ì— ëŒ€í•´', man_title: 'ì˜í˜¼ì´ ìžˆëŠ” <em style="color:var(--sand)">íŒŒíƒ€ê³ ë‹ˆì•„ ê´€ê´‘</em>',
@@ -4531,7 +4507,6 @@ applyLang(currentLang);
     {id:"zeballos", name:"Los Antiguos y Ruta Escénica 41", aliases:["zeballos","monte zeballos","ruta 41","ruta escénica 41","ruta escenica 41","los antiguos","antiguos","chacra","chacras"], price:250000, pricePrivate:250000, duration:"día completo", capacity:14, type:"excursion", summary:"travesía por Los Antiguos y la Ruta Escénica 41, con visita a chacra.", includes:"Traslados con chofer/guía ida y vuelta, almuerzo con bebida sin alcohol y visita a chacra en Los Antiguos. Consultar precio en salida grupal.", url:"excursion-ruta41-los-antiguos.html"},
     {id:"charcamata", name:"Alero Charcamata", aliases:["charcamata","charca","alero","arte rupestre","pinturas charcamata"], price:280000, duration:"medio día", capacity:14, type:"excursion", summary:"arte rupestre prístino, exclusiva en privado.", includes:"Traslado en 4x4, guía especializado y vianda para almuerzo. $280.000 cada uno si son 2 personas; consultar precio por 3 o 4 pasajeros.", url:"excursion-alero-charcamata.html"},
     {id:"parque",   name:"Portal Cañadón Pinturas - Parque Patagonia",  aliases:["parque","parque patagonia","portal canadon","cañadon pinturas","canadon pinturas","canadon","cañadon","can","pinturas","portal","senderos","íŒŒíƒ€ê³ ë‹ˆì•„ ê³µ"], price:8000, duration:"medio día (5 hs)", capacity:14, type:"excursion", summary:"senderos, fauna, geología y vistas del noroeste de Santa Cruz.", includes:"Traslado en 4x4 o minibús con guía y merienda. No incluye almuerzo.", url:"excursion-parque-patagonia.html"},
-    {id:"ascension",name:"PNP / Estancia La Ascensión",               aliases:["ascension","ascensión","estancia","la ascension","la ascensión","pnp","estancia la ascension"], price:7000, duration:"medio día (4 hs)", capacity:14, type:"excursion", summary:"salida corta vinculada al Parque Patagonia y la historia de estancia.", includes:"Traslado en 4x4 o minibús con guía. Salida corta combinable con el Portal Cañadón Pinturas.", url:"excursion-parque-patagonia.html"}
   ];
   var tours = [
     {id:"patagonia", name:"Patagonia Inédita", aliases:["patagonia inedita","patagonia inédita","inedita","inédita","tour patagonia","patagonia profunda"], price:2290000, duration:"5 días / 4 noches", capacity:14, type:"tour", dates:["2026-10-06","2026-10-20","2026-11-04","2026-12-09","2027-02-11","2027-03-25","2027-04-10"], pdf:"assets/pdfs/patagonia-inedita-itinerario.pdf", summary:"sale desde Comodoro Rivadavia y recorre Perito Moreno, Cueva de las Manos, Parque Patagonia, Los Antiguos, Ruta Escénica 41 y Capillas y Catedrales de Mármol.", includes:"Traslados desde y hacia el aeropuerto de Comodoro Rivadavia, 4 noches de hotel con desayuno y excursiones full day con todo incluido. No incluye bebidas alcohólicas ni cenas. Base doble $2.290.000, base single $2.590.000. Seña $1.000.000 por persona.", url:"patagonia-inedita.html"},
