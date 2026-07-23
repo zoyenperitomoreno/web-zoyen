@@ -49,9 +49,9 @@ window.ZOYEN_SEO_CONFIG = {
     image: "assets/full_inedita.jpg"
   },
   "carretera-austral.html": {
-    title: "Carretera Austral y Patagonia Chilena | Zoyen Turismo",
-    description: "Tour Carretera Austral de Zoyen Turismo por la Patagonia chilena: Chile Chico, Cochrane, Caleta Tortel, Villa O Higgins, Puerto Río Tranquilo y Capillas de Mármol.",
-    keywords: "Carretera Austral, tour Patagonia chilena, Zoyen Turismo, Capillas de Mármol, Puerto Río Tranquilo, Cochrane, Caleta Tortel, Villa O Higgins",
+    title: "Circuito Binacional Santa Cruz/Aysen | Zoyen Turismo",
+    description: "Circuito Binacional Santa Cruz/Aysen: 8 dias / 7 noches por Perito Moreno, Los Antiguos, Carretera Austral, Cochrane, Puerto Rio Tranquilo y Capillas de Marmol.",
+    keywords: "Circuito Binacional Santa Cruz Aysen, Carretera Austral, Cueva de las Manos, Los Antiguos, Ruta Escenica 41, Cochrane, Puerto Rio Tranquilo, Capillas de Marmol",
     image: "assets/full_inedita.jpg"
   },
   "santa-cruz-inexplorada.html": {

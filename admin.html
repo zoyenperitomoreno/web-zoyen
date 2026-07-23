@@ -504,7 +504,7 @@ function saveTourConfig(cfg) {
 function defaultTourConfig() {
   return {
     patagonia_inedita: { name:'Patagonia Inédita', duration:'5 días / 4 noches', precio:2290000, capacity:16, vehicle:'renault_master', dates:['2026-10-06','2026-10-20','2026-11-04','2026-12-09','2027-02-11','2027-03-25','2027-04-10'], cardImage:'assets/full_inedita.jpg' },
-    carretera_austral: { name:'Carretera Austral', duration:'7 noches', precio:0, capacity:16, vehicle:'renault_master', dates:['2026-07-26','2026-09-06','2026-10-18'], cardImage:'assets/capillas.jpg' },
+    carretera_austral: { name:'Circuito Binacional Santa Cruz/Aysen', duration:'8 dias / 7 noches', precio:3200000, capacity:16, vehicle:'renault_master', dates:['2026-10-06','2026-10-13','2026-10-20','2026-10-27','2026-11-03','2026-11-10','2026-11-17','2026-11-24','2026-12-01','2026-12-08','2026-12-15','2026-12-22','2026-12-29','2027-01-05','2027-01-12','2027-01-19','2027-01-26','2027-02-02','2027-02-09','2027-02-16','2027-02-23','2027-03-02','2027-03-09','2027-03-16','2027-03-23','2027-03-30','2027-04-06','2027-04-13','2027-04-20','2027-04-27'], cardImage:'assets/capillas.jpg' },
     circuito_binacional_patagonia_inexplorada: { name:'Santa Cruz Inexplorada', duration:'8 días / 7 noches', precio:3350000, capacity:16, vehicle:'renault_master', dates:['2026-08-10','2026-09-14','2026-10-12'], cardImage:'assets/zoyen_turismo_patagonia_capillasdemarmol.jpg' }
   };
 }
@@ -1236,7 +1236,7 @@ async function syncCloudReservations() {
 const ZOYEN_SEO_STORAGE_KEY = 'zoyen_seo_config_draft';
 const seoRecommended = JSON.parse(JSON.stringify(window.ZOYEN_SEO_CONFIG || {}));
 const seoPageLabels = {
-  'index.html':'Inicio', 'patagonia-inedita.html':'Patagonia Inédita', 'carretera-austral.html':'Carretera Austral',
+  'index.html':'Inicio', 'patagonia-inedita.html':'Patagonia Inédita', 'carretera-austral.html':'Circuito Binacional',
   'santa-cruz-inexplorada.html':'Santa Cruz Inexplorada',
   'excursion-cueva-de-las-manos.html':'Cueva de las Manos', 'excursion-ruta41-los-antiguos.html':'Ruta Escénica 41 y Los Antiguos',
   'excursion-parque-patagonia.html':'Parque Patagonia', 'excursion-capillas-de-marmol.html':'Capillas de Mármol',

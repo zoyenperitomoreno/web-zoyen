@@ -3286,15 +3286,15 @@ img.hero-logo-static {
 
       <!-- Tour 2 -->
       <div class="reveal reveal-delay tour2-card" id="tourcard-carretera_austral" style="position:relative;border-radius:4px;overflow:hidden;cursor:pointer;" onclick="location.href='carretera-austral.html'">
-        <img src="assets/capillas.jpg" alt="Carretera Austral" onerror="this.src='assets/zoyen_turismo_patagonia_capillasdemarmol.jpg'" style="width:100%;height:420px;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.25,.1,.25,1);">
+        <img src="assets/capillas.jpg" alt="Circuito Binacional Santa Cruz/Ays&eacute;n" onerror="this.src='assets/zoyen_turismo_patagonia_capillasdemarmol.jpg'" style="width:100%;height:420px;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.25,.1,.25,1);">
         <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,8,6,.95) 0%,rgba(10,8,6,.4) 50%,rgba(10,8,6,.05) 100%);transition:background .3s;" class="tour2-ov"></div>
         <div style="position:absolute;inset:0;padding:2rem;display:flex;flex-direction:column;justify-content:flex-end;">
           <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem;">
             <span style="font-family:'Sora',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ember);background:rgba(212,119,42,.15);border:1px solid rgba(212,119,42,.4);padding:.22rem .7rem;border-radius:1px;" class="tour-dur-badge" data-i18n="tour2_dur">8 días / 7 noches</span>
             <span style="font-family:'Sora',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sand);background:rgba(245,190,115,.12);border:1px solid rgba(245,190,115,.45);padding:.22rem .7rem;border-radius:1px;" class="tour-dur-badge">SALIDA GRUPAL</span>
           </div>
-          <h3 style="font-family:'DM Serif Display',serif;font-size:1.9rem;font-weight:600;color:#f5f0e8;line-height:1.1;margin-bottom:.7rem;" data-i18n="tour2_name" data-name-es>Carretera <em style="color:var(--sand)">Austral</em></h3>
-          <p style="font-size:.82rem;color:rgba(245,240,232,.65);line-height:1.6;margin-bottom:1.1rem;font-weight:300;" data-i18n="tour2_hi">Confluencia Nef y Baker &middot; Lago General Carrera &middot; Capillas de Mármol &middot; Mirador Laguna Verde</p>
+          <h3 style="font-family:'DM Serif Display',serif;font-size:1.9rem;font-weight:600;color:#f5f0e8;line-height:1.1;margin-bottom:.7rem;" data-i18n="tour2_name" data-name-es>Circuito Binacional <em style="color:var(--sand)">Santa Cruz/Ays&eacute;n</em></h3>
+          <p style="font-size:.82rem;color:rgba(245,240,232,.65);line-height:1.6;margin-bottom:1.1rem;font-weight:300;" data-i18n="tour2_hi">Perito Moreno &middot; Cueva de las Manos &middot; Ruta 41 &middot; Carretera Austral &middot; Capillas de M&aacute;rmol</p>
           <div style="display:flex;align-items:center;justify-content:space-between;">
             <span style="font-family:'Sora',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--sand);" data-i18n="tour_ver">Ver itinerario →</span>
             <a href="#abrir-zoyi" class="tour-card-consult" onclick="event.stopPropagation(); abrirZoyi(); return false;">Consultar</a>
@@ -3810,12 +3810,12 @@ const DEFAULT_TOUR_CONFIG = {
     blockedSeats: {}
   },
   carretera_austral: {
-    name: 'Carretera Austral',
-    duration: '8 días / 7 noches',
-    precio: 0,
+    name: 'Circuito Binacional Santa Cruz/Aysen',
+    duration: '8 dias / 7 noches',
+    precio: 3200000,
     capacity: 16,
     vehicle: 'renault_master',
-    dates: ['2026-07-26','2026-09-06','2026-10-18'],
+    dates: ['2026-10-06','2026-10-13','2026-10-20','2026-10-27','2026-11-03','2026-11-10','2026-11-17','2026-11-24','2026-12-01','2026-12-08','2026-12-15','2026-12-22','2026-12-29','2027-01-05','2027-01-12','2027-01-19','2027-01-26','2027-02-02','2027-02-09','2027-02-16','2027-02-23','2027-03-02','2027-03-09','2027-03-16','2027-03-23','2027-03-30','2027-04-06','2027-04-13','2027-04-20','2027-04-27'],
     blockedSeats: {}
   },
   circuito_binacional_patagonia_inexplorada: {
@@ -4046,7 +4046,7 @@ var translations = {
     tours_cta: 'Consultar disponibilidad →',
     tour1_dur: '5 días / 4 noches', tour1_name: 'Patagonia <em style="color:var(--sand)">Inédita</em>',
     tour1_hi: 'Bosque Petrificado · Cueva de las Manos · Lago Posadas · Carretera Austral · Catedrales de Mármol',
-    tour2_dur: '8 días / 7 noches', tour2_name: 'Carretera <em style="color:var(--sand)">Austral</em>',
+    tour2_dur: '8 días / 7 noches', tour2_name: 'Circuito Binacional <em style="color:var(--sand)">Santa Cruz/Ays&eacute;n</em>',
     tour3_dur: '8 días / 7 noches', tour3_name: 'Santa Cruz <em style="color:var(--sand)">Inexplorada</em>',
     tour3_hi: 'Buenos Aires · Perito Moreno · Los Antiguos · Cueva de las Manos · Ruta Escénica 41 · Capillas y Catedrales de Mármol',
     tour_ver: 'Ver itinerario →',
@@ -4109,8 +4109,8 @@ var translations = {
     tours_cta: 'Check availability →',
     tour1_dur: '5 days / 4 nights', tour1_name: 'Unexplored <em style="color:var(--sand)">Patagonia</em>',
     tour1_hi: 'Petrified Forest ? Cave of Hands ? Lake Posadas ? Carretera Austral ? Marble Cathedrals',
-    tour2_dur: '8 days / 7 nights', tour2_name: 'Carretera <em style="color:var(--sand)">Austral</em>',
-    tour2_hi: 'Nef & Baker Confluence ? Lake General Carrera ? Marble Chapels and Cathedrals ? Laguna Verde Viewpoint',
+    tour2_dur: '8 days / 7 nights', tour2_name: 'Circuito Binacional <em style="color:var(--sand)">Santa Cruz/Ays&eacute;n</em>',
+    tour2_hi: 'Perito Moreno &middot; Cueva de las Manos &middot; Ruta 41 &middot; Carretera Austral &middot; Capillas de M&aacute;rmol',
     tour3_dur: '8 days / 7 nights', tour3_name: 'Unexplored <em style="color:var(--sand)">Santa Cruz</em>',
     tour3_hi: 'Buenos Aires · Perito Moreno · Los Antiguos ? Cave of Hands ? Ruta 41 Scenic Route ? Marble Chapels and Cathedrals',
     tour_ver: 'View itinerary ?',
@@ -4173,8 +4173,8 @@ var translations = {
     tours_cta: 'Consultar disponibilidade ?',
     tour1_dur: '5 dias / 4 noites', tour1_name: 'Patagônia <em style="color:var(--sand)">Inédita</em>',
     tour1_hi: 'Floresta Petrificada · Cueva de las Manos ? Lago Posadas ? Carretera Austral ? Catedrais de Mármore',
-    tour2_dur: '8 dias / 7 noites', tour2_name: 'Carretera <em style="color:var(--sand)">Austral</em>',
-    tour2_hi: 'Confluência Nef e Baker · Lago General Carrera · Capelas de Mármore · Mirante Laguna Verde',
+    tour2_dur: '8 dias / 7 noites', tour2_name: 'Circuito Binacional <em style="color:var(--sand)">Santa Cruz/Ays&eacute;n</em>',
+    tour2_hi: 'Perito Moreno &middot; Cueva de las Manos &middot; Ruta 41 &middot; Carretera Austral &middot; Capillas de M&aacute;rmol',
     tour3_dur: '8 dias / 7 noites', tour3_name: 'Santa Cruz <em style="color:var(--sand)">Inexplorada</em>',
     tour3_hi: 'Buenos Aires · Perito Moreno · Los Antiguos · Cueva de las Manos · Rota Cênica 41 · Capelas e Catedrais de Mármore',
     tour_ver: 'Ver roteiro →',
@@ -4237,8 +4237,8 @@ var translations = {
     tours_cta: 'ì˜ˆì•½ ê°€ëŠ¥ ì—¬ë¶€ ë¬¸ì˜ ?',
     tour1_dur: '5ì¼ / 4ë°•', tour1_name: 'ë¯¸ì§€ì˜ <em style="color:var(--sand)">íŒŒíƒ€ê³ ë‹ˆì•„</em>',
     tour1_hi: 'í™”ì„ë¦¼ ? ì¿ ì—ë°” ë° ë¼ìŠ¤ ë§ˆë…¸ìŠ¤ ? í¬ì‚¬ë‹¤ìŠ¤ í˜¸ìˆ˜ ? ì¹´ë ˆí…Œë¼ ì•„ìš°ìŠ¤íŠ¸ëž„ ? ë§ˆë¸” ëŒ€ì„±ë‹¹',
-    tour2_dur: '8ì¼ / 7ë°•', tour2_name: 'ì¹´ë ˆí…Œë¼ <em style="color:var(--sand)">ì•„ìš°ìŠ¤íŠ¸ëž„</em>',
-    tour2_hi: 'ë„¤í”„-ë² ì´ì»¤ í•©ë¥˜ì  ? í—¤ë„¤ëž„ ì¹´ë ˆë¼ í˜¸ìˆ˜ ? ë§ˆë¸” ì±„í”Œ & ëŒ€ì„±ë‹¹ ? ë¼êµ¬ë‚˜ ë² ë¥´ë° ì „ë§ëŒ€',
+    tour2_dur: '8ì¼ / 7ë°•', tour2_name: 'Circuito Binacional <em style="color:var(--sand)">Santa Cruz/Ays&eacute;n</em>',
+    tour2_hi: 'Perito Moreno &middot; Cueva de las Manos &middot; Ruta 41 &middot; Carretera Austral &middot; Capillas de M&aacute;rmol',
     tour3_dur: '8ì¼ / 7ë°•', tour3_name: 'ë¯¸ì§€ì˜ <em style="color:var(--sand)">ì‚°íƒ€í¬ë£¨ìŠ¤</em>',
     tour3_hi: 'ë¶€ì—ë…¸ìŠ¤ì•„ì´ë ˆìŠ¤ ? íŽ˜ë¦¬í†  ëª¨ë ˆë…¸ ? ë¡œìŠ¤ ì•ˆí‹°êµ¬ì˜¤ìŠ¤ ? ì¿ ì—ë°” ë° ë¼ìŠ¤ ë§ˆë…¸ìŠ¤ ? 41ë²ˆ ê²½ì¹˜ ì¢‹ì€ ë„ë¡œ ? ë§ˆë¸” ì±„í”Œ & ëŒ€ì„±ë‹¹',
     tour_ver: 'ì¼ì • ë³´ê¸° ?',
@@ -4415,7 +4415,7 @@ applyLang(currentLang);
       pricesAll: "Precios AR por persona: ",
       resAnswer: "Decime qué tour o excursión te interesa y te voy preguntando cantidad de personas y fecha tentativa. Al final armamos un resumen y seguimos por WhatsApp para confirmar precio, fecha y cupo.",
       locAnswer: "Zoyen Turismo est? en Perito Moreno, Santa Cruz, Patagonia Argentina. Salen excursiones a Cueva de las Manos, Parque Patagonia, Ruta 41, Lago Posadas y Carretera Austral.",
-      compareAnswer: "Para poco tiempo: excursiones de día · Cueva de las Manos, Capillas de Mármol, Ruta 41, Lago Posadas o Parque Patagonia. Para viaje completo: Patagonia Inédita (5 días), Santa Cruz Inexplorada (8 días, con vuelo incluido) o Carretera Austral (salida grupal). Arqueología: Cueva o Charcamata. Navegación: Capillas. Ruta escénica: Ruta 41 o Lago Posadas.",
+      compareAnswer: "Para poco tiempo: excursiones de día · Cueva de las Manos, Capillas de Mármol, Ruta 41, Lago Posadas o Parque Patagonia. Para viaje completo: Patagonia Inédita (5 días), Santa Cruz Inexplorada (8 días, con vuelo incluido) o Circuito Binacional Santa Cruz/Aysen (salida grupal). Arqueología: Cueva o Charcamata. Navegación: Capillas. Ruta escénica: Ruta 41 o Lago Posadas.",
       wellnessAnswer: "Tenemos una línea de Nuevas Experiencias con dos propuestas: Off Road 4x4 (salidas con tu propia camioneta por caminos alternativos) y Viajes con Sentido (retiros introspectivos de fin de semana o una semana, con terapias como Reiki, Grounding y Biodescodificación). Más info en nuevas-experiencias.html.",
       agencyAnswer: "Zoyen Turismo es una agencia local de Perito Moreno, Santa Cruz, legajo 15.625. Diseña excursiones y tours de autor en Patagonia.",
       pdfBase: "Los tours con PDF descargable son Patagonia Inédita y Carretera Austral. En cada página hay un botón de descarga.",
@@ -4439,10 +4439,10 @@ applyLang(currentLang);
       pricesAll: "Prices ARS per person: ",
       resAnswer: "Tell me which tour or excursion you're interested in and I'll ask for the number of people and a tentative date. We'll wrap up with a summary and continue with Zoyi to confirm price, date and availability.",
       locAnswer: "Zoyen Turismo is based in Perito Moreno, Santa Cruz, Argentine Patagonia. Excursions depart to Cave of Hands, Parque Nacional Patagonia, Ruta 41, Lake Posadas and Carretera Austral.",
-      compareAnswer: "Short on time Day excursions: Cave of Hands, Marble Chapels and Cathedrals, Ruta 41, Lake Posadas or Parque Nacional Patagonia. Full trip: Unexplored Patagonia (5 days), Unexplored Santa Cruz (8 days, flight included) or Carretera Austral (group departure). Archaeology: Cave of Hands or Charcamata. Navigation: Marble Chapels and Cathedrals. Scenic: Ruta 41 or Lake Posadas.",
+      compareAnswer: "Short on time Day excursions: Cave of Hands, Marble Chapels and Cathedrals, Ruta 41, Lake Posadas or Parque Nacional Patagonia. Full trip: Unexplored Patagonia (5 days), Unexplored Santa Cruz (8 days, flight included) or Circuito Binacional Santa Cruz/Aysen (group departure). Archaeology: Cave of Hands or Charcamata. Navigation: Marble Chapels and Cathedrals. Scenic: Ruta 41 or Lake Posadas.",
       wellnessAnswer: "We have a New Experiences line with two proposals: Off Road 4x4 (guided outings with your own vehicle on alternative routes) and Journeys with Purpose (weekend or week-long introspective retreats, with therapies like Reiki, Grounding and Biodecoding). More info at nuevas-experiencias.html.",
       agencyAnswer: "Zoyen Turismo is a local agency from Perito Moreno, Santa Cruz, license 15.625. We design excursions and author tours in Patagonia.",
-      pdfBase: "Downloadable PDF itineraries: Unexplored Patagonia and Carretera Austral. Each page has a download button.",
+      pdfBase: "Downloadable PDF itineraries: Unexplored Patagonia and Circuito Binacional. Each page has a download button.",
       pdfProduct: function(p){ return "The PDF itinerary for " + p.name + " can be downloaded from its page."; },
       listExc: "Available day and half-day excursions: ",
       listTours: "Available author tours: ", listToursSuffix: " Both have downloadable PDF itineraries.",
@@ -4510,7 +4510,7 @@ applyLang(currentLang);
   ];
   var tours = [
     {id:"patagonia", name:"Patagonia Inédita", aliases:["patagonia inedita","patagonia inédita","inedita","inédita","tour patagonia","patagonia profunda"], price:2290000, duration:"5 días / 4 noches", capacity:14, type:"tour", dates:["2026-10-06","2026-10-20","2026-11-04","2026-12-09","2027-02-11","2027-03-25","2027-04-10"], pdf:"assets/pdfs/patagonia-inedita-itinerario.pdf", summary:"sale desde Comodoro Rivadavia y recorre Perito Moreno, Cueva de las Manos, Parque Patagonia, Los Antiguos, Ruta Escénica 41 y Capillas y Catedrales de Mármol.", includes:"Traslados desde y hacia el aeropuerto de Comodoro Rivadavia, 4 noches de hotel con desayuno y excursiones full day con todo incluido. No incluye bebidas alcohólicas ni cenas. Base doble $2.290.000, base single $2.590.000. Seña $1.000.000 por persona.", url:"patagonia-inedita.html"},
-    {id:"carretera", name:"Carretera Austral", aliases:["carretera austral","carretera","austral","ohiggins","o higgins","villa ohiggins","villa o higgins","tortel","cochrane","chile chico","coyhaique"], price:0, duration:"8 días / 7 noches", capacity:14, type:"tour", dates:["2026-07-26","2026-09-06","2026-10-18"], pdf:"assets/pdfs/carretera-austral-itinerario.pdf", summary:"incluye Chile Chico, Cochrane, Caleta Tortel, Villa O'Higgins, Puerto Río Tranquilo, Capillas de Mármol y Coyhaique. Solo salidas grupales, mínimo 10 personas.", includes:"Traslados desde Perito Moreno ida y vuelta en minibús, alojamiento según itinerario, excursiones terrestres con chofer/guía, almuerzos con bebida sin alcohol y navegación a Capillas y Catedrales de Mármol. No incluye bebidas alcohólicas ni cenas. Consultar precio y disponibilidad.", url:"carretera-austral.html"},
+    {id:"carretera", name:"Circuito Binacional Santa Cruz/Aysen", aliases:["circuito binacional","santa cruz aysen","carretera austral","austral","aysen","cochrane","puerto rio tranquilo","los antiguos","ruta 41","ruta escenica 41","cueva de las manos","capillas de marmol"], price:3200000, priceSingle:3700000, duration:"8 dias / 7 noches", capacity:16, type:"tour", dates:['2026-10-06','2026-10-13','2026-10-20','2026-10-27','2026-11-03','2026-11-10','2026-11-17','2026-11-24','2026-12-01','2026-12-08','2026-12-15','2026-12-22','2026-12-29','2027-01-05','2027-01-12','2027-01-19','2027-01-26','2027-02-02','2027-02-09','2027-02-16','2027-02-23','2027-03-02','2027-03-09','2027-03-16','2027-03-23','2027-03-30','2027-04-06','2027-04-13','2027-04-20','2027-04-27'], pdf:"assets/pdfs/carretera-austral-itinerario.pdf", summary:"8 dias / 7 noches por Santa Cruz y Aysen: Perito Moreno, Cueva de las Manos, Los Antiguos, Ruta Escenica 41, Carretera Austral, Cochrane, Puerto Rio Tranquilo y navegacion a Capillas y Catedrales de Marmol.", includes:"Incluye traslados en minibus desde y hacia el aeropuerto, 3 noches en hotel en Perito Moreno con desayuno, excursiones full day Cueva de las Manos y Los Antiguos + Ruta Escenica 41 con almuerzo, recorridos terrestres por Carretera Austral en Chile, 1 noche en Cochrane con desayuno, 1 noche en Puerto Rio Tranquilo con desayuno, navegacion a Capillas y Catedrales de Marmol, 2 noches en Los Antiguos con desayuno y almuerzos durante los dias de actividades. No incluye almuerzos en dias libres, cenas ni bebidas extra o alcoholicas. Base doble $3.200.000, base single $3.700.000. Salidas los martes de octubre 2026 a abril 2027.", url:"carretera-austral.html"},
     {id:"circuito_binacional", name:"Santa Cruz Inexplorada", aliases:["santa cruz inexplorada","santa cruz inexplorado","inexplorada","inexplorado","circuito binacional","patagonia inexplorada","binacional","tour binacional","los antiguos","cueva de las manos","american jet"], price:3350000, duration:"8 días / 7 noches", capacity:16, type:"tour", dates:["2026-08-10","2026-09-14","2026-10-12"], summary:"incluye vuelo Buenos Aires / Perito Moreno / Buenos Aires con American Jet, 4 noches en Los Antiguos y 3 en Perito Moreno, excursiones full day a Cueva de las Manos, Ruta Escénica 41 y Capillas y Catedrales de Mármol (Chile).", includes:"No incluye bebidas alcohólicas, cenas ni actividades opcionales. Tarifas en pesos argentinos. Seña $1.500.000 por persona. Confirmar por disponibilidad aérea.", url:"santa-cruz-inexplorada.html"}
   ];
   function applyEditableTourConfigToZoyi() {
