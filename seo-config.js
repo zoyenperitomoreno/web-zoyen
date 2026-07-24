@@ -56,7 +56,7 @@ window.ZOYEN_SEO_CONFIG = {
   },
   "santa-cruz-inexplorada.html": {
     title: "Santa Cruz Inexplorada: Cueva de las Manos y Capillas de Mármol | Zoyen Turismo",
-    description: "Tour Santa Cruz Inexplorada de Zoyen Turismo: Perito Moreno, Los Antiguos, Cueva de las Manos, Ruta Escénica 41 y Capillas de Mármol con vuelo desde Buenos Aires.",
+    description: "Tour Santa Cruz Inexplorada de Zoyen Turismo: Perito Moreno, Los Antiguos, Cueva de las Manos, Ruta Escenica 41 y Capillas de Marmol. Aereos no incluidos.",
     keywords: "Santa Cruz Inexplorada, Zoyen Turismo, Cueva de las Manos, Capillas de Mármol, Ruta Escénica 41, Los Antiguos, Perito Moreno Santa Cruz",
     image: "assets/zoyen_turismo_patagonia_capillasdemarmol.jpg"
   },

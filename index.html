@@ -3821,7 +3821,7 @@ const DEFAULT_TOUR_CONFIG = {
   circuito_binacional_patagonia_inexplorada: {
     name: 'Santa Cruz Inexplorada',
     duration: '8 d\u00edas / 7 noches',
-    precio: 3350000,
+    precio: 2250000,
     capacity: 16,
     vehicle: 'renault_master',
     dates: ['2026-08-10','2026-09-14','2026-10-12'],
@@ -3833,6 +3833,7 @@ function cloneTourDefaults() {
 }
 function normalizeStoredTourConfig(cfg) {
   cfg = cfg || {};
+  if (cfg.circuito_binacional_patagonia_inexplorada && Number(cfg.circuito_binacional_patagonia_inexplorada.precio) === 3350000) cfg.circuito_binacional_patagonia_inexplorada.precio = 2250000;
   if (cfg.patagonia_inedita) cfg.patagonia_inedita.duration = DEFAULT_TOUR_CONFIG.patagonia_inedita.duration;
   if (cfg.inedita && !cfg.patagonia_inedita) cfg.inedita.duration = DEFAULT_TOUR_CONFIG.patagonia_inedita.duration;
   return cfg;
@@ -4050,7 +4051,7 @@ var translations = {
     tour3_dur: '8 días / 7 noches', tour3_name: 'Santa Cruz <em style="color:var(--sand)">Inexplorada</em>',
     tour3_hi: 'Buenos Aires · Perito Moreno · Los Antiguos · Cueva de las Manos · Ruta Escénica 41 · Capillas y Catedrales de Mármol',
     tour_ver: 'Ver itinerario →',
-    tour3_cta: '$3.350.000 p/p · Consultar →',
+    tour3_cta: '$2.250.000 p/p &middot; Consultar &rarr;',
     bw_eye: 'Nuevas Experiencias', bw_title: 'Off Road 4x4 y Viajes con <em style="color:var(--sand)">Sentido</em>',
     bw_sub: 'Dos maneras nuevas de recorrer la Patagonia Profunda: turismo aventura 4x4 y retiros introspectivos, sin fronteras entre Santa Cruz y la Región de Aysén.',
     bw_btn: 'Ver más',
@@ -4114,7 +4115,7 @@ var translations = {
     tour3_dur: '8 days / 7 nights', tour3_name: 'Unexplored <em style="color:var(--sand)">Santa Cruz</em>',
     tour3_hi: 'Buenos Aires · Perito Moreno · Los Antiguos ? Cave of Hands ? Ruta 41 Scenic Route ? Marble Chapels and Cathedrals',
     tour_ver: 'View itinerary ?',
-    tour3_cta: '$3,350,000 ARS p/p ? Consult ?',
+    tour3_cta: '$2,250,000 ARS p/p &middot; Consultar &rarr;',
     bw_eye: 'New Experiences', bw_title: 'Off Road 4x4 and Journeys with <em style="color:var(--sand)">Purpose</em>',
     bw_sub: 'Two new ways to explore the Deep Patagonia: 4x4 adventure tourism and introspective retreats, with no borders between Santa Cruz and the Aysén Region.',
     bw_btn: 'Learn more',
@@ -4178,7 +4179,7 @@ var translations = {
     tour3_dur: '8 dias / 7 noites', tour3_name: 'Santa Cruz <em style="color:var(--sand)">Inexplorada</em>',
     tour3_hi: 'Buenos Aires · Perito Moreno · Los Antiguos · Cueva de las Manos · Rota Cênica 41 · Capelas e Catedrais de Mármore',
     tour_ver: 'Ver roteiro →',
-    tour3_cta: '$3.350.000 ARS p/p ? Consultar ?',
+    tour3_cta: '$2.250.000 ARS p/p &middot; Consultar &rarr;',
     bw_eye: 'Novas Experiências', bw_title: 'Off Road 4x4 e Viagens com <em style="color:var(--sand)">Sentido</em>',
     bw_sub: 'Duas novas formas de percorrer a Patagônia Profunda: turismo de aventura 4x4 e retiros introspectivos, sem fronteiras entre Santa Cruz e a Região de Aysén.',
     bw_btn: 'Saiba mais',
@@ -4242,7 +4243,7 @@ var translations = {
     tour3_dur: '8ì¼ / 7ë°•', tour3_name: 'ë¯¸ì§€ì˜ <em style="color:var(--sand)">ì‚°íƒ€í¬ë£¨ìŠ¤</em>',
     tour3_hi: 'ë¶€ì—ë…¸ìŠ¤ì•„ì´ë ˆìŠ¤ ? íŽ˜ë¦¬í†  ëª¨ë ˆë…¸ ? ë¡œìŠ¤ ì•ˆí‹°êµ¬ì˜¤ìŠ¤ ? ì¿ ì—ë°” ë° ë¼ìŠ¤ ë§ˆë…¸ìŠ¤ ? 41ë²ˆ ê²½ì¹˜ ì¢‹ì€ ë„ë¡œ ? ë§ˆë¸” ì±„í”Œ & ëŒ€ì„±ë‹¹',
     tour_ver: 'ì¼ì • ë³´ê¸° ?',
-    tour3_cta: '3,350,000 íŽ˜ì†Œ p/p ? ë¬¸ì˜í•˜ê¸° ?',
+    tour3_cta: '2,250,000 ARS p/p &middot; Consultar &rarr;',
     bw_eye: 'ìƒˆë¡œìš´ ê²½í—˜', bw_title: 'ì˜¤í”„ë¡œë“œ 4x4ì™€ <em style="color:var(--sand)">ì˜ë¯¸ ìžˆëŠ”</em> ì—¬í–‰',
     bw_sub: 'íŒŒíƒ€ê³ ë‹ˆì•„ ê¹Šì€ ê³³ì„ íƒí—˜í•˜ëŠ” ë‘ ê°€ì§€ ìƒˆë¡œìš´ ë°©ë²•: 4x4 ì–´ë“œë²¤ì²˜ íˆ¬ì–´ì™€, ì‚°íƒ€í¬ë£¨ìŠ¤ì™€ ì•„ì´ì„¼ ì§€ì—­ ì‚¬ì´ êµ­ê²½ ì—†ëŠ” ë‚´ë©´ ì—¬í–‰ ë¦¬íŠ¸ë¦¿.',
     bw_btn: 'ìžì„¸ížˆ ë³´ê¸°',
@@ -4415,7 +4416,7 @@ applyLang(currentLang);
       pricesAll: "Precios AR por persona: ",
       resAnswer: "Decime qué tour o excursión te interesa y te voy preguntando cantidad de personas y fecha tentativa. Al final armamos un resumen y seguimos por WhatsApp para confirmar precio, fecha y cupo.",
       locAnswer: "Zoyen Turismo est? en Perito Moreno, Santa Cruz, Patagonia Argentina. Salen excursiones a Cueva de las Manos, Parque Patagonia, Ruta 41, Lago Posadas y Carretera Austral.",
-      compareAnswer: "Para poco tiempo: excursiones de día · Cueva de las Manos, Capillas de Mármol, Ruta 41, Lago Posadas o Parque Patagonia. Para viaje completo: Patagonia Inédita (5 días), Santa Cruz Inexplorada (8 días, con vuelo incluido) o Circuito Binacional Santa Cruz/Aysen (salida grupal). Arqueología: Cueva o Charcamata. Navegación: Capillas. Ruta escénica: Ruta 41 o Lago Posadas.",
+      compareAnswer: "Para poco tiempo: excursiones de dia - Cueva de las Manos, Capillas de Marmol, Ruta 41, Lago Posadas o Parque Patagonia. Para viaje completo: Patagonia Inedita (5 dias), Santa Cruz Inexplorada (8 dias, sin aereos incluidos) o Circuito Binacional Santa Cruz/Aysen (salida grupal). Arqueologia: Cueva o Charcamata. Navegacion: Capillas. Ruta escenica: Ruta 41 o Lago Posadas.",
       wellnessAnswer: "Tenemos una línea de Nuevas Experiencias con dos propuestas: Off Road 4x4 (salidas con tu propia camioneta por caminos alternativos) y Viajes con Sentido (retiros introspectivos de fin de semana o una semana, con terapias como Reiki, Grounding y Biodescodificación). Más info en nuevas-experiencias.html.",
       agencyAnswer: "Zoyen Turismo es una agencia local de Perito Moreno, Santa Cruz, legajo 15.625. Diseña excursiones y tours de autor en Patagonia.",
       pdfBase: "Los tours con PDF descargable son Patagonia Inédita y Carretera Austral. En cada página hay un botón de descarga.",
@@ -4511,7 +4512,7 @@ applyLang(currentLang);
   var tours = [
     {id:"patagonia", name:"Patagonia Inédita", aliases:["patagonia inedita","patagonia inédita","inedita","inédita","tour patagonia","patagonia profunda"], price:2290000, duration:"5 días / 4 noches", capacity:14, type:"tour", dates:["2026-10-06","2026-10-20","2026-11-04","2026-12-09","2027-02-11","2027-03-25","2027-04-10"], pdf:"assets/pdfs/patagonia-inedita-itinerario.pdf", summary:"sale desde Comodoro Rivadavia y recorre Perito Moreno, Cueva de las Manos, Parque Patagonia, Los Antiguos, Ruta Escénica 41 y Capillas y Catedrales de Mármol.", includes:"Traslados desde y hacia el aeropuerto de Comodoro Rivadavia, 4 noches de hotel con desayuno y excursiones full day con todo incluido. No incluye bebidas alcohólicas ni cenas. Base doble $2.290.000, base single $2.590.000. Seña $1.000.000 por persona.", url:"patagonia-inedita.html"},
     {id:"carretera", name:"Circuito Binacional Santa Cruz/Aysen", aliases:["circuito binacional","santa cruz aysen","carretera austral","austral","aysen","cochrane","puerto rio tranquilo","los antiguos","ruta 41","ruta escenica 41","cueva de las manos","capillas de marmol"], price:3200000, priceSingle:3700000, duration:"8 dias / 7 noches", capacity:16, type:"tour", dates:['2026-10-06','2026-10-13','2026-10-20','2026-10-27','2026-11-03','2026-11-10','2026-11-17','2026-11-24','2026-12-01','2026-12-08','2026-12-15','2026-12-22','2026-12-29','2027-01-05','2027-01-12','2027-01-19','2027-01-26','2027-02-02','2027-02-09','2027-02-16','2027-02-23','2027-03-02','2027-03-09','2027-03-16','2027-03-23','2027-03-30','2027-04-06','2027-04-13','2027-04-20','2027-04-27'], pdf:"assets/pdfs/carretera-austral-itinerario.pdf", summary:"8 dias / 7 noches por Santa Cruz y Aysen: Perito Moreno, Cueva de las Manos, Los Antiguos, Ruta Escenica 41, Carretera Austral, Cochrane, Puerto Rio Tranquilo y navegacion a Capillas y Catedrales de Marmol.", includes:"Incluye traslados en minibus desde y hacia el aeropuerto, 3 noches en hotel en Perito Moreno con desayuno, excursiones full day Cueva de las Manos y Los Antiguos + Ruta Escenica 41 con almuerzo, recorridos terrestres por Carretera Austral en Chile, 1 noche en Cochrane con desayuno, 1 noche en Puerto Rio Tranquilo con desayuno, navegacion a Capillas y Catedrales de Marmol, 2 noches en Los Antiguos con desayuno y almuerzos durante los dias de actividades. No incluye almuerzos en dias libres, cenas ni bebidas extra o alcoholicas. Base doble $3.200.000, base single $3.700.000. Salidas los martes de octubre 2026 a abril 2027.", url:"carretera-austral.html"},
-    {id:"circuito_binacional", name:"Santa Cruz Inexplorada", aliases:["santa cruz inexplorada","santa cruz inexplorado","inexplorada","inexplorado","circuito binacional","patagonia inexplorada","binacional","tour binacional","los antiguos","cueva de las manos","american jet"], price:3350000, duration:"8 días / 7 noches", capacity:16, type:"tour", dates:["2026-08-10","2026-09-14","2026-10-12"], summary:"incluye vuelo Buenos Aires / Perito Moreno / Buenos Aires con American Jet, 4 noches en Los Antiguos y 3 en Perito Moreno, excursiones full day a Cueva de las Manos, Ruta Escénica 41 y Capillas y Catedrales de Mármol (Chile).", includes:"No incluye bebidas alcohólicas, cenas ni actividades opcionales. Tarifas en pesos argentinos. Seña $1.500.000 por persona. Confirmar por disponibilidad aérea.", url:"santa-cruz-inexplorada.html"}
+    {id:"circuito_binacional", name:"Santa Cruz Inexplorada", aliases:["santa cruz inexplorada","santa cruz inexplorado","inexplorada","inexplorado","circuito binacional","patagonia inexplorada","binacional","tour binacional","los antiguos","cueva de las manos","american jet"], price:2250000, priceSingle:2600000, duration:"8 dias / 7 noches", capacity:16, type:"tour", dates:["2026-08-10","2026-09-14","2026-10-12"], summary:"8 dias / 7 noches por Perito Moreno y Los Antiguos, con excursiones full day a Cueva de las Manos, Capillas y Catedrales de Marmol, Ruta Escenica 41 y chacra en Los Antiguos. Aereos no incluidos.", includes:"Incluye traslados desde y hacia Aeropuerto de Perito Moreno, 3 noches en Perito Moreno con desayuno, 4 noches en Los Antiguos con desayuno y excursiones full day con almuerzo y bebida sin alcohol. No incluye aereos, bebidas alcoholicas ni cenas. Base doble $2.250.000, base single $2.600.000. Sena $1.000.000 por persona y saldo a la llegada mediante transferencia, tarjeta o efectivo. Consultar planes de pago.", url:"santa-cruz-inexplorada.html"}
   ];
   function applyEditableTourConfigToZoyi() {
     var cfg = {};
