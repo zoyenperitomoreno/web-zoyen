@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -224,7 +224,27 @@ body > nav:not(.breadcrumb):not(.mobile-drawer) {
   background: var(--cream);
   border-top: 1px solid rgba(58,45,31,.08);
 }
-.itinerario-inner { max-width: 900px; margin: 0 auto; }
+.itinerario-inner { max-width: 1180px; margin: 0 auto; }
+.itinerario-layout { display:grid; grid-template-columns:minmax(0,.86fr) minmax(360px,1fr); gap:2rem; align-items:stretch; height:min(760px, calc(100vh - 112px)); min-height:540px; }
+.itinerario-list { min-width:0; height:100%; overflow-y:auto; padding:0 .85rem 0 .25rem; scrollbar-width:thin; scrollbar-color:var(--ember) rgba(58,45,31,.12); }
+.itinerario-list::-webkit-scrollbar { width:8px; }
+.itinerario-list::-webkit-scrollbar-track { background:rgba(58,45,31,.08); border-radius:999px; }
+.itinerario-list::-webkit-scrollbar-thumb { background:rgba(212,119,42,.55); border-radius:999px; }
+.itinerario-layout .dia-block { grid-template-columns:56px 1fr; border-radius:7px; transition:background .22s ease, box-shadow .22s ease, transform .22s ease; }
+.itinerario-layout .dia-block.is-virtual-active { background:rgba(212,119,42,.08); box-shadow:0 14px 40px rgba(26,20,16,.08); transform:translateX(4px); }
+.itinerario-layout .dia-block.is-virtual-active .dia-circle { transform:scale(1.12); box-shadow:0 8px 24px rgba(212,119,42,.5); }
+.itinerario-layout .dia-content { padding:0 0 1.8rem 0; }
+.itinerario-layout .dia-title { font-size:clamp(1rem,1.8vw,1.35rem); }
+.itinerario-layout .dia-desc { font-size:.82rem; line-height:1.72; }
+.itinerario-layout .dia-chip { font-size:.55rem; padding:.18rem .52rem; }
+.itinerario-layout .dia-img { display:none; }
+.virtual-tour { position:relative; background:var(--dark); border-radius:7px; overflow:hidden; height:100%; min-height:0; box-shadow:0 26px 80px rgba(26,20,16,.18); }
+.virtual-bg { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; opacity:.9; filter:saturate(.98) contrast(1.03); transition:opacity .45s ease; }
+.virtual-tour::before { content:''; position:absolute; inset:-7%; background:var(--virtual-bg, url("assets/circuito-binacional-traslado-aeropuerto.jpg")) center/cover; filter:blur(18px) saturate(.85); opacity:.32; transform:scale(1.08); }
+.virtual-tour::after { content:''; position:absolute; inset:0; background:linear-gradient(90deg,rgba(18,14,11,.82),rgba(18,14,11,.42) 45%,rgba(18,14,11,.08)),linear-gradient(to top,rgba(18,14,11,.78),transparent 58%); pointer-events:none; }
+.virtual-content { position:relative; z-index:2; height:100%; display:flex; flex-direction:column; justify-content:flex-end; padding:1.35rem; color:var(--cream); }
+.virtual-kicker { color:var(--sand); font-size:.62rem; font-weight:800; letter-spacing:.18em; text-transform:uppercase; }
+.virtual-copy { max-width:360px; color:rgba(245,240,232,.78); font-size:.86rem; background:rgba(23,18,14,.58); border:1px solid rgba(245,240,232,.14); border-radius:5px; padding:1rem; backdrop-filter:blur(10px); }
 .dia-block {
   display: grid; grid-template-columns: 80px 1fr; gap: 0;
   margin-bottom: 0;
@@ -265,6 +285,17 @@ body > nav:not(.breadcrumb):not(.mobile-drawer) {
 .galeria-section { padding: 5rem 4vw; background: var(--fog); }
 .galeria-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; margin-top: 3rem; }
 @media (max-width:700px) { .galeria-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width:900px) {
+  .itinerario-layout { grid-template-columns:1fr; height:auto; min-height:0; }
+  .itinerario-list { height:auto; max-height:none; overflow:visible; padding:0; }
+  .itinerario-layout .dia-img { display:block; }
+  .virtual-tour { height:clamp(520px, 74vh, 720px); }
+}
+@media (max-width:560px) {
+  .itinerario-layout .dia-block { grid-template-columns:44px 1fr; }
+  .virtual-tour { height:clamp(460px, 70vh, 620px); }
+  .virtual-content { padding:1rem; }
+}
 .galeria-grid img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 2px; transition: transform .4s, box-shadow .4s; cursor: pointer; }
 .galeria-grid img:hover { transform: scale(1.03); box-shadow: 0 16px 40px rgba(26,20,16,.18); }
 .galeria-grid img:first-child { grid-column: span 2; aspect-ratio: 16/7; }
@@ -1196,6 +1227,8 @@ img.hero-logo-static {
     </div>
     <a class="download-pdf-btn" href="assets/pdfs/patagonia-inedita-itinerario.pdf" download="patagonia-inedita-itinerario.pdf" type="application/pdf" aria-label="Descargar itinerario PDF de Patagonia Inédita" data-i18n="itin_download">Descargar itinerario</a>
   </div>
+    <div class="itinerario-layout">
+      <div class="itinerario-list">
 
     <!-- DÍA 1 -->
     <div class="dia-block reveal">
@@ -1274,7 +1307,18 @@ img.hero-logo-static {
         </div>
       </div>
     </div>
-  </div>
+      </div>
+    <aside class="virtual-tour reveal" data-tour-virtual data-virtual-images="assets/circuito-binacional-traslado-aeropuerto.jpg|assets/cuevas_zoyen.jpg|assets/posadas_zoyen.jpg|assets/capillas.jpg|assets/circuito-binacional-traslado-aeropuerto.jpg">
+      <img class="virtual-bg" src="assets/circuito-binacional-traslado-aeropuerto.jpg" alt="" data-virtual-bg>
+      <div class="virtual-content">
+        <div>
+          <p class="virtual-kicker">Viaje virtual</p>
+          <p class="virtual-copy">Recorr&eacute; el itinerario para proyectar la imagen correspondiente de cada etapa.</p>
+        </div>
+      </div>
+    </aside>
+    </div>
+    </div>
 </section>
 
 
@@ -3576,7 +3620,54 @@ a.cta-btn-g[href*="wa.me"]:hover::before {
   body>nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .z,
   body>nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .t{font-size:.76rem!important}
 }
-</style></body>
+</style><script>
+(function(){
+  function initTourVirtual(){
+    document.querySelectorAll('[data-tour-virtual]').forEach(function(root){
+      var list = root.parentElement ? root.parentElement.querySelector('.itinerario-list') : null;
+      if (!list) return;
+      var days = Array.prototype.slice.call(list.querySelectorAll('.dia-block'));
+      var images = (root.getAttribute('data-virtual-images') || '').split('|').filter(Boolean);
+      var bg = root.querySelector('[data-virtual-bg]');
+      var current = -1;
+      function imageFor(index){
+        if (images[index]) return images[index];
+        var img = days[index] ? days[index].querySelector('.dia-img') : null;
+        return img ? img.getAttribute('src') : images[0];
+      }
+      function show(index){
+        if (index < 0 || index >= days.length || index === current) return;
+        current = index;
+        var src = imageFor(index);
+        if (!src || !bg) return;
+        bg.style.opacity = '.45';
+        root.style.setProperty('--virtual-bg', 'url("' + src + '")');
+        window.setTimeout(function(){ bg.src = src; bg.style.opacity = '.9'; }, 120);
+        days.forEach(function(day,i){ day.classList.toggle('is-virtual-active', i === current); });
+      }
+      days.forEach(function(day,index){
+        day.setAttribute('tabindex','0');
+        day.addEventListener('mouseenter', function(){ show(index); });
+        day.addEventListener('focusin', function(){ show(index); });
+        day.addEventListener('click', function(){ show(index); });
+      });
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries){
+          entries.forEach(function(entry){
+            if (!entry.isIntersecting) return;
+            var index = days.indexOf(entry.target);
+            if (index >= 0) show(index);
+          });
+        }, { root:list, rootMargin:'-35% 0px -45% 0px', threshold:0.08 });
+        days.forEach(function(day){ observer.observe(day); });
+      }
+      show(0);
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initTourVirtual);
+  else initTourVirtual();
+})();
+</script></body>
 </html>
 
 
