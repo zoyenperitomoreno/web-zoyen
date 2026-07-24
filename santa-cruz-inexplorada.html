@@ -127,13 +127,13 @@ h2 {
 .facts {
   display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:.8rem; margin-top:1.4rem;
 }
-.fact { background:var(--dark); color:var(--dust); padding:1rem; border-radius:3px; }
-.fact strong { display:block; color:var(--sand); font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; margin-bottom:.25rem; }
-.side-card { position:sticky; top:92px; background:var(--dark); color:var(--dust); border-radius:4px; padding:1.5rem; }
-.side-sena-flag { display:inline-block; font-family:'Sora',sans-serif; font-size:.62rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--sand); background:rgba(212,119,42,.15); border:1px solid rgba(212,119,42,.4); padding:.35rem .7rem; border-radius:2px; margin-top:1.3rem; }
-.price { font-family:'DM Serif Display', serif; color:var(--sand); font-size:2rem; line-height:1.05; }
-.price small { display:block; font-family:'Sora', sans-serif; color:rgba(232,220,200,.62); font-size:.74rem; letter-spacing:.12em; text-transform:uppercase; margin-top:.35rem; }
-.side-note { color:rgba(232,220,200,.68); font-size:.86rem; margin-top:1rem; }
+.fact { background:#fffaf2; color:var(--ink); padding:1rem; border-radius:3px; border:1px solid rgba(58,45,31,.12); border-top:3px solid rgba(212,119,42,.72); box-shadow:0 14px 34px rgba(18,13,9,.06); }
+.fact strong { display:block; color:var(--ember); font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; margin-bottom:.25rem; }
+.side-card { position:sticky; top:92px; background:#fffaf2; color:var(--ink); border:1px solid rgba(58,45,31,.12); border-top:3px solid var(--ember); border-radius:4px; padding:1.5rem; box-shadow:0 20px 60px rgba(18,13,9,.08); }
+.side-sena-flag { display:inline-block; font-family:'Sora',sans-serif; font-size:.62rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--ember); background:rgba(212,119,42,.12); border:1px solid rgba(212,119,42,.38); padding:.35rem .7rem; border-radius:2px; margin-top:1.3rem; }
+.price { font-family:'DM Serif Display', serif; color:var(--ember); font-size:2rem; line-height:1.05; }
+.price small { display:block; font-family:'Sora', sans-serif; color:var(--stone); font-size:.74rem; letter-spacing:.12em; text-transform:uppercase; margin-top:.35rem; }
+.side-note { color:var(--stone); font-size:.86rem; margin-top:1rem; }
 .btn {
   display:inline-flex; justify-content:center; align-items:center; width:100%;
   background:var(--ember); color:#fff; text-decoration:none; padding:.95rem 1rem;
@@ -141,15 +141,15 @@ h2 {
   letter-spacing:.16em; text-transform:uppercase;
 }
 .btn:hover { background:var(--ember-dim); }
-.band { background:var(--dark); color:var(--dust); }
-.band h2 { color:var(--cream); }
+.band { background:var(--fog); color:var(--ink); border-top:1px solid rgba(58,45,31,.08); border-bottom:1px solid rgba(58,45,31,.08); }
+.band h2 { color:var(--ink); }
 .cards { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:2rem; }
 .mini {
-  border:1px solid rgba(201,169,110,.22); background:rgba(255,255,255,.04);
+  border:1px solid rgba(58,45,31,.12); border-top:3px solid rgba(212,119,42,.72); background:#fffaf2;
   padding:1.3rem; border-radius:4px;
 }
-.mini h3 { color:var(--sand); font-size:.92rem; letter-spacing:.14em; text-transform:uppercase; margin-bottom:.7rem; }
-.mini ul { padding-left:1.1rem; color:rgba(232,220,200,.74); }
+.mini h3 { color:var(--ember); font-size:.92rem; letter-spacing:.14em; text-transform:uppercase; margin-bottom:.7rem; }
+.mini ul { padding-left:1.1rem; color:var(--stone); }
 .mini li { margin:.35rem 0; }
 .itinerario-section {
   padding: 5rem 4vw;
@@ -3067,7 +3067,6 @@ body > nav .nav-actions.cta-nudge .nav-cta-btn::before {
 </script>
 </body>
 </html>
-
 
 
 
