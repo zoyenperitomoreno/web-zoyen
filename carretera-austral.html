@@ -190,7 +190,14 @@ body > nav:not(.breadcrumb):not(.mobile-drawer) {
 .download-pdf-btn::before { content:'PDF'; font-size:.62rem; letter-spacing:.08em; border:1px solid rgba(245,240,232,.55); padding:.12rem .28rem; }
 @media(max-width:640px){ .itinerario-head { align-items:flex-start; } .download-pdf-btn { width:100%; justify-content:center; } }
 .itinerario-section { padding: 5rem 4vw; background: var(--cream); border-top: 1px solid rgba(58,45,31,.08); }
-.itinerario-inner { max-width: 900px; margin: 0 auto; }
+.itinerario-inner { max-width: 1180px; margin: 0 auto; }
+.itinerario-layout { display:grid; grid-template-columns:minmax(0,.86fr) minmax(360px,1fr); gap:2rem; align-items:start; }
+.itinerario-list { min-width:0; }
+.itinerario-layout .dia-block { grid-template-columns:56px 1fr; }
+.itinerario-layout .dia-content { padding:0 0 1.8rem 0; }
+.itinerario-layout .dia-title { font-size:clamp(1rem,1.8vw,1.35rem); }
+.itinerario-layout .dia-desc { font-size:.82rem; line-height:1.72; }
+.itinerario-layout .dia-chip { font-size:.55rem; padding:.18rem .52rem; }
 .dia-block { display: grid; grid-template-columns: 80px 1fr; gap: 0; margin-bottom: 0; position: relative; }
 .dia-block:not(:last-child)::before { content:''; position:absolute; left:39px; top:48px; bottom:0; width:2px; background:linear-gradient(to bottom, var(--ember), rgba(212,119,42,.15)); }
 .dia-num { display: flex; flex-direction: column; align-items: center; padding-top: .5rem; position: relative; z-index: 1; }
@@ -205,6 +212,26 @@ body > nav:not(.breadcrumb):not(.mobile-drawer) {
 .dia-chips { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: 1rem; }
 .dia-chip { font-size: .65rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; background: rgba(58,45,31,.07); color: var(--stone); padding: .25rem .75rem; border-radius: 999px; border: 1px solid rgba(58,45,31,.12); }
 
+.virtual-tour { position:sticky; top:96px; background:var(--dark); border-radius:7px; overflow:hidden; min-height:680px; box-shadow:0 26px 80px rgba(26,20,16,.18); }
+.virtual-bg { position:absolute; inset:-5%; width:110%; height:110%; object-fit:cover; opacity:.88; filter:saturate(.96) contrast(1.04); transform:scale(1.03); transition:opacity .45s ease, transform 1s ease; }
+.virtual-tour::after { content:''; position:absolute; inset:0; background:linear-gradient(90deg,rgba(18,14,11,.76),rgba(18,14,11,.32) 46%,rgba(18,14,11,.1)),linear-gradient(to top,rgba(18,14,11,.74),transparent 58%); pointer-events:none; }
+.virtual-content { position:relative; z-index:2; min-height:680px; display:flex; flex-direction:column; justify-content:space-between; padding:1.35rem; color:var(--cream); }
+.virtual-kicker { color:var(--sand); font-size:.62rem; font-weight:800; letter-spacing:.18em; text-transform:uppercase; }
+.virtual-title { font-family:'DM Serif Display',serif; font-size:clamp(1.65rem,3vw,2.45rem); line-height:1; margin:.45rem 0 .55rem; }
+.virtual-copy { max-width:360px; color:rgba(245,240,232,.78); font-size:.86rem; }
+.virtual-route { width:min(260px,86%); margin-top:1.5rem; position:relative; padding:.35rem 0 .35rem 1.9rem; }
+.virtual-rail { position:absolute; left:.95rem; top:.95rem; bottom:.95rem; width:3px; background:rgba(245,240,232,.28); border-radius:999px; }
+.virtual-fill { position:absolute; left:.95rem; top:.95rem; width:3px; height:0; background:var(--ember); border-radius:999px; box-shadow:0 0 16px rgba(212,119,42,.55); transition:height .55s ease; }
+.virtual-steps { display:grid; gap:.62rem; position:relative; }
+.virtual-step { display:grid; grid-template-columns:32px 1fr; gap:.65rem; align-items:center; border:0; background:transparent; color:var(--cream); text-align:left; cursor:pointer; padding:0; }
+.virtual-num { width:30px; height:30px; border-radius:50%; border:2px solid rgba(245,240,232,.9); background:rgba(23,18,14,.82); display:grid; place-items:center; font-size:.68rem; font-weight:900; transition:background .2s,transform .2s,border-color .2s; }
+.virtual-step span:last-child { display:block; color:rgba(245,240,232,.82); font-size:.76rem; line-height:1.2; }
+.virtual-step.active .virtual-num { background:var(--ember); border-color:var(--ember); transform:scale(1.15); }
+.virtual-step.done .virtual-num { border-color:var(--ember); }
+.virtual-info { background:rgba(23,18,14,.58); border:1px solid rgba(245,240,232,.14); border-radius:5px; padding:1rem; backdrop-filter:blur(10px); }
+.virtual-info small { color:var(--sand); font-size:.62rem; font-weight:800; letter-spacing:.16em; text-transform:uppercase; }
+.virtual-info h3 { font-family:'DM Serif Display',serif; font-size:1.45rem; line-height:1.05; margin:.35rem 0; }
+.virtual-info p { color:rgba(245,240,232,.78); font-size:.84rem; line-height:1.65; }
 .galeria-section { display:none; padding: 5rem 4vw; background: var(--fog); }
 .galeria-experiencia { margin-top:3rem; display:grid; grid-template-columns:minmax(0,1fr) 220px; gap:1rem; align-items:stretch; }
 .galeria-stage { position:relative; min-height:520px; overflow:hidden; border-radius:4px; background:var(--dark); box-shadow:0 24px 70px rgba(26,20,16,.12); }
@@ -220,11 +247,19 @@ body > nav:not(.breadcrumb):not(.mobile-drawer) {
 .galeria-thumb img { display:block; width:100%; aspect-ratio:4/3; object-fit:cover; }
 .galeria-thumb:hover, .galeria-thumb.active { opacity:1; transform:translateX(-2px); border-color:rgba(212,119,42,.7); box-shadow:0 12px 28px rgba(26,20,16,.12); }
 @media (max-width:900px) {
+  .itinerario-layout { grid-template-columns:1fr; }
+  .virtual-tour { position:relative; top:auto; min-height:620px; }
+  .virtual-content { min-height:620px; }
   .galeria-experiencia { grid-template-columns:1fr; }
   .galeria-stage { min-height:clamp(300px, 62vw, 520px); }
   .galeria-thumbs { grid-template-columns:repeat(4, minmax(0,1fr)); max-height:none; overflow:visible; padding-right:0; }
 }
 @media (max-width:560px) {
+  .itinerario-layout .dia-block { grid-template-columns:44px 1fr; }
+  .virtual-tour { min-height:560px; }
+  .virtual-content { min-height:560px; padding:1rem; }
+  .virtual-route { width:100%; }
+  .virtual-step span:last-child { font-size:.68rem; }
   .galeria-thumbs { grid-template-columns:repeat(3, minmax(0,1fr)); gap:.5rem; }
   .galeria-arrow { width:38px; height:38px; }
 }
@@ -1082,7 +1117,7 @@ img.hero-logo-static {
 </section>
 
 <!-- ITINERARIO -->
-<section class="itinerario-section"><div class="itinerario-inner"><div class="itinerario-head"><div class="reveal"><p class="eyebrow" data-i18n="itin_eyebrow">D&iacute;a a d&iacute;a</p><h2 class="section-title" data-i18n="itin_title">El <em>itinerario</em></h2></div><a class="download-pdf-btn" href="assets/pdfs/carretera-austral-itinerario.pdf" download="circuito-binacional-santa-cruz-aysen-itinerario.pdf" type="application/pdf" aria-label="Descargar itinerario PDF del Circuito Binacional Santa Cruz/Ays&eacute;n" data-i18n="itin_download">Descargar itinerario</a></div>
+<section class="itinerario-section"><div class="itinerario-inner"><div class="itinerario-head"><div class="reveal"><p class="eyebrow" data-i18n="itin_eyebrow">D&iacute;a a d&iacute;a</p><h2 class="section-title" data-i18n="itin_title">El <em>itinerario</em></h2></div><a class="download-pdf-btn" href="assets/pdfs/carretera-austral-itinerario.pdf" download="circuito-binacional-santa-cruz-aysen-itinerario.pdf" type="application/pdf" aria-label="Descargar itinerario PDF del Circuito Binacional Santa Cruz/Ays&eacute;n" data-i18n="itin_download">Descargar itinerario</a></div><div class="itinerario-layout"><div class="itinerario-list">
   <div class="dia-block reveal"><div class="dia-num"><div class="dia-circle">1</div></div><div class="dia-content"><div class="dia-label" data-i18n="d1_label">D&iacute;a 1 &middot; Llegada</div><h3 class="dia-title" data-i18n="d1_title">Aeropuerto &middot; <em>Perito Moreno</em></h3><p class="dia-desc" data-i18n="d1_desc">Recepci&oacute;n en aeropuerto y traslado en minib&uacute;s hacia Perito Moreno. Check-in en hotel, tiempo libre y alojamiento con desayuno incluido para la ma&ntilde;ana siguiente.</p><div class="dia-chips"><span class="dia-chip" data-i18n="d1_chip1">Aeropuerto</span><span class="dia-chip" data-i18n="d1_chip2">Perito Moreno</span><span class="dia-chip" data-i18n="d1_chip3">Hotel con desayuno</span></div></div></div>
   <div class="dia-block reveal"><div class="dia-num"><div class="dia-circle">2</div></div><div class="dia-content"><div class="dia-label" data-i18n="d2_label">D&iacute;a 2 &middot; Cueva de las Manos</div><h3 class="dia-title" data-i18n="d2_title">Cueva de las Manos &middot; <em>Full day</em></h3><p class="dia-desc" data-i18n="d2_desc">Desayuno en el hotel y excursi&oacute;n full day a <strong>Cueva de las Manos</strong>, con almuerzo incluido durante la actividad. Regreso a Perito Moreno y alojamiento. Cena no incluida.</p><div class="dia-chips"><span class="dia-chip" data-i18n="d2_chip1">Cueva de las Manos</span><span class="dia-chip" data-i18n="d2_chip2">Almuerzo incluido</span><span class="dia-chip" data-i18n="d2_chip3">Perito Moreno</span></div></div></div>
   <div class="dia-block reveal"><div class="dia-num"><div class="dia-circle">3</div></div><div class="dia-content"><div class="dia-label" data-i18n="d3_label">D&iacute;a 3 &middot; Los Antiguos y Ruta 41</div><h3 class="dia-title" data-i18n="d3_title">Los Antiguos &middot; <em>Ruta Esc&eacute;nica 41</em></h3><p class="dia-desc" data-i18n="d3_desc">Desayuno y excursi&oacute;n full day a <strong>Los Antiguos</strong> y <strong>Ruta Esc&eacute;nica 41</strong>, con almuerzo incluido. Regreso a Perito Moreno para la tercera noche de alojamiento. Cena no incluida.</p><div class="dia-chips"><span class="dia-chip" data-i18n="d3_chip1">Los Antiguos</span><span class="dia-chip" data-i18n="d3_chip2">Ruta Esc&eacute;nica 41</span><span class="dia-chip" data-i18n="d3_chip3">Perito Moreno</span></div></div></div>
@@ -1091,7 +1126,7 @@ img.hero-logo-static {
   <div class="dia-block reveal"><div class="dia-num"><div class="dia-circle">6</div></div><div class="dia-content"><div class="dia-label" data-i18n="d6_label">D&iacute;a 6 &middot; Capillas de M&aacute;rmol</div><h3 class="dia-title" data-i18n="d6_title"><em>Capillas y Catedrales</em> de M&aacute;rmol &middot; Los Antiguos</h3><p class="dia-desc" data-i18n="d6_desc">Desayuno y <strong>navegaci&oacute;n a Capillas y Catedrales de M&aacute;rmol</strong>. Luego del almuerzo incluido, salida hacia Argentina y llegada a <strong>Los Antiguos</strong>. Alojamiento con desayuno. Cena no incluida.</p><img class="dia-img" src="assets/capillas.jpg" alt="Capillas de M&aacute;rmol"><div class="dia-chips"><span class="dia-chip" data-i18n="d6_chip1">Capillas de M&aacute;rmol</span><span class="dia-chip" data-i18n="d6_chip2">Almuerzo incluido</span><span class="dia-chip" data-i18n="d6_chip3">Los Antiguos</span></div></div></div>
   <div class="dia-block reveal"><div class="dia-num"><div class="dia-circle">7</div></div><div class="dia-content"><div class="dia-label" data-i18n="d7_label">D&iacute;a 7 &middot; Los Antiguos</div><h3 class="dia-title" data-i18n="d7_title">D&iacute;a libre &middot; <em>Los Antiguos</em></h3><p class="dia-desc" data-i18n="d7_desc">Desayuno y d&iacute;a libre en <strong>Los Antiguos</strong> para descanso o actividades personales. El almuerzo de este d&iacute;a libre no est&aacute; incluido. Segunda noche de alojamiento con desayuno. Cena no incluida.</p><div class="dia-chips"><span class="dia-chip" data-i18n="d7_chip1">Los Antiguos</span><span class="dia-chip" data-i18n="d7_chip2">D&iacute;a libre</span><span class="dia-chip" data-i18n="d7_chip3">Almuerzo no incluido</span></div></div></div>
   <div class="dia-block reveal"><div class="dia-num"><div class="dia-circle">8</div></div><div class="dia-content"><div class="dia-label" data-i18n="d8_label">D&iacute;a 8 &middot; Traslado de salida</div><h3 class="dia-title" data-i18n="d8_title">Los Antiguos &middot; <em>Aeropuerto</em></h3><p class="dia-desc" data-i18n="d8_desc">Desayuno, check-out y traslado en minib&uacute;s hacia el aeropuerto seg&uacute;n horario coordinado. Fin de los servicios incluidos.</p><div class="dia-chips"><span class="dia-chip" data-i18n="d8_chip1">Traslado al aeropuerto</span><span class="dia-chip" data-i18n="d8_chip2">Fin del circuito</span><span class="dia-chip" data-i18n="d8_chip3">Fin de servicios</span></div></div></div>
-</div></section>
+</div><aside class="virtual-tour reveal" data-circuito-virtual><img class="virtual-bg" src="assets/circuito-binacional-canadon.jpg" alt="" data-virtual-bg><div class="virtual-content"><div><p class="virtual-kicker">Viaje visual</p><h2 class="virtual-title">Recorr&eacute; el circuito por etapas</h2><p class="virtual-copy">Una mirada tipo viaje virtual para acompa&ntilde;ar el itinerario: cada n&uacute;mero cambia la imagen y muestra el tramo correspondiente.</p><div class="virtual-route"><div class="virtual-rail"></div><div class="virtual-fill" data-virtual-fill></div><div class="virtual-steps" data-virtual-steps></div></div></div><div class="virtual-info"><small data-virtual-day>D&iacute;a 1</small><h3 data-virtual-title>Perito Moreno</h3><p data-virtual-copy>Inicio del recorrido y puerta de entrada al noroeste de Santa Cruz.</p></div></div></aside></div></div></section>
 
 <!-- GALERIA -->
 <section class="galeria-section"><div style="max-width:1100px; margin:0 auto;"><div class="reveal"><p class="eyebrow" data-i18n="gal_eyebrow">Galer&iacute;a de im&aacute;genes</p><h2 class="section-title" data-i18n="gal_title">Lo que vas a <em>ver</em></h2></div><div class="galeria-experiencia" data-circuito-gallery><div class="galeria-stage"><img src="assets/capillas.jpg" alt="Capillas de M&aacute;rmol" class="active"><img src="assets/20221115_082320-1024x576-360x230.jpg" alt="Carretera Austral"><img src="assets/posadas_zoyen.jpg" alt="Lagos Patag&oacute;nicos"><img src="assets/ruta41_zoyen.jpg" alt="Ruta 41"><img src="assets/full_inedita.jpg" alt="Patagonia panor&aacute;mica"><img src="assets/circuito-binacional-lancha-chile.jpg" alt="Navegaci&oacute;n en Capillas de M&aacute;rmol"><img src="assets/circuito-binacional-zeballos.jpg" alt="Ruta Esc&eacute;nica 41 y Monte Zeballos"><img src="assets/circuito-binacional-laguna.jpg" alt="Lagunas y paisajes de Ays&eacute;n"><img src="assets/circuito-binacional-paso-las-llaves.jpg" alt="Paso Las Llaves"><img src="assets/circuito-binacional-canadon.jpg" alt="Ca&ntilde;ad&oacute;n del R&iacute;o Pinturas"><img src="assets/circuito-binacional-ruta-41.jpg" alt="Ruta 41"><img src="assets/circuito-binacional-confluencia-baker.jpg" alt="Confluencia Baker"><button class="galeria-arrow prev" type="button" aria-label="Imagen anterior">&lsaquo;</button><button class="galeria-arrow next" type="button" aria-label="Imagen siguiente">&rsaquo;</button></div><div class="galeria-thumbs"><button class="galeria-thumb active" type="button" aria-label="Ver Capillas de M&aacute;rmol"><img src="assets/capillas.jpg" alt=""></button><button class="galeria-thumb" type="button" aria-label="Ver Carretera Austral"><img src="assets/20221115_082320-1024x576-360x230.jpg" alt=""></button><button class="galeria-thumb" type="button" aria-label="Ver Lagos Patag&oacute;nicos"><img src="assets/posadas_zoyen.jpg" alt=""></button><button class="galeria-thumb" type="button" aria-label="Ver Ruta 41"><img src="assets/ruta41_zoyen.jpg" alt=""></button><button class="galeria-thumb" type="button" aria-label="Ver Patagonia panor&aacute;mica"><img src="assets/full_inedita.jpg" alt=""></button><button class="galeria-thumb" type="button" aria-label="Ver navegaci&oacute;n en Capillas de M&aacute;rmol"><img src="assets/circuito-binacional-lancha-chile.jpg" alt=""></button><button class="galeria-thumb" type="button" aria-label="Ver Ruta Esc&eacute;nica 41 y Monte Zeballos"><img src="assets/circuito-binacional-zeballos.jpg" alt=""></button><button class="galeria-thumb" type="button" aria-label="Ver lagunas y paisajes de Ays&eacute;n"><img src="assets/circuito-binacional-laguna.jpg" alt=""></button><button class="galeria-thumb" type="button" aria-label="Ver Paso Las Llaves"><img src="assets/circuito-binacional-paso-las-llaves.jpg" alt=""></button><button class="galeria-thumb" type="button" aria-label="Ver Ca&ntilde;ad&oacute;n del R&iacute;o Pinturas"><img src="assets/circuito-binacional-canadon.jpg" alt=""></button><button class="galeria-thumb" type="button" aria-label="Ver Ruta 41"><img src="assets/circuito-binacional-ruta-41.jpg" alt=""></button><button class="galeria-thumb" type="button" aria-label="Ver Confluencia Baker"><img src="assets/circuito-binacional-confluencia-baker.jpg" alt=""></button></div></div></div></section>
@@ -3489,6 +3524,59 @@ a.cta-btn-g[href*="wa.me"]:hover::before {
 </style>
 <script>
 (function(){
+  function initCircuitoVirtual(){
+    var root = document.querySelector('[data-circuito-virtual]');
+    if (!root) return;
+    var scenes = [
+      {day:'D&iacute;a 1', title:'Perito Moreno', image:'assets/circuito-binacional-canadon.jpg', copy:'Inicio del recorrido y puerta de entrada al noroeste de Santa Cruz.'},
+      {day:'D&iacute;a 2', title:'Cueva de las Manos', image:'assets/cuevadelasmanos_zoyen.jpg', copy:'Excursi&oacute;n full day al Ca&ntilde;ad&oacute;n del R&iacute;o Pinturas y Cueva de las Manos.'},
+      {day:'D&iacute;a 3', title:'Ruta Esc&eacute;nica 41', image:'assets/circuito-binacional-zeballos.jpg', copy:'Ascenso por paisajes de estepa, cerros de colores y vistas cordilleranas.'},
+      {day:'D&iacute;a 4', title:'Paso Las Llaves', image:'assets/circuito-binacional-paso-las-llaves.jpg', copy:'Cruce hacia Chile y primer contacto con la Carretera Austral.'},
+      {day:'D&iacute;a 5', title:'Puerto R&iacute;o Tranquilo', image:'assets/circuito-binacional-laguna.jpg', copy:'Paisajes de Ays&eacute;n y llegada a la zona del Lago General Carrera.'},
+      {day:'D&iacute;a 6', title:'Capillas de M&aacute;rmol', image:'assets/circuito-binacional-lancha-chile.jpg', copy:'Navegaci&oacute;n entre Capillas y Catedrales de M&aacute;rmol.'},
+      {day:'D&iacute;a 7', title:'Los Antiguos', image:'assets/zoyen_turismo_patagonia_losantiguos.jpg', copy:'Regreso a Santa Cruz y cierre del circuito junto al Lago Buenos Aires.'},
+      {day:'D&iacute;a 8', title:'Traslado de salida', image:'assets/full_inedita.jpg', copy:'Despedida y traslado al aeropuerto seg&uacute;n horario coordinado.'}
+    ];
+    var bg = root.querySelector('[data-virtual-bg]');
+    var fill = root.querySelector('[data-virtual-fill]');
+    var steps = root.querySelector('[data-virtual-steps]');
+    var day = root.querySelector('[data-virtual-day]');
+    var title = root.querySelector('[data-virtual-title]');
+    var copy = root.querySelector('[data-virtual-copy]');
+    var current = 0;
+    var timer;
+
+    scenes.forEach(function(scene,index){
+      var btn = document.createElement('button');
+      btn.className = 'virtual-step';
+      btn.type = 'button';
+      btn.innerHTML = '<span class="virtual-num">' + (index + 1) + '</span><span>' + scene.title + '</span>';
+      btn.addEventListener('click', function(){ show(index, true); });
+      steps.appendChild(btn);
+    });
+
+    function show(index, manual){
+      current = (index + scenes.length) % scenes.length;
+      var scene = scenes[current];
+      bg.style.opacity = '.45';
+      window.setTimeout(function(){ bg.src = scene.image; bg.style.opacity = '.88'; }, 130);
+      day.innerHTML = scene.day;
+      title.innerHTML = scene.title;
+      copy.innerHTML = scene.copy;
+      steps.querySelectorAll('.virtual-step').forEach(function(btn,i){
+        btn.classList.toggle('active', i === current);
+        btn.classList.toggle('done', i <= current);
+      });
+      fill.style.height = 'calc((100% - 1.9rem) * ' + (current / (scenes.length - 1)) + ')';
+      if (manual) restart();
+    }
+    function restart(){
+      clearInterval(timer);
+      timer = setInterval(function(){ show(current + 1, false); }, 4300);
+    }
+    show(0, false);
+    restart();
+  }
   function initCircuitoGallery(){
     var gallery = document.querySelector('[data-circuito-gallery]');
     if (!gallery) return;
@@ -3518,8 +3606,8 @@ a.cta-btn-g[href*="wa.me"]:hover::before {
     gallery.addEventListener('mouseleave', start);
     start();
   }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initCircuitoGallery);
-  else initCircuitoGallery();
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function(){ initCircuitoVirtual(); initCircuitoGallery(); });
+  else { initCircuitoVirtual(); initCircuitoGallery(); }
 })();
 </script>
 <script>
