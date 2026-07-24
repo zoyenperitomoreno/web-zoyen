@@ -206,11 +206,28 @@ body > nav:not(.breadcrumb):not(.mobile-drawer) {
 .dia-chip { font-size: .65rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; background: rgba(58,45,31,.07); color: var(--stone); padding: .25rem .75rem; border-radius: 999px; border: 1px solid rgba(58,45,31,.12); }
 
 .galeria-section { padding: 5rem 4vw; background: var(--fog); }
-.galeria-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; margin-top: 3rem; }
-@media (max-width:700px) { .galeria-grid { grid-template-columns: 1fr 1fr; } }
-.galeria-grid img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 2px; transition: transform .4s, box-shadow .4s; }
-.galeria-grid img:hover { transform: scale(1.03); box-shadow: 0 16px 40px rgba(26,20,16,.18); }
-.galeria-grid img:first-child { grid-column: span 2; aspect-ratio: 16/7; }
+.galeria-experiencia { margin-top:3rem; display:grid; grid-template-columns:minmax(0,1fr) 220px; gap:1rem; align-items:stretch; }
+.galeria-stage { position:relative; min-height:520px; overflow:hidden; border-radius:4px; background:var(--dark); box-shadow:0 24px 70px rgba(26,20,16,.12); }
+.galeria-stage img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transform:scale(1.035); transition:opacity .55s ease, transform 1.2s ease; }
+.galeria-stage img.active { opacity:1; transform:scale(1); }
+.galeria-stage::after { content:''; position:absolute; inset:0; background:linear-gradient(to bottom, rgba(26,20,16,.04), rgba(26,20,16,.28)); pointer-events:none; }
+.galeria-arrow { position:absolute; z-index:2; top:50%; transform:translateY(-50%); width:42px; height:42px; border:1px solid rgba(245,240,232,.55); border-radius:50%; background:rgba(26,20,16,.42); color:var(--cream); font-size:1.35rem; line-height:1; cursor:pointer; transition:background .2s, border-color .2s, transform .2s; }
+.galeria-arrow:hover { background:rgba(212,119,42,.9); border-color:var(--ember); transform:translateY(-50%) scale(1.04); }
+.galeria-arrow.prev { left:16px; }
+.galeria-arrow.next { right:16px; }
+.galeria-thumbs { display:grid; grid-template-columns:1fr; gap:.72rem; max-height:520px; overflow:auto; padding-right:.2rem; scrollbar-width:thin; scrollbar-color:var(--ember) rgba(58,45,31,.12); }
+.galeria-thumb { appearance:none; border:1px solid rgba(58,45,31,.12); padding:0; background:transparent; border-radius:3px; overflow:hidden; cursor:pointer; opacity:.72; transition:opacity .2s, transform .2s, border-color .2s, box-shadow .2s; }
+.galeria-thumb img { display:block; width:100%; aspect-ratio:4/3; object-fit:cover; }
+.galeria-thumb:hover, .galeria-thumb.active { opacity:1; transform:translateX(-2px); border-color:rgba(212,119,42,.7); box-shadow:0 12px 28px rgba(26,20,16,.12); }
+@media (max-width:900px) {
+  .galeria-experiencia { grid-template-columns:1fr; }
+  .galeria-stage { min-height:clamp(300px, 62vw, 520px); }
+  .galeria-thumbs { grid-template-columns:repeat(4, minmax(0,1fr)); max-height:none; overflow:visible; padding-right:0; }
+}
+@media (max-width:560px) {
+  .galeria-thumbs { grid-template-columns:repeat(3, minmax(0,1fr)); gap:.5rem; }
+  .galeria-arrow { width:38px; height:38px; }
+}
 
 .tour-cta { background: var(--dark); padding: 5rem 4vw; text-align: center; border-top: 1px solid rgba(212,119,42,.2); }
 .tour-cta h2 { font-family: 'DM Serif Display', serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 600; color: var(--dust); margin-bottom: 1rem; }
@@ -1077,7 +1094,7 @@ img.hero-logo-static {
 </div></section>
 
 <!-- GALERIA -->
-<section class="galeria-section"><div style="max-width:1100px; margin:0 auto;"><div class="reveal"><p class="eyebrow" data-i18n="gal_eyebrow">Galer&iacute;a de im&aacute;genes</p><h2 class="section-title" data-i18n="gal_title">Lo que vas a <em>ver</em></h2></div><div class="galeria-grid"><img src="assets/20221115_082320-1024x576-360x230.jpg" alt="Carretera Austral" class="reveal" onerror="this.src='https://images.unsplash.com/photo-1501854140801-50d01698950bw=900&q=80'"><img src="assets/capillas.jpg" alt="Capillas de M&aacute;rmol" class="reveal reveal-delay"><img src="assets/posadas_zoyen.jpg" alt="Lagos Patag&oacute;nicos" class="reveal"><img src="assets/ruta41_zoyen.jpg" alt="Ruta 41" class="reveal reveal-delay"><img src="assets/full_inedita.jpg" alt="Patagonia panor&aacute;mica" class="reveal reveal-delay2"><img src="assets/circuito-binacional-lancha-chile.jpg" alt="Navegaci&oacute;n en Capillas de M&aacute;rmol" class="reveal"><img src="assets/circuito-binacional-zeballos.jpg" alt="Ruta Esc&eacute;nica 41 y Monte Zeballos" class="reveal reveal-delay"><img src="assets/circuito-binacional-laguna.jpg" alt="Lagunas y paisajes de Ays&eacute;n" class="reveal"><img src="assets/circuito-binacional-paso-las-llaves.jpg" alt="Paso Las Llaves" class="reveal reveal-delay"><img src="assets/circuito-binacional-canadon.jpg" alt="Ca&ntilde;ad&oacute;n del R&iacute;o Pinturas" class="reveal reveal-delay2"><img src="assets/circuito-binacional-ruta-41.jpg" alt="Ruta 41" class="reveal"><img src="assets/circuito-binacional-confluencia-baker.jpg" alt="Confluencia Baker" class="reveal reveal-delay"></div></div></section>
+<section class="galeria-section"><div style="max-width:1100px; margin:0 auto;"><div class="reveal"><p class="eyebrow" data-i18n="gal_eyebrow">Galer&iacute;a de im&aacute;genes</p><h2 class="section-title" data-i18n="gal_title">Lo que vas a <em>ver</em></h2></div><div class="galeria-experiencia" data-circuito-gallery><div class="galeria-stage"><img src="assets/capillas.jpg" alt="Capillas de M&aacute;rmol" class="active"><img src="assets/20221115_082320-1024x576-360x230.jpg" alt="Carretera Austral"><img src="assets/posadas_zoyen.jpg" alt="Lagos Patag&oacute;nicos"><img src="assets/ruta41_zoyen.jpg" alt="Ruta 41"><img src="assets/full_inedita.jpg" alt="Patagonia panor&aacute;mica"><img src="assets/circuito-binacional-lancha-chile.jpg" alt="Navegaci&oacute;n en Capillas de M&aacute;rmol"><img src="assets/circuito-binacional-zeballos.jpg" alt="Ruta Esc&eacute;nica 41 y Monte Zeballos"><img src="assets/circuito-binacional-laguna.jpg" alt="Lagunas y paisajes de Ays&eacute;n"><img src="assets/circuito-binacional-paso-las-llaves.jpg" alt="Paso Las Llaves"><img src="assets/circuito-binacional-canadon.jpg" alt="Ca&ntilde;ad&oacute;n del R&iacute;o Pinturas"><img src="assets/circuito-binacional-ruta-41.jpg" alt="Ruta 41"><img src="assets/circuito-binacional-confluencia-baker.jpg" alt="Confluencia Baker"><button class="galeria-arrow prev" type="button" aria-label="Imagen anterior">&lsaquo;</button><button class="galeria-arrow next" type="button" aria-label="Imagen siguiente">&rsaquo;</button></div><div class="galeria-thumbs"><button class="galeria-thumb active" type="button" aria-label="Ver Capillas de M&aacute;rmol"><img src="assets/capillas.jpg" alt=""></button><button class="galeria-thumb" type="button" aria-label="Ver Carretera Austral"><img src="assets/20221115_082320-1024x576-360x230.jpg" alt=""></button><button class="galeria-thumb" type="button" aria-label="Ver Lagos Patag&oacute;nicos"><img src="assets/posadas_zoyen.jpg" alt=""></button><button class="galeria-thumb" type="button" aria-label="Ver Ruta 41"><img src="assets/ruta41_zoyen.jpg" alt=""></button><button class="galeria-thumb" type="button" aria-label="Ver Patagonia panor&aacute;mica"><img src="assets/full_inedita.jpg" alt=""></button><button class="galeria-thumb" type="button" aria-label="Ver navegaci&oacute;n en Capillas de M&aacute;rmol"><img src="assets/circuito-binacional-lancha-chile.jpg" alt=""></button><button class="galeria-thumb" type="button" aria-label="Ver Ruta Esc&eacute;nica 41 y Monte Zeballos"><img src="assets/circuito-binacional-zeballos.jpg" alt=""></button><button class="galeria-thumb" type="button" aria-label="Ver lagunas y paisajes de Ays&eacute;n"><img src="assets/circuito-binacional-laguna.jpg" alt=""></button><button class="galeria-thumb" type="button" aria-label="Ver Paso Las Llaves"><img src="assets/circuito-binacional-paso-las-llaves.jpg" alt=""></button><button class="galeria-thumb" type="button" aria-label="Ver Ca&ntilde;ad&oacute;n del R&iacute;o Pinturas"><img src="assets/circuito-binacional-canadon.jpg" alt=""></button><button class="galeria-thumb" type="button" aria-label="Ver Ruta 41"><img src="assets/circuito-binacional-ruta-41.jpg" alt=""></button><button class="galeria-thumb" type="button" aria-label="Ver Confluencia Baker"><img src="assets/circuito-binacional-confluencia-baker.jpg" alt=""></button></div></div></div></section>
 
 <!-- CTA -->
 <section class="tour-cta"><div class="reveal"><p class="eyebrow" style="color:var(--sand);display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:.5rem;"><span style="width:22px;height:1px;background:var(--sand);display:inline-block;"></span><span data-i18n="cta_eyebrow">&iquest;Te sum&aacute;s?</span><span style="width:22px;height:1px;background:var(--sand);display:inline-block;"></span></p><h2 data-i18n="cta_title">Reserv&aacute; tu lugar en el <em>Circuito Binacional</em></h2><p data-i18n="cta_sub">Salidas martes de octubre 2026 a abril 2027. Tarifas en pesos argentinos por persona.</p><div class="cta-btns"><a href="#abrir-zoyi" class="cta-btn-p" onclick="abrirZoyi(); return false;" data-i18n="cta_btn_book">Consultar</a></div></div></section>
@@ -3470,6 +3487,41 @@ a.cta-btn-g[href*="wa.me"]:hover::before {
   body>nav:not(.breadcrumb):not(.mobile-drawer) .nav-logo .t{font-size:.76rem!important}
 }
 </style>
+<script>
+(function(){
+  function initCircuitoGallery(){
+    var gallery = document.querySelector('[data-circuito-gallery]');
+    if (!gallery) return;
+    var slides = Array.prototype.slice.call(gallery.querySelectorAll('.galeria-stage > img'));
+    var thumbs = Array.prototype.slice.call(gallery.querySelectorAll('.galeria-thumb'));
+    var prev = gallery.querySelector('.galeria-arrow.prev');
+    var next = gallery.querySelector('.galeria-arrow.next');
+    var current = 0;
+    var timer;
+    function show(index){
+      current = (index + slides.length) % slides.length;
+      slides.forEach(function(img, i){ img.classList.toggle('active', i === current); });
+      thumbs.forEach(function(btn, i){ btn.classList.toggle('active', i === current); });
+    }
+    function start(){
+      clearInterval(timer);
+      timer = setInterval(function(){ show(current + 1); }, 5200);
+    }
+    function choose(index){
+      show(index);
+      start();
+    }
+    thumbs.forEach(function(btn, i){ btn.addEventListener('click', function(){ choose(i); }); });
+    if (prev) prev.addEventListener('click', function(){ choose(current - 1); });
+    if (next) next.addEventListener('click', function(){ choose(current + 1); });
+    gallery.addEventListener('mouseenter', function(){ clearInterval(timer); });
+    gallery.addEventListener('mouseleave', start);
+    start();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initCircuitoGallery);
+  else initCircuitoGallery();
+})();
+</script>
 <script>
 // Precio base editable desde el panel de administración
 (function(){
