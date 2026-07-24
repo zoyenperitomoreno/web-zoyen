@@ -3809,12 +3809,12 @@ const DEFAULT_TOUR_CONFIG = {
     blockedSeats: {}
   },
   carretera_austral: {
-    name: 'Carretera Austral',
+    name: 'Circuito Binacional Santa Cruz/Aysén',
     duration: '8 días / 7 noches',
-    precio: 0,
+    precio: 3200000,
     capacity: 16,
     vehicle: 'renault_master',
-    dates: ['2026-07-26','2026-09-06','2026-10-18'],
+    dates: ['2026-10-06','2026-10-13','2026-10-20','2026-10-27','2026-11-03','2026-11-10','2026-11-17','2026-11-24','2026-12-01','2026-12-08','2026-12-15','2026-12-22','2026-12-29','2027-01-05','2027-01-12','2027-01-19','2027-01-26','2027-02-02','2027-02-09','2027-02-16','2027-02-23','2027-03-02','2027-03-09','2027-03-16','2027-03-23','2027-03-30','2027-04-06','2027-04-13','2027-04-20','2027-04-27'],
     blockedSeats: {}
   },
   circuito_binacional_patagonia_inexplorada: {
@@ -4414,10 +4414,10 @@ applyLang(currentLang);
       pricesAll: "Precios AR por persona: ",
       resAnswer: "Decime qué tour o excursión te interesa y te voy preguntando cantidad de personas y fecha tentativa. Al final armamos un resumen y seguimos por WhatsApp para confirmar precio, fecha y cupo.",
       locAnswer: "Zoyen Turismo est? en Perito Moreno, Santa Cruz, Patagonia Argentina. Salen excursiones a Cueva de las Manos, Parque Patagonia, Ruta 41, Lago Posadas y Carretera Austral.",
-      compareAnswer: "Para poco tiempo: excursiones de día · Cueva de las Manos, Capillas de Mármol, Ruta 41, Lago Posadas o Parque Patagonia. Para viaje completo: Patagonia Inédita (5 días), Santa Cruz Inexplorada (8 días, con vuelo incluido) o Carretera Austral (salida grupal). Arqueología: Cueva o Charcamata. Navegación: Capillas. Ruta escénica: Ruta 41 o Lago Posadas.",
+      compareAnswer: "Para poco tiempo: excursiones de día · Cueva de las Manos, Capillas de Mármol, Ruta 41, Lago Posadas o Parque Patagonia. Para viaje completo: Patagonia Inédita (5 días), Santa Cruz Inexplorada (8 días, con vuelo incluido) o Circuito Binacional Santa Cruz/Aysén (8 días). Arqueología: Cueva o Charcamata. Navegación: Capillas. Ruta escénica: Ruta 41 o Lago Posadas.",
       wellnessAnswer: "Tenemos una línea de Nuevas Experiencias con dos propuestas: Off Road 4x4 (salidas con tu propia camioneta por caminos alternativos) y Viajes con Sentido (retiros introspectivos de fin de semana o una semana, con terapias como Reiki, Grounding y Biodescodificación). Más info en nuevas-experiencias.html.",
       agencyAnswer: "Zoyen Turismo es una agencia local de Perito Moreno, Santa Cruz, legajo 15.625. Diseña excursiones y tours de autor en Patagonia.",
-      pdfBase: "Los tours con PDF descargable son Patagonia Inédita y Carretera Austral. En cada página hay un botón de descarga.",
+      pdfBase: "Los tours con PDF descargable son Patagonia Inédita y Circuito Binacional Santa Cruz/Aysén. En cada página hay un botón de descarga.",
       pdfProduct: function(p){ return "El itinerario PDF de " + p.name + " se descarga desde su página."; },
       listExc: "Excursiones de día o medio día disponibles: ",
       listTours: "Tours de autor disponibles: ", listToursSuffix: " Ambos tienen itinerario PDF descargable.",
@@ -4438,10 +4438,10 @@ applyLang(currentLang);
       pricesAll: "Prices ARS per person: ",
       resAnswer: "Tell me which tour or excursion you're interested in and I'll ask for the number of people and a tentative date. We'll wrap up with a summary and continue with Zoyi to confirm price, date and availability.",
       locAnswer: "Zoyen Turismo is based in Perito Moreno, Santa Cruz, Argentine Patagonia. Excursions depart to Cave of Hands, Parque Nacional Patagonia, Ruta 41, Lake Posadas and Carretera Austral.",
-      compareAnswer: "Short on time Day excursions: Cave of Hands, Marble Chapels and Cathedrals, Ruta 41, Lake Posadas or Parque Nacional Patagonia. Full trip: Unexplored Patagonia (5 days), Unexplored Santa Cruz (8 days, flight included) or Carretera Austral (group departure). Archaeology: Cave of Hands or Charcamata. Navigation: Marble Chapels and Cathedrals. Scenic: Ruta 41 or Lake Posadas.",
+      compareAnswer: "Short on time Day excursions: Cave of Hands, Marble Chapels and Cathedrals, Ruta 41, Lake Posadas or Parque Nacional Patagonia. Full trip: Unexplored Patagonia (5 days), Unexplored Santa Cruz (8 days, flight included) or Binational Circuit Santa Cruz/Aysén (8 days). Archaeology: Cave of Hands or Charcamata. Navigation: Marble Chapels and Cathedrals. Scenic: Ruta 41 or Lake Posadas.",
       wellnessAnswer: "We have a New Experiences line with two proposals: Off Road 4x4 (guided outings with your own vehicle on alternative routes) and Journeys with Purpose (weekend or week-long introspective retreats, with therapies like Reiki, Grounding and Biodecoding). More info at nuevas-experiencias.html.",
       agencyAnswer: "Zoyen Turismo is a local agency from Perito Moreno, Santa Cruz, license 15.625. We design excursions and author tours in Patagonia.",
-      pdfBase: "Downloadable PDF itineraries: Unexplored Patagonia and Carretera Austral. Each page has a download button.",
+      pdfBase: "Downloadable PDF itineraries: Unexplored Patagonia and Binational Circuit Santa Cruz/Aysén. Each page has a download button.",
       pdfProduct: function(p){ return "The PDF itinerary for " + p.name + " can be downloaded from its page."; },
       listExc: "Available day and half-day excursions: ",
       listTours: "Available author tours: ", listToursSuffix: " Both have downloadable PDF itineraries.",
@@ -4462,10 +4462,10 @@ applyLang(currentLang);
       pricesAll: "Preços ARS por pessoa: ",
       resAnswer: "Me diga qual tour ou excursão te interessa e vou perguntar a quantidade de pessoas e uma data tentativa. No final, fazemos um resumo e seguimos pelo WhatsApp para confirmar preço, data e disponibilidade.",
       locAnswer: "Zoyen Turismo fica em Perito Moreno, Santa Cruz, Patagônia Argentina. Excursões partem para Cueva de las Manos, Parque Patagônia, Rota 41, Lago Posadas e Carretera Austral.",
-      compareAnswer: "Com pouco tempo, excursões de dia: Cueva de las Manos, Capelas de Mármore, Rota 41, Lago Posadas ou Parque Patagônia. Viagem completa: Patagônia Inédita (5 dias), Santa Cruz Inexplorada (8 dias, com voo incluído) ou Carretera Austral (saída em grupo).",
+      compareAnswer: "Com pouco tempo, excursões de dia: Cueva de las Manos, Capelas de Mármore, Rota 41, Lago Posadas ou Parque Patagônia. Viagem completa: Patagônia Inédita (5 dias), Santa Cruz Inexplorada (8 dias, com voo incluído) ou Circuito Binacional Santa Cruz/Aysén (8 dias).",
       wellnessAnswer: "Temos uma linha de Novas Experiências com duas propostas: Off Road 4x4 (saídas com sua própria caminhonete por caminhos alternativos) e Viagens com Sentido (retiros introspectivos de fim de semana ou de uma semana, com terapias como Reiki, Grounding e Biodescodificação). Mais informa??es em nuevas-experiencias.html.",
       agencyAnswer: "Zoyen Turismo é uma agência local de Perito Moreno, Santa Cruz, licença 15.625. Projetamos excursões e tours de autor na Patagônia.",
-      pdfBase: "Tours com PDF para download: Patagônia Inédita e Carretera Austral. Cada página tem botão de download.",
+      pdfBase: "Tours com PDF para download: Patagônia Inédita e Circuito Binacional Santa Cruz/Aysén. Cada página tem botão de download.",
       pdfProduct: function(p){ return "O PDF de " + p.name + " pode ser baixado na sua página."; },
       listExc: "Excursões de dia e meio dia disponíveis: ",
       listTours: "Tours de autor disponíveis: ", listToursSuffix: " Ambos têm itinerários PDF para download.",
@@ -4509,7 +4509,7 @@ applyLang(currentLang);
   ];
   var tours = [
     {id:"patagonia", name:"Patagonia Inédita", aliases:["patagonia inedita","patagonia inédita","inedita","inédita","tour patagonia","patagonia profunda"], price:2290000, duration:"5 días / 4 noches", capacity:14, type:"tour", dates:["2026-10-06","2026-10-20","2026-11-04","2026-12-09","2027-02-11","2027-03-25","2027-04-10"], pdf:"assets/pdfs/patagonia-inedita-itinerario.pdf", summary:"sale desde Comodoro Rivadavia y recorre Perito Moreno, Cueva de las Manos, Parque Patagonia, Los Antiguos, Ruta Escénica 41 y Capillas y Catedrales de Mármol.", includes:"Traslados desde y hacia el aeropuerto de Comodoro Rivadavia, 4 noches de hotel con desayuno y excursiones full day con todo incluido. No incluye bebidas alcohólicas ni cenas. Base doble $2.290.000, base single $2.590.000. Seña $1.000.000 por persona.", url:"patagonia-inedita.html"},
-    {id:"carretera", name:"Carretera Austral", aliases:["carretera austral","carretera","austral","ohiggins","o higgins","villa ohiggins","villa o higgins","tortel","cochrane","chile chico","coyhaique"], price:0, duration:"8 días / 7 noches", capacity:14, type:"tour", dates:["2026-07-26","2026-09-06","2026-10-18"], pdf:"assets/pdfs/carretera-austral-itinerario.pdf", summary:"incluye Chile Chico, Cochrane, Caleta Tortel, Villa O'Higgins, Puerto Río Tranquilo, Capillas de Mármol y Coyhaique. Solo salidas grupales, mínimo 10 personas.", includes:"Traslados desde Perito Moreno ida y vuelta en minibús, alojamiento según itinerario, excursiones terrestres con chofer/guía, almuerzos con bebida sin alcohol y navegación a Capillas y Catedrales de Mármol. No incluye bebidas alcohólicas ni cenas. Consultar precio y disponibilidad.", url:"carretera-austral.html"},
+    {id:"carretera", name:"Circuito Binacional Santa Cruz/Aysén", aliases:["circuito binacional","santa cruz aysén","carretera austral","austral","aysén","cochrane","puerto río tranquilo","los antiguos","ruta 41","ruta escénica 41","cueva de las manos","capillas de mármol"], price:3200000, priceSingle:3700000, duration:"8 días / 7 noches", capacity:16, type:"tour", dates:["2026-10-06","2026-10-13","2026-10-20","2026-10-27","2026-11-03","2026-11-10","2026-11-17","2026-11-24","2026-12-01","2026-12-08","2026-12-15","2026-12-22","2026-12-29","2027-01-05","2027-01-12","2027-01-19","2027-01-26","2027-02-02","2027-02-09","2027-02-16","2027-02-23","2027-03-02","2027-03-09","2027-03-16","2027-03-23","2027-03-30","2027-04-06","2027-04-13","2027-04-20","2027-04-27"], pdf:"assets/pdfs/carretera-austral-itinerario.pdf", summary:"8 días / 7 noches por Santa Cruz y Aysén: Perito Moreno, Cueva de las Manos, Los Antiguos, Ruta Escénica 41, Carretera Austral, Cochrane, Puerto Río Tranquilo y navegación a Capillas y Catedrales de Mármol.", includes:"Incluye traslados en minibús desde y hacia el aeropuerto, 3 noches en hotel en Perito Moreno con desayuno, excursiones full day Cueva de las Manos y Los Antiguos + Ruta Escénica 41 con almuerzo, recorridos terrestres por Carretera Austral en Chile, 1 noche en Cochrane con desayuno, 1 noche en Puerto Río Tranquilo con desayuno, navegación a Capillas y Catedrales de Mármol, 2 noches en Los Antiguos con desayuno y almuerzos durante los días de actividades. No incluye almuerzos en días libres, cenas ni bebidas extra o alcohólicas. Base doble $3.200.000, base single $3.700.000. Salidas los martes de octubre 2026 a abril 2027.", url:"carretera-austral.html"},
     {id:"circuito_binacional", name:"Santa Cruz Inexplorada", aliases:["santa cruz inexplorada","santa cruz inexplorado","inexplorada","inexplorado","circuito binacional","patagonia inexplorada","binacional","tour binacional","los antiguos","cueva de las manos","american jet"], price:3350000, duration:"8 días / 7 noches", capacity:16, type:"tour", dates:["2026-08-10","2026-09-14","2026-10-12"], summary:"incluye vuelo Buenos Aires / Perito Moreno / Buenos Aires con American Jet, 4 noches en Los Antiguos y 3 en Perito Moreno, excursiones full day a Cueva de las Manos, Ruta Escénica 41 y Capillas y Catedrales de Mármol (Chile).", includes:"No incluye bebidas alcohólicas, cenas ni actividades opcionales. Tarifas en pesos argentinos. Seña $1.500.000 por persona. Confirmar por disponibilidad aérea.", url:"santa-cruz-inexplorada.html"}
   ];
   function applyEditableTourConfigToZoyi() {
