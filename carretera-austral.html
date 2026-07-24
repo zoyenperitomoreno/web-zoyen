@@ -198,6 +198,9 @@ body > nav:not(.breadcrumb):not(.mobile-drawer) {
 .itinerario-layout .dia-title { font-size:clamp(1rem,1.8vw,1.35rem); }
 .itinerario-layout .dia-desc { font-size:.82rem; line-height:1.72; }
 .itinerario-layout .dia-chip { font-size:.55rem; padding:.18rem .52rem; }
+.itinerario-layout .dia-block { border-radius:7px; transition:background .22s ease, box-shadow .22s ease, transform .22s ease; }
+.itinerario-layout .dia-block.is-virtual-active { background:rgba(212,119,42,.08); box-shadow:0 14px 40px rgba(26,20,16,.08); transform:translateX(4px); }
+.itinerario-layout .dia-block.is-virtual-active .dia-circle { transform:scale(1.12); box-shadow:0 8px 24px rgba(212,119,42,.5); }
 .dia-block { display: grid; grid-template-columns: 80px 1fr; gap: 0; margin-bottom: 0; position: relative; }
 .dia-block:not(:last-child)::before { content:''; position:absolute; left:39px; top:48px; bottom:0; width:2px; background:linear-gradient(to bottom, var(--ember), rgba(212,119,42,.15)); }
 .dia-num { display: flex; flex-direction: column; align-items: center; padding-top: .5rem; position: relative; z-index: 1; }
@@ -216,23 +219,9 @@ body > nav:not(.breadcrumb):not(.mobile-drawer) {
 .virtual-bg { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; opacity:.9; filter:saturate(.98) contrast(1.03); transform:scale(1); transition:opacity .45s ease, transform 1s ease; }
 .virtual-tour::before { content:''; position:absolute; inset:-7%; background:var(--virtual-bg, url("assets/circuito-binacional-canadon.jpg")) center/cover; filter:blur(18px) saturate(.85); opacity:.32; transform:scale(1.08); }
 .virtual-tour::after { content:''; position:absolute; inset:0; background:linear-gradient(90deg,rgba(18,14,11,.82),rgba(18,14,11,.42) 45%,rgba(18,14,11,.08)),linear-gradient(to top,rgba(18,14,11,.78),transparent 58%); pointer-events:none; }
-.virtual-content { position:relative; z-index:2; min-height:820px; display:flex; flex-direction:column; justify-content:space-between; padding:1.35rem; color:var(--cream); }
+.virtual-content { position:relative; z-index:2; min-height:820px; display:flex; flex-direction:column; justify-content:flex-end; padding:1.35rem; color:var(--cream); }
 .virtual-kicker { color:var(--sand); font-size:.62rem; font-weight:800; letter-spacing:.18em; text-transform:uppercase; }
-.virtual-title { font-family:'DM Serif Display',serif; font-size:clamp(1.65rem,3vw,2.45rem); line-height:1; margin:.45rem 0 .55rem; }
-.virtual-copy { max-width:360px; color:rgba(245,240,232,.78); font-size:.86rem; }
-.virtual-route { width:min(260px,86%); margin-top:1.5rem; position:relative; padding:.35rem 0 .35rem 1.9rem; }
-.virtual-rail { position:absolute; left:.95rem; top:.95rem; bottom:.95rem; width:3px; background:rgba(245,240,232,.28); border-radius:999px; }
-.virtual-fill { position:absolute; left:.95rem; top:.95rem; width:3px; height:0; background:var(--ember); border-radius:999px; box-shadow:0 0 16px rgba(212,119,42,.55); transition:height .55s ease; }
-.virtual-steps { display:grid; gap:.62rem; position:relative; }
-.virtual-step { display:grid; grid-template-columns:32px 1fr; gap:.65rem; align-items:center; border:0; background:transparent; color:var(--cream); text-align:left; cursor:pointer; padding:0; }
-.virtual-num { width:30px; height:30px; border-radius:50%; border:2px solid rgba(245,240,232,.9); background:rgba(23,18,14,.82); display:grid; place-items:center; font-size:.68rem; font-weight:900; transition:background .2s,transform .2s,border-color .2s; }
-.virtual-step span:last-child { display:block; color:rgba(245,240,232,.82); font-size:.76rem; line-height:1.2; }
-.virtual-step.active .virtual-num { background:var(--ember); border-color:var(--ember); transform:scale(1.15); }
-.virtual-step.done .virtual-num { border-color:var(--ember); }
-.virtual-info { background:rgba(23,18,14,.58); border:1px solid rgba(245,240,232,.14); border-radius:5px; padding:1rem; backdrop-filter:blur(10px); }
-.virtual-info small { color:var(--sand); font-size:.62rem; font-weight:800; letter-spacing:.16em; text-transform:uppercase; }
-.virtual-info h3 { font-family:'DM Serif Display',serif; font-size:1.45rem; line-height:1.05; margin:.35rem 0; }
-.virtual-info p { color:rgba(245,240,232,.78); font-size:.84rem; line-height:1.65; }
+.virtual-copy { max-width:360px; color:rgba(245,240,232,.78); font-size:.86rem; background:rgba(23,18,14,.58); border:1px solid rgba(245,240,232,.14); border-radius:5px; padding:1rem; backdrop-filter:blur(10px); }
 .galeria-section { display:none; padding: 5rem 4vw; background: var(--fog); }
 .galeria-experiencia { margin-top:3rem; display:grid; grid-template-columns:minmax(0,1fr) 220px; gap:1rem; align-items:stretch; }
 .galeria-stage { position:relative; min-height:520px; overflow:hidden; border-radius:4px; background:var(--dark); box-shadow:0 24px 70px rgba(26,20,16,.12); }
@@ -259,8 +248,6 @@ body > nav:not(.breadcrumb):not(.mobile-drawer) {
   .itinerario-layout .dia-block { grid-template-columns:44px 1fr; }
   .virtual-tour { min-height:680px; }
   .virtual-content { min-height:680px; padding:1rem; }
-  .virtual-route { width:100%; }
-  .virtual-step span:last-child { font-size:.68rem; }
   .galeria-thumbs { grid-template-columns:repeat(3, minmax(0,1fr)); gap:.5rem; }
   .galeria-arrow { width:38px; height:38px; }
 }
@@ -1127,7 +1114,7 @@ img.hero-logo-static {
   <div class="dia-block reveal"><div class="dia-num"><div class="dia-circle">6</div></div><div class="dia-content"><div class="dia-label" data-i18n="d6_label">D&iacute;a 6 &middot; Capillas de M&aacute;rmol</div><h3 class="dia-title" data-i18n="d6_title"><em>Capillas y Catedrales</em> de M&aacute;rmol &middot; Los Antiguos</h3><p class="dia-desc" data-i18n="d6_desc">Desayuno y <strong>navegaci&oacute;n a Capillas y Catedrales de M&aacute;rmol</strong>. Luego del almuerzo incluido, salida hacia Argentina y llegada a <strong>Los Antiguos</strong>. Alojamiento con desayuno. Cena no incluida.</p><div class="dia-chips"><span class="dia-chip" data-i18n="d6_chip1">Capillas de M&aacute;rmol</span><span class="dia-chip" data-i18n="d6_chip2">Almuerzo incluido</span><span class="dia-chip" data-i18n="d6_chip3">Los Antiguos</span></div></div></div>
   <div class="dia-block reveal"><div class="dia-num"><div class="dia-circle">7</div></div><div class="dia-content"><div class="dia-label" data-i18n="d7_label">D&iacute;a 7 &middot; Los Antiguos</div><h3 class="dia-title" data-i18n="d7_title">D&iacute;a libre &middot; <em>Los Antiguos</em></h3><p class="dia-desc" data-i18n="d7_desc">Desayuno y d&iacute;a libre en <strong>Los Antiguos</strong> para descanso o actividades personales. El almuerzo de este d&iacute;a libre no est&aacute; incluido. Segunda noche de alojamiento con desayuno. Cena no incluida.</p><div class="dia-chips"><span class="dia-chip" data-i18n="d7_chip1">Los Antiguos</span><span class="dia-chip" data-i18n="d7_chip2">D&iacute;a libre</span><span class="dia-chip" data-i18n="d7_chip3">Almuerzo no incluido</span></div></div></div>
   <div class="dia-block reveal"><div class="dia-num"><div class="dia-circle">8</div></div><div class="dia-content"><div class="dia-label" data-i18n="d8_label">D&iacute;a 8 &middot; Traslado de salida</div><h3 class="dia-title" data-i18n="d8_title">Los Antiguos &middot; <em>Aeropuerto</em></h3><p class="dia-desc" data-i18n="d8_desc">Desayuno, check-out y traslado en minib&uacute;s hacia el aeropuerto seg&uacute;n horario coordinado. Fin de los servicios incluidos.</p><div class="dia-chips"><span class="dia-chip" data-i18n="d8_chip1">Traslado al aeropuerto</span><span class="dia-chip" data-i18n="d8_chip2">Fin del circuito</span><span class="dia-chip" data-i18n="d8_chip3">Fin de servicios</span></div></div></div>
-</div><aside class="virtual-tour reveal" data-circuito-virtual><img class="virtual-bg" src="assets/circuito-binacional-canadon.jpg" alt="" data-virtual-bg><div class="virtual-content"><div><p class="virtual-kicker">Viaje virtual</p><h2 class="virtual-title">Recorr&eacute; el circuito por etapas</h2><p class="virtual-copy">Cada n&uacute;mero cambia la imagen principal y acompa&ntilde;a el tramo correspondiente del itinerario.</p><div class="virtual-route"><div class="virtual-rail"></div><div class="virtual-fill" data-virtual-fill></div><div class="virtual-steps" data-virtual-steps></div></div></div><div class="virtual-info"><small data-virtual-day>D&iacute;a 1</small><h3 data-virtual-title>Perito Moreno</h3><p data-virtual-copy>Inicio del recorrido y puerta de entrada al noroeste de Santa Cruz.</p></div></div></aside></div></div></section>
+</div><aside class="virtual-tour reveal" data-circuito-virtual><img class="virtual-bg" src="assets/circuito-binacional-canadon.jpg" alt="" data-virtual-bg><div class="virtual-content"><div><p class="virtual-kicker">Viaje virtual</p><p class="virtual-copy">Pas&aacute; por cada d&iacute;a del itinerario para proyectar la imagen correspondiente del recorrido.</p></div></div></aside></div></div></section>
 
 <!-- GALERIA -->
 <section class="galeria-section"><div style="max-width:1100px; margin:0 auto;"><div class="reveal"><p class="eyebrow" data-i18n="gal_eyebrow">Galer&iacute;a de im&aacute;genes</p><h2 class="section-title" data-i18n="gal_title">Lo que vas a <em>ver</em></h2></div><div class="galeria-experiencia" data-circuito-gallery><div class="galeria-stage"><img src="assets/capillas.jpg" alt="Capillas de M&aacute;rmol" class="active"><img src="assets/20221115_082320-1024x576-360x230.jpg" alt="Carretera Austral"><img src="assets/posadas_zoyen.jpg" alt="Lagos Patag&oacute;nicos"><img src="assets/ruta41_zoyen.jpg" alt="Ruta 41"><img src="assets/full_inedita.jpg" alt="Patagonia panor&aacute;mica"><img src="assets/circuito-binacional-lancha-chile.jpg" alt="Navegaci&oacute;n en Capillas de M&aacute;rmol"><img src="assets/circuito-binacional-zeballos.jpg" alt="Ruta Esc&eacute;nica 41 y Monte Zeballos"><img src="assets/circuito-binacional-laguna.jpg" alt="Lagunas y paisajes de Ays&eacute;n"><img src="assets/circuito-binacional-paso-las-llaves.jpg" alt="Paso Las Llaves"><img src="assets/circuito-binacional-canadon.jpg" alt="Ca&ntilde;ad&oacute;n del R&iacute;o Pinturas"><img src="assets/circuito-binacional-ruta-41.jpg" alt="Ruta 41"><img src="assets/circuito-binacional-confluencia-baker.jpg" alt="Confluencia Baker"><button class="galeria-arrow prev" type="button" aria-label="Imagen anterior">&lsaquo;</button><button class="galeria-arrow next" type="button" aria-label="Imagen siguiente">&rsaquo;</button></div><div class="galeria-thumbs"><button class="galeria-thumb active" type="button" aria-label="Ver Capillas de M&aacute;rmol"><img src="assets/capillas.jpg" alt=""></button><button class="galeria-thumb" type="button" aria-label="Ver Carretera Austral"><img src="assets/20221115_082320-1024x576-360x230.jpg" alt=""></button><button class="galeria-thumb" type="button" aria-label="Ver Lagos Patag&oacute;nicos"><img src="assets/posadas_zoyen.jpg" alt=""></button><button class="galeria-thumb" type="button" aria-label="Ver Ruta 41"><img src="assets/ruta41_zoyen.jpg" alt=""></button><button class="galeria-thumb" type="button" aria-label="Ver Patagonia panor&aacute;mica"><img src="assets/full_inedita.jpg" alt=""></button><button class="galeria-thumb" type="button" aria-label="Ver navegaci&oacute;n en Capillas de M&aacute;rmol"><img src="assets/circuito-binacional-lancha-chile.jpg" alt=""></button><button class="galeria-thumb" type="button" aria-label="Ver Ruta Esc&eacute;nica 41 y Monte Zeballos"><img src="assets/circuito-binacional-zeballos.jpg" alt=""></button><button class="galeria-thumb" type="button" aria-label="Ver lagunas y paisajes de Ays&eacute;n"><img src="assets/circuito-binacional-laguna.jpg" alt=""></button><button class="galeria-thumb" type="button" aria-label="Ver Paso Las Llaves"><img src="assets/circuito-binacional-paso-las-llaves.jpg" alt=""></button><button class="galeria-thumb" type="button" aria-label="Ver Ca&ntilde;ad&oacute;n del R&iacute;o Pinturas"><img src="assets/circuito-binacional-canadon.jpg" alt=""></button><button class="galeria-thumb" type="button" aria-label="Ver Ruta 41"><img src="assets/circuito-binacional-ruta-41.jpg" alt=""></button><button class="galeria-thumb" type="button" aria-label="Ver Confluencia Baker"><img src="assets/circuito-binacional-confluencia-baker.jpg" alt=""></button></div></div></div></section>
@@ -3529,32 +3516,19 @@ a.cta-btn-g[href*="wa.me"]:hover::before {
     var root = document.querySelector('[data-circuito-virtual]');
     if (!root) return;
     var scenes = [
-      {day:'D&iacute;a 1 &middot; Llegada', title:'Aeropuerto &middot; Perito Moreno', image:'assets/circuito-binacional-canadon.jpg', copy:'Recepci&oacute;n en aeropuerto, traslado en minib&uacute;s hacia Perito Moreno, check-in y alojamiento con desayuno.'},
-      {day:'D&iacute;a 2 &middot; Cueva de las Manos', title:'Cueva de las Manos &middot; Full day', image:'assets/cuevadelasmanos_zoyen.jpg', copy:'Excursi&oacute;n full day a Cueva de las Manos con almuerzo incluido durante la actividad y regreso a Perito Moreno.'},
-      {day:'D&iacute;a 3 &middot; Los Antiguos y Ruta 41', title:'Los Antiguos &middot; Ruta Esc&eacute;nica 41', image:'assets/circuito-binacional-zeballos.jpg', copy:'Excursi&oacute;n full day a Los Antiguos y Ruta Esc&eacute;nica 41, con almuerzo incluido y regreso a Perito Moreno.'},
-      {day:'D&iacute;a 4 &middot; Carretera Austral', title:'Perito Moreno &middot; Cochrane', image:'assets/circuito-binacional-paso-las-llaves.jpg', copy:'Salida hacia Chile para iniciar recorridos terrestres por la Carretera Austral, con almuerzo incluido y alojamiento en Cochrane.'},
-      {day:'D&iacute;a 5 &middot; Puerto R&iacute;o Tranquilo', title:'Cochrane &middot; Puerto R&iacute;o Tranquilo', image:'assets/circuito-binacional-laguna.jpg', copy:'Continuaci&oacute;n por la Carretera Austral con visitas terrestres en Chile, almuerzo incluido y noche en Puerto R&iacute;o Tranquilo.'},
-      {day:'D&iacute;a 6 &middot; Capillas de M&aacute;rmol', title:'Capillas y Catedrales de M&aacute;rmol &middot; Los Antiguos', image:'assets/circuito-binacional-lancha-chile.jpg', copy:'Navegaci&oacute;n a Capillas y Catedrales de M&aacute;rmol, almuerzo incluido y regreso hacia Los Antiguos.'},
-      {day:'D&iacute;a 7 &middot; Los Antiguos', title:'D&iacute;a libre &middot; Los Antiguos', image:'assets/zoyen_turismo_patagonia_losantiguos.jpg', copy:'D&iacute;a libre en Los Antiguos para descanso o actividades personales. El almuerzo de este d&iacute;a no est&aacute; incluido.'},
-      {day:'D&iacute;a 8 &middot; Traslado de salida', title:'Los Antiguos &middot; Aeropuerto', image:'assets/full_inedita.jpg', copy:'Desayuno, check-out y traslado en minib&uacute;s hacia el aeropuerto seg&uacute;n horario coordinado.'}
+      {image:'assets/circuito-binacional-canadon.jpg'},
+      {image:'assets/cuevadelasmanos_zoyen.jpg'},
+      {image:'assets/circuito-binacional-zeballos.jpg'},
+      {image:'assets/circuito-binacional-paso-las-llaves.jpg'},
+      {image:'assets/circuito-binacional-laguna.jpg'},
+      {image:'assets/circuito-binacional-lancha-chile.jpg'},
+      {image:'assets/zoyen_turismo_patagonia_losantiguos.jpg'},
+      {image:'assets/full_inedita.jpg'}
     ];
     var bg = root.querySelector('[data-virtual-bg]');
-    var fill = root.querySelector('[data-virtual-fill]');
-    var steps = root.querySelector('[data-virtual-steps]');
-    var day = root.querySelector('[data-virtual-day]');
-    var title = root.querySelector('[data-virtual-title]');
-    var copy = root.querySelector('[data-virtual-copy]');
+    var days = Array.prototype.slice.call(document.querySelectorAll('.itinerario-list .dia-block'));
     var current = 0;
     var timer;
-
-    scenes.forEach(function(scene,index){
-      var btn = document.createElement('button');
-      btn.className = 'virtual-step';
-      btn.type = 'button';
-      btn.innerHTML = '<span class="virtual-num">' + (index + 1) + '</span><span>' + scene.title + '</span>';
-      btn.addEventListener('click', function(){ show(index, true); });
-      steps.appendChild(btn);
-    });
 
     function show(index, manual){
       current = (index + scenes.length) % scenes.length;
@@ -3562,20 +3536,20 @@ a.cta-btn-g[href*="wa.me"]:hover::before {
       bg.style.opacity = '.45';
       root.style.setProperty('--virtual-bg', 'url("' + scene.image + '")');
       window.setTimeout(function(){ bg.src = scene.image; bg.style.opacity = '.9'; }, 130);
-      day.innerHTML = scene.day;
-      title.innerHTML = scene.title;
-      copy.innerHTML = scene.copy;
-      steps.querySelectorAll('.virtual-step').forEach(function(btn,i){
-        btn.classList.toggle('active', i === current);
-        btn.classList.toggle('done', i <= current);
-      });
-      fill.style.height = 'calc((100% - 1.9rem) * ' + (current / (scenes.length - 1)) + ')';
+      days.forEach(function(dayBlock,i){ dayBlock.classList.toggle('is-virtual-active', i === current); });
       if (manual) restart();
     }
     function restart(){
       clearInterval(timer);
       timer = setInterval(function(){ show(current + 1, false); }, 4300);
     }
+    days.forEach(function(dayBlock,index){
+      if (!scenes[index]) return;
+      dayBlock.setAttribute('tabindex', '0');
+      dayBlock.addEventListener('mouseenter', function(){ show(index, true); });
+      dayBlock.addEventListener('focusin', function(){ show(index, true); });
+      dayBlock.addEventListener('click', function(){ show(index, true); });
+    });
     show(0, false);
     restart();
   }
