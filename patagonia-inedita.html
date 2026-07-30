@@ -191,12 +191,15 @@ body > nav:not(.breadcrumb):not(.mobile-drawer) {
 @media (max-width:600px) { .schedule-list li { grid-template-columns: 1fr; gap: .1rem; } }
 
 .calendar-dates-grid { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: .65rem; margin: 0 0 1.1rem; }
-.date-card { border: 1px solid rgba(212,119,42,.32); border-radius: 6px; overflow: hidden; text-align: center; background: #fff; box-shadow: 0 2px 8px rgba(26,20,16,.06); }
-.date-card.is-next { border-color: var(--ember); box-shadow: 0 3px 12px rgba(212,119,42,.22); }
-.date-card-month { display: block; background: var(--ember); color: #fff; font-family: 'Sora', sans-serif; font-size: .64rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: .3rem 0; }
-.date-card-days { display: block; font-family: 'DM Serif Display', serif; font-size: 1.15rem; font-weight: 600; color: var(--ink); padding: .45rem 0 .05rem; }
-.date-card-year { display: block; font-size: .6rem; letter-spacing: .05em; color: var(--stone); padding-bottom: .4rem; }
+.date-card { border: 1px solid rgba(58,45,31,.18); border-radius: 6px; overflow: hidden; text-align: center; background: var(--ink); box-shadow: 0 2px 8px rgba(26,20,16,.15); }
+.date-card-month { display: block; background: rgba(245,240,232,.1); color: var(--sand); font-family: 'Sora', sans-serif; font-size: .64rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: .3rem 0; }
+.date-card-days { display: block; font-family: 'DM Serif Display', serif; font-size: 1.15rem; font-weight: 600; color: rgba(245,240,232,.7); padding: .45rem 0 .05rem; }
+.date-card-year { display: block; font-size: .6rem; letter-spacing: .05em; color: rgba(245,240,232,.4); padding-bottom: .4rem; }
 .date-card-tag { display: block; font-size: .56rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ember); padding-bottom: .35rem; }
+.date-card.is-next { background: #fff; border-color: var(--ember); box-shadow: 0 3px 12px rgba(212,119,42,.22); }
+.date-card.is-next .date-card-month { background: var(--ember); color: #fff; }
+.date-card.is-next .date-card-days { color: var(--ink); }
+.date-card.is-next .date-card-year { color: var(--stone); }
 
 /* INCLUYE / NO INCLUYE */
 .inc-grid {
