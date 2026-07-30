@@ -190,6 +190,14 @@ body > nav:not(.breadcrumb):not(.mobile-drawer) {
 .tariff-list { margin-top: 1rem; }
 @media (max-width:600px) { .schedule-list li { grid-template-columns: 1fr; gap: .1rem; } }
 
+.calendar-dates-grid { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: .65rem; margin: 0 0 1.1rem; }
+.date-card { border: 1px solid rgba(212,119,42,.32); border-radius: 6px; overflow: hidden; text-align: center; background: #fff; box-shadow: 0 2px 8px rgba(26,20,16,.06); }
+.date-card.is-next { border-color: var(--ember); box-shadow: 0 3px 12px rgba(212,119,42,.22); }
+.date-card-month { display: block; background: var(--ember); color: #fff; font-family: 'Sora', sans-serif; font-size: .64rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: .3rem 0; }
+.date-card-days { display: block; font-family: 'DM Serif Display', serif; font-size: 1.15rem; font-weight: 600; color: var(--ink); padding: .45rem 0 .05rem; }
+.date-card-year { display: block; font-size: .6rem; letter-spacing: .05em; color: var(--stone); padding-bottom: .4rem; }
+.date-card-tag { display: block; font-size: .56rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ember); padding-bottom: .35rem; }
+
 /* INCLUYE / NO INCLUYE */
 .inc-grid {
   display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
@@ -1199,15 +1207,44 @@ img.hero-logo-static {
       <div class="tour-schedule-card">
         <p class="eyebrow">Salidas y tarifas vigentes</p>
         <h3>Salidas 2026 / 2027</h3>
-        <ul class="schedule-list">
-          <li><strong>Octubre</strong><span>llegada 6 octubre / salida 10 octubre.</span></li>
-          <li><strong>Octubre</strong><span>llegada 20 octubre / salida 24 octubre.</span></li>
-          <li><strong>Noviembre</strong><span>llegada 4 noviembre / salida 8 noviembre.</span></li>
-          <li><strong>Diciembre</strong><span>llegada 9 diciembre / salida 13 diciembre.</span></li>
-          <li><strong>Febrero</strong><span>llegada 11 febrero / salida 15 febrero.</span></li>
-          <li><strong>Marzo</strong><span>llegada 25 marzo / salida 29 marzo.</span></li>
-          <li><strong>Abril</strong><span>llegada 10 abril / salida 14 abril.</span></li>
-        </ul>
+        <div class="calendar-dates-grid">
+          <div class="date-card is-next">
+            <span class="date-card-tag">Próxima</span>
+            <span class="date-card-month">Oct</span>
+            <span class="date-card-days">9 – 13</span>
+            <span class="date-card-year">2026</span>
+          </div>
+          <div class="date-card">
+            <span class="date-card-month">Oct</span>
+            <span class="date-card-days">20 – 24</span>
+            <span class="date-card-year">2026</span>
+          </div>
+          <div class="date-card">
+            <span class="date-card-month">Nov</span>
+            <span class="date-card-days">4 – 8</span>
+            <span class="date-card-year">2026</span>
+          </div>
+          <div class="date-card">
+            <span class="date-card-month">Dic</span>
+            <span class="date-card-days">9 – 13</span>
+            <span class="date-card-year">2026</span>
+          </div>
+          <div class="date-card">
+            <span class="date-card-month">Feb</span>
+            <span class="date-card-days">11 – 15</span>
+            <span class="date-card-year">2027</span>
+          </div>
+          <div class="date-card">
+            <span class="date-card-month">Mar</span>
+            <span class="date-card-days">25 – 29</span>
+            <span class="date-card-year">2027</span>
+          </div>
+          <div class="date-card">
+            <span class="date-card-month">Abr</span>
+            <span class="date-card-days">10 – 14</span>
+            <span class="date-card-year">2027</span>
+          </div>
+        </div>
         <ul class="hl-list tariff-list">
           <li><strong>Base habitación doble</strong>$2.290.000 por persona.</li>
           <li><strong>Base habitación single</strong>$2.590.000 por persona.</li>
@@ -2123,7 +2160,7 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
   ];
 
   var tours = [
-    {id:"patagonia", name:"Patagonia Inédita", aliases:["patagonia inedita","inedita"], price:2290000, duration:"5 días / 4 noches", capacity:14, type:"tour", pdf:"assets/pdfs/patagonia-inedita-itinerario.pdf", summary:"sale desde Comodoro Rivadavia y recorre Perito Moreno, Cueva de las Manos, Parque Patagonia, Los Antiguos, Ruta Escénica 41 y Capillas y Catedrales de Mármol.", includes:"Traslados desde y hacia el aeropuerto de Comodoro Rivadavia, 4 noches de hotel con desayuno y excursiones full day con todo incluido. No incluye bebidas alcohólicas ni cenas. Base doble $2.290.000, base single $2.590.000. Seña $1.000.000 por persona.", url:"patagonia-inedita.html"},
+    {id:"patagonia", name:"Patagonia Inédita", aliases:["patagonia inedita","inedita"], price:2290000, duration:"5 días / 4 noches", capacity:14, type:"tour", dates:["2026-10-09","2026-10-20","2026-11-04","2026-12-09","2027-02-11","2027-03-25","2027-04-10"], pdf:"assets/pdfs/patagonia-inedita-itinerario.pdf", summary:"sale desde Comodoro Rivadavia y recorre Perito Moreno, Cueva de las Manos, Parque Patagonia, Los Antiguos, Ruta Escénica 41 y Capillas y Catedrales de Mármol.", includes:"Traslados desde y hacia el aeropuerto de Comodoro Rivadavia, 4 noches de hotel con desayuno y excursiones full day con todo incluido. No incluye bebidas alcohólicas ni cenas. Base doble $2.290.000, base single $2.590.000. Seña $1.000.000 por persona.", url:"patagonia-inedita.html"},
     {id:"carretera", name:"Circuito Binacional Santa Cruz/Aysen", aliases:["circuito binacional","santa cruz aysen","carretera austral","austral","aysen","cochrane","puerto rio tranquilo","los antiguos","ruta 41","ruta escenica 41","cueva de las manos","capillas de marmol"], price:3200000, priceSingle:3700000, duration:"8 dias / 7 noches", capacity:16, type:"tour", dates:['2026-10-06','2026-10-13','2026-10-20','2026-10-27','2026-11-03','2026-11-10','2026-11-17','2026-11-24','2026-12-01','2026-12-08','2026-12-15','2026-12-22','2026-12-29','2027-01-05','2027-01-12','2027-01-19','2027-01-26','2027-02-02','2027-02-09','2027-02-16','2027-02-23','2027-03-02','2027-03-09','2027-03-16','2027-03-23','2027-03-30','2027-04-06','2027-04-13','2027-04-20','2027-04-27'], pdf:"assets/pdfs/carretera-austral-itinerario.pdf", summary:"8 dias / 7 noches por Santa Cruz y Aysen: Perito Moreno, Cueva de las Manos, Los Antiguos, Ruta Escenica 41, Carretera Austral, Cochrane, Puerto Rio Tranquilo y navegacion a Capillas y Catedrales de Marmol.", includes:"Incluye traslados en minibus desde y hacia el aeropuerto, 3 noches en hotel en Perito Moreno con desayuno, excursiones full day Cueva de las Manos y Los Antiguos + Ruta Escenica 41 con almuerzo, recorridos terrestres por Carretera Austral en Chile, 1 noche en Cochrane con desayuno, 1 noche en Puerto Rio Tranquilo con desayuno, navegacion a Capillas y Catedrales de Marmol, 2 noches en Los Antiguos con desayuno y almuerzos durante los dias de actividades. No incluye almuerzos en dias libres, cenas ni bebidas extra o alcoholicas. Base doble $3.200.000, base single $3.700.000. Salidas los martes de octubre 2026 a abril 2027.", url:"carretera-austral.html"},
   ];
 
