@@ -528,6 +528,7 @@ footer { background: #0a0a0a; padding: 5rem 3vw 2.5rem; }
   padding: 1rem;
   background: #1f1813;
   color: var(--cream);
+  flex-shrink: 0;
 }
 .zoyi-title { display: flex; flex-direction: column; gap: .18rem; }
 .zoyi-title strong { font-size: .88rem; letter-spacing: .14em; text-transform: uppercase; }
@@ -549,6 +550,8 @@ footer { background: #0a0a0a; padding: 5rem 3vw 2.5rem; }
   display: flex;
   flex-direction: column;
   gap: .7rem;
+  flex: 1 1 auto;
+  min-height: 0;
 }
 .zoyi-msg {
   max-width: 92%;
@@ -623,7 +626,7 @@ footer { background: #0a0a0a; padding: 5rem 3vw 2.5rem; }
   display: block;
   height: .36rem;
 }
-.zoyi-chip-row { display: flex; flex-wrap: wrap; gap: .42rem; padding: 0 .95rem .82rem; }
+.zoyi-chip-row { display: flex; flex-wrap: wrap; gap: .42rem; padding: 0 .95rem .82rem; flex-shrink: 0; }
 .zoyi-chip {
   border: 1px solid rgba(212,119,42,.28);
   border-radius: 999px;
@@ -634,7 +637,7 @@ footer { background: #0a0a0a; padding: 5rem 3vw 2.5rem; }
   font-size: .76rem;
   cursor: pointer;
 }
-.zoyi-form { display: flex; gap: .5rem; padding: .82rem; border-top: 1px solid rgba(37,29,23,.12); background: #fbf7f0; }
+.zoyi-form { display: flex; gap: .5rem; padding: .82rem; border-top: 1px solid rgba(37,29,23,.12); background: #fbf7f0; flex-shrink: 0; }
 .zoyi-input {
   flex: 1;
   min-width: 0;
@@ -1058,7 +1061,7 @@ img.hero-logo-static {
   .zoyi-head { padding: 1.15rem 1.25rem; }
   .zoyi-title strong { font-size: 1rem; }
   .zoyi-title span { font-size: .82rem; }
-  .zoyi-messages { flex: 1; min-height: 390px; padding: 1.15rem; gap: .8rem; }
+  .zoyi-messages { flex: 1 1 auto; min-height: 0; padding: 1.15rem; gap: .8rem; }
   .zoyi-msg { font-size: .95rem; padding: .88rem 1rem; line-height: 1.65; }
   .zoyi-chip-row { padding: 0 1.15rem 1rem; gap: .5rem; }
   .zoyi-chip { font-size: .82rem; padding: .5rem .72rem; }
