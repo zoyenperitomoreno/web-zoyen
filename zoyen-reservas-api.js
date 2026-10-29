@@ -3,6 +3,14 @@
   var publicKey = cfg.publishableKey || cfg.anonKey || '';
   var ready = Boolean(cfg.url && publicKey && window.supabase && window.supabase.createClient);
   var client = ready ? window.supabase.createClient(cfg.url, publicKey) : null;
+  if (client) {
+    // Avisamos por un evento del DOM (en vez de exigir que quien escucha
+    // llegue despues de este script, que carga con defer) para no perder
+    // el evento PASSWORD_RECOVERY que llega al volver del link del mail.
+    client.auth.onAuthStateChange(function (event, session) {
+      try { document.dispatchEvent(new CustomEvent('zoyen:auth-event', {detail:{event:event, session:session}})); } catch(e) {}
+    });
+  }
 
   function cleanText(value, max) { return String(value || '').trim().slice(0, max || 500); }
   function inferLeadType(data, isInquiry) {
@@ -59,6 +67,22 @@
     return {ok:true,user:result.data.user};
   }
   async function signOut() { if (ready) await client.auth.signOut(); }
+  async function resetPasswordForEmail(email, redirectTo) {
+    if (!ready) return {ok:false, local:true};
+    var result = await client.auth.resetPasswordForEmail(email, redirectTo ? {redirectTo:redirectTo} : undefined);
+    if (result.error) throw result.error;
+    return {ok:true};
+  }
+  async function updatePassword(newPassword) {
+    if (!ready) return {ok:false, local:true};
+    var result = await client.auth.updateUser({password:newPassword});
+    if (result.error) throw result.error;
+    return {ok:true,user:result.data.user};
+  }
+  function onAuthEvent(callback) {
+    if (!ready || typeof callback !== 'function') return;
+    client.auth.onAuthStateChange(function(event, session) { callback(event, session); });
+  }
   async function listReservations() {
     if (!ready) return {ok:false,local:true,data:[]};
     var result = await client.from('reservations').select('*').order('created_at',{ascending:false}).limit(1000);
@@ -85,6 +109,6 @@
     if (result.error) throw result.error;
     return {ok:true};
   }
-  window.ZoyenCloud = {ready:ready,client:client,createReservation:createReservation,signIn:signIn,signOut:signOut,listReservations:listReservations,updateReservation:updateReservation,getTourConfig:getTourConfig,saveTourConfig:saveTourConfig};
+  window.ZoyenCloud = {ready:ready,client:client,createReservation:createReservation,signIn:signIn,signOut:signOut,resetPasswordForEmail:resetPasswordForEmail,updatePassword:updatePassword,onAuthEvent:onAuthEvent,listReservations:listReservations,updateReservation:updateReservation,getTourConfig:getTourConfig,saveTourConfig:saveTourConfig};
 })();
 

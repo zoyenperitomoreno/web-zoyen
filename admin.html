@@ -15,7 +15,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script src="supabase-config.js?v=20260721-1"></script>
-<script defer src="zoyen-reservas-api.js?v=20260721-1"></script>
+<script defer src="zoyen-reservas-api.js?v=20261029-1"></script>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* Fix: ocultar boton hamburguesa en desktop, solo debe verse en mobile */
@@ -60,6 +60,11 @@
 .adm-login-err { color:#e05050; font-size:.75rem; text-align:center; margin-top:.8rem; display:none; }
 .adm-login-close { position:absolute; top:.9rem; right:.9rem; background:none; border:none; color:#7a6a5a; font-size:1.1rem; cursor:pointer; line-height:1; padding:.25rem; }
 .adm-login-close:hover { color:#f5f0e8; }
+.adm-login-forgot { text-align:center; margin-top:1rem; }
+.adm-login-forgot a { color:#c9a96e; font-size:.75rem; text-decoration:none; letter-spacing:.02em; }
+.adm-login-forgot a:hover { color:#d4772a; text-decoration:underline; }
+.adm-login-hint { color:#b8ab9a; font-size:.78rem; line-height:1.5; text-align:center; margin:0 0 1.4rem; }
+.adm-login-ok { color:#6fae6f; font-size:.75rem; text-align:center; margin-top:.8rem; display:none; }
 
 /* iframe panel */
 .adm-iframe-wrap {
@@ -258,6 +263,36 @@ img.hero-logo-static {
     </div>
     <button class="adm-login-btn" id="admLoginBtn">Ingresar</button>
     <div class="adm-login-err" id="admLoginErr">Usuario o contraseña incorrectos.</div>
+    <div class="adm-login-forgot"><a href="#" id="admForgotLink">¿Olvidaste tu contraseña?</a></div>
+  </div>
+
+  <div class="adm-login-box" id="admForgotBox" style="display:none;">
+    <div class="adm-login-logo">
+      <div class="adm-login-logo-text">ZOYEN <span>TURISMO</span></div>
+    </div>
+    <div class="adm-login-eyebrow">Recuperar contraseña</div>
+    <p class="adm-login-hint">Te enviaremos un email a la casilla registrada del panel con un link para elegir una contraseña nueva.</p>
+    <button class="adm-login-btn" id="admForgotSendBtn">Enviar email de recuperación</button>
+    <div class="adm-login-ok" id="admForgotOk">Listo, revisá tu correo (puede tardar unos minutos y llegar a spam).</div>
+    <div class="adm-login-err" id="admForgotErr">No pudimos enviar el email. Probá de nuevo en un momento.</div>
+    <div class="adm-login-forgot"><a href="#" id="admForgotBackLink">Volver a ingresar</a></div>
+  </div>
+
+  <div class="adm-login-box" id="admRecoverBox" style="display:none;">
+    <div class="adm-login-logo">
+      <div class="adm-login-logo-text">ZOYEN <span>TURISMO</span></div>
+    </div>
+    <div class="adm-login-eyebrow">Elegí tu nueva contraseña</div>
+    <div class="adm-field">
+      <label>Nueva contraseña</label>
+      <input type="password" id="admNewPass" autocomplete="new-password"/>
+    </div>
+    <div class="adm-field">
+      <label>Repetir contraseña</label>
+      <input type="password" id="admNewPass2" autocomplete="new-password"/>
+    </div>
+    <button class="adm-login-btn" id="admRecoverBtn">Guardar contraseña</button>
+    <div class="adm-login-err" id="admRecoverErr">Revisá que ambas contraseñas coincidan (mínimo 6 caracteres).</div>
   </div>
 </div>
 
@@ -542,6 +577,78 @@ async function doLogin() {
     document.getElementById('admPass').value = '';
   }
 }
+
+// -- Olvidé mi contraseña ---------------------------------------
+document.getElementById('admForgotLink').onclick = (e) => {
+  e.preventDefault();
+  document.getElementById('admForgotOk').style.display = 'none';
+  document.getElementById('admForgotErr').style.display = 'none';
+  document.querySelector('#admLoginWrap .adm-login-box:not(#admForgotBox):not(#admRecoverBox)').style.display = 'none';
+  document.getElementById('admForgotBox').style.display = 'block';
+};
+document.getElementById('admForgotBackLink').onclick = (e) => {
+  e.preventDefault();
+  document.getElementById('admForgotBox').style.display = 'none';
+  document.querySelector('#admLoginWrap .adm-login-box:not(#admForgotBox):not(#admRecoverBox)').style.display = 'block';
+};
+document.getElementById('admForgotSendBtn').onclick = async () => {
+  const okEl = document.getElementById('admForgotOk');
+  const errEl = document.getElementById('admForgotErr');
+  okEl.style.display = 'none';
+  errEl.style.display = 'none';
+  if (!(window.ZoyenCloud && ZoyenCloud.ready)) {
+    errEl.textContent = 'La recuperación por email todavía no está activada en este panel.';
+    errEl.style.display = 'block';
+    return;
+  }
+  const email = (window.ZOYEN_SUPABASE && ZOYEN_SUPABASE.adminEmail) || '';
+  if (!email) {
+    errEl.textContent = 'No hay un email de administrador configurado.';
+    errEl.style.display = 'block';
+    return;
+  }
+  try {
+    const redirectTo = window.location.origin + window.location.pathname;
+    await ZoyenCloud.resetPasswordForEmail(email, redirectTo);
+    okEl.style.display = 'block';
+  } catch (error) {
+    console.warn('No se pudo enviar el email de recuperación:', error);
+    errEl.style.display = 'block';
+  }
+};
+
+// -- Restablecer contraseña (link del email) ---------------------
+function showRecoverBox() {
+  document.getElementById('admLoginWrap').classList.add('open');
+  document.querySelector('#admLoginWrap .adm-login-box:not(#admForgotBox):not(#admRecoverBox)').style.display = 'none';
+  document.getElementById('admForgotBox').style.display = 'none';
+  document.getElementById('admRecoverBox').style.display = 'block';
+}
+document.addEventListener('zoyen:auth-event', (e) => {
+  if (e.detail && e.detail.event === 'PASSWORD_RECOVERY') showRecoverBox();
+});
+document.getElementById('admRecoverBtn').onclick = async () => {
+  const errEl = document.getElementById('admRecoverErr');
+  const p1 = document.getElementById('admNewPass').value;
+  const p2 = document.getElementById('admNewPass2').value;
+  errEl.style.display = 'none';
+  if (p1.length < 6 || p1 !== p2) {
+    errEl.style.display = 'block';
+    return;
+  }
+  try {
+    await ZoyenCloud.updatePassword(p1);
+    document.getElementById('admNewPass').value = '';
+    document.getElementById('admNewPass2').value = '';
+    showToast('Contraseña actualizada. Ya podés ingresar con la nueva.');
+    document.getElementById('admRecoverBox').style.display = 'none';
+    document.querySelector('#admLoginWrap .adm-login-box:not(#admForgotBox):not(#admRecoverBox)').style.display = 'block';
+    history.replaceState(null, '', window.location.pathname);
+  } catch (error) {
+    errEl.textContent = 'No se pudo guardar la contraseña: ' + (error && error.message ? error.message : 'intentá de nuevo.');
+    errEl.style.display = 'block';
+  }
+};
 
 document.getElementById('btnLogout').onclick = () => {
   if(window.ZoyenCloud && ZoyenCloud.ready) ZoyenCloud.signOut().catch(function(){});
