@@ -15,6 +15,15 @@
 
   // -- Flujo guiado de consulta (lead) -------------------------------
   var consultationText = "Consultar las tarifas vigentes y disponibilidad vía WhatsApp: [[LINK:2974432855 (oficina)|https://wa.me/5492974432855]] · [[LINK:2976238811 (gerencia)|https://wa.me/5492976238811]].";
+  var reservationPolicy = "Para consultar una reserva, comunicate con la oficina por WhatsApp: [[LINK:Consultar por WhatsApp|https://wa.me/5492974432855]]. La oficina te informar\u00e1 las condiciones vigentes de confirmaci\u00f3n, pago, cambios y cancelaciones aplicables a la actividad elegida. Zoyi brinda informaci\u00f3n; las reservas se gestionan directamente con la oficina.";
+  function showReservationPolicy(){ addMessage(reservationPolicy,"bot"); }
+  if(chips) chips.querySelectorAll("button").forEach(function(button){
+    if(button.dataset.zoyiChip==="book" || /reserv|booking/i.test(button.textContent)){
+      button.textContent="Pol\u00edticas de reserva";
+      button.removeAttribute("data-i18n");
+      button.dataset.zoyiChip="book";
+    }
+  });
   var leadDraft = null; // {producto, personas, fecha, nombre, telefono, step}
   var LEAD_STEP = { PERSONAS:"personas", FECHA:"fecha", CONTACTO:"contacto", CONFIRMAR:"confirmar" };
 
@@ -294,7 +303,7 @@
   }
 
   // -- Flujo guiado de consulta (lead) -------------------------------
-  function startLeadFlow(productId){
+  function startLeadFlow(productId){ showReservationPolicy(); return;
     var p=allProducts.find(function(item){return item.id===productId;});
     if(!p)return;
     leadDraft={ producto:p.name, productoKey:p.id, personas:"", fecha:"", nombre:"", telefono:"", step:LEAD_STEP.PERSONAS };
@@ -493,7 +502,7 @@
     if(isAsking(q,k.human))    return ui.humanAns();
     if(isAsking(q,k.dates))    return dateAvailabilityAnswer(p,ui);
     if(isAsking(q,k.prices)) return (p ? p.name+"\n" : "")+consultationText;
-    if(isAsking(q,k.book))     return ui.resAnswer;
+    if(isAsking(q,k.book))     return reservationPolicy;
     if(isAsking(q,k.location)) return ui.locAnswer;
     if(isAsking(q,k.pdf))      return p&&p.pdf ? ui.pdfProduct(p) : ui.pdfBase;
     if(isAsking(q,k.excursion))return p ? productSummary(p,ui) : ui.listExc.trim()+"\n"+excursiones.map(function(x){return productBullet(x,ui);}).join("\n");
@@ -510,6 +519,8 @@
     if(!val)return;
     addMessage(val,"user");
     if(input)input.value="";
+    var reserveQuery=normalize(val), reserveUI=UI[getLang()]||UI.es;
+    if(isAsking(reserveQuery,reserveUI.kw.book) || /politica|cancelacion|cambio de fecha/.test(reserveQuery)){ showReservationPolicy(); return; }
     var priceQuery = normalize(val), priceUI = UI[getLang()] || UI.es;
     if(isAsking(priceQuery, priceUI.kw.prices)){
       addMessage(consultationText,"bot");
@@ -585,7 +596,7 @@
     var kind=chip.dataset.zoyiChip;
     addMessage(chip.textContent,"user");
     window.setTimeout(function(){
-      if(kind==="book"){ showTypeChoices("book"); return; }
+      if(kind==="book"){ showReservationPolicy(); return; }
       if(kind==="dates"){ showTypeChoices("dates"); return; }
       if(kind==="prices"){ addMessage(consultationText,"bot"); return; }
       if(kind==="excursion"){ showProductChoices("details","excursion"); return; }
