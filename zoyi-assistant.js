@@ -10,6 +10,7 @@
   var input    = document.getElementById("zoyiInput");
   var messages = document.getElementById("zoyiMessages");
   var chips    = document.getElementById("zoyiChips");
+  if (chips) chips.querySelectorAll('[data-zoyi-chip="prices"]').forEach(function(button){ button.remove(); });
   var waLink   = "https://wa.me/5492974432855";
 
   // -- Flujo guiado de consulta (lead) -------------------------------
@@ -22,8 +23,8 @@
   var UI = {
     es: {
       greeting: "Hola, soy Zoyi. Puedo responder sobre excursiones, tours, consulta de tarifas por WhatsApp, consulta de disponibilidad, cupos, ubicación e itinerarios. Solo te paso con una persona si me lo pedís.",
-      fallback: "Preguntame por fechas, disponibilidad, precios, excursiones, tours, ubicación o reservas.",
-      helpFull: "Puedo ayudarte con: fechas disponibles, consulta de tarifas por WhatsApp, cupos, excursiones, tours de autor, ubicación, itinerarios PDF y cómo reservar. Probá: 'precio de Capillas', 'fechas para Patagonia Inédita' o '?qué excursión me recomendás'.",
+      fallback: "Preguntame por fechas, disponibilidad, excursiones, tours, ubicación o reservas.",
+      helpFull: "Puedo ayudarte con: fechas disponibles, consulta de tarifas por WhatsApp, cupos, excursiones, tours de autor, ubicación, itinerarios PDF y cómo reservar. Probá: 'fechas para Patagonia Inédita' o '?qué excursión me recomendás'.",
       humanAns: function(){ return consultationText; },
       datesAsk: "¿Sobre qué excursión o tour querés consultar fechas disponibles?",
       datesBase: "La disponibilidad se consulta según la experiencia elegida. En la página de cada experiencia encontrás duración, recorrido e inclusiones.",
@@ -46,8 +47,8 @@
     },
     en: {
       greeting: "Hi, I\'m Zoyi. I can answer questions about excursions, tours, availability, rates via WhatsApp and itineraries. Just ask!",
-      fallback: "Ask me about dates, availability, prices, excursions, tours or bookings.",
-      helpFull: "I can help with: available dates, rates via WhatsApp, group sizes, excursions, author tours, location, PDF itineraries and how to book. Try: \'price of Capillas y Catedrales de Mármol\', \'dates for Patagonia Inédita\' or \'which excursion do you recommend\'.",
+      fallback: "Ask me about dates, availability, excursions, tours or bookings.",
+      helpFull: "I can help with: available dates, rates via WhatsApp, group sizes, excursions, author tours, location, PDF itineraries and how to book. Try: \'dates for Patagonia Inédita\' or \'which excursion do you recommend\'.",
       humanAns: function(){ return consultationText; },
       datesAsk: "Which excursion or tour would you like to check availability for",
       datesBase: "Bookings allow you to choose any date from today onwards. Real availability is confirmed by date, excursion and group size.",
@@ -509,6 +510,11 @@
     if(!val)return;
     addMessage(val,"user");
     if(input)input.value="";
+    var priceQuery = normalize(val), priceUI = UI[getLang()] || UI.es;
+    if(isAsking(priceQuery, priceUI.kw.prices)){
+      addMessage(consultationText,"bot");
+      return;
+    }
     // Si estamos en medio del flujo guiado, el texto libre responde ese paso puntual
     var leadField = input && input.dataset.zoyiLeadField;
     if(leadField && leadDraft){
@@ -541,7 +547,7 @@
         showTypeChoices("book");
         return;
       }
-      if(!p&&isAsking(q,k.prices)){showTypeChoices("prices");return;}
+      if(isAsking(q,k.prices)){addMessage(consultationText,"bot");return;}
       if(!p&&isAsking(q,k.dates)){showTypeChoices("dates");return;}
       if(!p&&isAsking(q,k.excursion)){showProductChoices("details","excursion");return;}
       if(!p&&isAsking(q,k.tour)){showProductChoices("details","tour");return;}
@@ -581,7 +587,7 @@
     window.setTimeout(function(){
       if(kind==="book"){ showTypeChoices("book"); return; }
       if(kind==="dates"){ showTypeChoices("dates"); return; }
-      if(kind==="prices"){ showTypeChoices("prices"); return; }
+      if(kind==="prices"){ addMessage(consultationText,"bot"); return; }
       if(kind==="excursion"){ showProductChoices("details","excursion"); return; }
       if(kind==="tour"){ showProductChoices("details","tour"); return; }
       if(kind==="location"){ addMessage((UI[getLang()]||UI.es).locAnswer,"bot"); return; }
